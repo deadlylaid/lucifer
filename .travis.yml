@@ -1,13 +1,11 @@
-language:
-    python
-python:
-    - 3.4
-    - 3.4.3
+language: python
+python: 
+  - "3.4"
+  - "3.5"
 
 # command to install dependencies
 install: 
-    - "pip install -r requirement/requirements.txt"
-
+    - pip install -r requirement/development.txt
 # command to run tests
 script:
-    - pep8 .
+    - pep8
