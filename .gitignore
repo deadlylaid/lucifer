@@ -90,3 +90,6 @@ ENV/
 
 # env files
 .env
+
+# migrations
+migrations/
