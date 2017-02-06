@@ -24,4 +24,6 @@ urlpatterns = [
 
     url(r'^$', Home.as_view(), name='home'),
     url(r'^joinus/$', JoinUs.as_view(), name='joinus'),
+    url(r'^logout/$', LogOut.as_view(), name='logout'),
+    url(r'^login/$', LogIn.as_view(), name='login'),
 ]
