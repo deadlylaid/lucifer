@@ -16,6 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from .views import Home
+from users.views import *
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
+    url(r'^$', Home.as_view(), name='home'),
+    url(r'^joinus/$', JoinUs.as_view(), name='joinus'),
+    url(r'^logout/$', LogOut.as_view(), name='logout'),
+    url(r'^login/$', LogIn.as_view(), name='login'),
 ]
