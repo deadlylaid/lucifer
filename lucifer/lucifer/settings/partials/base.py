@@ -28,9 +28,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'django_summernote',
 
     'lucifer',
     'users',
+    'posts',
 ]
 
 MIDDLEWARE_CLASSES = [
