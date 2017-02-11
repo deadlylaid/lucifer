@@ -8,4 +8,4 @@ reset_db:
 clean:
 	find ./ -type f -name "\.*swp" -delete
 	find . -name "*.pyc" -exec rm -rf {} \;
-	find . -name "__pycache__/" -exec rm -rf {} \;
+	find . -name __pycache__/ -type d -exec rm -rf {} \;
