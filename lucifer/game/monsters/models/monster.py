@@ -16,7 +16,7 @@ class Monster(models.Model):
             default=0,
             )
 
-    health_point = models.IntegerField(
+    health = models.IntegerField(
             default=1,
             )
 
