@@ -7,7 +7,12 @@ class CharacterAppConfig(AppConfig):
 
     def ready(self):
         from game.characters.models import Character
+        from game.characters.models import Status
+
         from game.skills.models import Skill
+
         from game.items.models import Item
+
         from game.monsters.models import Monster
+
         from game.stages.models import Stage
