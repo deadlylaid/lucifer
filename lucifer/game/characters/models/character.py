@@ -16,8 +16,15 @@ class Character(models.Model):
             default=1,
             )
 
+    JOB_CHOICE = (
+            ('나이트', '나이트'),
+            ('야만전사', '야만전사'),
+            ('팔라딘', '팔라딘'),
+            )
+
     job = models.CharField(
-            max_length=10,
+            max_length=4,
+            choices=JOB_CHOICE,
             null=True,
             blank=True,
             )
