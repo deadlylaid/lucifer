@@ -24,6 +24,7 @@ class Monster(models.Model):
             default=0,
             )
 
-    drop_item = models.ForeignKey(
+    # 몬스터가 드랍하는 아이템은 랜덤
+    drop_items_set = models.ManyToManyField(
             Item,
             )
