@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from game.quests.models import Quest
 
 
 class Character(models.Model):
@@ -27,4 +28,9 @@ class Character(models.Model):
             choices=JOB_CHOICE,
             null=True,
             blank=True,
+            )
+
+    # 어떤 퀘스트를 완료했는지
+    complete_quest_set = models.ManyToManyField(
+            Quest,
             )
