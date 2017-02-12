@@ -9,6 +9,8 @@ class CharacterAppConfig(AppConfig):
         from game.characters.models import Character
         from game.characters.models import Status
         from game.characters.models import LearnedSkill
+        from game.characters.models import Inventory
+        from game.characters.models import QuickSlot
 
         from game.skills.models import Skill
 
