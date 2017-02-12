@@ -8,6 +8,7 @@ class CharacterAppConfig(AppConfig):
     def ready(self):
         from game.characters.models import Character
         from game.characters.models import Status
+        from game.characters.models import LearnedSkill
 
         from game.skills.models import Skill
 
