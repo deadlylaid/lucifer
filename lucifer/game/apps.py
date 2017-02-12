@@ -20,3 +20,7 @@ class CharacterAppConfig(AppConfig):
         from game.monsters.models import Monster
 
         from game.stages.models import Stage
+
+        from game.npc.models import NPC
+
+        from game.quests.models import Quest
