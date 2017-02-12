@@ -11,6 +11,7 @@ class CharacterAppConfig(AppConfig):
         from game.characters.models import LearnedSkill
         from game.characters.models import Inventory
         from game.characters.models import QuickSlot
+        from game.characters.models import Equipment
 
         from game.skills.models import Skill
 
