@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'lucifer',
     'users',
     'posts',
+
+    'game',
 ]
 
 MIDDLEWARE_CLASSES = [
