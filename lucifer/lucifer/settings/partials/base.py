@@ -34,7 +34,13 @@ INSTALLED_APPS = [
     'users',
     'posts',
 
-    'game',
+    'game.characters',
+    'game.skills',
+    'game.items',
+    'game.monsters',
+    'game.stages',
+    'game.npc',
+    'game.quests',
 ]
 
 MIDDLEWARE_CLASSES = [
