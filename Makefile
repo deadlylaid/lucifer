@@ -1,9 +1,8 @@
 migrate:
-	python lucifer/manage.py makemigrations users posts game
+	python lucifer/manage.py makemigrations users posts characters skills items monsters stages npc quests
 	python lucifer/manage.py migrate
 
 reset_db:
-	python lucifer/manage.py reset_db --noinput
 	python lucifer/manage.py reset_db
 
 clean:
