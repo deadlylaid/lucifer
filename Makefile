@@ -11,5 +11,6 @@ clean:
 	find . -name "*.pyc" -exec rm -rf {} \;
 	find . -name __pycache__/ -type d -exec rm -rf {} \;
 
+
 tests:
 	python lucifer/manage.py test posts users
