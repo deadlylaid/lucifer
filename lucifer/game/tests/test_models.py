@@ -34,4 +34,4 @@ class CharacterTest(TestCase, CharacterCreateMixin):
 
         self.assertEqual(created_character.nickname, 'TestCharacter')
         self.assertEqual(created_character.job, '나이트')
-        self.assertEqual(created_character.status.health, 100)
+        self.assertTrue(created_character.status)
