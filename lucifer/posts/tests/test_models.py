@@ -27,7 +27,8 @@ class FreeBoardModelTest(TestCase, UserCreateMixin):
                 title='TestPost1',
                 content='TestPostContents',
                 )
-        print("#####No problem in create freeboard#####")
+
+        self.assertTrue(FreeBoard.objects.first())
 
         answer = Answer.objects.create(
                 user=created_user2,
@@ -35,7 +36,7 @@ class FreeBoardModelTest(TestCase, UserCreateMixin):
                 contents='answer123123123',
                 )
 
-        print("#####No problem in create answer#####")
+        self.assertTrue(Answer.objects.first())
 
         comment = Comment.objects.create(
                 user=created_user1,
@@ -43,4 +44,4 @@ class FreeBoardModelTest(TestCase, UserCreateMixin):
                 contents='This is comment',
                 )
 
-        print("#####No problem in create comment#####")
+        self.assertTrue(Comment.objects.first())
