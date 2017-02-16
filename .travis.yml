@@ -1,11 +1,12 @@
 language: python
-python: 
+python:
   - "3.4"
   - "3.5"
 
 # command to install dependencies
-install: 
+install:
     - pip install -r requirement/development.txt
 # command to run tests
 script:
     - pep8
+    - python lucifer/manage.py test users posts game
