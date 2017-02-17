@@ -1,4 +1,4 @@
-from django.views.generic import View
+from django.views.generic import View, ListView
 from django.shortcuts import render
 from posts.forms import PostForm
 from posts.models.freeboard import FreeBoard
@@ -28,3 +28,7 @@ class CreateFreeBoard(View):
                 "home.html",
                 context={},
                 )
+
+
+class ListFreeBoard(ListView):
+    pass

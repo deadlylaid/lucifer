@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^logout/$', LogOut.as_view(), name='logout'),
     url(r'^login/$', LogIn.as_view(), name='login'),
 
-    url(r'^freecreate/$', CreateFreeBoard.as_view(), name='freecreate'),
+    url(r'^community/freeboard/create/$', CreateFreeBoard.as_view(), name='freecreate'),
+    url(r'^community/freeboard/$', ListFreeBoard.as_view(), name='free_list'),
     url(r'^summernote/', include('django_summernote.urls')),
 ]
