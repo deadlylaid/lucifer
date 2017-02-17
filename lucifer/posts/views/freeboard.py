@@ -23,8 +23,15 @@ class CreateFreeBoard(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
 
+        user = request.user
         title = request.POST.get('title')
         content = request.POST.get('content')
+
+        created_post = FreeBoard.objects.create(
+                user=user,
+                title=title,
+                content=content,
+                )
 
         return render(
                 request,
