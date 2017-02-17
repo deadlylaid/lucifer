@@ -31,4 +31,7 @@ class CreateFreeBoard(View):
 
 
 class ListFreeBoard(ListView):
-    pass
+
+    model = FreeBoard
+    template_name = "posts/free_list.html"
+    context_object_name = "freeboards"

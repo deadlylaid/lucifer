@@ -6,4 +6,10 @@
 
 {% block content %}
 자유게시판 리스트
+<div>
+  {% for freeboard in freeboards %}
+    <strong>{{ freeboard.title }}</strong>
+  {% endfor %}
+</div>
+
 {% endblock %}
