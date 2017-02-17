@@ -7,9 +7,13 @@
 {% block content %}
 자유게시판 리스트
 <div>
+  <ul>
   {% for freeboard in freeboards %}
-    <strong>{{ freeboard.title }}</strong>
+    <li>
+    <a href="{% url "free_detail" freeboard.id %}">{{ freeboard.title }}</a>
+    </li>
   {% endfor %}
+  </ul>
 </div>
 
 {% endblock %}
