@@ -2,9 +2,12 @@ from django.views.generic import View, ListView
 from django.shortcuts import render
 from posts.forms import PostForm
 from posts.models.freeboard import FreeBoard
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CreateFreeBoard(View):
+class CreateFreeBoard(LoginRequiredMixin, View):
+
+    login_url = '/login/'
 
     def get(self, request):
 
