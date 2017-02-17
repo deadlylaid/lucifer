@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+자유게시판
+{% endblock %}
+
+{% block content %}
+게시글 상세
+<div>
+  제목:{{ freeboard.title }}
+</div>
+
+<div>
+  내용:{{ freeboard.content }}
+</div>
+{% endblock %}
