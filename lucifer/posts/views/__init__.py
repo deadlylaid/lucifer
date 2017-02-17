@@ -1,1 +1,1 @@
-from .freecreate import CreateFreeBoard
+from .freeboard import CreateFreeBoard, ListFreeBoard
