@@ -1,4 +1,4 @@
-from django.views.generic import View, ListView
+from django.views.generic import View, ListView, DetailView
 from django.shortcuts import render
 from posts.forms import PostForm
 from posts.models.freeboard import FreeBoard
@@ -45,3 +45,10 @@ class ListFreeBoard(ListView):
     model = FreeBoard
     template_name = "posts/free_list.html"
     context_object_name = "freeboards"
+
+
+class DetailFreeBoard(DetailView):
+
+    model = FreeBoard
+    template_name = "posts/free_detail.html"
+    context_object_name = "freeboard"
