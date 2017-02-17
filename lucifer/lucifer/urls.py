@@ -33,5 +33,8 @@ urlpatterns = [
     url(r'^community/freeboard/create/$', CreateFreeBoard.as_view(), name='freecreate'),
     url(r'^community/freeboard/(?P<pk>\d+)/$', DetailFreeBoard.as_view(), name='free_detail'),
     url(r'^community/freeboard/$', ListFreeBoard.as_view(), name='free_list'),
+
+    url(r'^freeboard/(?P<pk>\d+)/answer/create/$', answer, name='answer_create'),
+
     url(r'^summernote/', include('django_summernote.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
