@@ -1,6 +1,7 @@
 from django.views.generic import View
 from django.shortcuts import render
 from posts.forms import PostForm
+from posts.models.freeboard import FreeBoard
 
 
 class CreateFreeBoard(View):
@@ -17,5 +18,13 @@ class CreateFreeBoard(View):
                     }
                 )
 
-    def post(self, request):
-        pass
+    def post(self, request, *args, **kwargs):
+
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+
+        return render(
+                request,
+                "home.html",
+                context={},
+                )
