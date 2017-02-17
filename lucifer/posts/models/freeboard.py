@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 
 class FreeBoard(models.Model):
@@ -23,3 +24,11 @@ class FreeBoard(models.Model):
     updated_at = models.DateTimeField(
             auto_now=True,
             )
+
+    def get_absolute_url(self):
+        return reverse(
+                "free_detail",
+                kwargs={
+                    'pk': self.pk,
+                    }
+                )
