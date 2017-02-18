@@ -1,43 +1,26 @@
-from django.views.generic import View, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView
 from django.shortcuts import render
-from posts.forms import PostForm
-from posts.models.freeboard import FreeBoard
+from django.core.urlresolvers import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from posts.forms import PostForm
+from posts.models.freeboard import FreeBoard
 
-class CreateFreeBoard(LoginRequiredMixin, View):
+
+class CreateFreeBoard(LoginRequiredMixin, CreateView):
 
     login_url = '/login/'
+    template_name = 'posts/freecreate.html'
 
-    def get(self, request):
+    form_class = PostForm
 
-        form = PostForm()
+    def form_valid(self, form):
 
-        return render(
-                request,
-                "posts/freecreate.html",
-                context={
-                    'form': form
-                    }
-                )
+        form.instance.user = self.request.user
+        title = form.instance.title
+        content = form.instance.content
 
-    def post(self, request, *args, **kwargs):
-
-        user = request.user
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-
-        created_post = FreeBoard.objects.create(
-                user=user,
-                title=title,
-                content=content,
-                )
-
-        return render(
-                request,
-                "home.html",
-                context={},
-                )
+        return super(CreateFreeBoard, self).form_valid(form)
 
 
 class ListFreeBoard(ListView):
