@@ -12,4 +12,4 @@ clean:
 
 
 tests:
-	python lucifer/manage.py test posts users
+	python lucifer/manage.py test posts users game

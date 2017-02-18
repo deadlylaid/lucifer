@@ -1,19 +1,18 @@
 from django.db import models
 from django.conf import settings
-from django.core.urlresolvers import reverse
 
 
-class FreeBoard(models.Model):
+class Event(models.Model):
 
     user = models.ForeignKey(
             settings.AUTH_USER_MODEL,
             )
 
     title = models.CharField(
-            max_length=20,
+            max_length=50,
             )
 
-    content = models.TextField(
+    contents = models.TestField(
             max_length=255,
             )
 
@@ -24,11 +23,3 @@ class FreeBoard(models.Model):
     updated_at = models.DateTimeField(
             auto_now=True,
             )
-
-    def get_absolute_url(self):
-        return reverse(
-                "free_detail",
-                kwargs={
-                    'pk': self.pk,
-                    }
-                )

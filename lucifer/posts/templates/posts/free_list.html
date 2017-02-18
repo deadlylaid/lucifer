@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+자유게시판
+{% endblock %}
+
+{% block content %}
+자유게시판 리스트
+<div>
+  <ul>
+  {% for freeboard in freeboards %}
+    <li>
+    <a href="{% url "free_detail" freeboard.id %}">{{ freeboard.title }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 
 from .views import Home
 from users.views import *
@@ -28,6 +30,13 @@ urlpatterns = [
     url(r'^logout/$', LogOut.as_view(), name='logout'),
     url(r'^login/$', LogIn.as_view(), name='login'),
 
-    url(r'^freecreate/$', CreateFreeBoard.as_view(), name='freecreate'),
+    url(r'^freeboard/create/$', CreateFreeBoard.as_view(), name='freecreate'),
+    url(r'^freeboard/(?P<pk>\d+)/$', DetailFreeBoard.as_view(), name='free_detail'),
+    url(r'^freeboard/$', ListFreeBoard.as_view(), name='free_list'),
+
+    url(r'^freeboard/(?P<pk>\d+)/answer/create/$', CreateAnswer.as_view(), name='answer_create'),
+
+    url(r'^freeboard/(?P<pk>\d+)/comment/create/$', CommentCreateView.as_view(), name='comment_create'),
+
     url(r'^summernote/', include('django_summernote.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
