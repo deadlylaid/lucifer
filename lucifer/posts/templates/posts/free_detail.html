@@ -29,4 +29,20 @@
     </form>
 
 </div>
+
+<div>
+    {% for comment in freeboard.comment_set.all %}
+
+        <p>댓글 작성자 : {{ comment.user.username }}</p>
+        <p>내용: {{ comment.contents }}</p>
+    {% endfor %}
+
+    <h3>댓글 달기</h3>
+    <form action="{% url "comment_create" freeboard.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="contents"></textarea>
+        <input type="submit" name="" class="text" value="확인">
+    </form>
+
+</div>
 {% endblock %}
