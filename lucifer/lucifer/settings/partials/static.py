@@ -8,3 +8,7 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_ROOT_DIR, "dist", "static")
 MEDIA_ROOT = os.path.join(BASE_ROOT_DIR, "dist", "media")
+
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "lucifer", "static")
+]
