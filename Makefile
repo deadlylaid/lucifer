@@ -13,3 +13,6 @@ clean:
 
 tests:
 	python lucifer/manage.py test posts users game
+
+fakecharacter:
+	python lucifer/manage.py fake_character_create
