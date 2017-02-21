@@ -42,3 +42,6 @@ class Status(models.Model):
     skill_point = models.IntegerField(
             default=0,
             )
+
+    def __str__(self):
+        return "%s 의 능력치" % (self.character_set.nickname)
