@@ -7,6 +7,7 @@ class Character(models.Model):
 
     user = models.ForeignKey(
             settings.AUTH_USER_MODEL,
+            related_name='character_set',
             )
 
     nickname = models.CharField(
@@ -34,3 +35,6 @@ class Character(models.Model):
     complete_quest_set = models.ManyToManyField(
             Quest,
             )
+
+    def __str__(self):
+        return self.nickname
