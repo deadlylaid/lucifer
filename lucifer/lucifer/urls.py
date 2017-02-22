@@ -22,6 +22,8 @@ from .views import Home
 from users.views import *
 from posts.views import *
 
+from game.characters.api.views import *
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
@@ -30,13 +32,13 @@ urlpatterns = [
     url(r'^logout/$', LogOut.as_view(), name='logout'),
     url(r'^login/$', LogIn.as_view(), name='login'),
 
+    url(r'^freeboard/$', ListFreeBoard.as_view(), name='free_list'),
     url(r'^freeboard/create/$', CreateFreeBoard.as_view(), name='freecreate'),
     url(r'^freeboard/(?P<pk>\d+)/$', DetailFreeBoard.as_view(), name='free_detail'),
-    url(r'^freeboard/$', ListFreeBoard.as_view(), name='free_list'),
-
     url(r'^freeboard/(?P<pk>\d+)/answer/create/$', CreateAnswer.as_view(), name='answer_create'),
-
     url(r'^freeboard/(?P<pk>\d+)/comment/create/$', CommentCreateView.as_view(), name='comment_create'),
+
+    url(r'^api/user/character/$', CharacterAPIView.as_view(), name='api_character'),
 
     url(r'^summernote/', include('django_summernote.urls')),
 
