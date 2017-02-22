@@ -25,9 +25,11 @@ class Command(BaseCommand):
                     username=fake_name,
                     password='123',
                     )
-            fake_user.character_set.create(
-                    nickname=fake_name,
-                    job='야만전사'
+
+            Character.objects.create(
+                    user=fake_user,
+                    nickname='%snickname' % (fake_user),
+                    job='야만전사',
                     )
 
         self.stdout.write("Complete")
