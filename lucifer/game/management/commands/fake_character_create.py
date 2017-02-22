@@ -21,7 +21,7 @@ class Command(BaseCommand):
         for _ in range(1, 20):
 
             fake_name = fake.name()
-            fake_user = User.objects.create(
+            fake_user = User.objects.create_user(
                     username=fake_name,
                     password='123',
                     )
