@@ -5,9 +5,8 @@ from game.quests.models import Quest
 
 class Character(models.Model):
 
-    user = models.ForeignKey(
+    user = models.OneToOneField(
             settings.AUTH_USER_MODEL,
-            related_name='character_set',
             )
 
     nickname = models.CharField(
