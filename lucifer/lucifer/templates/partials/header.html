@@ -2,6 +2,7 @@
   <h3>현재 로그인중</h3>
   <h3>{{ request.user.username }}</h3>
   <a href="{% url "logout" %}">로그아웃</a>
+  <a href="{% url "character_detail" %}" target="_blank">게임시작</a>
 {% else %}
 <a href="{% url "joinus" %}">회원가입</a>
 <a href="{% url "login" %}">로그인</a>
