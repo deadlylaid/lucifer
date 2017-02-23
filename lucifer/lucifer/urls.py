@@ -22,6 +22,7 @@ from .views import Home
 from users.views import *
 from posts.views import *
 
+from game.characters.views import *
 from game.characters.api.views import *
 
 urlpatterns = [
@@ -38,6 +39,8 @@ urlpatterns = [
     url(r'^freeboard/(?P<pk>\d+)/answer/create/$', CreateAnswer.as_view(), name='answer_create'),
     url(r'^freeboard/(?P<pk>\d+)/comment/create/$', CommentCreateView.as_view(), name='comment_create'),
 
+
+    url(r'^user/character/$', CharacterDetail.as_view(), name='user_detail'),
     url(r'^api/user/character/$', CharacterAPIView.as_view(), name='api_character'),
 
     url(r'^summernote/', include('django_summernote.urls')),
