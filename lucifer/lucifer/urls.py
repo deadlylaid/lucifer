@@ -40,7 +40,7 @@ urlpatterns = [
     url(r'^freeboard/(?P<pk>\d+)/comment/create/$', CommentCreateView.as_view(), name='comment_create'),
 
 
-    url(r'^user/character/$', CharacterDetail.as_view(), name='user_detail'),
+    url(r'^user/character/$', CharacterDetail.as_view(), name='character_detail'),
     url(r'^api/user/character/$', CharacterAPIView.as_view(), name='api_character'),
 
     url(r'^summernote/', include('django_summernote.urls')),
