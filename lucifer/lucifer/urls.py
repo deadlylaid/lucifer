@@ -41,6 +41,7 @@ urlpatterns = [
 
 
     url(r'^user/character/$', CharacterDetail.as_view(), name='character_detail'),
+    url(r'^api/user/character/status/$', StatusAPIView.as_view(), name='api_status'),
     url(r'^api/user/character/$', CharacterAPIView.as_view(), name='api_character'),
 
     url(r'^summernote/', include('django_summernote.urls')),

@@ -1,1 +1,2 @@
 from .character_serializer import CharacterSerializer
+from .status_serializer import StatusSerializer
