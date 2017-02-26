@@ -4,6 +4,7 @@ from game.items.models import Item
 
 
 class Inventory(models.Model):
+    # default 값을 몇개 집어넣기
 
     character = models.ForeignKey(
             Character,
