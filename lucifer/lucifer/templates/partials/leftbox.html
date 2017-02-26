@@ -1,0 +1,61 @@
+<div class="Left_box">
+    <div class="Login_wrap">
+        <fieldset>
+            {% if request.user.is_authenticated %}
+            <div>
+              <p style="color:red;">{{ request.user.username }}</p>
+              <a href="{% url "logout" %}">로그아웃</a>
+              <a href="{% url "character_detail" %}" target="_blank">게임시작</a>
+            </div>
+
+            {% else %}
+            <form method="post" action="{% url "login" %}" id="frmLogin">
+            {% csrf_token %}
+                <div class="before">
+                    <ul class="form">
+                        <li>
+                            <input name="username" type="text" class="text" placeholder="계정" data-datatype="an" maxlength="16" required>
+                        </li>
+                        <li>
+                            <input name="password" type="password" class="text" placeholder="비밀번호" maxlength="20" required>
+                        </li>
+                        <li class="btn-login">
+                            <input value="로그인" type="submit" class="text" required>
+                        </li>
+                    </ul>
+                    <aside>
+                        <a href="{% url "joinus" %}">회원가입</a>
+                        <span>|</span>
+                        <a href="#">계정</a>/<a href="#">비밀번호찾기</a>
+                    </aside>
+                </div>
+            </form>
+            {% endif %}
+        </fieldset>
+        <div class="Btn_Start">
+            <button type="submit" id="btnStart">START</button>
+        </div>
+    </div>
+    <div class="Quick_menu">
+        <ul class="link_list">
+            <li>
+                <a href="#" class="Helpus">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    <span class="link_list_title"> 도움말 </span>
+                    <br>궁금한 것은 여기로!</a>
+            </li>
+            <li>
+                <a href="#" class="FAQ">
+                    <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                    <span class="link_list_title"> FAQ </span>
+                    <br>자주 묻는 질문!</a>
+            </li>
+            <li>
+                <a href="#" class="Bugreport">
+                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                    <span class="link_list_title"> 버그게시판 </span>
+                    <br>버그를 올려주세요!</a>
+            </li>
+        </ul>
+    </div>
+</div>
