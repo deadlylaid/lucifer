@@ -35,8 +35,14 @@
     <div class="Back">
         {% include "partials/header.html" %} 
 
-        {% block content %}
-        {% endblock %}
+        <div class="Wrap">
+          {% include "partials/leftbox.html" %}
+          <section class="content" style="background-color:white;">
+            {% block content %}
+            {% endblock %}      
+          </section>
+        </div>
+
 
         {% include "partials/footer.html" %}
     </div>
