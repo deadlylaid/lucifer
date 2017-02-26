@@ -5,7 +5,7 @@ from .status_serializer import StatusSerializer
 
 class CharacterSerializer(serializers.ModelSerializer):
 
-    status = StatusSerializer(read_only=True)
+    status = StatusSerializer()
 
     class Meta:
         model = Character
