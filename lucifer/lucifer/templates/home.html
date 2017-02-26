@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block content %}
+
+<div class="Back">
+<div class="Wrap">
+  <div class="Header">
+    	<div class="Logo"> Logo </div>
+        <div class="Main_menu">
+        	<nav class="nav">
+        	<ul class="N_menu_itemlist" >
+	          <li class="N-menu_item" >
+		          <a href="#" class="N-menu_item_link is-selected">
+        		    NEWS
+				  </a>
+        		</li>
+	          <li class="N-menu_item">
+		          <a href="#" class="N-menu_item_link">
+        		    게임소개
+				  </a>
+        		</li>
+	          <li class="N-menu_item">
+		          <a href="#" class="N-menu_item_link">
+       			     랭킹
+				  </a>
+        		</li>
+              <li class="N-menu_item">
+		          <a href="#" class="N-menu_item_link">
+       			     커뮤니티
+				  </a>
+        		</li>
+              <li class="N-menu_item">
+		          <a href="#" class="N-menu_item_link">
+       			     고객센터
+				  </a>
+        		</li>
+	      </ul>
+          </nav>
+    <menu>
+        <li class="menu1">
+            <div class="depth" style="padding-left:27px;">
+                    <p>
+                       <a href="#">공지사항</a>
+                       <a href="#">이벤트</a>
+                    </p>
+                </div>
+        </li>
+        <li class="menu2">
+            <div class="depth" style="padding-left:19px;">
+                    <p>
+                       <a href="#">게임배경</a>
+                       <a href="#">직업소개</a>
+                    </p>
+                </div>
+        </li>
+        <li class="menu3">
+        		<div class="depth">
+                    <p>
+
+                    </p>
+                </div>
+        </li>
+        <li class="menu4">
+                <div class="depth">
+                    <p>
+                    <a href="{% url "free_list" %}">자유게시판</a>
+                       <a href="#">스크린샷</a>
+                    </p>
+                </div>
+        </li>
+        <li class="menu5">
+                <div class="depth">
+                    <p>
+                       <a href="#">FAQ</a>
+                       <a href="#">문의/신고</a>
+                    </p>
+                </div>
+        </li>
+	</menu>
+        </div>
+	</div>
+    <div class="Left_box">
+   	  <div class="Login_wrap">
+   	      <fieldset>
+          <form method="post" action="#" id="frmLogin">
+	    <div class="before">
+        <ul class="form">
+            <li><input type="text" name="txtUserID" id="txtUserID" class="text" placeholder="계정" data-datatype="an" maxlength="16"></li>
+            <li><input type="password" name="txtPassWD" id="txtPassWD" class="text" placeholder="비밀번호" maxlength="20"></li>
+            <li class="btn-login"><button type="submit" id="btnLogin">로그인</button></li>
+        </ul>
+        <aside>
+            <a href="#">회원가입</a>
+            <span>|</span>
+            <a href="#">계정</a>/<a href="#">비밀번호찾기</a>
+        </aside>
+    	</div>
+			</form>
+         </fieldset>
+         <div class="Btn_Start">
+         	<button type="submit" id="btnStart">START</button>
+         </div>
+   	  </div>
+    	<div class="Quick_menu">
+        	<ul class="link_list">
+				<li><a href="#" class="Helpus">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                <span class="link_list_title"> 도움말 </span>
+                <br>궁금한 것은 여기로!</a></li>
+				<li><a href="#" class="FAQ">
+                <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                <span class="link_list_title"> FAQ </span>
+                <br>자주 묻는 질문!</a></li>
+				<li><a href="#" class="Bugreport">
+                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                <span class="link_list_title"> 버그게시판 </span>
+                <br>버그를 올려주세요!</a></li>
+			</ul>
+</div>
+    </div>
+    <div class="Container">
+    	<div class="Slide_menu">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+      <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
+      <li data-target="#carousel-example-generic" data-slide-to="4" class=""></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+          <img alt="First slide" src="{% static "images/First_picture.JPG" %}">
+      </div>
+      <div class="item">
+          <img alt="Second slide" src="{% static "images/Second_picture.jpg" %}">
+      </div>
+      <div class="item">
+          <img alt="Third slide" src="{% static "images/Third_picture.jpg" %}">
+      </div>
+      <div class="item">
+          <img alt="Forth slide" src="{% static "images/Forth_picture.jpg" %}">
+      </div>
+      <div class="item">
+          <img alt="Fifth slide" src="{% static "images/Fifth_picture.jpg" %}">
+      </div>
+    </div>
+  </div>
+
+  <div class="banner-nav">
+        <div class="list">
+        <a class="left carousel-control" id="PNbtn" href="#carousel-example-generic" data-slide="prev">
+      		<span class="glyphicon glyphicon-chevron-left"></span>
+    	</a>
+              <ol style="margin-top: 0px;">
+                        <li class="selected"><a href="javascript:;">신규 서버 오픈</a></li>
+                        <li class=""><a href="javascript:;">한정구매 이벤트!</a></li>
+                        <li class=""><a href="javascript:;">배틀코어 업데이트!</a></li>
+                        <li class=""><a href="javascript:;">[설문조사] ...</a></li>
+                        <li class=""><a href="javascript:;">업데이트 이벤트!</a></li>
+            </ol>
+            <a class="right carousel-control" id="PNbtn" href="#carousel-example-generic" data-slide="next">
+      		<span class="glyphicon glyphicon-chevron-right"></span>
+    	</a>
+        </div>
+    </div>
+</div>
+        <div class="Notice_menu">
+        	<div class="board">
+             <article class="notice board-section">
+             <h2>공지사항 <a href="#" class="more"><img src="{% static "images/btn_board_more.jpg" %}" alt=""></a></h2>
+    			<ul>
+                <li>
+                	<a href="#"> [이벤트] GM생강의 떡국 인증 Event 당첨...
+                    </a> <span>02.09 15:24</span>
+                </li>
+                <li>
+                    <a href="#"> [공지] 알려진 문제 사항 안내 (수정)
+                    </a> <span>01.26 10:27</span>
+                </li>
+                <li>
+                    <a href="#"> [공지] 신규 서버 스피릿 오픈 안내
+                    </a> <span>02.09 19:00</span>
+                </li>
+                <li>
+                    <a href="#"> [점검] [완료] 뮤이그니션 2월 9일(목) ...
+                    </a> <span>02.07 17:18</span>
+                </li>
+    			</ul>
+			</article>
+            <article class="freenotice board-section">
+            <h2>자유게시판 <a href="#" class="more"><img src="{% static "images/btn_board_more.jpg" %}" alt=""></a></h2>
+    			<ul>
+                <li>
+                	<a href="#"> [꿀팁] Stage 4단계 클리어 Tip
+                    </a> <span>02.09 15:24</span>
+                </li>
+                <li>
+                    <a href="#"> [공략] 레비아탄 공략법
+                    </a> <span>01.26 10:27</span>
+                </li>
+                <li>
+                    <a href="#"> [Q&A] 13Lv 퀘스트 어떻게 깨요?
+                    </a> <span>02.09 19:00</span>
+                </li>
+    			</ul>
+			</article>
+			</div>
+            <div class="GMnote">
+            <article class="gm-note board-section">
+            <h2>GM 노트 <a href="#" class="more"><img src="{% static "images/btn_board_more.jpg" %}" alt=""></a></h2>
+            	<p>
+              <a href="#">
+       <img src="http://upload.webzen.co.kr/Files//5/2017/02/07/20170207B12032046DBC4272.png" alt="" style="height:102px;width:240px;">
+                </a>
+                </p>
+                <p>
+                <a href="#" class="gm-note-text">
+                 <strong>[설 문 조 사]</strong> <p>
+                 <span>여러분이 원하는 1:1배틀코어 진행시간은 언제인가요?</span>
+                 </p></a>
+                <div class="votelist">
+                <ul class="list">
+                	<li> <input type="radio" id="Number" name="Number" value="1" />오전 11시</li>
+                    <li> <input type="radio" id="Number" name="Number" value="2" />오후 1시</li>
+                    <li> <input type="radio" id="Number" name="Number" value="3" />오후 6시</li>
+                    <li> <input type="radio" id="Number" name="Number" value="4" />오후 9시</li>
+                </ul>
+                </div>
+                <div class="votebtn">
+                <input class="btn btn-default" type="submit" value="투표하기"><input class="btn btn-default" type="submit" value="결과보기">
+    			</div>
+            </article>
+            </div>
+        </div>
+
+
+        <div class="Screenshot">
+            <h2>스크린샷 <a href="#" class="more"><img src="{% static "images/btn_board_more.jpg" %}" alt=""></a></h2>
+			<div class="Screenmove">
+<!-- Flickity HTML init -->
+	<div class="carousel carousel-main" data-flickity>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+		<div class="carousel-cell"></div>
+	  	<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+	</div>
+
+	<div class="carousel carousel-nav"
+  		data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+  		<div class="carousel-cell"></div>
+	</div>
+    </div>
+    		    </div>
+    		</div>
+
+
+
+            </div>
+
+</div>
+
+
+{% endblock %}

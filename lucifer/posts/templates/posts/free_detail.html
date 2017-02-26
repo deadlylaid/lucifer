@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+자유게시판
+{% endblock %}
+
+{% block content %}
+게시글 상세
+<div>
+  제목:{{ freeboard.title }}
+</div>
+
+<div>
+  내용:{{ freeboard.content|safe }}
+</div>
+
+<div>
+    {% for answer in freeboard.answer_set.all %}
+
+        <p>답글 작성자 : {{ answer.user.username }}</p>
+        <p>내용: {{ answer.contents }}</p>
+    {% endfor %}
+
+    <h3>답글달기</h3>
+    <form action="{% url "answer_create" freeboard.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="contents"></textarea>
+        <input type="submit" name="" class="text" value="확인">
+    </form>
+
+</div>
+
+<div>
+    {% for comment in freeboard.comment_set.all %}
+
+        <p>댓글 작성자 : {{ comment.user.username }}</p>
+        <p>내용: {{ comment.contents }}</p>
+    {% endfor %}
+
+    <h3>댓글 달기</h3>
+    <form action="{% url "comment_create" freeboard.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="contents"></textarea>
+        <input type="submit" name="" class="text" value="확인">
+    </form>
+
+</div>
+{% endblock %}

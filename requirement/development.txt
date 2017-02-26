@@ -1,0 +1,6 @@
+-r production.txt
+Ipython
+pep8
+django-extensions==1.7.6
+django-debug-toolbar==1.6
+faker
