@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'users',
     'posts',
 
+    'game',
     'game.characters',
     'game.skills',
     'game.items',

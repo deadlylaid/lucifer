@@ -5,7 +5,7 @@ from game.quests.models import Quest
 
 class Character(models.Model):
 
-    user = models.ForeignKey(
+    user = models.OneToOneField(
             settings.AUTH_USER_MODEL,
             )
 
@@ -34,3 +34,6 @@ class Character(models.Model):
     complete_quest_set = models.ManyToManyField(
             Quest,
             )
+
+    def __str__(self):
+        return self.nickname
