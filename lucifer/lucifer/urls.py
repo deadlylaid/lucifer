@@ -29,6 +29,7 @@ from game.monsters.api.views import *
 from game.skills.api.views import *
 from game.npc.api.views import *
 from game.quests.api.views import *
+from game.stages.api.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -58,6 +59,8 @@ urlpatterns = [
     url(r'^api/npc/list/$', SkillListAPIView.as_view(), name='api_npc_list'),
 
     url(r'^api/quest/list/$', SkillListAPIView.as_view(), name='api_quest_list'),
+
+    url(r'^api/stage/list/$', StageListAPIView.as_view(), name='api_stage_list'),
 
     url(r'^summernote/', include('django_summernote.urls')),
 
