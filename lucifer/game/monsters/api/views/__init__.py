@@ -1,0 +1,1 @@
+from .monster import MonsterListAPIView

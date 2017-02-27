@@ -25,6 +25,7 @@ from posts.views import *
 from game.characters.views import *
 from game.characters.api.views import *
 from game.items.api.views import *
+from game.monsters.api.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -44,7 +45,10 @@ urlpatterns = [
     url(r'^user/character/$', CharacterDetail.as_view(), name='character_detail'),
     url(r'^api/user/character/status/$', StatusAPIView.as_view(), name='api_status'),
     url(r'^api/user/character/$', CharacterAPIView.as_view(), name='api_character'),
+
     url(r'^api/item/list/$', ItemListAPIView.as_view(), name='api_item_list'),
+
+    url(r'^api/monster/list/$', MonsterListAPIView.as_view(), name='api_monster_list'),
 
     url(r'^summernote/', include('django_summernote.urls')),
 
