@@ -22,6 +22,7 @@ from .views import Home
 from users.views import *
 from posts.views import *
 
+from game.api.views import *
 from game.characters.views import *
 from game.characters.api.views import *
 from game.items.api.views import *
@@ -47,6 +48,9 @@ urlpatterns = [
 
 
     url(r'^user/character/$', CharacterDetail.as_view(), name='character_detail'),
+
+    url(r'^api/gamestart/data/$', GameStartAPIView.as_view(), name='gamestart'),
+
     url(r'^api/user/character/status/$', StatusAPIView.as_view(), name='api_status'),
     url(r'^api/user/character/$', CharacterAPIView.as_view(), name='api_character'),
 
