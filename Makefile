@@ -15,3 +15,6 @@ tests:
 
 fakecharacter:
 	python lucifer/manage.py fake_character_create
+
+fakeitem:
+	python lucifer/manage.py fake_item_create
