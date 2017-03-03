@@ -18,7 +18,7 @@
     <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css">
     <link rel="stylesheet" href="{% static "css/main.css" %}">
-
+    <link rel="stylesheet" href="{% static "css/topbar.css" %}">
     <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto');
     .Back {
@@ -32,6 +32,17 @@
 </head>
 
 <body>
+<div class="topbar_back" style="position:relative;">
+  <div class="topbar_container">    
+    <div class="topbar_logo">
+        <h5><a href="#">LUCIFER</a></h5>
+    </div>  
+    <div class="topbar_menu">
+        <a href="#" target="_top" class="join">회원가입</a> 
+        <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
     <div class="Back">
         {% include "partials/header.html" %}
 
