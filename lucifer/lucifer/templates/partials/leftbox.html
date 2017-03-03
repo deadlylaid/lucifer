@@ -5,7 +5,7 @@
             <div>
               <p style="color:red;">{{ request.user.username }}</p>
               <a href="{% url "logout" %}">로그아웃</a>
-              <a href="{% url "character_detail" %}" target="_blank">게임시작</a>
+              <a href="{% url "gamestart" %}" target="_blank">게임시작</a>
             </div>
 
             {% else %}
