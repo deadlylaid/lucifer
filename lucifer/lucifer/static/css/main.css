@@ -310,7 +310,7 @@ button {
 
 /* 좌측 퀵메뉴 */
 
-.Quick_menu .link_list {
+.Left_box .Quick_menu .link_list {
     width: 190px;
     height: 265px;
     background-color: #f4f4f4;
@@ -319,7 +319,7 @@ button {
     text-align: left;
     vertical-align: middle;
     border: 1px solid #bfbdbd;
-    background: url(../../images/QM.jpg) no-repeat;
+    background: url('../../static/images/QM.jpg') no-repeat;
 }
 
 .Quick_menu .link_list .link_list_title {
