@@ -1,0 +1,12 @@
+jQuery(function(){
+	$('.navigator').hide();
+	$(function(){
+		$(window).scroll(function(){
+			if($(this).scrollTop()>100){
+				$('.navigator').show();
+			}else{
+				$('.navigator').hide();
+			}
+		});
+	});
+});
