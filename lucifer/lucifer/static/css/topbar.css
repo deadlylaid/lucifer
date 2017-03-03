@@ -1,0 +1,36 @@
+.topbar_back {background:#101010; width:100%; margin:0 auto; padding:0; position:fixed; z-index:9999; }
+.topbar_container{position:relative; margin:0 auto; padding:0;width:1021px; height:40px; vertical-align:middle;}
+.topbar_container .topbar_logo{margin:0 auto; position:relative; background:#101010; float:left; font-size:10px;}
+.topbar_container .topbar_menu{margin:7px auto 0; padding:0; float:right;}
+.topbar_container .topbar_menu a {float:right; height:22px; margin-left:15px; line-height:22px; font-size:12px; color:#999;}
+.topbar_container .topbar_menu a:hover {color:#fff;}
+
+
+
+ /*.global-top-bar-container .global-top-bar h1 a{display:block; width:29px; height:18px; background-position:0 0;text-indent:-9999em; color:#cccccc; font-size:15px;}*/
+
+.navigator{width:100%; height:94px; position:fixed; left:0; top:0; background:url('images/bg_navigator.png') repeat-x; position:relative; z-index:9999; background:#101010;}
+.navigator .wrap{width:1021px; margin:0 auto; padding:0;}
+.navigator .wrap h1, .navigator .wrap menu, .navigator .wrap menu li{float:left;}
+.navigator .wrap h1{width:74px; height:46px;}
+.navigator .wrap menu{margin-left:20px;}
+.navigator .wrap menu li{position:relative; padding:5px 10px 0 0;}
+.navigator .wrap menu h2{font-size:16px; font-weight:400; text-shadow:1px 1px 2px #000}
+.navigator .wrap menu h2 a{display:block; padding:7px 20px 25px; color:#ccc;}
+.navigator .wrap menu .depth{position:absolute; left:50%; top:40px; padding:5px 0 0 0; background:url('images/bg_nabigator_selecter.jpg') no-repeat 50% 0; display:none; box-shadow:2px 2px 7px #111;}
+.navigator .wrap menu .depth p{height:24px; padding:0 10px; line-height:24px; background:#e12200; white-space:nowrap;}
+.navigator .wrap menu .depth a{color:#ffbfbf; margin:0 3px;}
+.navigator .wrap menu .menu1 .depth{margin-left:-50px;}
+.navigator .wrap menu .menu2 .depth{margin-left:-110px;}
+.navigator .wrap menu .menu3 .depth{margin-left:-41px;}
+.navigator .wrap menu .menu4 .depth{margin-left:-168px;}
+.navigator .wrap menu .menu5 .depth{margin-left:-84px;}
+.navigator .wrap menu .menu6 .depth{margin-left:-98px;}
+.navigator .wrap menu li:hover h2 a, .navigator menu li.selected h2 a{color:#e12200;}
+.navigator .wrap menu li:hover .depth, .navigator menu li.selected .depth{display:block;}
+.navigator .wrap menu .depth a:hover, .navigator menu .depth a.selected{color:#fff;}
+
+.navigator .wrap .game-start{display:block; width:300px; height:80px; float:left; right:0; top:0; background:url('images/btn_gamestart.jpg') no-repeat; z-index:3;}
+.navigator .wrap .game-start video{width:300px; height:80px; position:absolute; right:0; top:0; z-index:9999; display:none;}
+.navigator .wrap .game-start a{display:block; width:300px; height:80px; position:absolute; right:0; top:0; text-indent:-9999em;}
+.navigator .wrap .game-start:hover video{display:block;}
