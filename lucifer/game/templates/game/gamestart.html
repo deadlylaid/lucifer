@@ -1,19 +1,23 @@
-{% extends "base.html" %}
-
 {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lucifer</title>
 
-{% block title %}
-캐릭터 호출 API
-{% endblock %}
+    <script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+    <script src="{% static "js/game/start.js" %}" ></script>
 
-{% block js %}
-<script src="{% static "js/game/character.js" %}" ></script>
-{% endblock %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
 
-{% block content %}
+</head>
+<body>
+    <h1>Lucifer 게임 화면</h1>
 
-<h1>케릭터 데이터 가져오기</h1>
-
-<ul id="character">
-</ul>
-{% endblock %}
+    <ul id="character">
+    </ul>
+</body>
+</html>
