@@ -32,4 +32,5 @@ class Command(BaseCommand):
                     job='야만전사',
                     )
 
+        print(User.objects.first())
         self.stdout.write("Complete")

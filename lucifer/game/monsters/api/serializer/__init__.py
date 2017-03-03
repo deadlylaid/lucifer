@@ -1,0 +1,1 @@
+from .monster_serializer import MonsterSerializer
