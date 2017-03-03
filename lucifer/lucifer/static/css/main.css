@@ -319,6 +319,7 @@ button {
     text-align: left;
     vertical-align: middle;
     border: 1px solid #bfbdbd;
+    background: url(../../images/QM.jpg) no-repeat;
 }
 
 .Quick_menu .link_list .link_list_title {
@@ -332,7 +333,7 @@ button {
     width: 180px;
     height: 60px;
     margin: 18px 5px;
-    border-bottom: 1px solid #bfbdbd;
+    text-indent: -1000px;
 }
 
 .Quick_menu .link_list li a:hover {
@@ -415,6 +416,10 @@ button {
     display: block;
     position: relative;
     text-align: center;
+}
+
+.Container .Slide_menu .banner-nav .paging {
+    color: #ffffff;
 }
 
 
