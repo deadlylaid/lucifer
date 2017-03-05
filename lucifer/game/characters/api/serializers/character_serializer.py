@@ -9,7 +9,7 @@ class CharacterSerializer(serializers.ModelSerializer):
 
     status = StatusSerializer()
     inventory_set = InventorySerializer(many=True)
-    learnedskill_set = LearnedSkillSerializer
+    learnedskill_set = LearnedSkillSerializer()
 
     class Meta:
         model = Character
