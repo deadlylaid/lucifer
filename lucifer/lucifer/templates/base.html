@@ -25,6 +25,8 @@
         margin: 0 auto;
         padding: 0;
     }
+    .redback { width:100%; height:1049.3px; z-index:-999; position:absolute; background:#951e1e;}
+    .whiteback { width:100%; height:2000px; z-index:-9999; position:absolute; background:#f7f7f7;}
     </style>
     {% block js %}
     {% endblock %}
@@ -44,6 +46,10 @@
 </div>
 
     <div class="Back">
+        <div class="redback">
+        </div>
+        <div class="whiteback">
+        </div>
         {% include "partials/header.html" %}
 
         <div class="Wrap">
