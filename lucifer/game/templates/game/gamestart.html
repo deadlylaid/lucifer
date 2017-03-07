@@ -12,12 +12,23 @@
     <!-- 부가적인 테마 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" href="{% static "css/game/game.css" %}">
 
 </head>
 <body>
-    <h1>Lucifer 게임 화면</h1>
+  <section id='scene' style="width:100%; height:1000px;">
+
+    <div id="progressbar" style="width:800px; height:21px;"></div>
+    <div id="progressbarfull" style="width:800px; height:21px;"></div>
+
+
+    <p>Lucifer 게임 화면</p>
 
     <ul id="character">
     </ul>
+
+  </section>
+
+
 </body>
 </html>
