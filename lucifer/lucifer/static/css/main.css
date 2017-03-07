@@ -118,7 +118,7 @@ input, select, button{vertical-align:middle;}
 .Container .Notice_menu .GMnote .gm-note .more { float:right; margin-right:8px;}
 .Container .Notice_menu .GMnote .gm-note p .gm-note-text strong{font-size:18px; color:#edeaea; font-weight:400;}
 .Container .Notice_menu .GMnote .gm-note p .gm-note-text span{ text-align:center; font-size:15px; color:#edeaea; line-height:160%;}
-.Container .Notice_menu .GMnote .gm-note p img{ display:block; position:relative; border:0; margin:15px 10px; border:2px solid #000;} 
+.Container .Notice_menu .GMnote .gm-note p img{ display:block; position:relative; border:0; margin:15px 10px; border:2px solid #000;}
 .Container .Notice_menu .GMnote .gm-note .gm-note-text {float:none; display:block; }
 .Container .Notice_menu .GMnote .gm-note .votelist {width:120px; height:90px; list-style:none; display:inline-block;}
 .Container .Notice_menu .GMnote .gm-note .votelist .list { text-align:center; vertical-align:middle; color:#edeaea;}
@@ -131,37 +131,37 @@ input, select, button{vertical-align:middle;}
 .Container .Bot .Screenshot .Screenmove .carousel { margin-bottom:50px;}
 
 /* 컨테이너 스크린샷 경로, 사이즈*/
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:first-child { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:first-child { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:first-child { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(2) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(2) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(2) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(3) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(3) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(3) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(4) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(4) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(4) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(5) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(5) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(5) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(6) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(6) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(6) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(7) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(7) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(7) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(8) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(8) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(8) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(9) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(9) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(9) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:last-child { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:last-child { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;}
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:last-child { background-size:150px 100px;}
 
-/*-------------------------------*/ 
+/*-------------------------------*/
 
 .Container .Bot .Screenshot .carousel-cell:before { display: block; text-align: center; content: counter(carousel-cell); line-height: 200px; font-size: 80px; color: white; }
 .Container .Bot .Screenshot .carousel-nav .carousel-cell {width: 150px; height: 100px; }

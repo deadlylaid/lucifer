@@ -1,0 +1,21 @@
+#secne {
+    position: relative;
+}
+
+#progressbar {
+    position: absolute;
+    left: 27%;
+    top: 650px;
+    display:inline;
+}
+
+#progressbarfull {
+    position: absolute;
+    left: -21%;
+    top: 650px;
+    display:inline;
+}
+
+.stat {
+    color: white;
+}
