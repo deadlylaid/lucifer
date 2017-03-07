@@ -9,22 +9,24 @@
         $scene = $('#scene');
 
         $scene.css("background", "url(../static/images/game/loadingBackground.jpg) no-repeat");
-
-        //progressbar tag
-        $progressbar = $('#progressbar');
-
-        //332px * 11px
-        $progressbar.css({
-            "background":"url(../static/images/game/loadingBarEmpty.png) no-repeat",
-            "background-size": '100% 100%'
-        });
-
-        $progressbarfull = $('#progressbarfull');
-
-        $progressbarfull.css({
-            "background":"url(../static/images/game/loadingBarFull.png) no-repeat",
-            "background-size": '800px 100%'
-        }).animate({left: "+=400"}, 3000).animate({left: "+=300"}, 2500).animate({left: "+=100"}, 3000);
+        var elem = document.getElementById("myBar");
+          var width = 10;
+          var id = setInterval(frame, 80);
+          function frame() {
+            if (width >= 100) {
+              clearInterval(id);
+            } else {
+              width++;
+              elem.style.width = width + '%';
+              elem.innerHTML = width * 1  + '%';
+            }
+          }
+//        $progressbarfull = $('#progressbarfull');
+//
+//        $progressbarfull.css({
+//            "background":"url(../static/images/game/loadingBarFull.png) no-repeat",
+//            "background-size": '800px 100%'
+//        }).animate({left: "+=400"}, 3000).animate({left: "+=300"}, 2500).animate({left: "+=100"}, 3000);
 
         /*****************************
          * 2017년 2월 26일 한민수

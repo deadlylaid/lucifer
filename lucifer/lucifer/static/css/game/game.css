@@ -1,12 +1,5 @@
-#secne {
+#scene {
     position: relative;
-}
-
-#progressbar {
-    position: absolute;
-    left: 27%;
-    top: 650px;
-    display:inline;
 }
 
 #progressbarfull {
@@ -14,6 +7,21 @@
     left: -21%;
     top: 650px;
     display:inline;
+}
+
+#myProgress {
+  position: absolute;
+  top:700px;
+  width: 100%;
+}
+
+#myBar {
+  width: 10%;
+  height: 30px;
+  background-color: #a82617;
+  text-align: center;
+  line-height: 30px;
+  color: white;
 }
 
 .stat {
