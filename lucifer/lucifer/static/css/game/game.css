@@ -16,6 +16,8 @@
 }
 
 #myBar {
+  position:relative;
+  left:30%;
   width: 10%;
   height: 30px;
   background-color: #a82617;
@@ -27,3 +29,4 @@
 .stat {
     color: white;
 }
+
