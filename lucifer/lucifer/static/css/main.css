@@ -17,12 +17,12 @@ input[type="radio"] {position:absolute; cursor:pointer;}
 .Logo { width:200px; height:100px; float:left; background-color:#96F;}
 .Main_menu { width:821px; height:100px; float:left; background-color:#000 0.9;}
 .Left_box {width:200px; height:1275px; float:left; background-color:transparent;}
-.Left_box > .Login_wrap {width:200px; height:405px; background-color:#000; position:relative;}
+.Left_box > .Login_wrap {width:200px; height:405px; background-color:#171a1d; position:relative;}
 .Left_box > .personal-info {width:200px; height:180px; background:#951e1e; margin:0 auto; padding:0; padding-top:5px;}
 .Left_box > .counsel {width:190px; height:170px; margin:55px 5px 5px 5px; background:#951e1e; }
 .Left_box > .Quick_menu {width:200px; height:330px; margin-top:85px; background-color:transparent; padding:5px 0px;}
 .Container { width:821px; height:1300px; float:left; background-color:transparent;}
-.Container > .Slide_menu {width:821px; height:405px; background-color:#000;}
+.Container > .Slide_menu {width:821px; height:405px; background-color:#171a1d;}
 .Container > .Notice_menu {width:821px;height:409px; float:none; background-color:transparent; margin:0 0;}
 .Container .Bot {width:821px; height:475px; margin:0; padding:0; display:block;}
 .Container .Bot .Screenshot {width:550px; height:475px; float:left; background-color:#ffffff; border-right:1px solid #bfbdbd; margin:0; padding:0;}
