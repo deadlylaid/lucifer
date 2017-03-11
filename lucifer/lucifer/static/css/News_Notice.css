@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.Container .Content_in {width:821px; height:1300px; padding:40px 30px; background:#f7f5f4;}
+.Container .Content_in .Toptitle {width:760px; height:100px; background:#967d6f; color:#ffffff; text-align:left; padding:20px; margin-bottom:10px; text-shadow:1px 1px #666;} 
+.Container .Content_in .table {border-top:2px solid #967d6f; border-bottom:2px solid #967d6f;}
+.Container .Content_in .table tbody tr:hover {background:#999;}
+.Container .Content_in .table tr td:first-child {width:55px;}
+.Container .Content_in .table tr td:nth-child(2) {width:470px;}
+.Container .Content_in .table tr td:nth-child(3) {width:117px;}
+.Container .Content_in .table tr td:nth-child(4) {width:119px;}
