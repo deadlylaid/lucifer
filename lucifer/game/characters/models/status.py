@@ -24,7 +24,7 @@ class Status(models.Model):
             )
 
     attack_point = models.IntegerField(
-            default=10,
+            default=1,
             )
 
     defence_point = models.IntegerField(
@@ -41,6 +41,14 @@ class Status(models.Model):
 
     intelligence = models.IntegerField(
             default=10,
+            )
+
+    accuracy = models.IntegerField(
+            default=0,
+            )
+
+    evasion = models.IntegerField(
+            default=0,
             )
 
     skill_point = models.IntegerField(
