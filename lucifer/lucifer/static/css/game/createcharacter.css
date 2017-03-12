@@ -1,0 +1,19 @@
+body {
+    background-color: #281616;
+}
+
+.container {
+    width: 1280px;
+    height: 800px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.game-ul {
+    list-style:none;
+}
+
+.game-li {
+    float:left;
+    padding-right: 40px;
+}

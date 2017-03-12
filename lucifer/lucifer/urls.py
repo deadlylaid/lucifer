@@ -7,7 +7,7 @@ from .views import Home
 from users.views import *
 from posts.views import *
 
-from game.views import GameStartView
+from game.views import *
 from game.api.views import *
 from game.characters.api.views import *
 from game.items.api.views import *
@@ -31,6 +31,10 @@ urlpatterns = [
     url(r'^freeboard/(?P<pk>\d+)/answer/create/$', CreateAnswer.as_view(), name='answer_create'),
     url(r'^freeboard/(?P<pk>\d+)/comment/create/$', CommentCreateView.as_view(), name='comment_create'),
 
+
+    url(r'^check/chracter/$', CheckCharacter.as_view(), name='checkcharacter'),
+
+    url(r'^create/chracter/$', CreateCharacter.as_view(), name='createcharacter'),
 
     url(r'^gamestart/$', GameStartView.as_view(), name='gamestart'),
 
