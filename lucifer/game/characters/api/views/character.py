@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView
 
 from game.characters.api.serializers import CharacterSerializer
 from users.models import User
