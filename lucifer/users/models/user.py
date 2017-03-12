@@ -11,3 +11,7 @@ class User(AbstractUser):
     phonenumber = models.CharField(
             max_length=11,
             )
+
+    has_character = models.BooleanField(
+            default=False,
+            )
