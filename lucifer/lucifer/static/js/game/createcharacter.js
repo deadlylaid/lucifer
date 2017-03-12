@@ -1,8 +1,10 @@
 (function(){
     $("documents").ready(function(){
 
+        $readonly_tag = $("[name=characterjob]");
+
         $("[class^=job]").on("click", function(){
-            alert($(this).attr("id"));
+            $readonly_tag.val($(this).attr("id"));
         });
 
     });

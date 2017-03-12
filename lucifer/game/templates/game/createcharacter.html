@@ -41,8 +41,11 @@
       {% csrf_token %}
       <h3>닉네임</h3>
 
-      <input name="nickname" type="text">
+      <input name="nickname" type="text" required>
       <input name="submit" type="submit">
+      <label>직업 : </label>
+      <input name="characterjob" readonly>
+
     </form>
 
   </div>
