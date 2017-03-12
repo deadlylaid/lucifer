@@ -32,5 +32,8 @@ class Command(BaseCommand):
                     job='야만전사',
                     )
 
+            fake_user.has_character = True
+            fake_user.save()
+
         print(User.objects.first())
         self.stdout.write("Complete")
