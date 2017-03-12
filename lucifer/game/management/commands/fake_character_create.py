@@ -29,7 +29,7 @@ class Command(BaseCommand):
             Character.objects.create(
                     user=fake_user,
                     nickname='%snickname' % (fake_user),
-                    job='야만전사',
+                    job='barabarian',
                     )
 
             fake_user.has_character = True
