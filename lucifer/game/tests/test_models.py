@@ -30,8 +30,8 @@ class CharacterTest(TestCase, CharacterCreateMixin):
     def test_user_can_create_character(self):
 
         character = CharacterCreateMixin()
-        created_character = character.character('TestCharacter', '나이트')
+        created_character = character.character('TestCharacter', 'barbarian')
 
         self.assertEqual(created_character.nickname, 'TestCharacter')
-        self.assertEqual(created_character.job, '나이트')
+        self.assertEqual(created_character.job, 'barbarian')
         self.assertTrue(created_character.status)
