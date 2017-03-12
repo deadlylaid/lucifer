@@ -31,6 +31,10 @@ class Status(models.Model):
             default=10,
             )
 
+    strong = models.IntegerField(
+            default=10,
+            )
+
     dexterity = models.IntegerField(
             default=10,
             )
