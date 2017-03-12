@@ -1,1 +1,53 @@
-<h1>케릭터 생성화면 이상 없음</h1>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lucifer</title>
+  <script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "css/game/createcharacter.css" %}">
+
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>캐릭터 생성</h1>
+
+
+    <ul class="game-ul">
+      <li class="game-li">
+        <button class="job" id="sorceress">
+          <img alt="" src="{% static "images/game/Sorceress.gif"%}">
+          <h2>소서리스</h2>
+        </button>
+      </li>
+      <li class="game-li">
+        <button class="job" id="barbarian">
+          <img alt="" src="{% static "images/game/Barbarian.gif"%}">
+          <h2>야만전사</h2>
+        </button>
+      </li>
+      <li class="game-li">
+        <button class="job" id="paladin">
+          <img alt="" src="{% static "images/game/Paladin.gif"%}">
+          <h2>팔라딘</h2>
+        </button>
+      </li>
+    </ul>
+
+    <form method="post" action="">
+      {% csrf_token %}
+      <h3>닉네임</h3>
+
+      <input name="nickname" type="text">
+      <input name="submit" type="submit">
+    </form>
+
+  </div>
+
+  <script src="{% static "js/game/createcharacter.js"%}" type="text/javascript"></script>
+
+</body>
+</html>
