@@ -259,81 +259,13 @@
             <li class="title2">제목</li>
             <li class="date">등록일</li>
         </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[이벤트] MOST, MOST EVOLUTION 주말 게릴라 이벤트(일요일)</b></a></li>
-            <li class="date">2017.03.10</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[안내] EVOLUTION 랭킹 최강자전! 총전투력 랭킹 당첨자 발표</b></a></li>
-            <li class="date">2017.03.10</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[이벤트] 퀴즈 쿠폰 이벤트 (3/10)</b></a></li>
-            <li class="date">2017.03.10</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[이벤트] MOST, MOST EVOLUTION 게릴라 충전 이벤트</b></a></li>
-            <li class="date">2017.03.09</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[안내]핫타임 충전 이벤트 1차, 2차 당첨자 발표</b></a></li>
-            <li class="date">2017.03.09</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[이벤트] 3월 2주 주간 누적충전 혜택</b></a></li>
-            <li class="date">2017.03.09</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[이벤트] 3월 2주차 금화 일일누적 이벤트</b></a></li>
-            <li class="date">2017.03.09</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[이벤트] MOST EVOLUTION 랭킹 최강자전!</b></a></li>
-            <li class="date">2017.02.22</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[안내]크롬 브라우저 실행 및 익스플로러 실행 안내</b></a></li>
-            <li class="date">2017.02.16</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[안내] MOST 수호자님 대상 크라엘서버 지원안내(1차)</b></a></li>
-            <li class="date">2017.02.16</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[안내] 게임 실행 및 접속오류 해결방법 안내</b></a></li>
-            <li class="date">2016.05.14</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[안내] 구매 금화 게임 내 획득(출금) 방법 안내</b></a></li>
-            <li class="date">2016.05.10</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">전체공지</li>
-            <li class="title2"><a href="#self" onclick=""><b>[안내] `자주 묻는 문제` 해결방법 안내 (추가)</b></a></li>
-            <li class="date">2016.04.29</li>
-        </ul>
-        <ul class="most_board_list">
-            <li class="num">471</li>
-            <li class="title2"><a href="#self" onclick="">[이벤트] 퀴즈 쿠폰 이벤트</a></li>
-            <li class="date">2017.03.09</li>
-        </ul>
-        <ul class="most_board_list">
-            <li class="num">469</li>
-            <li class="title2"><a href="#self" onclick="">[안내] 3월 9일(목) 임시점검 진행 안내(재수정)</a></li>
-            <li class="date">2017.03.09</li>
-        </ul>
+        {% for notice in notices %}
+            <ul class="most_board_notice_list">
+                <li class="num">전체공지</li>
+                <li class="title2"><a href="#self" onclick=""><b>[이벤트] {{ notice.title }}</b></a></li>
+                <li class="date">{{ notice.created_at|date:"Y.m.d"}}</li>
+            </ul>
+        {% endfor %}
 
     <!-- 인덱스 -->
         <div class="most_index">
