@@ -31,6 +31,8 @@ urlpatterns = [
     url(r'^freeboard/(?P<pk>\d+)/answer/create/$', CreateAnswer.as_view(), name='answer_create'),
     url(r'^freeboard/(?P<pk>\d+)/comment/create/$', CommentCreateView.as_view(), name='comment_create'),
 
+    url(r'^notice/$', ListNotice.as_view(), name='notice_list'),
+
 
     url(r'^check/chracter/$', CheckCharacter.as_view(), name='checkcharacter'),
 

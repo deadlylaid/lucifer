@@ -12,6 +12,10 @@ class Notice(models.Model):
             max_length=30,
             )
 
+    sumnail_image = models.ImageField(
+            default=None,
+            )
+
     contents = models.TextField(
             max_length=255,
             )
