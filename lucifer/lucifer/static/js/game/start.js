@@ -13,22 +13,17 @@
         if($user_has_character=="True"){
 get_gamestart_api_url = '/api/gamestart/data/';
 
-            //게임 화면 태그
-            $scene = $('#scene');
-
-            $scene.css("background", "url(../static/images/game/loadingBackground.jpg) no-repeat");
-
-            var elem = document.getElementById("myBar");
-              var width = 10;
-              var id = setInterval(frame, 80);
-              function frame() {
-                if (width >= 40) {
-                  clearInterval(id);
-                } else {
-                  width++;
-                  elem.style.width = width + '%';
-                }
-              }
+//            var elem = document.getElementById("myBar");
+//              var width = 10;
+//              var id = setInterval(frame, 80);
+//              function frame() {
+//                if (width >= 40) {
+//                  clearInterval(id);
+//                } else {
+//                  width++;
+//                  elem.style.width = width + '%';
+//                }
+//              }
 
 
             /*****************************
@@ -49,14 +44,14 @@ get_gamestart_api_url = '/api/gamestart/data/';
                 //console.log(data[1].monster[0])
                     character = data[0].character[0]
                     $get_id.append("<li class='stat'> 케릭터 닉네임: "+character.nickname+"</li>",
-                        "<li class='stat'> 케릭터 레벨: "+character.level+"</li>",
-                        "<li class='stat'> 케릭터 직업: "+character.job+"</li>",
-                        "<li class='stat'> 케릭터 공격력: "+character.status.attack_point+"</li>",
-                        "<li class='stat'> 케릭터 수비력: "+character.status.defence_point+"</li>",
-                        "<li class='stat'> 케릭터 체력: "+character.status.health+"</li>",
-                        "<li class='stat'> 케릭터 마나: "+character.status.mana+"</li>",
-                        "<li class='stat'> 케릭터 민첩: "+character.status.dexterity+"</li>",
-                        "<li class='stat'> 케릭터 지능: "+character.status.intelligence+"</li>"
+                        "<li class='stat' style='color:black;'> 케릭터 레벨: "+character.level+"</li>",
+                        "<li class='stat' style='color:black;'> 케릭터 직업: "+character.job+"</li>",
+                        "<li class='stat' style='color:black;'> 케릭터 공격력: "+character.status.attack_point+"</li>",
+                        "<li class='stat' style='color:black;'> 케릭터 수비력: "+character.status.defence_point+"</li>",
+                        "<li class='stat' style='color:black;'> 케릭터 체력: "+character.status.health+"</li>",
+                        "<li class='stat' style='color:black;'> 케릭터 마나: "+character.status.mana+"</li>",
+                        "<li class='stat' style='color:black;'> 케릭터 민첩: "+character.status.dexterity+"</li>",
+                        "<li class='stat' style='color:black;'> 케릭터 지능: "+character.status.intelligence+"</li>"
                         );
                 });
 
