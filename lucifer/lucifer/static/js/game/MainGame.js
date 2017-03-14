@@ -1,6 +1,9 @@
 /*****************************
 * 2017년 3월 13일 최영준
 * pig2d 를 이용한 기본 게임 로직 js
+
+* 2017년 3월 14일 최영준
+* Sprite Image 띄우기 / 마우스 이동 / Sprite 각도에 따라 변환.
 * **************************/
 //## Main Function
 function main(evt){
@@ -10,11 +13,11 @@ function main(evt){
 	//--Scene Mgr Create
 	var SceneMgr = new Pig2d.SceneManager({
 		container: document.querySelector('.pig2d-fullscreen')
-	});
-    
+	});    
     console.log(SceneMgr);    
 
 	//--Sprite Node Create
+	//****************************************************************************************************
 	var SpriteNode = new Pig2d.node();
 	var model 	   = new Pig2d.SpriteModel({
 		data : 
@@ -117,19 +120,16 @@ function main(evt){
  	sprite_node.get('model').setupTransition({
  		TransitionEndCallBack : function(){}
  	});
+ 	//****************************************************************************************************
 
-	//--Controller Setting
+ 	//--Controller Setting
 	/*Pig2d.util.setup_pig2dTestController(
 		document,		//Evenet 받을 대상
-		SpriteNode);	//조종할 대상이 되는 객체*/
+		SpriteNode);	//조종할 대상이 되는 객체*/	
 
-	//--Timer Setting & Performance Test Infomation(FPS)
-	var GameTimer = new gbox3d.core.Timer();
-	var Framerate_Info = document.querySelector("#text-Framerate-Info");
-	var Frame_Total = 0;
-	var Loop_Count = 0;
-
-	//--Player Move
+	//--Function Rogic
+	//****************************************************************************************************
+	//--Player Move(Mouse Click)
 	document.body.addEventListener('click', function(evt){
 		var Current_Position = sprite_node.get('model').getPosition();
 		var New_Poisiton	 = new gbox3d.core.Vect2d(evt.layerX, evt.layerY);
@@ -142,8 +142,16 @@ function main(evt){
 			time : Distance / 150	//1초에 150 픽셀 만큼 이동.
 		});
 	});
+	//****************************************************************************************************
 	
 	//--Game Loop
+	//****************************************************************************************************
+	//--Timer Setting & Performance Test Infomation(FPS)
+	var GameTimer = new gbox3d.core.Timer();
+	var Framerate_Info = document.querySelector("#text-Framerate-Info");
+	var Frame_Total = 0;
+	var Loop_Count = 0;
+
 	Pig2d.system.startGameLoop({
 		framerate_info_element : document.querySelector("#text-Framerate-Info"),
 		gameLoopCallBack : function(DeltaTime){			
@@ -159,6 +167,7 @@ function main(evt){
 		},
 		loopCount_limit : 30
 	});
+	//****************************************************************************************************
 }
 
 Pig2d.util.SetupAsset({
