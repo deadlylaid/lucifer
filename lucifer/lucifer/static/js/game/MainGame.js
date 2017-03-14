@@ -2,25 +2,33 @@
 * 2017년 3월 13일 최영준
 * pig2d 를 이용한 기본 게임 로직 js
 * **************************/
+<<<<<<< HEAD
 
 
 //## Main Function
+=======
+//## Main Function	
+>>>>>>> 어제한거까지
 function main(evt){
 	//--texture
 	var textures = evt.textures;
 
 	//--Scene Mgr Create
 	var SceneMgr = new Pig2d.SceneManager({
-		container: document.querySelector('#scene')
+		container: document.querySelector('.pig2d-fullscreen')
 	});
 
     console.log(SceneMgr);
 
 	//--Sprite Node Create(Example)
 	var SpriteNode = Pig2d.util.createSlicedImage({
-		imgObj : textures['../images/Player/Bavarian/stand/Stand.png'],
-		basex : -textures['../images/Player/Bavarian/stand/Stand.png'].width / 2,
-		basey : -textures['../images/Player/Bavarian/stand/Stand.png'].height / 2
+		imgObj : textures['Stand.png'],
+		cutx   : 0,
+		cuty   : 0,
+		basex  : -textures['Stand.png'].width / 2,
+		basey  : -textures['Stand.png'].height / 2,
+		width  : textures['Stand.png'].width / 2,
+		height : textures['Stand.png'].height / 2
 	});
 	SpriteNode.get('model').setPosition(640, 400);
 
@@ -38,7 +46,7 @@ function main(evt){
 	var Frame_Total = 0;
 	var Loop_Count = 0;
 
-	//Game Loop
+	//Game Loop	
 	requestAnimationFrame(
 		function loop(){
 			var DeltaTime = GameTimer.getDeltaTime();
@@ -52,13 +60,18 @@ function main(evt){
 			SceneMgr.updateAll();
 			requestAnimationFrame(loop);
 		}
-	);
+	);	
 }
 
-/*
+//잘안됨.
 Pig2d.util.SetupAsset({
 	asset_path : "../res/",
-	img_files : ["../images/Player/Bavarian/stand/Stand.png"],
+	img_files : [
+		"Stand.png"
+	],
 	OnLoadComplete : main
 });
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 어제한거까지
