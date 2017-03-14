@@ -2,13 +2,8 @@
 * 2017년 3월 13일 최영준
 * pig2d 를 이용한 기본 게임 로직 js
 * **************************/
-<<<<<<< HEAD
 
-
-//## Main Function
-=======
 //## Main Function	
->>>>>>> 어제한거까지
 function main(evt){
 	//--texture
 	var textures = evt.textures;
@@ -65,13 +60,9 @@ function main(evt){
 
 //잘안됨.
 Pig2d.util.SetupAsset({
-	asset_path : "../res/",
+	asset_path : "../../images/game/Player/Bavarian/stand/",
 	img_files : [
 		"Stand.png"
 	],
 	OnLoadComplete : main
 });
-<<<<<<< HEAD
-*/
-=======
->>>>>>> 어제한거까지
