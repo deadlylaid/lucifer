@@ -304,6 +304,7 @@ function main(evt){
  		texture : textures['walk/Walk.png'],
  		animation : Animation_Data
  	});
+ 	//****************************************************************************************************
 
  	//Node_Stand.get('model').setFrame(0);
  	//Node_Stand.get('model').set('AnimationStatus', 'play');
@@ -316,7 +317,7 @@ function main(evt){
  	*/
  	//****************************************************************************************************
 
- 	//--Controller Setting
+	//--Controller Setting
 	/*Pig2d.util.setup_pig2dTestController(
 		document,		//Evenet 받을 대상
 		SpriteNode);	//조종할 대상이 되는 객체*/	
@@ -361,6 +362,9 @@ function main(evt){
 	});	
 
 	/*
+	//--Function Rogic
+	//****************************************************************************************************
+	//--Player Move(Mouse Click)
 	document.body.addEventListener('click', function(evt){
 		//Current_Pos & New Pos
 		var Current_Position = sprite_node.get('model').getPosition();
