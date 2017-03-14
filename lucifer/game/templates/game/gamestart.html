@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Lucifer</title>
 
     <!-- Default Js -->
@@ -13,12 +13,12 @@
     <!-- pid2d 엔진 사용 준비. -->
     <meta name = "viewport"
           content = "width=device-width, initial-scale = 1, maximum-scale=1.0, user-scalable=no">
-    <link rel = "stylesheet" href = "{% static "js/libs/pig2d/css/core.css" %}"/>
     <script src = "{% static "js/libs/backbone/underscore-min.js" %}"></script>
     <script src = "{% static "js/libs/backbone/backbone-min.js" %}"></script>
     <script src = "{% static "js/libs/pig2d/js/core.js" %}"></script>
     <script src = "{% static "js/libs/pig2d/js/node2d.js" %}"></script>
     <script src = "{% static "js/libs/pig2d/js/system.js" %}"></script>
+    <script src = "{% static "js/libs/pig2d/js/util.js" %}"></script>
     <!-- ************************************************************************************************ -->
 
     <!-- Game Rogic js -->
@@ -37,6 +37,7 @@
 
     <!-- Game CSS -->
     <!-- ************************************************************************************************ -->
+    <link rel = "stylesheet" href = "{% static "js/libs/pig2d/css/core.css" %}"/>
     <link rel="stylesheet" href="{% static "css/game/game.css" %}">
     <!-- ************************************************************************************************ -->
 </head>
@@ -53,10 +54,17 @@
     <ul id="character">
     </ul>
 
+    <!-- Game Screen -->
+    <div class = "pig2d-fullscreen">
+        <!-- FPS -->
+        <p id = "text-Framerate-Info" style="position: absolute"> FrameRate </p>       
+    </div>
+    
     <!-- FPS -->
     <p id = "text-Framerate-Info" style="position: absolute"> FrameRate </p>
   </section>
-
+  
+  </div>
   <div class="data" data-has-character="{{ request.user.has_character }}"></div>
   <script src="{% static "js/game/MainGame.js" %}"></script>
 
