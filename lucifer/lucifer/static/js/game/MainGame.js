@@ -58,7 +58,6 @@ function main(evt){
 	);
 }
 
-//잘안됨.
 Pig2d.util.SetupAsset({
 	asset_path : "../../static/images/game/Player/Bavarian/stand/",
 	img_files : [
