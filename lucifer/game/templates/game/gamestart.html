@@ -24,7 +24,7 @@
     <!-- Game Rogic js -->
     <!-- ************************************************************************************************ -->
     <script src="{% static "js/game/start.js" %}"></script>
-    <script src="{% static "js/game/MainGame.js" %}"></script>
+
     <!-- ************************************************************************************************ -->
 
     <!-- CSS -->
@@ -58,6 +58,7 @@
   </section>
 
   <div class="data" data-has-character="{{ request.user.has_character }}"></div>
+  <script src="{% static "js/game/MainGame.js" %}"></script>
 
 </body>
 </html>

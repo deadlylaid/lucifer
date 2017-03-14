@@ -3,15 +3,18 @@
 * pig2d 를 이용한 기본 게임 로직 js
 * **************************/
 
+
 //## Main Function
 function main(evt){
 	//--texture
 	var textures = evt.textures;
 
-	//--Scene Mgr Create 
+	//--Scene Mgr Create
 	var SceneMgr = new Pig2d.SceneManager({
 		container: document.querySelector('#scene')
 	});
+
+    console.log(SceneMgr);
 
 	//--Sprite Node Create(Example)
 	var SpriteNode = Pig2d.util.createSlicedImage({
@@ -21,12 +24,12 @@ function main(evt){
 	});
 	SpriteNode.get('model').setPosition(640, 400);
 
-	//--Sprite Node add to SceneMgr 
+	//--Sprite Node add to SceneMgr
 	SceneMgr.add(SpriteNode);
 
 	//--Controller Setting
 	Pig2d.util.setup_pig2dTestController(
-		document,		//Evenet 받을 대상 
+		document,		//Evenet 받을 대상
 		SpriteNode);	//조종할 대상이 되는 객체
 
 	//Timer Setting & Performance Test Infomation(FPS)
