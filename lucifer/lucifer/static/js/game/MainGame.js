@@ -3,7 +3,7 @@
 * pig2d 를 이용한 기본 게임 로직 js
 * **************************/
 
-//## Main Function	
+//## Main Function
 function main(evt){
 	//--texture
 	var textures = evt.textures;
@@ -41,7 +41,7 @@ function main(evt){
 	var Frame_Total = 0;
 	var Loop_Count = 0;
 
-	//Game Loop	
+	//Game Loop
 	requestAnimationFrame(
 		function loop(){
 			var DeltaTime = GameTimer.getDeltaTime();
@@ -55,12 +55,12 @@ function main(evt){
 			SceneMgr.updateAll();
 			requestAnimationFrame(loop);
 		}
-	);	
+	);
 }
 
 //잘안됨.
 Pig2d.util.SetupAsset({
-	asset_path : "../../images/game/Player/Bavarian/stand/",
+	asset_path : "../../static/images/game/Player/Bavarian/stand/",
 	img_files : [
 		"Stand.png"
 	],
