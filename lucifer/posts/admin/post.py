@@ -13,3 +13,14 @@ class NoticeModelAdmin(admin.ModelAdmin):
             'contents',
             'created_at',
             )
+
+
+@admin.register(FreeBoard)
+class FreeBoardModelAdmin(admin.ModelAdmin):
+
+    list_display = (
+            'user',
+            'title',
+            'content',
+            'created_at',
+            )
