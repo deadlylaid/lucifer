@@ -24,7 +24,7 @@
     <!-- Game Rogic js -->
     <!-- ************************************************************************************************ -->
     <script src="{% static "js/game/start.js" %}"></script>
-
+    <script src="{% static "js/game/MainGame.js" %}"></script>
     <!-- ************************************************************************************************ -->
 
     <!-- CSS -->
@@ -49,7 +49,6 @@
       <div id="myBar"></div>
     </div>
     -->
-
     <p>Lucifer 게임 화면</p>
     <ul id="character">
     </ul>
@@ -58,15 +57,10 @@
     <div class = "pig2d-fullscreen">
         <!-- FPS -->
         <p id = "text-Framerate-Info" style="position: absolute"> FrameRate </p>       
-    </div>
-    
-    <!-- FPS -->
-    <p id = "text-Framerate-Info" style="position: absolute"> FrameRate </p>
+    </div>    
   </section>
   
   </div>
   <div class="data" data-has-character="{{ request.user.has_character }}"></div>
-  <script src="{% static "js/game/MainGame.js" %}"></script>
-
 </body>
 </html>
