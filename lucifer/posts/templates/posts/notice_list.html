@@ -1,88 +1,60 @@
 {% extends "sub_base.html" %}
 
 {% block content %}
-<div class="Container">
-        <div class="Content_in">
-            <div class="Toptitle">
-                <h2>공지사항</h2>
-                <p id="navi">
-           <img src="../static/images/icon_home.png" width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 게임소식 &gt; <span>공지사항</span></p>
-            </div>
-            <div id="most_sub_cont_area">
-    <form name="frmBoard" id="frmBoard" method="post">
-        <input type="hidden" id="txtSchType" name="txtSchType" maxlength="1" value="0">
-        <input type="hidden" id="txtSchWord" name="txtSchWord" maxlength="15" value="">
-        <input type="hidden" id="aType" name="aType" value="">
-        <input type="hidden" id="txtRcd" name="txtRcd" value="">
-        <input type="hidden" id="txtOcn" name="txtOcn" value="">
-        <input type="hidden" id="txtCmt" name="txtCmt" maxlength="100" value="">
-        <input type="hidden" id="txtEncSvc" name="txtEncSvc" value="3bf135803be668103be668103be4dd003be4dd003be7f320">
-        <input type="hidden" id="txtEncS" name="txtEncS" value="">
-        <input type="hidden" id="txtEncC" name="txtEncC" value="">
-        <input type="hidden" id="txtEncP" name="txtEncP" value="3be66810">
-        <input type="hidden" id="txtEncMI" name="txtEncMI" value="">
-        <input type="hidden" id="txtListType" name="txtListType" value="">
-    </form>
 
-    <!-- 게시판 리스트 -->
-        <ul class="most_board_top">
-            <li class="noname"></li>
-            <li class="title2">제목</li>
-            <li class="date">등록일</li>
-        </ul>
-        {% for notice in notices %}
+<div class="Container">
+    <div class="Content_in">
+        <div class="Toptitle">
+            <h2>공지사항</h2>
+            <p id="navi">
+            <img src="../static/images/icon_home.png" width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 게임소식 &gt; <span>공지사항</span></p>
+        </div>
+        <div id="most_sub_cont_area">
+
+            <!-- 게시판 리스트 -->
+            <ul class="most_board_top">
+                <li class="noname"></li>
+                <li class="title2">제목</li>
+                <li class="date">등록일</li>
+            </ul>
+
+            {% for notice in notices %}
             <ul class="most_board_notice_list">
                 <li class="num">전체공지</li>
                 <li class="title2"><a href="#self" onclick=""><b>[이벤트] {{ notice.title }}</b></a></li>
                 <li class="date">{{ notice.created_at|date:"Y.m.d"}}</li>
             </ul>
-        {% endfor %}
+            {% endfor %}
 
-    <!-- 인덱스 -->
-        <div class="most_index">
-            <em class="left_mg60"><a href="#">&lt; 이전</a></em>
+            <!-- 인덱스 -->
+            <div class="most_index">
+                <em class="left_mg60">
+                    <a href="#">
+                        &lt; 이전
+                    </a>
+                </em>
                 <span>
-                <a class="on">1</a>
-                <a href="#" onclick="">2</a>
-                <a href="#" onclick="">3</a>
-                <a href="#" onclick="">4</a>
-                <a href="#" onclick="">5</a>
-                <a href="#" onclick="">6</a>
-                <a href="#" onclick="">7</a>
-                <a href="#" onclick="">8</a>
-                <a href="#" onclick="">9</a>
-                <a href="#" onclick="">10</a></span>
-                <em><a href="#" onclick="">다음 &gt;</a></em>
-        </div>
-    <!--// 인덱스 -->
-
-    <!-- 검색 기능
-        <div class="most_seach">
-            <div id="most_select_box">
-                <label for="category">제목</label>
-                <select id="keyField" title="select category">
-                <option value="1">제목</option>
-                <option value="2">제목+내용</option>
-                </select>
+                    <a class="on">1</a>
+                    <a href="#" onclick="">2</a>
+                    <a href="#" onclick="">3</a>
+                    <a href="#" onclick="">4</a>
+                    <a href="#" onclick="">5</a>
+                    <a href="#" onclick="">6</a>
+                    <a href="#" onclick="">7</a>
+                    <a href="#" onclick="">8</a>
+                    <a href="#" onclick="">9</a>
+                    <a href="#" onclick="">10</a>
+                </span>
+                <em>
+                    <a href="#" onclick="">
+                        다음 &gt;
+                    </a>
+                </em>
             </div>
-            <input type="text" id="keyWord" name="keyWord" value="" maxlength="50" onkeydown="if(window.event.keyCode == 13){goBoardSch('news_notice_list.asp');;return false;}">
-                <a href="#" class="btn" onclick="goBoardSch('news_notice_list.asp');return false;">검색</a>
-        </div>
-        <script>
-            jQuery(document).ready(function(){
-                var select = $("select#keyField");
-                select.change(function(){
-                var select_name = $(this).children("option:selected").text();
-                $(this).siblings("label").text(select_name);
-                });
-            });
-        </script>
-    -->
-<!--END: contents -->
+            <!--// 인덱스 -->
 
-
-                </div>
         </div>
-   </div>
+    </div>
+</div>
 </div>
 {% endblock %}
