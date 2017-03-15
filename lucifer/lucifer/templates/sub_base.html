@@ -1,0 +1,123 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Lucifer</title>
+
+
+<script type="text/javascript"></script>
+<script src="../static/js/jquery-3.1.1.min.js"></script>
+<script src="../static/js/flickity.pkgd.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="{% static "js/Mainpage-slide.js" %}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{% static "css/Base.css" %}" />
+<link rel="stylesheet" href="{% static "css/News_Notice.css" %}" />
+<link rel="stylesheet" href="{% static "css/topbar.css" %}" />
+
+<style>
+
+.Back { background:url(../static/images/main_bg_2.jpg) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1300px; z-index:-9999; position:absolute; background:url(../static/images/Background.png);}
+.Wrap {height:900px;}
+.Container {height:900px;}
+.Left_box{height:900px;}
+
+</style>
+</head>
+
+<body>
+<div class="topbar_back" style="position:relative;">
+  <div class="topbar_container">
+    <div class="topbar_logo">
+        <h5><a href="#">LUCIFER</a></h5>
+    </div>
+    <div class="topbar_menu">
+        <a href="#" target="_top" class="join">회원가입</a>
+        <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+<div class="Back">
+<div class="whiteback">
+    </div>
+    {% include "partials/header.html" %}
+
+<div class="Wrap">
+    <div class="Left_box">
+      <div class="Login_wrap">
+          <fieldset>
+            {% if request.user.is_authenticated %}
+            <div>
+              <p style="color:red;">{{ request.user.username }}</p>
+              <a href="{% url "logout" %}">로그아웃</a>
+              <ul>
+                <li>
+                  <a href="{% url "gamestart" %}" target="_blank">게임시작</a>
+                </li>
+                <li>
+                  <a href="{% url "checkcharacter" %}" target="_blank">게임시작(캐릭터체크)</a>
+                </li>
+              </ul>
+            </div>
+            {% else %}
+            <form method="post" action="#" id="frmLogin">
+              {% csrf_token %}
+            <div class="before">
+            <ul class="form">
+                <li><input type="text" name="txtUserID" id="txtUserID" class="text" placeholder="계정" data-datatype="an" maxlength="16"></li>
+                <li><input type="password" name="txtPassWD" id="txtPassWD" class="text" placeholder="비밀번호" maxlength="20"></li>
+                <li class="btn-login"><button type="submit" id="btnLogin">로그인</button></li>
+            </ul>
+         <aside>
+            <a href="#">회원가입</a>
+            <span>|</span>
+            <a href="#">계정</a>/<a href="#">비밀번호찾기</a>
+         </aside>
+            </div>
+            </form>
+            {% endif %}
+         </fieldset>
+         <div class="Btn_Start">
+            <button type="submit" id="btnStart">START</button>
+         </div>
+      </div>
+
+      <div id="most_left_menu_area01">
+        <div class="most_left_menu_tit">
+            NEWS
+        </div>
+            <ul class="most_left_menu">
+                <li>&gt; 공지사항</li>
+                <li><a href="#">&gt; 이벤트</a></li>
+            </ul>
+        </div>
+
+        <div class="Quick_menu">
+            <ul class="link_list">
+                <li><a href="#" class="Helpus">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    <span class="link_list_title"> 도움말 무엇이 궁금하세요? </span>
+                    </a>
+                </li>
+                <li><a href="#" class="FAQ">
+                    <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                    <span class="link_list_title"> FAQ 빠르게 해결해드립니다</span>
+                    </a>
+                </li>
+                <li><a href="#" class="Bugreport">
+                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                    <span class="link_list_title"> 버그게시판 버그를 올려주세요</span></a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    {% block content %}
+    {% endblock %}
+
+    {% include "partials/footer.html" %}
+ </div>
+</body>
+</html>
