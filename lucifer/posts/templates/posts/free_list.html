@@ -1,20 +1,63 @@
-{% extends "base.html" %}
+{% extends "sub_base.html" %}
 
 {% block title %}
 자유게시판
 {% endblock %}
 
+{% block sub_title %}
+자유게시판
+{% endblock %}
+
 {% block content %}
-자유게시판 리스트
-<div>
-  <ul>
-  {% for freeboard in freeboards %}
-    <li>
-    <a href="{% url "free_detail" freeboard.id %}">{{ freeboard.title }}</a>
-    </li>
-  {% endfor %}
-  </ul>
+<div id="most_sub_cont_area">
+
+    <!-- 게시판 리스트 -->
+    <ul class="most_board_top">
+        <li class="noname"></li>
+        <li class="title2">제목</li>
+        <li class="date">등록일</li>
+    </ul>
+
+    {% for freeboard in freeboards %}
+    <ul class="most_board_notice_list">
+        <li class="num">{{ freeboard.user.username }}</li>
+        <li class="title2"><a href="{% url "free_detail" freeboard.id %}">{{ freeboard.title }}</a></li>
+        <li class="date">{{ freeboard.created_at|date:"Y.m.d"}}</li>
+    </ul>
+    {% endfor %}
+
+    <a href="{% url "freecreate" %}">게시글 등록</a>
+    <!-- 인덱스 -->
+    <div class="most_index">
+        <em class="left_mg60">
+            <a href="#">
+                &lt; 이전
+            </a>
+        </em>
+        <span>
+            <a class="on">1</a>
+            <a href="#" onclick="">2</a>
+            <a href="#" onclick="">3</a>
+            <a href="#" onclick="">4</a>
+            <a href="#" onclick="">5</a>
+            <a href="#" onclick="">6</a>
+            <a href="#" onclick="">7</a>
+            <a href="#" onclick="">8</a>
+            <a href="#" onclick="">9</a>
+            <a href="#" onclick="">10</a>
+        </span>
+        <em>
+            <a href="#" onclick="">
+                다음 &gt;
+            </a>
+        </em>
+    </div>
+    <!--// 인덱스 -->
+
+
+    </div>
+    </div>
 </div>
 
-<a href="{% url "freecreate" %}">게시글 등록</a>
+
 {% endblock %}

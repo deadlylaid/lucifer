@@ -12,7 +12,7 @@ def uploaded_filepath(instance, filename):
 
 SUMMERNOTE_CONFIG = {
 
-        'width': '80%',
+        'width': '100%',
         'attachment_upload_to': uploaded_filepath,
         'attachment_filesize_limit': 1024 * 1024,
         'toolbar': [
