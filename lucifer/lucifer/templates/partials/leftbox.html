@@ -44,21 +44,23 @@
             <button type="submit" id="btnStart">START</button>
         </div>
     </div>
+    {% if not request.user.is_authenticated %}
     <div class="personal-info">
-            <ul class="link_list">
-                <li><a href="#" class="snslogin">
-                    <span class="link_list_title"> sns login </span>
-                    </a>
-                </li>
-                <li><a href="#" class="kakao">
-                    <span class="link_list_title"> kakao login</span>
-                    </a>
-                </li>
-                <li><a href="#" class="facebook">
-                    <span class="link_list_title"> facebook login</span></a>
-                </li>
-            </ul>
-        </div>
+      <ul class="link_list">
+        <li><a href="#" class="snslogin">
+          <span class="link_list_title"> sns login </span>
+          </a>
+        </li>
+        <li><a href="/login/kakao/" class="kakao">
+          <span class="link_list_title"> kakao login</span>
+          </a>
+        </li>
+        <li><a href="login/facebook/" class="facebook">
+            <span class="link_list_title"> facebook login</span></a>
+        </li>
+      </ul>
+    </div>
+    {% endif %}
 
         <div class="counsel">
             <ul class="link_list">

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_multiple_model',
     'django_summernote',
+    'social_django',
 
     'lucifer',
     'users',
@@ -45,6 +46,24 @@ INSTALLED_APPS = [
     'game.npc',
     'game.quests',
 ]
+
+AUTHENTICATION_BACKENDS = (
+        'social_core.backends.facebook.FacebookOAuth2',
+        'social_core.backends.kakao.KakaoOAuth2',
+        'social_core.backends.naver.NaverOAuth2',
+        'django.contrib.auth.backends.ModelBackend',
+        )
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1698604086822847'
+SOCIAL_AUTH_FACEBOOK_SECRET = '39bcc6856d6b5d46750cdace2f5aa390'
+
+SOCIAL_AUTH_KAKAO_KEY = '3ded519d4e1aad20e12bb0e475331f4e'
+SOCIAL_AUTH_KAKAO_SECRET = '2fd614490364163dcdfb6ff0b5a0f393'
+
+SOCIAL_AUTH_NAVER_KEY = 'G3Y2v6sWq_8ZyGfRk2BB'
+SOCIAL_AUTH_NAVER_SECRET = '3eoytgYuqT'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
