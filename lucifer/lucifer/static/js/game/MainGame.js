@@ -22,116 +22,30 @@ function main(evt){
 
 	//--Sprite Node Create
 	//****************************************************************************************************
-
-	//--Walk Sprite
-	var Walk_SpriteNode = new Pig2d.node();
-	var Walkmodel = new Pig2d.SpriteModel({
-		data :
-		{
-			"name" : "Bavarian_Walk",
-			"frames" :
-			[
-				{"sheets" : 	//0번재
-					[
-					  {
-						"width": 200, "height": 200,
-					    "centerOffset" : {"x" : -100, "y" : -100},
-					    "bp_x": 0, "bp_y": 0
-					  }
-					], "delay" : "100"
-				},
-				{"sheets" : 	//1번째
-					[
-					  {
-						"width": 200, "height": 200,
-					    "centerOffset" : {"x" : -100, "y" : -100},
-					    "bp_x": -200, "bp_y": 0
-					  }
-					], "delay" : "100"
-				},
-				{"sheets" : 	//2번째
-					[
-					  {
-						"width": 200, "height": 200,
-					    "centerOffset" : {"x" : -100, "y" : -100},
-					    "bp_x": -400, "bp_y": 0
-					  }
-					], "delay" : "100"
-				},
-				{"sheets" : 	//3번째
-					[
-					  {
-						"width": 200, "height": 200,
-					    "centerOffset" : {"x" : -100, "y" : -100},
-					    "bp_x": -200 * 3, "bp_y": 0
-					  }
-					], "delay" : "100"
-				},
-				{"sheets" : 	//4번째
-					[
-					  {
-						"width": 200, "height": 200,
-					    "centerOffset" : {"x" : -100, "y" : -100},
-					    "bp_x": -200 * 4, "bp_y": 0
-					  }
-					], "delay" : "100"
-				},
-				{"sheets" : 	//5번째
-					[
-					  {
-						"width": 200, "height": 200,
-					    "centerOffset" : {"x" : -100, "y" : -100},
-					    "bp_x": -200 * 5, "bp_y": 0
-					  }
-					], "delay" : "100"
-				},
-				{"sheets" : 	//6번째
-					[
-					  {
-						"width": 200, "height": 200,
-					    "centerOffset" : {"x" : -100, "y" : -100},
-					    "bp_x": -200 * 6, "bp_y": 0
-					  }
-					], "delay" : "100"
-				},
-				{"sheets" : 	//7번째
-					[
-					  {
-						"width": 200, "height": 200,
-					    "centerOffset" : {"x" : -100, "y" : -100},
-					    "bp_x": -200 * 7, "bp_y": 0
-					  }
-					], "delay" : "100"
-				},
-			]
-		},
-		imgObj : textures['walk/Walk.png']
-	});
-
 	var Stand_Sprite = new Array();
+	var Walk_Sprite = new Array();
 
 	for(var i = 0; i < 8; ++i)
 	{
-		Stand_Sprite[i] = Player_Bavarian_StandSprite(evt, i);
+		Stand_Sprite[i] = Player_Bavarian_StandSprite(evt, i);	
+		Stand_Sprite[i].get('model').setupAnimation();
+	
+		Walk_Sprite[i] = Player_Bavarian_WalkSprite(evt, i);
+		Walk_Sprite[i].get('model').setupAnimation();
 
-		//Stand_Sprite[i].get('model').setupAnimation();
-		//Stand_Srpite[i].get('model').set('AnimationStatus', 'play');
-		//Stand_Srpite[i].get('model').set('isAnimationLoop', true);
+		Stand_Sprite[i].get('model').show(false);
+		Walk_Sprite[i].get('model').show(false);
 	}
+	Stand_Sprite[0].get('model').show(true);
 
 	var sprite_node = Pig2d.util.createDummy();
 	sprite_node.get('model').setPosition(640, 400);
 
 	for(var i = 0; i < 8; ++i)
 	{
-		//sprite_node.add(Stand_Sprite[i]);
+		sprite_node.add(Stand_Sprite[i]);
+		sprite_node.add(Walk_Sprite[i]);
 	}
-
-	sprite_node.add(Walk_SpriteNode);
-
-	Walk_SpriteNode.set( {model: Walkmodel} );
-	Walk_SpriteNode.get('model').setupAnimation();
-	Walk_SpriteNode.get('model').show(false);
 
 	//SceneMgr Add
 	SceneMgr.add(sprite_node);
@@ -143,27 +57,370 @@ function main(evt){
 
 	//--Function Rogic
 	//****************************************************************************************************
-	//--Mouse Position & Player Sprite Number Change(방향구함)
-	//스프라이트 변화는 하나의 이미졸 불러오는게 아니라 각도마다 다른 이미지를 불러오는 것이 방법중 하나.
-	function Change_SpriteNumber(SpriteNumber)
+	//--Mouse Position & Player Sprite Number Change(방향에 따른 스프라이트 View 설정)
+	function Change_SpriteNumber(SpriteNumber, CheckWalk)
 	{
-		//Sprite bp_y 값 변경
-		//Direction = SpriteNumber;
-		//sprite_node.get('sheets').bp_y = -200 * SpriteNumber;
-		Direction = -200 * SpriteNumber;
-
-		if(Direction == undefined)
+		//Sprite Numver 가 아무것도 아닐때 처리.
+		if(SpriteNumber == undefined)
 		{
 			Direction = 0;
 		}
 
-		console.log(Direction);
-	}
+		//Sprite Number 에 따른 처리.
+		switch(SpriteNumber)
+		{
+		case 0:
+			if(CheckWalk == 0)
+			{
+				Stand_Sprite[0].get('model').show(true);
+
+				for(var i = 1; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);
+				}
+
+				Stand_Sprite[0].get('model').setupAnimation();
+				Stand_Sprite[0].get('model').set('AnimationStatus', 'play');
+				Stand_Sprite[0].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);	
+				}				
+			}
+			else if(CheckWalk == 1)
+			{
+				Walk_Sprite[0].get('model').show(true);
+
+				for(var i = 1; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}
+
+				Walk_Sprite[0].get('model').setupAnimation();
+				Walk_Sprite[0].get('model').set('AnimationStatus', 'play');
+				Walk_Sprite[0].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);	
+				}
+			}	
+			break;
+		case 1:
+			if(CheckWalk == 0)
+			{
+				Stand_Sprite[1].get('model').show(true);
+
+				Stand_Sprite[0].get('model').show(false);
+				for(var i = 2; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);
+				}
+
+				Stand_Sprite[1].get('model').setupAnimation();
+				Stand_Sprite[1].get('model').set('AnimationStatus', 'play');
+				Stand_Sprite[1].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);	
+				}				
+			}
+			else if(CheckWalk == 1)
+			{
+				Walk_Sprite[1].get('model').show(true);
+
+				Walk_Sprite[0].get('model').show(false);
+				for(var i = 2; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}
+
+				Walk_Sprite[1].get('model').setupAnimation();
+				Walk_Sprite[1].get('model').set('AnimationStatus', 'play');
+				Walk_Sprite[1].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);	
+				}
+			}
+			break;
+		case 2:
+			if(CheckWalk == 0)
+			{
+				Stand_Sprite[2].get('model').show(true);
+
+				Stand_Sprite[0].get('model').show(false);
+				Stand_Sprite[1].get('model').show(false);	
+				for(var i = 3; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);
+				}
+
+				Stand_Sprite[2].get('model').setupAnimation();
+				Stand_Sprite[2].get('model').set('AnimationStatus', 'play');
+				Stand_Sprite[2].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);	
+				}				
+			}
+			else if(CheckWalk == 1)
+			{
+				Walk_Sprite[2].get('model').show(true);
+
+				Walk_Sprite[0].get('model').show(false);
+				Walk_Sprite[1].get('model').show(false);
+				for(var i = 3; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}
+
+				Walk_Sprite[2].get('model').setupAnimation();
+				Walk_Sprite[2].get('model').set('AnimationStatus', 'play');
+				Walk_Sprite[2].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);	
+				}
+			}
+			break;
+		case 3:
+			if(CheckWalk == 0)
+			{
+				Stand_Sprite[3].get('model').show(true);
+
+				Stand_Sprite[0].get('model').show(false);
+				Stand_Sprite[1].get('model').show(false);
+				Stand_Sprite[2].get('model').show(false);	
+				for(var i = 4; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);
+				}
+
+				Stand_Sprite[3].get('model').setupAnimation();
+				Stand_Sprite[3].get('model').set('AnimationStatus', 'play');
+				Stand_Sprite[3].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);	
+				}				
+			}
+			else if(CheckWalk == 1)
+			{
+				Walk_Sprite[3].get('model').show(true);
+
+				Walk_Sprite[0].get('model').show(false);
+				Walk_Sprite[1].get('model').show(false);
+				Walk_Sprite[2].get('model').show(false);
+				for(var i = 4; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}
+
+				Walk_Sprite[3].get('model').setupAnimation();
+				Walk_Sprite[3].get('model').set('AnimationStatus', 'play');
+				Walk_Sprite[3].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);	
+				}
+			}
+			break;
+		case 4:
+			if(CheckWalk == 0)
+			{
+				Stand_Sprite[4].get('model').show(true);
+
+				Stand_Sprite[0].get('model').show(false);
+				Stand_Sprite[1].get('model').show(false);
+				Stand_Sprite[2].get('model').show(false);
+				Stand_Sprite[3].get('model').show(false);	
+				for(var i = 5; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);
+				}
+
+				Stand_Sprite[4].get('model').setupAnimation();
+				Stand_Sprite[4].get('model').set('AnimationStatus', 'play');
+				Stand_Sprite[4].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);	
+				}				
+			}
+			else if(CheckWalk == 1)
+			{
+				Walk_Sprite[4].get('model').show(true);
+
+				Walk_Sprite[0].get('model').show(false);
+				Walk_Sprite[1].get('model').show(false);
+				Walk_Sprite[2].get('model').show(false);
+				Walk_Sprite[3].get('model').show(false);
+				for(var i = 5; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}
+
+				Walk_Sprite[4].get('model').setupAnimation();
+				Walk_Sprite[4].get('model').set('AnimationStatus', 'play');
+				Walk_Sprite[4].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);	
+				}
+			}
+			break;
+		case 5:
+			if(CheckWalk == 0)
+			{
+				Stand_Sprite[5].get('model').show(true);
+
+				Stand_Sprite[0].get('model').show(false);
+				Stand_Sprite[1].get('model').show(false);
+				Stand_Sprite[2].get('model').show(false);
+				Stand_Sprite[3].get('model').show(false);
+				Stand_Sprite[4].get('model').show(false);
+				for(var i = 6; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);
+				}
+
+				Stand_Sprite[5].get('model').setupAnimation();
+				Stand_Sprite[5].get('model').set('AnimationStatus', 'play');
+				Stand_Sprite[5].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);	
+				}				
+			}
+			else if(CheckWalk == 1)
+			{
+				Walk_Sprite[5].get('model').show(true);
+
+				Walk_Sprite[0].get('model').show(false);
+				Walk_Sprite[1].get('model').show(false);
+				Walk_Sprite[2].get('model').show(false);
+				Walk_Sprite[3].get('model').show(false);
+				Walk_Sprite[4].get('model').show(false);
+				for(var i = 6; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}
+
+				Walk_Sprite[5].get('model').setupAnimation();
+				Walk_Sprite[5].get('model').set('AnimationStatus', 'play');
+				Walk_Sprite[5].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);	
+				}
+			}
+			break;
+		case 6:
+			if(CheckWalk == 0)
+			{
+				Stand_Sprite[6].get('model').show(true);
+
+				for(var i = 0; i < 6; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);		
+				}									
+				for(var i = 7; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);
+				}
+
+				Stand_Sprite[6].get('model').setupAnimation();
+				Stand_Sprite[6].get('model').set('AnimationStatus', 'play');
+				Stand_Sprite[6].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);	
+				}				
+			}
+			else if(CheckWalk == 1)
+			{
+				Walk_Sprite[6].get('model').show(true);
+
+				for(var i = 0; i < 6; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}				
+				for(var i = 7; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}
+
+				Walk_Sprite[6].get('model').setupAnimation();
+				Walk_Sprite[6].get('model').set('AnimationStatus', 'play');
+				Walk_Sprite[6].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);	
+				}
+			}
+			break;
+		case 7:
+			if(CheckWalk == 0)
+			{
+				Stand_Sprite[7].get('model').show(true);
+
+				for(var i = 0; i < 7; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);
+				}
+
+				Stand_Sprite[7].get('model').setupAnimation();
+				Stand_Sprite[7].get('model').set('AnimationStatus', 'play');
+				Stand_Sprite[7].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);	
+				}				
+			}
+			else if(CheckWalk == 1)
+			{
+				Walk_Sprite[7].get('model').show(true);
+
+				for(var i = 0; i < 7; ++i)
+				{
+					Walk_Sprite[i].get('model').show(false);
+				}
+
+				Walk_Sprite[7].get('model').setupAnimation();
+				Walk_Sprite[7].get('model').set('AnimationStatus', 'play');
+				Walk_Sprite[7].get('model').set('isAnimationLoop', true);
+
+				for(var i = 0; i < 8; ++i)
+				{
+					Stand_Sprite[i].get('model').show(false);	
+				}
+			}
+			break;
+		}
+
+		console.log(SpriteNumber);		
+	}	
 
 	var GameScreen = document.querySelector(".pig2d-fullscreen");
 	var Angle = 0;
-
-	GameScreen.addEventListener('click', function(evt){
+	var Direction = 0;
+	
+	GameScreen.addEventListener('click', function(evt){		
 		var MousePos = new gbox3d.core.Vect2d(evt.layerX, evt.layerY);
 		var PlayerPos = sprite_node.get('model').getPosition();
 
@@ -173,10 +430,42 @@ function main(evt){
 
 		//각도를 구함. 8방향
 		Angle = PlayerDir.getAngle();
-		var Dir = Angle / 45;
+		Direction = Angle / 45;		
+		
+		if(Direction > 0 && Direction < 1)
+		{
+			Direction = 7;
+		}
+		else if(Direction > 1 && Direction < 2)
+		{
+			Direction = 6;
+		}
+		else if(Direction > 2 && Direction < 3)
+		{
+			Direction = 5;
+		}
+		else if(Direction > 3 && Direction < 4)
+		{
+			Direction = 4;
+		}
+		else if(Direction > 4 && Direction < 5)
+		{
+			Direction = 3;
+		}
+		else if(Direction > 5 && Direction < 6)
+		{
+			Direction = 2;
+		}
+		else if(Direction > 6 && Direction < 7)
+		{
+			Direction = 1;
+		}
+		else if(Direction > 7)
+		{
+			Direction = 0;
+		}
 
-		Change_SpriteNumber(Dir);
-		//Direction = Dir;
+		//Direction = Dir;	
 		//console.log(Direction);
 	});
 
@@ -188,19 +477,21 @@ function main(evt){
 		setupCallBack : function(){
 		},
 		endCallBack : function(){
-			Stand_SpriteNode.get('model').show(true);
+			/*Stand_SpriteNode.get('model').show(true);
 			Stand_SpriteNode.get('model').setupAnimation();
 			Stand_SpriteNode.get('model').set('AnimationStatus', 'play');
 			Stand_SpriteNode.get('model').set('isAnimationLoop', true);
+			Walk_SpriteNode.get('model').show(false);*/
 
-			Walk_SpriteNode.get('model').show(false);
+			Change_SpriteNumber(Direction, 0);			
 		},
-		startCallBack : function(evt){
-			Walk_SpriteNode.get('model').show(true);
+		startCallBack : function(evt){		
+			/*Walk_SpriteNode.get('model').show(true);
 			Walk_SpriteNode.get('model').set('AnimationStatus', 'play');
 			Walk_SpriteNode.get('model').set('isAnimationLoop', true);
+			Stand_SpriteNode.get('model').show(false);*/	
 
-			Stand_SpriteNode.get('model').show(false);
+			Change_SpriteNumber(Direction, 1);			
 		}
 	});
 	//****************************************************************************************************
