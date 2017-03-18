@@ -3,28 +3,26 @@
 
         $get_id = $('#character');
 
+        var nickname,
+            level,
+            job,
+            attack_point,
+            defence_point,
+            dexterity,
+            health,
+            mana,
+            dexterity,
+            intelligence,
+
+
         //현재 로그인 된 유저가 케릭터를 갖고 있는지 확인하는 코드
         $user_has_character = $(".data").data("hasCharacter");
-
 
         /*****************************
          * 유저가 캐릭터를 갖고 있을때
          * ***************************/
         if($user_has_character=="True"){
-get_gamestart_api_url = '/api/gamestart/data/';
-
-//            var elem = document.getElementById("myBar");
-//              var width = 10;
-//              var id = setInterval(frame, 80);
-//              function frame() {
-//                if (width >= 40) {
-//                  clearInterval(id);
-//                } else {
-//                  width++;
-//                  elem.style.width = width + '%';
-//                }
-//              }
-
+            get_gamestart_api_url = '/api/gamestart/data/';
 
             /*****************************
              * 2017년 2월 26일 한민수
@@ -42,28 +40,31 @@ get_gamestart_api_url = '/api/gamestart/data/';
                 //console.log(data[0].character[0])
                 //console.log(data[0].character[0].status.health)
                 //console.log(data[1].monster[0])
-                    character = data[0].character[0]
-                    $get_id.append("<li class='stat'> 케릭터 닉네임: "+character.nickname+"</li>",
-                        "<li class='stat' style='color:black;'> 케릭터 레벨: "+character.level+"</li>",
-                        "<li class='stat' style='color:black;'> 케릭터 직업: "+character.job+"</li>",
-                        "<li class='stat' style='color:black;'> 케릭터 공격력: "+character.status.attack_point+"</li>",
-                        "<li class='stat' style='color:black;'> 케릭터 수비력: "+character.status.defence_point+"</li>",
-                        "<li class='stat' style='color:black;'> 케릭터 체력: "+character.status.health+"</li>",
-                        "<li class='stat' style='color:black;'> 케릭터 마나: "+character.status.mana+"</li>",
-                        "<li class='stat' style='color:black;'> 케릭터 민첩: "+character.status.dexterity+"</li>",
-                        "<li class='stat' style='color:black;'> 케릭터 지능: "+character.status.intelligence+"</li>"
-                        );
-                });
+                character = data[0].character[0];
+                nickname = character.nickname;
+                level = character.level
+                job = character.job
+                attack_point = character.status.attack_point
+                defence_point = character.status.defence_point
+                dexterity = character.status.dexterity
+                health = character.status.health
+                mana = character.status.mana
+                dexterity = character.status.dexterity
+                intelligence = character.status.intelligence
+                console.log(nickname);
+                //callback 함수
+                alert_function(nickname);
+            });
 
+            function alert_function(nickname){
+                console.log(nickname);
+            }
 
-        }else{
-            $get_id.append("<form method='post' action='/'> <input name='nickname' type='text' style='border: 1px solid #ff0000;'><input type='button' class='btn_character' value='asdf'> </form>");
+            $button1 = $(".higherfunction");
+            console.log($button1);
 
-            $btn_character = $(".btn_character");
-            console.log($btn_character);
-
-            //케릭터 생성 버튼 클릭시
-            $btn_character.on("click", function(event){
+            $button1.click(function(){
+                console.log(nickname);
                 function getCookie(name) {
                     var cookieValue = null;
                     if (document.cookie && document.cookie !== '') {
@@ -85,28 +86,33 @@ get_gamestart_api_url = '/api/gamestart/data/';
                     //these HTTP methods do not require CSRF protection
                     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
                 }
-                    $.ajaxSetup({
-                        beforeSend: function(xhr, settings) {
-                            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                $.ajaxSetup({
+                    beforeSend: function(xhr, settings) {
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
                         }
                     }
                 });
 
-                //닉네임에 입력된 값을 잡아옴
-                $nickname = $("input[name=nickname]").val();
-
                 $.ajax({
-                    method:'POST',
-                    url:'/api/user/character/',
+                    method:'PUT',
+                    url:'/api/user/character/status/',
                     data:{
-                        username:'asdf',
-                        password:'123',
+                        nickname:nickname,
+                        level:level,
+                        job:job,
+                        attack_point:attack_point,
+                        defence_point:defence_point,
+                        health:health,
+                        mana:mana,
+                        dexterity:dexterity,
+                        intelligence:intelligence,
                     },
+                }).done(function(receivedStatusData){
+                   alert(receivedStatusData.health);
                 });
             });
 
         }
-
     });
 })();
