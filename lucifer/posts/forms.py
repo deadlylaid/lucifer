@@ -5,11 +5,17 @@ from posts.models import FreeBoard
 
 class PostForm(forms.ModelForm):
 
+    def __init__(self, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+
+        self.fields['title'].label = "제목"
+
     class Meta:
         model = FreeBoard
         widgets = {
             'title': forms.fields.TextInput(
                 attrs={
+                    'class': 'text',
                     'placeholder': '제목 입력',
                     'required': 'true'
                     }
