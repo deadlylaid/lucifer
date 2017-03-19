@@ -1,0 +1,61 @@
+{% extends "sub_base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/Gameintro_Job.css" %}" />
+{% endblock %}
+
+
+{% block style %}
+.Back { background:url({%static "images/main_bg_1.jpg"%}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1600px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
+.Wrap {height:1160px;}
+.Container {height:1160px;}
+.Left_box{height:1160px;}
+{% endblock %}
+
+{% block sub_title %}
+        <h2>직업소개</h2>
+            <p id="navi">
+           <img src={% static "images/icon_home.png"%} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 게임소개 &gt; <span>직업소개</span></p>
+{% endblock %}
+
+{% block content %}
+
+<div class="panel">   
+     <div role="tabpanel">
+         <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">야만전사</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">소서리스</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">팔라딘</a></li>
+            </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="home"><img src={% static "images/warrior.png"%} />
+            
+                <table id="tabtable">
+                    <tr><td>HP</td><td>MP</td><td>힘(ATR)</td><td>민첩(DEX)</td><td>지능(INT)</td><td>방어(DEF)</td><td>명중률</td><td>회피율</td></tr>
+                    <tr><td>170</td><td>80</td><td>10</td><td>8</td><td>8</td><td>7</td><td>38</td><td>6</td></tr>
+                 </table>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="profile"><img src={% static "images/wizard.png" %} />
+            
+                <table id="tabtable">
+                    <tr><td>HP</td><td>MP</td><td>힘(ATR)</td><td>민첩(DEX)</td><td>지능(INT)</td><td>방어(DEF)</td><td>명중률</td><td>회피율</td></tr>
+                    <tr><td>150</td><td>100</td><td>8</td><td>8</td><td>10</td><td>6</td><td>48</td><td>21</td></tr>
+                 </table>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="messages"><img src={% static "images/paladin.png" %} />
+            
+                <table id="tabtable">
+                    <tr><td>HP</td><td>MP</td><td>힘(ATR)</td><td>민첩(DEX)</td><td>지능(INT)</td><td>방어(DEF)</td><td>명중률</td><td>회피율</td></tr>
+                    <tr><td>160</td><td>90</td><td>9</td><td>9</td><td>8</td><td>8</td><td>42</td><td>16</td></tr>
+                 </table>
+            </div>
+        </div>
+
+    </div>
+  </div>
+{% endblock %}

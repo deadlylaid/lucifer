@@ -5,3 +5,5 @@ from .notice import ListNotice
 from .ranking import RankingView
 from .qna import QnaCreateView
 from .event import ListEvent
+from .test import TestView
+from .jobintro import JobIntro

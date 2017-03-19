@@ -127,12 +127,8 @@
 <div class="Container">
     <div class="Content_in">
         <div class="Toptitle">
-            <h2>
-                {% block sub_title %}
-                {% endblock %}
-            </h2>
-            <p id="navi">
-            <img src="{% static "images/icon_home.png" %}" width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 게임소식 &gt; <span>공지사항</span></p>
+            {% block sub_title %}
+            {% endblock %}
         </div>
         {% block content %}
         {% endblock %}
