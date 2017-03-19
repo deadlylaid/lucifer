@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.Container {background:transparent; background-size:821px 1300px; margin:0; padding:0px 25px;}
+.Container .Content_in {width:770px; height:1080px; background-color:rgba(0,0,0,0.3); padding:0px 5px;}
+
+.Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
+.Container .Content_in .Toptitle h2 {margin:0; padding:23px 16px; font-size:25px; width:250px; float:left; letter-spacing:2px;}
+.Container .Content_in .Toptitle #navi {float:right; display:block; width:160px; font-size:14px; margin-top:30px; margin-right:8px; font-size:13px; color:#cccfd5;}
+.Container .Content_in .Toptitle #navi span {font-weight:bold;}
+.Container .Content_in .Toptitle #navi img {float:left; margin:0px 3px;}
+
+.Container .Content_in #most_sub_cont_area {width:760px; height:1000px; padding:0px 15px; overflow:hidden;}
+.Container .Content_in #most_sub_cont_area .most_event_list { clear:both; padding:0; display:block; background:url(../images/board_line.png) no-repeat bottom left; width:740px; height:250px; margin-top:30px;}
+.Container .Content_in #most_sub_cont_area .most_event_list ul { position:relative; float:left; width:226px; height:250px; margin-left:15px;}
+.Container .Content_in #most_sub_cont_area .most_event_list li { display:block; font-size:0; line-height:0px;}
+.Container .Content_in #most_sub_cont_area .most_event_list li.pgame_eicon { margin:5px 0 10px;}
+.Container .Content_in #most_sub_cont_area .most_event_list li.pgame_etitle { width:226px; overflow:hidden; white-space:nowrap; font-size:13px; line-height:13px; color:#cccfd5; font-weight:bold; letter-spacing:-1px; margin-bottom:5px; text-align:left;}
+.Container .Content_in #most_sub_cont_area .most_event_list li.pgame_etitle a { text-decoration:none; color:#cccfd5;}
+.Container .Content_in #most_sub_cont_area .most_event_list li.pgame_date {font-size:12px; line-height:12px; color:#787d85; margin-bottom:20px; text-align:left;}
+.Container .Content_in #most_sub_cont_area .most_event_list li.pgame_date span { font-weight:bold;}
+
+em { font-style:normal;}
+.most_index {margin-top:50px; text-align:center;}
+.most_index a {display:inline-block; color:#9298a1; width:23px; height:24px; margin:0 1px; border:1px solid #3d4044; line-height:26px; font-size:11px;}
+.left_mg60 { margin-left:60px;}
+.most_index em a { width:56px; height:28px; margin:0; padding:0; border:none; background:url(../images/btn_type2.jpg) no-repeat 0 0; line-height:30px;}
+
+#most_left_menu_area01 { width:200px; height:143px; margin:0 auto; background:url(../images/left_menu_bg2.jpg) no-repeat 0 0; margin-top:35px;}
+#most_left_menu_area01 .most_left_menu_tit { width:200px; height:50px; margin:0 auto; line-height:50px; font-size:18px; color:#fff; text-align:left; padding-left:15px;}
+#most_left_menu_area01 .most_left_menu { width:200px; margin:0 auto;}
+#most_left_menu_area01 .most_left_menu li { height:40px; line-height:35px; font-weight:bold;  margin-bottom:5px; color:#ff2b2b; padding-left:20px; text-align:left; font-size:15px;}
+#most_left_menu_area01 .most_left_menu li a { font-weight:normal; color:#afb5bf;}
+
+.Left_box > .Quick_menu {width:200px; height:240px; margin-top:30px; background:transparent;}
+.Quick_menu .link_list { width:190px; height:215px; background-color:#f4f4f4; margin:0px auto 0 auto; text-align:left; vertical-align:middle; border:1px solid #bfbdbd; background:transparent; padding:0;}
+.Quick_menu .link_list .link_list_title {font-size:18px; font-weight:bold;}
+.Quick_menu .link_list li {margin:1px 0;}
+.Quick_menu .link_list li:first-child {background:url(../images/Quick_menu_help.png) no-repeat; }
+.Quick_menu .link_list li:first-child:hover {background:url(../images/Quick_menu_help_ov.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(2) {background:url(../images/Quick_menu_faq.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(2):hover {background:url(../images/Quick_menu_faq_ov.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(3) {background:url(../images/Quick_menu_bug.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(3):hover {background:url(../images/Quick_menu_bug_ov.png) no-repeat; }
+.Quick_menu .link_list li a { color:#666666; display:block; margin:0; width:190px; height:70px; text-indent:-1000px;}
+.Quick_menu .link_list li a:hover { text-decoration:none;}

@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Lucifer</title>
+
+
+<script type="text/javascript"></script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/flickity.pkgd.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="../bootstrap-3.3.2/js/transition.js"></script>
+<script src="../bootstrap-3.3.2/js/carousel.js"></script>
+<script src="../js/Mainpage_slide.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/flickity.css" media="screen" />
+<link rel="stylesheet" href="../css/Base.css" />
+<link rel="stylesheet" href="../css/News_Event.css" />
+<link rel="stylesheet" href="../css/topbar.css" />
+
+<style>
+
+.Back { background:url(../images/main_bg_2.jpg) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1700px; z-index:-9999; position:absolute; background:url(../images/Background.png);}
+.Wrap {height:1080px;}
+.Container {height:1080px;}
+.Left_box{height:1080px;}
+
+</style>
+</head>
+
+<body>
+<div class="topbar_back" style="position:relative;">
+  <div class="topbar_container">	
+	<div class="topbar_logo">
+    	<h5><a href="#">LUCIFER</a></h5>
+    </div>	
+  	<div class="topbar_menu">
+    	<a href="#" target="_top" class="join">회원가입</a>	
+        <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+<div class="Back">
+<div class="whiteback">
+	</div>
+<nav class="navigator"  style="position:fixed">
+	<div class="wrap">
+	<menu>
+    	 <li class="logo">
+        	<img src="../images/LOGO2.jpg" />
+        </li>
+        <li class="menu1">
+            <h2 class="title">
+                <a href="/news/notices">NEWS</a>
+			</h2>
+                <div class="depth">
+                    <p>
+                      <a data-bbsno="2" href="/news/notices">공지사항</a>
+                      <a data-bbsno="5" href="/news/gm-note">이벤트</a>
+                    </p>
+                </div>
+        </li>
+        <li class="menu2">
+            <h2 class="title">
+                <a href="/guides/introduce/story">게임소개</a>
+            </h2>
+                <div class="depth">
+                    <p>
+                      <a href="/guides/introduce/story">게임배경</a>
+                      <a href="/guides/beginner/start">직업소개</a>
+                    </p>
+                </div>
+        </li>
+        <li class="menu3">
+            <h2 class="title">
+                <a href="/ranking">랭킹</a>
+            </h2>
+        </li>
+        <li class="menu4">
+            <h2 class="title">
+                <a href="/community/free-board">커뮤니티</a>
+            </h2>
+                <div class="depth">
+                    <p>
+                      <a data-bbsno="1" href="/community/free-board">자유게시판</a>
+                      <a data-bbsno="8" href="/community/worry-board">스크린샷</a>
+                    </p>
+                </div>
+        </li>
+        <li class="menu5">
+            <h2 class="title">
+                <a href="/support/faq">고객센터</a>
+            </h2>
+                <div class="depth">
+                    <p>
+					  <a href="/support/faq">FAQ</a>
+                      <a href="/support/tickets">문의/신고</a>
+                    </p>
+                </div>
+        </li>
+</menu>
+<div class="game-start">
+    <video autoplay="autoplay" loop="loop" id="">
+        <source src="http://image.webzen.kr/Mu/ignition/v01/video/btn_start.mp4" type="video/mp4">
+    </video>
+    <a id="gameStart" href="javascript:;" onclick="Common.GameStart(&quot;&quot;, function () { location.href = &quot;/GameServer/List&quot;; });">gamestart</a>
+</div>
+</div>
+</nav>  
+<div class="Top">          
+  <div class="Header">
+    	<div class="Logo"> Logo </div>
+        <div class="Main_menu">
+        	<nav class="nav">
+        	<ul class="N_menu_itemlist" >
+	          <li class="N-menu_item" >
+		          <a href="#" class="N-menu_item_link is-selected">NEWS</a>
+        		</li>
+	          <li class="N-menu_item">
+		          <a href="#" class="N-menu_item_link">게임소개</a>
+        		</li>
+	          <li class="N-menu_item">
+		          <a href="#" class="N-menu_item_link">랭킹</a>
+        		</li>
+              <li class="N-menu_item">
+		          <a href="#" class="N-menu_item_link">커뮤니티</a>
+        		</li>
+              <li class="N-menu_item">
+		          <a href="#" class="N-menu_item_link">고객센터</a>
+        		</li>
+	      </ul>
+          </nav> 
+    <menu>
+        <li class="menu1">
+            <div class="depth" style="padding-left:27px;">
+                    <p>
+                       <a href="#">공지사항</a>
+                       <a href="#">이벤트</a>
+                    </p>
+            </div>
+        </li>
+        <li class="menu2">
+            <div class="depth" style="padding-left:19px;">
+                    <p>
+                       <a href="#">게임배경</a>
+                       <a href="#">직업소개</a>
+                    </p>
+            </div>
+        </li>
+        <li class="menu3">
+        	<div class="depth">
+                    <p>
+                       
+                    </p>
+            </div>
+        </li>
+        <li class="menu4">
+            <div class="depth">
+                    <p>
+                       <a href="#">자유게시판</a>
+                       <a href="#">스크린샷</a>
+                    </p>
+            </div>
+        </li>
+        <li class="menu5">
+            <div class="depth">
+                    <p>
+                       <a href="#">FAQ</a>
+                       <a href="#">문의/신고</a>
+                    </p>
+            </div>
+        </li>
+	</menu>    
+        </div>
+	</div>
+</div>
+<div class="Wrap">
+    <div class="Left_box">
+   	  <div class="Login_wrap">
+   	      <fieldset>
+	          <form method="post" action="#" id="frmLogin">
+	    <div class="before">
+    	    <ul class="form">
+        	    <li><input type="text" name="txtUserID" id="txtUserID" class="text" placeholder="계정" data-datatype="an" maxlength="16"></li>
+            	<li><input type="password" name="txtPassWD" id="txtPassWD" class="text" placeholder="비밀번호" maxlength="20"></li>
+           		<li class="btn-login"><button type="submit" id="btnLogin">로그인</button></li>
+        	</ul>
+         <aside>
+            <a href="#">회원가입</a>
+            <span>|</span>
+            <a href="#">계정</a>/<a href="#">비밀번호찾기</a>
+         </aside>
+    	</div>
+		 	  </form>                   
+           </fieldset>
+         <div class="Btn_Start">
+         	<button type="submit" id="btnStart">START</button>
+         </div>
+   	  </div>
+      
+      <div id="most_left_menu_area01">
+		<div class="most_left_menu_tit">
+			NEWS
+		</div>
+			<ul class="most_left_menu">
+				<li><a href="#">&gt; 공지사항</a></li>
+                <li>&gt; 이벤트</li>		
+			</ul>
+		</div>
+        
+    	<div class="Quick_menu"> 
+        	<ul class="link_list">
+				<li><a href="#" class="Helpus">
+         	        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+            	    <span class="link_list_title"> 도움말 무엇이 궁금하세요? </span>
+                	</a>
+                </li>
+				<li><a href="#" class="FAQ">
+                	<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                	<span class="link_list_title"> FAQ 빠르게 해결해드립니다</span>
+                    </a>
+                </li>
+				<li><a href="#" class="Bugreport">
+                	<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                	<span class="link_list_title"> 버그게시판 버그를 올려주세요</span></a>
+                </li>
+			</ul>
+		</div>
+        
+    </div>
+    <div class="Container">
+    	<div class="Content_in">
+        	<div class="Toptitle">
+            	<h2>이벤트</h2>
+                <p id="navi">
+           <img src="../images/icon_home.png" width="15" height="15" border="0" alt="아이콘"> 홈 &gt; NEWS &gt; <span>이벤트</span></p>
+            </div>
+            <div id="most_sub_cont_area">
+	<form name="frmBoard" id="frmBoard" method="post">
+		<input type="hidden" id="txtSchType" name="txtSchType" maxlength="1" value="0">
+		<input type="hidden" id="txtSchWord" name="txtSchWord" maxlength="15" value="">
+		<input type="hidden" id="aType" name="aType" value="">
+		<input type="hidden" id="txtRcd" name="txtRcd" value="">
+		<input type="hidden" id="txtOcn" name="txtOcn" value="">
+		<input type="hidden" id="txtCmt" name="txtCmt" maxlength="100" value="">
+		<input type="hidden" id="txtEncSvc" name="txtEncSvc" value="3bf135803be668103be668103be4dd003be4dd003be7f320">
+		<input type="hidden" id="txtEncS" name="txtEncS" value="">
+		<input type="hidden" id="txtEncC" name="txtEncC" value="">
+		<input type="hidden" id="txtEncP" name="txtEncP" value="3be66810">
+		<input type="hidden" id="txtEncMI" name="txtEncMI" value="">
+		<input type="hidden" id="txtListType" name="txtListType" value="">
+	</form>
+    
+	<div class="most_event_list">
+		<ul>
+			<li class="pgame_thumb">
+            	<a href="#" onfocus="this.blur();" target="_self"><img src="../images/42803z8016782407.jpg" /></a>
+            </li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_ing.png" alt="진행중">
+            </li>
+			<li class="pgame_etitle">
+            	<a href="#" onfocus="this.blur();" target="_self"></a>
+                <a href="#" onfocus="this.blur();" target="_self">[이벤트] 퀴즈 쿠폰 이벤트</a>
+            </li>
+			<li class="pgame_date">이벤트기간 : <span>2017.03.09 ~ 2017.03.15</span></li>
+		</ul>
+		<ul>
+			<li class="pgame_thumb">
+            	<a href="#" onfocus="this.blur();" target="_self"><img src="../images/42803z4737152778.jpg" /></a>
+            </li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_ing.png" alt="진행중">
+			</li>
+			<li class="pgame_etitle">
+                <a href="#" onfocus="this.blur();" target="_self"></a>
+                <a href="#" onfocus="this.blur();" target="_self">[이벤트] 3월 2주 금화 일일 누적 이벤트</a>
+            </li>
+			<li class="pgame_date">이벤트기간 : <span>2017.03.09 ~ 2017.03.15</span></li>	
+		</ul>
+		<ul>
+			<li class="pgame_thumb">
+            	<a href="#" onfocus="this.blur();" target="_self"><img src="../images/42803z4713888889.jpg" /></a>
+            </li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_ing.png" alt="진행중">
+			</li>
+			<li class="pgame_etitle">
+            	<a href="#" onfocus="this.blur();" target="_self"></a>
+                <a href="#" onfocus="this.blur();" target="_self">[이벤트] 3월 2주 주간 누적충전 혜택</a></li>
+			<li class="pgame_date">이벤트기간 : <span>2017.03.09 ~ 2017.03.15</span></li>	
+		</ul>
+	</div>
+	<div class="most_event_list">
+		<ul>
+			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self"><img src="../images/42797z6185185185.jpg" /></a>
+            </li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_end.png" alt="완료">
+			</li>
+			<li class="pgame_etitle">
+            	<a href="#" onfocus="this.blur();" target="_self"></a>
+            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] MOST EVOLUTION 핫타임 이벤트!</a>
+            </li>
+			<li class="pgame_date">이벤트기간 : <span>2017.03.02 ~ 2017.03.08</span></li>	
+		</ul>
+		<ul>
+			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
+            	<img src="../images/42797z6200115741.jpg"></a>
+            </li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_ing.png" alt="진행중">
+			</li>
+			<li class="pgame_etitle">
+            	<a href="#" onfocus="this.blur();" target="_self"></a>
+                <a href="#" onfocus="this.blur();" target="_self">[이벤트] MOST: EVOLUTION 대규모 업데이트 이벤트</a>
+            </li>
+			<li class="pgame_date">이벤트기간 : <span>2017.02.16 ~ 2017.03.01</span></li>
+		</ul>
+		<ul>
+			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self"><img src="../images/42776z619224537.jpg"></a>
+            </li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_end.png" alt="완료">
+			</li>
+			<li class="pgame_etitle">
+            	<a href="#" onfocus="this.blur();" target="_self"></a>
+            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] MOST와 함께하는 달콤한 발렌타인 이벤트</a>
+            </li>
+			<li class="pgame_date">이벤트기간 : <span>2017.02.13 ~ 2017.02.14</span></li>
+		</ul>
+	</div>
+    <div class="most_event_list">
+		<ul>
+			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
+            	<img src="../images/42775z5594560185.jpg"></a></li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_end.png" alt="완료">
+			</li>
+			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
+            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 2월 2주 주간 누적충전 혜택</a>
+            </li>
+			<li class="pgame_date">이벤트기간 : <span>2017.02.09 ~ 2017.02.08</span>
+            </li>
+		</ul>
+		<ul>
+			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
+            	<img src="../images/42768z4726851852.jpg"></a>
+            </li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_end.png" alt="완료">
+			</li>
+			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
+            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 2월 1주 주간 누적충전 혜택</a>
+            </li>
+			<li class="pgame_date">이벤트기간 : <span>2017.02.02 ~ 2017.02.08</span>
+            </li>
+		</ul>
+		<ul>
+			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
+            	<img src="../images/42761z4929976852.jpg"></a>
+            </li>
+			<li class="pgame_eicon">
+				<img src="../images/icon_end.png" alt="완료">
+			</li>
+			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
+            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 설날 맞이 이벤트</a>
+            </li>
+			<li class="pgame_date">이벤트기간 : <span>2017.01.26 ~ 2017.02.08</span>
+            </li>
+		</ul>
+	</div>
+	<!-- 인덱스 -->
+		<div class="most_index">
+			<em class="left_mg60"><a href="#">&lt; 이전</a></em>
+                <span>
+                <a class="on">1</a> 
+            	<a href="#" onclick="">2</a>
+                <a href="#" onclick="">3</a>
+                <a href="#" onclick="">4</a>
+                <a href="#" onclick="">5</a>
+                <a href="#" onclick="">6</a>
+                <a href="#" onclick="">7</a>
+                <a href="#" onclick="">8</a>
+                <a href="#" onclick="">9</a>
+                <a href="#" onclick="">10</a></span>
+                <em><a href="#" onclick="">다음 &gt;</a></em>
+		</div>
+	<!--// 인덱스 -->
+
+	<!-- 검색 기능 
+		<div class="most_seach">
+			<div id="most_select_box">
+				<label for="category">제목</label>
+				<select id="keyField" title="select category">
+				<option value="1">제목</option>
+				<option value="2">제목+내용</option>
+				</select>
+			</div>
+			<input type="text" id="keyWord" name="keyWord" value="" maxlength="50" onkeydown="if(window.event.keyCode == 13){goBoardSch('news_notice_list.asp');;return false;}">
+				<a href="#" class="btn" onclick="goBoardSch('news_notice_list.asp');return false;">검색</a>
+		</div>
+		<script>
+			jQuery(document).ready(function(){
+				var select = $("select#keyField");
+				select.change(function(){
+				var select_name = $(this).children("option:selected").text();
+				$(this).siblings("label").text(select_name);
+				});
+			});
+		</script>
+	-->
+<!--END: contents -->
+
+
+				</div>   
+        </div>
+   </div>
+</div>
+     <section class="Sitemap">
+    	<div class="Sitemap-wrap">
+        	<ul class="clearfix">
+            	<li>
+                	<dl>
+                    	<dt>
+                        	<a href="#">NEWS</a>
+                        </dt>
+                        <dd>
+                        	<a href="#">공지사항</a>
+                        </dd>
+                        <dd>
+                        	<a href="#">이벤트</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                	<dl>
+                    	<dt>
+                        	<a href="#">게임소개</a>
+                        </dt>
+                        <dd>
+                        	<a href="#">게임배경</a>
+                        </dd>
+                        <dd>
+                        	<a href="#">직업소개</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                	<dl>
+                    	<dt>
+                        	<a href="#">랭킹</a>
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                	<dl>
+                    	<dt>
+                        	<a href="#">커뮤니티</a>
+                        </dt>
+                        <dd>
+                        	<a href="#">자유게시판</a>
+                        </dd>
+                        <dd>
+                        	<a href="#">스크린샷</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                	<dl>
+                    	<dt>
+                        	<a href="#">고객센터</a>
+                        </dt>
+                        <dd>
+                        	<a href="#">FAQ</a>
+                        </dd>
+                        <dd>
+                        	<a href="#">문의/신고</a>
+                        </dd>
+                    </dl>
+                </li>
+                </ul>
+		</div>
+	</section>
+    	<div class="footer">
+        	<article class="wrap">
+            	<a href="#" target="_blank"><img src="../images/LOGO2.jpg"  class="webzen"/></a>
+            <div class="link">
+                <a href="#" target="_blank">이용약관</a>
+                <span>|</span>
+                <a href="#" target="_blank">Lucifer 운영정책</a>
+                <span>|</span>
+                <a href="#" target="_blank"><strong>개인정보처리방침</strong></a>
+                <span>|</span>
+                <a href="#" target="_blank">청소년보호정책</a>
+                <span>|</span>
+                <a href="#" target="_blank">회사소개</a>
+                <span>|</span>
+                <a href="#" target="_blank">NsuMulti</a>
+                <span>|</span>
+                <a href="#" target="_blank">게임이용등급</a>   
+            </div>
+            <address>
+                상호명: (주)Lucifer 대표이사: 한민수 최영준 김회언 주소: 충청남도 천안시 성환읍 남서울대학교<br>
+                FAX: 041-521-1348 웹마스터메일: <a href="mailto:slhgesa@naver.com">Lucifer-help@nsu.com</a> 고객지원센터: 1566-4545 <a href="#" target="_blank">사업자정보확인</a>
+                <span>NsuMulti Inc. Global Digital Entertainment Leader ©NsuMulti Inc. All Rights Reserverd.</span>
+                	<img src="../images/Grade.jpg" class="grade-pop" alt="">
+                <br><img src="http://image.webzen.kr/Mu/ignition/v01/images/img_dev.png" alt="">
+            </address>
+        	</article>
+		</div>
+ </div>
+</body>
+</html>
