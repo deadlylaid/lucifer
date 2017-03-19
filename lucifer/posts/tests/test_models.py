@@ -45,3 +45,20 @@ class FreeBoardModelTest(TestCase, UserCreateMixin):
                 )
 
         self.assertTrue(Comment.objects.first())
+
+
+class QNAModelTest(TestCase, UserCreateMixin):
+
+    # QNA를 작성할 수 있다.
+    def test_user_can_create_qna_use_qna_model(self):
+
+        usercreate_mixin = UserCreateMixin()
+        created_user1 = usercreate_mixin.user('TestUser', '123')
+
+        qna = QNA.objects.create(
+                user=created_user1,
+                title='TestQNA1',
+                content='TestQNAContent',
+                )
+
+        self.assertTrue(QNA.objects.first())
