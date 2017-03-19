@@ -5,7 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Lucifer</title>
 
-
 <script type="text/javascript"></script>
 <script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -19,12 +18,15 @@
 {% block css %}
 {% endblock %}
 
-
-<style>
 <!-- style 코드가 틀어가는 위치 -->
+<style>
+
 {% block style %}
 {% endblock %}
-.Back { background:url({% static "images/main_bg_2.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.Back { 
+    background:url({% static "images/main_bg_2.jpg" %}) no-repeat 50% 0;
+    margin:0 auto;
+    padding:0;}
 .whiteback { width:100%; height:1300px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
 .Wrap {height:900px;}
 .Container {height:900px;}
