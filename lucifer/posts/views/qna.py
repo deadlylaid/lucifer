@@ -1,8 +1,11 @@
 from django.views.generic import CreateView
 from posts.models import QNA
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class QnaCreateView(CreateView):
+class QnaCreateView(LoginRequiredMixin, CreateView):
+
+    login_url = '/login/'
 
     model = QNA
     fields = [
