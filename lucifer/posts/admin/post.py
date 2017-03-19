@@ -6,7 +6,7 @@ from posts.models import *
 @admin.register(Notice)
 class NoticeModelAdmin(admin.ModelAdmin):
 
-    list_display = (
+    list_display = admin.ModelAdmin.list_display + (
             'user',
             'title',
             'sumnail_image',
@@ -18,7 +18,7 @@ class NoticeModelAdmin(admin.ModelAdmin):
 @admin.register(FreeBoard)
 class FreeBoardModelAdmin(admin.ModelAdmin):
 
-    list_display = (
+    list_display = admin.ModelAdmin.list_display + (
             'user',
             'title',
             'content',
