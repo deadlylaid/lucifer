@@ -21,8 +21,7 @@
 <!-- style 코드가 틀어가는 위치 -->
 <style>
 
-{% block style %}
-{% endblock %}
+
 .Back { 
     background:url({% static "images/main_bg_2.jpg" %}) no-repeat 50% 0;
     margin:0 auto;
@@ -31,7 +30,8 @@
 .Wrap {height:900px;}
 .Container {height:900px;}
 .Left_box{height:900px;}
-
+{% block style %}
+{% endblock %}
 </style>
 
 {% block js %}
