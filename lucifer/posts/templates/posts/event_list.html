@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,22 +7,18 @@
 
 
 <script type="text/javascript"></script>
-<script src="../js/jquery-3.1.1.min.js"></script>
-<script src="../js/flickity.pkgd.min.js"></script>
+<script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="../bootstrap-3.3.2/js/transition.js"></script>
-<script src="../bootstrap-3.3.2/js/carousel.js"></script>
-<script src="../js/Mainpage_slide.js"></script>
+<script src="{% static "js/Mainpage-slide.js" %}"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../css/flickity.css" media="screen" />
-<link rel="stylesheet" href="../css/Base.css" />
-<link rel="stylesheet" href="../css/News_Event.css" />
-<link rel="stylesheet" href="../css/topbar.css" />
+<link rel="stylesheet" href="{% static "css/Base.css" %}" />
+<link rel="stylesheet" href="{% static "css/News_Event.css" %}" />
+<link rel="stylesheet" href="{% static "css/topbar.css" %}" />
 
 <style>
 
-.Back { background:url(../images/main_bg_2.jpg) no-repeat 50% 0; margin:0 auto; padding:0;}
-.whiteback { width:100%; height:1700px; z-index:-9999; position:absolute; background:url(../images/Background.png);}
+.Back { background:url({% static "images/main_bg_2.jpg"%}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1700px; z-index:-9999; position:absolute; background:url({% static "images/Background.png"%});}
 .Wrap {height:1080px;}
 .Container {height:1080px;}
 .Left_box{height:1080px;}
@@ -48,7 +45,7 @@
 	<div class="wrap">
 	<menu>
     	 <li class="logo">
-        	<img src="../images/LOGO2.jpg" />
+        	<img src={% static "images/LOGO2.jpg"%} />
         </li>
         <li class="menu1">
             <h2 class="title">
@@ -255,10 +252,10 @@
 	<div class="most_event_list">
 		<ul>
 			<li class="pgame_thumb">
-            	<a href="#" onfocus="this.blur();" target="_self"><img src="../images/42803z8016782407.jpg" /></a>
+            	<a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42803z8016782407.jpg" %}/></a>
             </li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_ing.png" alt="진행중">
+				<img src={% static "images/icon_ing.png" %} alt="진행중">
             </li>
 			<li class="pgame_etitle">
             	<a href="#" onfocus="this.blur();" target="_self"></a>
@@ -268,10 +265,10 @@
 		</ul>
 		<ul>
 			<li class="pgame_thumb">
-            	<a href="#" onfocus="this.blur();" target="_self"><img src="../images/42803z4737152778.jpg" /></a>
+            	<a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42803z4737152778.jpg" %}/></a>
             </li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_ing.png" alt="진행중">
+				<img src={% static "images/icon_ing.png" %} alt="진행중">
 			</li>
 			<li class="pgame_etitle">
                 <a href="#" onfocus="this.blur();" target="_self"></a>
@@ -281,10 +278,10 @@
 		</ul>
 		<ul>
 			<li class="pgame_thumb">
-            	<a href="#" onfocus="this.blur();" target="_self"><img src="../images/42803z4713888889.jpg" /></a>
+            	<a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42803z4713888889.jpg" %}/></a>
             </li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_ing.png" alt="진행중">
+				<img src={% static "images/icon_ing.png"%} alt="진행중">
 			</li>
 			<li class="pgame_etitle">
             	<a href="#" onfocus="this.blur();" target="_self"></a>
@@ -294,10 +291,10 @@
 	</div>
 	<div class="most_event_list">
 		<ul>
-			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self"><img src="../images/42797z6185185185.jpg" /></a>
+			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42797z6185185185.jpg" %}/></a>
             </li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_end.png" alt="완료">
+				<img src={% static "images/icon_end.png"%} alt="완료">
 			</li>
 			<li class="pgame_etitle">
             	<a href="#" onfocus="this.blur();" target="_self"></a>
@@ -307,10 +304,10 @@
 		</ul>
 		<ul>
 			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
-            	<img src="../images/42797z6200115741.jpg"></a>
+            	<img src={% static "images/42797z6200115741.jpg"%}></a>
             </li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_ing.png" alt="진행중">
+				<img src={% static "images/icon_ing.png"%} alt="진행중">
 			</li>
 			<li class="pgame_etitle">
             	<a href="#" onfocus="this.blur();" target="_self"></a>
@@ -319,10 +316,10 @@
 			<li class="pgame_date">이벤트기간 : <span>2017.02.16 ~ 2017.03.01</span></li>
 		</ul>
 		<ul>
-			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self"><img src="../images/42776z619224537.jpg"></a>
+			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42776z619224537.jpg"%}></a>
             </li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_end.png" alt="완료">
+				<img src={% static "images/icon_end.png"%} alt="완료">
 			</li>
 			<li class="pgame_etitle">
             	<a href="#" onfocus="this.blur();" target="_self"></a>
@@ -334,9 +331,9 @@
     <div class="most_event_list">
 		<ul>
 			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
-            	<img src="../images/42775z5594560185.jpg"></a></li>
+            	<img src={% static "images/42775z5594560185.jpg"%}></a></li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_end.png" alt="완료">
+				<img src={% static "images/icon_end.png"%} alt="완료">
 			</li>
 			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
             	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 2월 2주 주간 누적충전 혜택</a>
@@ -346,10 +343,10 @@
 		</ul>
 		<ul>
 			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
-            	<img src="../images/42768z4726851852.jpg"></a>
+            	<img src={% static "images/42768z4726851852.jpg"%}></a>
             </li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_end.png" alt="완료">
+				<img src={% static "images/icon_end.png"%} alt="완료">
 			</li>
 			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
             	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 2월 1주 주간 누적충전 혜택</a>
@@ -359,10 +356,10 @@
 		</ul>
 		<ul>
 			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
-            	<img src="../images/42761z4929976852.jpg"></a>
+            	<img src={% static "images/42761z4929976852.jpg"%}></a>
             </li>
 			<li class="pgame_eicon">
-				<img src="../images/icon_end.png" alt="완료">
+				<img src={% static "images/icon_end.png"%} alt="완료">
 			</li>
 			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
             	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 설날 맞이 이벤트</a>
@@ -485,7 +482,7 @@
 	</section>
     	<div class="footer">
         	<article class="wrap">
-            	<a href="#" target="_blank"><img src="../images/LOGO2.jpg"  class="webzen"/></a>
+            	<a href="#" target="_blank"><img src={% static "images/LOGO2.jpg"%}  class="webzen"/></a>
             <div class="link">
                 <a href="#" target="_blank">이용약관</a>
                 <span>|</span>
@@ -505,7 +502,7 @@
                 상호명: (주)Lucifer 대표이사: 한민수 최영준 김회언 주소: 충청남도 천안시 성환읍 남서울대학교<br>
                 FAX: 041-521-1348 웹마스터메일: <a href="mailto:slhgesa@naver.com">Lucifer-help@nsu.com</a> 고객지원센터: 1566-4545 <a href="#" target="_blank">사업자정보확인</a>
                 <span>NsuMulti Inc. Global Digital Entertainment Leader ©NsuMulti Inc. All Rights Reserverd.</span>
-                	<img src="../images/Grade.jpg" class="grade-pop" alt="">
+                	<img src={% static "images/Grade.jpg"%} class="grade-pop" alt="">
                 <br><img src="http://image.webzen.kr/Mu/ignition/v01/images/img_dev.png" alt="">
             </address>
         	</article>
