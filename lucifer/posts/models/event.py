@@ -12,7 +12,7 @@ class Event(models.Model):
             max_length=50,
             )
 
-    contents = models.TestField(
+    contents = models.TextField(
             max_length=255,
             )
 
