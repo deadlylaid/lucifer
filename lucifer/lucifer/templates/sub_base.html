@@ -15,8 +15,15 @@
 <link rel="stylesheet" href="{% static "css/News_Notice.css" %}" />
 <link rel="stylesheet" href="{% static "css/topbar.css" %}" />
 
-<style>
+<!-- css가 들어가는 위치 -->
+{% block css %}
+{% endblock %}
 
+
+<style>
+<!-- style 코드가 틀어가는 위치 -->
+{% block style %}
+{% endblock %}
 .Back { background:url({% static "images/main_bg_2.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
 .whiteback { width:100%; height:1300px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
 .Wrap {height:900px;}
@@ -24,6 +31,9 @@
 .Left_box{height:900px;}
 
 </style>
+
+{% block js %}
+{% endblock %}
 </head>
 
 <body>
