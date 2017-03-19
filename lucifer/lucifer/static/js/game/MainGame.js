@@ -422,7 +422,7 @@ function main(evt){
 	var Direction = 0;
 	
 	var vMousePos;
-	GameScreen.addEventListener('click', function(evt){		
+	GameScreen.addEventListener('mousedown', function(evt){		
 		vMousePos = new gbox3d.core.Vect3d(evt.layerX, evt.layerY, 0);
 
 		var PlayerPos = sprite_node.get('model').getPosition();
@@ -506,15 +506,18 @@ function main(evt){
 			Direction = 7;
 		}		
 
-		Change_SpriteNumber(Direction, 1);
+		Change_SpriteNumber(Direction, 1);		
+	});
+	GameScreen.addEventListener('mouseup', function(evt){
+		Change_SpriteNumber(Direction, 0);
 	});
 
-	//--Player Move	
+	//--Player Move		
 	/*
 	var MouseControler = new Pig2d.util.controller.MouseSpot({
 		listener_element : document,
 		node : sprite_node,
-		speed : 150,
+		speed : 0,
 		setupCallBack : function(){
 		},
 		endCallBack : function(){
@@ -525,6 +528,7 @@ function main(evt){
 		}
 	});	
 	*/
+	
 	//****************************************************************************************************
 
 	//--Game Loop
