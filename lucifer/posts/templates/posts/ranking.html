@@ -1,0 +1,32 @@
+{% extends "sub_base.html" %}
+
+{% block title %}
+자유게시판
+{% endblock %}
+
+{% block sub_title %}
+자유게시판
+{% endblock %}
+
+{% block content %}
+<div id="most_sub_cont_area">
+
+    {% for character in characters %}
+    <ul class="most_board_notice_list">
+        <li class="num ranking">{{ forloop.counter }}위</li>
+        <li class="num character">{{ character.nickname }}</li>
+        <li class="num attack_point" style="color:#ffffff">{{ character.status.attack_point }}</li>
+        <li class="num defence_point" style="color:#ffffff">{{ character.status.defence_point }}</li>
+        <li class="num strong" style="color:#ffffff">{{ character.status.strong }}</li>
+        <li class="num dexterity" style="color:#ffffff">{{ character.status.dexterity }}</li>
+        <li class="num intelligence" style="color:#ffffff">{{ character.status.intelligence }}</li>
+    </ul>
+    {% endfor %}
+
+
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}
