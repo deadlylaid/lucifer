@@ -35,7 +35,6 @@ urlpatterns = [
     url(r'^ranking/$', RankingView.as_view(), name='ranking'),
     url(r'^qna/$', QnaCreateView.as_view(), name='qna'),
 
-
     url(r'^check/chracter/$', CheckCharacter.as_view(), name='checkcharacter'),
 
     url(r'^create/chracter/$', CreateCharacter.as_view(), name='createcharacter'),
