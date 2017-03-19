@@ -36,10 +36,7 @@ urlpatterns = [
     url(r'^events/$', ListEvent.as_view(), name='event_list'),
     url(r'^qna/$', QnaCreateView.as_view(), name='qna'),
 
-    url(r'^test$', TestView.as_view(), name='test'),
-
     url(r'^jobintro$', JobIntro.as_view(), name='jobintro'),
-
 
     url(r'^check/chracter/$', CheckCharacter.as_view(), name='checkcharacter'),
 

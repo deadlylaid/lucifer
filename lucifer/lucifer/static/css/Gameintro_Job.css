@@ -4,7 +4,7 @@
 .Container {background:transparent; background-size:821px 1300px; margin:0; padding:0px 25px;}
 .Container .Content_in {width:770px; height:1150px; background-color:rgba(0,0,0,0.3); padding:0px 5px;}
 
-.Container .Content_in .Toptitle {width:760px; height:80px; background:url({% static "images/Subnav_topbar.png" %}) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
+.Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
 .Container .Content_in .Toptitle h2 {margin:0; padding:23px 25px; font-size:25px; width:250px; float:left; letter-spacing:5px;}
 .Container .Content_in .Toptitle #navi {float:right; display:block; width:160px; font-size:14px; margin-top:30px; margin-right:0px; font-size:13px; color:#cccfd5;}
 .Container .Content_in .Toptitle #navi span {font-weight:bold;}
@@ -13,10 +13,10 @@
 /* 컨테이너 */
 .Container .Content_in .panel {width:740px; height:1030px; background-color:rgba(0,0,0,0.8); margin:10px; padding-top:10px;}
 .Container .Content_in .panel .nav-tabs li:first-child { margin-left:5px;}
-.Container .Content_in .panel .nav-tabs li { background:url({% static "images/GameJob_topbg.png"%}) no-repeat; width:240px; height:40px; margin-bottom:10px; padding:0; margin-left:3px;}
+.Container .Content_in .panel .nav-tabs li { width:240px; background:url(../images/GameJob_topbg.png) no-repeat;  height:40px; margin-bottom:10px; padding:0; margin-left:3px;}
 .Container .Content_in .panel .nav-tabs li a {color:#ffffff; font-size:18px; line-height:30px; letter-spacing:2px; font-weight:bold;}
-.Container .Content_in .panel .nav-tabs>li>a:hover {background:url({% static "images/GameJob_topbg_list.png" %}) no-repeat; width:240px; height:51px;}
-.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover {background:url({% static "images/GameJob_topbg_list.png"%}); width:240px; height:51px;}
+.Container .Content_in .panel .nav-tabs>li>a:hover { width:240px; height:51px; background:url(../images/GameJob_topbg_list.png) no-repeat; }
+.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover {width:240px; height:51px; background:url(../images/GameJob_topbg_list.png) no-repeat; }
 
 .Container .Content_in .panel .tab-pane img {margin:0px 5px;}
 .Container .Content_in .panel .tab-pane #tabtable {width:650px; height:100px; background:transparent; margin:20px auto 30px auto; border:1px solid #3d4044; color:#ffffff; font-weight:bold;}
@@ -34,7 +34,7 @@ em { font-style:normal;}
 .most_index {margin-top:50px; text-align:center;}
 .most_index a {display:inline-block; color:#9298a1; width:23px; height:24px; margin:0 1px; border:1px solid #3d4044; line-height:26px; font-size:11px;}
 .left_mg60 { margin-left:60px;}
-.most_index em a { width:56px; height:28px; margin:0; padding:0; border:none; background:url({% static "images/btn_type2.jpg"}) no-repeat 0 0; line-height:30px;}
+.most_index em a { width:56px; height:28px; margin:0; padding:0; border:none; background:url({% static "images/btn_type2.jpg" %}) no-repeat 0 0; line-height:30px;}
 
 #most_left_menu_area01 { width:200px; height:143px; margin:0 auto; background:url({% static "images/left_menu_bg2.jpg" %}) no-repeat 0 0; margin-top:35px;}
 #most_left_menu_area01 .most_left_menu_tit { width:200px; height:50px; margin:0 auto; line-height:50px; font-size:18px; color:#fff; text-align:left; padding-left:15px;}
