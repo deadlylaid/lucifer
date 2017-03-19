@@ -3,6 +3,9 @@
 * pig2d 를 이용한 기본 게임 로직 js
 * 2017년 3월 14일 최영준
 * Sprite Image 띄우기 / 마우스 이동 / Sprite 각도에 따라 변환.
+
+* 2017년 3월 17일 최영준
+* Player Direction 구하기 완료.
 * **************************/
 //## Main Function
 function main(evt){
