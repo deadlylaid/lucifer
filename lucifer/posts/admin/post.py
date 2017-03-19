@@ -24,3 +24,13 @@ class FreeBoardModelAdmin(admin.ModelAdmin):
             'content',
             'created_at',
             )
+
+
+@admin.register(QNA)
+class QNAModelAdmin(admin.ModelAdmin):
+
+    list_display = admin.ModelAdmin.list_display + (
+            'user',
+            'title',
+            'content',
+            )

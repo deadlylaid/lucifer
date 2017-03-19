@@ -1,0 +1,25 @@
+{% extends "sub_base.html" %}
+
+{% block sub_title %}
+QnA
+{% endblock %}
+
+{% block content %}
+<div id="most_sub_cont_area">
+
+  <h1>qna</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="title" value="" class="text" required>
+    <textarea name="content" required></textarea>
+    <input name="" type="submit" value="문의보내기" class="text">
+  </form>
+  
+
+
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}
