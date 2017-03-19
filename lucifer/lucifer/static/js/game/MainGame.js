@@ -423,40 +423,54 @@ function main(evt){
 	
 	var vMousePos;
 	GameScreen.addEventListener('click', function(evt){		
-		vMousePos = new gbox3d.core.Vect3d(evt.pageX, evt.pageY, 0);
+		vMousePos = new gbox3d.core.Vect3d(evt.layerX, evt.layerY, 0);
 
 		var PlayerPos = sprite_node.get('model').getPosition();
 		var vPlayerPos = new gbox3d.core.Vect3d(PlayerPos.X, PlayerPos.Y, 0);
+		//var vPlayerPos = new gbox3d.core.Vect3d(640, 400, 0);
 
 		//플레이어가 마우스를 바라보는 방향벡터를 구함
 		//var PlayerDir = MousePos.subToThis(PlayerPos);
 		//PlayerDir.normalize();
 
 		var vPlayerDir = vMousePos.substract(vPlayerPos);
-		vPlayerDir.normalize();
+		//vPlayerDir.normalize();
 
 		//각도를 구함. 8방향
-		//Angle = PlayerDir.getAngle();
-		//Angle = Math.atan2(PlayerDir.Y, PlayerDir.X);
+		//Angle = vPlayerDir.getAngle();
+		//Angle = Math.atan2(vPlayerDir.Y, vPlayerDir.X);
 		//Angle *= gbox3d.core.RADTODEG;
 		//Angle += 90;
 		
+		/*
 		var Cos = vPlayerDir.dotProduct(LookDir);
 		Angle = Math.acos(Cos);
-
 		if(vPlayerPos.Y < vMousePos.Y)
 		{
 			Angle = 2 * gbox3d.core.PI - Angle;
 		}
+		Angle *= gbox3d.core.RADTODEG;		
+		*/
 
-		Angle *= gbox3d.core.RADTODEG;
-		parseInt(Angle);
+		Angle = Math.atan(-vPlayerDir.Y / vPlayerDir.X);
+		
+		if(vPlayerDir.X < 0)
+		{
+			Angle += Math.PI;
+		}
+		if(vMousePos.X >= vPlayerPos.X && vMousePos.Y >= vPlayerPos.Y)
+		{
+			Angle += 2 * Math.PI;
+		}
 
-		//console.log(vMousePos);
-		//console.log(vPlayerPos);
-		//console.log(Angle);	
+		Angle *= gbox3d.core.RADTODEG;		
+
+		console.log(vMousePos);
+		console.log(vPlayerPos);
+		console.log(Angle);	
 
 		Direction = Angle / 45;
+		parseInt(Direction);
 		console.log(Direction);
 		
 		if(Direction > 0 && Direction < 1)
@@ -491,9 +505,12 @@ function main(evt){
 		{
 			Direction = 7;
 		}		
+
+		Change_SpriteNumber(Direction, 1);
 	});
 
-	//--Player Move
+	//--Player Move	
+	/*
 	var MouseControler = new Pig2d.util.controller.MouseSpot({
 		listener_element : document,
 		node : sprite_node,
@@ -501,23 +518,13 @@ function main(evt){
 		setupCallBack : function(){
 		},
 		endCallBack : function(){
-			/*Stand_SpriteNode.get('model').show(true);
-			Stand_SpriteNode.get('model').setupAnimation();
-			Stand_SpriteNode.get('model').set('AnimationStatus', 'play');
-			Stand_SpriteNode.get('model').set('isAnimationLoop', true);
-			Walk_SpriteNode.get('model').show(false);*/
-
 			Change_SpriteNumber(Direction, 0);			
 		},
-		startCallBack : function(evt){		
-			/*Walk_SpriteNode.get('model').show(true);
-			Walk_SpriteNode.get('model').set('AnimationStatus', 'play');
-			Walk_SpriteNode.get('model').set('isAnimationLoop', true);
-			Stand_SpriteNode.get('model').show(false);*/	
-
+		startCallBack : function(evt){				
 			Change_SpriteNumber(Direction, 1);			
 		}
-	});
+	});	
+	*/
 	//****************************************************************************************************
 
 	//--Game Loop
