@@ -41,7 +41,6 @@ urlpatterns = [
     url(r'^check/chracter/$', CheckCharacter.as_view(), name='checkcharacter'),
 
     url(r'^create/chracter/$', CreateCharacter.as_view(), name='createcharacter'),
-
     url(r'^gamestart/$', GameStartView.as_view(), name='gamestart'),
 
     url(r'^api/gamestart/data/$', GameStartAPIView.as_view(), name='api_gamestart'),
