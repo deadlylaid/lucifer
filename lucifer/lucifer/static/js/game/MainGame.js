@@ -3,6 +3,9 @@
 * pig2d 를 이용한 기본 게임 로직 js
 * 2017년 3월 14일 최영준
 * Sprite Image 띄우기 / 마우스 이동 / Sprite 각도에 따라 변환.
+
+* 2017년 3월 17일 최영준
+* Player Direction 구하기 완료.
 * **************************/
 //## Main Function
 function main(evt){
@@ -411,62 +414,83 @@ function main(evt){
 				}
 			}
 			break;
-		}
-
-		console.log(SpriteNumber);		
+		}				
 	}	
 
 	var GameScreen = document.querySelector(".pig2d-fullscreen");
 	var Angle = 0;
 	var Direction = 0;
 	
+	var vMousePos;
 	GameScreen.addEventListener('click', function(evt){		
-		var MousePos = new gbox3d.core.Vect2d(evt.layerX, evt.layerY);
+		vMousePos = new gbox3d.core.Vect3d(evt.pageX, evt.pageY, 0);
+
 		var PlayerPos = sprite_node.get('model').getPosition();
+		var vPlayerPos = new gbox3d.core.Vect3d(PlayerPos.X, PlayerPos.Y, 0);
 
 		//플레이어가 마우스를 바라보는 방향벡터를 구함
-		var PlayerDir = MousePos.sub(PlayerPos);
-		PlayerDir.normalize();
+		//var PlayerDir = MousePos.subToThis(PlayerPos);
+		//PlayerDir.normalize();
+
+		var vPlayerDir = vMousePos.substract(vPlayerPos);
+		vPlayerDir.normalize();
 
 		//각도를 구함. 8방향
-		Angle = PlayerDir.getAngle();
-		Direction = Angle / 45;		
+		//Angle = PlayerDir.getAngle();
+		//Angle = Math.atan2(PlayerDir.Y, PlayerDir.X);
+		//Angle *= gbox3d.core.RADTODEG;
+		//Angle += 90;
+		
+		var Cos = vPlayerDir.dotProduct(LookDir);
+		Angle = Math.acos(Cos);
+
+		if(vPlayerPos.Y < vMousePos.Y)
+		{
+			Angle = 2 * gbox3d.core.PI - Angle;
+		}
+
+		Angle *= gbox3d.core.RADTODEG;
+		parseInt(Angle);
+
+		//console.log(vMousePos);
+		//console.log(vPlayerPos);
+		//console.log(Angle);	
+
+		Direction = Angle / 45;
+		console.log(Direction);
 		
 		if(Direction > 0 && Direction < 1)
 		{
-			Direction = 7;
+			Direction = 0;
 		}
 		else if(Direction > 1 && Direction < 2)
 		{
-			Direction = 6;
+			Direction = 1;
 		}
 		else if(Direction > 2 && Direction < 3)
 		{
-			Direction = 5;
+			Direction = 2;
 		}
 		else if(Direction > 3 && Direction < 4)
 		{
-			Direction = 4;
+			Direction = 3;
 		}
 		else if(Direction > 4 && Direction < 5)
 		{
-			Direction = 3;
+			Direction = 4;
 		}
 		else if(Direction > 5 && Direction < 6)
 		{
-			Direction = 2;
+			Direction = 5;
 		}
 		else if(Direction > 6 && Direction < 7)
 		{
-			Direction = 1;
+			Direction = 6;
 		}
 		else if(Direction > 7)
 		{
-			Direction = 0;
-		}
-
-		//Direction = Dir;	
-		//console.log(Direction);
+			Direction = 7;
+		}		
 	});
 
 	//--Player Move
