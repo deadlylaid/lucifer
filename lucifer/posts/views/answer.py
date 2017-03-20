@@ -10,7 +10,7 @@ from posts.models import Answer, FreeBoard
 @method_decorator(require_POST, name='dispatch')
 class CreateAnswer(LoginRequiredMixin, CreateView):
 
-    login_url = '/login/'
+    login_url = '/'
     model = Answer
 
     fields = [

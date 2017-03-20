@@ -6,7 +6,7 @@ class Policy(View):
 
     def get(self, request):
         return render(
-                request,
-                "posts/policy.html",
-                context={}
-                )
+            request,
+            "posts/policy.html",
+            context={}
+        )

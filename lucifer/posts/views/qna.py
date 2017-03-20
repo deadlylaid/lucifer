@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class QnaCreateView(LoginRequiredMixin, CreateView):
 
-    login_url = '/login/'
+    login_url = '/'
 
     model = QNA
     fields = [

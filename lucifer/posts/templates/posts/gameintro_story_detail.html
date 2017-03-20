@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 
 <body>
 <div id="framein">
-	<input type="image" id="exitbtn" value="" style="background:url(../static/images/exit.png); width:20px; height:20px; float:right; margin-right:30px; margin-top:30px; padding:0; z-index:999;">
+  <input type="image" id="exitbtn" value="" style="background:url({% static "images/exit.png" %}); width:20px; height:20px; float:right; margin-right:30px; margin-top:30px; padding:0; z-index:999;">
 	<div id="title">
     	<h3>Lucifer Story </h3> 
     </div>

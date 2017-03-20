@@ -9,7 +9,7 @@ from posts.models.freeboard import FreeBoard
 
 class CreateFreeBoard(LoginRequiredMixin, CreateView):
 
-    login_url = '/login/'
+    login_url = '/'
     template_name = 'posts/freecreate.html'
 
     form_class = PostForm
