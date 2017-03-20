@@ -1,0 +1,75 @@
+{% extends "sub_base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/Bugnotice.css" %}"/>
+{% endblock %}
+
+{% block style %}
+.Back { background:url({% static "images/main_bg_1.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1600px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
+.Wrap {height:900px;}
+.Container {height:900px;}
+.Left_box{height:900px;}
+{% endblock %}
+
+
+{% block leftnav %}
+<div id="most_left_menu_area01">
+    <div class="most_left_menu_tit">
+      버그게시판
+    </div>
+      <ul class="most_left_menu">
+        <li>&gt; 버그게시판</li> 
+      </ul>
+    </div>
+{% endblock %}
+
+{% block sub_title %}
+        <h2>버그게시판</h2>
+                <p id="navi">
+           <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; <span>버그게시판</span></p>
+{% endblock %}
+
+{% block content %}
+<div id="most_sub_cont_area">
+          <div id="title">
+              <ul>
+                  <li id="top_left">제 목</li>
+                    <li id="top_right">
+                    <input type="text" class="form-control" placeholder="작성하실 글의 제목을 입력하세요." ></li>
+                </ul>
+                <ul>
+                  <li id="btt_left">구 분</li>
+                    <li id="btt_right">
+                    <select name="Year" class="select1">
+             <option value="게임 내 버그" selected> 게임 내 버그 </option>
+             <option value="홈페이지 버그"> 홈페이지 버그 </option>
+          </select>
+                    <select name="Year" class="select2">
+             <option value="캐릭터" selected> 캐릭터 </option>
+             <option value="아이템"> 아이템 </option>
+                         <option value="스테이지" selected> 스테이지 </option>
+             <option value="퀘스트"> 퀘스트 </option>
+                         <option value="로그인"> 로그인 </option>
+                         <option value="홈페이지"> 홈페이지 </option>
+          </select>
+                    </li>
+                </ul>
+                <ul>
+                  <li id="cont_left">내 용</li>
+                    <li id="cont_right">
+                    <textarea rows="22" cols="90" name="content" class="textaria" style="resize:none;"></textarea></li>
+                </ul>
+                <ul>
+                  <li id="add_left">내 용</li>
+                    <li id="add_right">
+                    <input type="file" id="fom"></li>
+                </ul>
+                
+                <em class="bott_btn">
+        <a href="#" >쓰기</a>
+        </em>
+            </div>
+         </div>
+{% endblock %}
