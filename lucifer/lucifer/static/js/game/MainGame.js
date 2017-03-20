@@ -23,6 +23,16 @@ function main(evt){
 	});
     console.log(SceneMgr);
 
+    //--Scroller Setting
+    var TestScrollObject = new Pig2d.util.scroller.type_finalfight({
+    	scroll_center : 1271,
+    	speed : 150,
+    	front_layer : textures['Map/TestStage.png'],
+    	back_layer : textures['Map/TestStage.png'],
+    	backlayer_rate : 0.6
+    });
+    SceneMgr.add(TestScrollObject.getRoot());
+
 	//--Sprite Node Create
 	//****************************************************************************************************
 	var Stand_Sprite = new Array();
@@ -465,13 +475,13 @@ function main(evt){
 
 		Angle *= gbox3d.core.RADTODEG;		
 
-		console.log(vMousePos);
-		console.log(vPlayerPos);
-		console.log(Angle);	
+		//console.log(vMousePos);
+		//console.log(vPlayerPos);
+		//console.log(Angle);	
 
 		Direction = Angle / 45;
 		parseInt(Direction);
-		console.log(Direction);
+		//console.log(Direction);
 		
 		if(Direction > 0 && Direction < 1)
 		{
@@ -527,8 +537,7 @@ function main(evt){
 			Change_SpriteNumber(Direction, 1);			
 		}
 	});	
-	*/
-	
+	*/	
 	//****************************************************************************************************
 
 	//--Game Loop
@@ -558,10 +567,11 @@ function main(evt){
 }
 
 Pig2d.util.SetupAsset({
-	asset_path : "../../static/images/game/Player/Bavarian/",
+	asset_path : "../../static/images/game/",
 	img_files : [
-		"stand/Stand.png",
-		"walk/Walk.png"
+		"Player/Bavarian/stand/Stand.png",
+		"Player/Bavarian/walk/Walk.png",
+		"Map/TestStage.png"
 	],
 	OnLoadComplete : main
 });

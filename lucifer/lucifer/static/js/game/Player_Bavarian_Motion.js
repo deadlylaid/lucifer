@@ -90,7 +90,7 @@ function Player_Bavarian_StandSprite(evt, SpriteIndex)
 				},
 			]
 		},
-		imgObj : textures['stand/Stand.png']
+		imgObj : textures['Player/Bavarian/stand/Stand.png']
 	});
 
 	Stand_SpriteNode.set({model: Standmodel});
@@ -186,7 +186,7 @@ function Player_Bavarian_WalkSprite(evt, SpriteIndex)
 				},
 			]
 		},
-		imgObj : textures['walk/Walk.png']
+		imgObj : textures['Player/Bavarian/walk/Walk.png']
 	});	
 
 	Walk_SpriteNode.set({model: Walkmodel});
