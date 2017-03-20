@@ -25,7 +25,7 @@ function main(evt){
 
     //--Scroller Setting
     var TestScrollObject = new Pig2d.util.scroller.type_finalfight({
-    	scroll_center : 160,
+    	scroll_center : 1271,
     	speed : 150,
     	front_layer : textures['Map/TestStage.png'],
     	back_layer : textures['Map/TestStage.png'],
