@@ -1,0 +1,311 @@
+{% extends "sub_base.html" %}
+{% load staticfiles %}
+
+{% block js %}
+<script src="{% static "js/FAQ.js" %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/Customer_Faq.css" %}"/>
+{% endblock %}
+
+
+{% block style %}
+.Back { background:url({% static "images/main_bg_1.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1600px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
+.Wrap {height:900px;}
+.Container {height:900px;}
+.Left_box{height:900px;}
+{% endblock %}
+
+
+{% block leftnav %}
+<div id="most_left_menu_area01">
+    <div class="most_left_menu_tit">
+      고객센터
+    </div>
+      <ul class="most_left_menu">
+        <li>&gt; FAQ</li>
+                <li><a href="#">&gt; 문의/신고</a></li>   
+      </ul>
+    </div>
+{% endblock %}
+
+{% block sub_title %}
+        <h2>FAQ</h2>
+                <p id="navi">
+           <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 고객센터 &gt; <span>FAQ</span></p>
+{% endblock %}
+
+{% block content %}
+<div class="panel">   
+     <div role="tabpanel">
+         <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">회원정보</a></li>
+          <li role="presentation"><a href="#play" aria-controls="play" role="tab" data-toggle="tab">게임이용</a></li>
+          <li role="presentation"><a href="#install" aria-controls="install" role="tab" data-toggle="tab">설치/실행</a></li>
+                <li role="presentation"><a href="#security" aria-controls="security" role="tab" data-toggle="tab">보안/운영</a></li>
+                <li role="presentation"><a href="#ex" aria-controls="ex" role="tab" data-toggle="tab">기타</a></li>
+        </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="info">
+              <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[회원정보] </li>
+          <li class="title3 t1_1"><a href="#self" onclick="#">비밀번호는 어떻게 변경하나요?</a></li>
+        </ul>
+                <div class="body b1_1">
+            비밀번호 변경 방법은 홈페이지에 로그인을 하신 후 회원정보를 클릭하여 [비밀번호 변경]메뉴에서 변경하시면 됩니다.<br /><br />
+            [로그인] -> [회원정보] -> [비밀번호 변경]
+          </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[회원정보] </li>
+          <li class="title3 t1_2"><a href="#self" onclick="#">정보수정은 어떻게 하나요?</a></li>
+        </ul>
+                <div class="body b1_2">
+            먼저 로그인을 하시고 회원정보 탭을 클릭하시면 정보수정이 가능합니다.<br /><br />
+            [로그인] -> [회원정보]
+          </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[회원정보] </li>
+          <li class="title3 t1_3"><a href="#self" onclick="#">회원 탈퇴는 어떻게 진행하나요?</a></li>
+        </ul>
+                <div class="body b1_3">
+            회원 탈퇴의 경우<br />
+            고객님께서 로그인 이후에<br />
+            [로그인] -> [회원정보] -> [회원탈퇴]<br />
+            를 통하여 직접 진행을 하셔야 합니다.
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[회원정보] </li>
+          <li class="title3 t1_4"><a href="#self" onclick="#">회원 가입은 어떻게 하나요?</a></li>
+        </ul>
+                <div class="body b1_4">
+            홈페이지 맨 위 Bar에 회원가입 탭을 이용하거나<br />
+            왼쪽 로그인 버튼 밑 회원가입 탭을 이용하여<br />
+                        회원가입을 진행하시면 됩니다.
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[회원정보] </li>
+          <li class="title3 t1_5"><a href="#self" onclick="#">아이디/비밀번호를 잊어버렸어요.</a></li>
+        </ul>
+                <div class="body b1_5">
+            왼쪽 로그인 버튼 밑 아이디/비밀번호 찾기 버튼을 눌러 변경을 진행하시면 됩니다.
+        </div>
+            </div>
+            
+        <div role="tabpanel" class="tab-pane " id="play">
+              <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[게임이용] </li>
+          <li class="title3 t2_1"><a href="#self" onclick="#">레벨업이 어려워요.</a></li>
+        </ul>
+                <div class="body b2_1">
+            레벨업 방법에는 다양한 방법이 존재하며, 필드에서의 몬스터 사냥 이외에도 <br />
+            여러 컨텐츠를 이용해 쉽게 레벨을 올릴 수 있습니다.<br /><br />
+            1. Stage 몬스터 이용<br />
+            2. Stage 보스 클리어<br />
+            3. 메인퀘스트, 서브퀘스트<br />
+            4. 필드 몬스터<br /><br />
+            이 처럼 다양한 이벤트를 통해서 많은 양의 경험치와 보상을 획득할 수 있습니다.<br />
+            따라서 이벤트들을 적극적으로 이용하시면 레벨 상승이 보다 수월해집니다.<br />
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[게임이용] </li>
+          <li class="title3 t2_2"><a href="#self" onclick="#">스테이지는 어떻게 깨나요?</a></li>
+        </ul>
+                <div class="body b2_2">
+            스테이지는 총 5 스테이지까지 있으며, <br />
+            스테이지 진행에는 서브퀘스트, 메인퀘스트를 차례차례 진행하여<br />
+            스테이지 마지막 보스를 처치하시면 스테이지가 클리어됩니다.
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[게임이용] </li>
+          <li class="title3 t2_3"><a href="#self" onclick="#">퀘스트 진행은 어떻게 하나요?</a></li>
+        </ul>
+                <div class="body b2_3">
+            퀘스트는 메인퀘스트, 서브퀘스트, 반복퀘스트가 있으며,<br />
+                        메인퀘스트는 게임 스토리와 관련된 퀘스트로 마을 촌장에게 받아 진행할 수 있습니다.<br />
+            서브퀘스트는 스테이지 내부 스토리 진행시 받을 수 있는 보조 퀘스트입니다.<br />
+            반복퀘스트는 레벨업을 위한 단순 반복 퀘스트입니다.<br />
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[게임이용] </li>
+          <li class="title3 t2_4"><a href="#self" onclick="#">아이템은 어떻게 얻나요?</a></li>
+        </ul>
+                <div class="body b2_4">
+            아이템을 얻기 위한 두 가지 방법이 있습니다.<br /><br />
+            하나, 몬스터를 잡는다.<br />
+            &nbsp;&nbsp;몬스터 처치시 드랍되는 아이템을 획득합니다.<br />
+            둘, 퀘스트 완료 보상을 받는다.<br />
+            &nbsp;&nbsp;퀘스트 진행 후 해당 NPC에게 완료 보고를 하면 보상이 주어집니다.<br />
+        </div>
+            </div>
+        <div role="tabpanel" class="tab-pane " id="install">
+              <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[설치/실행] </li>
+          <li class="title3 t3_1"><a href="#self" onclick="#">게임접속이 안됩니다.</a></li>
+        </ul>
+                <div class="body b3_1">
+            업데이트 이후 또는 이전에 발생하지 않던 문제가 발생될 경우, 쿠키 삭제를 통하여 문제를 해결해주시기 바랍니다.<br />
+            1. 사용 중인 브라우저의 쿠키를 삭제해주세요.<br />
+            &nbsp;&nbsp;- 각 브라우저의 쿠키 삭제 방법은 아래를 참고해주시기 바랍니다.<br />
+            2. 알약, V3 등 백신 프로그램을 이용하여 [PC최적화],　불필요한 항목을 [정리시작] 해주세요.<br />
+            3. 사용 중인 웹 브라우저를 모두 종료해주세요.<br />
+            4. PC를 재부팅 후 게임에 재 접속해주세요.<br /><br />
+
+            ■ 익스플로러 브라우저 해결 방법<br />
+            1. 익스플로러 메뉴에서 [도구]-[인터넷 옵션]으로 이동해주세요.<br />
+            2. [일반] 탭의 [검색 기록]에서 [삭제]를 클릭 하여 주세요.<br />
+            3. 항목을 체크 후 [삭제]를 진행해주시기 바랍니다.<br /><br />
+
+            ■ 구글 크롬 브라우저 해결 방법<br />
+            1. 크롬 메뉴에서 [설정]으로 이동해주세요.<br />
+            2. 하단의 [고급 설정 표시]를 클릭해주세요.<br />
+            3. 개인정보 탭의 [인터넷 사용정보 삭제]를 클릭해주세요.<br />
+            4. 항목을 체크 후 [삭제]를 진행해주시기 바랍니다.<br />
+          </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[설치/실행] </li>
+          <li class="title3 t3_2"><a href="#self" onclick="#">스마트폰으로 게임 접속이 가능한가요?</a></li>
+        </ul>
+                <div class="body b3_2">
+            안타깝게도 LUCIFER는 스마트폰으로 게임 접속이 불가능합니다.<br />
+            빠른 시일 내에 스마트폰으로도 즐기실 수 있도록 노력하겠습니다.
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[설치/실행] </li>
+          <li class="title3 t3_3"><a href="#self" onclick="#">로그인을 했는데 다시 로그인을 하라고 나와요.</a></li>
+        </ul>
+                <div class="body b3_3">
+            컴퓨터의 보안설정이 높게 설정이 되어있는 경우, 로그인이 정상적으로 되지 않는 경우가 있습니다.<br /><br />
+ 
+            이 경우, 아래와 같이 우선 설정을 바꿔주신 후에 다시 로그인 해보시길 바라겠습니다.<br />
+            &nbsp;&nbsp;1. InternetExploer창(인터넷 창) → [도구] → [인터넷옵션] → [보안] → [설정]을 낮음<br />
+            &nbsp;&nbsp;2. InternetExploer창(인터넷 창) → [도구] → [인터넷옵션] → [개인정보] → [설정]을 낮음<br />
+            &nbsp;&nbsp;3. 설정을 완료하신 후 다시 로그인 해보시길 바랍니다.<br />
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[설치/실행] </li>
+          <li class="title3 t3_4"><a href="#self" onclick="#">게임 제한 연령만 이용할 수 있나요?</a></li>
+        </ul>
+                <div class="body b3_4">
+            LUCIFER는 게임등급위원회 심의 결과 청소년이용불가 등급을 받았으며 
+            이로인하여 만 18세 미만은 게임 이용이 불가능합니다.
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[설치/실행] </li>
+          <li class="title3 t3_5"><a href="#self" onclick="#">게임 실행을 위해 클라이언트 설치가 필요한가요?</a></li>
+        </ul>
+                <div class="body b3_5">
+            LUCIFER는 별도의 설치 필요없이 바로 즐길수 있는 웹게임으로 <br />
+            웹브라우저를 통해 어디서든 쉽게 접속할 수 있습니다.
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[설치/실행] </li>
+          <li class="title3 t3_6"><a href="#self" onclick="#">게임 접속 불가 현상 또는 업데이트 내용이 적용되어 있지 않습니다.</a></li>
+        </ul>
+                <div class="body b3_6">
+            게임 접속이 정상적으로 진행 되지 않거나 업데이트 내용이 적용 되지 않을 경우 아래의 해결 방법을 참고해 주시기 바랍니다.<br /><br />
+ 
+            1. 이용중인 웹 브라우저의 쿠키 및 인터넷 임시 파일 삭제를 하시기 바랍니다. <br />
+            2. 백신 프로그램을 이용하여 PC 최적화와 불필요한 항목을 정리하시기 바랍니다.<br />
+            3. 이용중인 웹브라우저를 모두 종료 후 다시 진행해 보시기 바랍니다.<br />
+            4. PC를 재부팅 한 뒤 게임에 접속하여 주세요.<br /><br />
+ 
+            위 방법으로도  적용이 되지 않을 경우 1:1 문의를 주시면 도움을 드리겠습니다.
+          </div>
+            </div>
+            <div role="tabpanel" class="tab-pane " id="security">
+              <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[보안/운영] </li>
+          <li class="title3 t4_1"><a href="#self" onclick="#">고객센터 운영시간은 어떻게 되나요?</a></li>
+        </ul>
+                <div class="body b4_1">
+            LUCIFER 고객센터 운영시간은 아래와 같습니다.<br /><br />
+
+            ☎ LUCIFER 고객센터 '전화상담' 운영 안내<br />
+            - 전화: 1566-4545 <br />
+            - 팩스: 041-521-1348 <br />
+            - 시간: 평일(월~금) 10:00~ 12:30 / 13:30~ 18:30 <br />
+            　　　　　※ 주말 및 공휴일 휴무<br />
+          </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[보안/운영] </li>
+          <li class="title3 t4_2"><a href="#self" onclick="#">게임 중 버그를 발견했어요.</a></li>
+        </ul>
+                <div class="body b4_2">
+            홈페이지 > 왼쪽아래메뉴 > 버그게시판을 통해 접수해 주시기 바라며,<br />
+            확인후 신속히 조치할 수 있도록 하겠습니다.<br /><br />
+            단, 버그여부를 확인 > 발생 원인확인 > 문제해결 순으로 진행 되며,<br />
+            버그에 따라 소요 시간이 다를 수 있는 점 양해 바랍니다.<br />
+          </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[보안/운영] </li>
+          <li class="title3 t4_3"><a href="#self" onclick="#">고객센터 전화번호는 어떻게 되나요?</a></li>
+        </ul>
+                <div class="body b4_3">
+            LUCIFER 고객센터 번호는 1566-4545 이며 <br /> 평일 9시 30분~ 18시 30분까지 상담이 가능합니다.<br />
+            * 점심시간 12시 30분 ~ 13시 30분
+          </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[보안/운영] </li>
+          <li class="title3 t4_4"><a href="#self" onclick="#">화면 글씨가 깨져서 나와요.</a></li>
+        </ul>
+                <div class="body b4_4">
+            메인 홈페이지 -> 고객센터 에 빠짐없이 양식에 맞게 작성하여 주시면 빠른 시일 내에 수정 조치 하겠습니다.
+        </div>
+                <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[보안/운영] </li>
+          <li class="title3 t4_5"><a href="#self" onclick="#">아이템을 해킹 당했는데 복구가 가능한가요?</a></li>
+        </ul>
+                <div class="body b4_5">
+            복구 신청은 아이템이 소실된 이후 7일(공휴일 포함)이내에 하셔야 합니다.<br />
+            메인 홈페이지->고객센터 에 문의 사항란을 빠짐없이 자세히 작성해 주시면<br />
+            빠른 시일 내에 접수하여 처리해 드리겠습니다.
+        </div>
+            </div>
+            <div role="tabpanel" class="tab-pane " id="ex">
+              <ul class="most_board_list">
+          <!--li class="category">[일반]</li-->
+          <li class="category">[기타] </li>
+          <li class="title3 t5_1"><a href="#self" onclick="#">스크린샷은 어떻게 찍나요?</a></li>
+        </ul>
+                 <div class="body b5_1">
+            웹게임에서는 대체로 스크린샷 자동 저장 기능을 제공하지 않고 있습니다.<br />
+            기본적인 캡쳐 기능을 이용하여 스크린샷 처럼 사용하실 수 있으니<br />
+            아래 내용을 참고하여 주시기 바랍니다.<br /><br />
+ 
+            [스크린샷 저장 방법]<br />
+            1. 키보드 우측 상단의 PrintScreen 키를 눌러 주세요.<br />
+            2. 컴퓨터의 그림판을 실행시켜 주세요.<br />
+            3. 그림판에 붙여넣기(Ctrl+V)를 해주세요.<br />
+            4. 원하시는 위치에 저장하시면 스크린샷이 됩니다.
+        </div>
+            </div>
+      </div>
+
+  </div>
+  </div>
+{% endblock %}

@@ -2,11 +2,11 @@ from django.views.generic import View
 from django.shortcuts import render
 
 
-class ScreenShot(View):
+class Faq(View):
 
     def get(self, request):
         return render(
                 request,
-                "posts/screenshot.html",
+                "posts/faq.html",
                 context={}
                 )
