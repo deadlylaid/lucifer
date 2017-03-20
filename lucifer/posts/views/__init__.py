@@ -9,3 +9,4 @@ from .storyintro import StoryIntro
 from .jobintro import JobIntro
 from .screenshot import ScreenShot
 from .faq import Faq
+from .rescue import Rescue
