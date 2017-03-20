@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^freeboard/(?P<pk>\d+)/comment/create/$', CommentCreateView.as_view(), name='comment_create'),
 
     url(r'^notice/$', ListNotice.as_view(), name='notice_list'),
+    url(r'^notice/(?P<pk>\d+)/$', NoticeDetailView.as_view(), name='notice_detail'),
     url(r'^ranking/$', RankingView.as_view(), name='ranking'),
     url(r'^events/$', ListEvent.as_view(), name='event_list'),
     url(r'^qna/$', QnaCreateView.as_view(), name='qna'),
