@@ -34,10 +34,5 @@ class LogInPage(TestCase):
 
     # '/login/'로 들어가면 LogIn view를 호출한다
     def test_log_in_resolves_to_join_view(self):
-        found = resolve('/login/')
-        self.assertEqual(found.func.__name__, LogIn.__name__)
-
-    # '/login/'로 들어가면 login.html이 랜더링 된다.
-    def test_login_url_render_login_html(self):
-        response = self.client.get('/login/')
-        self.assertTemplateUsed(response, 'users/login.html')
+        found = resolve('/')
+        self.assertEqual(found.func.__name__, Home.__name__)
