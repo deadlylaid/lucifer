@@ -7,3 +7,4 @@ from .qna import QnaCreateView
 from .event import ListEvent
 from .storyintro import StoryIntro
 from .jobintro import JobIntro
+from .screenshot import ScreenShot
