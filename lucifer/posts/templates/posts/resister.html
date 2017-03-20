@@ -1,0 +1,85 @@
+{% extends "sub_base.html" %}
+{% load staticfiles %}
+
+{% block js %}
+<script src={% static "js/Resister.js" %}></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/Resister.css" %}"/>
+{% endblock %}
+
+{% block style %}
+.Back { background:url({% static "images/main_bg_1.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1600px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
+.Wrap {height:900px;}
+.Container {height:900px;}
+.Left_box{height:900px;}
+{% endblock %}
+
+
+{% block leftnav %}
+<div id="most_left_menu_area01">
+    <div class="most_left_menu_tit">
+      회원가입
+    </div>
+      <ul class="most_left_menu">
+        <li>&gt; 회원가입</li>  
+      </ul>
+    </div>
+{% endblock %}
+
+{% block sub_title %}
+       <h2>회원가입</h2>
+                <p id="navi">
+           <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; <span>회원가입</span></p>
+{% endblock %}
+
+{% block content %}
+<div id="most_sub_cont_area">
+         <form method="post" class="form-inline" action="#">
+          <div id="title">
+              <ul>
+                  <li id="Name_left">이름</li>
+                    <li id="Name_right">
+                    <input type="text" class="form-control" id="Name"placeholder="실명을 입력하세요." >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한글로 입력해주세요.</li>
+                </ul>
+              <ul>
+                  <li id="ID_left">아이디</li>
+                    <li id="ID_right">
+                    <input type="text" class="form-control" id="ID"placeholder="영/소문자 구분" >&nbsp;&nbsp;&nbsp;&nbsp&nbsp;<input class="btn btn-default" type="button" value="아이디 중복 확인"></li>
+                </ul>
+                <ul>
+                  <li id="PW_left">비밀번호</li>
+                    <li id="PW_right">
+                    <input type="password" class="form-control" id="PW" placeholder="비밀번호를 입력하세요." >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영/문자혼합 15~20자</li>
+                </ul>
+                <ul>
+                  <li id="PWCH_left">비밀번호확인</li>
+                    <li id="PWCH_right">
+                    <input type="password" class="form-control" id="PWCH" placeholder="비밀번호를 확인하세요." ><span id="PWCHText">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호 확인</span></li>
+                </ul>
+                <ul>
+                  <li id="Email_left">이메일</li>
+                    <li id="Email_right">
+                    <input type="email" class="form-control"  id="Email" placeholder="이메일 양식에 맞춰 적어주세요." > 
+
+                    <p>
+          <span>메일 주소를 등록하시면 각종 서비스 소식과 이벤트을 받으실수 있습니다.</span><br />
+                    <span> E-mail 수신동의 : </span>&nbsp;&nbsp;
+                    <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="yes" value="yes" checked="checked"> 예
+          </label>
+          <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="no" value="no"> 아니오
+          </label></p>
+                    </li>
+                </ul>
+                <ul>
+                  <li id="Subm">
+                    <button type="submit" class="btn btn-default">가입</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="btn btn-default">취소</button></li>
+                </ul>
+            </div>
+         </form>
+         </div>
+{% endblock %}
