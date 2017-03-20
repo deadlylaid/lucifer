@@ -37,14 +37,36 @@ function main(evt){
     */
     
     //--Scroller Setting
+    /*
     var TestScrollObject = new Pig2d.util.scroller.type_finalfight({
     	scroll_center : 640,
     	speed : 150,
     	front_layer : textures['Map/TestStage.png'],
-    	back_layer : textures['Map/TestStage.png'],
-    	backlayer_rate : 0.6
+    	back_layer : textures['Map/TestStage.png'],    	
+    	backlayer_rate : 0
     });  
     SceneMgr.add(TestScrollObject.getRoot());
+    */
+
+    var TestScroll_Dummy = Pig2d.util.createDummy();   
+    var TestMap_Iamge = Pig2d.util.createSlicedImage({
+    	imgObj: textures['Map/TestStage.png']
+    });
+    
+    TestScroll_Dummy.add(TestMap_Iamge);
+    SceneMgr.add(TestScroll_Dummy);
+
+    //트랜지션 세팅
+    TestScroll_Dummy.get('model').setupTransition({
+          TransitionEndCallBack : function() {
+         }
+    });
+
+    TestMap_Iamge.get('model').setupTransition({
+           TransitionEndCallBack : (function() {
+         })
+    });  
+
     
 	//--Sprite Node Create
 	//****************************************************************************************************
@@ -448,8 +470,13 @@ function main(evt){
 	var vMousePos;
 	GameScreen.addEventListener('mousedown', function(evt){		
 
-		TestScrollObject.setScrollPos(evt.layerX);
-
+		//Scroll
+		//***********************************************************************************************
+		//TestScrollObject.setScrollPos(evt.layerX);		
+		//***********************************************************************************************
+       	
+		//Angle
+		//***********************************************************************************************
 		vMousePos = new gbox3d.core.Vect3d(evt.layerX, evt.layerY, 0);
 
 		var PlayerPos = sprite_node.get('model').getPosition();
@@ -472,7 +499,7 @@ function main(evt){
 		}
 
 		Angle *= gbox3d.core.RADTODEG;			
-		
+	
 		/*
 		function abs3Value(value){
 			var result = Math.pow(value.X - 0, 2) + Math.pow(value.Y - 0, 2) + Math.pow(value.Z - 0, 2);
@@ -485,14 +512,14 @@ function main(evt){
 		Angle = Math.acos(CosValue) * (180 / Math.PI);
 		*/
 
-		console.log(vMousePos);
-		console.log(vPlayerPos);
-		console.log(Angle);	
+		//console.log(vMousePos);
+		//console.log(vPlayerPos);
+		//console.log(Angle);	
 
 		Direction = Angle / 45;
-		parseInt(Direction);
-		console.log(Direction);
-		
+		//parseInt(Direction);
+		//console.log(Direction);
+		//***********************************************************************************************		
 		if(Direction > 0 && Direction < 1)
 		{
 			Direction = 0;
@@ -526,28 +553,42 @@ function main(evt){
 			Direction = 7;
 		}		
 
-		Change_SpriteNumber(Direction, 1);		
+		Change_SpriteNumber(Direction, 1);
 	});
 	GameScreen.addEventListener('mouseup', function(evt){
 		Change_SpriteNumber(Direction, 0);
 	});
 
-	//--Player Move		
+	//-- Scroll Move
+	//스크롤 잘 안됨. 지금 여기서 할께 아니라 위에 함수에서 실행해 봐야됨. 그리고 X 관련된 스크롤도 해봐야됨.
 	/*
 	var MouseControler = new Pig2d.util.controller.MouseSpot({
 		listener_element : document,
-		node : sprite_node,
-		speed : 0,
+		node : TestScroll_Dummy,
+		speed : 150,
 		setupCallBack : function(){
 		},
 		endCallBack : function(){
-			Change_SpriteNumber(Direction, 0);			
+			TestScroll_Dummy.get('model').stopTransition();
+            TestMap_Iamge.get('model').stopTransition();			
 		},
 		startCallBack : function(evt){				
-			Change_SpriteNumber(Direction, 1);			
+			var targetY = 400 - (evt.layerY - TestScroll_Dummy.get('model').getPosition().Y);
+			var dist = Math.abs(TestScroll_Dummy.get('model').getPosition().Y - targetY);
+            var duration = (dist / 150); //초당 speed 만큼 간다.            
+
+            TestScroll_Dummy.get('model').transition({
+                position : new gbox3d.core.Vect2d(targetY,0),
+                time : duration
+            });
+
+            TestMap_Iamge.get('model').transition({
+                position : new gbox3d.core.Vect2d(-targetY * 0.6, 0),
+                time : duration
+            });				
 		}
 	});	
-	*/	
+	*/		
 	//****************************************************************************************************
 
 	//--Game Loop
