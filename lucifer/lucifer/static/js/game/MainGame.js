@@ -6,6 +6,8 @@
 * Sprite Image 띄우기 / 마우스 이동 / Sprite 각도에 따라 변환.
 * 2017년 3월 17일 최영준
 * Player Direction 구하기 완료.
+* 2017년 3월 20일 최영준
+* Map 이미지 띄움.
 * **************************/
 //## Main Function
 function main(evt){
@@ -23,16 +25,27 @@ function main(evt){
 	});
     console.log(SceneMgr);
 
+    //--Test Stage Setting
+    /*
+    var TestStage_Map = Pig2d.util.createSlicedImage({
+    	imgObj : textures['Map/TestStage.png'],
+    	basex : -textures['Map/TestStage.png'].width / 2,
+    	basey : -textures['Map/TestStage.png'].height / 2
+    });
+    TestStage_Map.get('model').setPosition(500, 400);
+    SceneMgr.add(TestStage_Map);
+    */
+    
     //--Scroller Setting
     var TestScrollObject = new Pig2d.util.scroller.type_finalfight({
-    	scroll_center : 1271,
+    	scroll_center : 640,
     	speed : 150,
     	front_layer : textures['Map/TestStage.png'],
     	back_layer : textures['Map/TestStage.png'],
     	backlayer_rate : 0.6
-    });
+    });  
     SceneMgr.add(TestScrollObject.getRoot());
-
+    
 	//--Sprite Node Create
 	//****************************************************************************************************
 	var Stand_Sprite = new Array();
@@ -430,38 +443,23 @@ function main(evt){
 	var GameScreen = document.querySelector(".pig2d-fullscreen");
 	var Angle = 0;
 	var Direction = 0;
-	
+
+	//--MouseDown Event
 	var vMousePos;
 	GameScreen.addEventListener('mousedown', function(evt){		
+
+		TestScrollObject.setScrollPos(evt.layerX);
+
 		vMousePos = new gbox3d.core.Vect3d(evt.layerX, evt.layerY, 0);
 
 		var PlayerPos = sprite_node.get('model').getPosition();
-		var vPlayerPos = new gbox3d.core.Vect3d(PlayerPos.X, PlayerPos.Y, 0);
+		var vPlayerPos = new gbox3d.core.Vect3d(PlayerPos.X, PlayerPos.Y, 0);		
 		//var vPlayerPos = new gbox3d.core.Vect3d(640, 400, 0);
 
 		//플레이어가 마우스를 바라보는 방향벡터를 구함
-		//var PlayerDir = MousePos.subToThis(PlayerPos);
-		//PlayerDir.normalize();
-
 		var vPlayerDir = vMousePos.substract(vPlayerPos);
 		//vPlayerDir.normalize();
-
-		//각도를 구함. 8방향
-		//Angle = vPlayerDir.getAngle();
-		//Angle = Math.atan2(vPlayerDir.Y, vPlayerDir.X);
-		//Angle *= gbox3d.core.RADTODEG;
-		//Angle += 90;
 		
-		/*
-		var Cos = vPlayerDir.dotProduct(LookDir);
-		Angle = Math.acos(Cos);
-		if(vPlayerPos.Y < vMousePos.Y)
-		{
-			Angle = 2 * gbox3d.core.PI - Angle;
-		}
-		Angle *= gbox3d.core.RADTODEG;		
-		*/
-
 		Angle = Math.atan(-vPlayerDir.Y / vPlayerDir.X);
 		
 		if(vPlayerDir.X < 0)
@@ -473,15 +471,27 @@ function main(evt){
 			Angle += 2 * Math.PI;
 		}
 
-		Angle *= gbox3d.core.RADTODEG;		
+		Angle *= gbox3d.core.RADTODEG;			
+		
+		/*
+		function abs3Value(value){
+			var result = Math.pow(value.X - 0, 2) + Math.pow(value.Y - 0, 2) + Math.pow(value.Z - 0, 2);
+			return result;
+		}
 
-		//console.log(vMousePos);
-		//console.log(vPlayerPos);
-		//console.log(Angle);	
+		var DotValue = vPlayerPos.dotProduct(vMousePos);
+		var CosValue = DotValue / (Math.sqrt(abs3Value(vPlayerPos)) * Math.sqrt(abs3Value(vMousePos)));
+
+		Angle = Math.acos(CosValue) * (180 / Math.PI);
+		*/
+
+		console.log(vMousePos);
+		console.log(vPlayerPos);
+		console.log(Angle);	
 
 		Direction = Angle / 45;
 		parseInt(Direction);
-		//console.log(Direction);
+		console.log(Direction);
 		
 		if(Direction > 0 && Direction < 1)
 		{
