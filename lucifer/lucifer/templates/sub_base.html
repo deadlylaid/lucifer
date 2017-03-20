@@ -100,7 +100,7 @@
 
         <div class="Quick_menu">
             <ul class="link_list">
-                <li><a href="#" onclick="window.open('../../../../posts/templates/posts/policy.html','window','width=880; height=650; scrollbars=yes');">
+                <li><a href="#" onclick="window.open('{% url 'policy' %}','window','width=880; height=650; scrollbars=yes');">
                     <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                     <span class="link_list_title"> 도움말 무엇이 궁금하세요? </span>
                     </a>
@@ -110,7 +110,7 @@
                     <span class="link_list_title"> FAQ 빠르게 해결해드립니다</span>
                     </a>
                 </li>
-                <li><a href="#" class="Bugreport">
+                <li><a href={% url "bugnotice" %} class="Bugreport">
                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                     <span class="link_list_title"> 버그게시판 버그를 올려주세요</span></a>
                 </li>
