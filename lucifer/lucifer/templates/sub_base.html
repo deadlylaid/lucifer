@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="{% static "css/Base.css" %}" />
 <link rel="stylesheet" href="{% static "css/News_Notice.css" %}" />
 <link rel="stylesheet" href="{% static "css/topbar.css" %}" />
+<link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
 
 <!-- css가 들어가는 위치 -->
 {% block css %}
@@ -42,7 +43,7 @@
 <div class="topbar_back" style="position:relative;">
   <div class="topbar_container">
     <div class="topbar_logo">
-        <h5><a href="#">LUCIFER</a></h5>
+        <h5><a href="#"></a></h5>
     </div>
     <div class="topbar_menu">
         <a href={% url "resister"%} target="_top" class="join">회원가입</a>
@@ -86,6 +87,15 @@
             <span>|</span>
             <a href="#">계정</a>/<a href="#">비밀번호찾기</a>
          </aside>
+         <div class="snslogin">
+                    SNS 로그인  
+                    <ul>
+                        <li>N</li>
+                        <li><i class="fa fa-comment" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-facebook-official" aria-hidden="true"></i></li>
+                    </ul>
+         
+                    </div>
             </div>
             </form>
             {% endif %}

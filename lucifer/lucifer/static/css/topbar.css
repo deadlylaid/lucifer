@@ -1,6 +1,6 @@
 .topbar_back {background:#101010; width:100%; margin:0 auto; padding:0; position:fixed; z-index:9999; }
 .topbar_container{position:relative; margin:0 auto; padding:0;width:1021px; height:40px; vertical-align:middle;}
-.topbar_container .topbar_logo{margin:0 auto; position:relative; background:#101010; float:left; font-size:10px;}
+.topbar_container .topbar_logo{margin:0 auto; position:relative; background:url('../images/topbar_logo.png') no-repeat; float:left; font-size:10px; width:77px; height:35px; margin-left:60px; }
 .topbar_container .topbar_menu{margin:7px auto 0; padding:0; float:right;}
 .topbar_container .topbar_menu a {float:right; height:22px; margin-left:15px; line-height:22px; font-size:12px; color:#999;}
 .topbar_container .topbar_menu a:hover {color:#fff;}
