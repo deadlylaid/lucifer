@@ -6,7 +6,7 @@ class Rescue(View):
 
     def get(self, request):
         return render(
-                request,
-                "posts/rescue.html",
-                context={}
-                )
+            request,
+            "posts/rescue.html",
+            context={}
+        )

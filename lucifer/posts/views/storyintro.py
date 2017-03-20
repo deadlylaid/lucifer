@@ -10,3 +10,13 @@ class StoryIntro(View):
                 "posts/gameintro_story.html",
                 context={}
                 )
+
+
+class StoryIntroDetail(View):
+
+    def get(self, request):
+        return render(
+                request,
+                "posts/gameintro_story_detail.html",
+                context={},
+                )

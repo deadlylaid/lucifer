@@ -33,7 +33,7 @@
             {% for notice in notices %}
             <ul class="most_board_notice_list">
                 <li class="num">전체공지</li>
-                <li class="title2"><a href="#self" onclick=""><b>[이벤트] {{ notice.title }}</b></a></li>
+                <li class="title2"><a href="{% url "notice_detail" notice.id %}" onclick=""><b>[이벤트] {{ notice.title }}</b></a></li>
                 <li class="date">{{ notice.created_at|date:"Y.m.d"}}</li>
             </ul>
             {% endfor %}
