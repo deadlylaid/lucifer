@@ -45,7 +45,7 @@ urlpatterns = [
     url(r'^rescue$', Rescue.as_view(), name='rescue'),
     url(r'^policy$', Policy.as_view(), name='policy'),
     url(r'^bugnotice$', BugNotice.as_view(), name='bugnotice'),
-    url(r'^resister$', Resister.as_view(), name='resister'),
+
 
 
     url(r'^check/chracter/$', CheckCharacter.as_view(), name='checkcharacter'),

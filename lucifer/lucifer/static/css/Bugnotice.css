@@ -11,8 +11,7 @@
 .Container .Content_in .Toptitle #navi img {float:left; margin:0px 3px;}
 
 /* 컨테이너 */
-.Container .Content_in #most_sub_cont_area {width:740px; height:790px; background:transparent; margin:10px; padding-top:20px;}
-.Container .Content_in #most_sub_cont_area #title { width:740px; height:130px; margin-top:15px; }
+.Container .Content_in #most_sub_cont_area {width:740px; height:790px; background:transparent; margin:10px; padding-top:20px;} .Container .Content_in #most_sub_cont_area #title { width:740px; height:130px; margin-top:15px; }
 .Container .Content_in #most_sub_cont_area #title li {float:left; border-top:1px solid #666; border-bottom:1px solid #666; font-size:13px; line-height:50px; }
 .Container .Content_in #most_sub_cont_area #title #top_left {width:100px; height:50px; background:#2f2f2f; color:#ffffff; margin:0; padding:0; margin-top:5px;}
 .Container .Content_in #most_sub_cont_area #title #top_right {width:640px; height:50px; margin:0; padding:0; margin-top:5px;}

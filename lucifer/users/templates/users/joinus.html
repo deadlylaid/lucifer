@@ -1,23 +1,31 @@
-{% extends "base.html" %}
+{% extends "sub_base.html" %}
 
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/joinus.css" %}"/>
+{% endblock %}
 
 {% block title %}
 회원가입
 {% endblock %}
 
 {% block content %}
-<h4>회원가입창</h4>
+<div class='joinuswrap'>
+    <h4>회원가입창</h4>
+    <div>
+        <form action="" method="post">
+          {% csrf_token %}
 
-<form action="" method="post">
-  {% csrf_token %}
+          <input class="minsoo-form-input" type="text" name="username" placeholder="유저네임" required>
+          <input class="minsoo-form-input" type="password" name="password" placeholder="비밀번호"required>
+          <input class="minsoo-form-input" type="password" name="password_check" placeholder="비밀번호확인"required>
+          <input class="minsoo-form-input" type="email" name="email" placeholder="이메일 입력"required>
+          <input type="submit" name="" value="확인" class="text">
+        </form>
+    </div>
+</div>
 
-  <input class="text" type="text" name="username" placeholder="유저네임" required>
-  <input class="text" type="password" name="password" placeholder="비밀번호"required>
-  <input class="text" type="password" name="password_check" placeholder="비밀번호확인"required>
-  <input class="text" type="email" name="email" placeholder="이메일 입력"required>
-  <input type="submit" name="" value="확인" class="text">
-  
 
-</form>
 
 {% endblock %}
