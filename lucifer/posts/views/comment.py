@@ -11,7 +11,7 @@ from posts.models.comment import Comment
 @method_decorator(require_POST, name='dispatch')
 class CommentCreateView(LoginRequiredMixin, CreateView):
 
-    login_url = '/login/'
+    login_url = '/'
     model = Comment
     fields = [
             'contents',
