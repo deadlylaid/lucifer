@@ -65,7 +65,6 @@ Pig2d.util.scroller = {
             });
 
             return this;
-
         }
 
         //마우스로 찍은 위치가 스크롤 화면 중앙으로 오도록 하려면 스크롤 포인트가 몇인지 계산해준다.
@@ -80,7 +79,6 @@ Pig2d.util.scroller = {
             var dist = Math.abs(scroll_root.get('model').getPosition().X - targetX);
             var duration = (dist / speed); //초당 speed 만큼 간다.
 
-
             scroll_root.get('model').transition({
                 position : new gbox3d.core.Vect2d(targetX,0),
                 time : duration
@@ -92,9 +90,7 @@ Pig2d.util.scroller = {
             });
 
             return this;
-
         }
-
 
         this.getRoot = function() {
             return scroll_root;
@@ -105,8 +101,6 @@ Pig2d.util.scroller = {
             return scroll_root.get('model').getDecomposePosition();
 
         }
-
-
     }
 
 }
