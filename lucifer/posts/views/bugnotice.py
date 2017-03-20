@@ -6,7 +6,7 @@ class BugNotice(View):
 
     def get(self, request):
         return render(
-                request,
-                "posts/bugnotice.html",
-                context={}
-                )
+            request,
+            "posts/bugnotice.html",
+            context={}
+        )
