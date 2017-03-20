@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+.Container {background:transparent; background-size:821px 1300px; margin:0; padding:0px 25px;}
+.Container .Content_in {width:770px; height:825px; background-color:rgba(0,0,0,0.3); padding:0px 5px;}
+
+.Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
+.Container .Content_in .Toptitle h2 {margin:0; padding:23px 16px; font-size:25px; width:250px; float:left; letter-spacing:2px;}
+.Container .Content_in .Toptitle #navi {float:right; display:block; width:90px; font-size:14px; margin-top:30px; margin-right:8px; font-size:13px; color:#cccfd5;}
+.Container .Content_in .Toptitle #navi span {font-weight:bold;}
+.Container .Content_in .Toptitle #navi img {float:left; margin:0px 3px;}
+
+/* 컨테이너 */
+.Container .Content_in .panel {width:740px; height:710px; background-color:rgba(0,0,0,0.8); margin:5px; padding-top:10px;}
+
+.Container .Content_in .panel #most_sub_cont_area #topranking {widht:720px; height:160px; background:#000; padding:0; margin:0; margin-bottom:50px;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top1 {width:240px; height:160px; background:url(../images/Ranking_top1.png) no-repeat; float:left;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top1 #Topid {color:#FFF; font-size:30px; float:right; margin:30px 20px 20px 30px; text-shadow:2px 2px #666;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top1 #Topinfo {color:#fff; font-size:15px; margin:20px; margin-right:30px; float:right;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top2 {width:240px; height:160px; background:url(../images/Ranking_top2.png) no-repeat; float:left;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top2 #Topid {color:#FFF; font-size:30px; float:right; margin:30px 15px 20px 30px; text-shadow:2px 2px #666;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top2 #Topinfo {color:#fff; font-size:15px; margin:20px; margin-right:30px; float:right;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top3 {width:240px; height:160px; background:url(../images/Ranking_top3.png) no-repeat; float:right;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top3 #Topid {color:#FFF; font-size:30px; float:right; margin:30px 15px 20px 30px; text-shadow:2px 2px #666;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #Top3 #Topinfo {color:#fff; font-size:15px; margin:20px; margin-right:30px; float:right;}
+.Container .Content_in .panel #most_sub_cont_area #topranking #text { float:right; margin:10px 3px; color:#999; font-size:12px;}
+
+.Container .Content_in .panel #most_sub_cont_area {width:740px; height:700px; padding:10px; overflow:hidden; background-color:rgba(0,0,0,0.5);}
+.Container .Content_in .panel #most_sub_cont_area .most_board_top {width:720px; height:37px;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_top li {float:left; height:37px; text-indent:-9999px;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_top li.noname {width:60px; background:url(../images/rankingbar_1.jpg) no-repeat 0 0;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_top li.title2 {width:180px; background:url(../images/rankingbar_2.jpg) no-repeat 0 0; background-size:180px 37px;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_top li.date {width:150px; background:url(../images/rankingbar_3.jpg) no-repeat 0 0;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_top li.level {width:150px; background:url(../images/rankingbar_4.jpg) no-repeat 0 0;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_top li.exp {width:180px; background:url(../images/rankingbar_5.jpg) no-repeat 0 0;}
+
+.Container .Content_in .panel #most_sub_cont_area .most_board_notice_list {width:720px; overflow:hidden;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_notice_list li {float:left; height:40px; color:#d4c4a4; background:url(../images/board_line2.png) no-repeat bottom left; line-height:40px;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_notice_list li.num { width:60px; text-align:center; font-size:13px; color:#ff9000; line-height:40px;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_notice_list li.title2 { width:180px; text-indent:10px; white-space:nowrap; overflow:hidden; text-align:center; font-size:13px;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_notice_list li.date {width:150px; text-align:center; color:#d4c4a4; font-size:13px; }
+.Container .Content_in .panel #most_sub_cont_area .most_board_notice_list li.level {width:150px; text-align:center; color:#d4c4a4; font-size:13px;}
+.Container .Content_in .panel #most_sub_cont_area .most_board_notice_list li.exp {width:180px; text-align:center; color:#d4c4a4; font-size:13px;}
+
+/* 컨테이너 END */
+
+em { font-style:normal;}
+.most_index {margin-top:50px; text-align:center;}
+.most_index a {display:inline-block; color:#9298a1; width:23px; height:24px; margin:0 1px; border:1px solid #3d4044; line-height:26px; font-size:11px;}
+.left_mg60 { margin-left:60px;}
+.most_index em a { width:56px; height:28px; margin:0; padding:0; border:none; background:url(../images/btn_type2.jpg) no-repeat 0 0; line-height:30px;}
+
+#most_left_menu_area01 { width:200px; height:143px; margin:0 auto; background:url(../images/left_menu_bg1.jpg) no-repeat 0 0; margin-top:35px;}
+#most_left_menu_area01 .most_left_menu_tit { width:200px; height:50px; margin:0 auto; line-height:50px; font-size:18px; color:#fff; text-align:left; padding-left:15px;}
+#most_left_menu_area01 .most_left_menu { width:200px; margin:0 auto;}
+#most_left_menu_area01 .most_left_menu li { height:40px; line-height:35px; font-weight:bold;  margin-bottom:5px; color:#ff2b2b; padding-left:20px; text-align:left; font-size:15px;}
+#most_left_menu_area01 .most_left_menu li a { font-weight:normal; color:#afb5bf; }
+
+.Left_box > .Quick_menu {width:200px; height:240px; margin-top:30px; background:transparent;}
+.Quick_menu .link_list { width:190px; height:215px; background-color:#f4f4f4; margin:0px auto 0 auto; text-align:left; vertical-align:middle; border:1px solid #bfbdbd; background:transparent; padding:0;}
+.Quick_menu .link_list .link_list_title {font-size:18px; font-weight:bold;}
+.Quick_menu .link_list li {margin:1px 0;}
+.Quick_menu .link_list li:first-child {background:url(../images/Quick_menu_help.png) no-repeat; }
+.Quick_menu .link_list li:first-child:hover {background:url(../images/Quick_menu_help_ov.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(2) {background:url(../images/Quick_menu_faq.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(2):hover {background:url(../images/Quick_menu_faq_ov.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(3) {background:url(../images/Quick_menu_bug.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(3):hover {background:url(../images/Quick_menu_bug_ov.png) no-repeat; }
+.Quick_menu .link_list li a { color:#666666; display:block; margin:0; width:190px; height:70px; text-indent:-1000px;}
+.Quick_menu .link_list li a:hover { text-decoration:none;}

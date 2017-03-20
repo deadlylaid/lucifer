@@ -14,6 +14,25 @@
 .Left_box{height:1080px;}
 {% endblock %}
 
+{% block leftnav %}
+<div id="most_left_menu_area01">
+		<div class="most_left_menu_tit">
+			NEWS
+		</div>
+			<ul class="most_left_menu">
+				<li><a href="#">&gt; 공지사항</a></li>
+                <li>&gt; 이벤트</li>		
+			</ul>
+		</div>
+
+{% endblock %}
+
+{% block sub_title %}
+<h2>이벤트</h2>
+                <p id="navi">
+           <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; NEWS &gt; <span>이벤트</span></p>
+{% endblock %}
+
 {% block content %}
 
 <div class="Top">          

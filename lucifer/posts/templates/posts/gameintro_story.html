@@ -1,0 +1,86 @@
+{% extends "sub_base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/Gameintro_Story.css" %}"/>
+{% endblock %}
+
+
+{% block style %}
+.Back { background:url({% static "images/main_bg_1.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1600px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
+.Wrap {height:1150px;}
+.Container {height:1150px;}
+.Left_box{height:1150px;}
+.idiv { width:760px; height:990px;   float:left;}
+iframe {width:760px; height:990px; border:none; z-index:999; position:relative;}
+.Detailbtn {float:right; margin-right:30px;}
+{% endblock %}
+
+
+{% block leftnav %}
+<div id="most_left_menu_area01">
+    <div class="most_left_menu_tit">
+      게임소개
+    </div>
+      <ul class="most_left_menu">
+        <li>&gt; 게임배경</li>
+                <li><a href="#">&gt; 직업소개</a></li>    
+      </ul>
+    </div>
+{% endblock %}
+
+{% block sub_title %}
+        <h2>게임배경</h2>
+                <p id="navi">
+           <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 게임소개 &gt; <span>게임배경</span></p>
+{% endblock %}
+
+{% block content %}
+<div id="most_sub_cont_area">
+            <div class="idiv">
+                  <iframe name="iFrameArea" scrolling="no"></iframe>
+            </div>
+          <div id="intro1">
+                      <div id="text">
+                          <h4>악마를 깨운 자들..</h4><br />
+                            <span id="sub">"마을 숲 속에 악마가 숨겨져 있대"</span><br /><br /><br />
+              <span id="insub">평화로운 인간 세계의 한 마을, <br />
+                전설처럼 내려오던 이야기 속 진실.<br />
+                마을의 말썽꾸러기 3인방은 친구들과의 내기에서<br />
+                                이기기 위해 마을 숲 속 깊숙히 있는 동굴에 들어간다.<br />
+                                그 날 그들은 정체불명의 존재와 마주치는데..</span>
+                        </div>
+                    </div>
+                    <div id="intro2">
+                      <div id="text">
+                          <h4>"악마군단과 대항하라, 영웅이여"</h4><br />
+                            <span id="sub">마을 촌장의 고심 끝의 결정!</span><br /><br /><br />
+              <span id="insub">어둠에 물든 인간 세계..<br />
+                악마가 깨어나 그의 군대는 인간 세계를 장악했다.<br />
+                                도저히 인간들의 힘으로는 그들과 맞설 수조차 없다.<br />
+                                &nbsp;촌장은 마을에 전해져 내려오던 비문에 적힌<br />
+                 고대 영웅 소환을 거행한다.<br />
+                "영웅이여, 인간 세계를 구해주세요."
+                                </span>
+                        </div>
+                    </div>
+                    <div id="intro3">
+                      <div id="text">
+                          <h4>대악마 Lucifer를 처단하라!</h4><br />
+              <span id="sub">"악마를 처리하기 위한 <br />
+              모든 지원을 아끼지 않겠소."</span><br /><br /><br />
+              <span id="insub">대악마 Lucifer의 대군단들은 인간 세계를 <br />
+                무참히 짓밟고 마구 유린하고 있다.<br />
+                                영웅은 아직 악에 물들지 않은 몇 개의 마을을 <br />
+                시작으로 대악마 Lucifer의 군대들을 처단해간다.</span>
+                        </div>
+                    </div>
+      </div>
+               <div class="Detailbtn">
+               <img src={% static "images/GameStory_Detailbtn.png" %} border="1" usemap="#map"/>
+               </div>
+                <map name="map">
+                  <area shape="rect" coords="0, 0, 100, 23" href="Gameintro_Story_Detail.html" target="iFrameArea" "/>
+                </map>
+{% endblock %}

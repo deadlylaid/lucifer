@@ -1,34 +1,35 @@
 @charset "utf-8";
 /* CSS Document */
 
+
 .Container {background:transparent; background-size:821px 1300px; margin:0; padding:0px 25px;}
-.Container .Content_in {width:770px; height:1150px; background-color:rgba(0,0,0,0.3); padding:0px 5px;}
+.Container .Content_in {width:770px; height:1130px; background-color:rgba(0,0,0,0.3); padding:0px 5px;}
 
 .Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
-.Container .Content_in .Toptitle h2 {margin:0; padding:23px 25px; font-size:25px; width:250px; float:left; letter-spacing:5px;}
-.Container .Content_in .Toptitle #navi {float:right; display:block; width:160px; font-size:14px; margin-top:30px; margin-right:0px; font-size:13px; color:#cccfd5;}
+.Container .Content_in .Toptitle h2 {margin:0; padding:23px 16px; font-size:25px; width:250px; float:left; letter-spacing:2px;}
+.Container .Content_in .Toptitle #navi {float:right; display:block; width:160px; font-size:14px; margin-top:30px; margin-right:8px; font-size:13px; color:#cccfd5;}
 .Container .Content_in .Toptitle #navi span {font-weight:bold;}
 .Container .Content_in .Toptitle #navi img {float:left; margin:0px 3px;}
 
-/* 컨테이너 */
-.Container .Content_in .panel {width:740px; height:1030px; background-color:rgba(0,0,0,0.8); margin:10px; padding-top:10px;}
-.Container .Content_in .panel .nav-tabs li:first-child { margin-left:5px;}
-.Container .Content_in .panel .nav-tabs li { width:240px; background:url(../images/GameJob_topbg.png) no-repeat;  height:40px; margin-bottom:10px; padding:0; margin-left:3px;}
-.Container .Content_in .panel .nav-tabs li a {color:#ffffff; font-size:18px; line-height:30px; letter-spacing:2px; font-weight:bold;}
-.Container .Content_in .panel .nav-tabs>li>a:hover { width:240px; height:51px; background:url(../images/GameJob_topbg_list.png) no-repeat; }
-.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover {width:240px; height:51px; background:url(../images/GameJob_topbg_list.png) no-repeat; }
 
-.Container .Content_in .panel .tab-pane img {margin:0px 5px;}
-.Container .Content_in .panel .tab-pane #tabtable {width:650px; height:100px; background:transparent; margin:20px auto 30px auto; border:1px solid #3d4044; color:#ffffff; font-weight:bold;}
-.Container .Content_in .panel .tab-pane #tabtable tr:first-child { background:#333;}
-.Container .Content_in .panel .tab-pane #tabtable tr {border:1px solid #3d4044;}
-.Container .Content_in .panel .tab-pane #tabtable tr td {border:1px solid #3d4044; width:81.25px;}
+.Container .Content_in #most_sub_cont_area {width:760px; height:1000px; padding:15px 10px; overflow:hidden;}
+.Container .Content_in #most_sub_cont_area #intro1 {width:740px; height:320px; background:url(../images/intro_1.jpg) no-repeat; margin-bottom:5px; padding:0;}
+.Container .Content_in #most_sub_cont_area #intro2 {width:740px; height:320px; background:url(../images/intro_2.jpg) no-repeat; margin-bottom:7px; padding:0;}
+.Container .Content_in #most_sub_cont_area #intro3 {width:740px; height:320px; background:url(../images/intro_3.jpg) no-repeat; padding:0;}
+.Container .Content_in #most_sub_cont_area #intro1 #text { width:280px; height:320px; color:#ffffff; margin-left:460px;  padding-top:40px; background-color:rgba(0,0,0,0.5); position:absolute;}
+.Container .Content_in #most_sub_cont_area #intro1 #text h4 {font-size:20px;}
+.Container .Content_in #most_sub_cont_area #intro1 #text #sub {font-size:16px; color:#CCC;}
+.Container .Content_in #most_sub_cont_area #intro1 #text #insub { font-size:13px;}
+.Container .Content_in #most_sub_cont_area #intro2 #text { width:280px; height:320px; color:#ffffff; margin:0; float:left; padding-top:40px; background-color:rgba(0,0,0,0.5); position:absolute;}
+.Container .Content_in #most_sub_cont_area #intro2 #text h4 {font-size:20px;}
+.Container .Content_in #most_sub_cont_area #intro2 #text #sub {font-size:16px; color:#CCC;}
+.Container .Content_in #most_sub_cont_area #intro2 #text #insub { font-size:13px;}
+.Container .Content_in #most_sub_cont_area #intro3 #text { width:280px; height:320px; color:#ffffff; margin-left:460px; float:right; padding-top:40px; background-color:rgba(0,0,0,0.5); position:absolute;}
+.Container .Content_in #most_sub_cont_area #intro3 #text h4 {font-size:20px;}
+.Container .Content_in #most_sub_cont_area #intro3 #text #sub {font-size:16px; color:#CCC;}
+.Container .Content_in #most_sub_cont_area #intro3 #text #insub { font-size:13px;}
 
 
-
-
-
-/* 컨테이너 END */
 
 em { font-style:normal;}
 .most_index {margin-top:50px; text-align:center;}

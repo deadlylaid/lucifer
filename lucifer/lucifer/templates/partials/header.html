@@ -22,7 +22,7 @@
             </h2>
                     <div class="depth">
                         <p>
-                            <a href="#">게임배경</a>
+                            <a href="{% url "storyintro" %}">게임배경</a>
                             <a href="{% url "jobintro" %}">직업소개</a>
                         </p>
                     </div>
@@ -39,7 +39,7 @@
                     <div class="depth">
                         <p>
                             <a data-bbsno="1" href="{% url "free_list" %}">자유게시판</a>
-                            <a data-bbsno="8" href="#">스크린샷</a>
+                            <a data-bbsno="8" href="{% url "screenshot" %}">스크린샷</a>
                         </p>
                     </div>
                 </li>
@@ -49,7 +49,7 @@
             </h2>
                     <div class="depth">
                         <p>
-                            <a href="#">FAQ</a>
+                            <a href="{% url "faq" %}">FAQ</a>
                             <a href="#">문의/신고</a>
                         </p>
                     </div>
@@ -98,7 +98,7 @@
                 <li class="menu2">
                     <div class="depth" style="padding-left:19px;">
                         <p>
-                            <a href="#">게임배경</a>
+                            <a href="{% url "storyintro" %}">게임배경</a>
                             <a href="{% url "jobintro" %}">직업소개</a>
                         </p>
                     </div>
@@ -112,15 +112,15 @@
                 <li class="menu4">
                     <div class="depth">
                         <p>
-                        <a href="{% url "free_list" %}">자유게시판</a>
-                            <a href="#">스크린샷</a>
+                            <a href="{% url "free_list" %}">자유게시판</a>
+                            <a href="{% url "screenshot" %}">스크린샷</a>
                         </p>
                     </div>
                 </li>
                 <li class="menu5">
                     <div class="depth">
                         <p>
-                            <a href="#">FAQ</a>
+                            <a href="{% url "faq" %}">FAQ</a>
                             <a href="#">문의/신고</a>
                         </p>
                     </div>

@@ -1,11 +1,137 @@
 {% extends "sub_base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/GameRanking.css" %}"/>
+{% endblock %}
+
+{% block style %}
+.Back { background:url({% static "images/main_bg_1.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1600px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
+.Wrap {height:850px;}
+.Container {height:850px;}
+.Left_box{height:850px;}
+{% endblock %}
+
+
+{% block leftnav %}
+<div id="most_left_menu_area01">
+        <div class="most_left_menu_tit">
+            랭킹
+        </div>
+            <ul class="most_left_menu">
+                <li>&gt; 게임 랭킹</li>     
+            </ul>
+        </div>
+{% endblock %}
 
 {% block sub_title %}
-랭킹
+<h2>게임 랭킹</h2>
+                <p id="navi">
+           <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 랭킹</p>
 {% endblock %}
 
 {% block content %}
-<div id="most_sub_cont_area">
+<div class="panel">   
+    <div id="most_sub_cont_area">  
+      
+      <div id="topranking">
+        <div id="Top1">
+            <span id="Topid"> hoeeon <br /></span>
+            <span id="Topinfo"> 소서리스 &nbsp;/ &nbsp;99 Lv &nbsp;/ &nbsp;24,321 </span>
+        </div>
+        <div id="Top2">
+            <span id="Topid"> Overface <br /></span>
+            <span id="Topinfo"> 야만전사 &nbsp;/ &nbsp;99 Lv &nbsp;/ &nbsp;23,452 </span>
+        </div>
+        <div id="Top3">
+            <span id="Topid"> Deadlylaid <br /></span>
+            <span id="Topinfo"> 팔라딘 &nbsp;/ &nbsp;99 Lv &nbsp;/ &nbsp;23,127 </span>
+        </div>
+        <span id="text"> * 랭킹은 경험치량 순으로 산정됩니다. </span>
+      </div>
+      
+    <!-- 게시판 리스트 -->
+        <ul class="most_board_top">
+            <li class="noname">순위</li>
+            <li class="title2">닉네임</li>
+            <li class="date">직업</li>
+            <li class="level">레벨</li>
+            <li class="exp">경험치</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">1</li>
+            <li class="title2">hoeeon</li>
+            <li class="date">소서리스</li>
+            <li class="level">99</li>
+            <li class="exp">24,321</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">2</li>
+            <li class="title2">Overface</li>
+            <li class="date">야만전사</li>
+            <li class="level">99</li>
+            <li class="exp">23,452</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">3</li>
+            <li class="title2">Deadlylaid</li>
+            <li class="date">팔라딘</li>
+            <li class="level">99</li>
+            <li class="exp">23,127</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">4</li>
+            <li class="title2">choongs</li>
+            <li class="date">야만전사</li>
+            <li class="level">98</li>
+            <li class="exp">23,875</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">5</li>
+            <li class="title2">Mansur</li>
+            <li class="date">팔라딘</li>
+            <li class="level">98</li>
+            <li class="exp">23,756</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">6</li>
+            <li class="title2">Junny</li>
+            <li class="date">소서리스</li>
+            <li class="level">98</li>
+            <li class="exp">22,987</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">7</li>
+            <li class="title2">Yungha</li>
+            <li class="date">야만전사</li>
+            <li class="level">98</li>
+            <li class="exp">21,622</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">8</li>
+            <li class="title2">Kalanov</li>
+            <li class="date">소서리스</li>
+            <li class="level">98</li>
+            <li class="exp">21,224</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">9</li>
+            <li class="title2">Westdingo</li>
+            <li class="date">팔라딘</li>
+            <li class="level">97</li>
+            <li class="exp">20,875</li>
+        </ul>
+        <ul class="most_board_notice_list">
+            <li class="num">10</li>
+            <li class="title2">Muhan</li>
+            <li class="date">야만전사</li>
+            <li class="level">97</li>
+            <li class="exp">20,657</li>
+        </ul>
+        
+     </div>
+  </div>
 
     {% for character in characters %}
     <ul class="most_board_notice_list">
@@ -19,10 +145,6 @@
     </ul>
     {% endfor %}
 
-
-    </div>
-    </div>
-</div>
 
 
 {% endblock %}

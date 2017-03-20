@@ -18,6 +18,9 @@
 {% block css %}
 {% endblock %}
 
+{% block js %}
+{% endblock %}
+
 <!-- style 코드가 틀어가는 위치 -->
 <style>
 .Back { 
@@ -32,8 +35,7 @@
 {% endblock %}
 </style>
 
-{% block js %}
-{% endblock %}
+
 </head>
 
 <body>
@@ -93,15 +95,8 @@
          </div>
       </div>
 
-      <div id="most_left_menu_area01">
-        <div class="most_left_menu_tit">
-            NEWS
-        </div>
-            <ul class="most_left_menu">
-                <li>&gt; 공지사항</li>
-                <li><a href="#">&gt; 이벤트</a></li>
-            </ul>
-        </div>
+{% block leftnav %}
+{% endblock %}
 
         <div class="Quick_menu">
             <ul class="link_list">
