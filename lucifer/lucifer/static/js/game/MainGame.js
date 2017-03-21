@@ -1,15 +1,93 @@
-
 /*****************************
 * 2017년 3월 13일 최영준
 * pig2d 를 이용한 기본 게임 로직 js
+* *************************
 * 2017년 3월 14일 최영준
 * Sprite Image 띄우기 / 마우스 이동 / Sprite 각도에 따라 변환.
+* *************************
 * 2017년 3월 17일 최영준
 * Player Direction 구하기 완료.
+* *************************
 * 2017년 3월 20일 최영준
 * Map 이미지 띄움.
+* *************************
+* 2017년 3월 21일 최영준
+* Phaser js 로 작업 시작. 
 * **************************/
-//## Main Function
+
+//## Main Game.js -- 3월 21일 최영준 
+/*-----------------------------------------------------
+	 모든 게임 관련 함수들을 돌려주는 js 파일
+	 preload function : 미리 데이터를 가져오는 함수.
+	 create function : 위에서 받은 데이터를 가지고 객체 생성 해주는 함수
+	 update function : 게임상의 코드를 갱신해주는 함수.
+-----------------------------------------------------*/
+var Lucifer_Game = new Phaser.Game(1280, 800, Phaser.CANVAS, 'GameScreen',
+								   { preload: preload, create: create, update: update });
+
+//## Game 상에서 필요한 변수들 
+//-----------------------------------------------------
+var Player, Cursor, Background_map; 
+//-----------------------------------------------------
+function preload(){
+	/*
+		Player 관련 소스 : PY_직업_동작
+		Map 관련 소스 : MAP_스테이지 명
+		Object 관련 소스 : OB_오브젝트 명 
+		UI 관련 소스 : UI_인터페이스 이름
+		Monster 관련 소스 : MON_몬스터 명
+		Skill 관련 소스 : SK_스킬명
+		Effect 관련 소스 : EF_이펙트 명
+		NPC 관련 소스 : NPC_이름
+		Sound 관련 소스 : Sound_이름 
+	*/
+
+	Lucifer_Game.load.spritesheet('PY_Bavarian_Stand', 
+								  '../../static/images/game/Player/Bavarian/stand/Stand.png',
+								  200, 200);
+	Lucifer_Game.load.spritesheet('PY_Bavarian_Walk', 
+		 					      '../../static/images/game/Player/Bavarian/walk/Walk.png',
+		 					      200, 200);
+	Lucifer_Game.load.image('MAP_Start', '../../static/images/game/Map/TestStage.png');	
+}
+
+function create(){
+	//Image Setting
+	Lucifer_Game.add.sprite(0, 0, 'MAP_Start');
+
+	//Player
+	//---------------------------------------------------------------------------------------
+	Player = Lucifer_Game.add.sprite(200, 200, 'PY_Bavarian_Stand');
+
+	//Player Stand Animation
+	for(var i = 0; i < 8; ++i)
+	{
+		Player.animations.add('PY_Bavarian_Stand_' + i, [0, 1, 2, 3, 4, 5, 6, 7], 60, true);
+	}
+
+	//Player Walk Animation
+	for(var i = 0; i < 8; ++i)
+	{
+		Player.animations.add('PY_Bavarian_Walk_' + i, [0, 1, 2, 3, 4, 5, 6, 7], 60, true);
+	}	
+	//---------------------------------------------------------------------------------------
+}
+
+function update(){
+	//Key Setting
+	//---------------------------------------------------------------------------------------
+	//Player.body.velocity.x = 0;
+	//Player.body.velocity.y = 0;
+
+	//Lucifer_Game.input.mouse.capture = true;
+	Player.body.velocity.x = 0;
+	Player.body.velocity.y = 0;
+
+	Lucifer_Game.input.mouse.capture = true;
+	//---------------------------------------------------------------------------------------
+}
+
+/*
 function main(evt){
 	//Game Extern Value
 	//*************************************************************************
@@ -37,17 +115,41 @@ function main(evt){
     */
     
     //--Scroller Setting
+    /*
     var TestScrollObject = new Pig2d.util.scroller.type_finalfight({
     	scroll_center : 640,
     	speed : 150,
     	front_layer : textures['Map/TestStage.png'],
-    	back_layer : textures['Map/TestStage.png'],
-    	backlayer_rate : 0.6
+    	back_layer : textures['Map/TestStage.png'],    	
+    	backlayer_rate : 0
     });  
     SceneMgr.add(TestScrollObject.getRoot());
+    */
+
+    /*
+    var TestScroll_Dummy = Pig2d.util.createDummy();   
+    var TestMap_Iamge = Pig2d.util.createSlicedImage({
+    	imgObj: textures['Map/TestStage.png']
+    });
+    
+    TestScroll_Dummy.add(TestMap_Iamge);
+    SceneMgr.add(TestScroll_Dummy);
+
+    //트랜지션 세팅
+    TestScroll_Dummy.get('model').setupTransition({
+          TransitionEndCallBack : function() {
+         }
+    });
+
+    TestMap_Iamge.get('model').setupTransition({
+           TransitionEndCallBack : (function() {
+         })
+    });  
+	*/
     
 	//--Sprite Node Create
 	//****************************************************************************************************
+	/*
 	var Stand_Sprite = new Array();
 	var Walk_Sprite = new Array();
 
@@ -72,9 +174,10 @@ function main(evt){
 		sprite_node.add(Stand_Sprite[i]);
 		sprite_node.add(Walk_Sprite[i]);
 	}
-
+	
 	//SceneMgr Add
 	SceneMgr.add(sprite_node);
+	*/
  	//****************************************************************************************************
  	//--Controller Setting
 	/*Pig2d.util.setup_pig2dTestController(
@@ -84,6 +187,7 @@ function main(evt){
 	//--Function Rogic
 	//****************************************************************************************************
 	//--Mouse Position & Player Sprite Number Change(방향에 따른 스프라이트 View 설정)
+	/*
 	function Change_SpriteNumber(SpriteNumber, CheckWalk)
 	{
 		//Sprite Numver 가 아무것도 아닐때 처리.
@@ -448,8 +552,13 @@ function main(evt){
 	var vMousePos;
 	GameScreen.addEventListener('mousedown', function(evt){		
 
-		TestScrollObject.setScrollPos(evt.layerX);
-
+		//Scroll
+		//***********************************************************************************************
+		//TestScrollObject.setScrollPos(evt.layerX);		
+		//***********************************************************************************************
+       	
+		//Angle
+		//***********************************************************************************************
 		vMousePos = new gbox3d.core.Vect3d(evt.layerX, evt.layerY, 0);
 
 		var PlayerPos = sprite_node.get('model').getPosition();
@@ -472,7 +581,7 @@ function main(evt){
 		}
 
 		Angle *= gbox3d.core.RADTODEG;			
-		
+	
 		/*
 		function abs3Value(value){
 			var result = Math.pow(value.X - 0, 2) + Math.pow(value.Y - 0, 2) + Math.pow(value.Z - 0, 2);
@@ -485,14 +594,15 @@ function main(evt){
 		Angle = Math.acos(CosValue) * (180 / Math.PI);
 		*/
 
-		console.log(vMousePos);
-		console.log(vPlayerPos);
-		console.log(Angle);	
+		//console.log(vMousePos);
+		//console.log(vPlayerPos);
+		//console.log(Angle);	
+		/*
 
 		Direction = Angle / 45;
-		parseInt(Direction);
-		console.log(Direction);
-		
+		//parseInt(Direction);
+		//console.log(Direction);
+		//***********************************************************************************************		
 		if(Direction > 0 && Direction < 1)
 		{
 			Direction = 0;
@@ -526,33 +636,48 @@ function main(evt){
 			Direction = 7;
 		}		
 
-		Change_SpriteNumber(Direction, 1);		
+		Change_SpriteNumber(Direction, 1);
 	});
 	GameScreen.addEventListener('mouseup', function(evt){
 		Change_SpriteNumber(Direction, 0);
 	});
 
-	//--Player Move		
+	//-- Scroll Move
+	//스크롤 잘 안됨. 지금 여기서 할께 아니라 위에 함수에서 실행해 봐야됨. 그리고 X 관련된 스크롤도 해봐야됨.
 	/*
 	var MouseControler = new Pig2d.util.controller.MouseSpot({
 		listener_element : document,
-		node : sprite_node,
-		speed : 0,
+		node : TestScroll_Dummy,
+		speed : 150,
 		setupCallBack : function(){
 		},
 		endCallBack : function(){
-			Change_SpriteNumber(Direction, 0);			
+			TestScroll_Dummy.get('model').stopTransition();
+            TestMap_Iamge.get('model').stopTransition();			
 		},
 		startCallBack : function(evt){				
-			Change_SpriteNumber(Direction, 1);			
+			var targetY = 400 - (evt.layerY - TestScroll_Dummy.get('model').getPosition().Y);
+			var dist = Math.abs(TestScroll_Dummy.get('model').getPosition().Y - targetY);
+            var duration = (dist / 150); //초당 speed 만큼 간다.            
+
+            TestScroll_Dummy.get('model').transition({
+                position : new gbox3d.core.Vect2d(targetY,0),
+                time : duration
+            });
+
+            TestMap_Iamge.get('model').transition({
+                position : new gbox3d.core.Vect2d(-targetY * 0.6, 0),
+                time : duration
+            });				
 		}
 	});	
-	*/	
+	*/		
 	//****************************************************************************************************
 
 	//--Game Loop
 	//****************************************************************************************************
 	//--Timer Setting & Performance Test Infomation(FPS)
+	/*
 	var GameTimer = new gbox3d.core.Timer();
 	var Framerate_Info = document.querySelector("#text-Framerate-Info");
 	var Frame_Total = 0;

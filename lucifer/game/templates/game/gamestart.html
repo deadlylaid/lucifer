@@ -10,17 +10,10 @@
 
     <!-- Web Game Js -->
     <!-- ************************************************************************************************ -->
-    <!-- pid2d 엔진 사용 준비. -->
+    <!-- Phaser JS -->
     <meta name = "viewport"
           content = "width=device-width, initial-scale = 1, maximum-scale=1.0, user-scalable=no">
-    <script src = "{% static "js/libs/backbone/underscore-min.js" %}"></script>
-    <script src = "{% static "js/libs/backbone/backbone-min.js" %}"></script>
-    <script src = "{% static "js/libs/pig2d/js/core.js" %}"></script>
-    <script src = "{% static "js/libs/pig2d/js/node2d.js" %}"></script>
-    <script src = "{% static "js/libs/pig2d/js/system.js" %}"></script>
-    <script src = "{% static "js/libs/pig2d/js/util.js" %}"></script>
-    <script src = "{% static "js/libs/pig2d/js/scroller.js" %}"></script>
-    <script src = "{% static "js/libs/pig2d/js/controller.js" %}"></script>
+    <script src = "{% static "js/libs/Phaser/phaser.min.js" %}"></script>
     <!-- ************************************************************************************************ -->
 
     <!-- Game Rogic js -->
@@ -40,7 +33,6 @@
 
     <!-- Game CSS -->
     <!-- ************************************************************************************************ -->
-    <link rel = "stylesheet" href = "{% static "js/libs/pig2d/css/core.css" %}"/>
     <link rel="stylesheet" href="{% static "css/game/game.css" %}">
     <!-- ************************************************************************************************ -->
 </head>
@@ -59,10 +51,7 @@
     </ul>
 
     <!-- Game Screen -->
-    <div class = "pig2d-fullscreen">
-        <!-- FPS -->
-        <p id = "text-Framerate-Info" style="position: absolute"> FrameRate </p>        
-    </div>
+    <div class = "GameScreen"></div>
   </section>
 
   </div>
