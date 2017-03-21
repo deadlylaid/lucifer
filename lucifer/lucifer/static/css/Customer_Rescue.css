@@ -6,7 +6,7 @@
 
 .Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
 .Container .Content_in .Toptitle h2 {margin:0; padding:23px 16px; font-size:25px; width:250px; float:left; letter-spacing:2px;}
-.Container .Content_in .Toptitle #navi {float:right; display:block; width:160px; font-size:14px; margin-top:30px; margin-right:13px; font-size:13px; color:#cccfd5;}
+.Container .Content_in .Toptitle #navi {float:right; display:block; width:180px; font-size:14px; margin-top:30px; margin-right:8px; font-size:13px; color:#cccfd5;}
 .Container .Content_in .Toptitle #navi span {font-weight:bold;}
 .Container .Content_in .Toptitle #navi img {float:left; margin:0px 3px;}
 
