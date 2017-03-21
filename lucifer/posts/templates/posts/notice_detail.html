@@ -1,6 +1,10 @@
 {% extends "sub_base.html" %}
 {% load staticfiles %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static "css/detailpage.css" %}"/>
+{% endblock %}
+
 {% block sub_title %}
 <div class="Toptitle">
       <h2>공지사항 내용</h2>
@@ -10,18 +14,25 @@
 {% endblock %}
 
 {% block content %}
+<div id="most_sub_cont_area">    
+	<!-- 리스트 -->
+    			<div class="most_board_view_tit"> {{ notice.title }} </div>
+                <div class="most_board_view_name">
+					<p>작성자 아이디<span>2016.10.21</span></p>
+				</div>
+                <div class="most_board_view_con">
+						{{ notice.contents }}
 
-<div id="most_sub_cont_area">
-  <!-- 게시판 리스트 -->
-  <h1>{{ notice.title }}</h1>
-
-  <h2>{{ notice.contents }}</h2>
-
-  <img src="/media/{{ notice.sumnail_image }}" alt="">
-  
-  
-  
-</div>
-
+					<img src="/media/{{ notice.sumnail_image }}" alt="">
+				</div>
+    <!-- 리스트 END -->
+    
+	<!-- 인덱스 -->
+		<div class="most_index">
+            <em class="bott_btn2">
+				<a href="#" onclick="#">목록</a>
+			</em>
+		</div>
+	</div>
 
 {% endblock %}
