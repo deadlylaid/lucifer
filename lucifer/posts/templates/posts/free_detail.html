@@ -1,20 +1,35 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/detailpage.css" %}"/>
+{% endblock %}
 
 {% block title %}
 자유게시판
 {% endblock %}
 
 {% block content %}
-게시글 상세
-<div>
-  제목:{{ freeboard.title }}
-</div>
 
-<div>
-  내용:{{ freeboard.content|safe }}
-</div>
-
-<div>
+<div class="Container">
+        <div class="Content_in">
+            <div class="Toptitle">
+                <h2>디테일페이지</h2>
+                <p id="navi">
+           <img src="{% static "images/icon_home.png" %}" width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 커뮤니티 &gt; <span>스크린샷</span></p>
+            </div>
+            <div id="most_sub_cont_area">    
+    <!-- 리스트 -->
+                <div class="most_board_view_tit"> 제목:{{ freeboard.title }} </div>
+                <div class="most_board_view_name">
+                    <p>작성자 아이디<span>2016.10.21</span></p>
+                </div>
+                <div class="most_board_view_con">
+                       내용:{{ freeboard.content|safe }}
+                </div>
+    <!-- 리스트 END -->
+    <div>
     {% for answer in freeboard.answer_set.all %}
 
         <p>답글 작성자 : {{ answer.user.username }}</p>
@@ -44,5 +59,14 @@
         <input type="submit" name="" class="text" value="확인">
     </form>
 
+</div>
+    <!-- 인덱스 -->
+        <div class="most_index">
+            <em class="bott_btn2">
+                <a href="#" onclick="#">목록</a>
+            </em>
+        </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
