@@ -42,39 +42,22 @@
                 <article class="notice board-section">
                 <h2>NOTICE <a href="{% url "notice_list" %}" class="more"><img src="{% static "images/btn_board_more.jpg" %}" alt=""></a></h2>
                 <ul>
-                    <li>
-                        <a href="#"> [이벤트] GM생강의 떡국 인증 Event 당첨... <!--링크 업데이트 -->
-                        </a> <span>02.09 15:24</span>
-                    </li>
-                    <li>
-                        <a href="#"> [공지] 알려진 문제 사항 안내 (수정)
-                        </a> <span>01.26 10:27</span>
-                    </li>
-                    <li>
-                        <a href="#"> [공지] 신규 서버 스피릿 오픈 안내
-                        </a> <span>02.09 19:00</span>
-                    </li>
-                    <li>
-                        <a href="#"> [점검] [완료] 뮤이그니션 2월 9일(목) ...
-                        </a> <span>02.07 17:18</span>
-                    </li>
-                </ul>
+                    {% for notice in notices %}
+                        <li>
+                            <a href="{% url "notice_detail" notice.id %}">{{ notice.title }}<!--링크 업데이트 -->
+                            </a> <span>{{ notice.created_at|date:"Y.m.d  H:i" }}</span>
+                        </li>
+                    {% endfor %}
                 </article>
                 <article class="freenotice board-section">
-                <h2>BOARD <a href="{% url "free_list" %}" class="more"><img src="{% static "images/btn_board_more.jpg" %}" alt=""></a></h2>
+                <h2>EVENT <a href="{% url "event_list" %}" class="more"><img src="{% static "images/btn_board_more.jpg" %}" alt=""></a></h2>
                 <ul>
-                    <li>
-                        <a href="#"> [꿀팁] Stage 4단계 클리어 Tip <!-- 링크 업데이트 -->
-                        </a> <span>02.09 15:24</span>
-                    </li>
-                    <li>
-                        <a href="#"> [공략] 레비아탄 공략법
-                        </a> <span>01.26 10:27</span>
-                    </li>
-                    <li>
-                        <a href="#"> [Q&A] 13Lv 퀘스트 어떻게 깨요?
-                        </a> <span>02.09 19:00</span>
-                    </li>
+                    {% for event in events %}
+                        <li>
+                            <a href="">{{ event.title }} <!-- 링크 업데이트 -->
+                            </a> <span>{{ event.created_at|date:"Y.m.d  H:i" }}</span>
+                        </li>
+                    {% endfor %}
                 </ul>
                 </article>
             </div>
