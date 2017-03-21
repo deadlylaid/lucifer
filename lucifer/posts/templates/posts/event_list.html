@@ -20,7 +20,7 @@
 			NEWS
 		</div>
 			<ul class="most_left_menu">
-				<li><a href="#">&gt; 공지사항</a></li>
+				<li><a href="{% url "notice_list" %}">&gt; 공지사항</a></li>
                 <li>&gt; 이벤트</li>		
 			</ul>
 		</div>
@@ -37,7 +37,7 @@
          
   <div id="most_sub_cont_area">
     
-	<div class="most_event_list">
+	<div class="most_event_list"> <!-- 이벤트 페이지 추가 -->
 		<ul>
 			<li class="pgame_thumb">
             	<a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42803z8016782407.jpg" %}/></a>
@@ -156,7 +156,7 @@
             </li>
 		</ul>
 	</div>
-	<!-- 인덱스 -->
+	<!-- 인덱스 --> <!-- 인덱스는 어쩌지 ..? -->
 		<div class="most_index">
 			<em class="left_mg60"><a href="#">&lt; 이전</a></em>
                 <span>

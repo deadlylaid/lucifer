@@ -34,12 +34,12 @@
                     <aside>
                         <a href="{% url "joinus" %}">회원가입</a>
                         <span>|</span>
-                        <a href="#">계정</a>/<a href="#">비밀번호찾기</a>
+                        <a href="#">계정</a>/<a href="#">비밀번호찾기</a> <!-- 계정 링크 걸기 -->
                     </aside>
                     <div class="snslogin">
                     SNS 로그인  
                     <ul>
-                        <li>N</li>
+                        <li>N</li> <!-- SNS Login 링크 걸기 -->
                         <li><i class="fa fa-comment" aria-hidden="true"></i></li>
                         <li><i class="fa fa-facebook-official" aria-hidden="true"></i></li>
                     </ul>
@@ -55,16 +55,16 @@
     </div>
     {% if not request.user.is_authenticated %}
     <div class="personal-info">
-      <ul class="link_list">
-        <li><a href="#" class="snslogin">
-          <span class="link_list_title"> sns login </span>
+      <ul class="link_list">   <!-- SNS Login Link -->
+        <li><a href="#" class="snslogin"> 
+          <span class="link_list_title"> naver login </span>
           </a>
         </li>
-        <li><a href="/login/kakao/" class="kakao">
+        <li><a href="#" class="kakao">
           <span class="link_list_title"> kakao login</span>
           </a>
         </li>
-        <li><a href="login/facebook/" class="facebook">
+        <li><a href="#" class="facebook">
             <span class="link_list_title"> facebook login</span></a>
         </li>
       </ul>
@@ -73,7 +73,7 @@
 
         <div class="counsel">
             <ul class="link_list">
-                <li><a href="#" class="title">
+                <li><a href="{% url "faq" %}" class="title">
                     <span class="link_list_title"> 고객센터 </span>
                     </a>
                 </li>
@@ -88,19 +88,19 @@
 
         <div class="Quick_menu">
             <ul class="link_list">
-                <li><a href="#" class="Helpus">
+                <li><a href="#" onclick="window.open('{% url 'policy' %}','window','width=880; height=650; scrollbars=yes');">
                     <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                    <span class="link_list_title"> 도움말 무엇이 궁금하세요? </span>
+                    <span class="link_list_title"> 운영정책 운영정책 </span>
                     </a>
                 </li>
-                <li><a href="#" class="FAQ">
+                <li><a href="{% url "faq" %}" class="FAQ">
                     <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
                     <span class="link_list_title"> FAQ 빠르게 해결해드립니다</span>
                     </a>
                 </li>
-                <li><a href="#" class="Bugreport">
+                <li><a href="{% url "bugnotice" %}" class="Bugreport">
                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-                    <span class="link_list_title"> 버그게시판 버그를 올려주세요</span></a>
+                    <span class="link_list_title"> 버그신고 버그를 올려주세요</span></a>
                 </li>
             </ul>
         </div>
