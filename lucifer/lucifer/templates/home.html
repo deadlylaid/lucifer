@@ -44,7 +44,7 @@
                 <ul>
                     {% for notice in notices %}
                         <li>
-                            <a href="{% url "free_detail" notice.id %}">{{ notice.title }}<!--링크 업데이트 -->
+                            <a href="{% url "notice_detail" notice.id %}">{{ notice.title }}<!--링크 업데이트 -->
                             </a> <span>{{ notice.created_at|date:"Y.m.d  H:i" }}</span>
                         </li>
                     {% endfor %}
