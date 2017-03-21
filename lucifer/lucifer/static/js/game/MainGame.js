@@ -80,6 +80,10 @@ function update(){
 	//Player.body.velocity.y = 0;
 
 	//Lucifer_Game.input.mouse.capture = true;
+	Player.body.velocity.x = 0;
+	Player.body.velocity.y = 0;
+
+	Lucifer_Game.input.mouse.capture = true;
 	//---------------------------------------------------------------------------------------
 }
 
@@ -594,6 +598,7 @@ function main(evt){
 		//console.log(vPlayerPos);
 		//console.log(Angle);	
 		/*
+
 		Direction = Angle / 45;
 		//parseInt(Direction);
 		//console.log(Direction);
