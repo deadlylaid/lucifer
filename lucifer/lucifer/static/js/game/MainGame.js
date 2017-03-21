@@ -76,10 +76,10 @@ function create(){
 function update(){
 	//Key Setting
 	//---------------------------------------------------------------------------------------
-	Player.body.velocity.x = 0;
-	Player.body.velocity.y = 0;
+	//Player.body.velocity.x = 0;
+	//Player.body.velocity.y = 0;
 
-	Lucifer_Game.input.mouse.capture = true;
+	//Lucifer_Game.input.mouse.capture = true;
 	//---------------------------------------------------------------------------------------
 }
 
