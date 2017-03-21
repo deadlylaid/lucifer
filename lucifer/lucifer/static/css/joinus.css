@@ -1,7 +1,97 @@
+.Top {
+    background-color:#000000;
+    height:200px;
+}
+
+.Top:hover {
+    background-color:#000000;
+}
+
+.logo {
+    width:50%;
+    margin: 5% auto 3%;
+}
+
+.a_logo {
+    display:block;
+    width:50%;
+    margin:0px auto;
+}
+
+.i_logo{
+    display: block;
+    margin:0px auto;
+}
+
+.joinuswrap {
+    display:block;
+    width:50%;
+    margin:0px auto;
+}
+
+.submit-button {
+   padding: 10px 20px; 
+   margin: 20px auto 0px;
+   background-color:#951e1e;
+   color:#ffffff;
+}
+
+.minsoo-input-group {
+    text-align: left;
+    width: 50%;
+    margin: 0px 25% 10px;
+}
+
 .minsoo-form-input {
     display: block;
-    width: 20%;
+    width: 100%;
+    height: 35px;
+    padding: 10px;
     border: 1px solid #000000;
-    border-radius: 5px;
-    margin: 0px 20%;
+    border-radius: 4px;
+}
+
+.minsoo-label {
+    color: #000000;
+}
+
+.social-button {
+    display:block;
+    margin:0px auto 10px;
+    width: 25%;
+    padding: 10px 80px;
+    border-radius: 4px;
+    background-color: #FFEA21;
+    text-decoration: none;
+}
+
+.social-button:focus {
+    text-decoration: none;
+}
+
+.kakao {
+    color: #3F3035;
+    background-color:#FFEA21;
+}
+
+.facebook {
+    color: #ffffff;
+    background-color:#3b5998;
+}
+
+.naver {
+    color: #ffffff;
+    background-color:#23b300;
+}
+
+.kakao:hover {
+    color: #3F3035;
+}
+
+.facebook:hover {
+    color: #ffffff;
+}
+
+.naver:hover {
+    color: #ffffff;
 }
