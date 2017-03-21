@@ -122,7 +122,7 @@ function main(evt){
     SceneMgr.add(TestScrollObject.getRoot());
     */
 
-    /*
+   /*
     var TestScroll_Dummy = Pig2d.util.createDummy();   
     var TestMap_Iamge = Pig2d.util.createSlicedImage({
     	imgObj: textures['Map/TestStage.png']
@@ -594,6 +594,7 @@ function main(evt){
 		//console.log(vPlayerPos);
 		//console.log(Angle);	
 		/*
+
 		Direction = Angle / 45;
 		//parseInt(Direction);
 		//console.log(Direction);
