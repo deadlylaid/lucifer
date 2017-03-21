@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "sub_base.html" %}
 {% load staticfiles %}
 
 
@@ -6,57 +6,51 @@
 <link rel="stylesheet" href="{% static "css/detailpage.css" %}"/>
 {% endblock %}
 
-{% block title %}
-자유게시판
+{% block sub_title %}
+        <h2>자유게시판</h2>
+                <p id="navi">
+        <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 커뮤니티 &gt; <span>자유게시판</span></p>
+
 {% endblock %}
 
 {% block content %}
-
-<div class="Container">
-        <div class="Content_in">
-            <div class="Toptitle">
-                <h2>디테일페이지</h2>
-                <p id="navi">
-           <img src="{% static "images/icon_home.png" %}" width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 커뮤니티 &gt; <span>스크린샷</span></p>
-            </div>
             <div id="most_sub_cont_area">    
     <!-- 리스트 -->
-                <div class="most_board_view_tit"> 제목:{{ freeboard.title }} </div>
+                <div class="most_board_view_tit"> {{ freeboard.title }} </div>
                 <div class="most_board_view_name">
                     <p>작성자 아이디<span>2016.10.21</span></p>
                 </div>
                 <div class="most_board_view_con">
-                       내용:{{ freeboard.content|safe }}
+                    {{ freeboard.content|safe }}
                 </div>
     <!-- 리스트 END -->
     <div>
-    {% for answer in freeboard.answer_set.all %}
-
-        <p>답글 작성자 : {{ answer.user.username }}</p>
-        <p>내용: {{ answer.contents }}</p>
-    {% endfor %}
-
-    <h3>답글달기</h3>
-    <form action="{% url "answer_create" freeboard.id %}" method="post">
-        {% csrf_token %}
-        <textarea name="contents"></textarea>
-        <input type="submit" name="" class="text" value="확인">
-    </form>
-
 </div>
 
 <div>
     {% for comment in freeboard.comment_set.all %}
-
-        <p>댓글 작성자 : {{ comment.user.username }}</p>
-        <p>내용: {{ comment.contents }}</p>
+        <div class="comment">
+            <div id="user-id">
+                <b>{{ comment.user.username }}</b> :
+            </div>
+            <div id="comment-content">
+                {{ comment.contents }}
+            </div>
+        </div>
     {% endfor %}
 
-    <h3>댓글 달기</h3>
-    <form action="{% url "comment_create" freeboard.id %}" method="post">
+    <form class="comment-form" action="{% url "comment_create" freeboard.id %}" method="post">
         {% csrf_token %}
-        <textarea name="contents"></textarea>
-        <input type="submit" name="" class="text" value="확인">
+        <table>
+            <tr>
+                <td>
+                    <textarea class="comment-input comment-area" name="contents"></textarea>
+                </td>
+                <td>
+                    &nbsp;<input type="submit" name="" class="btn comment-input comment-button" value="확인">
+                </td>
+            </tr>
+        </table>
     </form>
 
 </div>
@@ -67,6 +61,4 @@
             </em>
         </div>
     </div>
-  </div>
-</div>
 {% endblock %}

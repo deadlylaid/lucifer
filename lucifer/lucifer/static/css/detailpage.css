@@ -17,7 +17,7 @@
 .Container .Content_in #most_sub_cont_area .most_board_view_name { width:720px; height:30px; background:url(../images/board_line2.png) no-repeat left bottom; text-align:left;}
 .Container .Content_in #most_sub_cont_area .most_board_view_name p { display:block; width:720px; height:35px; color:#9298a1; line-height:35px; font-size:11px; text-indent:10px;}
 .Container .Content_in #most_sub_cont_area .most_board_view_name p span { float:right; letter-spacing:0; margin-right:5px;}
-.Container .Content_in #most_sub_cont_area .most_board_view_con { width:720px; margin:10px 0 0 0; line-height:18px; padding:0 0 20px 0; background:url(../images/board_line2.png) no-repeat left bottom; height:685px; }
+.Container .Content_in #most_sub_cont_area .most_board_view_con { width:720px; margin:10px 0 0 0; line-height:18px; padding:0 0 20px 0; background:url(../images/board_line2.png) no-repeat left bottom; height:500px; background-color:#ffffff; opacity:0.5; padding:15px;}
 .Container .Content_in #most_sub_cont_area .most_board_view_con p { width:720px; margin:0 auto; color:#afb5bf; text-align:left; text-indent:10px;}
 .Container .Content_in #most_sub_cont_area .most_board_view_con img { display:table-cell; margin:0; max-width:720px; max-height:600px;}
 
@@ -51,3 +51,29 @@ em { font-style:normal;}
 .Quick_menu .link_list li:nth-child(3):hover {background:url(../images/Quick_menu_bug_ov.png) no-repeat; }
 .Quick_menu .link_list li a { color:#666666; display:block; margin:0; width:190px; height:70px; text-indent:-1000px;}
 .Quick_menu .link_list li a:hover { text-decoration:none;}
+#user-id {
+    display: inline;
+    color:#ffffff;
+    font-size: 20px;
+}
+#comment-content{
+    display: inline;
+    color:#ffffff;
+    font-size: 20px;
+}
+
+#comment-form{
+    margin: 15px 0px 0px;
+}
+
+.comment-input {
+    display: inline;
+}
+
+.comment-area {
+    width: 650px;
+}
+
+.comment-button {
+    height: 45px;
+}
