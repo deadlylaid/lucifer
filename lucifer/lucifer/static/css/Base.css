@@ -46,7 +46,8 @@ input[type="radio"] {position:absolute; cursor:pointer;}
 .Left_box .Login_wrap fieldset .before .form {height: 80px; position:relative; padding:0 87px 0 0; overflow:hidden;}
 .Left_box .Login_wrap fieldset .before .form li{width:140px; height:37px; margin:0 6px 6px; background:#393939; padding:0 10px;}
 .Left_box .Login_wrap fieldset .before .form li .text {width:100%; height:37px; line-height:37px; background:#434040; color:#999; font-size:13px; }
-.Left_box .Login_wrap fieldset .before .form .btn-login { margin:0; padding:0; position:absolute; right:3px; top:0; background:url(../images/btn_login.png) no-repeat; width:45px; height:80px;}
+.Left_box .Login_wrap fieldset .before .form .btn-login { margin:0; padding:0; position:absolute; right:3px; top:0;  width:45px; height:80px;}
+.Left_box .Login_wrap fieldset .before .form .btn-login #btnLogin {background:url(../images/btn_login.png) no-repeat; width:45px; height:80px; float: right;}
 
 input, select, button{vertical-align:middle;}
 
