@@ -43,11 +43,11 @@
 <div class="topbar_back" style="position:relative;">
   <div class="topbar_container">
     <div class="topbar_logo">
-        <h5><a href="#"></a></h5>
+        <a href={% url "home"%}><img src="{% static "images/topbar_logo.png" %}" /></a>
     </div>
     <div class="topbar_menu">
-        <a href={% url "joinus" %} target="_top" class="join">회원가입</a>
-        <a href="#">로그인</a>
+        <a href="{% url "joinus" %}" target="_top" class="join">회원가입</a>
+        <a href="#">로그인</a> <!-- login link add -->
     </div>
   </div>
 </div>
@@ -74,9 +74,9 @@
               </ul>
             </div>
             {% else %}
-            <form method="post" action="#" id="frmLogin">
+            <form method="post" action="#" id="frmLogin"> 
               {% csrf_token %}
-            <div class="before">
+            <div class="before">  <!-- Login 처리 -->
             <ul class="form">
                 <li><input type="text" name="txtUserID" id="txtUserID" class="text" placeholder="계정" data-datatype="an" maxlength="16"></li>
                 <li><input type="password" name="txtPassWD" id="txtPassWD" class="text" placeholder="비밀번호" maxlength="20"></li>
@@ -90,7 +90,7 @@
          <div class="snslogin">
                     SNS 로그인  
                     <ul>
-                        <li>N</li>
+                        <li>N</li> <!-- sns Login add -->
                         <li><i class="fa fa-comment" aria-hidden="true"></i></li>
                         <li><i class="fa fa-facebook-official" aria-hidden="true"></i></li>
                     </ul>
@@ -111,17 +111,16 @@
         <div class="Quick_menu">
             <ul class="link_list">
                 <li><a href="#" onclick="window.open('{% url 'policy' %}','window','width=880; height=650; scrollbars=yes');">
-
                     <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                     <span class="link_list_title"> 도움말 무엇이 궁금하세요? </span>
                     </a>
                 </li>
-                <li><a href="#" class="FAQ">
+                <li><a href="{% url "faq" %}" class="FAQ">
                     <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
                     <span class="link_list_title"> FAQ 빠르게 해결해드립니다</span>
                     </a>
                 </li>
-                <li><a href={% url "bugnotice" %} class="Bugreport">
+                <li><a href="{% url "bugnotice" %}" class="Bugreport">
                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                     <span class="link_list_title"> 버그게시판 버그를 올려주세요</span></a>
                 </li>

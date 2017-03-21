@@ -21,7 +21,7 @@
       커뮤니티
     </div>
       <ul class="most_left_menu">
-        <li><a href="#">&gt; 자유게시판</a></li>
+        <li><a href="{% url "free_list" %}">&gt; 자유게시판</a></li>
         <li>&gt; 스크린샷</li>    
       </ul>
     </div>
@@ -35,7 +35,7 @@
 
 {% block content %}
 <div id="most_sub_cont_area">    
-  <!-- 리스트 -->
+  <!-- 리스트 --> <!--음... 이것도..... 추가...? -->
     
     <div class="most_screenshot_list">              
     <ul>
@@ -145,7 +145,7 @@
 
     <!-- 리스트 END -->
     
-  <!-- 인덱스 -->
+  <!-- 인덱스 --> <!-- 인덱스 기능 추가 부탁... 가능한지요 -->
     <div class="most_index">
       <em class="left_mg60"><a href="#">&lt; 이전</a></em>
                 <span>
@@ -161,7 +161,7 @@
                 <a href="#" onclick="">10</a></span>
                 <em><a href="#" onclick="">다음 &gt;</a></em>
             <em class="bott_btn">
-        <a href="#" onclick="#">쓰기</a>
+        <a href="#" onclick="#">쓰기</a> <!-- 쓰기 기능 추가 -->
       </em>
     </div>
 </div>

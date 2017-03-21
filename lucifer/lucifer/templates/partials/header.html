@@ -3,11 +3,13 @@
         <div class="wrap">
             <menu>
                 <li class="logo">
+                <a href="{% url "home" %}">
                   <img src="{% static "images/navbar_logo.png" %}"/>
+                </a>
                 </li>
                 <li class="menu1">
                     <h2 class="title">
-                <a href="#">NEWS</a>
+                <a href="{% url "notice_list" %}">NEWS</a>
             </h2>
                     <div class="depth">
                         <p>
@@ -18,7 +20,7 @@
                 </li>
                 <li class="menu2">
                     <h2 class="title">
-                <a href="#">게임소개</a>
+                <a href="{% url "storyintro" %}">게임소개</a>
             </h2>
                     <div class="depth">
                         <p>
@@ -34,7 +36,7 @@
                 </li>
                 <li class="menu4">
                     <h2 class="title">
-                <a href="#">커뮤니티</a>
+                <a href="{% url "free_list" %}">커뮤니티</a>
             </h2>
                     <div class="depth">
                         <p>
@@ -45,7 +47,7 @@
                 </li>
                 <li class="menu5">
                     <h2 class="title">
-                <a href="/support/faq">고객센터</a>
+                <a href="{% url "faq" %}">고객센터</a>
             </h2>
                     <div class="depth">
                         <p>
@@ -65,24 +67,26 @@
     </nav>
 <div class="Top">
     <div class="Header">
-        <div class="Logo"> Logo </div>
+        <a href="{% url "home" %}">
+            <div class="Logo"></div>
+        </a>
         <div class="Main_menu">
             <nav class="nav">
                 <ul class="N_menu_itemlist">
                     <li class="N-menu_item">
-                        <a href="#" class="N-menu_item_link is-selected">NEWS</a>
+                        <a href="{% url "notice_list" %}" class="N-menu_item_link is-selected">NEWS</a>
                     </li>
                     <li class="N-menu_item">
-                        <a href="#" class="N-menu_item_link">게임소개</a>
+                        <a href="{% url "storyintro" %}" class="N-menu_item_link">게임소개</a>
                     </li>
                     <li class="N-menu_item">
                         <a href="{% url "ranking" %}" class="N-menu_item_link">랭킹</a>
                     </li>
                     <li class="N-menu_item">
-                        <a href="#" class="N-menu_item_link">커뮤니티</a>
+                        <a href="{% url "free_list" %}" class="N-menu_item_link">커뮤니티</a>
                     </li>
                     <li class="N-menu_item">
-                        <a href="#" class="N-menu_item_link">고객센터</a>
+                        <a href="{% url "faq" %}" class="N-menu_item_link">고객센터</a>
                     </li>
                 </ul>
             </nav>

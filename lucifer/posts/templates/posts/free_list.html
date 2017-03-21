@@ -23,7 +23,7 @@
         </div>
             <ul class="most_left_menu">
                 <li>&gt; 자유게시판</li>
-                <li><a href="#">&gt; 스크린샷</a></li>      
+                <li><a href="{% url "screenshot" %}">&gt; 스크린샷</a></li>      
             </ul>
         </div>
 {% endblock %}
@@ -31,7 +31,7 @@
 {% block sub_title %}
         <h2>자유게시판</h2>
                 <p id="navi">
-           <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 커뮤니티 &gt; <span>자유게시판</span></p>
+        <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 커뮤니티 &gt; <span>자유게시판</span></p>
 
 {% endblock %}
 
@@ -59,7 +59,7 @@
         </ul>
         {% endfor %}
 
-    <!-- 인덱스 -->
+    <!-- 인덱스 --> <!-- 인덱스 가능한지 ..? -->
         <div class="most_index">
             <em class="left_mg60"><a href="#">&lt; 이전</a></em>
                 <span>
