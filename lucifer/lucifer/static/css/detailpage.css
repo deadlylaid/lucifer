@@ -48,9 +48,7 @@ em { font-style:normal;}
 .Quick_menu .link_list li:nth-child(2) {background:url(../images/Quick_menu_faq.png) no-repeat; }
 .Quick_menu .link_list li:nth-child(2):hover {background:url(../images/Quick_menu_faq_ov.png) no-repeat; }
 .Quick_menu .link_list li:nth-child(3) {background:url(../images/Quick_menu_bug.png) no-repeat; }
-.Quick_menu .link_list li:nth-child(3):hover {background:url(../images/Quick_menu_bug_ov.png) no-repeat; }
-.Quick_menu .link_list li a { color:#666666; display:block; margin:0; width:190px; height:70px; text-indent:-1000px;}
-.Quick_menu .link_list li a:hover { text-decoration:none;}
+.Quick_menu .link_list li:nth-child(3):hover {background:url(../images/Quick_menu_bug_ov.png) no-repeat; } .Quick_menu .link_list li a { color:#666666; display:block; margin:0; width:190px; height:70px; text-indent:-1000px;} .Quick_menu .link_list li a:hover { text-decoration:none;}
 #user-id {
     display: inline;
     color:#ffffff;
