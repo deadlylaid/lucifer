@@ -3,11 +3,8 @@
         <fieldset>
             {% if request.user.is_authenticated %}
             <div>
-                <p style="color:red;">{{ request.user.username }}</p>
-                <a href="{% url "logout" %}">로그아웃</a>
-                <ul>
-                    <li><a href="{% url "checkcharacter" %}" target="_blank">게임시작</a></li>
-                </ul>
+              <p style="color:red;">{{ request.user.username }}</p>
+              <a href="{% url "logout" %}">로그아웃</a>
             </div>
             {% else %}
             <div class="before">
@@ -38,6 +35,11 @@
                 <button type="submit" id="btnStart">START</button>
             </div>
         </fieldset>
+        <div class="Btn_Start">
+          <form method="GET" action="{% url "checkcharacter" %}">
+            <input type="submit" id="btnStart" value="START">
+          </form>
+        </div>
     </div>
 
     <div class="counsel">
