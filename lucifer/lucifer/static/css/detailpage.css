@@ -2,24 +2,28 @@
 /* CSS Document */
 
 
-.Container {background:transparent; margin:0; padding:0px 25px;}
-.Container .Content_in {width:770px; height:1060px; background-color:rgba(0,0,0,0.3); padding:0px 5px; border:1px solid rgba(255,255,255,0.08)}
+.Container {background:transparent; margin:0; padding:0px auto;}
+.Container .Content_in {width:770px; background-color:rgba(0,0,0,0.5); padding:0px 5px; border:1px solid rgba(255,255,255,0.08)}
 
-.Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
+.Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0 auto; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
 .Container .Content_in .Toptitle h2 {margin:0; padding:23px 16px; font-size:25px; width:250px; float:left;  letter-spacing:2px;}
 .Container .Content_in .Toptitle #navi {float:right; display:block; width:180px; font-size:14px; margin-top:30px; margin-right:8px; font-size:13px; color:#cccfd5;}
 .Container .Content_in .Toptitle #navi span {font-weight:bold;}
 .Container .Content_in .Toptitle #navi img {float:left; margin:0px 3px;}
 
 /* 컨텐츠 */
-.Container .Content_in #most_sub_cont_area {width:760px; height:950px; padding:20px; overflow:hidden; background-color:rgba(0,0,0,0.3);}
-.Container .Content_in #most_sub_cont_area .most_board_view_tit {width:720px; height:40px; background:url(../images/board_view_title_bg.png) no-repeat 0 0; line-height:40px; font-size:14px; font-weight:bold; color:#cccfd5; letter-spacing:-1px; text-indent:10px; text-align:left;}
-.Container .Content_in #most_sub_cont_area .most_board_view_name { width:720px; height:30px; background:url(../images/board_line2.png) no-repeat left bottom; text-align:left;}
-.Container .Content_in #most_sub_cont_area .most_board_view_name p { display:block; width:720px; height:35px; color:#9298a1; line-height:35px; font-size:11px; text-indent:10px;}
-.Container .Content_in #most_sub_cont_area .most_board_view_name p span { float:right; letter-spacing:0; margin-right:5px;}
-.Container .Content_in #most_sub_cont_area .most_board_view_con { width:720px; margin:10px 0 0 0; line-height:18px; padding:0 0 20px 0; background:url(../images/board_line2.png) no-repeat left bottom; height:500px; background-color:#ffffff; opacity:0.5; padding:15px;}
-.Container .Content_in #most_sub_cont_area .most_board_view_con p { width:720px; margin:0 auto; color:#afb5bf; text-align:left; text-indent:10px;}
-.Container .Content_in #most_sub_cont_area .most_board_view_con img { display:table-cell; margin:0; max-width:720px; max-height:600px;}
+
+.Container .Content_in .contentdiv { display: block;  }
+.Container .Content_in .contentdiv .comment-form table { margin:0 auto; }
+
+/*.Container .Content_in #most_sub_cont_area {width:760px; padding:20px; overflow:hidden; background-color:rgba(0,0,0,0.3);}*/
+.Container .Content_in .most_board_view_tit {width:720px; height:40px; background:url(../images/board_view_title_bg.png) no-repeat 0 0; line-height:40px; font-size:14px; font-weight:bold; color:#cccfd5; letter-spacing:-1px; text-indent:10px; text-align:left;}
+.Container .Content_in .most_board_view_name { width:720px; height:30px; background:url(../images/board_line2.png) no-repeat left bottom; text-align:left;}
+.Container .Content_in .most_board_view_name p { display:block; width:720px; height:35px; color:#9298a1; line-height:35px; font-size:11px; text-indent:10px;}
+.Container .Content_in .most_board_view_name p span { float:right; letter-spacing:0; margin-right:5px;}
+.Container .Content_in .most_board_view_con { width:720px; margin:10px auto; line-height:18px; padding:0 0 20px 0; background:url(../images/board_line2.png) no-repeat left bottom; height:500px; background-color:#ffffff; opacity:0.5; padding:15px;}
+.Container .Content_in .most_board_view_con p { width:720px; margin:0 auto; color:#afb5bf; text-align:left; text-indent:10px;}
+.Container .Content_in .most_board_view_con img { display:table-cell; margin:0; max-width:720px; max-height:600px;}
 
 
 /* 인덱스 */

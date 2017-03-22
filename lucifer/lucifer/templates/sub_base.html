@@ -26,13 +26,13 @@
 <!-- style 코드가 틀어가는 위치 -->
 <style>
 .Back { 
-    background:url({% static "images/main_bg_2.jpg" %}) no-repeat 50% 0;
+    background:url({% static "images/main_bg_2.jpg" %}) no-repeat top center;
     margin:0 auto;
     padding:0;}
-.whiteback { width:100%; height:1500px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
 .Wrap {height:900px;}
 .Container {}
 .Left_box{height:900px;}
+/*.contentdiv { margin-left: 20px; }*/
 {% block style %}
 {% endblock %}
 </style>
@@ -52,9 +52,9 @@
     </div>
   </div>
 </div>
+
 <div class="Back">
-<div class="whiteback">
-    </div>
+
     {% include "partials/header.html" %}
 
 <div class="Wrap">
@@ -147,11 +147,14 @@
             {% block sub_title %}
             {% endblock %}
         </div>
+        <div class="contentdiv">
         {% block content %}
         {% endblock %}
+        </div>
     </div>
 </div>
 </div>
+
 
     {% include "partials/footer.html" %}
 </body>
