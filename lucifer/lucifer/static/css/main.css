@@ -1,15 +1,15 @@
 @charset "utf-8";
 /* CSS Document */
 
-.Container > .Slide_menu {width:821px; height:395px; background-color:#171a1d; margin-bottom:10px;}
+.Container > .Slide_menu {width:821px; height:395px; background:transparent; margin-bottom:10px;}
 .Container > .Notice_menu {width:821px;height:409px; float:none; background-color:transparent; margin:0 0;}
 .Container .Bot {width:821px; height:475px; margin:0; padding:0; display:block;}
 .Container .Bot .Screenshot {width:550px; height:475px; float:left; background-color:#ffffff; border-right:1px solid #bfbdbd; margin:0; padding:0;}
 .Container .Bot .ranking { width:271px; height:475px; background-color:#ffffff; float:right; margin:0; padding:0;}
 
 /* 컨테이너 슬라이드 메뉴 */
-.Container .Slide_menu .carousel {width:790px; height:350px; text-align:center; display:inline-block; float:left; padding:0; margin:25px 15px;}
-.Container .Slide_menu .carousel .item { width:790px; height:350px; background:#CCC;}	
+.Container .Slide_menu .carousel {width:805px; height:380px; text-align:center; display:inline-block; float:left; padding:0; margin-left: 15px;}
+.Container .Slide_menu .carousel .item { width:805px; height:380px; background:#CCC;}	
 
 /* 컨테이너 공지사항 부분 */
 .Container .Notice_menu .board {width:550px; height:409px; float:left; border-right:1px solid #bfbdbd; border-left:1px solid #bfbdbd;}
