@@ -37,9 +37,16 @@
                     <div class="snslogin">
                     SNS 로그인  
                     <ul>
-                        <li>N</li> <!-- SNS Login 링크 걸기 -->
-                        <li><i class="fa fa-comment" aria-hidden="true"></i></li>
-                        <li><i class="fa fa-facebook-official" aria-hidden="true"></i></li>
+                        <li>
+                          <a href="/login/naver/">N</a>
+                        </li> <!-- SNS Login 링크 걸기 -->
+                        <li>
+                          <a href="/login/kakao/">
+                            <i class="fa fa-comment" aria-hidden="true"></i></li>
+                          </a>
+                        <li>
+                          <a href="/login/facebook/"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                        </li>
                     </ul>
          
                     </div>
@@ -51,23 +58,6 @@
             <button type="submit" id="btnStart">START</button>
         </div>
     </div>
-    {% if not request.user.is_authenticated %}
-    <div class="personal-info">
-      <ul class="link_list">   <!-- SNS Login Link -->
-        <li><a href="#" class="snslogin"> 
-          <span class="link_list_title"> naver login </span>
-          </a>
-        </li>
-        <li><a href="#" class="kakao">
-          <span class="link_list_title"> kakao login</span>
-          </a>
-        </li>
-        <li><a href="#" class="facebook">
-            <span class="link_list_title"> facebook login</span></a>
-        </li>
-      </ul>
-    </div>
-    {% endif %}
 
         <div class="counsel">
             <ul class="link_list">
