@@ -15,16 +15,15 @@
 
 {% block content %}
    
-    <!-- 리스트 -->
-                <div class="most_board_view_tit"> {{ freeboard.title }} </div>
-                <div class="most_board_view_name">
-                    <p>작성자 아이디<span>2016.10.21</span></p>
-                </div>
-                <div class="most_board_view_con">
-                    {{ freeboard.content|safe }}
-                </div>
-    <!-- 리스트 END -->
-
+<!-- 리스트 -->
+<div class="most_board_view_tit"> {{ freeboard.title }} </div>
+<div class="most_board_view_name">
+    <p>{{ freeboard.user.username }}<span>{{ freeboard.created_at|date:"Y.m.d" }}</span></p>
+</div>
+<div class="most_board_view_con">
+    {{ freeboard.content|safe }}
+</div>
+<!-- 리스트 END -->
 
 <div>
     {% for comment in freeboard.comment_set.all %}
@@ -39,25 +38,24 @@
     {% endfor %}
 
     <form class="comment-form" action="{% url "comment_create" freeboard.id %}" method="post">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>
-                    <textarea class="comment-input comment-area" name="contents"></textarea>
-                </td>
-                <td>
-                    &nbsp;<input type="submit" name="" class="btn comment-input comment-button" value="확인">
-                </td>
-            </tr>
-        </table>
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>
+                <textarea class="comment-input comment-area" name="contents"></textarea>
+            </td>
+            <td>
+                &nbsp;<input type="submit" name="" class="btn comment-input comment-button" value="확인">
+            </td>
+        </tr>
+    </table>
     </form>
-
 </div>
-    <!-- 인덱스 -->
-        <div class="most_index">
-            <em class="bott_btn2">
-                <a href="#" onclick="#">목록</a>
-            </em>
-        </div>
-    </div>
+
+<!-- 인덱스 -->
+<div class="most_index">
+    <em class="bott_btn2">
+        <a href="#" onclick="#">목록</a>
+    </em>
+</div>
 {% endblock %}
