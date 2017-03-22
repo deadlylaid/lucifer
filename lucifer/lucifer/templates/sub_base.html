@@ -75,14 +75,15 @@
               </ul>
             </div>
             {% else %}
-            <form method="post" action="#" id="frmLogin"> 
-              {% csrf_token %}
             <div class="before">  <!-- Login 처리 -->
-            <ul class="form">
-                <li><input type="text" name="txtUserID" id="txtUserID" class="text" placeholder="계정" data-datatype="an" maxlength="16"></li>
-                <li><input type="password" name="txtPassWD" id="txtPassWD" class="text" placeholder="비밀번호" maxlength="20"></li>
-                <li class="btn-login"><button type="submit" id="btnLogin"></button></li>
-            </ul>
+                <form method="post" action="{% url "login" %}" id="frmLogin"> 
+              {% csrf_token %}
+                <ul class="form">
+                    <li><input type="text" name="username" class="text" placeholder="계정" data-datatype="an" maxlength="16" required></li>
+                    <li><input type="password" name="password"  class="text" placeholder="비밀번호" maxlength="20" required></li>
+                    <li class="btn-login"><button type="submit" id="btnLogin"></button></li>
+                </ul>
+            </form>
          <aside>
              <a href="{% url "joinus" %}">회원가입</a>
             <span>|</span>
@@ -104,7 +105,7 @@
          
                     </div>
             </div>
-            </form>
+
             {% endif %}
          </fieldset>
          <div class="Btn_Start">
