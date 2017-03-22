@@ -65,9 +65,6 @@ input, select, button{vertical-align:middle;}
 /* 좌측 SNS로그인, 마이페이지 메뉴 width:200px height:180px */
 .personal-info .link_list {width:200px; height:155px; background:transparent; padding-top:1px;}
 .personal-info .link_list li {width:190px; height:45px; margin:5px; background:transparent;}
-.personal-info .link_list li:first-child {background:url(../images/snslogin.png) no-repeat; border-bottom:1px solid #666;}
-.personal-info .link_list li:nth-child(2) {background:url(../images/kakao.png) no-repeat;}
-.personal-info .link_list li:nth-child(3) {background:url(../images/facebook.png) no-repeat;}
 .personal-info .link_list li a { display:block; width:190px; height:45px;text-indent:-9999px;}
 .personal-info .link_list li a:hover { text-decoration:none;}
 

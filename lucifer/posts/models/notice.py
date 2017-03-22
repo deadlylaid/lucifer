@@ -13,6 +13,8 @@ class Notice(models.Model):
             )
 
     sumnail_image = models.ImageField(
+            null=True,
+            blank=True,
             default=None,
             )
 
