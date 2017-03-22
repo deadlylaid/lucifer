@@ -9,6 +9,7 @@ clean:
 	find ./ -type f -name "\.*swp" -delete
 	find . -name "*.pyc" -exec rm -rf {} \;
 	find . -name __pycache__/ -type d -exec rm -rf {} \;
+	find . -name '.DS_Store' -type f -delete
 
 tests:
 	python lucifer/manage.py test posts users game
