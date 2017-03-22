@@ -19,9 +19,12 @@ class Home(View):
                 5,
                 )
 
+        showed_notices = notices.page(1)
+        showed_events = events.page(1)
+
         context = {
-                'notices': notices.object_list,
-                'events': events.object_list,
+                'notices': showed_notices,
+                'events': showed_events,
                 }
 
         return render(
