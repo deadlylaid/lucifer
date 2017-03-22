@@ -22,47 +22,53 @@
 	 create function : 위에서 받은 데이터를 가지고 객체 생성 해주는 함수
 	 update function : 게임상의 코드를 갱신해주는 함수.
 -----------------------------------------------------*/
-var Lucifer_Game = new Phaser.Game(1280, 800, Phaser.CANVAS, 'GameScreen',
+var Lucifer_Game = new Phaser.Game(1280, 800, Phaser.CANVAS, 'scene',
 								   { preload: preload, create: create, update: update });
 
 //## Game 상에서 필요한 변수들 
 //-----------------------------------------------------
-var Player, Cursor, Background_map; 
+var Player, Cursor, MousePosX, MousePosY, DistanceToMouse; 
+var Background_map;
+var MoveCheck = false;
+var Mouse_DownCheck = false;
+var UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;
 //-----------------------------------------------------
 function preload(){
 	/*
-		Player 관련 소스 : PY_직업_동작
-		Map 관련 소스 : MAP_스테이지 명
-		Object 관련 소스 : OB_오브젝트 명 
-		UI 관련 소스 : UI_인터페이스 이름
-		Monster 관련 소스 : MON_몬스터 명
-		Skill 관련 소스 : SK_스킬명
-		Effect 관련 소스 : EF_이펙트 명
-		NPC 관련 소스 : NPC_이름
-		Sound 관련 소스 : Sound_이름 
+		Player 관련 소스 : PY_직업_동작 || Map 관련 소스 : MAP_스테이지 명    	|| Object 관련 소스 : OB_오브젝트 명 
+		UI 관련 소스 : UI_인터페이스 이름 || Monster 관련 소스 : MON_몬스터 명  || Skill 관련 소스 : SK_스킬명
+		Effect 관련 소스 : EF_이펙트 명 || NPC 관련 소스 : NPC_이름         	|| Sound 관련 소스 : Sound_이름 
 	*/
 
 	Lucifer_Game.load.spritesheet('PY_Bavarian_Stand', 
-								  '../../static/images/game/Player/Bavarian/stand/Stand.png',
-								  200, 200);
+								  '../../static/images/game/Player/Bavarian/stand/Stand.png', 200, 200);
 	Lucifer_Game.load.spritesheet('PY_Bavarian_Walk', 
-		 					      '../../static/images/game/Player/Bavarian/walk/Walk.png',
-		 					      200, 200);
-	Lucifer_Game.load.image('MAP_Start', '../../static/images/game/Map/TestStage.png');	
+		 					      '../../static/images/game/Player/Bavarian/walk/Walk.png', 200, 200);
+	Lucifer_Game.load.spritesheet('MAP_Start', '../../static/images/game/Map/TestStage.png', 2543, 1419);
+	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/Modify_UnderBar.png', 1280, 150);
+	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/Modify_HpBar.png', 134, 134);
+	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/Modify_MpBar.png', 134, 134);					
+	Lucifer_Game.load.spritesheet('UI_QuickSlot', '../../static/images/game/UI/')
 }
 
 function create(){
-	//Image Setting
-	Lucifer_Game.add.sprite(0, 0, 'MAP_Start');
+	//Physics
+	Lucifer_Game.physics.startSystem(Phaser.Physics.ARCADE);
+
+	//Map / Scroll
+	Background_map = Lucifer_Game.add.sprite(Lucifer_Game.world.centerX, Lucifer_Game.world.centerY, 'MAP_Start');
 
 	//Player
 	//---------------------------------------------------------------------------------------
-	Player = Lucifer_Game.add.sprite(200, 200, 'PY_Bavarian_Stand');
+	Player = Lucifer_Game.add.sprite(Lucifer_Game.world.centerX, Lucifer_Game.world.centerY, 'PY_Bavarian_Stand');	
+	//Player = Lucifer_Game.add.group();	
+	Lucifer_Game.physics.enable(Player, Phaser.Physics.ARCADE);
 
-	//Player Stand Animation
+	//Player Stand Animation	
 	for(var i = 0; i < 8; ++i)
 	{
-		Player.animations.add('PY_Bavarian_Stand_' + i, [0, 1, 2, 3, 4, 5, 6, 7], 60, true);
+		//Player.create(200, 200, 'PY_Bavarian_Stand_' + i);
+		Player.animations.add('PY_Bavarian_Stand_' + i, [0, 1, 2, 3, 4, 5, 6, 7], 60, true); 
 	}
 
 	//Player Walk Animation
@@ -70,21 +76,80 @@ function create(){
 	{
 		Player.animations.add('PY_Bavarian_Walk_' + i, [0, 1, 2, 3, 4, 5, 6, 7], 60, true);
 	}	
+	
+	Player.animations.play('PY_Bavarian_Stand_0', 10, true);
+	Player.anchor.setTo(0.5, 0.5);	
+	//---------------------------------------------------------------------------------------
+
+	//Uesr Interface
+	UI_UnderBar = Lucifer_Game.add.sprite(Lucifer_Game.world.centerX, 725, 'UI_UnderBar');
+	UI_UnderBar.anchor.setTo(0.5, 0.5);
+	UI_HpBar = Lucifer_Game.add.sprite(115, 725, 'UI_HpBar');
+	UI_HpBar.anchor.setTo(0.5, 0.5);
+	UI_MpBar = Lucifer_Game.add.sprite(1165, 725, 'UI_MpBar');
+	UI_MpBar.anchor.setTo(0.5, 0.5);
+}
+
+function PlayerMove(MouseCursor){
+	//Player Move Rogic
+	//---------------------------------------------------------------------------------------
+	if(MouseCursor.isDown)
+	{
+		//Mouse Click Event
+		MoveCheck = true;
+
+		if(Mouse_DownCheck == false)
+		{
+			MousePosX = MouseCursor.x;
+			MousePosY = MouseCursor.y;				
+			Mouse_DownCheck = true;
+		}			
+	}	
+	
+	if(MoveCheck == true)
+	{
+		Lucifer_Game.physics.arcade.moveToXY(Player, MousePosX, MousePosY, 100, 1000);
+		DistanceToMouse = Phaser.Math.distance(Player.x, Player.y, MousePosX, MousePosY);
+
+		//Camera Move(아직 속도 조절이 필요함)
+		Lucifer_Game.camera.x = Player.x + 100;
+		Lucifer_Game.camera.y = Player.y + 100;
+		Background_map.x = -Player.x + 100;
+		Background_map.y = -Player.y + 100;
+
+		//Player.frameName = "PY_Bavarian_Walk_0";	
+		//Player.animations.play('PY_Bavarian_Walk_0', 10, true);	
+
+		//중간에 다시 마우스 클릭을 햇을때 거리 다시 계산.
+		if(MoveCheck == true && Mouse_DownCheck == true && MouseCursor.isDown)
+		{
+			MousePosX = MouseCursor.x;
+			MousePosY = MouseCursor.y;
+
+			DistanceToMouse = Phaser.Math.distance(Player.x, Player.y, MousePosX, MousePosY);
+		}
+
+		//거리가 100보다 작아지면 다시 마우스 값 받을 준비.
+		if(DistanceToMouse < 100)
+		{
+			MoveCheck = false;
+			Mouse_DownCheck = false;
+		}		
+	}	
 	//---------------------------------------------------------------------------------------
 }
 
 function update(){
 	//Key Setting
 	//---------------------------------------------------------------------------------------
-	//Player.body.velocity.x = 0;
-	//Player.body.velocity.y = 0;
-
-	//Lucifer_Game.input.mouse.capture = true;
 	Player.body.velocity.x = 0;
 	Player.body.velocity.y = 0;
 
-	Lucifer_Game.input.mouse.capture = true;
-	//---------------------------------------------------------------------------------------
+	var GameScene = document.querySelector('#scene');
+	Cursor = Lucifer_Game.input.mousePointer;
+	
+	PlayerMove(Cursor);
+	//---------------------------------------------------------------------------------------	
 }
 
 /*
