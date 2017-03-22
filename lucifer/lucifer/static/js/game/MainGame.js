@@ -26,13 +26,20 @@ var Lucifer_Game = new Phaser.Game(1280, 800, Phaser.CANVAS, 'scene',
 								   { preload: preload, create: create, update: update });
 
 //## Game 상에서 필요한 변수들 
-//-----------------------------------------------------
-var Player, Cursor, MousePosX, MousePosY, DistanceToMouse; 
-var Background_map;
-var MoveCheck = false;
-var Mouse_DownCheck = false;
-var UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;
-//-----------------------------------------------------
+//----------------------------------------------------------------------------------------------------------
+var Player;
+var Player_Status = new Array('Stand', 'Walk', 'Attack', 'Damage', 'Dash', 'Jump', 'Skill');
+//----------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------
+var MoveCheck = false;								//Mouse가 클릭 됬는지 체크 하는 변수
+var Mouse_DownCheck = false;						//Mouse클릭시 한번만 들어오게 할려는 변수
+var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
+var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
+//----------------------------------------------------------------------------------------------------------
+var Background_map;									//Stage 이미지 변수
+//----------------------------------------------------------------------------------------------------------
+var UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
+//----------------------------------------------------------------------------------------------------------
 function preload(){
 	/*
 		Player 관련 소스 : PY_직업_동작 || Map 관련 소스 : MAP_스테이지 명    	|| Object 관련 소스 : OB_오브젝트 명 
@@ -44,11 +51,13 @@ function preload(){
 								  '../../static/images/game/Player/Bavarian/stand/Stand.png', 200, 200);
 	Lucifer_Game.load.spritesheet('PY_Bavarian_Walk', 
 		 					      '../../static/images/game/Player/Bavarian/walk/Walk.png', 200, 200);
+
+	//UI 부분 일단은 spritesheet 로 해놨는데 바꿔야 될지도 모름
 	Lucifer_Game.load.spritesheet('MAP_Start', '../../static/images/game/Map/TestStage.png', 2543, 1419);
 	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/Modify_UnderBar.png', 1280, 150);
 	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/Modify_HpBar.png', 134, 134);
 	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/Modify_MpBar.png', 134, 134);					
-	Lucifer_Game.load.spritesheet('UI_QuickSlot', '../../static/images/game/UI/')
+	//Lucifer_Game.load.spritesheet('UI_QuickSlot', '../../static/images/game/UI/')
 }
 
 function create(){
@@ -61,20 +70,28 @@ function create(){
 	//Player
 	//---------------------------------------------------------------------------------------
 	Player = Lucifer_Game.add.sprite(Lucifer_Game.world.centerX, Lucifer_Game.world.centerY, 'PY_Bavarian_Stand');	
+
 	//Player = Lucifer_Game.add.group();	
 	Lucifer_Game.physics.enable(Player, Phaser.Physics.ARCADE);
 
 	//Player Stand Animation	
+	//var PY_Bavarian_StandFrame_Array = new Array(8);
+	var j = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		//Player.create(200, 200, 'PY_Bavarian_Stand_' + i);
-		Player.animations.add('PY_Bavarian_Stand_' + i, [0, 1, 2, 3, 4, 5, 6, 7], 60, true); 
-	}
+		Player.animations.add('PY_Bavarian_Stand_' + i, 
+							   [j, j + 1, j + 2, j + 3, j + 4, j + 5, j + 6], 60, true); 
+		 j += 8;
+	}		
 
 	//Player Walk Animation
+	//var PY_Bavarian_WalkFrame_Array = new Array(8);
+	j = 0;
 	for(var i = 0; i < 8; ++i)
-	{
-		Player.animations.add('PY_Bavarian_Walk_' + i, [0, 1, 2, 3, 4, 5, 6, 7], 60, true);
+	{	
+		Player.animations.add('PY_Bavarian_Walk_' + i, 
+							  [j, j + 1, j + 2, j + 3, j + 4, j + 5, j + 6], 60, true);
+		j += 8;
 	}	
 	
 	Player.animations.play('PY_Bavarian_Stand_0', 10, true);
@@ -88,6 +105,24 @@ function create(){
 	UI_HpBar.anchor.setTo(0.5, 0.5);
 	UI_MpBar = Lucifer_Game.add.sprite(1165, 725, 'UI_MpBar');
 	UI_MpBar.anchor.setTo(0.5, 0.5);
+}
+
+function Animation_Change(Direction, Status)
+{		
+	if(Status == Player_Status[0])
+	{
+		//Stand
+		Player.animations.stop();
+  	    Player.animations.play('PY_Bavarian_Stand_' + Direction, 10, true);
+	}
+	/*
+	else if(Status == Player_Status[1])
+	{
+		//Walk
+		Player.animations.stop();
+		Player.animations.play('PY_Bavarian_Walk_' + Direction, 10, true);
+	}
+	*/	
 }
 
 function PlayerMove(MouseCursor){
@@ -108,6 +143,48 @@ function PlayerMove(MouseCursor){
 	
 	if(MoveCheck == true)
 	{
+		//Angle to Pointer(Mouse)
+		AngleToPointer = Lucifer_Game.physics.arcade.angleToPointer(Player);
+		AngleToPointer = Math.abs(AngleToPointer);
+		if(Player.y < MousePosY)
+		{
+			AngleToPointer = 2 * Math.PI - AngleToPointer;
+		}
+
+		if(AngleToPointer >= 0 && AngleToPointer <= 0.7)
+		{
+			Direction = 7;
+		}
+		else if(AngleToPointer > 0.7 && AngleToPointer <= 1.9)
+		{
+			Direction = 0;
+		}
+		else if(AngleToPointer > 1.9 && AngleToPointer <= 2.9)
+		{
+			Direction = 1;
+		}
+		else if(AngleToPointer > 2.9 && AngleToPointer <= 3.9)
+		{
+			Direction = 2;
+		}
+		else if(AngleToPointer > 3.6 && AngleToPointer <= 4.2)
+		{
+			Direction = 3;
+		}
+		else if(AngleToPointer > 4.2 && AngleToPointer <= 4.9)
+		{
+			Direction = 4;
+		}
+		else if(AngleToPointer > 4.9 && AngleToPointer <= 5.7)
+		{
+			Direction = 5;
+		}
+		else if(AngleToPointer > 5.7 && AngleToPointer <= 6.2)
+		{
+			Direction = 6;
+		}
+
+		//Player Translate & Distance(아직 속도 조절이 필요함)
 		Lucifer_Game.physics.arcade.moveToXY(Player, MousePosX, MousePosY, 100, 1000);
 		DistanceToMouse = Phaser.Math.distance(Player.x, Player.y, MousePosX, MousePosY);
 
@@ -115,10 +192,7 @@ function PlayerMove(MouseCursor){
 		Lucifer_Game.camera.x = Player.x + 100;
 		Lucifer_Game.camera.y = Player.y + 100;
 		Background_map.x = -Player.x + 100;
-		Background_map.y = -Player.y + 100;
-
-		//Player.frameName = "PY_Bavarian_Walk_0";	
-		//Player.animations.play('PY_Bavarian_Walk_0', 10, true);	
+		Background_map.y = -Player.y + 100;		
 
 		//중간에 다시 마우스 클릭을 햇을때 거리 다시 계산.
 		if(MoveCheck == true && Mouse_DownCheck == true && MouseCursor.isDown)
@@ -127,6 +201,8 @@ function PlayerMove(MouseCursor){
 			MousePosY = MouseCursor.y;
 
 			DistanceToMouse = Phaser.Math.distance(Player.x, Player.y, MousePosX, MousePosY);
+
+			Animation_Change(Direction, 'Stand');
 		}
 
 		//거리가 100보다 작아지면 다시 마우스 값 받을 준비.
@@ -134,7 +210,11 @@ function PlayerMove(MouseCursor){
 		{
 			MoveCheck = false;
 			Mouse_DownCheck = false;
-		}		
+
+			//Animation_Change(Direction, 'Stand');
+		}	
+
+		console.log(Direction);
 	}	
 	//---------------------------------------------------------------------------------------
 }
