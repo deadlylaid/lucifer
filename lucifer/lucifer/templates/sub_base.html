@@ -41,17 +41,6 @@
 </head>
 
 <body>
-<div class="topbar_back" style="position:relative;">
-  <div class="topbar_container">
-    <div class="topbar_logo">
-        <a href={% url "home"%}><img src="{% static "images/topbar_logo.png" %}" /></a>
-    </div>
-    <div class="topbar_menu">
-        <a href="{% url "joinus" %}" target="_top" class="join">회원가입</a>
-        <a href="#">로그인</a> <!-- login link add -->
-    </div>
-  </div>
-</div>
 
 <div class="Back">
 
@@ -59,87 +48,70 @@
 
 <div class="Wrap">
     <div class="Left_box">
-      <div class="Login_wrap">
-          <fieldset>
+        <div class="Login_wrap">
+            <fieldset>
             {% if request.user.is_authenticated %}
             <div>
-              <p style="color:red;">{{ request.user.username }}</p>
-              <a href="{% url "logout" %}">로그아웃</a>
-              <ul>
-                <li>
-                  <a href="{% url "gamestart" %}" target="_blank">게임시작</a>
-                </li>
-                <li>
-                  <a href="{% url "checkcharacter" %}" target="_blank">게임시작(캐릭터체크)</a>
-                </li>
+                <p style="color:red;">{{ request.user.username }}</p>
+                <a href="{% url "logout" %}">로그아웃</a>
+                <ul>
+                <li><a href="{% url "gamestart" %}" target="_blank">게임시작</a></li>
+                <li><a href="{% url "checkcharacter" %}" target="_blank">게임시작(캐릭터체크)</a></li>
               </ul>
             </div>
             {% else %}
-
-            <form method="post" action="" id="frmLogin"> 
-              {% csrf_token %}
-
-            <div class="before">  <!-- Login 처리 -->
+            <div class="before">
                 <form method="post" action="{% url "login" %}" id="frmLogin"> 
-              {% csrf_token %}
-                <ul class="form">
-                    <li><input type="text" name="username" class="text" placeholder="계정" data-datatype="an" maxlength="16" required></li>
-                    <li><input type="password" name="password"  class="text" placeholder="비밀번호" maxlength="20" required></li>
-                    <li class="btn-login"><button type="submit" id="btnLogin"></button></li>
-                </ul>
-            </form>
-         <aside>
-             <a href="{% url "joinus" %}">회원가입</a>
-            <span>|</span>
-            <a href="#">계정</a>/<a href="#">비밀번호찾기</a>
-         </aside>
-         <div class="snslogin">
+                    {% csrf_token %}
+                    <ul class="form">
+                        <li><input type="text" name="username" class="text" placeholder="계정" data-datatype="an" maxlength="16" required></li>
+                        <li><input type="password" name="password"  class="text" placeholder="비밀번호" maxlength="20" required></li>
+                        <li class="btn-login"><button type="submit" id="btnLogin"></button></li>
+                    </ul>
+                </form>
+                <aside>
+                    <a href="{% url "joinus" %}">회원가입</a>
+                    <span>|</span>
+                    <a href="#">계정</a>/<a href="#">비밀번호찾기</a>
+                </aside>
+                <div class="snslogin">
                     SNS 로그인  
                     <ul>
-                        <li>
-                            <a href="/login/naver/">N</a>
-                        </li> <!-- sns Login add -->
-                        <li>
-                            <a href="/login/kakao/"><i class="fa fa-comment" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="/login/facebook/"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                        </li>
+                        <li><a href="/login/naver/">N</a></li>
+                        <li><a href="/login/kakao/"><i class="fa fa-comment" aria-hidden="true"></i></a></li>
+                        <li><a href="/login/facebook/"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
                     </ul>
-         
-                    </div>
+                </div>
             </div>
-
             {% endif %}
-         </fieldset>
-         <div class="Btn_Start">
-            <button type="submit" id="btnStart">START</button>
-         </div>
-      </div>
+            </fieldset>
+            <div class="Btn_Start"><button type="submit" id="btnStart">START</button></div>
+
+</div>
 
 {% block leftnav %}
 {% endblock %}
 
-        <div class="Quick_menu">
-            <ul class="link_list">
-                <li><a href="#" onclick="window.open('{% url 'policy' %}','window','width=880; height=650; scrollbars=yes');">
-                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                    <span class="link_list_title"> 도움말 무엇이 궁금하세요? </span>
-                    </a>
-                </li>
-                <li><a href="{% url "faq" %}" class="FAQ">
-                    <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                    <span class="link_list_title"> FAQ 빠르게 해결해드립니다</span>
-                    </a>
-                </li>
-                <li><a href="{% url "bugnotice" %}" class="Bugreport">
-                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-                    <span class="link_list_title"> 버그게시판 버그를 올려주세요</span></a>
-                </li>
-            </ul>
-        </div>
-
+    <div class="Quick_menu">
+        <ul class="link_list">
+            <li><a href="#" onclick="window.open('{% url 'policy' %}','window','width=880; height=650; scrollbars=yes');">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                <span class="link_list_title"> 도움말 무엇이 궁금하세요? </span>
+                </a>
+            </li>
+            <li><a href="{% url "faq" %}" class="FAQ">
+                <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                <span class="link_list_title"> FAQ 빠르게 해결해드립니다</span>
+                </a>
+            </li>
+            <li><a href="{% url "bugnotice" %}" class="Bugreport">
+                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                <span class="link_list_title"> 버그게시판 버그를 올려주세요</span></a>
+            </li>
+        </ul>
     </div>
+
+</div>
 
 <div class="Container">
     <div class="Content_in">
