@@ -25,7 +25,7 @@
 .Container .Content_in #most_sub_cont_area .most_board_top li.date {width:90px; background:url(../images/board_top_date.jpg) no-repeat 0 0;}
 .Container .Content_in #most_sub_cont_area .most_board_notice_list {width:720px; overflow:hidden;}
 .Container .Content_in #most_sub_cont_area .most_board_notice_list li {float:left; height:40px; background:url(../images/board_line.png) no-repeat bottom left; line-height:40px; letter-spacing:-1px;}
-.Container .Content_in #most_sub_cont_area .most_board_notice_list li a {color:#d4c4a4;}
+.Container .Content_in #most_sub_cont_area .most_board_notice_list li a {color:#ffffff;}
 .Container .Content_in #most_sub_cont_area .most_board_notice_list li.num { width:60px; text-align:center; font-size:11px; color:#ff9000; line-height:40px;}
 .Container .Content_in #most_sub_cont_area .most_board_notice_list li.title2 { width:570px; text-indent:10px; white-space:nowrap; overflow:hidden; text-align:left;}
 .Container .Content_in #most_sub_cont_area .most_board_notice_list li.date {width:90px; text-align:center; color:#d4c4a4; letter-spacing:0; font-size:11px;}

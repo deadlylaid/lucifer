@@ -14,61 +14,59 @@
 
 
 {% block leftnav %}
-      <div id="most_left_menu_area01">
-        <div class="most_left_menu_tit">
-            NEWS
-        </div>
-            <ul class="most_left_menu">
-                <li>&gt; 공지사항</li>
-                <li><a href="{% url "event_list" %}">&gt; 이벤트</a></li>
-            </ul>
-        </div>
+<div id="most_left_menu_area01">
+    <div class="most_left_menu_tit">NEWS</div>
+    <ul class="most_left_menu">
+        <li>&gt; 공지사항</li>
+        <li><a href="{% url "event_list" %}">&gt; 이벤트</a></li>
+    </ul>
+</div>
 {% endblock %}
 
 {% block content %}
-        <div id="most_sub_cont_area">
+<div id="most_sub_cont_area">
 
-            <!-- 게시판 리스트 -->
-            <ul class="most_board_top">
-                <li class="noname"></li>
-                <li class="title2">제목</li>
-                <li class="date">등록일</li>
-            </ul>
+    <!-- 게시판 리스트 -->
+    <ul class="most_board_top">
+        <li class="noname"></li>
+        <li class="title2">제목</li>
+        <li class="date">등록일</li>
+    </ul>
 
-            {% for notice in notices %}
-            <ul class="most_board_notice_list">
-                <li class="num">전체공지</li>
-                <li class="title2"><a href="{% url "notice_detail" notice.id %}" onclick=""><b>[이벤트] {{ notice.title }}</b></a></li>
-                <li class="date">{{ notice.created_at|date:"Y.m.d"}}</li>
-            </ul>
-            {% endfor %}
+    {% for notice in notices %}
+    <ul class="most_board_notice_list">
+        <li class="num">전체공지</li>
+        <li class="title2"><a href="{% url "notice_detail" notice.id %}" onclick="">{{ notice.title }}</a></li>
+        <li class="date">{{ notice.created_at|date:"Y.m.d"}}</li>
+    </ul>
+    {% endfor %}
 
-            <!--
-            <div class="most_index">
-                <em class="left_mg60">
-                    <a href="#">
-                        &lt; 이전
-                    </a>
-                </em>
-                <span>
-                    <a class="on">1</a>
-                    <a href="#" onclick="">2</a>
-                    <a href="#" onclick="">3</a>
-                    <a href="#" onclick="">4</a>
-                    <a href="#" onclick="">5</a>
-                    <a href="#" onclick="">6</a>
-                    <a href="#" onclick="">7</a>
-                    <a href="#" onclick="">8</a>
-                    <a href="#" onclick="">9</a>
-                    <a href="#" onclick="">10</a>
-                </span>
-                <em>
-                    <a href="#" onclick="">
-                        다음 &gt;
-                    </a>
-                </em>
-            </div>
-            -->
+    <!--
+    <div class="most_index">
+        <em class="left_mg60">
+            <a href="#">
+                &lt; 이전
+            </a>
+        </em>
+        <span>
+            <a class="on">1</a>
+            <a href="#" onclick="">2</a>
+            <a href="#" onclick="">3</a>
+            <a href="#" onclick="">4</a>
+            <a href="#" onclick="">5</a>
+            <a href="#" onclick="">6</a>
+            <a href="#" onclick="">7</a>
+            <a href="#" onclick="">8</a>
+            <a href="#" onclick="">9</a>
+            <a href="#" onclick="">10</a>
+        </span>
+        <em>
+            <a href="#" onclick="">
+                다음 &gt;
+            </a>
+        </em>
+    </div>
+    -->
 
-        </div>
+</div>
 {% endblock %}
