@@ -2,7 +2,7 @@
 /* CSS Document */
 
 
-.Container {background:transparent; background-size:821px 1300px; margin:0; padding:0px 25px;}
+.Container {background:transparent;  margin:0; padding:0px 25px;}
 .Container .Content_in {width:770px; height:850px; background-color:rgba(0,0,0,0.3); padding:0px 5px;}
 
 .Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;}
@@ -17,7 +17,7 @@
 .Container .Content_in .table tr td:nth-child(3) {width:117px;}
 .Container .Content_in .table tr td:nth-child(4) {width:119px;}
 
-.Container .Content_in #most_sub_cont_area {width:760px; height:777px; padding:20px; overflow:hidden;}
+.Container .Content_in #most_sub_cont_area {width:760px; padding:20px; overflow:hidden; position: relative;}
 .Container .Content_in #most_sub_cont_area .most_board_top {width:720px; height:37px;}
 .Container .Content_in #most_sub_cont_area .most_board_top li {float:left; height:37px; text-indent:-9999px;}
 .Container .Content_in #most_sub_cont_area .most_board_top li.noname {width:60px; background:url(../images/board_top_none.jpg) no-repeat 0 0;}

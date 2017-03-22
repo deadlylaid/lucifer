@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block content %}
-            <div id="most_sub_cont_area">    
+   
     <!-- 리스트 -->
                 <div class="most_board_view_tit"> {{ freeboard.title }} </div>
                 <div class="most_board_view_name">
@@ -24,8 +24,7 @@
                     {{ freeboard.content|safe }}
                 </div>
     <!-- 리스트 END -->
-    <div>
-</div>
+
 
 <div>
     {% for comment in freeboard.comment_set.all %}

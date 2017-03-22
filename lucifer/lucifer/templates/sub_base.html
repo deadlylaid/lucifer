@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> 
 
 <link rel="stylesheet" href="{% static "css/Base.css" %}" />
-<link rel="stylesheet" href="{% static "css/News_Notice.css" %}" />
+<!--<link rel="stylesheet" href="{% static "css/News_Notice.css" %}" />-->
 <link rel="stylesheet" href="{% static "css/topbar.css" %}" />
 <link rel="stylesheet" href="{% static "css/main.css" %}" />
 <!-- css가 들어가는 위치 -->
@@ -26,13 +26,13 @@
 <!-- style 코드가 틀어가는 위치 -->
 <style>
 .Back { 
-    background:url({% static "images/main_bg_2.jpg" %}) no-repeat 50% 0;
+    background:url({% static "images/main_bg_2.jpg" %}) no-repeat top center;
     margin:0 auto;
     padding:0;}
-.whiteback { width:100%; height:1300px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
 .Wrap {height:900px;}
-.Container {height:900px;}
+.Container {}
 .Left_box{height:900px;}
+/*.contentdiv { margin-left: 20px; }*/
 {% block style %}
 {% endblock %}
 </style>
@@ -52,9 +52,9 @@
     </div>
   </div>
 </div>
+
 <div class="Back">
-<div class="whiteback">
-    </div>
+
     {% include "partials/header.html" %}
 
 <div class="Wrap">
@@ -147,11 +147,14 @@
             {% block sub_title %}
             {% endblock %}
         </div>
+        <div class="contentdiv">
         {% block content %}
         {% endblock %}
+        </div>
     </div>
 </div>
 </div>
+
 
     {% include "partials/footer.html" %}
 </body>
