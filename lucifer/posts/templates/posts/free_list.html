@@ -16,21 +16,20 @@
 
 {% block leftnav %}
 <div id="most_left_menu_area01">
-        <div class="most_left_menu_tit">
-            커뮤니티
-        </div>
-            <ul class="most_left_menu">
-                <li>&gt; 자유게시판</li>
-                <li><a href="{% url "screenshot" %}">&gt; 스크린샷</a></li>      
-            </ul>
-        </div>
+    <div class="most_left_menu_tit">
+        커뮤니티
+    </div>
+        <ul class="most_left_menu">
+            <li>&gt; 자유게시판</li>
+            <li><a href="{% url "screenshot" %}">&gt; 스크린샷</a></li>      
+        </ul>
+    </div>
 {% endblock %}
 
 {% block sub_title %}
-        <h2>자유게시판</h2>
-                <p id="navi">
-        <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 커뮤니티 &gt; <span>자유게시판</span></p>
-
+    <h2>자유게시판</h2>
+            <p id="navi">
+    <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 커뮤니티 &gt; <span>자유게시판</span></p>
 {% endblock %}
 
 {% block title %}
@@ -57,8 +56,8 @@
         </ul>
         {% endfor %}
 
-        <!--
         <div class="most_index">
+            <!--
             <em class="left_mg60"><a href="#">&lt; 이전</a></em>
                 <span>
                 <a class="on">1</a> 
@@ -72,11 +71,11 @@
                 <a href="#" onclick="">9</a>
                 <a href="#" onclick="">10</a></span>
                 <em><a href="#" onclick="">다음 &gt;</a></em>
+            -->
             <em class="bott_btn">
                 <a href="{% url "freecreate" %}" onclick="#">쓰기</a>
             </em>
         </div>
-        -->
 </div>
 
 {% endblock %}
