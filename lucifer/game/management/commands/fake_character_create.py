@@ -26,10 +26,14 @@ class Command(BaseCommand):
                     password='123',
                     )
 
-            Character.objects.create(
+            fake_character = Character.objects.create(
                     user=fake_user,
                     nickname='%snickname' % (fake_user),
                     job='barabarian',
+                    )
+
+            Status.objects.create(
+                    character_set=fake_character,
                     )
 
             fake_user.has_character = True
