@@ -2,40 +2,40 @@
 /* CSS Document */
 
 .Container > .Slide_menu {width:821px; height:395px; background:transparent; margin-bottom:10px;}
-.Container > .Notice_menu {width:821px;height:409px; float:none; background-color:transparent; margin:0 0;}
-.Container .Bot {width:821px; height:475px; margin:0; padding:0; display:block;}
-.Container .Bot .Screenshot {width:550px; height:475px; float:left; background-color:#ffffff; border-right:1px solid #bfbdbd; margin:0; padding:0;}
-.Container .Bot .ranking { width:271px; height:475px; background-color:#ffffff; float:right; margin:0; padding:0;}
+.Container > .Notice_menu {width:821px;height:441px; float:none; background-color:transparent; margin:0 0;}
+.Container .Bot {width:821px; height:475px; margin:0; padding:0; display:block; margin-top: 20px;}
+.Container .Bot .Screenshot {width:565px; height:440px; float:left; background-color:transparent; margin:0; padding:0; margin-left: 15px; background: url(../images/cont_bg3.png);}
+.Container .Bot .ranking { width:213px; height:475px; background-color:#ffffff; float:right; margin:0; padding:0;}
 
 /* 컨테이너 슬라이드 메뉴 */
 .Container .Slide_menu .carousel {width:805px; height:380px; text-align:center; display:inline-block; float:left; padding:0; margin-left: 15px;}
 .Container .Slide_menu .carousel .item { width:805px; height:380px; background:#CCC;}	
 
 /* 컨테이너 공지사항 부분 */
-.Container .Notice_menu .board {width:550px; height:409px; float:left; border-right:1px solid #bfbdbd; border-left:1px solid #bfbdbd;}
-.Container .Notice_menu .board .notice {height:200px; border-bottom:1px solid #bfbdbd;}
-.Container .Notice_menu .board .notice h2 { text-align:left; margin-left:20px; position:relative; font-size:24px; color:#000; font-weight:bold; color:#ffffff; text-shadow:1px 1px 3px #000;}
-.Container .Notice_menu .board .notice h2 .more {width:10px; height:10px; position:absolute; right:25px; top:10%;}
-.Container .Notice_menu .board .notice ul {height:140px; margin-top:25px;}
+.Container .Notice_menu .board {width:565px; height:441px; float:left; margin-left: 15px;}
+.Container .Notice_menu .board .notice {height:218px; background: url(../images/cont_bg.png); }
+.Container .Notice_menu .board .notice h2 { text-align:left; position:relative; font-size:24px; color:#000; font-weight:bold; padding: 10px; color:#ffffff; text-shadow:1px 1px 3px #000; background: url(../images/cont_title.png); height:48px; margin:0px;}
+.Container .Notice_menu .board .notice h2 .more {width:10px; height:10px; position:absolute; right:20px; top:13px;}
+.Container .Notice_menu .board .notice ul {height:170px; }
 .Container .Notice_menu .board .notice ul li { display:block; margin:10px 15px; text-align:left;}
 .Container .Notice_menu .board .notice ul li a {color:#edeaea;}
 .Container .Notice_menu .board .notice ul li:hover { text-decoration:underline;}
 .Container .Notice_menu .board .notice ul li span { float:right; color:#edeaea;}
 
 /* 컨테이너 자유게시판 부분 */
-.Container .Notice_menu .board .freenotice {height:170px; border-bottom:1px solid #bfbdbd;}
-.Container .Notice_menu .board .freenotice h2 { text-align:left; margin-left:20px; position:relative; font-size:24px; color:#000; font-weight:bold; color:#ffffff; text-shadow:1px 1px 3px #000;}
-.Container .Notice_menu .board .freenotice h2 .more {width:10px; height:10px; position:absolute; right:25px; top:10%;}
-.Container .Notice_menu .board .freenotice ul {height:110px; margin-top:25px;}
+.Container .Notice_menu .board .freenotice {height:218px; background: url(../images/cont_bg.png); margin-top:5px;}
+.Container .Notice_menu .board .freenotice h2 { text-align:left; position:relative; font-size:24px; color:#000; font-weight:bold; padding: 10px; color:#ffffff; text-shadow:1px 1px 3px #000; background: url(../images/cont_title.png); height:48px; margin:0px;}
+.Container .Notice_menu .board .freenotice h2 .more {width:10px; height:10px; position:absolute; right:20px; top:13px;}
+.Container .Notice_menu .board .freenotice ul {height:170px;}
 .Container .Notice_menu .board .freenotice ul li { display:block; margin:10px 15px; text-align:left;}
 .Container .Notice_menu .board .freenotice ul li a {color:#edeaea;}
 .Container .Notice_menu .board .freenotice ul li:hover {text-decoration:underline;}
 .Container .Notice_menu .board .freenotice ul li span { float:right; color:#edeaea;}
 
 /* 컨테이너 GM노트 부분 */
-.Container .Notice_menu .GMnote .gm-note {width:270px; height:410px; float:right; position:relative; border-bottom:1px solid #bfbdbd; border-right:1px solid #bfbdbd; }
-.Container .Notice_menu .GMnote .gm-note h2 { margin-left:20px; text-align:left; position:relative; font-size:24px; color:#ffffff; font-weight:bold; text-shadow:1px 1px 3px #000;}
-.Container .Notice_menu .GMnote .gm-note .more { float:right; margin-right:8px;}
+.Container .Notice_menu .GMnote .gm-note {width:235px; height:441px; background: url(../images/cont_bg2.png); float:right; position:relative; }
+.Container .Notice_menu .GMnote .gm-note h2 { width:235px; height:48px; margin:0; padding:10px; text-align:left; position:relative; font-size:24px; color:#ffffff; font-weight:bold; text-shadow:1px 1px 3px #000; background: url(../images/cont_title2.png);}
+.Container .Notice_menu .GMnote .gm-note h2 .more { width:10px; height:10px; position:absolute; right:20px; top:13px; }
 .Container .Notice_menu .GMnote .gm-note p .gm-note-text strong{font-size:18px; color:#edeaea; font-weight:400;}
 .Container .Notice_menu .GMnote .gm-note p .gm-note-text span{ text-align:center; font-size:15px; color:#edeaea; line-height:160%;}
 .Container .Notice_menu .GMnote .gm-note p img{ display:block; position:relative; border:0; margin:15px 10px; border:2px solid #000;} 
@@ -45,9 +45,9 @@
 .Container .Notice_menu .GMnote .gm-note .votebtn {width:270px; top:0px;}
 
 /* 컨테이너 스크린샷 부분 */
-.Container .Bot .Screenshot .carousel { background: #f3efeb; margin-bottom: 40px; width:525px;}
-.Container .Bot .Screenshot .carousel-cell { width: 100%; height: 200px; margin-right: 10px; background: #8C8; border-radius: 5px; counter-increment: carousel-cell; }
-.Container .Bot .Screenshot .Screenmove {margin:10px; width:525px; height:345px;}
+.Container .Bot .Screenshot .carousel { background: transparent; margin-bottom: 40px; width:525px;}
+.Container .Bot .Screenshot .carousel-cell { width: 100%; height: 200px; margin-right: 10px; background: transparent; border-radius: 5px; counter-increment: carousel-cell; }
+.Container .Bot .Screenshot .Screenmove {margin:auto; margin-top:10px; width:525px; height:360px;}
 .Container .Bot .Screenshot .Screenmove .carousel { margin-bottom:50px;}
 
 /* 컨테이너 스크린샷 경로, 사이즈*/
@@ -83,26 +83,32 @@
 
 /*-------------------------------*/	
 
-.Container .Bot .Screenshot .carousel-cell:before { display: block; text-align: center; content: counter(carousel-cell); line-height: 200px; font-size: 80px; color: white; }
+.Container .Bot .Screenshot .carousel-cell:before { display: block; text-align: center; content: counter(carousel-cell); line-height: 200px; font-size: 80px; color: transparent; }
 .Container .Bot .Screenshot .carousel-nav .carousel-cell {width: 150px; height: 100px; }
 .Container .Bot .Screenshot .carousel-nav .carousel-cell:before { font-size: 50px; line-height: 100px; }
 .Container .Bot .Screenshot .carousel-nav .carousel-cell.is-nav-selected { background: #ED2; opacity:0.3; }
-.Container .Bot .Screenshot h2 { text-align:left; margin-left:20px; position:relative; font-size:24px; color:#000; font-weight:bold; margin-top:40px; margin-bottom:20px; text-shadow:1px 1px 3px #CCC;}
-.Container .Bot .Screenshot h2 .more {width:10px; height:10px; position:absolute; right:25px; top:10%;}
+.Container .Bot .Screenshot h2 { width:565px; height:48px; margin: 0; padding:10px; text-align:left; position:relative; font-size:24px; color:#ffffff; background: url(../images/cont_title.png); font-weight:bold; text-shadow:1px 1px 3px #000;}
+.Container .Bot .Screenshot h2 .more {width:10px; height:10px; position:absolute; right:20px; top:13px;}
+
+
+
 
 /* 컨테이너 스크린샷 부분 End*/
 
-/* 컨테이너 랭킹 부분 */
-.Container .Bot .ranking h2 { text-align:left; margin-left:20px; position:relative; font-size:24px; color:#000; font-weight:bold; margin-top:40px; margin-bottom:20px; text-shadow:1px 1px 3px #CCC; }
-.Container .Bot .ranking h2 .more {width:10px; height:10px; position:absolute; right:20px; top:10%;}
-.Container .Bot .ranking .ranking-table {margin:0 auto; padding:0; display:table; text-align:center;;}
-.Container .Bot .ranking .ranking-table table { width:260px; height:350px; font-size:x-small;}
-.Container .Bot .ranking .ranking-table table tr:first-child { background:#999; font-weight:bold;}
-.Container .Bot .ranking .ranking-table table tr:first-child img {margin:0; display:block; padding:0;}
-.Container .Bot .ranking .ranking-table table tr:nth-child(2) td {height:31px; line-height:31px;}
-.Container .Bot .ranking .ranking-table table tr:nth-child(3) td {height:31px; line-height:31px;}
-.Container .Bot .ranking .ranking-table table tr:nth-child(4) td {height:31px; line-height:31px;}
-.Container .Bot .ranking .ranking-table table tr td:first-child {width:40px;}
+/* 컨테이너 bot right 부분 */ 
+.Container .Bot .botright { width:235px; height:441px; background: url(../images/cont_bg2.png); float:right;  }
+.Container .Bot .botright h2 { width:235px; height:48px; margin:0; padding:10px; text-align:left; position:relative; font-size:24px; color:#ffffff; font-weight:bold; text-shadow:1px 1px 3px #000; background: url(../images/cont_title2.png);}
+.Container .Bot .botright h2 .more { width:10px; height:10px; position:absolute; right:20px; top:13px; }
+.Container .Bot .botright .board-section .botright_content { width:230px; height:390px; background: #000; margin: auto; padding: 0;}
+.Container .Bot .botright .board-section .botright_content li {width:230px; height: 130px; background: #951e1e;} 
+.Container .Bot .botright .board-section .botright_content li:first-child{ background: url(../images/main_char_info1.png); }
+.Container .Bot .botright .board-section .botright_content li:first-child:hover { background: url(../images/main_char_info1_ov.png); }
+.Container .Bot .botright .board-section .botright_content li:nth-child(2){ background: url(../images/main_char_info2.png); }
+.Container .Bot .botright .board-section .botright_content li:nth-child(2):hover{ background: url(../images/main_char_info2_ov.png); }
+.Container .Bot .botright .board-section .botright_content li:last-child{ background: url(../images/main_char_info3.png); }
+.Container .Bot .botright .board-section .botright_content li:last-child:hover{ background: url(../images/main_char_info3_ov.png); }
+.Container .Bot .botright .board-section .botright_content li a { display:block; width:230px; height: 130px; margin: 0; padding: 0; text-indent: -9999px;}
+.Container .Bot .botright .board-section .botright_content li a:hover {text-decoration: none;}
 
 /* LEFT BOX */
 .Left_box .Login_wrap a {
@@ -111,17 +117,48 @@
 .Left_box .Login_wrap a:hover {
     color: inherit;
 }
-.Left_box > .Quick_menu {width:200px; height:240px; margin-top:85px; background:transparent;}
-.Quick_menu .link_list { width:190px; height:218px; background-color:#f4f4f4; margin:0px auto 0 auto; text-align:left; vertical-align:middle; border:1px solid #bfbdbd; background:transparent; padding:0;}
+
+.Left_box .ranking {width:200px; height: 441px;}
+/*.Left_box .ranking { text-align:left; margin-left:10px; position:relative; font-size:24px; color:#000; font-weight:bold; margin-top:15px; margin-bottom:20px; text-shadow:1px 1px 3px #CCC; }*/
+
+.Left_box .ranking .ranking-table {margin:0; padding:0; display:table; text-align:center; width: 200px; height: 441px; border: none;}
+.Left_box .ranking .ranking-table { width:200px; height:441px; font-size:x-small; font-size:12px;}
+.Left_box .ranking .ranking-table img {margin:0; padding: 0;}
+.Left_box .ranking .ranking-table tr td .more {width:17px; height:17px; float: right; margin-right:7px;}
+.Left_box .ranking .ranking-table tr:first-child { background:transparent; font-weight:bold; color: #ffffff; width:200px; height: 40px; text-align: left; font-size: 15px; }
+.Left_box .ranking .ranking-table tr:first-child td { padding-left: 10px;}
+.Left_box .ranking .ranking-table tr:nth-child(2) {width:200px; height:50px; line-height:50px; color: #ffffff;}
+.Left_box .ranking .ranking-table tr:nth-child(3) {height:45px; line-height:45px; color: #e26a65; font-size: 15px; }
+.Left_box .ranking .ranking-table tr:nth-child(3) img { width: 35px; height: 30px; margin:0 auto;}
+.Left_box .ranking .ranking-table tr:nth-child(4) {height:41px; line-height:41px; color: #e26a65;}
+.Left_box .ranking .ranking-table tr:nth-child(4) img { width: 29px; height: 24px; margin:0 auto;}
+.Left_box .ranking .ranking-table tr:nth-child(5) {height:41px; line-height:41px; color: #e26a65;}
+.Left_box .ranking .ranking-table tr:nth-child(5) img { width: 29px; height: 24px; margin:0 auto;}
+.Left_box .ranking .ranking-table tr:nth-child(6) {height:29px; line-height:30px; color: #787d85;}
+.Left_box .ranking .ranking-table tr:nth-child(7) {height:29px; line-height:30px; color: #787d85;}
+.Left_box .ranking .ranking-table tr:nth-child(8) {height:29px; line-height:30px; color: #787d85;}
+.Left_box .ranking .ranking-table tr:nth-child(9) {height:29px; line-height:30px; color: #787d85;}
+.Left_box .ranking .ranking-table tr:nth-child(10) {height:29px; line-height:30px; color: #787d85;}
+.Left_box .ranking .ranking-table tr:nth-child(11) {height:29px; line-height:30px; color: #787d85;}
+.Left_box .ranking .ranking-table tr:nth-child(12) {height:29px; line-height:30px; color: #787d85;}
+.Left_box .ranking .ranking-table tr:last_child {height:43px; line-height:43px; color: #787d85;}
+
+
+
+
+
+.Left_box > .Quick_menu {width:200px; height:210px; margin-top:20px; background:transparent;}
+.Quick_menu .link_list { width:200px; height:218px; background-color:#f4f4f4; margin:0px; text-align:left; vertical-align:middle; background:transparent; padding:0;}
 .Quick_menu .link_list .link_list_title {font-size:18px; font-weight:bold;}
-.Quick_menu .link_list li {margin:1px 0; border-bottom:1px solid #bfbdbd;}
-.Quick_menu .link_list li:first-child {background:url(../images/Quick_menu_main_help.png) no-repeat; }
-.Quick_menu .link_list li:first-child:hover {background:url(../images/Quick_menu_help_ov.png) no-repeat; }
-.Quick_menu .link_list li:nth-child(2) {background:url(../images/Quick_menu_main_faq.png) no-repeat; }
-.Quick_menu .link_list li:nth-child(2):hover {background:url(../images/Quick_menu_faq_ov.png) no-repeat; }
-.Quick_menu .link_list li:nth-child(3) {background:url(../images/Quick_menu_main_bug.png) no-repeat; }
-.Quick_menu .link_list li:nth-child(3):hover {background:url(../images/Quick_menu_bug_ov.png) no-repeat; }
-.Quick_menu .link_list li a { color:#666666; display:block; margin:0; width:190px; height:70px; text-indent:-1000px;}
+.Quick_menu .link_list li:first-child {background:url(../images/main_Quick_menu_help.png) no-repeat; }
+.Quick_menu .link_list li:first-child:hover {background:url(../images/main_Quick_menu_help_ov.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(2) {background:url(../images/main_Quick_menu_faq.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(2):hover {background:url(../images/main_Quick_menu_faq_ov.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(3) {background:url(../images/main_Quick_menu_bug.png) no-repeat; }
+.Quick_menu .link_list li:nth-child(3):hover {background:url(../images/main_Quick_menu_bug_ov.png) no-repeat; }
+.Quick_menu .link_list li a { color:#666666; display:block; margin:0; width:200px; height:70px; text-indent:-9000px;}
 .Quick_menu .link_list li a:hover { text-decoration:none;}
+
+
 
 /* LEFT BOX END*/

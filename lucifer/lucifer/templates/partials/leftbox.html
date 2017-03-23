@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <div class="Left_box">
     <div class="Login_wrap">
         <fieldset>
@@ -42,13 +43,23 @@
           -->
         </div>
     </div>
-
-    <div class="counsel">
-        <ul class="link_list">
-            <li><a href="{% url "faq" %}" class="title"><span class="link_list_title"> 고객센터 </span></a></li>
-            <li><a href="#" class="text"><span class="link_list_title"> 31020 충청남도 천안시 서북구 성환읍 대학로 91번지TEL 041-580-2000   Ι  평일 오전 10시 ~ 오후 6시</span></a></li>
-         </ul>
-    </div>
+    <div class="ranking" style="background:url({% static "images/ranking_bg.png" %}); ">
+          <table class="ranking-table">
+                <tr>                <td colspan="2">랭킹</td><td><a href="{% url "ranking" %}" class="more"><img src="{% static "images/btn_board_more.jpg" %}" alt=""></a></td></tr>
+                <tr>                <td colspan="3">총 전투력</td></tr>
+                <tr>    <td><img src="{% static "images/real_first.png" %}" /></td><td>hoeeon</td><td>42,123</td></tr>
+                <tr>    <td><img src="{% static "images/real_second.png" %}" /></td><td>youngjun</td><td>40,124</td></tr>
+                <tr>    <td><img src="{% static "images/real_third.png" %}"/></td><td>mansur</td><td>37,645</td></tr>
+                <tr>                <td>4</td><td>master1</td><td>35,421</td></tr>
+                <tr>                <td>5</td><td>master2</td><td>30,504</td></tr>
+                <tr>                <td>6</td><td>master3</td><td>25,254</td></tr>
+                <tr>                <td>7</td><td>master4</td><td>23,759</td></tr>
+                <tr>                <td>8</td><td>master5</td><td>22,982</td></tr>
+                <tr>                <td>9</td><td>master5</td><td>22,982</td></tr>
+                <tr>                <td>10</td><td>master5</td><td>22,982</td></tr>
+            </table>
+         </div>
+    
     <div class="Quick_menu">
         <ul class="link_list">
             <li><a href="#" onclick="window.open('{% url 'policy' %}','window','width=880; height=650; scrollbars=yes');">
@@ -66,6 +77,16 @@
                 <span class="link_list_title"> 버그신고 버그를 올려주세요</span></a>
             </li>
         </ul>
+    </div>
+
+    <div class="counsel">
+        <ul class="link_list">
+            <li><a href="{% url "faq" %}" class="title"><span class="link_list_title"> 고객센터 </span></a></li>
+            <li><span class="link_list_cont"> TEL 041-580-2000</span>
+            <br><span class="link_list_cont2">평일 오전 10시 ~ 오후 6시</span>
+            <br><br><span class="link_list_cont3">31020 충청남도 천안시 서북구 성환읍 대학로 91번지 <br>남서울대학교 <br> 멀티미디어학과 Overrride팀
+            </li>
+         </ul>
     </div>
 
 </div>
