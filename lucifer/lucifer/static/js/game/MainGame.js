@@ -41,7 +41,7 @@ var Mouse_DownCheck = false;						//Mouse클릭시 한번만 들어오게 할려
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 //----------------------------------------------------------------------------------------------------------
-var Background_map;									//Stage 이미지 변수
+var Background_map, layer;							//Stage 이미지 변수								
 //----------------------------------------------------------------------------------------------------------
 var UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
@@ -51,17 +51,32 @@ function preload(){
 		UI 관련 소스 : UI_인터페이스 이름 || Monster 관련 소스 : MON_몬스터 명  || Skill 관련 소스 : SK_스킬명
 		Effect 관련 소스 : EF_이펙트 명 || NPC 관련 소스 : NPC_이름         	|| Sound 관련 소스 : Sound_이름 
 	*/
+	//Player(Bavarian)
+	//----------------------------------------------------------------------------------------------------------
 	Lucifer_Game.load.spritesheet('PY_Bavarian_Stand', 
 								  '../../static/images/game/Player/Bavarian/stand/Stand.png', 200, 200);
 	Lucifer_Game.load.spritesheet('PY_Bavarian_Walk', 
 		 					      '../../static/images/game/Player/Bavarian/walk/Walk.png', 200, 200);
-
-	//UI 부분 일단은 spritesheet 로 해놨는데 바꿔야 될지도 모름
-	Lucifer_Game.load.spritesheet('MAP_Start', '../../static/images/game/Map/TestStage.png', 2543, 1419);
+	//----------------------------------------------------------------------------------------------------------
+	
+	//UI : spritesheet(Image로 불러오는 것으로 해야될수도 있음. 아직 UI 안들어 가서 보류)
+	//----------------------------------------------------------------------------------------------------------
 	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/Modify_UnderBar.png', 1280, 150);
 	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/Modify_HpBar.png', 134, 134);
 	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/Modify_MpBar.png', 134, 134);					
 	//Lucifer_Game.load.spritesheet('UI_QuickSlot', '../../static/images/game/UI/')
+	//----------------------------------------------------------------------------------------------------------
+
+	//Map
+	//----------------------------------------------------------------------------------------------------------
+	//Lucifer_Game.load.spritesheet('MAP_Start', '../../static/images/game/Map/TestStage.png', 2543, 1419);
+	/*
+	Lucifer_Game.load.image('Stage1_TileSet', '../../static/images/game/Map/Tile/Stage1_TileSet.png');*/	
+	//Lucifer_Game.load.image('Modify_Tile50', '../../static/images/game/Map/Tile/Modify_Tile50.png');
+	Lucifer_Game.load.tilemap('MAP_Stage1_Test', '../../static/images/game/Map/Stage1(Test).json',
+							   null, Phaser.Tilemap.TILED_JSON);
+	Lucifer_Game.load.image('TestTile05', '../../static/images/game/Map/Tile/TestTile05.png');	
+	//----------------------------------------------------------------------------------------------------------
 }
 
 function create(){
@@ -69,7 +84,12 @@ function create(){
 	Lucifer_Game.physics.startSystem(Phaser.Physics.ARCADE);
 
 	//Map / Scroll
-	Background_map = Lucifer_Game.add.sprite(Lucifer_Game.world.centerX, Lucifer_Game.world.centerY, 'MAP_Start');
+	//---------------------------------------------------------------------------------------
+	Background_map = Lucifer_Game.add.tilemap('MAP_Stage1_Test');
+	Background_map.addTilesetImage('TestTile05', 'TestTile05');
+	layer = Background_map.createLayer('Tile Layer 1');
+	layer.resizeWorld();	
+	//---------------------------------------------------------------------------------------
 
 	//Player
 	//---------------------------------------------------------------------------------------
@@ -250,7 +270,10 @@ function update(){
 	PlayerMove(Cursor);
 	//---------------------------------------------------------------------------------------	
 
+	//Player ID
+	//---------------------------------------------------------------------------------------
 	var ID_PosY = Player.position.y + 70;
 	Player_ID.position.x = Player.position.x;
 	Player_ID.position.y = ID_PosY;	
+	//---------------------------------------------------------------------------------------
 }
