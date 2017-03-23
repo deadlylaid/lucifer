@@ -3,7 +3,7 @@
         <fieldset>
             {% if request.user.is_authenticated %}
             <div>
-              <p style="color:red;">{{ request.user.username }}</p>
+              <p id="username" style="color:red;">{{ request.user.username }}</p>
               <a href="{% url "logout" %}">로그아웃</a>
             </div>
             {% else %}
@@ -33,9 +33,13 @@
             {% endif %}
         </fieldset>
         <div class="Btn_Start">
+          <input id="btnStart" onclick="gameStart();" type="button" />
+          
+          <!--
           <form method="GET" action="{% url "checkcharacter" %}" target="_blank">
             <input type="submit" id="btnStart" value="START">
           </form>
+          -->
         </div>
     </div>
 
