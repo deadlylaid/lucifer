@@ -13,6 +13,11 @@
 * *************************
 * 2017년 3월 21일 최영준
 * Phaser js 로 작업 시작. 
+* *************************
+* 2017년 3월 22 ~ 23일 최영준
+* Player Direction, Sprite 변화 완료
+* Player ID 띄우기 작업
+* Tile map 설치. (충돌 처리)
 * **************************/
 
 //## Main Game.js -- 3월 21일 최영준 
@@ -27,7 +32,7 @@ var Lucifer_Game = new Phaser.Game(1280, 800, Phaser.CANVAS, 'scene',
 
 //## Game 상에서 필요한 변수들 
 //----------------------------------------------------------------------------------------------------------
-var Player;
+var Player, Player_ID;
 var Player_Status = new Array('Stand', 'Walk', 'Attack', 'Damage', 'Dash', 'Jump', 'Skill');
 //----------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------
@@ -96,14 +101,33 @@ function create(){
 	Player.animations.play('PY_Bavarian_Stand_0', 10, true);
 	Player.anchor.setTo(0.5, 0.5);	
 	//---------------------------------------------------------------------------------------
-
+	
 	//Uesr Interface
+	//---------------------------------------------------------------------------------------
 	UI_UnderBar = Lucifer_Game.add.sprite(Lucifer_Game.world.centerX, 725, 'UI_UnderBar');
 	UI_UnderBar.anchor.setTo(0.5, 0.5);
 	UI_HpBar = Lucifer_Game.add.sprite(115, 725, 'UI_HpBar');
 	UI_HpBar.anchor.setTo(0.5, 0.5);
 	UI_MpBar = Lucifer_Game.add.sprite(1165, 725, 'UI_MpBar');
 	UI_MpBar.anchor.setTo(0.5, 0.5);
+	//---------------------------------------------------------------------------------------
+
+	//Player Id Text(Test Code)
+	//---------------------------------------------------------------------------------------
+	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, 'Test'); //Test 부분에 Player Id 가 들어가면 됨.
+
+	//Center align
+	Player_ID.anchor.set(0.5);
+	Player_ID.align = 'center';
+
+	//Font Style
+	Player_ID.font = 'Arial';
+	Player_ID.fontSize = 13;
+	Player_ID.fontWeight = 'normal';
+
+	//Stroke color & thickness	
+	Player_ID.fill = '#19de65';
+	//---------------------------------------------------------------------------------------
 }
 
 function Animation_Change(Direction, Status)
@@ -210,9 +234,7 @@ function PlayerMove(MouseCursor){
 			MoveCheck = false;
 			Mouse_DownCheck = false;		
 		}			
-	}	
-
-	console.log(Direction);
+	}
 	//---------------------------------------------------------------------------------------
 }
 
@@ -227,4 +249,8 @@ function update(){
 	
 	PlayerMove(Cursor);
 	//---------------------------------------------------------------------------------------	
+
+	var ID_PosY = Player.position.y + 70;
+	Player_ID.position.x = Player.position.x;
+	Player_ID.position.y = ID_PosY;	
 }
