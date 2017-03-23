@@ -55,8 +55,6 @@
                 <p style="color:red;">{{ request.user.username }}</p>
                 <a href="{% url "logout" %}">로그아웃</a>
                 <ul>
-                <li><a href="{% url "gamestart" %}" target="_blank">게임시작</a></li>
-                <li><a href="{% url "checkcharacter" %}" target="_blank">게임시작(캐릭터체크)</a></li>
               </ul>
             </div>
             {% else %}
@@ -85,8 +83,10 @@
             </div>
             {% endif %}
             </fieldset>
-            <div class="Btn_Start"><button type="submit" id="btnStart">START</button></div>
-
+            <div class="Btn_Start">
+                <form action="{% url "checkcharacter" %}" method="get">
+                    <input type="submit" id="btnStart">START</div>
+                </form>
 </div>
 
 {% block leftnav %}
