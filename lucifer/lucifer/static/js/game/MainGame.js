@@ -114,7 +114,7 @@ function create(){
 
 	//Player Id Text(Test Code)
 	//---------------------------------------------------------------------------------------
-	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, 'Test'); //Test 부분에 Player Id 가 들어가면 됨.
+	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, nickname); //Test 부분에 Player Id 가 들어가면 됨.
 
 	//Center align
 	Player_ID.anchor.set(0.5);
