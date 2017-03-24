@@ -1,4 +1,4 @@
-.topbar_back {background:#101010; width:100%; margin:0 auto; padding:0; position:fixed; z-index:9999; }
+.topbar_back {background:#101010; width:100%; margin:0 auto; padding:0; position:fixed; z-index:9999;  }
 .topbar_container{position:relative; margin:0 auto; padding:0;width:1021px; height:40px; vertical-align:middle;}
 .topbar_container .topbar_menu{margin:7px auto 0; padding:0; float:right;}
 .topbar_container .topbar_menu a {float:right; height:22px; margin-left:15px; line-height:22px; font-size:12px; color:#999;}
@@ -8,7 +8,7 @@
 
  /*.global-top-bar-container .global-top-bar h1 a{display:block; width:29px; height:18px; background-position:0 0;text-indent:-9999em; color:#cccccc; font-size:15px;}*/
 
-.navigator{width:100%; height:94px; position:fixed; left:0; top:0; background:url('../images/bg_navigator.png') repeat-x; position:relative; z-index:9999; background:#101010;}
+.navigator{width:100%; height:94px; position:fixed; left:0; top:0; background:url('../images/bg_navigator.png') repeat-x; position:relative; z-index:9999; background:#101010; }
 .navigator .wrap{width:1030px; margin:0 auto; padding:0; position: relative;}
 .navigator .wrap h1, .navigator .wrap menu, .navigator .wrap menu li{float:left;}
 .navigator .wrap h1{width:74px; height:46px;}
