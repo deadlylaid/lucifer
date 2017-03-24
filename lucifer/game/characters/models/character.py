@@ -18,9 +18,9 @@ class Character(models.Model):
             )
 
     JOB_CHOICE = (
-            ('sorceress', 'sorceress'),
-            ('barbarian', 'barbarian'),
-            ('paladin', 'paladin'),
+            ('sorceress', '소서리스'),
+            ('barbarian', '바바리안'),
+            ('paladin', '팔라딘'),
             )
 
     job = models.CharField(
