@@ -36,126 +36,27 @@
 {% block content %}
          
   <div id="most_sub_cont_area">
-    
-	<div class="most_event_list"> <!-- 이벤트 페이지 추가 -->
+    <div class="most_event_list"> <!-- 이벤트 페이지 추가 -->
+        {% for event in events %}
 		<ul>
 			<li class="pgame_thumb">
-            	<a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42803z8016782407.jpg" %}/></a>
+                <a href="#" onfocus="this.blur();" target="_self"><img src={{ event.event_image.url }} style="width:226px; height:149px;"/></a>
             </li>
 			<li class="pgame_eicon">
-				<img src={% static "images/icon_ing.png" %} alt="진행중">
+                {% if event.is_end %}
+                    <img src={% static "images/icon_end.png"%} alt="완료">
+                {% else %}
+                    <img src={% static "images/icon_ing.png" %} alt="진행중">
+                {% endif %}
             </li>
 			<li class="pgame_etitle">
             	<a href="#" onfocus="this.blur();" target="_self"></a>
-                <a href="#" onfocus="this.blur();" target="_self">[이벤트] 퀴즈 쿠폰 이벤트</a>
+                <a href="#" onfocus="this.blur();" target="_self">[이벤트] {{ event.title }}</a>
             </li>
-			<li class="pgame_date">이벤트기간 : <span>2017.03.09 ~ 2017.03.15</span></li>
+            <li class="pgame_date">이벤트기간 : <span>{{ event.created_at|date:"Y.m.d" }} ~ {{ event.deadline_at|date:"Y.m.d" }}</span></li>
 		</ul>
-		<ul>
-			<li class="pgame_thumb">
-            	<a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42803z4737152778.jpg" %}/></a>
-            </li>
-			<li class="pgame_eicon">
-				<img src={% static "images/icon_ing.png" %} alt="진행중">
-			</li>
-			<li class="pgame_etitle">
-                <a href="#" onfocus="this.blur();" target="_self"></a>
-                <a href="#" onfocus="this.blur();" target="_self">[이벤트] 3월 2주 금화 일일 누적 이벤트</a>
-            </li>
-			<li class="pgame_date">이벤트기간 : <span>2017.03.09 ~ 2017.03.15</span></li>	
-		</ul>
-		<ul>
-			<li class="pgame_thumb">
-            	<a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42803z4713888889.jpg" %}/></a>
-            </li>
-			<li class="pgame_eicon">
-				<img src={% static "images/icon_ing.png"%} alt="진행중">
-			</li>
-			<li class="pgame_etitle">
-            	<a href="#" onfocus="this.blur();" target="_self"></a>
-                <a href="#" onfocus="this.blur();" target="_self">[이벤트] 3월 2주 주간 누적충전 혜택</a></li>
-			<li class="pgame_date">이벤트기간 : <span>2017.03.09 ~ 2017.03.15</span></li>	
-		</ul>
-	</div>
-	<div class="most_event_list">
-		<ul>
-			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42797z6185185185.jpg" %}/></a>
-            </li>
-			<li class="pgame_eicon">
-				<img src={% static "images/icon_end.png"%} alt="완료">
-			</li>
-			<li class="pgame_etitle">
-            	<a href="#" onfocus="this.blur();" target="_self"></a>
-            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] MOST EVOLUTION 핫타임 이벤트!</a>
-            </li>
-			<li class="pgame_date">이벤트기간 : <span>2017.03.02 ~ 2017.03.08</span></li>	
-		</ul>
-		<ul>
-			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
-            	<img src={% static "images/42797z6200115741.jpg"%}></a>
-            </li>
-			<li class="pgame_eicon">
-				<img src={% static "images/icon_ing.png"%} alt="진행중">
-			</li>
-			<li class="pgame_etitle">
-            	<a href="#" onfocus="this.blur();" target="_self"></a>
-                <a href="#" onfocus="this.blur();" target="_self">[이벤트] MOST: EVOLUTION 대규모 업데이트 이벤트</a>
-            </li>
-			<li class="pgame_date">이벤트기간 : <span>2017.02.16 ~ 2017.03.01</span></li>
-		</ul>
-		<ul>
-			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self"><img src={% static "images/42776z619224537.jpg"%}></a>
-            </li>
-			<li class="pgame_eicon">
-				<img src={% static "images/icon_end.png"%} alt="완료">
-			</li>
-			<li class="pgame_etitle">
-            	<a href="#" onfocus="this.blur();" target="_self"></a>
-            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] MOST와 함께하는 달콤한 발렌타인 이벤트</a>
-            </li>
-			<li class="pgame_date">이벤트기간 : <span>2017.02.13 ~ 2017.02.14</span></li>
-		</ul>
-	</div>
-    <div class="most_event_list">
-		<ul>
-			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
-            	<img src={% static "images/42775z5594560185.jpg"%}></a></li>
-			<li class="pgame_eicon">
-				<img src={% static "images/icon_end.png"%} alt="완료">
-			</li>
-			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
-            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 2월 2주 주간 누적충전 혜택</a>
-            </li>
-			<li class="pgame_date">이벤트기간 : <span>2017.02.09 ~ 2017.02.08</span>
-            </li>
-		</ul>
-		<ul>
-			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
-            	<img src={% static "images/42768z4726851852.jpg"%}></a>
-            </li>
-			<li class="pgame_eicon">
-				<img src={% static "images/icon_end.png"%} alt="완료">
-			</li>
-			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
-            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 2월 1주 주간 누적충전 혜택</a>
-            </li>
-			<li class="pgame_date">이벤트기간 : <span>2017.02.02 ~ 2017.02.08</span>
-            </li>
-		</ul>
-		<ul>
-			<li class="pgame_thumb"><a href="#" onfocus="this.blur();" target="_self">
-            	<img src={% static "images/42761z4929976852.jpg"%}></a>
-            </li>
-			<li class="pgame_eicon">
-				<img src={% static "images/icon_end.png"%} alt="완료">
-			</li>
-			<li class="pgame_etitle"><a href="#" onfocus="this.blur();" target="_self"></a>
-            	<a href="#" onfocus="this.blur();" target="_self">[이벤트] 설날 맞이 이벤트</a>
-            </li>
-			<li class="pgame_date">이벤트기간 : <span>2017.01.26 ~ 2017.02.08</span>
-            </li>
-		</ul>
-	</div>
+        {% endfor %}
+    </div>
         <!--
 		<div class="most_index">
 			<em class="left_mg60"><a href="#">&lt; 이전</a></em>
