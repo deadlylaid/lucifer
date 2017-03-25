@@ -13,6 +13,18 @@
 
 {% endblock %}
 
+{% block leftnav %}
+<div id="most_left_menu_area01">
+    <div class="most_left_menu_tit">
+        커뮤니티
+    </div>
+        <ul class="most_left_menu">
+            <li>&gt; 자유게시판</li>
+            <li><a href="{% url "screenshot" %}">&gt; 스크린샷</a></li>      
+        </ul>
+    </div>
+{% endblock %}
+
 {% block content %}
    
 <!-- 리스트 -->
