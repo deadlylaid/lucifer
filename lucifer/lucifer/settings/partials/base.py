@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'drf_multiple_model',
     'django_summernote',
     'social_django',
-    'versatileimagefield',
 
     'lucifer',
     'users',
