@@ -40,7 +40,7 @@
         {% for event in events %}
 		<ul>
 			<li class="pgame_thumb">
-                <a href="#" onfocus="this.blur();" target="_self"><img src={{ event.event_image.url }} style="width:226px; height:149px;"/></a>
+                <a href="{% url "event_detail" event.id %}" onfocus="this.blur();" target="_self"><img src={{ event.event_image.url }} style="width:226px; height:149px;"/></a>
             </li>
 			<li class="pgame_eicon">
                 {% if event.is_end %}
@@ -51,7 +51,7 @@
             </li>
 			<li class="pgame_etitle">
             	<a href="#" onfocus="this.blur();" target="_self"></a>
-                <a href="#" onfocus="this.blur();" target="_self">[이벤트] {{ event.title }}</a>
+                <a href="{% url "event_detail" event.id %}" onfocus="this.blur();" target="_self">[이벤트] {{ event.title }}</a>
             </li>
             <li class="pgame_date">이벤트기간 : <span>{{ event.created_at|date:"Y.m.d" }} ~ {{ event.deadline_at|date:"Y.m.d" }}</span></li>
 		</ul>
