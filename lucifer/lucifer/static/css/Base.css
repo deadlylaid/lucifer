@@ -90,19 +90,21 @@ input, select, button{vertical-align:middle;}
 .Sitemap .Sitemap-wrap dt {padding:20px 0 10px;}
 .Sitemap .Sitemap-wrap dd {padding:10px 0 0;}
 .Sitemap .Sitemap-wrap dt, .Sitemap .Sitemap-wrap dd {text-align:center;}
-.Sitemap .Sitemap-wrap dt a { font-size:18px; color:#cbcccc;}
+.Sitemap .Sitemap-wrap dd a { color:#ffffff; }
+.Sitemap .Sitemap-wrap dd a:hover { color: #e62200; }
+.Sitemap .Sitemap-wrap dt a { font-size:18px; color:#e62200;}
 
 /* footer 부분 */
 .footer{padding:25px 0; background:#26292b; width:100%;  float:left;}
 .footer .wrap{width:1021px; margin:0 auto; text-align:left; position:relative; }
 .footer .link, .footer address, .footer em{font-size:12px; margin:20px 0 0 190px;}
-.footer .link{padding:0 0 20px; color:#666;}
+.footer .link{padding:0 40px 20px; color:#666;}
 .footer .link span, .footer .link a{vertical-align:middle;}
 .footer .link span{display:inline-block; width:1px; height:8px; line-height:0px; font-size:0px; background:#666; margin:0 15px; position:relative; top:1px;}
 .footer .link a{color:#686868;}
 .footer .link .underline{text-decoration:underline; color:#999;}
-.footer address{padding:0 0 20px; color:#606264;}
+.footer address{padding:0 40px 20px; color:#606264;}
 .footer address a{text-decoration:none; color:#606264; line-height:140%;}
 .footer address span{display:block; padding:20px 0 0; color:#494949;}
 .footer .grade-pop{display:block; width:230px; height:80px; float:right;}
-.footer .webzen{display:block;width:150px;height:75px; position:absolute; margin:0; margin-left:10px;}
+.footer .webzen{display:block;width:150px;height:75px; position:absolute; margin:0; margin-left:25px;}
