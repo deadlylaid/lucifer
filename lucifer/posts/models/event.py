@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+from datetime import datetime, timedelta
+
+from versatileimagefield.fields import VersatileImageField
 
 
 class Event(models.Model):
@@ -20,6 +23,15 @@ class Event(models.Model):
             auto_now_add=True,
             )
 
-    updated_at = models.DateTimeField(
-            auto_now=True,
+    deadline_at = models.DateTimeField(
+            default=datetime.now()+timedelta(days=30),
+            )
+
+    event_image = VersatileImageField(
+            blank=True,
+            null=True,
+            )
+
+    is_end = models.BooleanField(
+            default=False,
             )

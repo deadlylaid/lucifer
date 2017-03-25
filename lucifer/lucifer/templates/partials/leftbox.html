@@ -15,7 +15,7 @@
                 {% endif %}
               {% if request.user.character.get_job_display %}
               <p>{{ request.user.character.nickname }}</p>
-              <p class="characterdata">LV.&nbsp;{{ request.user.character.level }} / {{ request.user.character.get_job_display }} </p>
+              <p class="characterdata userdata">LV.&nbsp;{{ request.user.character.level }} / {{ request.user.character.get_job_display }} </p>
               {% else %}
                 <p id="nocharacter" class="userdata">캐릭터가 없습니다</p>
               {% endif %}

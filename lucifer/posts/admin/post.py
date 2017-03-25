@@ -34,3 +34,12 @@ class QNAModelAdmin(admin.ModelAdmin):
             'title',
             'content',
             )
+
+
+@admin.register(Event)
+class EventModelAdmin(admin.ModelAdmin):
+    list_display = admin.ModelAdmin.list_display + (
+            'title',
+            'user',
+            'contents',
+            )

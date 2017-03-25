@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 
 from posts.models import Event
@@ -14,3 +14,10 @@ class ListEvent(ListView):
     def get_ordering(self):
         self.ordering = '-created_at'
         return self.ordering
+
+
+class EventDetailView(DetailView):
+
+    model = Event
+    template_name = "posts/event_detail.html"
+    context_object_name = "event"

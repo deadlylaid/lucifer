@@ -1,39 +1,28 @@
 {% extends "sub_base.html" %}
 {% load staticfiles %}
 
-
 {% block css %}
 <link rel="stylesheet" href="{% static "css/detailpage_event.css" %}"/>
 {% endblock %}
 
 {% block sub_title %}
-        <h2>이벤트</h2>
-                <p id="navi">
-        <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; NEWS &gt; <span>이벤트</span></p>
-
-{% endblock %}
-
-{% block leftnav %}
-<div id="most_left_menu_area01">
-    <div class="most_left_menu_tit">
-        NEWS
-    </div>
-        <ul class="most_left_menu">
-            <li><a href="{% url "notice_list" %}">&gt; 공지사항</a></li>
-            <li>&gt; 이벤트</a></li>      
-        </ul>
-    </div>
+<div class="Toptitle">
+      <h2>이벤트 내용</h2>
+     <p id="navi">
+   <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"/> 홈 &gt; 게임소식 &gt; <span>이벤트</span></p>
+</div>
 {% endblock %}
 
 {% block content %}
-   
-<!-- 리스트 -->
-<div class="most_board_view_tit"> 이벤트 제목 </div>
-<div class="most_board_view_name">
-    <p>작성자<span>작성기간</span></p>
-</div>
-<div class="most_board_view_con">
- 안녕하세요. 항상 발전하는 웹게임 LUCIFER 입니다. <br>
+<div id="most_sub_cont_area">    
+  <!-- 리스트 -->
+  <div class="most_board_view_tit"> {{ event.title }} </div>
+    <div class="most_board_view_name">
+      <p>작성자 아이디<span>2016.10.21</span></p>
+    </div>
+    <div class="most_board_view_con">
+    {{ event.contents }}
+안녕하세요. 항상 발전하는 웹게임 LUCIFER 입니다. <br>
 <br>
 LUCIFER를 향해 보내주시는 관심과 성원에 감사드리며,<br>
 3월 25일(토) 부터 이벤트를 진행하오니<br>
@@ -66,16 +55,15 @@ LUCIFER 이벤트와 함께 즐거운 주말 보내시기 바랍니다.<br>
 <br>
 감사합니다.<br><br><br>
 
+    </div>
+    <!-- 리스트 END -->
 
-</div>
-<!-- 리스트 END -->
-
-</div>
-
-<!-- 인덱스 -->
-<div class="most_index">
+  <!-- 인덱스 -->
+  <div class="most_index">
     <em class="bott_btn2">
-        <a href="#" onclick="#">목록</a>
+      <a href="#" onclick="#">목록</a>
     </em>
+  </div>
 </div>
+
 {% endblock %}
