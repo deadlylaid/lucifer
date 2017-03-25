@@ -4,4 +4,3 @@ django-summernote==0.8.6
 django-rest-multiple-models==1.8
 Pillow==4.0.0
 social-auth-app-django==1.1.0
-django-versatileimagefield==1.6.2
