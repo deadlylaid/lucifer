@@ -5,7 +5,6 @@ from .notice import ListNotice, NoticeDetailView
 from .ranking import RankingView
 from .qna import QnaCreateView
 from .event import ListEvent
-from .eventdetail import EventDetail 
 from .event import ListEvent, EventDetailView
 from .storyintro import StoryIntro, StoryIntroDetail
 from .jobintro import JobIntro
