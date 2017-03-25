@@ -39,11 +39,11 @@
 
 <div>
     {% for comment in freeboard.comment_set.all %}
-        <div class="comment">
-            <div id="user-id">
-                <b>{{ comment.user.username }}</b> :
+        <div class="comment" style="padding:5px 30px; text-align: left;">
+            <div class="user-comment">
+                {{ comment.user.username }} :
             </div>
-            <div id="comment-content">
+            <div class="user-comment">
                 {{ comment.contents }}
             </div>
         </div>
@@ -51,7 +51,7 @@
 
     <form class="comment-form" action="{% url "comment_create" freeboard.id %}" method="post">
     {% csrf_token %}
-    <table>
+    <table class="input-table" style="margin-top: 20px;">
         <tr>
             <td>
                 <textarea class="comment-input comment-area" name="contents"></textarea>
