@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^notice/(?P<pk>\d+)/$', NoticeDetailView.as_view(), name='notice_detail'),
     url(r'^ranking/$', RankingView.as_view(), name='ranking'),
     url(r'^events/$', ListEvent.as_view(), name='event_list'),
+    url(r'^eventdetail/$', EventDetail.as_view(), name='event_list_detail'),
     url(r'^qna/$', QnaCreateView.as_view(), name='qna'),
 
     url(r'^storyintro$', StoryIntro.as_view(), name='storyintro'),
