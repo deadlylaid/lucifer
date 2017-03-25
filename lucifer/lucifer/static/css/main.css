@@ -134,7 +134,7 @@
     color: #ffffff;
 }
 
-.Left_box .Login_wrap a {
+.Left_box .Login_wrap .logout {
     display: block;
     text-align: right;
 }
