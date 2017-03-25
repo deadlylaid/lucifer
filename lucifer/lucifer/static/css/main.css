@@ -111,13 +111,37 @@
 .Container .Bot .botright .board-section .botright_content li a:hover {text-decoration: none;}
 
 /* LEFT BOX */
+.Left_box .Login_wrap {
+    color: red;
+    font-size: 1.2em;
+}
+
+.Left_box .Login_wrap .sumnail {
+    float: left;
+    display: inline;
+}
+
+.Left_box .Login_wrap .characterdata {
+    display: block;
+    text-align: right;
+}
+
+.Left_box .Login_wrap #nocharacter {
+    margin: 50px 0 10px;
+}
+
 .Left_box .Login_wrap a {
     color: #ffffff;
 }
+
+.Left_box .Login_wrap a {
+    display: block;
+    text-align: right;
+}
+
 .Left_box .Login_wrap a:hover {
     color: inherit;
 }
-
 .Left_box .ranking {width:200px; height: 441px;}
 /*.Left_box .ranking { text-align:left; margin-left:10px; position:relative; font-size:24px; color:#000; font-weight:bold; margin-top:15px; margin-bottom:20px; text-shadow:1px 1px 3px #CCC; }*/
 

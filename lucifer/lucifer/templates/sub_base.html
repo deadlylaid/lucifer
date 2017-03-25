@@ -51,10 +51,22 @@
             <fieldset>
             {% if request.user.is_authenticated %}
             <div>
-                <p id='username' style="color:red;">{{ request.user.username }}</p>
-                <a href="{% url "logout" %}">로그아웃</a>
-                <ul>
-              </ul>
+                <p id="username" class="userdata">{{ request.user.username }}님</p>
+                <p class="userdata">환영합니다.</p>
+                {% if request.user.character.job == 'barbarian' %}
+                  <img class="sumnail" alt="barbarian_sumnail" src="{% static "images/home/barbarian.png" %}">
+                {% elif request.user.character.job == 'sorceress' %}
+                  <img class="sumnail" alt="sorceress_sumnail" src="{% static "images/home/sorceress.png" %}">
+                {% elif request.user.character.job == 'paladin' %}
+                  <img class="sumnail" alt="paladin_sumnail" src="{% static "images/home/paladin.png" %}">
+                {% endif %}
+              {% if request.user.character.get_job_display %}
+              <p>{{ request.user.character.nickname }}</p>
+              <p class="characterdata">LV.&nbsp;{{ request.user.character.level }} / {{ request.user.character.get_job_display }} </p>
+              {% else %}
+                <p id="nocharacter" class="userdata">캐릭터가 없습니다</p>
+              {% endif %}
+              <a class="logout" href="{% url "logout" %}">로그아웃</a>
             </div>
             {% else %}
             <div class="before">
