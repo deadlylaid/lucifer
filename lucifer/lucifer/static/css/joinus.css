@@ -1,6 +1,8 @@
 .Logo{
-    background:url(../images/Main_logo5.png);
+    background:url(../images/Main_logo7.png);
 }
+
+.Top .Header .Main_menu .nav .N_menu_itemlist { margin-top: 30px; }
 
 .Top {
     background-color:#000000;
@@ -57,7 +59,8 @@
 }
 
 .minsoo-label {
-    color: #000000;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #000;
 }
 
 .social-group {

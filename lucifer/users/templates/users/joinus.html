@@ -78,7 +78,7 @@
     <div class="warp" style="height:500px">
         <div class="logo">
             <a class="a_logo" href="{% url "home" %}">
-                <img src="{% static "images/Main_logo2.png" %}" class="i_logo">    
+                <img src="{% static "images/Main_logo7.png" %}" class="i_logo">    
             </a>
         </div>
         <div class='joinuswrap'>
@@ -116,12 +116,21 @@
     </div>
 
 
-        <div class="footer">
+       <div class="footer">
             <article class="wrap">
-                <a href="#" target="_blank"><img src="{% static "images/Main_logo4.png" %}"  class="webzen"/></a>
+                <a href="{% url "home" %}" target="_blank"><img src="{% static "images/Main_logo4.png" %}"  class="webzen"/></a>
+            <div class="link" > 
+                <a href="#" onclick="window.open('{% url 'policy' %}','window','width=880; height=650; scrollbars=yes');">Lucifer 운영정책</a>
+                <span>|</span>
+                <a href="{% url "faq" %}">고객센터</a>
+                <span>|</span>
+                <a href="http://mm.nsu.ac.kr/?_page=1" target="_blank">NsuMulti</a>
+                <span>|</span>
+                <a href="#" data-toggle="tooltip" data-placement="right" title="만 15세 이상 이용가능">게임이용등급</a>
+            </div>
             <address>
-                상호명: (주)Lucifer 대표이사: 한민수 최영준 김회언 주소: 충청남도 천안시 성환읍 남서울대학교<br>
-                FAX: 041-521-1348 웹마스터메일: <a href="mailto:slhgesa@naver.com">Lucifer-help@nsu.com</a> 고객지원센터: 1566-4545 <a href="#" target="_blank">사업자정보확인</a>
+                상호명: Lucifer &nbsp;&nbsp;&nbsp;대표: 한민수 최영준 김회언 &nbsp;&nbsp;&nbsp;주소: 충청남도 천안시 성환읍 남서울대학교<br>
+                FAX: 041-521-1348 웹마스터메일: <a href="mailto:slhgesa@naver.com">Lucifer-help@nsu.com</a> 고객지원센터: 1566-4545 
                 <span>NsuMulti Inc. Global Digital Entertainment Leader ©NsuMulti Inc. All Rights Reserverd.</span>
                 <img src="{% static "images/Grade.jpg" %}" class="grade-pop" alt="">
                 <br><img src="http://image.webzen.kr/Mu/ignition/v01/images/img_dev.png" alt="">

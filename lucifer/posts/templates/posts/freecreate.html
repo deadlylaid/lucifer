@@ -1,18 +1,12 @@
 {% extends "sub_base.html" %}
+
 {% load staticfiles %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static "css/FreeboardCreate.css" %}"/>
+{% block sub_title %}
+게시글 작성
 {% endblock %}
 
 {% block style %}
-.Back { background:url({% static "images/main_bg_1.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
-.whiteback { width:100%; height:1600px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
-.Wrap {height:900px;}
-.Container {height:900px;}
-.Left_box{height:900px;}
-.Container .Content_in #most_sub_cont_area {width:750px; height:790px; background:transparent; margin:10px; padding-top:20px; padding-left:10px;}
-
 .btn {
   margin:10px;
   color:#ffffff;
@@ -23,49 +17,17 @@
 .text {
   padding:5px;
   width:100%;
-  height:30px;}
+  height:30px;
+}
 {% endblock %}
-
-{% block sub_title %}
-        <h2>자유게시판</h2>
-                <p id="navi">
-        <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 커뮤니티 &gt; <span>자유게시판</span></p>
-{% endblock %}
-
-{% block leftnav %}
-<div id="most_left_menu_area01">
-    <div class="most_left_menu_tit">
-        커뮤니티
-    </div>
-        <ul class="most_left_menu">
-            <li>&gt; 자유게시판</li>
-            <li><a href="{% url "screenshot" %}">&gt; 스크린샷</a></li>      
-        </ul>
-    </div>
+{% block title %}
+글쓰기
 {% endblock %}
 
 {% block content %}
-<!-- 쓴글 올리기 기능 
 <form method="post" action="">
     {% csrf_token %}
     {{ form }}
     <input type="submit" name="" class="btn" value="확인">
 </form>
--->
-<div id="most_sub_cont_area" style="margin-left: 0px;">
-  <div id="title">
-    <ul>
-      <li id="top_left">제 목</li>
-      <li id="top_right"><input type="text" class="form-control" placeholder="작성하실 글의 제목을 입력하세요." ></li>
-    </ul>
-    <ul>
-      <li id="cont_left">내 용</li>
-      <li id="cont_right">
-        <textarea rows="27" cols="90" name="content" class="textaria" style="resize:none;"></textarea></li>
-    </ul>
-    <em class="bott_btn">
-      <a href="#" >쓰기</a> <!-- 쓰기 링크 추가 -->
-    </em>
-   </div>
-</div>
 {% endblock %}
