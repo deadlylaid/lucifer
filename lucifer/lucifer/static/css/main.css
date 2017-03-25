@@ -14,7 +14,7 @@
 /* 컨테이너 공지사항 부분 */
 .Container .Notice_menu .board {width:565px; height:441px; float:left; margin-left: 15px;}
 .Container .Notice_menu .board .notice {height:218px; background: url(../images/cont_bg.png); }
-.Container .Notice_menu .board .notice h2 { text-align:left; position:relative; font-size:24px; color:#000; font-weight:bold; padding: 10px; color:#ffffff; text-shadow:1px 1px 3px #000; background: url(../images/cont_title.png); height:48px; margin:0px;}
+.Container .Notice_menu .board .notice h2 { text-align:left; position:relative; font-size:24px; font-weight:bold; padding: 10px; color:#ffffff; text-shadow:1px 1px 3px #000; background: url(../images/cont_title.png); height:48px; margin:0px;}
 .Container .Notice_menu .board .notice h2 .more {width:10px; height:10px; position:absolute; right:20px; top:13px;}
 .Container .Notice_menu .board .notice ul {height:170px; }
 .Container .Notice_menu .board .notice ul li { display:block; margin:10px 15px; text-align:left;}
