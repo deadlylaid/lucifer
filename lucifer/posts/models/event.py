@@ -5,12 +5,6 @@ from datetime import datetime, timedelta
 from versatileimagefield.fields import VersatileImageField
 
 
-def get_is_end(instance):
-    if instance.created_at > instance.deadline_at:
-        return True
-    return False
-
-
 class Event(models.Model):
 
     user = models.ForeignKey(
@@ -39,5 +33,5 @@ class Event(models.Model):
             )
 
     is_end = models.BooleanField(
-            default=get_is_end,
+            default=False,
             )
