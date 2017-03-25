@@ -121,6 +121,11 @@
     display: inline;
 }
 
+.Left_box .Login_wrap .userdata {
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #000;
+}
+
 .Left_box .Login_wrap .characterdata {
     display: block;
     text-align: right;
