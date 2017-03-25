@@ -42,7 +42,7 @@ em { font-style:normal;}
 .left_mg60 { margin-left:60px;}
 .most_index em a { width:56px; height:28px; margin:0; padding:0; border:none; background:url(../images/btn_type2.jpg) no-repeat 0 0; line-height:30px;}
 
-#most_left_menu_area01 { width:200px; height:143px; margin:0 auto; background:url(../images/left_menu_bg2.jpg) no-repeat 0 0; margin-top:35px;}
+#most_left_menu_area01 { width:200px; height:100px; margin:0 auto; background:url(../images/left_menu_bg1.jpg) no-repeat 0 0; margin-top:35px;}
 #most_left_menu_area01 .most_left_menu_tit { width:200px; height:50px; margin:0 auto; line-height:50px; font-size:18px; color:#fff; text-align:left; padding-left:15px;}
 #most_left_menu_area01 .most_left_menu { width:200px; margin:0 auto;}
 #most_left_menu_area01 .most_left_menu li { height:40px; line-height:35px; font-weight:bold;  margin-bottom:5px; color:#ff2b2b; padding-left:20px; text-align:left; font-size:15px;}
