@@ -55,15 +55,16 @@ em { font-style:normal;}
 .Quick_menu .link_list li a { color:#666666; display:block; margin:0; width:190px; height:70px; text-indent:-1000px;}
 .Quick_menu .link_list li a:hover { text-decoration:none;}
 
-#user-id {
-    display: inline;
-    color:#ffffff;
-    font-size: 20px;
+.comment {
+    margin: 0 20px;
+    border: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #6f6e6e; 
 }
-#comment-content{
+.user-comment{
     display: inline;
     color:#ffffff;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #comment-form{
