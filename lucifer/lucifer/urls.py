@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^joinus/$', JoinUs.as_view(), name='joinus'),
     url(r'^logout/$', LogOut.as_view(), name='logout'),
     url(r'^login/$', LogIn.as_view(), name='login'),
+    url(r'^logchange/$', LogChange.as_view(), name='logchange'),
+
 
     url(r'^freeboard/$', ListFreeBoard.as_view(), name='free_list'),
     url(r'^freeboard/create/$', CreateFreeBoard.as_view(), name='freecreate'),

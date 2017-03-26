@@ -40,11 +40,24 @@
     margin:0px auto;
 }
 
+.buttongroup { margin:0 auto; width: 180px; }
+
 .submit-button {
    padding: 10px 20px; 
    margin: 30px auto 0px;
    background-color:#951e1e;
    color:#ffffff;
+   text-align: center;
+   float: left;
+}
+
+.reset-button {
+   padding: 10px 20px; 
+   margin: 30px auto 0px;
+   background-color:#951e1e;
+   color:#ffffff;
+   text-align: center;
+   float: right;
 }
 
 .minsoo-input-group {
@@ -65,7 +78,6 @@
 .minsoo-label {
     color: #ffffff;
     text-shadow: 1px 1px 1px #000;
-    font-size: medium;
 }
 
 .social-group {
@@ -112,3 +124,9 @@
 .naver:hover {
     color: #ffffff;
 }
+
+.tableform { margin: 0 auto; width: 350px;}
+
+.tableform tr { height: 70px; }
+
+.tableform tr td:first-child { line-height: 30px; font-size: 17px;}
