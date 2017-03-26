@@ -30,7 +30,7 @@
 
 /* 인덱스 */
 em { font-style:normal;}
-.most_index {margin-top:30px; text-align:center; width:720px; height:70px; }
+.most_index {margin-top:30px; text-align:center; height:70px; }
 .most_index a {display:inline-block; color:#9298a1; width:23px; height:24px; margin:0 1px; border:1px solid #3d4044; line-height:26px; font-size:11px; text-align:center;}
 .left_mg60 { margin-left:60px;}
 .most_index em a { width:56px; height:28px; margin:0; padding:0; border:none; background:url(../images/btn_type2.jpg) no-repeat 0 0; line-height:30px;}
