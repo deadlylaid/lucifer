@@ -12,23 +12,23 @@
 
 /* 컨테이너 */
 .Container .Content_in #most_sub_cont_area {width:740px; height:790px; background:transparent; margin:10px; padding-top:20px;} .Container .Content_in #most_sub_cont_area #title { width:740px; height:130px; margin-top:15px; }
-.Container .Content_in #most_sub_cont_area #title li {float:left; border-top:1px solid #666; border-bottom:1px solid #666; font-size:13px; line-height:50px; }
-.Container .Content_in #most_sub_cont_area #title #top_left {width:100px; height:50px; background:#2f2f2f; color:#ffffff; margin:0; padding:0; margin-top:5px;}
+.Container .Content_in #most_sub_cont_area #title li {float:left; background:url(../images/board_line.png) no-repeat bottom left; font-size:13px; line-height:50px; }
+.Container .Content_in #most_sub_cont_area #title #top_left {width:100px; height:50px; background:url(../images/writepage_title.png); color:#ffffff; margin:0; padding:0; margin-top:5px;}
 .Container .Content_in #most_sub_cont_area #title #top_right {width:640px; height:50px; margin:0; padding:0; margin-top:5px;}
-.Container .Content_in #most_sub_cont_area #title #btt_left {width:100px; height:50px; background:#2f2f2f; color:#ffffff; margin:0; padding:0; margin-top:5px;}
+.Container .Content_in #most_sub_cont_area #title #btt_left {width:100px; height:50px; background:url(../images/writepage_title.png); color:#ffffff; margin:0; padding:0; margin-top:5px;}
 .Container .Content_in #most_sub_cont_area #title #btt_right {width:640px; height:50px; margin:0; padding:0px; margin-top:5px;}
 
-.Container .Content_in #most_sub_cont_area #title #top_right .form-control {width:600px; height:30px; margin:10px auto;}
+.Container .Content_in #most_sub_cont_area #title #top_right .form-control {width:620px; height:30px; margin:10px auto;}
 
-.Container .Content_in #most_sub_cont_area #title #btt_right .select1 {width:100px; float:left; margin-top:15px; margin-left:20px;} 
+.Container .Content_in #most_sub_cont_area #title #btt_right .select1 {width:100px; float:left; margin-top:15px; margin-left:10px;} 
 .Container .Content_in #most_sub_cont_area #title #btt_right .select2 {width:100px; float:left; margin-top:15px; margin-left:10px;}
 
-.Container .Content_in #most_sub_cont_area #title #cont_left {width:740px; height:30px; background:#2f2f2f; color:#ffffff; margin:0; padding:0; margin-top:15px; text-align:center; line-height:30px;}
+.Container .Content_in #most_sub_cont_area #title #cont_left {width:740px; height:40px; background:url(../images/writepage_cont.png); color:#ffffff; margin:0; padding:0; margin-top:15px; text-align:center; line-height:40px;}
 .Container .Content_in #most_sub_cont_area #title #cont_right {width:740px; height:500px; margin:0; padding:0px; margin-top:5px;}
 .Container .Content_in #most_sub_cont_area #title .textaria {margin-top:25px; line-height:20px; }
 
-.Container .Content_in #most_sub_cont_area #title #add_left {width:100px; height:30px; background:#2f2f2f; color:#ffffff; margin:0; padding:0; margin-top:5px; line-height:30px;}
-.Container .Content_in #most_sub_cont_area #title #add_right {width:640px; height:30px; margin:0; padding:0px; margin-top:5px;}
+.Container .Content_in #most_sub_cont_area #title #add_left {width:100px; height:30px; background:url(../images/fileadd_text_bg.png); color:#ffffff; margin:0; padding:0; margin-top:5px; line-height:30px;}
+.Container .Content_in #most_sub_cont_area #title #add_right {width:640px; height:30px; margin:0; padding:0px; margin-top:5px; color:#ffffff;}
 .Container .Content_in #most_sub_cont_area #title #add_right #fom { margin-left:20px; margin-top:3px;}
 
 em.bott_btn a{float:right; width:60px; height:34px; padding:0; border:none; background:url(../images/btn_type1.jpg) no-repeat 0 0; line-height:34px; margin-right:0px; margin-top:15px; color:#CCC;}
