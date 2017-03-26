@@ -19,7 +19,8 @@
               {% else %}
                 <p id="nocharacter" class="userdata">캐릭터가 없습니다</p>
               {% endif %}
-              <a class="logout" href="{% url "logout" %}">로그아웃</a>
+              <a class="profile" href="{% url "profile" %}">프로필</a>
+              <a class="logout" href="{% url "logout" %}" style="float:right; display:inline;">로그아웃</a>
             </div>
             {% else %}
             <div class="before">
