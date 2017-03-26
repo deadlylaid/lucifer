@@ -82,19 +82,13 @@
             </a>
         </div>
         <div class='joinuswrap'>
-            <form action="" method="post">
+            <form action="{% url "profile" %}" method="post">
               {% csrf_token %}
               <table class="tableform">
               <tr>
               <div class="minsoo-input-group">
                   <td><label class="minsoo-label" for="username"> 유저네임</label></td>
-                  <td><input class="minsoo-form-input" type="text" name="username" placeholder="유저네임" required></td>
-              </div>
-              </tr>
-              <tr>
-              <div class="minsoo-input-group">
-                  <td><label class="minsoo-label" for="password">현재 비밀번호 입력</label></td>
-                  <td><input class="minsoo-form-input" type="password" name="password" placeholder="현재 비밀번호"required></td>
+                  <td><input class="minsoo-form-input" type="text" name="username" placeholder="유저네임" value="{{ user.username }}" required></td>
               </div>
               </tr>
               <tr>
@@ -112,13 +106,12 @@
               <tr>
               <div class="minsoo-input-group">
                   <td><label class="minsoo-label" for="email">이메일</label></td>
-                  <td><input class="minsoo-form-input" type="email" name="email" placeholder="이메일 입력"required></td>
+                  <td><input class="minsoo-form-input" type="email" name="email" placeholder="이메일 입력" value="{{ user.email }}" required></td>
               </div>
               </tr>
               </table>
               <div class="buttongroup">
               <input type="submit" name="" value="확인" class="submit-button">
-              <input type="reset" name="" value="취소" class="reset-button">
               </div>
             </form>
         </div>    
