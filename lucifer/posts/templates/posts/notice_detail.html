@@ -5,9 +5,19 @@
 <link rel="stylesheet" href="{% static "css/detailpage.css" %}"/>
 {% endblock %}
 
+{% block leftnav %}
+<div id="most_left_menu_area01">
+    <div class="most_left_menu_tit">NEWS</div>
+    <ul class="most_left_menu">
+        <li>&gt; 공지사항</li>
+        <li><a href="{% url "event_list" %}">&gt; 이벤트</a></li>
+    </ul>
+</div>
+{% endblock %}
+
 {% block sub_title %}
 <div class="Toptitle">
-      <h2>공지사항 내용</h2>
+      <h2>공지사항</h2>
      <p id="navi">
    <img src={% static "images/icon_home.png" %} width="15" height="15" border="0" alt="아이콘"/> 홈 &gt; 게임소식 &gt; <span>공지사항</span></p>
 </div>
