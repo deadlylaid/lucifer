@@ -37,10 +37,12 @@ var Player_Status = new Array('Stand', 'Walk', 'Attack', 'Damage', 'Dash', 'Jump
 //----------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------
 var MoveCheck = false;								//Mouse가 클릭 됬는지 체크 하는 변수
+var StandCheck = false;								//Stand 상태 한번만 들어오게 하기 위해서.
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 //----------------------------------------------------------------------------------------------------------
 var Background_map, Stage1;							//Stage 이미지 변수								
+var Collision_Layer;								//Collision Layer
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
@@ -55,7 +57,8 @@ function preload(){
 	//----------------------------------------------------------------------------------------------------------
 	Lucifer_Game.load.tilemap('MAP_Stage1', '../../static/images/game/Map/Stage1/Stage1.json',
 							   null, Phaser.Tilemap.TILED_JSON);
-	Lucifer_Game.load.image('Stage1_TileSet', '../../static/images/game/Map/Stage1/Stage1_TileSet.png');	
+	Lucifer_Game.load.image('Stage1_TileSet', '../../static/images/game/Map/Stage1/Stage1_TileSet.png');
+	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');	
 	//----------------------------------------------------------------------------------------------------------
 
 	//Player(Bavarian)
@@ -78,20 +81,22 @@ function preload(){
 function create(){
 	//Physics
 	Lucifer_Game.physics.startSystem(Phaser.Physics.ARCADE);	
+	Lucifer_Game.physics.startSystem(Phaser.Physics.P2JS);
 
 	//Map / Scroll
 	//---------------------------------------------------------------------------------------
 	Background_map = Lucifer_Game.add.tilemap('MAP_Stage1');		
 	Background_map.addTilesetImage('Stage1_TileSet', 'Stage1_TileSet');
-	Stage1 = Background_map.createLayer('Tile Layer 1');	
+	Background_map.addTilesetImage('Collision_Tile', 'Collision_Tile');
+
+	Stage1 = Background_map.createLayer('Tile Layer 1');
+	Collision_Layer = Background_map.createLayer('Collision Layer');
 	Stage1.resizeWorld();	
 	//---------------------------------------------------------------------------------------
 
 	//Player
 	//---------------------------------------------------------------------------------------
-	//Lucifer_Game.world.centerX, Lucifer_Game.world.centerY, 
 	Player = Lucifer_Game.add.sprite(3200, 3200, 'PY_Bavarian_Stand');
-	Lucifer_Game.physics.enable(Player, Phaser.Physics.ARCADE);	
 
 	//Player Stand Animation	
 	//var PY_Bavarian_StandFrame_Array = new Array(8);
@@ -120,6 +125,17 @@ function create(){
 	Lucifer_Game.input.onDown.add(GetDirection, this);	//Player Move
 	//---------------------------------------------------------------------------------------	
 
+	//Player & Map Collision
+	//---------------------------------------------------------------------------------------	
+	Background_map.setCollision(21, true, "Collision Layer");
+	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");
+	Lucifer_Game.physics.p2.enable(Player);	
+	Player.body.fixedRotation = true;
+	Player.body.clearShapes();				   //Remove default Collision Box
+	Player.body.addRectangle(80, 100, 0, 0);   //Only the lower part of the player Collides
+	Player.body.debug = true;				   //Player Rect 표시	
+	//---------------------------------------------------------------------------------------	
+
 	//Uesr Interface
 	//---------------------------------------------------------------------------------------
 	//UI_Group = Lucifer_Game.add.group();
@@ -133,15 +149,12 @@ function create(){
 
 	UI_MpBar = Lucifer_Game.add.sprite(1165, 725, 'UI_MpBar');
 	UI_MpBar.anchor.setTo(0.5, 0.5);
-	UI_MpBar.fixedToCamera = true;
-
-	console.log(UI_UnderBar.x, UI_UnderBar.y);
-	console.log(UI_HpBar.x, UI_HpBar.y);
-	console.log(UI_MpBar.x, UI_MpBar.y);
+	UI_MpBar.fixedToCamera = true;	
 	//---------------------------------------------------------------------------------------
 
 	//Player Id Text(Test Code)
 	//---------------------------------------------------------------------------------------
+	Lucifer_Game.physics.enable(Player, Phaser.Physics.ARCADE);	
 	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, nickname); //Test 부분에 Player Id 가 들어가면 됨.
 
 	//Center align
@@ -156,22 +169,6 @@ function create(){
 	//Stroke color & thickness	
 	Player_ID.fill = '#19de65';
 	//---------------------------------------------------------------------------------------
-}
-
-function Animation_Change(Direction, Status)
-{		
-	if(Status == Player_Status[0])
-	{
-		//Stand
-		Player.loadTexture('PY_Bavarian_Stand', 0, true)
-  	    Player.animations.play('PY_Bavarian_Stand_' + Direction, 10, true);
-	}
-	else if(Status == Player_Status[1])
-	{
-		//Walk
-		Player.loadTexture('PY_Bavarian_Walk', 0, true)
-		Player.animations.play('PY_Bavarian_Walk_' + Direction, 10, true);
-	}		
 }
 
 function GetDirection(){
@@ -228,6 +225,22 @@ function GetDirection(){
 	}	
 }
 
+function Animation_Change(Direction, Status)
+{		
+	if(Status == Player_Status[0])
+	{
+		//Stand
+		Player.loadTexture('PY_Bavarian_Stand', 0, true)
+  	    Player.animations.play('PY_Bavarian_Stand_' + Direction, 10, true);   	  
+	}
+	else if(Status == Player_Status[1])
+	{		
+		//Walk
+		Player.loadTexture('PY_Bavarian_Walk', 0, true)
+		Player.animations.play('PY_Bavarian_Walk_' + Direction, 10, true);
+	}
+}
+
 function PlayerMove()
 {
 	//Player Move Stop
@@ -237,6 +250,9 @@ function PlayerMove()
 		//Player Translate & Distance
 		if(Lucifer_Game.input.mousePointer.isDown)
 		{
+			//Stand Check 를 원상태로 초기화.
+			StandCheck = false;
+
 			Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
 			Lucifer_Game.camera.x = Player.x + 150;
 			Lucifer_Game.camera.y = Player.y + 150;
@@ -251,11 +267,19 @@ function PlayerMove()
 
 	if(DistanceToMouse < 50)
 	{
-		//Stand Animation Change	
-		Animation_Change(Direction, 'Stand');		
-		MoveCheck = false;
-
-		Player.body.velocity.setTo(0, 0);
+		MoveCheck = false;	
+		
+		//Stand Animation Change
+		if(StandCheck == false)
+		{
+			Animation_Change(Direction, 'Stand');
+			StandCheck = true;	
+		}		
+		
+		//P2 Physics
+		Player.body.velocity.x = 0;				
+		Player.body.velocity.y = 0;
+		//Player.body.velocity.setTo(0, 0);		//Arcade Physics
 	}
 
 	//console.log(MousePosX);
@@ -276,5 +300,5 @@ function update(){
 	//Player Move & Stop
 	//---------------------------------------------------------------------------------------
 	PlayerMove();
-	//---------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------	
 }
