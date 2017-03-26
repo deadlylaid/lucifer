@@ -1,0 +1,10 @@
+{% if messages %}
+
+  {% for message in messages %}
+  <input class="text" id=myVar type="hidden" name="" value="{{ message }}">
+    <script type="text/javascript">
+      var myVar = document.getElementById("myVar").value;
+      alert(myVar);
+    </script>
+  {% endfor %}
+{% endif %}

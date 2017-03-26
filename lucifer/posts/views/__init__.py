@@ -12,6 +12,5 @@ from .screenshot import ScreenShot
 from .screenshotdetail import ScreenShotDetail
 from .screenshotcreate import ScreenShotCreate
 from .faq import Faq
-from .rescue import Rescue
 from .policy import Policy
 from .bugnotice import BugNotice
