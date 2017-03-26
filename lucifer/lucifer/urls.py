@@ -44,6 +44,7 @@ urlpatterns = [
     url(r'^jobintro$', JobIntro.as_view(), name='jobintro'),
     url(r'^screenshot$', ScreenShot.as_view(), name='screenshot'),
     url(r'^screenshotdetail$', ScreenShotDetail.as_view(), name='screenshotdetail'),
+    url(r'^screenshotcreate$', ScreenShotCreate.as_view(), name='screenshotcreate'),
     url(r'^faq$', Faq.as_view(), name='faq'),
     url(r'^rescue$', Rescue.as_view(), name='rescue'),
     url(r'^policy$', Policy.as_view(), name='policy'),

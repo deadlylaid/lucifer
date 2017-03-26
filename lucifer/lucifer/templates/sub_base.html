@@ -18,6 +18,20 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="{% static "js/Mainpage-slide.js" %}"></script>
+<script>
+function readURL(input){
+  
+ if(input.files && input.files[0]){
+   var reader = new FileReader();
+   reader.onload = function(e){
+    $('#UploadedImg').html("<img id=img src=''>");
+    $('#img').attr('src', e.target.result);
+   }
+   reader.readAsDataURL(input.files[0]);
+ }  
+  
+}
+</script>
 {% block js %}
 {% endblock %}
 
