@@ -36,18 +36,12 @@
     <div id="most_sub_cont_area">  
       
       <div id="topranking">
-        <div id="Top1">
-            <span id="Topid"> hoeeon <br /></span>
-            <span id="Topinfo"> 소서리스 &nbsp;/ &nbsp;99 Lv &nbsp;/ &nbsp;24,321 </span>
+          {% for character in characters|slice:":3" %}
+          <div id="Top{{ forloop.counter }}">
+            <span id="Topid"> {{ character.nickname }} <br /></span>
+            <span id="Topinfo"> {{ character.get_job_display }} &nbsp;/ &nbsp;{{character.level }} Lv &nbsp;/ &nbsp; {{ character.status.attack_point }} </span>
         </div>
-        <div id="Top2">
-            <span id="Topid"> Overface <br /></span>
-            <span id="Topinfo"> 야만전사 &nbsp;/ &nbsp;99 Lv &nbsp;/ &nbsp;23,452 </span>
-        </div>
-        <div id="Top3">
-            <span id="Topid"> Deadlylaid <br /></span>
-            <span id="Topinfo"> 팔라딘 &nbsp;/ &nbsp;99 Lv &nbsp;/ &nbsp;23,127 </span>
-        </div>
+          {% endfor %}
         <span id="text"> * 랭킹은 경험치량 순으로 산정됩니다. </span>
       </div>
       
@@ -59,92 +53,16 @@
             <li class="level">레벨</li>
             <li class="exp">경험치</li>
         </ul>
+        {% for character in characters %}
         <ul class="most_board_notice_list">
-            <li class="num">1</li>
-            <li class="title2">hoeeon</li>
-            <li class="date">소서리스</li>
-            <li class="level">99</li>
-            <li class="exp">24,321</li>
+            <li class="num">{{ forloop.counter }}</li>
+            <li class="title2">{{ character.nickname }}</li>
+            <li class="date">{{ character.get_job_display }}</li>
+            <li class="level">{{ character.level }}</li>
+            <li class="exp">{{ character.status.attack_point }}</li>
         </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">2</li>
-            <li class="title2">Overface</li>
-            <li class="date">야만전사</li>
-            <li class="level">99</li>
-            <li class="exp">23,452</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">3</li>
-            <li class="title2">Deadlylaid</li>
-            <li class="date">팔라딘</li>
-            <li class="level">99</li>
-            <li class="exp">23,127</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">4</li>
-            <li class="title2">choongs</li>
-            <li class="date">야만전사</li>
-            <li class="level">98</li>
-            <li class="exp">23,875</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">5</li>
-            <li class="title2">Mansur</li>
-            <li class="date">팔라딘</li>
-            <li class="level">98</li>
-            <li class="exp">23,756</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">6</li>
-            <li class="title2">Junny</li>
-            <li class="date">소서리스</li>
-            <li class="level">98</li>
-            <li class="exp">22,987</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">7</li>
-            <li class="title2">Yungha</li>
-            <li class="date">야만전사</li>
-            <li class="level">98</li>
-            <li class="exp">21,622</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">8</li>
-            <li class="title2">Kalanov</li>
-            <li class="date">소서리스</li>
-            <li class="level">98</li>
-            <li class="exp">21,224</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">9</li>
-            <li class="title2">Westdingo</li>
-            <li class="date">팔라딘</li>
-            <li class="level">97</li>
-            <li class="exp">20,875</li>
-        </ul>
-        <ul class="most_board_notice_list">
-            <li class="num">10</li>
-            <li class="title2">Muhan</li>
-            <li class="date">야만전사</li>
-            <li class="level">97</li>
-            <li class="exp">20,657</li>
-        </ul>
-        
+        {% endfor %}
      </div>
   </div>
-
-    {% for character in characters %}
-    <ul class="most_board_notice_list">
-        <li class="num ranking">{{ forloop.counter }}위</li>
-        <li class="num character">{{ character.nickname }}</li>
-        <li class="num attack_point" style="color:#ffffff">{{ character.status.attack_point }}</li>
-        <li class="num defence_point" style="color:#ffffff">{{ character.status.defence_point }}</li>
-        <li class="num strong" style="color:#ffffff">{{ character.status.strong }}</li>
-        <li class="num dexterity" style="color:#ffffff">{{ character.status.dexterity }}</li>
-        <li class="num intelligence" style="color:#ffffff">{{ character.status.intelligence }}</li>
-    </ul>
-    {% endfor %}
-
-
 
 {% endblock %}
