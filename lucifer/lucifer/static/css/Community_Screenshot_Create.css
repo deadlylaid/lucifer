@@ -28,12 +28,12 @@
 .Container .Content_in #most_sub_cont_area #btt_right .select2 {width:100px; float:left; margin-top:15px; margin-left:10px;}
 
 .Container .Content_in #most_sub_cont_area #cont_left {width:740px; height:40px; background:url(../images/writepage_cont.png); color:#ffffff; margin:0; padding:0; margin-top:15px; text-align:center; line-height:40px;}
-.Container .Content_in #most_sub_cont_area #cont_right {width:740px; height:500px; margin:0; padding:0px; margin-top:5px; background:url(../images/board_line.png) no-repeat bottom left;}
+.Container .Content_in #most_sub_cont_area #cont_right {width:740px; height:500px; margin:0; padding:0px; background:url(../images/board_line.png) no-repeat bottom left;}
 .Container .Content_in #most_sub_cont_area .textaria {margin-top:25px; line-height:20px; }
 
 .Container .Content_in #most_sub_cont_area #btn { height: 62px; }
 
-em.bott_btn a{float:right; width:60px; height:34px; padding:0; border:none; background:url(../images/btn_type1.jpg) no-repeat 0 0; line-height:34px; margin-right:0px; margin-top:10px; color:#CCC;}
+em.bott_btn a{float:right; width:60px; height:34px; padding:0; border:none; background:url(../images/btn_type1.jpg) no-repeat 0 0; line-height:34px; margin-right:5px; margin-top:10px; color:#CCC;}
 em.bott_btn a:hover{color:#FFF;}
 
 /* 인덱스 */
