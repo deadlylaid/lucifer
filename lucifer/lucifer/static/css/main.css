@@ -33,16 +33,12 @@
 .Container .Notice_menu .board .freenotice ul li span { float:right; color:#edeaea;}
 
 /* 컨테이너 GM노트 부분 */
-.Container .Notice_menu .GMnote .gm-note {width:235px; height:441px; background: url(../images/cont_bg2.png); float:right; position:relative; }
-.Container .Notice_menu .GMnote .gm-note h2 { width:235px; height:48px; margin:0; padding:10px; text-align:left; position:relative; font-size:24px; color:#ffffff; font-weight:bold; text-shadow:1px 1px 3px #000; background: url(../images/cont_title2.png);}
-.Container .Notice_menu .GMnote .gm-note h2 .more { width:10px; height:10px; position:absolute; right:20px; top:13px; }
-.Container .Notice_menu .GMnote .gm-note p .gm-note-text strong{font-size:18px; color:#edeaea; font-weight:400;}
-.Container .Notice_menu .GMnote .gm-note p .gm-note-text span{ text-align:center; font-size:15px; color:#edeaea; line-height:160%;}
-.Container .Notice_menu .GMnote .gm-note p img{ display:block; position:relative; border:0; margin:15px 10px; border:2px solid #000;} 
-.Container .Notice_menu .GMnote .gm-note .gm-note-text {float:none; display:block; }
-.Container .Notice_menu .GMnote .gm-note .votelist {width:120px; height:90px; list-style:none; display:inline-block;}
-.Container .Notice_menu .GMnote .gm-note .votelist .list { text-align:center; vertical-align:middle; color:#edeaea;}
-.Container .Notice_menu .GMnote .gm-note .votebtn {width:270px; top:0px;}
+.Container .Notice_menu a { color: #edeaea; }
+.Container .Notice_menu .GMnote {width:235px; height:441px; background: url(../images/cont_bg2.png); float:right; position:relative;}
+.Container .Notice_menu .GMnote h2 { width:235px; height:48px; margin:0; padding:10px; text-align:left; position:relative; font-size:24px; color:#ffffff; font-weight:bold; text-shadow:1px 1px 3px #000; background: url(../images/cont_title2.png);}
+.Container .Notice_menu .GMnote h2 .more { width:10px; height:10px; position:absolute; right:20px; top:13px; }
+.Container .Notice_menu .GMnote ul { margin: 10px 15px 0; text-align: left; }
+.Container .Notice_menu .GMnote ul li { margin: 0 0 10px; }
 
 /* 컨테이너 스크린샷 부분 */
 .Container .Bot .Screenshot .carousel { background: transparent; margin-bottom: 40px; width:525px;}
