@@ -43,7 +43,7 @@
                 <ul>
                     {% for notice in notices %}
                         <li>
-                            <a href="{% url "notice_detail" notice.id %}">{{ notice.title }}<!--링크 업데이트 -->
+                            <a href="{% url "notice_detail" notice.id %}">{{ notice.title }}
                             </a> <span>{{ notice.created_at|date:"Y.m.d  H:i" }}</span>
                         </li>
                     {% endfor %}
@@ -53,7 +53,7 @@
                 <ul>
                     {% for event in events %}
                         <li>
-                            <a href="{% url "event_detail" event.id %}">{{ event.title }} <!-- 링크 업데이트 -->
+                            <a href="{% url "event_detail" event.id %}">{{ event.title }}
                             </a> <span>{{ event.created_at|date:"Y.m.d  H:i" }}</span>
                         </li>
                     {% endfor %}
@@ -66,8 +66,7 @@
                 <ul> <!--  자유게시판 -->
                     {% for freeboard in freeboards %}
                         <li>
-                            <a href="{% url "free_detail" freeboard.id %}">{{ freeboard.title }} <!-- 링크 업데이트 -->
-                            </a> <span>{{ freeboard.created_at|date:"Y.m.d  H:i" }}</span>
+                            <a href="{% url "free_detail" freeboard.id %}">{{ freeboard.title|slice:"14" }}{% if freeboard.title|length > 14 %}...{% endif %}</a>
                         </li>
                     {% endfor %}
                 </ul>
