@@ -1,6 +1,7 @@
 from django.views.generic import View
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 from posts.models import Notice, Event, FreeBoard
 
@@ -8,6 +9,13 @@ from posts.models import Notice, Event, FreeBoard
 class Home(View):
 
     def get(self, request):
+
+        if self.request.GET.get('next'):
+            messages.add_message(
+                    request,
+                    messages.WARNING,
+                    '로그인을 해야 이용할 수 있는 서비스입니다',
+                    )
 
         notices = Paginator(
                 Notice.objects.order_by('-created_at'),
