@@ -1,25 +1,77 @@
 {% extends "sub_base.html" %}
+{% load staticfiles %}
+
+{% block js %}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/Customer_Rescue.css" %}"/>
+
+{% endblock %}
+
+
+{% block style %}
+.Back { background:url({% static "images/main_bg_1.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
+.whiteback { width:100%; height:1600px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
+.Wrap {height:900px;}
+.Container {height:900px;}
+.Left_box{height:900px;}
+.Container .Content_in #most_sub_cont_area {width:750px; height:790px; background:transparent; margin:10px; padding-top:20px; padding-left:10px;}
+{% endblock %}
+
+
+{% block leftnav %}
+<form method="post" action="{% url "qna" %}">
+    {% csrf_token %}
+<div id="most_left_menu_area01">
+    <div class="most_left_menu_tit">
+      고객센터
+    </div>
+      <ul class="most_left_menu">
+        <li><a href="{% url "faq" %}">&gt; FAQ</a></li>
+                <li>&gt; 문의/신고</li>   
+      </ul>
+    </div>
+{% endblock %}
 
 {% block sub_title %}
-QnA
+       <h2>문의/신고</h2>
+                <p id="navi">
+           <img src={% static "images/icon_home.png"%} width="15" height="15" border="0" alt="아이콘"> 홈 &gt; 고객센터 &gt; <span>문의/신고</span></p>
 {% endblock %}
 
 {% block content %}
-<div id="most_sub_cont_area">
-
-  <h1>qna</h1>
-  <form action="" method="post">
-    {% csrf_token %}
-    <input type="text" name="title" value="" class="text" required>
-    <textarea name="content" required></textarea>
-    <input name="" type="submit" value="문의보내기" class="text">
-  </form>
-  
-
-
-    </div>
-    </div>
+<div id="most_sub_cont_area" style="margin-left: 0px;">
+  <div id="title">
+    <ul>
+      <li id="top_left">제 목</li>
+      <li id="top_right"><input type="text" name="title"class="form-control" placeholder="작성하실 글의 제목을 입력하세요." ></li>
+    </ul>
+    <ul>
+      <li id="btt_left">구 분</li>
+      <li id="btt_right">
+        <select name="Year" class="select1">
+          <option value="문의" selected> 문의 </option>
+          <option value="신고"> 신고 </option>
+        </select>
+        <select name="Year" class="select2">
+          <option value="회원정보" selected> 회원정보 </option>
+          <option value="게임이용"> 게임이용 </option>
+          <option value="설치/실행" selected> 설치/실행 </option>
+          <option value="보안/운영"> 보안/운영 </option>
+          <option value="기타"> 기타 </option>
+        </select>
+      </li>
+    </ul>
+    <ul>
+      <li id="cont_left">내 용</li>
+      <li id="cont_right">
+        <textarea rows="22" cols="90" name="content" class="textaria" style="resize:none;"></textarea></li>
+    </ul>
+    <input name="" value="제출" class="text" type="submit" style="background-color:#e62200; color: #ffffff; padding: 10px; margin: 0 82%;">
+    
+   </div>
 </div>
-
+</form>
 
 {% endblock %}
