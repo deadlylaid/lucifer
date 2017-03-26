@@ -80,51 +80,6 @@
     text-shadow: 1px 1px 1px #000;
 }
 
-.social-group {
-    margin: 0px 0px 3%;
-}
-
-.social-button {
-    display:block;
-    margin:0px auto 10px;
-    width: 20%;
-    padding: 10px 60px;
-    border-radius: 4px;
-    background-color: #FFEA21;
-    text-decoration: none;
-}
-
-.social-button:focus {
-    text-decoration: none;
-}
-
-.kakao {
-    color: #3F3035;
-    background-color:#FFEA21;
-}
-
-.facebook {
-    color: #ffffff;
-    background-color:#3b5998;
-}
-
-.naver {
-    color: #ffffff;
-    background-color:#23b300;
-}
-
-.kakao:hover {
-    color: #3F3035;
-}
-
-.facebook:hover {
-    color: #ffffff;
-}
-
-.naver:hover {
-    color: #ffffff;
-}
-
 .tableform { margin: 0 auto; width: 350px;}
 
 .tableform tr { height: 70px; }
