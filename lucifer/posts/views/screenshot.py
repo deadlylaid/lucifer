@@ -8,3 +8,4 @@ class ScreenShot(ListView):
 
     model = ScreenShot
     template_name = "posts/screenshot.html"
+    context_object_name = "screenshots"

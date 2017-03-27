@@ -38,109 +38,18 @@
   <!-- 리스트 --> <!--음... 이것도..... 추가...? -->
     
     <div class="most_screenshot_list">              
+    {% for screenshot in screenshots %}
     <ul>
       <li class="pgame_thumb">
               <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
+                  <img src={{ screenshot.image.url }}></a>
             </li>
       <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">불금 저녁 한때</a>
+          <a href="#" onfocus="this.blur();" onclick="">{{ screenshot.title|slice:":12" }}{% if screenshot.title|length > 14 %}...{% endif %}</a>
             </li>
-      <li class="pgame_date">니그캄나도그캄  <span>2016.10.21</span></li>
+            <li class="pgame_date">{{ screenshot.user.username }}  <span>{{ screenshot.created_at|date:"Y.m.d" }}</span></li>
     </ul>
-    <ul>
-      <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
-            </li>
-      <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">통합 2섭 스샷^^</a>
-            </li>
-      <li class="pgame_date">미관우  <span>2016.10.21</span></li>
-    </ul>
-    <ul>
-      <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
-            </li>
-      <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">묵은 비키니 벗기 전 기념</a>
-            </li>
-      <li class="pgame_date">니그캄나도그캄  <span>2016.10.21</span></li>
-    </ul>
-  </div>
-    <div class="most_screenshot_list">              
-    <ul>
-      <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
-            </li>
-      <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">불금 저녁 한때</a>
-            </li>
-      <li class="pgame_date">니그캄나도그캄  <span>2016.10.21</span></li>
-    </ul>
-    <ul>
-      <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
-            </li>
-      <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">통합 2섭 스샷^^</a>
-            </li>
-      <li class="pgame_date">미관우  <span>2016.10.21</span></li>
-    </ul>
-    <ul>
-      <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
-            </li>
-      <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">묵은 비키니 벗기 전 기념</a>
-            </li>
-      <li class="pgame_date">니그캄나도그캄  <span>2016.10.21</span></li>
-    </ul>
-  </div>
-    <div class="most_screenshot_list">              
-    <ul>
-      <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
-            </li>
-      <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">불금 저녁 한때</a>
-            </li>
-      <li class="pgame_date">니그캄나도그캄  <span>2016.10.21</span></li>
-    </ul>
-    <ul>
-      <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
-            </li>
-      <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">통합 2섭 스샷^^</a>
-            </li>
-      <li class="pgame_date">미관우  <span>2016.10.21</span></li>
-    </ul>
-    <ul>
-      <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
-                  <img src={% static "images/Ranking_top3.png" %}></a>
-            </li>
-      <li class="pgame_etitle">
-              <a href="#" onfocus="this.blur();" onclick=""></a>
-                <a href="#" onfocus="this.blur();" onclick="">묵은 비키니 벗기 전 기념</a>
-            </li>
-      <li class="pgame_date">니그캄나도그캄  <span>2016.10.21</span></li>
-    </ul>
+    {% endfor %}
   </div>  
 
     <!-- 리스트 END -->
