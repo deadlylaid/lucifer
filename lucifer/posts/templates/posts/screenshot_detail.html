@@ -41,8 +41,8 @@
                     <p>{{ screenshot.user.username }}<span>{{ screenshot.created_at|date:"Y.m.d" }}</span></p>
         </div>
                 <div class="most_board_view_con">
-                    <p>{{ screenshot.contents }}<br><br><a href="{{ screenshot.image.url }}">
-                        <img src="{{ screenshot.image.url }}"></a><br></p> 
+                    <p><a href="{{ screenshot.image.url }}"><img src="{{ screenshot.image.url }}"></a><br>
+                    <br> {{ screenshot.contents }}<br></p>
         </div>
     <!-- 리스트 END -->
     
@@ -51,5 +51,6 @@
             <em class="bott_btn2">
         <a href="{% url "screenshot" %}" onclick="#">목록</a>
       </em>
+    </div>
     </div>
 {% endblock %}

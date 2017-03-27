@@ -34,6 +34,7 @@
 .Container .Content_in #most_sub_cont_area #btn { height: 62px; }
 
 em.bott_btn a{float:right; width:60px; height:34px; padding:0; border:none; background:url(../images/btn_type1.jpg) no-repeat 0 0; line-height:34px; margin-right:5px; margin-top:10px; color:#CCC;}
+em.bott_btn2 input {float:right; width:60px; height:34px; padding:0; border:none; background:url(../images/btn_type1.jpg) no-repeat 0 0; line-height:34px; margin-right:5px; margin-top:10px; color:#CCC;} 
 em.bott_btn a:hover{color:#FFF;}
 
 /* 인덱스 */
