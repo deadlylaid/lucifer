@@ -41,11 +41,11 @@
     {% for screenshot in screenshots %}
     <ul>
       <li class="pgame_thumb">
-              <a href="#" onfocus="this.blur();" onclick="">
+          <a href="{% url "screenshot_detail" screenshot.id %}" onfocus="this.blur();" onclick="">
                   <img src={{ screenshot.image.url }}></a>
             </li>
       <li class="pgame_etitle">
-          <a href="#" onfocus="this.blur();" onclick="">{{ screenshot.title|slice:":12" }}{% if screenshot.title|length > 14 %}...{% endif %}</a>
+          <a href="{% url "screenshot_detail" screenshot.id %}" onfocus="this.blur();" onclick="">{{ screenshot.title|slice:":12" }}{% if screenshot.title|length > 14 %}...{% endif %}</a>
             </li>
             <li class="pgame_date">{{ screenshot.user.username }}  <span>{{ screenshot.created_at|date:"Y.m.d" }}</span></li>
     </ul>
