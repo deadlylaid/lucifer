@@ -1,12 +1,10 @@
-from django.views.generic import View
+from django.views.generic import ListView
 from django.shortcuts import render
 
+from posts.models import ScreenShot
 
-class ScreenShot(View):
 
-    def get(self, request):
-        return render(
-                request,
-                "posts/screenshot.html",
-                context={}
-                )
+class ScreenShot(ListView):
+
+    model = ScreenShot
+    template_name = "posts/screenshot.html"
