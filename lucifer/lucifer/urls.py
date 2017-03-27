@@ -39,15 +39,15 @@ urlpatterns = [
     url(r'^events/(?P<pk>\d+)/$', EventDetailView.as_view(), name='event_detail'),
     url(r'^qna/$', QnaCreateView.as_view(), name='qna'),
 
-    url(r'^storyintro$', StoryIntro.as_view(), name='storyintro'),
-    url(r'^storyintrodetail$', StoryIntroDetail.as_view(), name='storyintrodetail'),
-    url(r'^jobintro$', JobIntro.as_view(), name='jobintro'),
-    url(r'^screenshot$', ScreenShotListView.as_view(), name='screenshot'),
+    url(r'^storyintro/$', StoryIntro.as_view(), name='storyintro'),
+    url(r'^storyintrodetail/$', StoryIntroDetail.as_view(), name='storyintrodetail'),
+    url(r'^jobintro/$', JobIntro.as_view(), name='jobintro'),
+    url(r'^screenshot/$', ScreenShotListView.as_view(), name='screenshot'),
     url(r'^screenshot/(?P<pk>\d+)/$', ScreenShotDetailView.as_view(), name='screenshot_detail'),
-    url(r'^screenshotcreate$', ScreenShotCreate.as_view(), name='screenshotcreate'),
-    url(r'^faq$', Faq.as_view(), name='faq'),
-    url(r'^policy$', Policy.as_view(), name='policy'),
-    url(r'^bugnotice$', BugNotice.as_view(), name='bugnotice'),
+    url(r'^screenshot/create/$', ScreenShotCreateView.as_view(), name='screenshot_create'),
+    url(r'^faq/$', Faq.as_view(), name='faq'),
+    url(r'^policy/$', Policy.as_view(), name='policy'),
+    url(r'^bugnotice/$', BugNotice.as_view(), name='bugnotice'),
 
     url(r'^check/chracter/$', CheckCharacter.as_view(), name='checkcharacter'),
 
