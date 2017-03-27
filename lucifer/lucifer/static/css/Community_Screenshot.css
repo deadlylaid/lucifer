@@ -12,8 +12,8 @@
 .Container .Content_in .Toptitle #navi img {float:left; margin:0px 3px;}
 
 
-.Container .Content_in #most_sub_cont_area {width:760px; height:820px; padding:20px; overflow:hidden;}
-.Container .Content_in #most_sub_cont_area .most_screenshot_list { clear:both; padding:0; display:block; background:url(../images/board_line.png) no-repeat bottom left; width:740px; height:210px; margin:0 auto 30px -15px;}
+.Container .Content_in #most_sub_cont_area {width:760px; height:855px; padding:20px; overflow:hidden;}
+.Container .Content_in #most_sub_cont_area .most_screenshot_list { clear:both; padding:0; display:block; background:url(../images/board_line.png) no-repeat bottom left; width:740px; height:710px; margin:0 auto 30px -15px;}
 .Container .Content_in #most_sub_cont_area .most_screenshot_list ul {position:relative; float:left; width:235px; margin-left:10px; height:210px;}
 .Container .Content_in #most_sub_cont_area .most_screenshot_list li {display:block; font-size:0px; line-height:0px;}
 .Container .Content_in #most_sub_cont_area .most_screenshot_list li.pgame_thumb img { width:230px; height:145px; border:1px solid #000;}
