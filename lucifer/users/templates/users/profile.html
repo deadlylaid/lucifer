@@ -67,7 +67,7 @@
                         <div class="depth">
                             <p>
                                 <a href="{% url "faq" %}">FAQ</a>
-                                <a href="{% url "rescue" %}">문의/신고</a>
+                                <a href="{% url "qna" %}">문의/신고</a>
                             </p>
                         </div>
                     </li>
@@ -129,19 +129,17 @@
 
         </div>
         <div class="questionwrap">
-            <form action="" method="post">
-              
-              <table class="tableform2">
+          <table class="tableform2">
+
               <tr class="Toptable">
                 <td>번호</td><td>제목</td><td>날짜</td>
               </tr>
+              {% for qna in qnas %}
               <tr class="contable">
-                <td>1</td><td>자살하고싶어요</td><td>2017.03.27</td>
+                  <td>{{ forloop.counter }}</td><td>{{ qna.title }}</td><td>{{ qna.created_at|date:"Y.m.d" }}</td>
               </tr>
+              {% endfor %}
               </table>
-              
-
-            </form>
         </div> 
     </div>
  </div>
