@@ -1,23 +1,11 @@
 /*****************************
-* 2017년 3월 13일 최영준
-* pig2d 를 이용한 기본 게임 로직 js
-* *************************
-* 2017년 3월 14일 최영준
-* Sprite Image 띄우기 / 마우스 이동 / Sprite 각도에 따라 변환.
-* *************************
-* 2017년 3월 17일 최영준
-* Player Direction 구하기 완료.
-* *************************
-* 2017년 3월 20일 최영준
-* Map 이미지 띄움.
-* *************************
-* 2017년 3월 21일 최영준
-* Phaser js 로 작업 시작. 
-* *************************
-* 2017년 3월 22 ~ 23일 최영준
-* Player Direction, Sprite 변화 완료
-* Player ID 띄우기 작업
-* Tile map 설치. (충돌 처리)
+* 2017년 3월 26일 최영준
+* Map : 충돌처리 완료
+******************************
+* 2017년 3월 27일 최영준
+* Map : Object 로드 하는것 / 설치 / 충돌처리 따로 Js 파일로 작업.
+* Mosnter Stage2 에 띄워 보기
+* 스킬 / 아이템 자료 조사.
 * **************************/
 
 //## Main Game.js -- 3월 21일 최영준 
@@ -41,10 +29,68 @@ var StandCheck = false;								//Stand 상태 한번만 들어오게 하기 위�
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 //----------------------------------------------------------------------------------------------------------
-var Background_map, Stage1;							//Stage 이미지 변수								
+var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수								
 var Collision_Layer;								//Collision Layer
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
+//----------------------------------------------------------------------------------------------------------
+var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
+
+//## Stage One PreLoad & Object Create
+//----------------------------------------------------------------------------------------------------------
+function stageOne_Object_Preload()
+{
+	Lucifer_Game.load.tilemap('MAP_Stage1', '../../static/images/game/Map/Stage1/Stage1.json',
+							   null, Phaser.Tilemap.TILED_JSON);
+	Lucifer_Game.load.image('Stage1_TileSet', '../../static/images/game/Map/Stage1/Stage1_TileSet.png');
+	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
+
+	//Object
+	//----------------------------------------------------------------------------------------------------------------
+	Lucifer_Game.load.image('STAGE1_Object_Tree', '../../static/images/game/Object/Stage1/Object_Tree.png');
+	Lucifer_Game.load.image('STAGE1_Object_Tree1', '../../static/images/game/Object/Stage1/Object_Tree1.png');
+	Lucifer_Game.load.image('STAGE1_Object_Tree2', '../../static/images/game/Object/Stage1/Object_Tree2.png');
+	
+	//0 : 수레 / 1 : 기타 / 7 : 상점 / 8 : 큰 수레 / 9 : 건물
+	Lucifer_Game.load.image('STAGE1_Object_0', '../../static/images/game/Object/Stage1/Object0.png');
+	Lucifer_Game.load.image('STAGE1_Object_1', '../../static/images/game/Object/Stage1/Object1.png');
+	Lucifer_Game.load.image('STAGE1_Object_2', '../../static/images/game/Object/Stage1/Object2.png');
+	Lucifer_Game.load.image('STAGE1_Object_3', '../../static/images/game/Object/Stage1/Object3.png');
+	Lucifer_Game.load.image('STAGE1_Object_4', '../../static/images/game/Object/Stage1/Object4.png');
+	Lucifer_Game.load.image('STAGE1_Object_5', '../../static/images/game/Object/Stage1/Object5.png');
+	Lucifer_Game.load.image('STAGE1_Object_6', '../../static/images/game/Object/Stage1/Object6.png');	
+	Lucifer_Game.load.image('STAGE1_Object_7', '../../static/images/game/Object/Stage1/Object7.png');	
+	Lucifer_Game.load.image('STAGE1_Object_8', '../../static/images/game/Object/Stage1/Object8.png');
+	Lucifer_Game.load.image('STAGE1_Object_9', '../../static/images/game/Object/Stage1/Object9.png');
+	Lucifer_Game.load.image('Object_WallTileSet', '../../static/images/game/Object/Stage1/Object_WallTileSet.png');
+	Lucifer_Game.load.image('Object_Tree2_TileSet', '../../static/images/game/Object/Stage1/Object_Tree2_TileSet.png');
+	//----------------------------------------------------------------------------------------------------------------
+}
+
+function stageOne_Object_Create()
+{
+	Stage1_ObjectGroup = Lucifer_Game.add.group();
+	Stage1_ObjectGroup = Lucifer_Game.add.physicsGroup(Phaser.Physics.P2JS);
+
+	Stage1_ObjectGroup.create(3287, 1491, 'STAGE1_Object_0');	
+	Stage1_ObjectGroup.create(3287, 1570, 'STAGE1_Object_1');
+	Stage1_ObjectGroup.create(4392, 1049, 'STAGE1_Object_7');
+	Stage1_ObjectGroup.create(4017, 995, 'STAGE1_Object_8');	
+	Stage1_ObjectGroup.create(3364, 968, 'STAGE1_Object_9');	
+
+	Stage1_ObjectGroup.create(3540, 857, 'STAGE1_Object_2');
+	Stage1_ObjectGroup.create(3285, 855, 'STAGE1_Object_3');
+
+	Stage1_ObjectGroup.create(4752, 769, 'STAGE1_Object_Tree1');
+	Stage1_ObjectGroup.create(4887, 849, 'STAGE1_Object_Tree1');	
+	Stage1_ObjectGroup.create(4593, 691, 'STAGE1_Object_Tree1');
+	Stage1_ObjectGroup.create(4432, 615, 'STAGE1_Object_Tree1');	
+
+	for(var i = 0; i < Stage1_ObjectGroup.length; ++i)
+	{
+		Stage1_ObjectGroup.getChildAt(i).body.static = true;
+	}		
+}
 //----------------------------------------------------------------------------------------------------------
 
 function preload(){
@@ -55,10 +101,7 @@ function preload(){
 	*/
 	//Map
 	//----------------------------------------------------------------------------------------------------------
-	Lucifer_Game.load.tilemap('MAP_Stage1', '../../static/images/game/Map/Stage1/Stage1.json',
-							   null, Phaser.Tilemap.TILED_JSON);
-	Lucifer_Game.load.image('Stage1_TileSet', '../../static/images/game/Map/Stage1/Stage1_TileSet.png');
-	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');	
+	stageOne_Object_Preload();
 	//----------------------------------------------------------------------------------------------------------
 
 	//Player(Bavarian)
@@ -83,20 +126,25 @@ function create(){
 	Lucifer_Game.physics.startSystem(Phaser.Physics.ARCADE);	
 	Lucifer_Game.physics.startSystem(Phaser.Physics.P2JS);
 
-	//Map / Scroll
+	//Map / Object
 	//---------------------------------------------------------------------------------------
 	Background_map = Lucifer_Game.add.tilemap('MAP_Stage1');		
 	Background_map.addTilesetImage('Stage1_TileSet', 'Stage1_TileSet');
 	Background_map.addTilesetImage('Collision_Tile', 'Collision_Tile');
+	Background_map.addTilesetImage('Object_WallTileSet', 'Object_WallTileSet');
+	Background_map.addTilesetImage('Object_Tree2_TileSet', 'Object_Tree2_TileSet');
 
 	Stage1 = Background_map.createLayer('Tile Layer 1');
+	Stage1_Wall_Layer = Background_map.createLayer('Object Layer');
 	Collision_Layer = Background_map.createLayer('Collision Layer');
 	Stage1.resizeWorld();	
+
+	stageOne_Object_Create();	
 	//---------------------------------------------------------------------------------------
 
 	//Player
 	//---------------------------------------------------------------------------------------
-	Player = Lucifer_Game.add.sprite(3200, 3200, 'PY_Bavarian_Stand');
+	Player = Lucifer_Game.add.sprite(3580, 1492, 'PY_Bavarian_Stand');
 
 	//Player Stand Animation	
 	//var PY_Bavarian_StandFrame_Array = new Array(8);
@@ -132,7 +180,7 @@ function create(){
 	Lucifer_Game.physics.p2.enable(Player);	
 	Player.body.fixedRotation = true;
 	Player.body.clearShapes();				   //Remove default Collision Box
-	Player.body.addRectangle(80, 100, 0, 0);   //Only the lower part of the player Collides
+	Player.body.addRectangle(40, 60, 0, 0);   //Only the lower part of the player Collides
 	Player.body.debug = true;				   //Player Rect 표시	
 	//---------------------------------------------------------------------------------------	
 
@@ -300,5 +348,6 @@ function update(){
 	//Player Move & Stop
 	//---------------------------------------------------------------------------------------
 	PlayerMove();
+	//console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------	
 }
