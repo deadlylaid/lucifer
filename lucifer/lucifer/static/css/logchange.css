@@ -15,49 +15,45 @@
 }
 
 .logo {
-    width:50%;
+
     margin: 3% auto;
 }
 
-.a_logo {
-    display:block;
-    width:50%;
-    margin:0px auto;
-    color:#ffffff;
-    font-size: 35px;
-    text-align: center;
-    text-shadow: 1px 1px 3px #000;
-}
 
 .i_logo{
     display: block;
     margin:0px auto;
+     display:block;
+    margin:0px auto;
+    color:#ffffff;
+    font-size: 25px;
+    text-align: left;
+    text-shadow: 1px 1px 3px #000;
 }
 
 .joinuswrap {
     display:block;
-    width:50%;
-    margin:0px auto;
+    margin-left: 30px;
 }
 
-.buttongroup { margin:0 auto; width: 180px; }
+.buttongroup { margin-top:15px; width: 590px; height: 40px;}
 
 .submit-button {
    padding: 10px 20px; 
-   margin: 30px auto 0px;
-   background-color:#951e1e;
-   color:#ffffff;
-   text-align: center;
-   float: left;
-}
-
-.reset-button {
-   padding: 10px 20px; 
-   margin: 30px auto 0px;
    background-color:#951e1e;
    color:#ffffff;
    text-align: center;
    float: right;
+
+}
+
+.reset-button {
+   padding: 10px 20px; 
+   background-color:#951e1e;
+   color:#ffffff;
+   text-align: center;
+   float: right;
+   margin-left: 10px;
 }
 
 .minsoo-input-group {
@@ -80,8 +76,21 @@
     text-shadow: 1px 1px 1px #000;
 }
 
-.tableform { margin: 0 auto; width: 350px;}
+.tableform { margin: 0; width: 400px; width: 590px;}
 
 .tableform tr { height: 70px; }
 
 .tableform tr td:first-child { line-height: 30px; font-size: 17px;}
+
+.tableform2 { margin-left:8px; width:648px; color: #ffffff; margin-bottom: 40px; }
+.tableform2 tr { height: 35px; background:url(../images/board_line.png) no-repeat bottom left;}
+.tableform2 tr:first-child {height: 40px; background:url(../images/board_line3.png) no-repeat bottom left; text-align: center; font-size: 17px;}
+.tableform2 tr td:first-child { width:50px; text-align: center;}
+.tableform2 tr td:nth-child(2) { padding-left: 10px; }
+.tableform2 tr td:last-child { width:100px; text-align: center; }
+
+.wrap1 { margin: 0 auto; width:700px; padding-top: 50px; padding-bottom: 50px;}
+.Toptitle { width:500px; height: 50px; margin: 0; display: block; }
+.Toptitle span {line-height: 50px; font-size: 45px; color: #ffffff; text-shadow: 1px 1px 3px #000;}
+.one { margin: 0 auto; padding-top : 10px; padding-left:20px; width:700px; height: 450px; border: 1px solid #000; margin-top: 20px; background-color:rgba(0,0,0,0.2);}
+.two { margin: 0 ; padding-top : 10px; padding-left:20px; width:700px; border: 1px solid #000; margin-top:20px; background-color:rgba(0,0,0,0.2);}

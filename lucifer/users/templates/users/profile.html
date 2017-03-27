@@ -75,11 +75,15 @@
             </div>
         </div>
     </div>
-    <div class="warp" style="height:560px">
+    <div class="wrap1">
+      <div class="Toptitle">
+        <span>MY PAGE </span>
+      </div>
+      <div class="one">
         <div class="logo">
-            <a class="a_logo" href="{% url "joinus" %}">
+
                 <span class="i_logo">회원정보변경</span>    
-            </a>
+
         </div>
         <div class='joinuswrap'>
             <form action="{% url "profile" %}" method="post">
@@ -111,13 +115,36 @@
               </tr>
               </table>
               <div class="buttongroup">
-              <input type="submit" name="" value="확인" class="submit-button">
               <a href="{% url "home" %}" name="" value="취소" class="reset-button" style="color:#ffffff;">취소</a>
+              <input type="submit" name="" value="확인" class="submit-button">
+              
               </div>
             </form>
-        </div>    
-    </div>
+        </div> 
+      </div>
+      <div class="two">
+        <div class="logo">
+            
+                <span class="i_logo">문의내역</span>    
 
+        </div>
+        <div class="questionwrap">
+            <form action="" method="post">
+              
+              <table class="tableform2">
+              <tr class="Toptable">
+                <td>번호</td><td>제목</td><td>날짜</td>
+              </tr>
+              <tr class="contable">
+                <td>1</td><td>자살하고싶어요</td><td>2017.03.27</td>
+              </tr>
+              </table>
+              
+
+            </form>
+        </div> 
+    </div>
+ </div>
        <div class="footer">
             <article class="wrap">
                 <a href="{% url "home" %}" target="_blank"><img src="{% static "images/Main_logo4.png" %}"  class="webzen"/></a>
