@@ -3,7 +3,7 @@
 
 
 .Container {background:transparent; background-size:821px 1300px; margin:0; padding:0px 25px;}
-.Container .Content_in {width:770px; height:910px; background-color:rgba(0,0,0,0.3); padding:0px 5px;}
+.Container .Content_in {width:770px; background-color:rgba(0,0,0,0.3); padding:0px 5px;}
 
 .Container .Content_in .Toptitle {width:760px; height:80px; background:url(../images/Subnav_topbar.png) no-repeat; color:#ffffff; text-align:left; padding:0; margin-bottom:10px; text-shadow:1px 1px #666; box-shadow:0px 0px 20px #000;} 
 .Container .Content_in .Toptitle h2 {margin:0; padding:23px 16px; font-size:25px; width:250px; float:left;  letter-spacing:2px;}
@@ -13,7 +13,7 @@
 
 
 .Container .Content_in #most_sub_cont_area {width:760px; padding-top:20px; overflow:hidden;}
-.Container .Content_in #most_sub_cont_area .most_screenshot_list { clear:both; padding:0; display:block;  width:740px; height:740px; margin:0 auto;}
+.Container .Content_in #most_sub_cont_area .most_screenshot_list { clear:both; padding:0; display:block;  width:740px; height:270px; margin:0 auto; float: none;}
 .Container .Content_in #most_sub_cont_area .most_screenshot_list ul {position:relative; float:left; width:235px; margin-left:10px; height:210px; margin-top: 20px; background:url(../images/board_line.png) no-repeat bottom left;}
 .Container .Content_in #most_sub_cont_area .most_screenshot_list li {display:block; font-size:0px; line-height:0px; }
 .Container .Content_in #most_sub_cont_area .most_screenshot_list li.pgame_thumb img { width:230px; height:145px; border:1px solid #000;}
@@ -27,7 +27,7 @@
 
 
 em { font-style:normal;}
-.most_index {margin-top:5px; text-align:center;}
+.most_index {margin-top:25px; text-align:center; margin-bottom: 25px; float: left; width: 770px;}
 .most_index a {display:inline-block; color:#9298a1; width:23px; height:24px; margin:0 1px; border:1px solid #3d4044; line-height:26px; font-size:11px; text-align:center;}
 .left_mg60 { margin-left:60px;}
 .most_index em a { width:56px; height:28px; margin:0; padding:0; border:none; background:url(../images/btn_type2.jpg) no-repeat 0 0; line-height:30px;}
