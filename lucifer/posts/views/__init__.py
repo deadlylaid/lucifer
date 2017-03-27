@@ -8,8 +8,7 @@ from .event import ListEvent
 from .event import ListEvent, EventDetailView
 from .storyintro import StoryIntro, StoryIntroDetail
 from .jobintro import JobIntro
-from .screenshot import ScreenShot
-from .screenshotdetail import ScreenShotDetail
+from .screenshot import ScreenShotListView, ScreenShotDetailView, ScreenShotCreateView
 from .screenshotcreate import ScreenShotCreate
 from .faq import Faq
 from .policy import Policy

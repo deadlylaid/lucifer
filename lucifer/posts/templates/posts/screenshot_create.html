@@ -19,8 +19,7 @@
     </div>
       <ul class="most_left_menu">
         <li><a href="{% url "free_list" %}">&gt; 자유게시판</a></li>
-                <li>&gt; 스크린샷</li>    
-      </ul>
+                <li>&gt; 스크린샷</li>    </ul>
     </div>
 {% endblock %}
 
@@ -32,28 +31,32 @@
 
 {% block content %}
 <div id="most_sub_cont_area">
-    <ul>
-      <li id="top_left">제 목</li>
-      <li id="top_right"><input type="text" class="form-control" placeholder="작성하실 글의 제목을 입력하세요." ></li>
-    </ul>
-    <ul>
-      <li id="btt_left">이미지 추가</li>
-      <li id="btt_right">
-        <input type="file" id="fom" onchange="readURL(this)">
-      </li>
-    </ul>
-    <div id="UploadedImg"></div>
-      <div id="cont_left">내 용</div>
-      <div id="cont_right">
-        <textarea rows="22" cols="90" name="content" class="textaria" style="resize:none;"></textarea></li>
-    </div>
-    <div id="btn">
-    <em class="bott_btn">
-      <a href="{% url "screenshot" %}" >취소</a> <!-- 쓰기 링크 추가 -->
-    </em>
-    <em class="bott_btn">
-      <a href="#" >쓰기</a> <!-- 쓰기 링크 추가 -->
-    </em>
-    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <ul>
+          <li id="top_left">제 목</li>
+          <li id="top_right"><input type="text" name="title" class="form-control" placeholder="작성하실 글의 제목을 입력하세요."  required></li>
+        </ul>
+        <ul>
+          <li id="btt_left">이미지 추가</li>
+          <li id="btt_right">
+            <input type="file" name="image" id="fom" onchange="readURL(this)">
+          </li>
+        </ul>
+        <div id="UploadedImg"></div>
+          <div id="cont_left">내 용</div>
+          <div id="cont_right">
+            <textarea rows="22" cols="90" name="contents" class="textaria" style="resize:none;"></textarea required></li>
+        </div>
+        <div id="btn">
+        <em class="bott_btn">
+          <a href="{% url "screenshot" %}" >취소</a> <!-- 쓰기 링크 추가 -->
+        </em>
+        <em class="bott_btn">
+            <input value="쓰기" name="" class="text" type="submit">
+            
+        </em>
+        </div>
+    </form>
 </div>
 {% endblock %}
