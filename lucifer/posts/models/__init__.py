@@ -4,3 +4,4 @@ from .comment import Comment
 from .notice import Notice
 from .qna import QNA
 from .event import Event
+from .screenshot import ScreenShot
