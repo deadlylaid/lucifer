@@ -43,3 +43,13 @@ class EventModelAdmin(admin.ModelAdmin):
             'user',
             'contents',
             )
+
+
+@admin.register(ScreenShot)
+class ScreenShotModelAdmin(admin.ModelAdmin):
+    list_display = admin.ModelAdmin.list_display + (
+            'title',
+            'user',
+            'contents',
+            'image',
+            )
