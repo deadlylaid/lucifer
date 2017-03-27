@@ -18,6 +18,10 @@ class QNA(models.Model):
             max_length=255,
             )
 
+    created_at = models.DateTimeField(
+            auto_now_add=True,
+            )
+
     def get_absolute_url(self):
         return reverse(
                 "qna",
