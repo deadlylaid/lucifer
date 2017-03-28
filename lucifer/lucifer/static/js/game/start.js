@@ -9,16 +9,12 @@ var nickname,
     dexterity,
     intelligence,
 
-
-/*****************************
- * 유저가 캐릭터를 갖고 있을때
- * ***************************/
 get_gamestart_api_url = '/api/gamestart/data/';
 
 /*****************************
  * 2017년 2월 26일 한민수
  * json을 이용하여 캐릭터 데이터를 가져온다
- * 가져오는 정보 닉네임, 레벨, 직업
+ * 가져오는 정보 닉네임, 레벨, 직업, 능력치
  * **************************/
 $.ajax({
 
@@ -36,11 +32,17 @@ $.ajax({
     nickname = character.nickname;
     level = character.level
     job = character.job
-    attack_point = character.status.attack_point
-    defence_point = character.status.defence_point
-    dexterity = character.status.dexterity
+
     health = character.status.health
     mana = character.status.mana
+
+    attack_point = character.status.attack_point
+    defence_point = character.status.defence_point
+
+    strong = character.status.strong
     dexterity = character.status.dexterity
     intelligence = character.status.intelligence
+
+    accuracy = character.status.accuracy
+    evasion = character.status.evasion
 });

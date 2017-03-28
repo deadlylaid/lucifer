@@ -16,6 +16,7 @@ def character_post_save(sender, instance, created, **kwargs):
 
             Status.objects.create(
                     character_set=instance,
+                    experience=1,
                     health=150,
                     mana=100,
                     strong=8,
@@ -30,6 +31,7 @@ def character_post_save(sender, instance, created, **kwargs):
 
             Status.objects.create(
                     character_set=instance,
+                    experience=1,
                     health=170,
                     mana=80,
                     strong=10,
@@ -44,6 +46,7 @@ def character_post_save(sender, instance, created, **kwargs):
 
             Status.objects.create(
                     character_set=instance,
+                    experience=1,
                     health=160,
                     mana=90,
                     strong=9,
