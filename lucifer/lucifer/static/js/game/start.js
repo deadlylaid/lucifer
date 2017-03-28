@@ -3,11 +3,14 @@ var nickname,
     job,
     attack_point,
     defence_point,
+    strong,
     dexterity,
     health,
     mana,
     dexterity,
     intelligence,
+    accuracy,
+    evasion,
 
 get_gamestart_api_url = '/api/gamestart/data/';
 
