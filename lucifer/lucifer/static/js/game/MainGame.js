@@ -27,7 +27,10 @@ var Player_Status = new Array('Stand', 'Walk', 'Attack', 'Damage', 'Dash', 'Jump
 var MoveCheck = false;								//Mouse가 클릭 됬는지 체크 하는 변수
 var StandCheck = false;								//Stand 상태 한번만 들어오게 하기 위해서.
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
+//var MouseBody;									//Monster와 충돌에 사용될 Mouse body
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
+//var Player_AttackRect = {left: null, right: null, top: null, bottom: null }; //공격 범위 Rect
+//var Player_RectBounds;
 //----------------------------------------------------------------------------------------------------------
 var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수								
 var Collision_Layer;								//Collision Layer
@@ -119,6 +122,11 @@ function preload(){
 	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/Modify_MpBar.png', 134, 134);					
 	//Lucifer_Game.load.spritesheet('UI_QuickSlot', '../../static/images/game/UI/')	
 	//----------------------------------------------------------------------------------------------------------
+
+	//Monster
+	//----------------------------------------------------------------------------------------------------------
+	golem_Preload();
+	//----------------------------------------------------------------------------------------------------------
 }
 
 function create(){
@@ -170,7 +178,7 @@ function create(){
 	Player.anchor.setTo(0.5, 0.5);	
 	
 	Lucifer_Game.camera.follow(Player);					//Camera follow
-	Lucifer_Game.input.onDown.add(GetDirection, this);	//Player Move
+	Lucifer_Game.input.onDown.add(GetDirection, this);	//Player Move	
 	//---------------------------------------------------------------------------------------	
 
 	//Player & Map Collision
@@ -182,6 +190,9 @@ function create(){
 	Player.body.clearShapes();				   //Remove default Collision Box
 	Player.body.addRectangle(40, 60, 0, 0);   //Only the lower part of the player Collides
 	Player.body.debug = true;				   //Player Rect 표시	
+
+	//Player_RectBounds = new Phaser.Rectangle(Player.x, Player.y, 200, 100);
+	//MouseBody = new p2.Body();
 	//---------------------------------------------------------------------------------------	
 
 	//Uesr Interface
@@ -217,6 +228,11 @@ function create(){
 	//Stroke color & thickness	
 	Player_ID.fill = '#19de65';
 	//---------------------------------------------------------------------------------------
+
+	//Monster Create
+	//---------------------------------------------------------------------------------------
+	golem_Create();
+	//---------------------------------------------------------------------------------------	
 }
 
 function GetDirection(){
@@ -291,7 +307,7 @@ function Animation_Change(Direction, Status)
 
 function PlayerMove()
 {
-	//Player Move Stop
+	//Player Move & Stop
 	//---------------------------------------------------------------------------------------	
 	if(MoveCheck == true)
 	{
@@ -327,7 +343,7 @@ function PlayerMove()
 		//P2 Physics
 		Player.body.velocity.x = 0;				
 		Player.body.velocity.y = 0;
-		//Player.body.velocity.setTo(0, 0);		//Arcade Physics
+		//Player.body.velocity.setTo(0, 0);		//Arcade Physics			
 	}
 
 	//console.log(MousePosX);
@@ -335,6 +351,49 @@ function PlayerMove()
 	//console.log(DistanceToMouse);
 	//console.log(Direction);
 	//---------------------------------------------------------------------------------------
+}
+
+//임시로 공격 충돌 체크 확인.
+//var MouseConstraint;
+/*
+function Player_Attack()
+{
+	//if(DistanceToMouse < 50)
+	//{
+		//if(Lucifer_Game.input.mousePointer.isDown)
+		//{
+			Cursor = Lucifer_Game.input.mousePointer;	
+
+			//일단 골렘 몬스터 하나만 넣어 놓음.
+			var bodies = Lucifer_Game.physics.p2.hitTest(Cursor.position, [mon_Golem.body]);
+			
+			//var physicsPos = [Lucifer_Game.physics.p2.pxmi(Cursor.position.x),
+			//				  Lucifer_Game.physics.p2.pxmi(Cursor.position.y)];
+
+			if(bodies.length)
+			{
+				//var clickBody = bodies;	
+				//var localPointInBody = [0, 0];
+
+				//clickBody.toLocalFrame(localPointInBody, physicsPos);
+
+				//MouseConstraint = Lucifer_Game.physics.p2.createRevoluteConstraint(MouseBody, [0,0], 
+				//				  clickBody, [Lucifer_Game.physics.p2.mpxi(localPointInBody[0]), 
+				//				  			  Lucifer_Game.physics.p2.mpxi(localPointInBody[1])
+				//				  ]);
+
+				Damage_Count();
+			}
+		//}		
+	//}	
+}
+*/
+
+//임시로 데미지 계산.
+function Damage_Count()
+{	
+	golem_Hp -= 10;
+	console.log('Damage');
 }
 
 function update(){
@@ -345,9 +404,17 @@ function update(){
 	Player_ID.position.y = ID_PosY;	
 	//---------------------------------------------------------------------------------------	
 
-	//Player Move & Stop
+	//Player Motion
 	//---------------------------------------------------------------------------------------
 	PlayerMove();
+	//Player_Attack();
 	//console.log(Player.x, Player.y);
-	//---------------------------------------------------------------------------------------	
+	//---------------------------------------------------------------------------------------
+
+	//Monster Direction & Move
+	//---------------------------------------------------------------------------------------
+	golem_Namefollw();
+	golem_GetDirection();
+	golem_Move();
+	//---------------------------------------------------------------------------------------		
 }
