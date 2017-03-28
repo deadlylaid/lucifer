@@ -39,29 +39,19 @@ function ui_Create()
 
 	//Player Info
 	//---------------------------------------------------------------------------------------
-	/*
 	var UI_StatText_Style = {
 			font: "15px Arial", fill: "#ff0044", wordWrap: true,
-			wordWrapWidth: UI_Stat.width, align: "center"
-	};
-	*/
+			wordWrapWidth: UI_Stat.width, align: "center" };	
 
-	var player_Hp = Lucifer_Game.add.text(0, 0, "100");
+	player_Hp = Lucifer_Game.add.text(0, 0, "100", UI_StatText_Style);
 	player_Hp.anchor.set(0.5);
-	player_Hp.align = 'center';
-	player_Hp.font = 'Arial';
-	player_Hp.fontSize = 13;
-	player_Hp.fontWeight = 'normal';
-	player_Hp.fill = '#ff0044';
 	//---------------------------------------------------------------------------------------	
 }
 
 function ui_Update()
 {
-	/*
 	//UI_Stat
-	player_Hp.x = UI_Stat.position.x + UI_Stat.width / 2;
-	player_Hp.y = UI_Stat.position.y + UI_Stat.height / 2;
-	*/
+	player_Hp.position.x = UI_Stat.x - 85;
+    player_Hp.position.y = UI_Stat.y + 30;
 }
 
