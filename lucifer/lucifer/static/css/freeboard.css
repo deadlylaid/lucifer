@@ -1,0 +1,14 @@
+label {
+    color: #ffffff;
+    display: block;
+    height: 40px;
+    background: url(../images/writepage_cont.png);
+    line-height: 40px;
+    margin: 20px 0 10px;
+    background-repeat:no-repeat;
+    background-size: 760px;
+}
+
+#id_title {
+    border-radius: 4px;
+}
