@@ -27,15 +27,11 @@ var Player_Status = new Array('Stand', 'Walk', 'Attack', 'Damage', 'Dash', 'Jump
 var MoveCheck = false;								//Mouse가 클릭 됬는지 체크 하는 변수
 var StandCheck = false;								//Stand 상태 한번만 들어오게 하기 위해서.
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
-//var MouseBody;									//Monster와 충돌에 사용될 Mouse body
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
-//var Player_AttackRect = {left: null, right: null, top: null, bottom: null }; //공격 범위 Rect
-//var Player_RectBounds;
+var DistanceToMonster;								//Monster에 대한 거리값 변수.
 //----------------------------------------------------------------------------------------------------------
 var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수								
 var Collision_Layer;								//Collision Layer
-//----------------------------------------------------------------------------------------------------------
-var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
 var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
 
@@ -113,14 +109,17 @@ function preload(){
 								  '../../static/images/game/Player/Bavarian/stand/Stand.png', 200, 200);
 	Lucifer_Game.load.spritesheet('PY_Bavarian_Walk', 
 		 					      '../../static/images/game/Player/Bavarian/walk/Walk.png', 200, 200);
+	Lucifer_Game.load.spritesheet('PY_Bavarian_Attack',
+								  '../../static/images/game/Player/Bavarian/attack/attack.png', 200, 200);
 	//----------------------------------------------------------------------------------------------------------
 	
 	//UI : spritesheet(Image로 불러오는 것으로 해야될수도 있음. 아직 UI 안들어 가서 보류)
 	//----------------------------------------------------------------------------------------------------------
-	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/Modify_UnderBar.png', 1280, 150);
-	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/Modify_HpBar.png', 134, 134);
-	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/Modify_MpBar.png', 134, 134);					
+	//Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/Modify_UnderBar.png', 1280, 150);
+	//Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/Modify_HpBar.png', 134, 134);
+	//Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/Modify_MpBar.png', 134, 134);					
 	//Lucifer_Game.load.spritesheet('UI_QuickSlot', '../../static/images/game/UI/')	
+	ui_Preload();
 	//----------------------------------------------------------------------------------------------------------
 
 	//Monster
@@ -173,6 +172,19 @@ function create(){
 							  [j, j + 1, j + 2, j + 3, j + 4, j + 5, j + 6], 60, true);
 		j += 8;
 	}	
+
+	//Player Attack Animation / 일단 이건 나중에 생각해보자.
+	j = 0;
+	for(var i = 0; i < 7; ++i)
+	{	
+		Player.animations.add('PY_Bavarian_Attack_' + i, 
+							  [
+							  	j, j + 1, j + 2, j + 3, j + 4, j + 5, j + 6, j + 7, j + 8, j + 9,
+							  	j + 10, j + 11, j + 12, j + 13, j + 14, j + 15
+							  ], 
+							  60, true);
+		j += 15;				
+	}
 	
 	Player.animations.play('PY_Bavarian_Stand_0', 10, true);
 	Player.anchor.setTo(0.5, 0.5);	
@@ -188,33 +200,14 @@ function create(){
 	Lucifer_Game.physics.p2.enable(Player);	
 	Player.body.fixedRotation = true;
 	Player.body.clearShapes();				   //Remove default Collision Box
-	Player.body.addRectangle(40, 60, 0, 0);   //Only the lower part of the player Collides
+	Player.body.addRectangle(40, 60, 0, 0);    //Only the lower part of the player Collides
 	Player.body.debug = true;				   //Player Rect 표시	
-
-	//Player_RectBounds = new Phaser.Rectangle(Player.x, Player.y, 200, 100);
-	//MouseBody = new p2.Body();
 	//---------------------------------------------------------------------------------------	
-
-	//Uesr Interface
-	//---------------------------------------------------------------------------------------
-	//UI_Group = Lucifer_Game.add.group();
-	UI_UnderBar = Lucifer_Game.add.sprite(640, 725, 'UI_UnderBar');
-	UI_UnderBar.anchor.setTo(0.5, 0.5);	
-	UI_UnderBar.fixedToCamera = true;
-
-	UI_HpBar = Lucifer_Game.add.sprite(115, 725, 'UI_HpBar');
-	UI_HpBar.anchor.setTo(0.5, 0.5);
-	UI_HpBar.fixedToCamera = true;
-
-	UI_MpBar = Lucifer_Game.add.sprite(1165, 725, 'UI_MpBar');
-	UI_MpBar.anchor.setTo(0.5, 0.5);
-	UI_MpBar.fixedToCamera = true;	
-	//---------------------------------------------------------------------------------------
 
 	//Player Id Text(Test Code)
 	//---------------------------------------------------------------------------------------
-	Lucifer_Game.physics.enable(Player, Phaser.Physics.ARCADE);	
 	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, nickname); //Test 부분에 Player Id 가 들어가면 됨.
+	Lucifer_Game.physics.enable(Player, Phaser.Physics.ARCADE);
 
 	//Center align
 	Player_ID.anchor.set(0.5);
@@ -232,7 +225,12 @@ function create(){
 	//Monster Create
 	//---------------------------------------------------------------------------------------
 	golem_Create();
-	//---------------------------------------------------------------------------------------	
+	//---------------------------------------------------------------------------------------
+
+	//UI Create
+	//---------------------------------------------------------------------------------------
+	ui_Create();
+	//---------------------------------------------------------------------------------------
 }
 
 function GetDirection(){
@@ -303,6 +301,12 @@ function Animation_Change(Direction, Status)
 		Player.loadTexture('PY_Bavarian_Walk', 0, true)
 		Player.animations.play('PY_Bavarian_Walk_' + Direction, 10, true);
 	}
+	else if(Status == Player_Status[2])
+	{
+		//Attack
+		Player.loadTexture('PY_Bavarian_Attack', 0, true);
+		Player.animations.play('PY_Bavarian_Attack_' + Direction, 20, true);
+	}
 }
 
 function PlayerMove()
@@ -353,7 +357,85 @@ function PlayerMove()
 	//---------------------------------------------------------------------------------------
 }
 
-//임시로 공격 충돌 체크 확인.
+function CheckOverlap(spriteA, spriteB)
+{
+	var boundsA = spriteA.getBounds();
+	var boundsB = spriteB.getBounds();
+
+	return Phaser.Rectangle.intersects(boundsA, boundsB);
+
+	//Phaser.Rectangle.containsPoint(boundsA, point); 로 해보자.
+}
+
+/*
+var AttackCheck = false;
+function PlayerAttack()
+{
+	//Player Attack Motion (임시로 Monster를 Golem 으로 한정 시킴 나중에 이 함수를 바꿔서 여러 마리랑 가능하게 해야됨.)
+	//---------------------------------------------------------------------------------------
+	DistanceToMonster = Phaser.Math.distance(Player.x, Player.y, mon_Golem.x, mon_Golem.y);
+
+	//var pointer = Lucifer_Game.input.mousePointer;
+	//var bodies = Lucifer_Game.physics.p2.hitTest(pointer.position, [mon_Golem]);
+
+	var maxFrame = Player.animations.frameTotal;
+
+	if(DistanceToMonster < 70)
+	{	
+		if(CheckOverlap(Player, mon_Golem))
+		{
+			//if(AttackCheck == false)
+			//{
+				Animation_Change(Direction, 'Attack');			
+				console.log('Attack');
+				//AttackCheck = true;
+			//}			
+		}
+		//else
+		//{
+		//	AttackCheck = false;
+		//}									
+	}		
+
+	console.log(maxFrame);
+	//---------------------------------------------------------------------------------------	
+}
+*/
+
+function Damage_Count(Player, mon_Golem)
+{	
+	golem_Hp -= 10;
+	console.log('Damage');
+}
+
+function update(){
+	//Player ID
+	//---------------------------------------------------------------------------------------
+	var ID_PosY = Player.position.y + 70;
+	Player_ID.position.x = Player.position.x;
+	Player_ID.position.y = ID_PosY;	
+	//---------------------------------------------------------------------------------------	
+
+	//Player Motion
+	//---------------------------------------------------------------------------------------
+	PlayerMove();
+	//PlayerAttack();
+	//console.log(Player.x, Player.y);
+	//---------------------------------------------------------------------------------------
+
+	//Monster Direction & Move
+	//---------------------------------------------------------------------------------------
+	golem_Namefollw();
+	golem_GetDirection();
+	golem_Move();
+	//---------------------------------------------------------------------------------------	
+
+	//UI
+	//---------------------------------------------------------------------------------------
+	ui_Update();
+	//---------------------------------------------------------------------------------------	
+}
+
 //var MouseConstraint;
 /*
 function Player_Attack()
@@ -388,33 +470,3 @@ function Player_Attack()
 	//}	
 }
 */
-
-//임시로 데미지 계산.
-function Damage_Count()
-{	
-	golem_Hp -= 10;
-	console.log('Damage');
-}
-
-function update(){
-	//Player ID
-	//---------------------------------------------------------------------------------------
-	var ID_PosY = Player.position.y + 70;
-	Player_ID.position.x = Player.position.x;
-	Player_ID.position.y = ID_PosY;	
-	//---------------------------------------------------------------------------------------	
-
-	//Player Motion
-	//---------------------------------------------------------------------------------------
-	PlayerMove();
-	//Player_Attack();
-	//console.log(Player.x, Player.y);
-	//---------------------------------------------------------------------------------------
-
-	//Monster Direction & Move
-	//---------------------------------------------------------------------------------------
-	golem_Namefollw();
-	golem_GetDirection();
-	golem_Move();
-	//---------------------------------------------------------------------------------------		
-}
