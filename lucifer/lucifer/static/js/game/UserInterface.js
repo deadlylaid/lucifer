@@ -54,8 +54,7 @@ function ui_Create()
 			font: "15px Arial", fill: "#ff0044", wordWrap: true,
 			wordWrapWidth: UI_Stat.width, align: "center" };	
 
-	//HP
-	player_Hp = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y + 30, "100", UI_StatText_Style);
+	player_Hp = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y + 30, health , UI_StatText_Style);
 	player_Hp.anchor.set(0.5);	
 	player_Hp.fixedToCamera = true;
 	player_Hp.visible = false;
