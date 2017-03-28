@@ -8,7 +8,8 @@ class PostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
 
-        self.fields['title'].label = "제목"
+        self.fields['title'].label = "제 목"
+        self.fields['content'].label = "내 용"
 
     class Meta:
         model = FreeBoard
