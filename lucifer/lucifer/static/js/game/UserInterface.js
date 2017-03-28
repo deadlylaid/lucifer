@@ -59,6 +59,7 @@ function ui_Create()
 function ui_Update()
 {
 	/*
+	//UI_Stat
 	player_Hp.x = UI_Stat.position.x + UI_Stat.width / 2;
 	player_Hp.y = UI_Stat.position.y + UI_Stat.height / 2;
 	*/
