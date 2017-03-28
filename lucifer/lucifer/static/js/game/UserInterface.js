@@ -1,6 +1,8 @@
 var player_Hp, player_Mp;
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
+//----------------------------------------------------------------------------------------------------------
+var key_Stat; 
 
 function ui_Preload()
 {
@@ -31,10 +33,17 @@ function ui_Create()
 	UI_Stat = Lucifer_Game.add.sprite(190, 275, 'UI_Stat');
 	UI_Stat.anchor.setTo(0.5, 0.5);
 	UI_Stat.fixedToCamera = true;
+	//UI_Stat.visible = false;
 
-	//UI창 드레그 설정.
+	//UI Set Drag
 	UI_Stat.inputEnabled = true;	
 	UI_Stat.input.enableDrag();
+
+	//UI Key Setting
+	//key_Stat = Lucifer_Game.input.keyboard.addKey(Phaser.keyboard.S);
+	//key_Stat.onDown.add(viewStatus, this);
+
+	//Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.keyboard.S);
 	//---------------------------------------------------------------------------------------
 
 	//Player Info
@@ -43,15 +52,21 @@ function ui_Create()
 			font: "15px Arial", fill: "#ff0044", wordWrap: true,
 			wordWrapWidth: UI_Stat.width, align: "center" };	
 
-	player_Hp = Lucifer_Game.add.text(0, 0, "100", UI_StatText_Style);
-	player_Hp.anchor.set(0.5);
+	player_Hp = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y + 30, "100", UI_StatText_Style);
+	player_Hp.anchor.set(0.5);	
+	player_Hp.fixedToCamera = true;
 	//---------------------------------------------------------------------------------------	
 }
 
 function ui_Update()
 {
 	//UI_Stat
-	player_Hp.position.x = UI_Stat.x - 85;
+	player_Hp.position.x = UI_Stat.x - 80;
     player_Hp.position.y = UI_Stat.y + 30;
+}
+
+function viewStatus()
+{
+	UI_Stat.visible = true;
 }
 
