@@ -418,7 +418,11 @@ function update(){
 
 	//Player Motion
 	//---------------------------------------------------------------------------------------
-	PlayerMove();
+	if(UI_Stat.visible == false)
+	{
+		PlayerMove();
+	}
+	
 	//PlayerAttack();
 	//console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
