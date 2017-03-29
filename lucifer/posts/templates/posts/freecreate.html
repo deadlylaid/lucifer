@@ -4,6 +4,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static "css/Community_Screenshot.css" %}"/>
+<link rel="stylesheet" href="{% static "css/freeboard.css" %}">
 {% endblock %}
 
 {% block sub_title %}
@@ -16,21 +17,10 @@
 .Back { background:url({% static "images/main_bg_2.jpg" %}) no-repeat 50% 0; margin:0 auto; padding:0;}
 .whiteback { width:100%; height:1300px; z-index:-9999; position:absolute; background:url({% static "images/Background.png" %});}
 .Wrap {height:930px;}
-
 .Left_box{height:930px;}
-.btn {
-  margin:10px;
-  color:#ffffff;
-  background-color: #e12200;
-  border-radius: 0px;
-}
 
-.text {
-  padding:5px;
-  width:100%;
-  height:30px;
-}
 {% endblock %}
+
 {% block title %}
 글쓰기
 {% endblock %}
@@ -41,8 +31,8 @@
       커뮤니티
     </div>
       <ul class="most_left_menu">
-        <li><a href="{% url "free_list" %}">&gt; 자유게시판</a></li>
-        <li>&gt; 스크린샷</li>    
+        <li>&gt; 자유게시판</a></li>
+        <li><a href="{% url "screenshot" %}">&gt; 스크린샷</li>    
       </ul>
     </div>
 {% endblock %}
@@ -53,5 +43,5 @@
     {{ form }}
     <input type="submit" name="" class="btn" value="확인">
 </form>
-<link rel="stylesheet" href="{% static "css/freeboard.css" %}">
+
 {% endblock %}
