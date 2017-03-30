@@ -6,6 +6,8 @@ var golem_Angle, golem_Direction, golem_Distance;
 var golem_MoveCheck = false;
 var golem_StandCheck = false;
 
+var golem_HitRect;
+
 function golem_Preload()
 {
 	//Golem Image Load
@@ -56,6 +58,9 @@ function golem_Create()
 	mon_Golem_Name.fontSize = 13;
 	mon_Golem_Name.fontWeight = 'normal';
 	mon_Golem_Name.fill = '#19de65';
+
+	//Monster Hit Collision
+	golem_HitRect = new Phaser.Rectangle(mon_Golem.x, mon_Golem.y, 60, 60);
 }
 
 function golem_GetDirection()
