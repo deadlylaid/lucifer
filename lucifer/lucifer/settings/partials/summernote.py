@@ -21,4 +21,5 @@ SUMMERNOTE_CONFIG = {
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['para', ['ul', 'ol', 'height']],
         ],
+
 }

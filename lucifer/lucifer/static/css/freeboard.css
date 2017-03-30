@@ -16,7 +16,7 @@ label[for=id_content]  {
     height: 40px;
     background: url(../images/writepage_cont.png);
     line-height: 40px;
-    margin: 10px 0 15px 10px;
+    margin: 20px 0 20px 10px;
     padding:0;
     float: left;
 }
@@ -32,12 +32,14 @@ label[for=id_content]  {
 
 .Container .Content_in { height: 835px; }
 
-form {margin-top:20px;}
+form {margin-top:35px;}
 
 .btn {
-  margin:10px;
+  margin:30px 15px;
   color:#ffffff;
   background-color: #e12200;
   border-radius: 0px;
   float: right;
 }
+
+form > iframe { width: 730px; }
