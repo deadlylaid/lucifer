@@ -54,26 +54,25 @@ function ui_Create()
 			font: "15px Arial", fill: "#ff0044", wordWrap: true,
 			wordWrapWidth: UI_Stat.width, align: "center" };	
 
-	//HP
-	player_Hp = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y + 30, "100", UI_StatText_Style);
+	player_Hp = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y + 30, health , UI_StatText_Style);
 	player_Hp.anchor.set(0.5);	
 	player_Hp.fixedToCamera = true;
 	player_Hp.visible = false;
 
 	//NickName
-	player_NickName = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y - 250, "OverFace", UI_StatText_Style);
+	player_NickName = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y - 250, nickname, UI_StatText_Style);
 	player_NickName.anchor.set(0.5);	
 	player_NickName.fixedToCamera = true;
 	player_NickName.visible = false;
 
 	//Jop
-	player_Job = Lucifer_Game.add.text(UI_Stat.x + 110, UI_Stat.y - 250, "Bavarian", UI_StatText_Style);
+	player_Job = Lucifer_Game.add.text(UI_Stat.x + 110, UI_Stat.y - 250, job, UI_StatText_Style);
 	player_Job.anchor.set(0.5);	
 	player_Job.fixedToCamera = true;
 	player_Job.visible = false;
 
 	//Level
-	player_Level = Lucifer_Game.add.text(UI_Stat.x - 150, UI_Stat.y - 215, "1 Lv", UI_StatText_Style);
+	player_Level = Lucifer_Game.add.text(UI_Stat.x - 150, UI_Stat.y - 215, level + " Lv", UI_StatText_Style);
 	player_Level.anchor.set(0.5);	
 	player_Level.fixedToCamera = true;
 	player_Level.visible = false;
@@ -85,43 +84,43 @@ function ui_Create()
 	player_Exp.visible = false;
 
 	//Next Level
-	player_NextLevel = Lucifer_Game.add.text(UI_Stat.x + 110, UI_Stat.y - 215, "2 Lv", UI_StatText_Style);
+	player_NextLevel = Lucifer_Game.add.text(UI_Stat.x + 110, UI_Stat.y - 215, "다음레벨 "+ (level + 1) +" Lv", UI_StatText_Style);
 	player_NextLevel.anchor.set(0.5);	
 	player_NextLevel.fixedToCamera = true;
 	player_NextLevel.visible = false;
 
 	//Strong
-	player_Str = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y - 160, "10", UI_StatText_Style);
+	player_Str = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y - 160, strong, UI_StatText_Style);
 	player_Str.anchor.set(0.5);	
 	player_Str.fixedToCamera = true;
 	player_Str.visible = false;
 
 	//Dexterity
-	player_Dex = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y - 80, "10", UI_StatText_Style);
+	player_Dex = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y - 80, dexterity , UI_StatText_Style);
 	player_Dex.anchor.set(0.5);	
 	player_Dex.fixedToCamera = true;
 	player_Dex.visible = false;
 
 	//Mana
-	player_Mana = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y + 110, "50", UI_StatText_Style);
+	player_Mana = Lucifer_Game.add.text(UI_Stat.x - 80, UI_Stat.y + 110, mana, UI_StatText_Style);
 	player_Mana.anchor.set(0.5);	
 	player_Mana.fixedToCamera = true;
 	player_Mana.visible = false;
 
 	//Attack_Point
-	player_AttPoint = Lucifer_Game.add.text(UI_Stat.x + 150, UI_Stat.y - 160, "200", UI_StatText_Style);
+	player_AttPoint = Lucifer_Game.add.text(UI_Stat.x + 150, UI_Stat.y - 160, "공격력:" + attack_point, UI_StatText_Style);
 	player_AttPoint.anchor.set(0.5);	
 	player_AttPoint.fixedToCamera = true;
 	player_AttPoint.visible = false;
 
 	//Defence_Point
-	player_DefPoint = Lucifer_Game.add.text(UI_Stat.x + 150, UI_Stat.y - 125, "120", UI_StatText_Style);
+    player_DefPoint = Lucifer_Game.add.text(UI_Stat.x + 150, UI_Stat.y - 125, "수비력:" + defence_point, UI_StatText_Style);
 	player_DefPoint.anchor.set(0.5);	
 	player_DefPoint.fixedToCamera = true;
 	player_DefPoint.visible = false;
 
 	//Intelligence
-	player_Int = Lucifer_Game.add.text(UI_Stat.x + 150, UI_Stat.y - 45, "10", UI_StatText_Style);
+	player_Int = Lucifer_Game.add.text(UI_Stat.x + 150, UI_Stat.y - 45, "지능:" + intelligence, UI_StatText_Style);
 	player_Int.anchor.set(0.5);	
 	player_Int.fixedToCamera = true;
 	player_Int.visible = false;

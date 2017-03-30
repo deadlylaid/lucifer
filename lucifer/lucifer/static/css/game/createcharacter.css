@@ -1,19 +1,78 @@
 body {
-    background-color: #281616;
+    background-color: #000000;
+    padding:0;
+    color: #e62200;
 }
 
 .container {
     width: 1280px;
     height: 800px;
-    background-color: #ffffff;
+    background-color: #000000;
     text-align: center;
+}
+
+#select_class{
+    background-image: url(../../images/game/Character_Create_UI/title/select_class_title.png);
+    width: 515px;
+    height: 105px;
+    margin: 0 auto;
 }
 
 .game-ul {
     list-style:none;
+    overflow: auto;
+    padding: 50px 0 0;
 }
 
-.game-li {
+.game-ul .game-li {
     float:left;
-    padding-right: 40px;
+}
+
+.game-ul .game-li .job {
+    background-color: #000000;
+    padding: 0;
+    border: 0;
+}
+
+.game-ul .game-li .job:focus {
+    outline: none;
+}
+
+.character-div .game-li img {
+    opacity: 0.3;
+}
+
+.character-div .game-li img:hover {
+    opacity: 1;
+}
+
+.character-div {
+    position: relative;
+    display: inline-block;
+    width: 400px;
+    height: 355px;
+}
+
+.job_text {
+    position : absolute;
+    font-size: 2em;
+}
+
+#sorceress_text {
+    left: 35%;
+    top: 80%;
+}
+
+#barbarian_text {
+    left: 38%;
+    top: 80%;
+}
+
+#paladin_text {
+    left: 40%;
+    top: 80%;
+}
+
+.nickname-form {
+    margin: 100px 0 0;
 }
