@@ -16,7 +16,7 @@
 	 update function : 게임상의 코드를 갱신해주는 함수.
 -----------------------------------------------------*/
 var Lucifer_Game = new Phaser.Game(1280, 800, Phaser.CANVAS, 'scene',
-								   { preload: preload, create: create, update: update });
+								   { preload: preload, create: create, update: update, render: render });
 
 //## Game 상에서 필요한 변수들 
 //----------------------------------------------------------------------------------------------------------
@@ -29,6 +29,8 @@ var StandCheck = false;								//Stand 상태 한번만 들어오게 하기 위�
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 var DistanceToMonster;								//Monster에 대한 거리값 변수.
+var Attack_Rect;
+var Player_AttackCheck = false; 
 //----------------------------------------------------------------------------------------------------------
 
 function preload(){
@@ -39,7 +41,7 @@ function preload(){
 	*/	
 	//Stage Preload
 	//----------------------------------------------------------------------------------------------------------
-	//stageOne_Preload();
+	stageOne_Preload();
 	stageTwo_Preload();
 	//----------------------------------------------------------------------------------------------------------
 
@@ -71,13 +73,13 @@ function create(){
 
 	//Stage Create
 	//---------------------------------------------------------------------------------------
-	//stageOne_Create();	
+	stageOne_Create();	
 	stageTwo_Create();
 	//---------------------------------------------------------------------------------------
 
 	//Player
 	//---------------------------------------------------------------------------------------
-	Player = Lucifer_Game.add.sprite(3580, 1492, 'PY_Bavarian_Stand');
+	Player = Lucifer_Game.add.sprite(3580, 1492, 'PY_Bavarian_Attack');
 
 	//Player Stand Animation	
 	//var PY_Bavarian_StandFrame_Array = new Array(8);
@@ -99,19 +101,21 @@ function create(){
 		j += 8;
 	}	
 
-	//Player Attack Animation / 일단 이건 나중에 생각해보자.
-	j = 0;
-	for(var i = 0; i < 7; ++i)
+	//Player Attack Animation
+	var aniIndex = 0;
+	for(var i = 0; i < 8; ++i)
 	{	
 		Player.animations.add('PY_Bavarian_Attack_' + i, 
 							  [
-							  	j, j + 1, j + 2, j + 3, j + 4, j + 5, j + 6, j + 7, j + 8, j + 9,
-							  	j + 10, j + 11, j + 12, j + 13, j + 14, j + 15
+							    aniIndex,      aniIndex + 1,  aniIndex + 2,  aniIndex + 3, 
+							    aniIndex + 4,  aniIndex + 5,  aniIndex + 6,  aniIndex + 7, 
+							    aniIndex + 8,  aniIndex + 9,  aniIndex + 10, aniIndex + 11, 
+							    aniIndex + 12, aniIndex + 13, aniIndex + 14, aniIndex + 15
 							  ], 
 							  60, true);
-		j += 15;				
+		aniIndex += 16;								
 	}
-	
+		
 	Player.animations.play('PY_Bavarian_Stand_0', 10, true);
 	Player.anchor.setTo(0.5, 0.5);	
 	
@@ -121,12 +125,16 @@ function create(){
 
 	//Player Collision
 	//---------------------------------------------------------------------------------------	
+	//Player Body Collision
 	Lucifer_Game.physics.p2.enable(Player);	
 	Player.body.fixedRotation = true;
 	Player.body.clearShapes();				   //Remove default Collision Box
 	Player.body.addRectangle(40, 60, 0, 0);    //Only the lower part of the player Collides
 	Player.body.debug = true;				   //Player Rect 표시	
-	//---------------------------------------------------------------------------------------	
+
+	//Player Attack Collision
+	Attack_Rect = new Phaser.Rectangle(Player.x, Player.y, 80, 80);	
+		//---------------------------------------------------------------------------------------	
 
 	//Player Id Text(Test Code)
 	//---------------------------------------------------------------------------------------
@@ -228,9 +236,14 @@ function Animation_Change(Direction, Status)
 	else if(Status == Player_Status[2])
 	{
 		//Attack
-		Player.loadTexture('PY_Bavarian_Attack', 0, true);
-		Player.animations.play('PY_Bavarian_Attack_' + Direction, 20, true);
+		if(Player_AttackCheck == true)
+		{
+			Player.loadTexture('PY_Bavarian_Attack', 0, true);
+			Player.animations.play('PY_Bavarian_Attack_' + Direction, 20, true);
+		}		
 	}
+
+	//console.log(Player.animations.name);	
 }
 
 function PlayerMove()
@@ -281,50 +294,33 @@ function PlayerMove()
 	//---------------------------------------------------------------------------------------
 }
 
-function CheckOverlap(spriteA, spriteB)
-{
-	var boundsA = spriteA.getBounds();
-	var boundsB = spriteB.getBounds();
-
-	return Phaser.Rectangle.intersects(boundsA, boundsB);
-
-	//Phaser.Rectangle.containsPoint(boundsA, point); 로 해보자.
-}
-
-/*
-var AttackCheck = false;
 function PlayerAttack()
 {
 	//Player Attack Motion (임시로 Monster를 Golem 으로 한정 시킴 나중에 이 함수를 바꿔서 여러 마리랑 가능하게 해야됨.)
 	//---------------------------------------------------------------------------------------
 	DistanceToMonster = Phaser.Math.distance(Player.x, Player.y, mon_Golem.x, mon_Golem.y);
 
-	//var pointer = Lucifer_Game.input.mousePointer;
-	//var bodies = Lucifer_Game.physics.p2.hitTest(pointer.position, [mon_Golem]);
-
-	var maxFrame = Player.animations.frameTotal;
-
 	if(DistanceToMonster < 70)
 	{	
-		if(CheckOverlap(Player, mon_Golem))
-		{
-			//if(AttackCheck == false)
-			//{
-				Animation_Change(Direction, 'Attack');			
-				console.log('Attack');
-				//AttackCheck = true;
-			//}			
+		if(Phaser.Rectangle.intersects(Attack_Rect, golem_HitRect))
+		{	
+			//충돌된 상태에서 다른곳 클릭하게 되면 공격모션이 나오는것을 예외처리 해주어야 한다.
+			if(Lucifer_Game.input.mousePointer.isDown)
+			{
+				Animation_Change(Direction, 'Attack');	
+				Player_AttackCheck = true;				
+			}			
 		}
-		//else
-		//{
-		//	AttackCheck = false;
-		//}									
+		else
+		{
+			Player_AttackCheck = false;
+		}									
 	}		
 
-	console.log(maxFrame);
+	//console.log(Player.animations.frameTotal);
+	//console.log(Phaser.Rectangle.intersects(Attack_Rect, golem_HitRect));
 	//---------------------------------------------------------------------------------------	
 }
-*/
 
 function Damage_Count(Player, mon_Golem)
 {	
@@ -332,6 +328,7 @@ function Damage_Count(Player, mon_Golem)
 	console.log('Damage');
 }
 
+var intersects;
 function update(){
 	//Player ID
 	//---------------------------------------------------------------------------------------
@@ -342,13 +339,24 @@ function update(){
 
 	//Player Motion
 	//---------------------------------------------------------------------------------------
+	//Move
 	if(UI_Stat.visible == false)
 	{
 		PlayerMove();
-	}
-	
-	//PlayerAttack();
-	console.log(Player.x, Player.y);
+		PlayerAttack();
+
+	//Attack
+	Attack_Rect.x = Player.x;
+	Attack_Rect.y = Player.y;
+	Attack_Rect.centerOn(Player.x, Player.y);
+
+	golem_HitRect.x = mon_Golem.x;
+	golem_HitRect.y = mon_Golem.y;
+	golem_HitRect.centerOn(mon_Golem.x, mon_Golem.y);	
+
+	//Debug 용도
+	intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
+	//console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Monster Direction & Move
@@ -364,37 +372,10 @@ function update(){
 	//---------------------------------------------------------------------------------------	
 }
 
-//var MouseConstraint;
-/*
-function Player_Attack()
+function render()
 {
-	//if(DistanceToMouse < 50)
-	//{
-		//if(Lucifer_Game.input.mousePointer.isDown)
-		//{
-			Cursor = Lucifer_Game.input.mousePointer;	
+	Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
+	Lucifer_Game.debug.geom(golem_HitRect, 'rgba(0, 0, 200, 0.5');
 
-			//일단 골렘 몬스터 하나만 넣어 놓음.
-			var bodies = Lucifer_Game.physics.p2.hitTest(Cursor.position, [mon_Golem.body]);
-			
-			//var physicsPos = [Lucifer_Game.physics.p2.pxmi(Cursor.position.x),
-			//				  Lucifer_Game.physics.p2.pxmi(Cursor.position.y)];
-
-			if(bodies.length)
-			{
-				//var clickBody = bodies;	
-				//var localPointInBody = [0, 0];
-
-				//clickBody.toLocalFrame(localPointInBody, physicsPos);
-
-				//MouseConstraint = Lucifer_Game.physics.p2.createRevoluteConstraint(MouseBody, [0,0], 
-				//				  clickBody, [Lucifer_Game.physics.p2.mpxi(localPointInBody[0]), 
-				//				  			  Lucifer_Game.physics.p2.mpxi(localPointInBody[1])
-				//				  ]);
-
-				Damage_Count();
-			}
-		//}		
-	//}	
+	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
 }
-*/

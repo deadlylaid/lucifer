@@ -11,46 +11,96 @@
 </head>
 
 <body>
-  <div class="container">
-
-    <h1>캐릭터 생성</h1>
-
+    <div class="container">
+        <div id="select_class">
+    </div>
 
     <ul class="game-ul">
-      <li class="game-li">
-        <button class="job" id="sorceress">
-          <img alt="" src="{% static "images/game/Character_Create_UI/Sorceress.gif"%}">
-          <h2>소서리스</h2>
-        </button>
-      </li>
-      <li class="game-li">
-        <button class="job" id="barbarian">
-          <img alt="" src="{% static "images/game/Character_Create_UI/Barbarian.gif"%}">
-          <h2>야만전사</h2>
-        </button>
-      </li>
-      <li class="game-li">
-        <button class="job" id="paladin">
-          <img alt="" src="{% static "images/game/Character_Create_UI/Paladin.gif"%}">
-          <h2>팔라딘</h2>
-        </button>
-      </li>
+        <div class="character-div">
+            <li class="game-li">
+                <button class="job" id="sorceress" onclick="sorceressButton()">
+                    <div class="image-div">
+                        <img alt="sorceress" id="sorceress_image" src="{% static "images/game/Character_Create_UI/sorceress.png"%}">
+                    </div>
+                </button>
+            </li>
+            <div id="sorceress_text" class="job_text">
+            소서리스
+            </div>
+        </div>
+        
+        <div class="character-div">
+            <li class="game-li">
+                <button class="job" id="barbarian" onclick="barbarianButton()">
+                    <div class="image-div">
+                        <img alt="barbarian" id="barbarian_image" src="{% static "images/game/Character_Create_UI/barbarian.png"%}">
+                    </div>
+                </button>
+            </li>
+            <div id="barbarian_text" class="job_text">
+            바바리안
+            </div>
+        </div>
+
+        <div class="character-div">
+            <li class="game-li">
+                <button class="job" id="paladin" onclick="paladinButton()">
+                    <div class="image-div">
+                        <img alt="paladin" id="paladin_image" src="{% static "images/game/Character_Create_UI/paladin.png"%}">
+                    </div>
+                </button>
+            </li>
+            <div id="paladin_text" class="job_text">
+            팔라딘
+            </div>
+        </div>
     </ul>
 
-    <form method="post" action="">
-      {% csrf_token %}
-      <h3>닉네임</h3>
+    <form method="post" action="" class="nickname-form">
+        {% csrf_token %}
+        <h3>영웅의 이름을 정하십시오</h3>
 
-      <input name="nickname" type="text" required>
-      <input name="submit" type="submit">
-      <label>직업 : </label>
-      <input name="characterjob" readonly>
+        <input name="nickname" type="text" required>
+        <input name="submit" type="submit" value="생성">
+        <input type="hidden" name="characterjob" readonly>
 
     </form>
-
   </div>
 
   <script src="{% static "js/game/createcharacter.js"%}" type="text/javascript"></script>
 
+  <script type="text/javascript">
+    function barbarianButton(){
+        var jobImage = document.getElementById("barbarian_image");
+        var opacityZeroJobImage1 = document.getElementById("sorceress_image");
+        var opacityZeroJobImage2 = document.getElementById("paladin_image");
+
+        opacityZeroJobImage1.style.opacity = 0.3;
+        opacityZeroJobImage2.style.opacity = 0.3;
+
+        jobImage.style.opacity = 1;
+    }
+
+    function sorceressButton(){
+        var jobImage = document.getElementById("sorceress_image");
+        var opacityZeroJobImage1 = document.getElementById("barbarian_image");
+        var opacityZeroJobImage2 = document.getElementById("paladin_image");
+
+        opacityZeroJobImage1.style.opacity = 0.3;
+        opacityZeroJobImage2.style.opacity = 0.3;
+        jobImage.style.opacity = 1;
+    }
+
+    function paladinButton(){
+        var jobImage = document.getElementById("paladin_image");
+        var opacityZeroJobImage1 = document.getElementById("barbarian_image");
+        var opacityZeroJobImage2 = document.getElementById("sorceress_image");
+
+        opacityZeroJobImage1.style.opacity = 0.3;
+        opacityZeroJobImage2.style.opacity = 0.3;
+        jobImage.style.opacity = 1;
+    }
+  </script>
+  
 </body>
 </html>
