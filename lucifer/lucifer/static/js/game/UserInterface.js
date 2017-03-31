@@ -15,6 +15,9 @@ function ui_Preload()
 
 function ui_Create()
 {
+	//임의로 Player HP 정해줌(최영준)
+	player_Hp = 200;
+
 	//Uesr Interface
 	//---------------------------------------------------------------------------------------
 	//UI_Group = Lucifer_Game.add.group();
@@ -74,7 +77,6 @@ function ui_Create()
     statusDataText.anchor.set(0.5);
     statusDataText.fixedToCamera = true;
     statusDataText.visible = false;
-
 	//---------------------------------------------------------------------------------------	
 }
 
