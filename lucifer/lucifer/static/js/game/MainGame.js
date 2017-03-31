@@ -41,7 +41,7 @@ function preload(){
 	*/	
 	//Stage Preload
 	//----------------------------------------------------------------------------------------------------------
-	stageOne_Preload();
+	//stageOne_Preload();
 	stageTwo_Preload();
 	//----------------------------------------------------------------------------------------------------------
 
@@ -73,7 +73,7 @@ function create(){
 
 	//Stage Create
 	//---------------------------------------------------------------------------------------
-	stageOne_Create();	
+	//stageOne_Create();	
 	stageTwo_Create();
 	//---------------------------------------------------------------------------------------
 
@@ -344,8 +344,7 @@ function update(){
 	{
 		PlayerMove();
 		PlayerAttack();
-	}	
-
+	}
 	//Attack
 	Attack_Rect.x = Player.x;
 	Attack_Rect.y = Player.y;
@@ -357,7 +356,7 @@ function update(){
 
 	//Debug 용도
 	intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
-	//console.log(Player.x, Player.y);
+	console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Monster Direction & Move
