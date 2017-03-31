@@ -50,7 +50,7 @@ function stageTwo_Create()
 
 	Stage2 = Background_map.createLayer('Tile Layer 1');
 	Stage2_ObjLayer = Background_map.createLayer('Object Layer');
-	Collision_Layer = Background_map.createLayer('Collision Layer');
+	//Collision_Layer = Background_map.createLayer('Collision Layer');
 	Stage2.resizeWorld();
 	//---------------------------------------------------------------------------------------
 

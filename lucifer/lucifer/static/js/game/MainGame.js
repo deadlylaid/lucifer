@@ -362,8 +362,9 @@ function update(){
 
 	//Monster Direction & Move
 	//---------------------------------------------------------------------------------------
-	golem_Namefollw();
+	golem_Namefollw();	
 	golem_GetDirection();
+	golem_GetHomeDirection();
 	golem_Move();
 	//---------------------------------------------------------------------------------------	
 
