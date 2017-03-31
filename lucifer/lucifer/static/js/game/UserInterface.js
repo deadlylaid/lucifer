@@ -51,7 +51,6 @@ function ui_Create()
 	//Player Info
 	//---------------------------------------------------------------------------------------
 	var UI_StatText_Style = {
-<<<<<<< HEAD
         font: "16px Courier", fill: "#fff", tabs: [ 100 ],
     };
 
