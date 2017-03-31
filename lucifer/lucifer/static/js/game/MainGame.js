@@ -357,7 +357,7 @@ function update(){
 
 	//Debug 용도
 	intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
-	console.log(Player.x, Player.y);
+	//console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Monster Direction & Move
