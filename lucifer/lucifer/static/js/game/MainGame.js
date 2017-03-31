@@ -79,7 +79,11 @@ function create(){
 
 	//Player
 	//---------------------------------------------------------------------------------------
-	Player = Lucifer_Game.add.sprite(3580, 1492, 'PY_Bavarian_Attack');
+	
+	/* stageOne Player Position 
+	Player = Lucifer_Game.add.sprite(3580, 1492, 'PY_Bavarian_Attack'); */
+	/* stageTwo Player Position */
+	Player = Lucifer_Game.add.sprite(3442, 4285, 'PY_Bavarian_Attack'); 
 
 	//Player Stand Animation	
 	//var PY_Bavarian_StandFrame_Array = new Array(8);
