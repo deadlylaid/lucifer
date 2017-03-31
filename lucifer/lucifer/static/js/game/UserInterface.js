@@ -1,4 +1,6 @@
-var statusDataText
+var statusDataText,
+    keyValidTimer,
+    validCheck
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
@@ -77,6 +79,9 @@ function ui_Create()
     statusDataText.anchor.set(0.5);
     statusDataText.fixedToCamera = true;
     statusDataText.visible = false;
+
+    keyValidTimer = Lucifer_Game.time.create(false);
+    keyValidTimer.loop(400, timeCheck, this);
 	//---------------------------------------------------------------------------------------	
 }
 
@@ -91,7 +96,11 @@ function ui_Update()
 
 	if(key_Stat.isDown)
 	{
-        statusUi()
+        keyValidTimer.start()
+        if(validCheck == 1){
+            statusUi();
+        }
+        validCheck = 0;
 	}	
 }
 
@@ -114,3 +123,7 @@ function statusUi(){
 			viewStatus();						
 		}		
 };
+
+function timeCheck(){
+    validCheck = 1;
+}
