@@ -368,7 +368,7 @@ function golem_Hit_Count()
 		golem_DelayTime_Total = 0;	
 	}	
 
-	console.log(golem_DelayTime_Total);
+	//console.log(golem_DelayTime_Total);
 }
 
 function golem_Rogic()
