@@ -91,6 +91,17 @@ function ui_Update()
 
 	if(key_Stat.isDown)
 	{
+        statusUi()
+	}	
+}
+
+function viewStatus()
+{
+	UI_Stat.visible = true;
+    statusDataText.visible = true;
+}
+
+function statusUi(){
 		if(UI_Stat.visible == true)
 		{
 			UI_Stat.visible = false;
@@ -102,11 +113,4 @@ function ui_Update()
 			//tween.onStart.add(viewStatus);
 			viewStatus();						
 		}		
-	}	
-}
-
-function viewStatus()
-{
-	UI_Stat.visible = true;
-    statusDataText.visible = true;
-}
+};
