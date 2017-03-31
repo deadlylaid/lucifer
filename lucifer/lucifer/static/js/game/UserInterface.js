@@ -80,6 +80,9 @@ function ui_Create()
     statusDataText.fixedToCamera = true;
     statusDataText.visible = false;
 
+    //키가 눌려있는 동안 status Ui 가
+    //계속 켜졌다 꺼지는 것이 반복되는 것을 막기위해
+    //timer를 이용하여 조정할 것이다.
     keyValidTimer = Lucifer_Game.time.create(false);
     keyValidTimer.loop(400, timeCheck, this);
 	//---------------------------------------------------------------------------------------	
