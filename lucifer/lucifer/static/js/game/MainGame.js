@@ -308,15 +308,16 @@ function PlayerAttack()
 			if(Lucifer_Game.input.mousePointer.isDown)
 			{
 				Animation_Change(Direction, 'Attack');	
-				Player_AttackCheck = true;				
+				Player_AttackCheck = true;	
+
+				Damage_Count();				
 			}			
 		}
 		else
 		{
 			Player_AttackCheck = false;
 		}									
-	}		
-
+	}
 	//console.log(Player.animations.frameTotal);
 	//console.log(Phaser.Rectangle.intersects(Attack_Rect, golem_HitRect));
 	//---------------------------------------------------------------------------------------	
@@ -325,7 +326,7 @@ function PlayerAttack()
 function Damage_Count(Player, mon_Golem)
 {	
 	golem_Hp -= 10;
-	console.log('Damage');
+	console.log(golem_Hp);
 }
 
 var intersects;
