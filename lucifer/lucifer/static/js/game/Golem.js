@@ -4,9 +4,8 @@ var golem_Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 var golem_Range, golem_Attack_Range, golem_Hp;
 var golem_Angle, golem_PreDirection, golem_Direction, golem_Distance;
 var golem_HomAngle, goelm_HomeDistance, golem_HomeDirection, golem_HomePointX, golem_HomePointY;
-var golem_MoveCheck = false;
-var golem_StandCheck = false;
-var compareCheck = false;
+var golem_MoveCheck = false; var golem_StandCheck = false;
+var golem_AttackCheck = false; var compareCheck = false;
 
 var golem_HitRect;
 
@@ -238,6 +237,12 @@ function golem_Animation_Change(Direction, Status)
 		mon_Golem.loadTexture('MON_Golem_Walk', 0, true);
 		mon_Golem.animations.play('MON_Golem_Walk_' + Direction, 10, true);
 	}
+	else if(Status == golem_Status[2])
+	{
+		//Attack
+		mon_Golem.loadTexture('MON_Golem_Attack', 0, true);
+		mon_Golem.animations.play('MON_Golem_Attack_' + Direction, 10, true);
+	}
 }
 
 function golem_Move()
@@ -246,8 +251,9 @@ function golem_Move()
 	{
 		//Walk
 		if(golem_MoveCheck == false)
-		{
+		{	
 			golem_StandCheck = false;
+			golem_AttackCheck = false;
 			golem_MoveCheck = true;
 
 			Lucifer_Game.physics.arcade.moveToObject(mon_Golem, Player, 60);
@@ -262,6 +268,9 @@ function golem_Move()
 				golem_Animation_Change(golem_Direction, 'Stand');	
 				golem_StandCheck = true;				
 			}		
+
+			//Attack
+			golem_Attack();
 
 			mon_Golem.body.velocity.x = 0;
 			mon_Golem.body.velocity.y = 0;
@@ -301,5 +310,26 @@ function golem_Move()
 
 	//console.log(golem_PreDirection);
 	//console.log(golem_Direction);
+}
+
+function golem_Attack()
+{
+	if(golem_StandCheck == true)
+	{	
+		if(golem_AttackCheck == false)
+		{
+			golem_Animation_Change(golem_Direction, 'Attack');
+
+			golem_AttackCheck = true;
+
+			console.log('Attack');
+		}		
+	}	
+}
+
+function golem_Rogic()
+{
+	golem_GetDirection();
+	golem_GetHomeDirection();
 }
 
