@@ -4,10 +4,12 @@ var golem_Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 var golem_Range, golem_Attack_Range, golem_Hp;
 var golem_Angle, golem_PreDirection, golem_Direction, golem_Distance;
 var golem_HomAngle, goelm_HomeDistance, golem_HomeDirection, golem_HomePointX, golem_HomePointY;
-var golem_MoveCheck = false; var golem_StandCheck = false;
+var golem_MoveCheck = false;   var golem_StandCheck = false;
 var golem_AttackCheck = false; var compareCheck = false;
+var golem_DamageCheck = false;
 
-var golem_HitRect;
+var golem_HitRect, golem_AttackRect;
+var golem_Attack_DelayTimer, golem_DelayTime_Total = 0;
 
 function golem_Preload()
 {
@@ -21,7 +23,7 @@ function golem_Preload()
 								   220, 210);
 	Lucifer_Game.load.spritesheet('MON_Golem_Attack',
 								  '../../static/images/game/Monster/Golem/attack/attack.png',
-								   220, 210);
+								   220, 210);	
 	//-------------------------------------------------------------------------------------
 }
 
@@ -68,7 +70,7 @@ function golem_Create()
 								  ],
 								  60, true);
 		j += 16;
-	}
+	}	
 
 	mon_Golem.loadTexture('MON_Golem_Stand', 0, true);
 	mon_Golem.animations.play('MON_Golem_Stand_0', 10, true);
@@ -87,6 +89,16 @@ function golem_Create()
 
 	//Monster Hit Collision
 	golem_HitRect = new Phaser.Rectangle(mon_Golem.x, mon_Golem.y, 60, 60);
+	golem_AttackRect = new Phaser.Rectangle(mon_Golem.x, mon_Golem.y, 100, 100);
+
+	//Delay timer
+	golem_Attack_DelayTimer = Lucifer_Game.time.create(false);
+	golem_Attack_DelayTimer.loop(1000, golem_DelayTimer, this);	
+}
+
+function golem_DelayTimer()
+{
+	++golem_DelayTime_Total;
 }
 
 function golem_Namefollw()
@@ -242,7 +254,7 @@ function golem_Animation_Change(Direction, Status)
 		//Attack
 		mon_Golem.loadTexture('MON_Golem_Attack', 0, true);
 		mon_Golem.animations.play('MON_Golem_Attack_' + Direction, 10, true);
-	}
+	}	
 }
 
 function golem_Move()
@@ -254,6 +266,8 @@ function golem_Move()
 		{	
 			golem_StandCheck = false;
 			golem_AttackCheck = false;
+			golem_DamageCheck = false;
+
 			golem_MoveCheck = true;
 
 			Lucifer_Game.physics.arcade.moveToObject(mon_Golem, Player, 60);
@@ -316,20 +330,73 @@ function golem_Attack()
 {
 	if(golem_StandCheck == true)
 	{	
-		if(golem_AttackCheck == false)
+		if(Phaser.Rectangle.intersects(golem_AttackRect, Hit_Rect))
 		{
-			golem_Animation_Change(golem_Direction, 'Attack');
+			golem_Attack_DelayTimer.start();
 
-			golem_AttackCheck = true;
+			if(golem_AttackCheck == false)
+			{
+				golem_Animation_Change(golem_Direction, 'Attack');						
+				golem_AttackCheck = true;		
+			}		
 
-			console.log('Attack');
-		}		
+			golem_Hit_Count();
+			//Lucifer_Game.time.events.add(1000, golem_Damage_Count, Lucifer_Game);
+			//golem_Damage_Count();			
+		}			
 	}	
+}
+
+function golem_Damage()
+{
+	//데미지 상황에서 일어나는 이펙트나 처리는 보류.
+	if(golem_DamageCheck == false)
+	{
+		golem_DamageCheck = true;		
+	}
+}
+
+var HP = 300;
+function golem_Hit_Count()
+{	
+	if(golem_DelayTime_Total > 1)
+	{
+		//mosnter 공격력 받아와야됨.
+		HP -= 30;
+		console.log(HP);		
+
+		golem_DelayTime_Total = 0;	
+	}	
+
+	console.log(golem_DelayTime_Total);
 }
 
 function golem_Rogic()
 {
+	golem_Namefollw();	
 	golem_GetDirection();
 	golem_GetHomeDirection();
+	golem_Move();	
+
+	if(Player_AttackCheck == true)
+	{
+		golem_Damage();
+	}
+
+	//Hit Rect
+	golem_HitRect.x = mon_Golem.x;
+	golem_HitRect.y = mon_Golem.y;
+	golem_HitRect.centerOn(mon_Golem.x, mon_Golem.y);	
+
+	//Attack Rect
+	golem_AttackRect.x = mon_Golem.x;
+	golem_AttackRect.y = mon_Golem.y;
+	golem_AttackRect.centerOn(mon_Golem.x, mon_Golem.y);	
+}
+
+function golem_Debug_Render()
+{
+	Lucifer_Game.debug.geom(golem_HitRect, 'rgba(0, 0, 200, 0.5');
+	Lucifer_Game.debug.geom(golem_AttackRect, 'rgba(0, 200, 0, 0.5');
 }
 

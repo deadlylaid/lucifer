@@ -29,7 +29,7 @@ var StandCheck = false;								//Stand 상태 한번만 들어오게 하기 위�
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 var DistanceToMonster;								//Monster에 대한 거리값 변수.
-var Attack_Rect;
+var Attack_Rect, Hit_Rect;
 var Player_AttackCheck = false; 
 //----------------------------------------------------------------------------------------------------------
 
@@ -134,6 +134,7 @@ function create(){
 
 	//Player Attack Collision
 	Attack_Rect = new Phaser.Rectangle(Player.x, Player.y, 80, 80);	
+	Hit_Rect = new Phaser.Rectangle(Player.x, Player.y, 60, 60);
 		//---------------------------------------------------------------------------------------	
 
 	//Player Id Text(Test Code)
@@ -308,16 +309,16 @@ function PlayerAttack()
 			if(Lucifer_Game.input.mousePointer.isDown)
 			{
 				Animation_Change(Direction, 'Attack');	
-				Player_AttackCheck = true;	
+				Damage_Count();		
 
-				Damage_Count();				
-			}			
-		}
-		else
-		{
-			Player_AttackCheck = false;
+				Player_AttackCheck = true;			
+			}	
+			else
+			{
+				Player_AttackCheck = false;
+			}		
 		}									
-	}
+	}			
 	//console.log(Player.animations.frameTotal);
 	//console.log(Phaser.Rectangle.intersects(Attack_Rect, golem_HitRect));
 	//---------------------------------------------------------------------------------------	
@@ -346,25 +347,24 @@ function update(){
 		PlayerMove();
 		PlayerAttack();
 	}
-	//Attack
+	
+	//Rect
 	Attack_Rect.x = Player.x;
 	Attack_Rect.y = Player.y;
-	Attack_Rect.centerOn(Player.x, Player.y);
+	Attack_Rect.centerOn(Player.x, Player.y);	
 
-	golem_HitRect.x = mon_Golem.x;
-	golem_HitRect.y = mon_Golem.y;
-	golem_HitRect.centerOn(mon_Golem.x, mon_Golem.y);	
+	Hit_Rect.x = Player.x;
+	Hit_Rect.y = Player.y;
+	Hit_Rect.centerOn(Player.x, Player.y);
 
 	//Debug 용도
 	intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
 	//console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
-	//Monster Direction & Move
+	//Monster_Golem
 	//---------------------------------------------------------------------------------------
-	golem_Namefollw();	
-	golem_Rogic();
-	golem_Move();
+	golem_Rogic();	
 	//---------------------------------------------------------------------------------------	
 
 	//UI
@@ -375,8 +375,9 @@ function update(){
 
 function render()
 {
-	Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
-	Lucifer_Game.debug.geom(golem_HitRect, 'rgba(0, 0, 200, 0.5');
+	golem_Debug_Render();
 
+	Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
+	Lucifer_Game.debug.geom(Hit_Rect, 'rgba(0, 0, 200, 0.5');
 	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
 }
