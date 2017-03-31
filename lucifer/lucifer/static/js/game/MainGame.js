@@ -348,7 +348,7 @@ function update(){
 	}
 	
 	//PlayerAttack();
-	//console.log(Player.x, Player.y);
+	console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Monster Direction & Move
