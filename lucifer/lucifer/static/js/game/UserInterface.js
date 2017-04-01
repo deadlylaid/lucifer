@@ -1,6 +1,8 @@
 var statusDataText,
     keyValidTimer,
-    validCheck = 1
+    validCheck = 1,
+    hpMask,
+    mpMask
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
@@ -40,13 +42,22 @@ function ui_Create()
 	UI_Stat.fixedToCamera = true;
 	UI_Stat.visible = false;
 
-	//UI Set Drag
-	//UI_Stat.inputEnabled = true;	
-	//UI_Stat.input.enableDrag();
+    //hpMask is show real-time HP
+    hpMask = Lucifer_Game.add.graphics(0,0);
+    hpMask.beginFill(0xffffff);
+
+    //mpMask is show real-time MP
+    mpMask = Lucifer_Game.add.graphics(0,0);
+    mpMask.beginFill(0xffffff);
+
+    hpMask.drawRect(UI_HpBar.x, UI_HpBar.y, 0, 0);
+    mpMask.drawRect(UI_MpBar.x, UI_MpBar.y, UI_MpBar.width-100, UI_MpBar.height);
+
+    UI_HpBar.mask = hpMask;
+    UI_MpBar.mask = mpMask;
 
 	//UI Key Setting
 	key_Stat = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.S);
-	//key_Stat.onDown.add(viewStatus, this);
 
 	//---------------------------------------------------------------------------------------
 
