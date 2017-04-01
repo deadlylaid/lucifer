@@ -49,7 +49,13 @@ function stageTwo_Preload()
 	//----------------------------------------------------------------------------------------------------------------
 	
 	//Object stone struct
+
+	//임의로 폴리곤 충돌 테스트(최영준)
+	//*************************************************************************
 	Lucifer_Game.load.image('STAGE2_Object_stone01', '../../static/images/game/Object/Stage2/struct0.png');
+	Lucifer_Game.load.physics('STAGE2_Object_stone01Data', '../../static/images/game/Object/Stage2/struct0.json');
+	//*************************************************************************
+
 	Lucifer_Game.load.image('STAGE2_Object_stone02', '../../static/images/game/Object/Stage2/struct2.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone03', '../../static/images/game/Object/Stage2/struct4.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone04', '../../static/images/game/Object/Stage2/struct20.png');
@@ -119,6 +125,15 @@ function stageTwo_Create()
 	
 	Stage2_ObjectGroup = Lucifer_Game.add.group();
 	Stage2_ObjectGroup = Lucifer_Game.add.physicsGroup(Phaser.Physics.P2JS);
+
+	//임의로 폴리곤 충돌 테스트(최영준)
+	//*************************************************************************
+	var Temp = Lucifer_Game.add.sprite(3782, 1666, 'STAGE2_Object_stone01');
+	Lucifer_Game.physics.p2.enable(Temp, true);
+	Temp.body.clearShapes();
+	Temp.body.loadPolygon('STAGE2_Object_stone01Data', 'struct0');
+	Temp.body.static = true;
+	//*************************************************************************
 
 	Stage2_ObjectGroup.create(3448, 4018, 'STAGE2_Object_Tree28');
 	Stage2_ObjectGroup.create(4292, 4276, 'STAGE2_Object_stone07');
