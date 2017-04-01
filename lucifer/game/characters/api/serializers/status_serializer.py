@@ -8,6 +8,8 @@ class StatusSerializer(serializers.ModelSerializer):
         model = Status
         fields = (
                 'experience',
+                'max_health',
+                'max_mana',
                 'health',
                 'mana',
                 'attack_point',
