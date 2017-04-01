@@ -41,8 +41,8 @@ function preload(){
 	*/	
 	//Stage Preload
 	//----------------------------------------------------------------------------------------------------------
-	//stageOne_Preload();
-	stageTwo_Preload();
+	stageOne_Preload();
+	//stageTwo_Preload();
 	//----------------------------------------------------------------------------------------------------------
 
 	//Player(Bavarian)
@@ -73,17 +73,17 @@ function create(){
 
 	//Stage Create
 	//---------------------------------------------------------------------------------------
-	//stageOne_Create();	
-	stageTwo_Create();
+	stageOne_Create();	
+	//stageTwo_Create();
 	//---------------------------------------------------------------------------------------
 
 	//Player
 	//---------------------------------------------------------------------------------------
 	
-	/* stageOne Player Position 
-	Player = Lucifer_Game.add.sprite(3580, 1492, 'PY_Bavarian_Attack'); */
-	/* stageTwo Player Position */
-	Player = Lucifer_Game.add.sprite(3442, 4285, 'PY_Bavarian_Attack'); 
+	/* stageOne Player Position */
+	Player = Lucifer_Game.add.sprite(3580, 1492, 'PY_Bavarian_Attack'); 
+	/* stageTwo Player Position 
+	Player = Lucifer_Game.add.sprite(3442, 4285, 'PY_Bavarian_Attack'); */
 
 	//Player Stand Animation	
 	//var PY_Bavarian_StandFrame_Array = new Array(8);
@@ -363,7 +363,7 @@ function update(){
 
 	//Debug 용도
 	intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
-	//console.log(Player.x, Player.y);
+	console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Monster_Golem
