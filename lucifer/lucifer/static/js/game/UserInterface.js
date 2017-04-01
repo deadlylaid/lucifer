@@ -1,6 +1,8 @@
 var statusDataText,
     keyValidTimer,
-    validCheck
+    validCheck = 1,
+    hpMask,
+    mpMask
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
@@ -40,13 +42,22 @@ function ui_Create()
 	UI_Stat.fixedToCamera = true;
 	UI_Stat.visible = false;
 
-	//UI Set Drag
-	//UI_Stat.inputEnabled = true;	
-	//UI_Stat.input.enableDrag();
+    //hpMask is show real-time HP
+    hpMask = Lucifer_Game.add.graphics(0,0);
+    hpMask.beginFill(0xffffff);
+
+    //mpMask is show real-time MP
+    mpMask = Lucifer_Game.add.graphics(0,0);
+    mpMask.beginFill(0xffffff);
+
+    hpMask.drawRect(UI_HpBar.x, UI_HpBar.y, 0, 0);
+    mpMask.drawRect(UI_MpBar.x, UI_MpBar.y, UI_MpBar.width-100, UI_MpBar.height);
+
+    UI_HpBar.mask = hpMask;
+    UI_MpBar.mask = mpMask;
 
 	//UI Key Setting
 	key_Stat = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.S);
-	//key_Stat.onDown.add(viewStatus, this);
 
 	//---------------------------------------------------------------------------------------
 
@@ -56,6 +67,7 @@ function ui_Create()
         font: "16px Courier", fill: "#fff", tabs: [ 100 ],
     };
 
+    //add needed data in the list
     var statusData = [
         [ '직업', job ],
         [ '', '' ],
@@ -75,11 +87,15 @@ function ui_Create()
     parsedStatusData = parseList(statusData);
 
     //파싱된 텍스트를 작성
+    //작성되는 위치는 Ui_stat 창이 적용되는 곳을 기준으로 할 것
     statusDataText = Lucifer_Game.add.text(UI_Stat.x, UI_Stat.y - 20 , parsedStatusData.text, UI_StatText_Style);
     statusDataText.anchor.set(0.5);
     statusDataText.fixedToCamera = true;
     statusDataText.visible = false;
 
+    //키가 눌려있는 동안 status Ui 가
+    //계속 켜졌다 꺼지는 것이 반복되는 것을 막기위해
+    //timer를 이용하여 조정할 것이다.
     keyValidTimer = Lucifer_Game.time.create(false);
     keyValidTimer.loop(400, timeCheck, this);
 	//---------------------------------------------------------------------------------------	
@@ -96,6 +112,7 @@ function ui_Update()
 
 	if(key_Stat.isDown)
 	{
+        //키가 눌리고 있을때 0.4초당 한번만 if문에 접근한다
         keyValidTimer.start()
         if(validCheck == 1){
             statusUi();
@@ -118,8 +135,6 @@ function statusUi(){
 		}
 		else
 		{
-			//var tween = Lucifer_Game.add.tween(UI_Stat).to({alpha: 1}, 1500, "Linear", true, 1500);
-			//tween.onStart.add(viewStatus);
 			viewStatus();						
 		}		
 };
