@@ -1,4 +1,4 @@
-var Stage2, Stage2_ObjLayer;				//Stage 이미지 변수								
+var Stage2_Map, Stage2, Stage2_ObjLayer;	//Stage 이미지 변수								
 var Stage2_ObjectGroup;						//Stage2 - Object 관련 변수.
 
 function stageTwo_Preload()
@@ -100,17 +100,17 @@ function stageTwo_Create()
 
 	//Map 
 	//---------------------------------------------------------------------------------------
-	Background_map = Lucifer_Game.add.tilemap('MAP_Stage2');		
-	Background_map.addTilesetImage('Stage2_TileSet', 'Stage2_TileSet');
-	Background_map.addTilesetImage('Collision_Tile', 'Collision_Tile');
-	Background_map.addTilesetImage('stage2_obj_tree', 'stage2_obj_tree');
-	Background_map.addTilesetImage('stage2_obj_struct', 'stage2_obj_struct');
-	Background_map.addTilesetImage('bossroom', 'bossroom');
-	Background_map.addTilesetImage('bossroom2', 'bossroom2');
+	Stage2_Map = Lucifer_Game.add.tilemap('MAP_Stage2');		
+	Stage2_Map.addTilesetImage('Stage2_TileSet', 'Stage2_TileSet');
+	Stage2_Map.addTilesetImage('Collision_Tile', 'Collision_Tile');
+	Stage2_Map.addTilesetImage('stage2_obj_tree', 'stage2_obj_tree');
+	Stage2_Map.addTilesetImage('stage2_obj_struct', 'stage2_obj_struct');
+	Stage2_Map.addTilesetImage('bossroom', 'bossroom');
+	Stage2_Map.addTilesetImage('bossroom2', 'bossroom2');
 
-	Stage2 = Background_map.createLayer('Tile Layer 1');
-	Stage2_ObjLayer = Background_map.createLayer('Object Layer');
-	//Collision_Layer = Background_map.createLayer('Collision Layer');
+	Stage2 = Stage2_Map.createLayer('Tile Layer 1');
+	Stage2_ObjLayer = Stage2_Map.createLayer('Object Layer');
+	//Collision_Layer = Stage2_Map.createLayer('Collision Layer');
 	Stage2.resizeWorld();
 	//---------------------------------------------------------------------------------------
 
@@ -394,10 +394,6 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(8550, 3026, 'STAGE2_Object_stone15');
 	Stage2_ObjectGroup.create(2635, 2943, 'STAGE2_Object_stone16');
 	Stage2_ObjectGroup.create(1593, 2809, 'STAGE2_Object_stone05');
-	
-
-
-
 	//---------------------------------------------------------------------------------------
 
 	for(var i = 0; i < Stage2_ObjectGroup.length; ++i)
@@ -407,6 +403,6 @@ function stageTwo_Create()
 	
 	//---------------------------------------------------------------------------------------
 
-	Background_map.setCollision(16, true, "Collision Layer");
-	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");
+	Stage2_Map.setCollision(21, true, "Collision Layer");
+	Lucifer_Game.physics.p2.convertTilemap(Stage2_Map, "Collision Layer");
 }
