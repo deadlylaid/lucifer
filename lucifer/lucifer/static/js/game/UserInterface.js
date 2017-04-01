@@ -49,7 +49,13 @@ function ui_Create()
     mpMask.fixedToCamera = true;
     mpMask.beginFill(0xffffff);
 
-    hpMask.drawRect(-66, -36, 134, 134);
+    //hpBar 계산을 위해서 사용
+    //-------------------------------------------------
+    healthPercentage = playerHealth(health, maxHealth);
+    hpRate = hpBarMaskRate(healthPercentage);
+    //-------------------------------------------------
+
+    hpMask.drawRect(-66, hpRate, 134, 134);
     mpMask.drawRect(-66, -66, 134, 134);
 
     UI_HpBar.mask = hpMask;
@@ -140,4 +146,15 @@ function statusUi(){
 
 function timeCheck(){
     validCheck = 1;
+}
+
+function playerHealth(health, maxHealth){
+    dividedHealth = health/maxHealth;
+    lastHealth = dividedHealth.toFixed(2)
+    return lastHealth*100;
+}
+
+function hpBarMaskRate(health){
+    hpRate = -0.66*health;
+    return hpRate;
 }
