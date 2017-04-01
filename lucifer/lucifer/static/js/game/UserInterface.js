@@ -1,6 +1,6 @@
 var statusDataText,
     keyValidTimer,
-    validCheck
+    validCheck = 1
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
@@ -56,6 +56,7 @@ function ui_Create()
         font: "16px Courier", fill: "#fff", tabs: [ 100 ],
     };
 
+    //add needed data in the list
     var statusData = [
         [ '직업', job ],
         [ '', '' ],
@@ -75,6 +76,7 @@ function ui_Create()
     parsedStatusData = parseList(statusData);
 
     //파싱된 텍스트를 작성
+    //작성되는 위치는 Ui_stat 창이 적용되는 곳을 기준으로 할 것
     statusDataText = Lucifer_Game.add.text(UI_Stat.x, UI_Stat.y - 20 , parsedStatusData.text, UI_StatText_Style);
     statusDataText.anchor.set(0.5);
     statusDataText.fixedToCamera = true;
@@ -99,6 +101,7 @@ function ui_Update()
 
 	if(key_Stat.isDown)
 	{
+        //키가 눌리고 있을때 0.4초당 한번만 if문에 접근한다
         keyValidTimer.start()
         if(validCheck == 1){
             statusUi();
@@ -121,8 +124,6 @@ function statusUi(){
 		}
 		else
 		{
-			//var tween = Lucifer_Game.add.tween(UI_Stat).to({alpha: 1}, 1500, "Linear", true, 1500);
-			//tween.onStart.add(viewStatus);
 			viewStatus();						
 		}		
 };
