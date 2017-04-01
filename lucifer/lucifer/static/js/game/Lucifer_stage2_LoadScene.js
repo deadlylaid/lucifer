@@ -40,6 +40,7 @@ var stage2_LoadScene =
 
 	create: function()
 	{
+		stageTwo_Check = true;
 		Lucifer_Game.state.start('stage2');
 	}
 };

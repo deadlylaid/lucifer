@@ -8,6 +8,7 @@ var DistanceToMonster;								//Monster에 대한 거리값 변수.
 var Attack_Rect, Hit_Rect;
 var Player_AttackCheck = false; 
 var intersects;										//Rect Collision
+var stageOne_Check = false, stageTwo_Check = false;
 //----------------------------------------------------------------------------------------------------------
 
 function player_Create()
@@ -77,6 +78,12 @@ function player_Create()
 	Player_ID.fontSize = 13;
 	Player_ID.fontWeight = 'normal';	
 	Player_ID.fill = '#19de65';
+	//----------------------------------------------------------------------------------------------------------
+
+	//Player Sort
+	//----------------------------------------------------------------------------------------------------------
+	//Stage2_ObjectGroup.add(Player);
+	//Stage2_ObjectGroup.sort();
 	//----------------------------------------------------------------------------------------------------------
 }	
 
@@ -244,6 +251,11 @@ function Damage_Count(Player, mon_Golem)
 	console.log(golem_Hp);
 }
 
+function player_Sort()
+{
+	
+}
+
 function player_Update()
 {
 	//Player ID
@@ -275,6 +287,16 @@ function player_Update()
 	intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
 	//console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
+
+	//Sort
+	//---------------------------------------------------------------------------------------
+	/*
+	if(stageTwo_Check == true)
+	{
+		Stage2_ObjectGroup.sort('y', Phaser.Group.SORT_ASCENDING);
+	}
+	*/
+	//---------------------------------------------------------------------------------------	
 }
 
 function player_Render()
