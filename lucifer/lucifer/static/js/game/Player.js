@@ -14,7 +14,8 @@ var stageOne_Check = false, stageTwo_Check = false;
 function player_Create()
 {
 	//Player Create
-	Player = Lucifer_Game.add.sprite(3582, 1466, 'PY_Bavarian_Attack'); 
+	Player = Lucifer_Game.add.sprite(3582, 1466, 'PY_Bavarian_Attack'); 	
+	//Player = Stage2_ObjectGroup.create(3582, 1466, 'PY_Bavarian_Attack');
 
 	//Player_Bavarian Animation
 	//----------------------------------------------------------------------------------------------------------
@@ -82,8 +83,11 @@ function player_Create()
 
 	//Player Sort
 	//----------------------------------------------------------------------------------------------------------
-	//Stage2_ObjectGroup.add(Player);
-	//Stage2_ObjectGroup.sort();
+	if(stageTwo_Check == true)
+	{
+		Stage2_ObjectGroup.add(Player);
+		Stage2_ObjectGroup.sort();
+	}	
 	//----------------------------------------------------------------------------------------------------------
 }	
 
@@ -290,12 +294,10 @@ function player_Update()
 
 	//Sort
 	//---------------------------------------------------------------------------------------
-	/*
 	if(stageTwo_Check == true)
 	{
 		Stage2_ObjectGroup.sort('y', Phaser.Group.SORT_ASCENDING);
-	}
-	*/
+	}	
 	//---------------------------------------------------------------------------------------	
 }
 
