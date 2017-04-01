@@ -15,8 +15,16 @@ class Status(models.Model):
             default=0,
             )
 
+    max_health = models.IntegerField(
+            default=100,
+            )
+
     health = models.IntegerField(
             default=100,
+            )
+
+    max_mana = models.IntegerField(
+            default=50,
             )
 
     mana = models.IntegerField(

@@ -23,6 +23,10 @@ from game.stages.api.serializers import StageSerializer
 
 
 class GameStartAPIView(MultipleModelAPIView):
+    """
+    게임이 시작됨과 동시에 모든 데이터를
+    한꺼번에 불러옴
+    """
 
     def get_queryList(self):
         logined_user = self.request.user

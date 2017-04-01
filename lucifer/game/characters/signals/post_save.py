@@ -17,10 +17,10 @@ def character_post_save(sender, instance, created, **kwargs):
             Status.objects.create(
                     character_set=instance,
                     experience=1,
+                    max_health=150,
                     health=150,
                     mana=100,
-                    strong=8,
-                    dexterity=8,
+                    max_mana=100, strong=8, dexterity=8,
                     intelligence=10,
                     defence_point=6,
                     accuracy=48,
@@ -32,7 +32,9 @@ def character_post_save(sender, instance, created, **kwargs):
             Status.objects.create(
                     character_set=instance,
                     experience=1,
+                    max_health=170,
                     health=170,
+                    max_mana=80,
                     mana=80,
                     strong=10,
                     dexterity=8,
@@ -47,7 +49,9 @@ def character_post_save(sender, instance, created, **kwargs):
             Status.objects.create(
                     character_set=instance,
                     experience=1,
+                    max_health=160,
                     health=160,
+                    max_mana=90,
                     mana=90,
                     strong=9,
                     dexterity=9,

@@ -49,7 +49,6 @@ function ui_Create()
     mpMask.fixedToCamera = true;
     mpMask.beginFill(0xffffff);
 
-    console.log(health);
     hpMask.drawRect(-66, -36, 134, 134);
     mpMask.drawRect(-66, -66, 134, 134);
 

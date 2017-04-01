@@ -5,6 +5,8 @@ var nickname,
     defence_point,
     strong,
     dexterity,
+    maxHealth,
+    maxMana,
     health,
     mana,
     dexterity,
@@ -38,6 +40,9 @@ $.ajax({
 
     health = character.status.health
     mana = character.status.mana
+
+    maxHealth = character.status.max_health
+    maxMana = character.status.max_mana
 
     attack_point = character.status.attack_point
     defence_point = character.status.defence_point
