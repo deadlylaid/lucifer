@@ -19,9 +19,6 @@ function ui_Preload()
 
 function ui_Create()
 {
-	//임의로 Player HP 정해줌(최영준)
-	player_Hp = 200;
-
 	//Uesr Interface
 	//---------------------------------------------------------------------------------------
 	//UI_Group = Lucifer_Game.add.group();
@@ -43,15 +40,18 @@ function ui_Create()
 	UI_Stat.visible = false;
 
     //hpMask is show real-time HP
-    hpMask = Lucifer_Game.add.graphics(0,0);
+    hpMask = Lucifer_Game.add.graphics(115, 725);
+    hpMask.fixedToCamera = true;
     hpMask.beginFill(0xffffff);
 
     //mpMask is show real-time MP
-    mpMask = Lucifer_Game.add.graphics(0,0);
+    mpMask = Lucifer_Game.add.graphics(1165, 725);
+    mpMask.fixedToCamera = true;
     mpMask.beginFill(0xffffff);
 
-    hpMask.drawRect(UI_HpBar.x, UI_HpBar.y, 0, 0);
-    mpMask.drawRect(UI_MpBar.x, UI_MpBar.y, UI_MpBar.width-100, UI_MpBar.height);
+    console.log(health);
+    hpMask.drawRect(-66, -36, 134, 134);
+    mpMask.drawRect(-66, -66, 134, 134);
 
     UI_HpBar.mask = hpMask;
     UI_MpBar.mask = mpMask;
