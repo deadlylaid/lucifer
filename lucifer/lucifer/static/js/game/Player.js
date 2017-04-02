@@ -111,6 +111,7 @@ function player_Create()
 	//player_KeyDash = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
 	//Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SHIFT);
 	//----------------------------------------------------------------------------------------------------------
+	
 	//Player Sort
 	//----------------------------------------------------------------------------------------------------------
 	if(stageTwo_Check == true)
