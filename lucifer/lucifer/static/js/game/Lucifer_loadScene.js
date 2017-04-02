@@ -31,6 +31,8 @@ var loadScene =
 									  '../../static/images/game/Player/Bavarian/jump/jump.png', 200, 200);
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Dash',
 									  '../../static/images/game/Player/Bavarian/dash/dash.png', 200, 200);
+		Lucifer_Game.load.spritesheet('PY_Bavarian_Skill',
+									  '../../static/images/game/Player/Bavarian/skill/skill.png', 200, 200);
 		//----------------------------------------------------------------------------------------------------------
 	
 		//UI : spritesheet(Image로 불러오는 것으로 해야될수도 있음. 아직 UI 안들어 가서 보류)

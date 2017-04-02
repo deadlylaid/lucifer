@@ -72,6 +72,20 @@ function player_Create()
 	
 		j += 8;
 	}
+	//Skill
+	j = 0;
+	for(var i = 0; i < 8; ++i)
+	{
+		Player.animations.add('PY_Bavarian_Skill_' + i,
+							   [
+							   	  j,      j + 1,  j + 2,  j + 3, j + 4,  j + 5,
+							   	  j + 6,  j + 7,  j + 8,  j + 9, j + 10, j + 11,
+							   	  j + 12, j + 13
+							   ],
+							   60, true);
+
+		j += 14;
+	}
 	//----------------------------------------------------------------------------------------------------------
 
 	//Player Seting
@@ -221,6 +235,8 @@ function Animation_Change(Direction, Status)
 	else if(Status == Player_Status[6])
 	{
 		//Skill
+		Player.loadTexture('PY_Bavarian_Skill', 0, true);
+		Player.animations.play('PY_Bavarian_Skill_' + Direction, 10, true);
 	}
 }
 
@@ -337,6 +353,12 @@ function PlayerJump()
 function PlayerSkill()
 {
 	skill_Bavarian.visible = true;
+
+	if(skill_Bavarian.visible == true)
+	{
+		Animation_Change(Direction, 'Skill');
+	}	
+
 	console.log('Skill');
 }
 
