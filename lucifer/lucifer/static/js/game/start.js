@@ -12,7 +12,9 @@ var nickname,
     dexterity,
     intelligence,
     accuracy,
-    evasion,
+    evasion;
+
+var itemList = [];
 
 get_gamestart_api_url = '/api/gamestart/data/';
 
@@ -53,4 +55,6 @@ $.ajax({
 
     accuracy = character.status.accuracy
     evasion = character.status.evasion
+
+    itemList = data[2].item;
 });
