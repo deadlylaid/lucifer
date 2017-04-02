@@ -156,7 +156,7 @@ function create(){
 	Player_ID.fontWeight = 'normal';
 
 	//Stroke color & thickness	
-	Player_ID.fill = '#19de65';
+    Player_ID.fill = '#19de65';
 	//---------------------------------------------------------------------------------------
 
 	//Monster Create
