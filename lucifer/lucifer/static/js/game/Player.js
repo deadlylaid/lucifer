@@ -102,8 +102,6 @@ function player_Create()
 	Player_ID.fontSize = 13;
 	Player_ID.fontWeight = 'normal';	
 	Player_ID.fill = '#19de65';
-<<<<<<< HEAD
-=======
 
 	//Key Setting
 	player_KeyJump = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -113,16 +111,7 @@ function player_Create()
 	//player_KeyDash = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
 	//Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SHIFT);
 	//----------------------------------------------------------------------------------------------------------
->>>>>>> Player Motion : Dash, Jump 추가 완료
 
-	//Key Setting
-	player_KeyJump = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-	player_KeyJump.onDown.add(PlayerJump, Lucifer_Game);
-	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
-
-	//player_KeyDash = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
-	//Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SHIFT);
-	//----------------------------------------------------------------------------------------------------------
 	//Player Sort
 	//----------------------------------------------------------------------------------------------------------
 	if(stageTwo_Check == true)
