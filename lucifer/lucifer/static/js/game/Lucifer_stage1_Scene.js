@@ -22,6 +22,9 @@ var stage1_Scene =
 		//Skill
 		skill_Create();
 
+		//Npc Create
+		npc_Create();
+
 		//Key Go to Stage2
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		enterKey.onDown.addOnce(this.goto_Stage2, this);
@@ -40,6 +43,9 @@ var stage1_Scene =
 
 		//Skill
 		skill_Update();
+
+		//Npc
+		npc_Update();
 	},
 
 	render: function()
@@ -49,6 +55,9 @@ var stage1_Scene =
 
 		//Monster Render(Golem)
 		golem_Debug_Render();
+
+		//Npc
+		npc_Debug_Render();
 	},
 
 	goto_Stage2: function()
