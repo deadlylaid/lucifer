@@ -356,14 +356,13 @@ function golem_Damage()
 	}
 }
 
-var HP = 300;
 function golem_Hit_Count()
 {	
 	if(golem_DelayTime_Total > 1)
 	{
 		//mosnter 공격력 받아와야됨.
-		HP -= 30;
-		console.log(HP);		
+		health -= 30;
+		console.log(health);		
 
 		golem_DelayTime_Total = 0;	
 	}	
