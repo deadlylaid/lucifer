@@ -159,16 +159,16 @@ function timeCheck(){
 
 function playerHealth(health, maxHealth){
     dividedHealth = health/maxHealth;
-    lastHealth = dividedHealth.toFixed(2)
+    lastHealth = dividedHealth
     return lastHealth*100;
 }
 
 function hpBarMaskRate(healthPercentage){
     //퍼센트에 따라서 산출되도록 수정
     if(healthPercentage > 50){
-        hpRate = -0.66*healthPercentage;
+        hpRate = 66-(1.32*healthPercentage);
     }else if(healthPercentage < 50){
-        hpRate = 66 - 1.34*healthPercentage;
+        hpRate = 0.66*(50-healthPercentage);
     }else if(healthPercentage === 50){
         hpRate = 0;
     }else{
