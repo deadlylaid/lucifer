@@ -19,6 +19,9 @@ var stage1_Scene =
 		//UI
 		ui_Create();
 
+		//Skill
+		skill_Create();
+
 		//Key Go to Stage2
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		enterKey.onDown.addOnce(this.goto_Stage2, this);
@@ -34,6 +37,9 @@ var stage1_Scene =
 
 		//Ui Update
 		ui_Update();
+
+		//Skill
+		skill_Update();
 	},
 
 	render: function()
