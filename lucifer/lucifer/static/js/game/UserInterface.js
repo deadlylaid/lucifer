@@ -154,7 +154,14 @@ function playerHealth(health, maxHealth){
     return lastHealth*100;
 }
 
-function hpBarMaskRate(health){
-    hpRate = -0.66*health;
+function hpBarMaskRate(healthPercentage){
+    //퍼센트에 따라서 산출되도록 수정
+    if(healthPercentage > 50){
+        hpRate = -1.34*healthPercentage;
+    }else if(healthPercentage < 50){
+        hpRate = 66 - 1.34*healthPercentage;
+    }else if(healthPercentage === 50){
+        hpRate = 0;
+    }
     return hpRate;
 }
