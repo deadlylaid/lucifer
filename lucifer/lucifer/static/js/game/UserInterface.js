@@ -54,9 +54,15 @@ function ui_Create()
     healthPercentage = playerHealth(health, maxHealth);
     hpRate = hpBarMaskRate(healthPercentage);
     //-------------------------------------------------
+    
+    //hpBar 계산을 위해서 사용
+    //-------------------------------------------------
+    manaPercentage = playerHealth(mana, maxMana);
+    mpRate = hpBarMaskRate(manaPercentage);
+    //------------------------------------------------
 
     hpMask.drawRect(-66, hpRate, 134, 134);
-    mpMask.drawRect(-66, -66, 134, 134);
+    mpMask.drawRect(-66, mpRate, 134, 134);
 
     UI_HpBar.mask = hpMask;
     UI_MpBar.mask = mpMask;
@@ -116,7 +122,16 @@ function ui_Update()
     hpMask.clear();
     hpMask.drawRect(-66, hpRate, 134, 134);    
     console.log("현재 HP 바의 비율은" + hpRate + "입니다.");    
-    UI_HpBar.mask = hpMask;     
+    UI_HpBar.mask = hpMask;
+
+    //hpBar 계산을 위해서 사용
+    //-------------------------------------------------
+    manaPercentage = playerHealth(mana, maxMana);
+    mpRate = hpBarMaskRate(manaPercentage);
+    //------------------------------------------------
+    mpMask.clear();
+    mpMask.drawRect(-66, mpRate, 134, 134);    
+    UI_MpBar.mask = mpMask;
 	//UI_Stat
 	if(UI_Stat.visible == true)
 	{
@@ -159,16 +174,16 @@ function timeCheck(){
 
 function playerHealth(health, maxHealth){
     dividedHealth = health/maxHealth;
-    lastHealth = dividedHealth.toFixed(2)
+    lastHealth = dividedHealth
     return lastHealth*100;
 }
 
 function hpBarMaskRate(healthPercentage){
     //퍼센트에 따라서 산출되도록 수정
     if(healthPercentage > 50){
-        hpRate = -0.66*healthPercentage;
+        hpRate = 66-(1.32*healthPercentage);
     }else if(healthPercentage < 50){
-        hpRate = 66 - 1.34*healthPercentage;
+        hpRate = 0.66*(50-healthPercentage);
     }else if(healthPercentage === 50){
         hpRate = 0;
     }else{
