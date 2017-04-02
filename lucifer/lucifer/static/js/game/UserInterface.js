@@ -121,7 +121,7 @@ function ui_Update()
     //-------------------------------------------------
     hpMask.clear();
     hpMask.drawRect(-66, hpRate, 134, 134);    
-    console.log("현재 HP 바의 비율은" + hpRate + "입니다.");    
+    //console.log("현재 HP 바의 비율은" + hpRate + "입니다.");    
     UI_HpBar.mask = hpMask;
 
     //hpBar 계산을 위해서 사용
@@ -132,6 +132,7 @@ function ui_Update()
     mpMask.clear();
     mpMask.drawRect(-66, mpRate, 134, 134);    
     UI_MpBar.mask = mpMask;
+
 	//UI_Stat
 	if(UI_Stat.visible == true)
 	{
