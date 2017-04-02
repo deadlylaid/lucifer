@@ -9,7 +9,7 @@ var Attack_Rect, Hit_Rect;
 var Player_AttackCheck = false; 
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false;
-var player_KeyJump, player_KeyDash;
+var player_KeyJump, player_KeySkill;
 //----------------------------------------------------------------------------------------------------------
 
 function player_Create()
@@ -107,6 +107,10 @@ function player_Create()
 	player_KeyJump = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	player_KeyJump.onDown.add(PlayerJump, Lucifer_Game);
 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
+
+	player_KeySkill = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+	player_KeySkill.onDown.add(PlayerSkill, Lucifer_Game);
+	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.ONE);
 
 	//player_KeyDash = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
 	//Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SHIFT);
@@ -330,6 +334,12 @@ function PlayerJump()
 	Lucifer_Game.camera.y = Player.y + 500;			
 }
 
+function PlayerSkill()
+{
+	skill_Bavarian.visible = true;
+	console.log('Skill');
+}
+
 function player_Update()
 {
 	//Player ID
@@ -373,7 +383,7 @@ function player_Update()
 
 function player_Render()
 {
-	Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
-	Lucifer_Game.debug.geom(Hit_Rect, 'rgba(0, 0, 200, 0.5');
-	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
+	//Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
+	//Lucifer_Game.debug.geom(Hit_Rect, 'rgba(0, 0, 200, 0.5');
+	//Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
 }
