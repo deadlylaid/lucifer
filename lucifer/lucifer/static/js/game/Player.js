@@ -14,7 +14,7 @@ var stageOne_Check = false, stageTwo_Check = false;
 function player_Create()
 {
 	//Player Create
-	Player = Lucifer_Game.add.sprite(3582, 1466, 'PY_Bavarian_Attack'); 	
+	Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack'); 	
 	//Player = Stage2_ObjectGroup.create(3582, 1466, 'PY_Bavarian_Attack');
 
 	//Player_Bavarian Animation
@@ -289,7 +289,7 @@ function player_Update()
 
 	//Debug 용도
 	intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
-	//console.log(Player.x, Player.y);
+	console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Sort
