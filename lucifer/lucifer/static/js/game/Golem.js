@@ -9,7 +9,7 @@ var golem_AttackCheck = false; var compareCheck = false;
 var golem_DamageCheck = false;
 
 var golem_HitRect, golem_AttackRect;
-var golem_Attack_DelayTimer, golem_DelayTime_Total = 0;
+var golem_Attack_DelayTimer, golem_DelayTime_Total = 1;
 
 function golem_Preload()
 {
