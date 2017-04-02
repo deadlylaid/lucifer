@@ -54,9 +54,15 @@ function ui_Create()
     healthPercentage = playerHealth(health, maxHealth);
     hpRate = hpBarMaskRate(healthPercentage);
     //-------------------------------------------------
+    
+    //hpBar 계산을 위해서 사용
+    //-------------------------------------------------
+    manaPercentage = playerHealth(mana, maxMana);
+    mpRate = hpBarMaskRate(manaPercentage);
+    //------------------------------------------------
 
     hpMask.drawRect(-66, hpRate, 134, 134);
-    mpMask.drawRect(-66, -66, 134, 134);
+    mpMask.drawRect(-66, mpRate, 134, 134);
 
     UI_HpBar.mask = hpMask;
     UI_MpBar.mask = mpMask;
@@ -116,7 +122,16 @@ function ui_Update()
     hpMask.clear();
     hpMask.drawRect(-66, hpRate, 134, 134);    
     console.log("현재 HP 바의 비율은" + hpRate + "입니다.");    
-    UI_HpBar.mask = hpMask;     
+    UI_HpBar.mask = hpMask;
+
+    //hpBar 계산을 위해서 사용
+    //-------------------------------------------------
+    manaPercentage = playerHealth(mana, maxMana);
+    mpRate = hpBarMaskRate(manaPercentage);
+    //------------------------------------------------
+    mpMask.clear();
+    mpMask.drawRect(-66, mpRate, 134, 134);    
+    UI_MpBar.mask = mpMask;
 	//UI_Stat
 	if(UI_Stat.visible == true)
 	{
