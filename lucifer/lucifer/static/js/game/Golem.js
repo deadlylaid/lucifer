@@ -362,7 +362,7 @@ function golem_Hit_Count()
 	{
 		//mosnter 공격력 받아와야됨.
 		health -= 30;
-		console.log(health);		
+		//console.log(health);		
 
 		golem_DelayTime_Total = 0;	
 	}	

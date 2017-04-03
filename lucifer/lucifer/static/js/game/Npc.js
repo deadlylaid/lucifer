@@ -14,8 +14,8 @@ function npc_Preload()
 function npc_Create()
 {
 	//NPC Create
-	store_Npc = Lucifer_Game.add.sprite(875, 1537, 'NPC_Store');
-	npc_Range = 100;
+	store_Npc = Lucifer_Game.add.sprite(1343, 1483, 'NPC_Store');
+	npc_Range = 200;
 
 	//NPC Animation
 	var j = 0;
@@ -39,6 +39,9 @@ function npc_Create()
 	store_Npc.body.clearShapes();
 	store_Npc.body.addRectangle(40, 60, 0, 0);
 	store_Npc.body.debug = true;
+	store_Npc.body.static = true;
+
+	Lucifer_Game.physics.enable(store_Npc, Phaser.Physics.ARCADE);
 }
 
 function npc_GetDirection()
@@ -52,7 +55,7 @@ function npc_GetDirection()
 
 		if(store_Npc.y < Player.y)
 		{
-			npc_Angle = 2 * Math.PI - store_Npc;
+			npc_Angle = 2 * Math.PI - npc_Angle;
 		}
 
 		if(npc_Angle >= 0 && npc_Angle <= 0.7)
@@ -93,8 +96,7 @@ function npc_GetDirection()
 			npc_PreDirection = npc_Direction;
 			npc_compareCheck = true;
 		}
-
-		npc_Compare_Direction(npc_PreDirection, npc_Direction);
+		
 		npc_Animation_Change(npc_Direction);
 	}
 }
@@ -115,7 +117,7 @@ function npc_Animation_Change(Direction)
 function npc_Update()
 {
 	npc_GetDirection();
-	npc_Compare_Direction();
+	npc_Compare_Direction(npc_PreDirection, npc_Direction);
 }
 
 function npc_Debug_Render()

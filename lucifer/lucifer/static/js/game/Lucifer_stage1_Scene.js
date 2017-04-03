@@ -58,6 +58,9 @@ var stage1_Scene =
 
 		//Npc
 		npc_Debug_Render();
+
+		//Skill
+		skill_Debug_Render();
 	},
 
 	goto_Stage2: function()
