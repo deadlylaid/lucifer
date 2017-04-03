@@ -6,7 +6,7 @@ var golem_Angle, golem_PreDirection, golem_Direction, golem_Distance;
 var golem_HomAngle, goelm_HomeDistance, golem_HomeDirection, golem_HomePointX, golem_HomePointY;
 var golem_MoveCheck = false;   var golem_StandCheck = false;
 var golem_AttackCheck = false; var compareCheck = false;
-var golem_DamageCheck = false;
+var golem_DamageCheck = false; var golem_DeadCheck = false;
 
 var golem_HitRect, golem_AttackRect;
 var golem_Attack_DelayTimer, golem_DelayTime_Total = 1;
@@ -370,32 +370,51 @@ function golem_Hit_Count()
 	//console.log(golem_DelayTime_Total);
 }
 
+function golem_Dead()
+{
+	if(golem_Hp < 0)
+	{
+		golem_DeadCheck = true;
+		mon_Golem.destroy();		
+		mon_Golem_Name.destroy();
+	}
+}
+
 function golem_Rogic()
 {
-	golem_Namefollw();	
-	golem_GetDirection();
-	golem_GetHomeDirection();
-	golem_Move();	
-
-	if(Player_AttackCheck == true)
+	if(golem_DeadCheck == false)
 	{
-		golem_Damage();
-	}
+		golem_Namefollw();	
+		golem_GetDirection();
+		golem_GetHomeDirection();
+		golem_Move();	
 
-	//Hit Rect
-	golem_HitRect.x = mon_Golem.x;
-	golem_HitRect.y = mon_Golem.y;
-	golem_HitRect.centerOn(mon_Golem.x, mon_Golem.y);	
+		if(Player_AttackCheck == true)
+		{
+			golem_Damage();
+		}
 
-	//Attack Rect
-	golem_AttackRect.x = mon_Golem.x;
-	golem_AttackRect.y = mon_Golem.y;
-	golem_AttackRect.centerOn(mon_Golem.x, mon_Golem.y);	
+		//Hit Rect
+		golem_HitRect.x = mon_Golem.x;
+		golem_HitRect.y = mon_Golem.y;
+		golem_HitRect.centerOn(mon_Golem.x, mon_Golem.y);	
+
+		//Attack Rect
+		golem_AttackRect.x = mon_Golem.x;
+		golem_AttackRect.y = mon_Golem.y;
+		golem_AttackRect.centerOn(mon_Golem.x, mon_Golem.y);	
+	}	
+
+	//Dead
+	golem_Dead();
 }
 
 function golem_Debug_Render()
 {
-	Lucifer_Game.debug.geom(golem_HitRect, 'rgba(0, 0, 200, 0.5');
-	Lucifer_Game.debug.geom(golem_AttackRect, 'rgba(0, 200, 0, 0.5');
+	if(golem_DeadCheck == false)
+	{
+		Lucifer_Game.debug.geom(golem_HitRect, 'rgba(0, 0, 200, 0.5');
+		Lucifer_Game.debug.geom(golem_AttackRect, 'rgba(0, 200, 0, 0.5');
+	}
 }
 
