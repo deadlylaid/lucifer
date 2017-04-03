@@ -9,7 +9,7 @@ var Attack_Rect, Hit_Rect;
 var Player_AttackCheck = false; 
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false;
-var player_KeyJump, player_KeySkill;
+var player_KeyJump, player_KeySkill, player_KeySkill2;
 //----------------------------------------------------------------------------------------------------------
 
 function player_Create()
@@ -126,8 +126,9 @@ function player_Create()
 	player_KeySkill.onDown.add(PlayerSkill, Lucifer_Game);
 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.ONE);
 
-	//player_KeyDash = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
-	//Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SHIFT);
+	player_KeySkill2 = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+	player_KeySkill2.onDown.add(PlayerSkill2, Lucifer_Game);
+	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.TWO);	
 	//----------------------------------------------------------------------------------------------------------
 	//Player Sort
 	//----------------------------------------------------------------------------------------------------------
@@ -337,7 +338,7 @@ function Damage_Count(Player, mon_Golem)
 function PlayerJump()
 {
 	Animation_Change(Direction, 'Jump');
-	console.log('Jump');
+	//console.log('Jump');
 
 	Lucifer_Game.physics.arcade.moveToPointer(Player, 500);
 	//Player.body.moves = true;
@@ -356,10 +357,24 @@ function PlayerSkill()
 
 	if(skill_Bavarian.visible == true)
 	{
+		skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
+		Animation_Change(Direction, 'Skill');	
+	}	
+	
+	//console.log(skill_Bavarian.frame);
+}
+
+function PlayerSkill2()
+{
+	skill_Bavarian_Two.visible = true;
+
+	if(skill_Bavarian_Two.visible == true)
+	{
+		skill_Bavarian_Two.animations.play('SK_Bavarian_Ani2', 20, true);
 		Animation_Change(Direction, 'Skill');
 	}	
 
-	console.log('Skill');
+	//console.log('Skill2');
 }
 
 function player_Update()
