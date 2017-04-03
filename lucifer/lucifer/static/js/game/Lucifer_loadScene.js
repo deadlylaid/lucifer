@@ -62,6 +62,6 @@ var loadScene =
 
 	create: function()
 	{
-		Lucifer_Game.state.start('menu');
+		Lucifer_Game.state.start('logo');
 	}
 };
