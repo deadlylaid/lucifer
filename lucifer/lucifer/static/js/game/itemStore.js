@@ -12,23 +12,23 @@ function itemsCreate(){
 	//ItemLists
 	//---------------------------------------------------------------------------------------
 	//store_Group = Lucifer_Game.add.group();
-	potion = Lucifer_Game.add.sprite(190, 300, itemList[0].name);
-	potion.anchor.setTo(0.5, 0.5);
-    potion.fixedToCamera = true;
-    potion.visible = true;
-    potion.scale.setTo(0.5, 0.5);
+	potionSprite = Lucifer_Game.add.sprite(190, 300, itemList[0].name);
+	potionSprite.anchor.setTo(0.5, 0.5);
+    potionSprite.fixedToCamera = true;
+    potionSprite.visible = true;
+    potionSprite.scale.setTo(0.5, 0.5);
 
-    sword = Lucifer_Game.add.sprite(300, 300, itemList[1].name);
-    sword.anchor.setTo(0.5, 0.5);
-    sword.scale.setTo(0.5, 0.5);
-    sword.fixedToCamera = true;
-    sword.visible = true;
+    swordSprite = Lucifer_Game.add.sprite(300, 300, itemList[1].name);
+    swordSprite.anchor.setTo(0.5, 0.5);
+    swordSprite.scale.setTo(0.5, 0.5);
+    swordSprite.fixedToCamera = true;
+    swordSprite.visible = true;
 
-    armor = Lucifer_Game.add.sprite(400, 300, itemList[2].name);
-    armor.anchor.setTo(0.5, 0.5);
-    armor.scale.setTo(0.5, 0.5);
-    armor.fixedToCamera = true;
-    armor.visible = true;
+    armorSprite = Lucifer_Game.add.sprite(400, 300, itemList[2].name);
+    armorSprite.anchor.setTo(0.5, 0.5);
+    armorSprite.scale.setTo(0.5, 0.5);
+    armorSprite.fixedToCamera = true;
+    armorSprite.visible = true;
  
 	//---------------------------------------------------------------------------------------	
 };
