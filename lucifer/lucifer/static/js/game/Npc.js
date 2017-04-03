@@ -42,6 +42,11 @@ function npc_Create()
 	store_Npc.body.static = true;
 
 	Lucifer_Game.physics.enable(store_Npc, Phaser.Physics.ARCADE);
+    store_Npc.inputEnabled = true;
+    store_Npc.events.onInputDown.add(listener, this);
+}
+function listener(){
+    alert('hey');
 }
 
 function npc_GetDirection()
