@@ -253,17 +253,9 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(1614, 1135, 'STAGE1_Object_item34');
 	Stage1_ObjectGroup.create(842, 1435, 'STAGE1_Object_item12');
 	Stage1_ObjectGroup.create(4419, 817, 'STAGE1_Object_item35');
-	Stage1_ObjectGroup.create(4366, 703, 'STAGE1_Object_item8');
+	Stage1_ObjectGroup.create(4366, 785, 'STAGE1_Object_item8');
 	Stage1_ObjectGroup.create(1403, 1317, 'STAGE1_Object_item22');
 	
-	
-
-	
-
-
-	
-	
-
 	//forest
 	Stage1_ObjectGroup.create(4653, 2024, 'STAGE1_Object_Tree2');
 	Stage1_ObjectGroup.create(6193, 1740, 'STAGE1_Object_Tree3');
