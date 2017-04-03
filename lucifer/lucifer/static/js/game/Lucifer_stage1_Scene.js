@@ -66,7 +66,7 @@ var stage1_Scene =
 		npc_Debug_Render();
 
 		//Skill
-		skill_Debug_Render();
+        skill_Debug_Render();
 	},
 
 	goto_Stage2: function()
