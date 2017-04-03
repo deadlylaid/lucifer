@@ -16,6 +16,9 @@ var stage1_Scene =
 		//Monster
 		golem_Create();
 
+        //items
+        itemsCreate();
+
 		//UI
 		ui_Create();
 
@@ -37,6 +40,9 @@ var stage1_Scene =
 
 		//Monster Update(Golem)
 		golem_Rogic();
+
+        //items Update
+        itemsUpdate();
 
 		//Ui Update
 		ui_Update();
