@@ -15,8 +15,7 @@ def character_post_save(sender, instance, created, **kwargs):
         if instance.job == 'sorceress':
 
             Status.objects.create(
-                    character_set=instance,
-                    experience=1,
+                    character_set=instance, experience=1,
                     max_health=150,
                     health=150,
                     mana=100,
