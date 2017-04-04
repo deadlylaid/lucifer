@@ -89,10 +89,9 @@ function golem_Create()
 	golemHealthBar.anchor.set(0.5, 0.5);
     golemHealthBar.visible = false;
 
+    //Golem HpBarMask graphics
     golemHpMask = mon_Golem.addChild(Lucifer_Game.add.graphics(0, -100));
     golemHpMask.beginFill(0xffffff);
-
-
 
 	//Center Name
 	mon_Golem_Name = Lucifer_Game.add.text(mon_Golem.x, mon_Golem.y - 100, "Golem");
