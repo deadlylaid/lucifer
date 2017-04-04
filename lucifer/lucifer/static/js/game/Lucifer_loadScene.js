@@ -95,6 +95,9 @@ var loadScene =
 
 	start: function()
 	{
+		//Sound
+		sound_StopMenuBGM();
+
 		stageOne_Check = true;
 		Lucifer_Game.state.start('stage1');
 	},

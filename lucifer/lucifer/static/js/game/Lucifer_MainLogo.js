@@ -5,10 +5,16 @@ var logoScene =
 	{
 		this.load.image('space', '../../static/images/game/Menu/logospace.png', 138, 15);
 		this.load.image('logo', '../../static/images/game/Menu/logo.png');
+
+		//Sound 
+		sound_Preload();
 	},
 
 	create: function()
 	{
+		//Sound
+		sound_Create();
+		sound_PlayMenuBGM();
 
 		this.add.tileSprite(0, 0, 1280, 800, 'space');
 
@@ -26,5 +32,5 @@ var logoScene =
 
 function start() 
 {
-			Lucifer_Game.state.start('select');
+	Lucifer_Game.state.start('select');
 }
