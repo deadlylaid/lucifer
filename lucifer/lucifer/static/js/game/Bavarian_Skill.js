@@ -17,9 +17,9 @@ function skill_Preload()
 
     //Skill Icon
     Lucifer_Game.load.spritesheet('SK_Icon_Skill',
-                                  '../../static/images/game/UI/SkillIcon/4.png', 48, 48);
+                                  '../../static/images/game/UI/SkillIcon/skill_Icon0.png', 31, 30);
     Lucifer_Game.load.spritesheet('SK_Icon_Skill2',
-                                  '../../static/images/game/UI/SkillIcon/6.png', 48, 48);
+                                  '../../static/images/game/UI/SkillIcon/skill_Icon1.png', 31, 30);
 }
 
 function skill_Create()
@@ -58,11 +58,11 @@ function skill_Create()
 	skill_Bavarian_Two.scale.setTo(2, 2);
 
     //Skill Icon
-    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x + 158, UI_UnderBar.y + 45, 'SK_Icon_Skill');
+    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x - 159, UI_UnderBar.y + 32, 'SK_Icon_Skill');
     skill_Icon_One.anchor.setTo(0.5, 0.5);  
     skill_Icon_One.fixedToCamera = true;     
 
-    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x + 208, UI_UnderBar.y + 45, 'SK_Icon_Skill2');
+    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x - 121, UI_UnderBar.y + 32, 'SK_Icon_Skill2');
     skill_Icon_Two.anchor.setTo(0.5, 0.5); 
     skill_Icon_Two.fixedToCamera = true;    
     
