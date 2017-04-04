@@ -6,8 +6,8 @@ var menuSelectScene =
 {	
 	preload: function()
 	{
-		this.load.spritesheet('button', '../../static/images/game/Menu/startbutton.png', 200, 100);
-		this.load.spritesheet('closebtn', '../../static/images/game/Menu/close.png', 200, 100);
+		this.load.spritesheet('button', '../../static/images/game/Menu/startbutton.png', 355, 54);
+		this.load.spritesheet('closebtn', '../../static/images/game/Menu/close.png', 355, 54);
 		this.load.image('background', '../../static/images/game/Menu/menu.png');
 	},
 
@@ -16,11 +16,14 @@ var menuSelectScene =
 
 		background = this.add.tileSprite(0, 0, 1280, 800, 'background');
 
-		button = this.add.button(this.world.centerX - 95, 400, 'button', up, this);
-		closebtn = this.add.button(this.world.centerX - 95, 550, 'closebtn', exit, this);
+		button = this.add.button(this.world.centerX - 180, 590, 'button', up, this, 1, 0);
+		closebtn = this.add.button(this.world.centerX - 180, 660, 'closebtn', exit, this, 1, 0);
 
     	button.onInputUp.add(up, this);
+    	//button.onInputOver.add(over, this);
     	closebtn.onInputUp.add(exit, this);
+    	//closebtn.onInputOver.add(over, this);
+
 	},
 };
 
