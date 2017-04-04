@@ -15,7 +15,15 @@ var player_KeyJump, player_KeySkill, player_KeySkill2;
 function player_Create()
 {
 	//Player Create
-	Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack'); 	
+	if(stageOne_Check == true)
+	{
+		Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
+	}
+	else if(stageTwo_Check == true)
+	{
+		Player = Lucifer_Game.add.sprite(3426, 4289, 'PY_Bavarian_Attack');	
+	}
+	 	
 	//Player = Stage2_ObjectGroup.create(3582, 1466, 'PY_Bavarian_Attack');
 
 	//Player_Bavarian Animation
@@ -91,6 +99,7 @@ function player_Create()
 	//Player Seting
 	//----------------------------------------------------------------------------------------------------------
 	//Sprite
+	Player.loadTexture('PY_Bavarian_Stand', 0, true);
 	Player.animations.play('PY_Bavarian_Stand_0', 10, true);
 	Player.anchor.setTo(0.5, 0.5);	
 	Lucifer_Game.camera.follow(Player);					//Camera follow
@@ -132,7 +141,12 @@ function player_Create()
 	//----------------------------------------------------------------------------------------------------------
 	//Player Sort
 	//----------------------------------------------------------------------------------------------------------
-	if(stageTwo_Check == true)
+	if(stageOne_Check == true)
+	{
+		Stage1_ObjectGroup.add(Player);
+		Stage1_ObjectGroup.sort();
+	}	
+	else if(stageTwo_Check == true)
 	{
 		Stage2_ObjectGroup.add(Player);
 		Stage2_ObjectGroup.sort();
@@ -416,12 +430,16 @@ function player_Update()
 
 	//Debug 용도
 	intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
-	//console.log(Player.x, Player.y);
+	console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Sort
 	//---------------------------------------------------------------------------------------
-	if(stageTwo_Check == true)
+	if(stageOne_Check == true)
+	{
+		Stage1_ObjectGroup.sort('y', Phaser.Group.SORT_ASCENDING);
+	}
+	else if(stageTwo_Check == true)
 	{
 		Stage2_ObjectGroup.sort('y', Phaser.Group.SORT_ASCENDING);
 	}	

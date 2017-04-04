@@ -23,6 +23,7 @@ var menuScene =
 
 	start: function()
 	{
+		stageOne_Check = true;
 		Lucifer_Game.state.start('stage1');
 	},
 };
