@@ -17,10 +17,10 @@ var menuSelectScene =
 		background = this.add.tileSprite(0, 0, 1280, 800, 'background');
 
 		button = this.add.button(this.world.centerX - 95, 400, 'button', up, this);
-		closebtn = this.add.button(this.world.centerX - 95, 550, 'closebtn', close, this);
+		closebtn = this.add.button(this.world.centerX - 95, 550, 'closebtn', exit, this);
 
     	button.onInputUp.add(up, this);
-    	closebtn.onInputUp.add(close, this);
+    	closebtn.onInputUp.add(exit, this);
 	},
 };
 
@@ -28,7 +28,7 @@ function up() {
     Lucifer_Game.state.start('menu');
 };
 
-function close() {
+function exit() {
 
 	window.close();
 };
