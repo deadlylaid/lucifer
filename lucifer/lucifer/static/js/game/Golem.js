@@ -24,6 +24,9 @@ function golem_Preload()
 	Lucifer_Game.load.spritesheet('MON_Golem_Attack',
 								  '../../static/images/game/Monster/Golem/attack/attack.png',
 								   220, 210);	
+    Lucifer_Game.load.spritesheet('monsterHealthBar', 
+                                  '../../static/images/game/Monster/monsterHealthBar.png',
+                                   228, 48);
 	//-------------------------------------------------------------------------------------
 }
 
@@ -32,7 +35,7 @@ function golem_Create()
 	//Golem Stat 설정(임의로 범위만 지정)
 	golem_Range = 300;	
 	golem_Attack_Range = 60;
-	golem_Hp  	= 200;		  
+	golem_Hp = 200; 
 
 	//Golem 위치는 임의로 정함.
 	mon_Golem = Lucifer_Game.add.sprite(4000, 1492, 'MON_Golem_Attack');	
@@ -76,7 +79,12 @@ function golem_Create()
 	mon_Golem.animations.play('MON_Golem_Stand_0', 10, true);
 	mon_Golem.anchor.setTo(0.5, 0.5);
 
-	Lucifer_Game.physics.enable(mon_Golem, Phaser.Physics.ARCADE);	
+	Lucifer_Game.physics.enable(mon_Golem, Phaser.Physics.ARCADE);
+
+    //Golem HpBAR 
+    healthBar = mon_Golem.addChild(Lucifer_Game.make.sprite(0, -100, "monsterHealthBar"));
+	healthBar.anchor.set(0.5);
+    healthBar.visible = false;
 
 	//Center Name
 	mon_Golem_Name = Lucifer_Game.add.text(mon_Golem.x, mon_Golem.y - 100, "Golem");
@@ -86,6 +94,12 @@ function golem_Create()
 	mon_Golem_Name.fontSize = 13;
 	mon_Golem_Name.fontWeight = 'normal';
 	mon_Golem_Name.fill = '#19de65';
+    mon_Golem_Name.visible = false;
+
+    //enable all input lick 'click', 'over', etc...
+    mon_Golem.inputEnabled = true;
+    mon_Golem.events.onInputOver.add(over, this);
+    mon_Golem.events.onInputOut.add(out, this);
 
 	//Monster Hit Collision
 	golem_HitRect = new Phaser.Rectangle(mon_Golem.x, mon_Golem.y, 60, 60);
@@ -418,3 +432,11 @@ function golem_Debug_Render()
 	}
 }
 
+function over(){
+    mon_Golem_Name.visible = true;
+    healthBar.visible = true;
+}
+function out(){
+    mon_Golem_Name.visible = false;
+    healthBar.visible = false;
+}
