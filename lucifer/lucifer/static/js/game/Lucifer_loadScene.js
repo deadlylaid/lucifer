@@ -11,7 +11,7 @@ var loadScene =
 		var loadingLabel = Lucifer_Game.add.text(80, 150, 'loading...',
 											{font: '15px Courier', fill: '#ffffff'});
 
-		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/Menu.png', 1280, 800);		
+		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);		
 		
 		//Stage Preload
 		//----------------------------------------------------------------------------------------------------------
