@@ -256,8 +256,7 @@ function PlayerMove()
 			//Walk / Dash Animation Change
 			if(Lucifer_Game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
 			{
-				Animation_Change(Direction, 'Dash');
-				console.log('Dash');
+				Animation_Change(Direction, 'Dash');				
 
 				Lucifer_Game.physics.arcade.moveToPointer(Player, 250);
 				Lucifer_Game.camera.x = Player.x + 250;
@@ -355,27 +354,33 @@ function PlayerJump()
 }
 
 function PlayerSkill()
-{
-	skill_Bavarian.visible = true;
-
-	if(skill_Bavarian.visible == true)
+{	
+	if(skill_One_Check == false)
 	{
-		skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
-		Animation_Change(Direction, 'Skill');	
-	}	
+		skill_Bavarian.visible = true;
+
+		if(skill_Bavarian.visible == true)
+		{
+			skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
+			Animation_Change(Direction, 'Skill');	
+		}	
+	}
 	
 	//console.log(skill_Bavarian.frame);
 }
 
 function PlayerSkill2()
 {
-	skill_Bavarian_Two.visible = true;
-
-	if(skill_Bavarian_Two.visible == true)
+	if(skill_Two_Check == false)
 	{
-		skill_Bavarian_Two.animations.play('SK_Bavarian_Ani2', 20, true);
-		Animation_Change(Direction, 'Skill');
-	}	
+		skill_Bavarian_Two.visible = true;
+
+		if(skill_Bavarian_Two.visible == true)
+		{
+			skill_Bavarian_Two.animations.play('SK_Bavarian_Ani2', 20, true);
+			Animation_Change(Direction, 'Skill');
+		}
+	}		
 
 	//console.log('Skill2');
 }
