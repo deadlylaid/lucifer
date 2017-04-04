@@ -4,17 +4,18 @@ var statusDataText,
     hpMask,
     mpMask
 //----------------------------------------------------------------------------------------------------------
-var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat;	//UI 이미지 변수.
+var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat, UI_Skill;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
-var key_Stat, ui_Delay_Time; 
+var key_Stat, Key_Skill, ui_Delay_Time; 
 
 function ui_Preload()
 {
 	//UI
-	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/Modify_UnderBar.png', 1280, 150);
-	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/Modify_HpBar.png', 134, 134);
-	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/Modify_MpBar.png', 134, 134);
+	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 752, 123);
+	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/UI_HpBar.png', 85, 87);
+	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 85, 87);
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status.png', 300, 500);
+    Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 256);
 }
 
 function ui_Create()
@@ -22,30 +23,35 @@ function ui_Create()
 	//Uesr Interface
 	//---------------------------------------------------------------------------------------
 	//UI_Group = Lucifer_Game.add.group();
-	UI_UnderBar = Lucifer_Game.add.sprite(640, 725, 'UI_UnderBar');
-	UI_UnderBar.anchor.setTo(0.5, 0.5);	
-	UI_UnderBar.fixedToCamera = true;
-
-	UI_HpBar = Lucifer_Game.add.sprite(115, 725, 'UI_HpBar');
+	UI_HpBar = Lucifer_Game.add.sprite(417, 735, 'UI_HpBar');
 	UI_HpBar.anchor.setTo(0.5, 0.5);
 	UI_HpBar.fixedToCamera = true;
 
-	UI_MpBar = Lucifer_Game.add.sprite(1165, 725, 'UI_MpBar');
+	UI_MpBar = Lucifer_Game.add.sprite(878, 735, 'UI_MpBar');
 	UI_MpBar.anchor.setTo(0.5, 0.5);
 	UI_MpBar.fixedToCamera = true;	
+
+    UI_UnderBar = Lucifer_Game.add.sprite(640, 725, 'UI_UnderBar');
+    UI_UnderBar.anchor.setTo(0.5, 0.5); 
+    UI_UnderBar.fixedToCamera = true;
 
 	UI_Stat = Lucifer_Game.add.sprite(190, 275, 'UI_Stat');
 	UI_Stat.anchor.setTo(0.5, 0.5);
 	UI_Stat.fixedToCamera = true;
 	UI_Stat.visible = false;
 
+    UI_Skill = Lucifer_Game.add.sprite(640, 300, 'UI_Skill');
+    UI_Skill.anchor.setTo(0.5, 0.5);
+    UI_Skill.fixedToCamera = true;
+    UI_Skill.visible = false;
+
     //hpMask is show real-time HP
-    hpMask = Lucifer_Game.add.graphics(115, 725);
+    hpMask = Lucifer_Game.add.graphics(417, 735);
     hpMask.fixedToCamera = true;
     hpMask.beginFill(0xffffff);
 
     //mpMask is show real-time MP
-    mpMask = Lucifer_Game.add.graphics(1165, 725);
+    mpMask = Lucifer_Game.add.graphics(878, 735);
     mpMask.fixedToCamera = true;
     mpMask.beginFill(0xffffff);
 
@@ -61,15 +67,15 @@ function ui_Create()
     mpRate = hpBarMaskRate(manaPercentage);
     //------------------------------------------------
 
-    hpMask.drawRect(-66, hpRate, 134, 134);
-    mpMask.drawRect(-66, mpRate, 134, 134);
+    hpMask.drawRect(-66, hpRate, 85, 87);
+    mpMask.drawRect(-66, mpRate, 85, 87);
 
     UI_HpBar.mask = hpMask;
     UI_MpBar.mask = mpMask;
 
 	//UI Key Setting
 	key_Stat = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.S);
-
+    Key_Skill = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.K);
 	//---------------------------------------------------------------------------------------
 
 	//Player Info
@@ -149,6 +155,16 @@ function ui_Update()
         }
         validCheck = 0;
 	}	
+
+    if(Key_Skill.isDown)
+    {
+        keyValidTimer.start();
+        if(validCheck == 1)
+        {
+            skillUi();
+        }
+        validCheck = 0;
+    }
 }
 
 function viewStatus()
@@ -168,6 +184,23 @@ function statusUi(){
 			viewStatus();						
 		}		
 };
+
+function viewSkill()
+{
+    UI_Skill.visible = true;
+}
+
+function skillUi()
+{
+    if(UI_Skill.visible == true)
+    {
+        UI_Skill.visible = false;
+    }
+    else
+    {
+        viewSkill();
+    }
+}
 
 function timeCheck(){
     validCheck = 1;

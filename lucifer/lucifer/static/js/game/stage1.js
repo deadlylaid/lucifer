@@ -1,6 +1,7 @@
 var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수								
 var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
+var Stage1_Portal, Portal_Rect, Portal_Check;
 
 function stageOne_Preload()
 {
@@ -111,6 +112,10 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('STAGE1_Object_wall29', '../../static/images/game/Object/Stage1/struct38.png');
 	//----------------------------------------------------------------------------------------------------------------
 
+	//Portal
+	//----------------------------------------------------------------------------------------------------------------
+	Lucifer_Game.load.spritesheet('Stage1_Portal', '../../static/images/game/Object/Portal/Portal.png', 115, 154);
+	//----------------------------------------------------------------------------------------------------------------
 }
 
 function stageOne_Create()
@@ -287,18 +292,45 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(5793, 1200, 'STAGE1_Object_Tree14');
 	// forest end
 
-
-
-
 	//---------------------------------------------------------------------------------------
-
 	for(var i = 0; i < Stage1_ObjectGroup.length; ++i)
 	{
 		Stage1_ObjectGroup.getChildAt(i).body.static = true;
 	}		
 	//---------------------------------------------------------------------------------------
 
+	//Portal
+	//---------------------------------------------------------------------------------------
+	Stage1_Portal = Lucifer_Game.add.sprite(2860, 350, 'Stage1_Portal');
+	Lucifer_Game.physics.p2.enable(Stage1_Portal);
+	Stage1_Portal.anchor.setTo(0.5, 0.5);
+	Stage1_Portal.body.clearShapes();
+	Stage1_Portal.body.debug = true;
+	Stage1_Portal.body.static = true;
+	Stage1_Portal.blendMode = Phaser.blendModes.ADD;
+
+	//Animation
+	Stage1_Portal.animations.add('Portal_Sprite', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+								 60, true);
+	Stage1_Portal.animations.play('Portal_Sprite', 10, true);
+
+	//Aracade Physics Setting
+	Lucifer_Game.physics.enable(Stage1_Portal, Phaser.Physics.ARCADE);
+
+	//Portal_Rect
+	Portal_Rect = new Phaser.Rectangle(Stage1_Portal.x, Stage1_Portal.y, 100, 100);
+	Portal_Check = false;	
+	//---------------------------------------------------------------------------------------
+
 	Background_map.setCollision(21, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");	
+}
+
+function portal_Check()
+{
+	if(Phaser.Rectangle.intersects(Portal_Rect, Hit_Rect))
+	{
+		Portal_Check = true;
+	}
 }
 

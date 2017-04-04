@@ -29,8 +29,8 @@ var stage1_Scene =
 		npc_Create();
 
 		//Key Go to Stage2
-		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-		enterKey.onDown.addOnce(this.goto_Stage2, this);
+		//var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+		//enterKey.onDown.addOnce(this.goto_Stage2, this);
 	},
 
 	update: function()
@@ -52,6 +52,15 @@ var stage1_Scene =
 
 		//Npc
 		npc_Update();
+
+		//Portal
+		portal_Check();
+
+		if(Portal_Check == true)
+		{
+			this.goto_Stage2();
+			Portal_Check = false;
+		}
 	},
 
 	render: function()
@@ -71,6 +80,7 @@ var stage1_Scene =
 
 	goto_Stage2: function()
 	{
+		stageOne_Check = false;
 		Lucifer_Game.state.start('stage2_load');
 	}
 };
