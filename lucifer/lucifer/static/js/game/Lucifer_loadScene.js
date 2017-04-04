@@ -1,3 +1,19 @@
+var loadtext;
+
+WebFontConfig = {
+
+    //  'active' means all requested fonts have finished loading
+    //  We set a 1 second delay before calling 'createText'.
+    //  For some reason if we don't the browser cannot render the text the first time it's created.
+    active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
+
+    //  The Google Fonts we want to load (specify as many as you like in the array)
+    google: {
+      families: ['Revalia']
+    }
+
+};
+
 var loadScene = 
 {
 	/*
@@ -8,8 +24,8 @@ var loadScene =
 	preload: function()
 	{
 		//Add a loading label on the screen
-		var loadingLabel = Lucifer_Game.add.text(80, 150, 'loading...',
-											{font: '15px Courier', fill: '#ffffff'});
+		
+		Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);		
 		
@@ -58,10 +74,37 @@ var loadScene =
 		//----------------------------------------------------------------------------------------------------------
 		npc_Preload();
 		//----------------------------------------------------------------------------------------------------------
+		
+
 	},
 
 	create: function()
+	{	
+
+		var menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
+		menuImage.anchor.setTo(0.5, 0.5);
+
+		loadtext = Lucifer_Game.add.text(this.world.centerX - 170, 715, 'Loading...',
+											{font: '30px Roboto', fill: '#ffffff'});
+
+		loadtext.fixedToCamera = true;
+
+		loadComplete();
+
+	},
+
+	start: function()
 	{
-		Lucifer_Game.state.start('logo');
-	}
+		Lucifer_Game.state.start('stage1');
+	},
+
+	
+};
+
+function loadComplete()
+{
+	loadtext.setText("Press \"Enter\" Key to Start ");
+
+		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+		enterKey.onDown.addOnce(loadScene.start, this);
 };
