@@ -27,10 +27,6 @@ var loadScene =
 		Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);
 
-		loadtext = Lucifer_Game.add.text(this.world.centerX - 170, 715, 'Loading...',
-											{font: '30px Roboto', fill: '#ffffff'});
-		loadtext.fixedToCamera = true;
-
 		//Stage Preload
 		//----------------------------------------------------------------------------------------------------------
 		stageOne_Preload();
@@ -82,6 +78,10 @@ var loadScene =
 	{		
 		menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
 		menuImage.anchor.setTo(0.5, 0.5);		
+
+		loadtext = Lucifer_Game.add.text(this.world.centerX - 170, 715, 'Loading...',
+											{font: '30px Roboto', fill: '#ffffff'});
+		loadtext.fixedToCamera = true;
 
 		loadComplete();
 	},

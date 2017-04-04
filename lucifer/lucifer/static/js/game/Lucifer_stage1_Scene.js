@@ -1,3 +1,5 @@
+var debugCheck;
+
 var stage1_Scene = 
 {
 	/*
@@ -32,8 +34,10 @@ var stage1_Scene =
 		npc_Create();
 
 		//Key Go to Stage2
-		//var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-		//enterKey.onDown.addOnce(this.goto_Stage2, this);
+		debugCheck = false;
+		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+		enterKey.onDown.add(debug_Rendering_Down, this);
+		enterKey.onUp.add(debug_Rendering_Up, this);
 	},
 
 	update: function()
@@ -69,22 +73,41 @@ var stage1_Scene =
 
 	render: function()
 	{
-		//Player Render
-		player_Render();
+		if(debugCheck == true)
+		{
+			//Player Render
+			player_Render();
 
-		//Monster Render(Golem)
-		golem_Debug_Render();
+			//Monster Render(Golem)
+			golem_Debug_Render();
 
-		//Npc
-		npc_Debug_Render();
+			//Npc
+			npc_Debug_Render();
 
-		//Skill
-        skill_Debug_Render();
+			//Skill
+	        skill_Debug_Render();
+		}		
 	},
 
 	goto_Stage2: function()
 	{
 		stageOne_Check = false;
 		Lucifer_Game.state.start('stage2_load');
-	}
+	}	
 };
+
+function debug_Rendering_Down()
+{
+	if(debugCheck == false)
+	{
+		debugCheck = true;	
+	}			
+}
+
+function debug_Rendering_Up()
+{
+	if(debugCheck == true)
+	{
+		debugCheck = false;
+	}	
+}
