@@ -26,5 +26,5 @@ var logoScene =
 
 function start() 
 {
-			Lucifer_Game.state.start('menu');
+			Lucifer_Game.state.start('select');
 }
