@@ -11,6 +11,8 @@ var golem_DamageCheck = false; var golem_DeadCheck = false;
 var golem_HitRect, golem_AttackRect;
 var golem_Attack_DelayTimer, golem_DelayTime_Total = 1;
 
+var golemHealthBar;
+
 function golem_Preload()
 {
 	//Golem Image Load
@@ -36,6 +38,7 @@ function golem_Create()
 	golem_Range = 300;	
 	golem_Attack_Range = 60;
 	golem_Hp = 200; 
+	golemMaxHp = 200; 
 
 	//Golem 위치는 임의로 정함.
 	mon_Golem = Lucifer_Game.add.sprite(4000, 1492, 'MON_Golem_Attack');	
@@ -82,9 +85,14 @@ function golem_Create()
 	Lucifer_Game.physics.enable(mon_Golem, Phaser.Physics.ARCADE);
 
     //Golem HpBAR 
-    healthBar = mon_Golem.addChild(Lucifer_Game.make.sprite(0, -100, "monsterHealthBar"));
-	healthBar.anchor.set(0.5);
-    healthBar.visible = false;
+    golemHealthBar = mon_Golem.addChild(Lucifer_Game.make.sprite(0, -100, "monsterHealthBar"));
+	golemHealthBar.anchor.set(0.5, 0.5);
+    golemHealthBar.visible = false;
+
+    golemHpMask = mon_Golem.addChild(Lucifer_Game.add.graphics(0, -100));
+    golemHpMask.beginFill(0xffffff);
+
+
 
 	//Center Name
 	mon_Golem_Name = Lucifer_Game.add.text(mon_Golem.x, mon_Golem.y - 100, "Golem");
@@ -248,10 +256,7 @@ function golem_GetHomeDirection()
 		}
 	}
 }
-
-function golem_Animation_Change(Direction, Status)
-{
-	if(Status == golem_Status[0])
+function golem_Animation_Change(Direction, Status) { if(Status == golem_Status[0])
 	{
 		//Stand
 		mon_Golem.loadTexture('MON_Golem_Stand', 0, true);
@@ -396,6 +401,10 @@ function golem_Dead()
 
 function golem_Rogic()
 {
+    golemHpMask.clear();
+    golemHpMask.drawRect(golemHealthBar.x - 100 , golemHealthBar.y, golem_Hp, 200);
+    golemHealthBar.mask = golemHpMask;
+
 	if(golem_DeadCheck == false)
 	{
 		golem_Namefollw();	
@@ -434,9 +443,9 @@ function golem_Debug_Render()
 
 function over(){
     mon_Golem_Name.visible = true;
-    healthBar.visible = true;
+    golemHealthBar.visible = true;
 }
 function out(){
     mon_Golem_Name.visible = false;
-    healthBar.visible = false;
-}
+    golemHealthBar.visible = false;
+} 
