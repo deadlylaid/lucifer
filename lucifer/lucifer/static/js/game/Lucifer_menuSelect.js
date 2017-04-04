@@ -28,7 +28,7 @@ var menuSelectScene =
 };
 
 function up() {
-    Lucifer_Game.state.start('menu');
+    Lucifer_Game.state.start('load');
 };
 
 function exit() {

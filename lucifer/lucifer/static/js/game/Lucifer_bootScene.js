@@ -7,6 +7,6 @@ var bootScene =
 		Lucifer_Game.physics.startSystem(Phaser.Physics.P2JS);
 
 		//Calling the Load State
-		Lucifer_Game.state.start('load');
+		Lucifer_Game.state.start('logo');
 	}
 };
