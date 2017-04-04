@@ -121,7 +121,7 @@ function stageOne_Create()
 	Background_map.addTilesetImage('Stage1_TileSet', 'Stage1_TileSet');
 	Background_map.addTilesetImage('Collision_Tile', 'Collision_Tile');
 	Background_map.addTilesetImage('Object_WallTileSet', 'Object_WallTileSet');
-	Background_map.addTilesetImage('Object_Tree2_TileSet', 'Object_Tree2_TileSet');
+	//Background_map.addTilesetImage('Object_Tree2_TileSet', 'Object_Tree2_TileSet');
 
 	Stage1 = Background_map.createLayer('Tile Layer 1');
 	Stage1_Wall_Layer = Background_map.createLayer('Object Layer');
