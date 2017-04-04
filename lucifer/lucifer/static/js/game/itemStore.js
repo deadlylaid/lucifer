@@ -1,6 +1,7 @@
 var potionSprite,
     swordSprite,
-    armorSprite; 
+    armorSprite,
+    uiStore;
 
 function itemsPreload(){
 
