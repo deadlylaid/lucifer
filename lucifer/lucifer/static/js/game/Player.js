@@ -426,4 +426,4 @@ function player_Render()
 	//Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
 	//Lucifer_Game.debug.geom(Hit_Rect, 'rgba(0, 0, 200, 0.5');
 	//Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
-}
+};

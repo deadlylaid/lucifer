@@ -124,4 +124,4 @@ function skill_Debug_Render()
 {
 	Lucifer_Game.debug.geom(skill_Two_Rect, 'rgba(100, 100, 100, 0.4)');
 	Lucifer_Game.debug.geom(skill_intersects, 'rgba(255, 0, 0, 1)');
-}
+};
