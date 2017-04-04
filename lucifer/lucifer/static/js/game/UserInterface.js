@@ -132,12 +132,12 @@ function ui_Update()
 
     //hpBar 계산을 위해서 사용
     //-------------------------------------------------
-    manaPercentage = playerHealth(mana, maxMana);
-    mpRate = hpBarMaskRate(manaPercentage);
+    //manaPercentage = playerHealth(mana, maxMana);
+    //mpRate = hpBarMaskRate(manaPercentage);
     //------------------------------------------------
-    mpMask.clear();
-    mpMask.drawRect(-66, mpRate, 134, 134);    
-    UI_MpBar.mask = mpMask;
+    //mpMask.clear();
+    //mpMask.drawRect(-66, mpRate, 134, 134);    
+    //UI_MpBar.mask = mpMask;
 
 	//UI_Stat
 	if(UI_Stat.visible == true)
