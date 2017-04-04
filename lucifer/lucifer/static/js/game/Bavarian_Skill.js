@@ -1,5 +1,9 @@
 var skill_Bavarian, skill_Bavarian_Two;
 var skill_Two_Rect, skill_intersects;
+var skill_One_CoolTime, skill_Two_CoolTime;
+var skill_One_Timer, skill_One_TimeTotal = 4000;
+var skill_Two_Timer, skill_Two_TimeTotal = 4000;
+var skill_One_Check = false, skill_Two_Check = false;
 //*************************************************
 var skill_Icon_One, skill_Icon_Two;
 //---------------------------------------------------------------------------------------
@@ -15,7 +19,7 @@ function skill_Preload()
     Lucifer_Game.load.spritesheet('SK_Icon_Skill',
                                   '../../static/images/game/UI/SkillIcon/4.png', 48, 48);
     Lucifer_Game.load.spritesheet('SK_Icon_Skill2',
-                                  '../../static/images/game/UI/SkillIcon/5.png', 48, 48);
+                                  '../../static/images/game/UI/SkillIcon/6.png', 48, 48);
 }
 
 function skill_Create()
@@ -25,12 +29,14 @@ function skill_Create()
 	skill_Bavarian.anchor.setTo(0.5, 0.5);		
 	skill_Bavarian.visible = false;
 	skill_Bavarian.blendMode = Phaser.blendModes.ADD;
+	skill_One_CoolTime = 3000;
 
     //Skill - 2
     skill_Bavarian_Two = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill2');
     skill_Bavarian_Two.anchor.setTo(0.5, 0.5);
     skill_Bavarian_Two.visible = false;
     skill_Bavarian_Two.blendMode = Phaser.blendModes.ADD;
+    skill_Two_CoolTime = 3000;
 
 	//Skill - 1 Animation
 	skill_Bavarian.animations.add('SK_Bavarian_Ani', 
@@ -52,17 +58,33 @@ function skill_Create()
 	skill_Bavarian_Two.scale.setTo(2, 2);
 
     //Skill Icon
-    /*
-    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x, UI_UnderBar.y, 'SK_Icon_Skill');
-    skill_Icon_One.anchor.setTo(0.5, 0.5);       
+    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x + 158, UI_UnderBar.y + 45, 'SK_Icon_Skill');
+    skill_Icon_One.anchor.setTo(0.5, 0.5);  
+    skill_Icon_One.fixedToCamera = true;     
 
-    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x + 100, UI_UnderBar.y 'SK_Icon_Skill2');
+    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x + 208, UI_UnderBar.y + 45, 'SK_Icon_Skill2');
     skill_Icon_Two.anchor.setTo(0.5, 0.5); 
-    */
+    skill_Icon_Two.fixedToCamera = true;    
     
 	//Skill Rect
 	skill_Two_Rect = new Phaser.Rectangle(skill_Bavarian_Two.x, skill_Bavarian_Two.y, 150, 100);
 	skill_Two_Rect.scale(1.6, 1.6);
+
+	//Skill Timer
+	skill_One_Timer = Lucifer_Game.time.create(false);
+	skill_One_Timer.loop(1000, skill_One_CoolTimer, this);
+	skill_Two_Timer = Lucifer_Game.time.create(false);
+	skill_Two_Timer.loop(1000, skill_Two_CoolTimer, this);
+}
+
+function skill_One_CoolTimer()
+{
+	skill_One_TimeTotal += 1000;
+}
+
+function skill_Two_CoolTimer()
+{
+	skill_Two_TimeTotal += 1000;
 }
 
 function skill_Attack()
@@ -98,6 +120,55 @@ function skill_Reset()
 	}	
 }
 
+function skill_CoolTime()
+{
+	//Skill One Cool Time
+	if(player_KeySkill.isDown == true)
+	{
+		skill_One_Timer.start();
+
+		if(skill_One_Check == false)
+		{
+			skill_One_TimeTotal = 0;		
+		}
+	}
+
+	if(skill_One_TimeTotal < skill_One_CoolTime)
+	{
+		skill_Icon_One.alpha = 0.5;	
+		skill_One_Check = true;			//첫번째 스킬 coolTime 체크
+	}
+	else if(skill_One_TimeTotal > skill_One_CoolTime)
+	{
+		skill_Icon_One.alpha = 1.0;		
+		skill_One_Check = false;		//첫번째 스킬 coolTime 체크
+	}
+
+	//Skill Two Cool Time
+	if(player_KeySkill2.isDown == true)
+	{
+		skill_Two_Timer.start();
+
+		if(skill_Two_Check == false)
+		{
+			skill_Two_TimeTotal = 0;
+		}			
+	}
+
+	if(skill_Two_TimeTotal < skill_Two_CoolTime)
+	{
+		skill_Icon_Two.alpha = 0.5;
+		skill_Two_Check = true;			//두번째 스킬 coolTime 체크
+	}	
+	else if(skill_Two_TimeTotal > skill_Two_CoolTime)
+	{
+		skill_Icon_Two.alpha = 1.0;		
+		skill_Two_Check = false;		//두번째 스킬 coolTime 체크
+	}
+
+	//console.log(skill_One_TimeTotal, skill_Two_TimeTotal);
+}
+
 function skill_Update()
 {
 	skill_Bavarian.x = Player.x;
@@ -115,6 +186,9 @@ function skill_Update()
 
 	//Reset
 	skill_Reset();
+
+	//Cool Time
+	skill_CoolTime();
 
 	//Debug
 	skill_intersects = Phaser.Rectangle.intersection(skill_Two_Rect, golem_HitRect);
