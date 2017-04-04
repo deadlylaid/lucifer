@@ -7,6 +7,9 @@ var stage1_Scene =
 
 	create: function()
 	{
+		//Sound
+		sound_PlayStage1BGM();
+
 		//Stage
 		stageOne_Create();
 
@@ -58,6 +61,7 @@ var stage1_Scene =
 
 		if(Portal_Check == true)
 		{
+			sound_StopStage1BGM();
 			this.goto_Stage2();
 			Portal_Check = false;
 		}

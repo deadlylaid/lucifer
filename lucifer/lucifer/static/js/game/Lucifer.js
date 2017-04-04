@@ -13,7 +13,6 @@ Lucifer_Game.state.add('boot', bootScene);
 Lucifer_Game.state.add('load', loadScene);
 Lucifer_Game.state.add('logo', logoScene);
 Lucifer_Game.state.add('select', menuSelectScene);
-Lucifer_Game.state.add('menu', menuScene);
 Lucifer_Game.state.add('stage1', stage1_Scene);
 Lucifer_Game.state.add('stage2_load', stage2_LoadScene);
 Lucifer_Game.state.add('stage2', stage2_Scene);

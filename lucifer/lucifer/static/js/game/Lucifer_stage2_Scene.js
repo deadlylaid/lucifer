@@ -7,6 +7,9 @@ var stage2_Scene =
 
 	create: function()
 	{
+		//Sound
+		sound_PlayStage2BGM();
+
 		//Stage
 		stageTwo_Create();
 
@@ -43,6 +46,9 @@ var stage2_Scene =
 
 	goto_Stage3: function()
 	{
+		//Sound
+		sound_StopStage2BGM();
+
 		Lucifer_Game.state.start('stage3');
 	}
 };
