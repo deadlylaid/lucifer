@@ -7,10 +7,16 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet(itemList[0].name, '../../static/images/game/item/'+ itemList[0].image_name + '.png', 150, 150);
     Lucifer_Game.load.spritesheet(itemList[1].name, '../../static/images/game/item/'+ itemList[1].image_name + '.png', 150, 150);
     Lucifer_Game.load.spritesheet(itemList[2].name, '../../static/images/game/item/'+ itemList[2].image_name + '.png', 150, 150);
+	Lucifer_Game.load.spritesheet('uiStore', '../../static/images/game/UI/store/store.png', 220, 370);
 
 };
 
 function itemsCreate(){
+
+	uiStore = Lucifer_Game.add.sprite(150, 270, 'uiStore');
+	uiStore.anchor.setTo(0.5, 0.5);	
+	uiStore.fixedToCamera = true;
+    uiStore.visible = false;
 
     //itemStore font style
     var style = {
@@ -20,7 +26,7 @@ function itemsCreate(){
 
     //itemStore font style
 	var itemStoreStyle = {
-        font: "10px Courier", fill: "#fff", 
+        font: "15px Courier", fill: "#fff", 
     };
 
     var itemData = [
@@ -33,13 +39,13 @@ function itemsCreate(){
 	//ItemLists
 	//---------------------------------------------------------------------------------------
 	//store_Group = Lucifer_Game.add.group();
-	potionSprite = Lucifer_Game.add.sprite(100, 150, itemList[0].name);
+	potionSprite = Lucifer_Game.add.sprite(100, 165, itemList[0].name);
 	potionSprite.anchor.setTo(0.5, 0.5);
     potionSprite.scale.setTo(0.5, 0.5);
     potionSprite.fixedToCamera = true;
     potionSprite.visible = false;
 
-    potionText = Lucifer_Game.add.text(potionSprite.x + 20, potionSprite.y - 20, parsedItemData.text, itemStoreStyle);
+    potionText = Lucifer_Game.add.text(potionSprite.x + 50, potionSprite.y - 20, parsedItemData.text, itemStoreStyle);
     potionText.fixedToCamera = true;
     potionText.visible = false;
     //---------------------------------------------------------------------------------------
@@ -51,13 +57,13 @@ function itemsCreate(){
 
     parsedItemData = parseList(itemData);
 
-    swordSprite = Lucifer_Game.add.sprite(100, 230, itemList[1].name);
+    swordSprite = Lucifer_Game.add.sprite(100, 240, itemList[1].name);
     swordSprite.anchor.setTo(0.5, 0.5);
     swordSprite.scale.setTo(0.5, 0.5);
     swordSprite.fixedToCamera = true;
     swordSprite.visible = false;
 
-    swordText = Lucifer_Game.add.text(swordSprite.x + 20, swordSprite.y - 20, parsedItemData.text, itemStoreStyle);
+    swordText = Lucifer_Game.add.text(swordSprite.x + 50, swordSprite.y - 20, parsedItemData.text, itemStoreStyle);
     swordText.fixedToCamera = true;
     swordText.visible = false;
     //----------------------------------------------------------------------------------------
@@ -69,13 +75,13 @@ function itemsCreate(){
 
     parsedItemData = parseList(itemData);
 
-    armorSprite = Lucifer_Game.add.sprite(100, 330, itemList[2].name);
+    armorSprite = Lucifer_Game.add.sprite(100, 315, itemList[2].name);
     armorSprite.anchor.setTo(0.5, 0.5);
     armorSprite.scale.setTo(0.5, 0.5);
     armorSprite.fixedToCamera = true;
     armorSprite.visible = false;
 
-    armorText = Lucifer_Game.add.text(armorSprite.x + 20, armorSprite.y - 20, parsedItemData.text, itemStoreStyle);
+    armorText = Lucifer_Game.add.text(armorSprite.x + 50, armorSprite.y - 20, parsedItemData.text, itemStoreStyle);
     armorText.fixedToCamera = true;
     armorText.visible = false;
 
@@ -93,6 +99,7 @@ function showStore(){
         swordText.visible = false;
         armorSprite.visible = false;
         armorText.visible = false;
+        uiStore.visible = false;
     }else{
         potionSprite.visible = true;
         potionText.visible = true;
@@ -100,5 +107,6 @@ function showStore(){
         swordText.visible = true;
         armorSprite.visible = true;
         armorText.visible = true;
+        uiStore.visible = true;
     }
 };
