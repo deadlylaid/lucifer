@@ -1,4 +1,4 @@
-var loadtext;
+var loadtext, menuImage;
 
 WebFontConfig = {
 
@@ -20,15 +20,17 @@ var loadScene =
 		Player 관련 소스 : PY_직업_동작 || Map 관련 소스 : MAP_스테이지 명    	|| Object 관련 소스 : OB_오브젝트 명 
 		UI 관련 소스 : UI_인터페이스 이름 || Monster 관련 소스 : MON_몬스터 명  || Skill 관련 소스 : SK_스킬명
 		Effect 관련 소스 : EF_이펙트 명 || NPC 관련 소스 : NPC_이름         	|| Sound 관련 소스 : Sound_이름 
-	*/	
+	*/
 	preload: function()
-	{
-		//Add a loading label on the screen
-		
+	{		
+		//Add a loading label on the screen			
 		Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);
 
-		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);		
-		
+		loadtext = Lucifer_Game.add.text(this.world.centerX - 170, 715, 'Loading...',
+											{font: '30px Roboto', fill: '#ffffff'});
+		loadtext.fixedToCamera = true;
+
 		//Stage Preload
 		//----------------------------------------------------------------------------------------------------------
 		stageOne_Preload();
@@ -74,23 +76,14 @@ var loadScene =
 		//----------------------------------------------------------------------------------------------------------
 		npc_Preload();
 		//----------------------------------------------------------------------------------------------------------
-		
-
 	},
 
 	create: function()
-	{	
-
-		var menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
-		menuImage.anchor.setTo(0.5, 0.5);
-
-		loadtext = Lucifer_Game.add.text(this.world.centerX - 170, 715, 'Loading...',
-											{font: '30px Roboto', fill: '#ffffff'});
-
-		loadtext.fixedToCamera = true;
+	{		
+		menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
+		menuImage.anchor.setTo(0.5, 0.5);		
 
 		loadComplete();
-
 	},
 
 	start: function()

@@ -10,9 +10,9 @@ function sound_Preload()
 
 function sound_Create()
 {
-	sound_MenuBgm   = Lucifer_Game.add.audio('Menu_Bgm', 0.5, true);
-	sound_Stage1Bgm = Lucifer_Game.add.audio('Stage1_Bgm', 0.5, true);
-	sound_Stage2Bgm = Lucifer_Game.add.audio('stage2_Bgm', 0.5, true);	
+	sound_MenuBgm   = Lucifer_Game.add.audio('Menu_Bgm', 0.2, true);
+	sound_Stage1Bgm = Lucifer_Game.add.audio('Stage1_Bgm', 0.2, true);
+	sound_Stage2Bgm = Lucifer_Game.add.audio('stage2_Bgm', 0.2, true);	
 }
 
 function sound_PlayMenuBGM()
