@@ -1,5 +1,7 @@
 var skill_Bavarian, skill_Bavarian_Two;
 var skill_Two_Rect, skill_intersects;
+//*************************************************
+var skill_Icon_One, skill_Icon_Two;
 //---------------------------------------------------------------------------------------
 
 function skill_Preload()
@@ -8,6 +10,12 @@ function skill_Preload()
 								  '../../static/images/game/Skill/Bavarian/Bavarian_Skill.png', 131, 160);
 	Lucifer_Game.load.spritesheet('SK_Bavarian_Skill2',
 								  '../../static/images/game/Skill/Bavarian/Bavarian_Skill2.png', 150, 100);
+
+    //Skill Icon
+    Lucifer_Game.load.spritesheet('SK_Icon_Skill',
+                                  '../../static/images/game/UI/SkillIcon/4.png', 48, 48);
+    Lucifer_Game.load.spritesheet('SK_Icon_Skill2',
+                                  '../../static/images/game/UI/SkillIcon/5.png', 48, 48);
 }
 
 function skill_Create()
@@ -18,6 +26,12 @@ function skill_Create()
 	skill_Bavarian.visible = false;
 	skill_Bavarian.blendMode = Phaser.blendModes.ADD;
 
+    //Skill - 2
+    skill_Bavarian_Two = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill2');
+    skill_Bavarian_Two.anchor.setTo(0.5, 0.5);
+    skill_Bavarian_Two.visible = false;
+    skill_Bavarian_Two.blendMode = Phaser.blendModes.ADD;
+
 	//Skill - 1 Animation
 	skill_Bavarian.animations.add('SK_Bavarian_Ani', 
 								  [
@@ -26,13 +40,7 @@ function skill_Create()
 								  ]
 								  , 60, true);	
 
-	skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
-
-	//Skill - 2
-	skill_Bavarian_Two = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill2');
-	skill_Bavarian_Two.anchor.setTo(0.5, 0.5);
-	skill_Bavarian_Two.visible = false;
-	skill_Bavarian_Two.blendMode = Phaser.blendModes.ADD;
+	skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);	
 
 	//Skill - 2 Animation
 	skill_Bavarian_Two.animations.add('SK_Bavarian_Ani2', 
@@ -43,6 +51,15 @@ function skill_Create()
 	skill_Bavarian_Two.animations.play('SK_Bavarian_Ani2', 20, true);
 	skill_Bavarian_Two.scale.setTo(2, 2);
 
+    //Skill Icon
+    /*
+    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x, UI_UnderBar.y, 'SK_Icon_Skill');
+    skill_Icon_One.anchor.setTo(0.5, 0.5);       
+
+    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x + 100, UI_UnderBar.y 'SK_Icon_Skill2');
+    skill_Icon_Two.anchor.setTo(0.5, 0.5); 
+    */
+    
 	//Skill Rect
 	skill_Two_Rect = new Phaser.Rectangle(skill_Bavarian_Two.x, skill_Bavarian_Two.y, 150, 100);
 	skill_Two_Rect.scale(1.6, 1.6);
@@ -54,7 +71,7 @@ function skill_Attack()
 	{
 		if(Phaser.Rectangle.intersects(skill_Two_Rect, golem_HitRect))
 		{
-			golem_Hp -= 10;
+	       	golem_Hp -= 10;
 			console.log(golem_Hp);			
 		}
 	}
