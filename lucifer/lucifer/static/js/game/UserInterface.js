@@ -51,9 +51,9 @@ function ui_Create()
     hpMask.beginFill(0xffffff);
 
     //mpMask is show real-time MP
-    mpMask = Lucifer_Game.add.graphics(878, 735);
-    mpMask.fixedToCamera = true;
-    mpMask.beginFill(0xffffff);
+//    mpMask = Lucifer_Game.add.graphics(878, 735);
+//    mpMask.fixedToCamera = true;
+//    mpMask.beginFill(0xffffff);
 
     //hpBar 계산을 위해서 사용
     //-------------------------------------------------
@@ -63,15 +63,15 @@ function ui_Create()
     
     //hpBar 계산을 위해서 사용
     //-------------------------------------------------
-    manaPercentage = playerHealth(mana, maxMana);
-    mpRate = hpBarMaskRate(manaPercentage);
+//    manaPercentage = playerHealth(mana, maxMana);
+//    mpRate = hpBarMaskRate(manaPercentage);
     //------------------------------------------------
 
     hpMask.drawRect(-66, hpRate, 85, 87);
-    mpMask.drawRect(-66, mpRate, 85, 87);
+//    mpMask.drawRect(-66, mpRate, 85, 87);
 
     UI_HpBar.mask = hpMask;
-    UI_MpBar.mask = mpMask;
+ //   UI_MpBar.mask = mpMask;
 
 	//UI Key Setting
 	key_Stat = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.S);
