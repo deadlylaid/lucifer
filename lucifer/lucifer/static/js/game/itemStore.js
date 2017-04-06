@@ -20,6 +20,8 @@ function itemsPreload(){
 
 function itemsCreate(){
 
+    //Tab 이미지 추가
+    //--------------------------------------------------------
     potionTab = Lucifer_Game.add.sprite(446, 100, 'potionTab');
     potionTab.anchor.setTo(0.5, 0.5);
     potionTab.scale.setTo(1.5, 1.5);
@@ -48,6 +50,8 @@ function itemsCreate(){
 
     armorTab.inputEnabled = true;
     armorTab.events.onInputDown.add(armorStoreTab ,this);
+    //--------------------------------------------------------
+    //--------------------------------------------------------
 
 	uiStore = Lucifer_Game.add.sprite(228, 330, 'uiStore');
 	uiStore.anchor.setTo(0.5, 0.5);	
@@ -159,6 +163,7 @@ function showStore(){
     }
 }
 
+//클릭 시 실행
 function potionStoreTab(){
     potionTab.alpha = 1;
     swordTab.alpha = 0.7;
