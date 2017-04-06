@@ -88,15 +88,19 @@ function skill_Two_CoolTimer()
 }
 
 function skill_Attack()
-{
+{	
 	if(skill_Bavarian_Two.visible == true)
 	{
-		if(Phaser.Rectangle.intersects(skill_Two_Rect, golem_HitRect))
+		for(var i = 0; i < golem_Group.length; ++i)
 		{
-	       	golem_Hp -= 10;
-			console.log(golem_Hp);			
-		}
-	}
+			var Golem = golem_Group.getChildAt(i);
+
+			if(Phaser.Rectangle.intersects(skill_Two_Rect, Golem.golem_HitRect))
+			{
+		       	Golem.golem_Hp -= 10;						
+			}
+		}		
+	}	
 }
 
 function skill_Reset()
@@ -191,11 +195,11 @@ function skill_Update()
 	skill_CoolTime();
 
 	//Debug
-	skill_intersects = Phaser.Rectangle.intersection(skill_Two_Rect, golem_HitRect);
+	//skill_intersects = Phaser.Rectangle.intersection(skill_Two_Rect, golem_HitRect);
 }
 
 function skill_Debug_Render()
 {
 	Lucifer_Game.debug.geom(skill_Two_Rect, 'rgba(100, 100, 100, 0.4)');
-	Lucifer_Game.debug.geom(skill_intersects, 'rgba(255, 0, 0, 1)');
+	//Lucifer_Game.debug.geom(skill_intersects, 'rgba(255, 0, 0, 1)');
 };

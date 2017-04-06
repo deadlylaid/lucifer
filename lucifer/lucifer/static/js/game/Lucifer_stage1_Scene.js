@@ -46,7 +46,7 @@ var stage1_Scene =
 		player_Update();
 
 		//Monster Update(Golem)
-		golem_Rogic();
+		golem_Update();
 
         //items Update
         itemsUpdate();
@@ -79,7 +79,7 @@ var stage1_Scene =
 			player_Render();
 
 			//Monster Render(Golem)
-			golem_Debug_Render();
+			golem_Redner();
 
 			//Npc
 			npc_Debug_Render();
