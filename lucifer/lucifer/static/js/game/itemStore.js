@@ -1,21 +1,61 @@
 var potionSprite,
     swordSprite,
     armorSprite,
-    uiStore;
+    uiStore,
+    potionActive,
+    swordActive,
+    armorActive;
 
 function itemsPreload(){
 
     Lucifer_Game.load.spritesheet(itemList[0].name, '../../static/images/game/item/'+ itemList[0].image_name + '.png', 150, 150);
     Lucifer_Game.load.spritesheet(itemList[1].name, '../../static/images/game/item/'+ itemList[1].image_name + '.png', 150, 150);
     Lucifer_Game.load.spritesheet(itemList[2].name, '../../static/images/game/item/'+ itemList[2].image_name + '.png', 150, 150);
-	Lucifer_Game.load.spritesheet('uiStore', '../../static/images/game/UI/store/store.png', 220, 370);
+	Lucifer_Game.load.spritesheet('uiStore', '../../static/images/game/UI/store/store.png', 455, 684);
+	Lucifer_Game.load.spritesheet('potionTab', '../../static/images/game/UI/store/PotionTab.png', 45, 80);
+	Lucifer_Game.load.spritesheet('swordTab', '../../static/images/game/UI/store/swordTab.png', 45, 80);
+	Lucifer_Game.load.spritesheet('armorTab', '../../static/images/game/UI/store/armorTab.png', 45, 80);
 
 };
 
 function itemsCreate(){
 
-	uiStore = Lucifer_Game.add.sprite(150, 270, 'uiStore');
+    //Tab 이미지 추가
+    //--------------------------------------------------------
+    potionTab = Lucifer_Game.add.sprite(446, 100, 'potionTab');
+    potionTab.anchor.setTo(0.5, 0.5);
+    potionTab.scale.setTo(1.5, 1.5);
+    potionTab.fixedToCamera = true;
+    potionTab.visible = false;
+
+    potionTab.inputEnabled = true;
+    potionTab.events.onInputDown.add(potionStoreTab ,this);
+
+    swordTab = Lucifer_Game.add.sprite(446, 200, 'swordTab');
+    swordTab.anchor.setTo(0.5, 0.5);
+    swordTab.scale.setTo(1.2, 1.2);
+    swordTab.fixedToCamera = true;
+    swordTab.visible = false;
+    swordTab.alpha = 0.7;
+
+    swordTab.inputEnabled = true;
+    swordTab.events.onInputDown.add(swordStoreTab ,this);
+
+    armorTab = Lucifer_Game.add.sprite(446, 295, 'armorTab');
+    armorTab.anchor.setTo(0.5, 0.5);
+    armorTab.scale.setTo(1.2, 1.2);
+    armorTab.fixedToCamera = true;
+    armorTab.visible = false;
+    armorTab.alpha = 0.7;
+
+    armorTab.inputEnabled = true;
+    armorTab.events.onInputDown.add(armorStoreTab ,this);
+    //--------------------------------------------------------
+    //--------------------------------------------------------
+
+	uiStore = Lucifer_Game.add.sprite(228, 330, 'uiStore');
 	uiStore.anchor.setTo(0.5, 0.5);	
+    uiStore.scale.setTo(0.9, 0.9);
 	uiStore.fixedToCamera = true;
     uiStore.visible = false;
 
@@ -23,91 +63,139 @@ function itemsCreate(){
     var style = {
         font : "32px Courier",
         fill: "#00ff44",
-    }
+        wordWrapWidth: 100,
+    };
 
     //itemStore font style
 	var itemStoreStyle = {
         font: "15px Courier", fill: "#fff", 
     };
 
+
+    //Postion -----------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------
     var itemData = [
         [ itemList[0].name ],
-        [ '가격:' + itemList[0].price ],
+        [ '' ],
+        [ '      ', itemList[0].price ],
     ];
 
     parsedItemData = parseList(itemData);
 
-	//ItemLists
-	//---------------------------------------------------------------------------------------
-	//store_Group = Lucifer_Game.add.group();
-	potionSprite = Lucifer_Game.add.sprite(100, 165, itemList[0].name);
+	potionSprite = Lucifer_Game.add.sprite(55, 105, itemList[0].name);
 	potionSprite.anchor.setTo(0.5, 0.5);
     potionSprite.scale.setTo(0.5, 0.5);
     potionSprite.fixedToCamera = true;
     potionSprite.visible = false;
 
-    potionText = Lucifer_Game.add.text(potionSprite.x + 50, potionSprite.y - 20, parsedItemData.text, itemStoreStyle);
+    potionText = Lucifer_Game.add.text(potionSprite.x + 45, potionSprite.y - 20, parsedItemData.text, itemStoreStyle);
     potionText.fixedToCamera = true;
     potionText.visible = false;
+
+    //---------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
 
+    //Sword--------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------
     var itemData = [
         [ itemList[1].name ],
-        [ '가격:' + itemList[1].price ],
+        [ '' ],
+        [ '      ', itemList[1].price ],
     ];
 
     parsedItemData = parseList(itemData);
 
-    swordSprite = Lucifer_Game.add.sprite(100, 240, itemList[1].name);
+    swordSprite = Lucifer_Game.add.sprite(55, 105, itemList[1].name);
     swordSprite.anchor.setTo(0.5, 0.5);
     swordSprite.scale.setTo(0.5, 0.5);
     swordSprite.fixedToCamera = true;
     swordSprite.visible = false;
 
-    swordText = Lucifer_Game.add.text(swordSprite.x + 50, swordSprite.y - 20, parsedItemData.text, itemStoreStyle);
+    swordText = Lucifer_Game.add.text(swordSprite.x + 45, swordSprite.y - 20, parsedItemData.text, itemStoreStyle);
     swordText.fixedToCamera = true;
     swordText.visible = false;
     //----------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
 
+    
+    //Armor--------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------
     var itemData = [
         [ itemList[2].name ],
-        [ '가격:' + itemList[2].price ],
-    ];
+        [ '' ],
+        [ '      ', itemList[2].price ],
+    ]
 
     parsedItemData = parseList(itemData);
 
-    armorSprite = Lucifer_Game.add.sprite(100, 315, itemList[2].name);
+    armorSprite = Lucifer_Game.add.sprite(55, 105, itemList[2].name);
     armorSprite.anchor.setTo(0.5, 0.5);
     armorSprite.scale.setTo(0.5, 0.5);
     armorSprite.fixedToCamera = true;
     armorSprite.visible = false;
 
-    armorText = Lucifer_Game.add.text(armorSprite.x + 50, armorSprite.y - 20, parsedItemData.text, itemStoreStyle);
+    armorText = Lucifer_Game.add.text(armorSprite.x + 45, armorSprite.y - 20, parsedItemData.text, itemStoreStyle);
     armorText.fixedToCamera = true;
     armorText.visible = false;
 
 	//---------------------------------------------------------------------------------------	
-};
+	//---------------------------------------------------------------------------------------	
+}
 
 function itemsUpdate(){
-};
+}
 
 function showStore(){
-    if(potionSprite.visible){
+    if(uiStore.visible === true){
+        potionTab.visible = false;
+        swordTab.visible = false;
+        armorTab.visible = false;
         potionSprite.visible = false;
         potionText.visible = false;
-        swordSprite.visible = false;
-        swordText.visible = false;
-        armorSprite.visible = false;
-        armorText.visible = false;
         uiStore.visible = false;
     }else{
+        potionTab.visible = true;
+        swordTab.visible = true;
+        armorTab.visible = true;
         potionSprite.visible = true;
         potionText.visible = true;
-        swordSprite.visible = true;
-        swordText.visible = true;
-        armorSprite.visible = true;
-        armorText.visible = true;
         uiStore.visible = true;
     }
-};
+}
+
+//클릭 시 실행
+function potionStoreTab(){
+    potionTab.alpha = 1;
+    swordTab.alpha = 0.7;
+    armorTab.alpha = 0.7;
+    potionSprite.visible = true;
+    potionText.visible = true;
+    swordSprite.visible = false;
+    swordText.visible = false;
+    armorSprite.visible = false;
+    armorText.visible = false;
+}
+
+function swordStoreTab(){
+    potionTab.alpha = 0.7;
+    swordTab.alpha = 1;
+    armorTab.alpha = 0.7;
+    potionSprite.visible = false;
+    potionText.visible = false;
+    swordSprite.visible = true;
+    swordText.visible = true;
+    armorSprite.visible = false;
+    armorText.visible = false;
+}
+
+function armorStoreTab(){
+    potionTab.alpha = 0.7;
+    swordTab.alpha = 0.7;
+    armorTab.alpha = 1;
+    potionSprite.visible = false;
+    potionText.visible = false;
+    swordSprite.visible = false;
+    swordText.visible = false;
+    armorSprite.visible = true;
+    armorText.visible = true;
+}
