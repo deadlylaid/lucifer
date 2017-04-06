@@ -14,6 +14,8 @@ var nickname,
     accuracy,
     evasion;
 
+var inventory = [];
+
 var itemList = [];
 
 get_gamestart_api_url = '/api/gamestart/data/';
@@ -37,24 +39,26 @@ $.ajax({
     //console.log(data[1].monster[0])
     character = data[0].character[0];
     nickname = character.nickname;
-    level = character.level
-    job = character.job
+    level = character.level;
+    job = character.job;
 
-    health = character.status.health
-    mana = character.status.mana
+    health = character.status.health;
+    mana = character.status.mana;
 
-    maxHealth = character.status.max_health
-    maxMana = character.status.max_mana
+    maxHealth = character.status.max_health;
+    maxMana = character.status.max_mana;
 
-    attack_point = character.status.attack_point
-    defence_point = character.status.defence_point
+    attack_point = character.status.attack_point;
+    defence_point = character.status.defence_point;
 
-    strong = character.status.strong
-    dexterity = character.status.dexterity
-    intelligence = character.status.intelligence
+    strong = character.status.strong;
+    dexterity = character.status.dexterity;
+    intelligence = character.status.intelligence;
 
-    accuracy = character.status.accuracy
-    evasion = character.status.evasion
+    accuracy = character.status.accuracy;
+    evasion = character.status.evasion;
+
+    inventory = character.inventory_set;
 
     itemList = data[2].item;
 });
