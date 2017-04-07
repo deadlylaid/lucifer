@@ -152,6 +152,10 @@ function showStore(){
         armorTab.visible = false;
         potionSprite.visible = false;
         potionText.visible = false;
+        swordSprite.visible = false;
+        swordText.visible = false;
+        armorSprite.visible = false;
+        armorText.visible = false;
         uiStore.visible = false;
     }else{
         potionTab.visible = true;
