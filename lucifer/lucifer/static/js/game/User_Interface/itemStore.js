@@ -2,9 +2,7 @@ var potionSprite,
     swordSprite,
     armorSprite,
     uiStore,
-    potionActive,
-    swordActive,
-    armorActive;
+    isSelected;
 
 potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemText, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
@@ -53,9 +51,7 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.text.visible = false;
 }
 
-sword.prototype = Object.create(Phaser.Sprite.prototype);
-sword.prototype.getVisible = function(bool){
-    this.visible = bool;
+sword.prototype = Object.create(Phaser.Sprite.prototype); sword.prototype.getVisible = function(bool){ this.visible = bool;
     this.text.visible = bool;
 }
 sword.prototype.constructor = sword;
@@ -96,6 +92,7 @@ function itemsPreload(){
 	Lucifer_Game.load.spritesheet('potionTab', '../../static/images/game/UI/store/PotionTab.png', 45, 80);
 	Lucifer_Game.load.spritesheet('swordTab', '../../static/images/game/UI/store/swordTab.png', 45, 80);
 	Lucifer_Game.load.spritesheet('armorTab', '../../static/images/game/UI/store/armorTab.png', 45, 80);
+	Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
 
 };
 
@@ -129,6 +126,16 @@ function itemsCreate(){
 
     armorTab.inputEnabled = true;
     armorTab.events.onInputDown.add(armorStoreTab ,this);
+
+    saleTab = Lucifer_Game.add.sprite(445, 400, 'saleTab');
+    saleTab.anchor.setTo(0.5, 0.5);
+    saleTab.scale.setTo(1.2, 1.2);
+    saleTab.fixedToCamera = true;
+    saleTab.visible = false;
+    saleTab.alpha = 0.7;
+
+    saleTab.inputEnabled = true;
+    saleTab.events.onInputDown.add(buyItem, this);
     //--------------------------------------------------------
     //--------------------------------------------------------
 
@@ -163,6 +170,7 @@ function itemsCreate(){
     itemText = parsedItemData.text;
 
     redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[2].limited_job, itemText, itemStoreStyle);
+    redPotionRect = new Phaser.Rectangle(redPotion.x, redPotion.y, 60, 60);
     Lucifer_Game.add.existing(redPotion);
 
     //---------------------------------------------------------------------------------------
@@ -209,6 +217,7 @@ function showStore(){
         potionTab.visible = false;
         swordTab.visible = false;
         armorTab.visible = false;
+        saleTab.visible = false;
         redPotion.getVisible(false);
         basicSword.getVisible(false);
         basicArmor.getVisible(false);
@@ -217,6 +226,7 @@ function showStore(){
         potionTab.visible = true;
         swordTab.visible = true;
         armorTab.visible = true;
+        saleTab.visible = true;
         redPotion.getVisible(true);
         uiStore.visible = true;
     }
@@ -248,4 +258,11 @@ function armorStoreTab(){
     redPotion.getVisible(false);
     basicSword.getVisible(false);
     basicArmor.getVisible(true);
+}
+
+function buyItem() {
+}
+
+function itemStoreRender(){
+    Lucifer_Game.debug.geom(redPotionRect, 'rgba(0,0,200,0.5)');
 }
