@@ -4,8 +4,30 @@ var potionSprite,
     uiStore,
     potionActive,
     swordActive,
-    armorActive,
-    basicArmor;
+    armorActive;
+
+potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemText, itemStoreStyle){
+    Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
+
+    //item status
+    //name = spritekey name
+    this.name = spriteKey;
+    this.type_is = 'potion';
+    this.heal = heal;
+    this.limited_job = limited_job;
+
+	this.anchor.setTo(0.5, 0.5);
+    this.scale.setTo(0.5, 0.5);
+    this.fixedToCamera = true;
+    this.visible = false;
+
+    this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
+    this.text.fixedToCamera = true;
+    this.text.visible = false;
+}
+
+potion.prototype = Object.create(Phaser.Sprite.prototype);
+potion.prototype.constructor = potion;
 
 sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemText, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
@@ -126,16 +148,10 @@ function itemsCreate(){
     ];
 
     parsedItemData = parseList(itemData);
+    itemText = parsedItemData.text;
 
-	potionSprite = Lucifer_Game.add.sprite(55, 105, itemList[0].name);
-	potionSprite.anchor.setTo(0.5, 0.5);
-    potionSprite.scale.setTo(0.5, 0.5);
-    potionSprite.fixedToCamera = true;
-    potionSprite.visible = false;
-
-    potionText = Lucifer_Game.add.text(potionSprite.x + 45, potionSprite.y - 20, parsedItemData.text, itemStoreStyle);
-    potionText.fixedToCamera = true;
-    potionText.visible = false;
+    redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[2].limited_job, itemText, itemStoreStyle);
+    Lucifer_Game.add.existing(redPotion);
 
     //---------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
@@ -153,15 +169,6 @@ function itemsCreate(){
 
     basicSword = new sword(Lucifer_Game, 55, 105, itemList[1].name, itemList[1].attack_point, itemList[2].limited_job, itemText, itemStoreStyle);
     Lucifer_Game.add.existing(basicSword);
-//    swordSprite = Lucifer_Game.add.sprite(55, 105, itemList[1].name);
-//    swordSprite.anchor.setTo(0.5, 0.5);
-//    swordSprite.scale.setTo(0.5, 0.5);
-//    swordSprite.fixedToCamera = true;
-//    swordSprite.visible = false;
-//
-//    swordText = Lucifer_Game.add.text(swordSprite.x + 45, swordSprite.y - 20, parsedItemData.text, itemStoreStyle);
-//    swordText.fixedToCamera = true;
-//    swordText.visible = false;
     //----------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------
 
@@ -190,10 +197,10 @@ function showStore(){
         potionTab.visible = false;
         swordTab.visible = false;
         armorTab.visible = false;
-        potionSprite.visible = false;
-        potionText.visible = false;
-        swordSprite.visible = false;
-        swordText.visible = false;
+        redPotion.visible = false;
+        redPotion.text.visible = false;
+        basicSword.visible = false;
+        basicSword.text.visible = false;
         basicArmor.visible = false;
         basicArmor.text.visible = false;
         uiStore.visible = false;
@@ -201,10 +208,8 @@ function showStore(){
         potionTab.visible = true;
         swordTab.visible = true;
         armorTab.visible = true;
-        potionSprite.visible = true;
-        potionText.visible = true;
-        basicArmor.visible = false;
-        basicArmor.text.visible = false;
+        redPotion.visible = true;
+        redPotion.text.visible = true;
         uiStore.visible = true;
     }
 }
@@ -214,8 +219,8 @@ function potionStoreTab(){
     potionTab.alpha = 1;
     swordTab.alpha = 0.7;
     armorTab.alpha = 0.7;
-    potionSprite.visible = true;
-    potionText.visible = true;
+    redPotion.visible = true;
+    redPotion.text.visible = true;
     basicSword.visible = false;
     basicSword.text.visible = false;
     basicArmor.visible = false;
@@ -226,8 +231,8 @@ function swordStoreTab(){
     potionTab.alpha = 0.7;
     swordTab.alpha = 1;
     armorTab.alpha = 0.7;
-    potionSprite.visible = false;
-    potionText.visible = false;
+    redPotion.visible = false;
+    redPotion.text.visible = false;
     basicSword.visible = true;
     basicSword.text.visible = true;
     basicArmor.visible = false;
@@ -238,8 +243,8 @@ function armorStoreTab(){
     potionTab.alpha = 0.7;
     swordTab.alpha = 0.7;
     armorTab.alpha = 1;
-    potionSprite.visible = false;
-    potionText.visible = false;
+    redPotion.visible = false;
+    redPotion.text.visible = false;
     basicSword.visible = false;
     basicSword.text.visible = false;
     basicArmor.visible=true;
