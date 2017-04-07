@@ -1,6 +1,7 @@
 // 골렘 기본 변수들 
 //------------------------------------------------------------------------------
 var golem_Group, golem_Object;
+var golem_Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 
 //골렘 Create 함수 재정의
 Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
@@ -147,6 +148,7 @@ function golem_Clone(PointX, PointY)
     golem_Object.golem_Attack_DelayTimer = Lucifer_Game.time.create(false);
     golem_Object.golem_Attack_DelayTimer.loop(1000, golem_DelayTimer, Lucifer_Game, golem_Object);
 
+    Lucifer_Game.physics.enable(golem_Object, Phaser.Physics.ARCADE);
     golem_Group.add(golem_Object);
 }
 //-------------------------------------------------------------------------------------------
@@ -258,7 +260,7 @@ function golem_GetReturnDirection()
 	{
 		golem_Group.getChildAt(i).golem_ReturnDistance 
 			= Phaser.Math.distance(golem_Group.getChildAt(i).x, golem_Group.getChildAt(i).y,
-								   golem_Group.getChildAt(i).golem_ReturnPointX, golem_Group.getChildAt(i).golem_ReturnPointY);
+								   Player.x, Player.y);
 
 		if(golem_Group.getChildAt(i).golem_DeadCheck == false)
 		{
@@ -267,11 +269,10 @@ function golem_GetReturnDirection()
 			{
 				golem_Group.getChildAt(i).golem_ReturnAngle 
 					= Lucifer_Game.physics.arcade.angleToXY(golem_Group.getChildAt(i), 
-														    golem_Group.getChildAt(i).golem_ReturnPointX, 
-														    golem_Group.getChildAt(i).golem_ReturnPointY);
+														    Player.world.x, Player.world.y);
 				golem_Group.getChildAt(i).golem_ReturnAngle = Math.abs(golem_Group.getChildAt(i).golem_ReturnAngle);
 
-				if(golem_Group.getChildAt(i).golem_PointY <  golem_Group.getChildAt(i).golem_ReturnPointY)
+				if(golem_Group.getChildAt(i).golem_PointY < Player.y)
 				{
 					golem_Group.getChildAt(i).golem_ReturnAngle = 2 * Math.PI - golem_Group.getChildAt(i).golem_ReturnAngle;		
 				}	
