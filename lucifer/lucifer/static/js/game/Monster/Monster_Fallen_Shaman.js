@@ -149,10 +149,9 @@ function fallen_Shaman_Clone(PointX, PointY)
 	fallenShaman_Object.HpMask.beginFill(0xffffff);
 
 	//Name
-	fallenShaman_Object.Name = Lucifer_Game.add.text(fallenShaman_Object.PointX, fallenShaman_Object.PointY - 100,
+	fallenShaman_Object.Name = Lucifer_Game.add.text(fallenShaman_Object.x, fallenShaman_Object.y - 100,
 													 'Fallen Shman');
-	fallenShaman_Object.Name.anchor.set(0.5);
-	fallenShaman_Object.Name.anchor.set(0.5);
+	fallenShaman_Object.Name.anchor.set(0.5);	
 	fallenShaman_Object.Name.align = "center";
 	fallenShaman_Object.Name.font = 'Arial';
 	fallenShaman_Object.Name.fontSize = 13;
@@ -161,7 +160,7 @@ function fallen_Shaman_Clone(PointX, PointY)
     fallenShaman_Object.Name.visible = false;		
 
     //input Mouse Over / Up 
-    fallenShaman_Object.inputEnable = true;
+    fallenShaman_Object.inputEnabled = true;
     fallenShaman_Object.events.onInputOver.add(fallen_Shaman_over, fallenShaman_Object);
     fallenShaman_Object.events.onInputOut.add(fallen_Shaman_out, fallenShaman_Object);		
 
@@ -280,7 +279,7 @@ function fallen_Shaman_GetReturnDirection()
 	for(var i = 0; i < fallenShaman_Group.length; ++i)
 	{
 		var Shaman = fallenShaman_Group.getChildAt(i);
-		Shaman.ReturnDistance = Phaser.Math.distance(Shaman.x, Shaman.y, Player.x, Player.y);
+		Shaman.ReturnDistance = Phaser.Math.distance(Shaman.x, Shaman.y, Shaman.ReturnPointX, Shaman.ReturnPointY);
 
 		if(Shaman.DeadCheck == false)
 		{
@@ -289,7 +288,7 @@ function fallen_Shaman_GetReturnDirection()
 				Shaman.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Shaman, Shaman.ReturnPointX, Shaman.ReturnPointY);
 				Shaman.ReturnAngle = Math.abs(Shaman.ReturnAngle);
 
-				if(Shaman.y <Shaman.ReturnPointY)
+				if(Shaman.y < Shaman.ReturnPointY)
 				{
 					Shaman.ReturnAngle = 2 * Math.PI - Shaman.ReturnAngle;
 				}
@@ -327,9 +326,11 @@ function fallen_Shaman_GetReturnDirection()
 					Shaman.ReturnDirection = 6;
 				}
 
+				Shaman.Direction = Shaman.ReturnDirection;
+
 				if(Shaman.CompareCheck == false)
 				{
-					Shaman.PreDirection = Shaman.ReturnDirection;	
+					Shaman.PreDirection = Shaman.Direction;	
 					Shaman.CompareCheck = true;			
 				}
 			}
@@ -341,8 +342,8 @@ function fallen_Shaman_Compare_Direction(PreDirection, CurDirection, Object)
 {
 	if(PreDirection != CurDirection)
 	{
-		Object.MoveCheck = false;
 		Object.CompareCheck = false;
+		Object.MoveCheck = false;		
 	}
 }
 //-------------------------------------------------------------------------------------------
@@ -390,7 +391,7 @@ function fallen_Shaman_Move()
 		{
 			if(Shaman.Distance < Shaman.CognizeRange)
 			{
-				//Walk
+				//Run
 				if(Shaman.MoveCheck == false)
 				{
 					Shaman.StandCheck = false;
@@ -423,13 +424,16 @@ function fallen_Shaman_Move()
 				//Return Run
 				if(Shaman.ReturnDistance > 10)
 				{
+					console.log(Shaman.MoveCheck);
+					console.log(Shaman.ReturnDistance);
+
 					if(Shaman.MoveCheck == false)
 					{
 						Shaman.StandCheck = false;
-						Shaman.MoveCheck = false;
-
+						Shaman.MoveCheck = true;
+						
 						Lucifer_Game.physics.arcade.moveToXY(Shaman, Shaman.ReturnPointX, Shaman.ReturnPointY, 80);
-						fallen_Shaman_Animation_Change(Shaman.ReturnDirection, 'Run', Shaman);						
+						fallen_Shaman_Animation_Change(Shaman.ReturnDirection, 'Run', Shaman);	
 					}
 				}
 
@@ -440,14 +444,14 @@ function fallen_Shaman_Move()
 					{
 						fallen_Shaman_Animation_Change(Shaman.ReturnDirection, 'Stand', Shaman);
 						Shaman.StandCheck = true;
-					}
+					}					
 
 					Shaman.body.velocity.x = 0;
 					Shaman.body.velocity.y = 0;
 				}
 			}
 
-			fallen_Shaman_Compare_Direction(Shaman.PreDirection, Shaman.Direction, Shaman);
+			fallen_Shaman_Compare_Direction(Shaman.PreDirection, Shaman.Direction, Shaman);	
 		}
 	}
 }
