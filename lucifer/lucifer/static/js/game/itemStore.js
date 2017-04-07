@@ -212,6 +212,7 @@ function showStore(){
         redPotion.getVisible(false);
         basicSword.getVisible(false);
         basicArmor.getVisible(false);
+        uiStore.visible = false;
     }else{
         potionTab.visible = true;
         swordTab.visible = true;
