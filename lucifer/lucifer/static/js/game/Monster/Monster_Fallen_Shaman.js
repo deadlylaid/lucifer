@@ -1,6 +1,8 @@
 // Shaman 기본 변수 
 //------------------------------------------------------------------------------
 var fallenShaman_Group, fallenShaman_Object;
+var fallenShaman_FireRate = 100;
+var fallenShaman_NextFire = 0;
 //------------------------------------------------------------------------------
 
 // Shman
@@ -41,6 +43,10 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false;
 	this.DamageCheck = false, this.DeadCheck = false;
+
+	//Attack
+	this.FireBall, this.FireBall_Rect;
+	this.FireBall_ColCheck = false;
 }
 
 Fallen_Shaman.prototype = Object.create(Phaser.Sprite.prototype);
@@ -61,7 +67,10 @@ function fallen_Shaman_Preload()
 								   120, 120);
 	Lucifer_Game.load.spritesheet('MON_FallenShaman_Dead',
 								  '../../static/images/game/Monster/FallenShaman/Death/Death.png',
-								   83, 83);
+								   83, 83);	
+	Lucifer_Game.load.spritesheet('MONSK_FireBall', 
+								  '../../static/images/game/Monster_Skill/Fire_Ball.png',
+								  100, 100);
 }
 
 function fallen_Shaman_Create()
@@ -171,6 +180,37 @@ function fallen_Shaman_Clone(PointX, PointY)
 	//Delay timer
 	fallenShaman_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
 	fallenShaman_Object.Attack_DelayTimer.loop(1000, fallen_Shaman_DelayTimer, Lucifer_Game, fallenShaman_Object);	
+
+	//Attack(Fire Ball)
+	fallenShaman_Object.FireBall = Lucifer_Game.add.group();
+	fallenShaman_Object.FireBall.enableBody = true;
+	fallenShaman_Object.FireBall.physicsBodyType = Phaser.Physics.ARCADE;
+	fallenShaman_Object.FireBall.createMultiple(50, 'MONSK_FireBall');
+	fallenShaman_Object.FireBall.setAll('outOfBoundsKill', true);
+
+	for(var i = 0; i < fallenShaman_Object.FireBall.length; ++i)
+	{
+		fallenShaman_Object.FireBall.getChildAt(i).blendMode = Phaser.blendModes.ADD;
+	}
+
+	/*
+	fallenShaman_Object.FireBall = Lucifer_Game.add.sprite(fallenShaman_Object.x, fallenShaman_Object.y, 'MONSK_FireBall');
+	fallenShaman_Object.FireBall.anchor.setTo(0.5, 0.5);
+	fallenShaman_Object.FireBall.blendMode = Phaser.blendModes.ADD;
+	fallenShaman_Object.FireBall.visible = false;
+	Lucifer_Game.physics.enable(fallenShaman_Object.FireBall, Phaser.Physics.ARCADE);
+
+	fallenShaman_Object.FireBall_Rect = new Phaser.Rectangle(fallenShaman_Object.FireBall.x, fallenShaman_Object.FireBall.y,
+															 50, 50);
+	//Fire(Ball) animation
+	index = 0;
+	for(var i = 0; i < 8; ++i)
+	{
+		fallenShaman_Object.FireBall.animations.add('FireBall_' + i,
+													[index, index + 1, index + 2, index + 3, index + 4], 60 , false);
+		index += 5;
+	}	
+	*/
 
 	fallenShaman_Group.add(fallenShaman_Object);
 } 
@@ -467,11 +507,40 @@ function fallen_Shaman_Attack(Object)
 			if(Object.AttackCheck == false)
 			{
 				fallen_Shaman_Animation_Change(Object.Direction, 'Attack', Object);
+
+				//Fire Ball 발사
+				fallen_Shaman_Fire(Object);
+
 				Object.AttackCheck = true;	
 			}
 
 			fallen_Shaman_HitCount(Object);
 		}
+	}
+}
+
+function fallen_Shaman_Fire(Object)
+{	
+	/*
+	Object.FireBall.x = Object.x;
+	Object.FireBall.y = Object.y;
+
+	Object.FireBall.visible = true;
+	Object.FireBall.loadTexture('MONSK_FireBall', 0, true);
+	Object.FireBall.animations.play('FireBall_' + Direction, 20, true);
+
+	//Move FireBall
+	Lucifer_Game.physics.arcade.moveToObject(Object.FireBall, Player, 130);
+	*/
+
+	if(Lucifer_Game.time.now > fallenShaman_NextFire && Object.FireBall.countDead() > 0)
+	{
+		fallenShaman_NextFire = Lucifer_Game.time.now + fallenShaman_FireRate;
+		
+		var fireBall = Object.FireBall.getFirstDead();
+		fireBall.reset(Object.x, Object.y);
+
+		Lucifer_Game.physics.arcade.moveToObject(fireBall, Player, 200);		
 	}
 }
 
@@ -565,6 +634,7 @@ function fallen_Shaman_Render()
 	{
 		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).HitRect, 'rgba(0, 200, 0, 0.5)');
 		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).AttackRect, 'rgba(200, 0, 200, 0.5)');
+		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).FireBall_Rect, 'rgba(100, 100, 0, 0.5)');
 	}
 }
 //-------------------------------------------------------------------------------------------
