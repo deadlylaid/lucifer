@@ -14,7 +14,7 @@ potion = function (game, positionX, positionY, spriteKey, heal, limited_job, ite
     this.heal = heal;
     this.limited_job = limited_job;
 
-	this.anchor.setTo(0.5, 0.5);
+    this.anchor.setTo(0.5, 0.5);
     this.scale.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
@@ -29,6 +29,7 @@ potion.prototype.getVisible = function(bool){
     this.visible = bool;
     this.text.visible = bool;
 }
+
 potion.prototype.constructor = potion;
 
 sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemText, itemStoreStyle){
@@ -41,7 +42,7 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.attack_point = attack_point;
     this.limited_job = limited_job;
 
-	this.anchor.setTo(0.5, 0.5);
+    this.anchor.setTo(0.5, 0.5);
     this.scale.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
@@ -51,7 +52,9 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.text.visible = false;
 }
 
-sword.prototype = Object.create(Phaser.Sprite.prototype); sword.prototype.getVisible = function(bool){ this.visible = bool;
+sword.prototype = Object.create(Phaser.Sprite.prototype);
+sword.prototype.getVisible = function(bool){
+    this.visible = bool;
     this.text.visible = bool;
 }
 sword.prototype.constructor = sword;
@@ -66,7 +69,7 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.defence_point = defence_point;
     this.limited_job = limited_job;
 
-	this.anchor.setTo(0.5, 0.5);
+    this.anchor.setTo(0.5, 0.5);
     this.scale.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
@@ -88,11 +91,11 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet(itemList[0].name, '../../static/images/game/item/'+ itemList[0].image_name + '.png', 150, 150);
     Lucifer_Game.load.spritesheet(itemList[1].name, '../../static/images/game/item/'+ itemList[1].image_name + '.png', 150, 150);
     Lucifer_Game.load.spritesheet(itemList[2].name, '../../static/images/game/item/'+ itemList[2].image_name + '.png', 150, 150);
-	Lucifer_Game.load.spritesheet('uiStore', '../../static/images/game/UI/store/store.png', 455, 684);
-	Lucifer_Game.load.spritesheet('potionTab', '../../static/images/game/UI/store/PotionTab.png', 45, 80);
-	Lucifer_Game.load.spritesheet('swordTab', '../../static/images/game/UI/store/swordTab.png', 45, 80);
-	Lucifer_Game.load.spritesheet('armorTab', '../../static/images/game/UI/store/armorTab.png', 45, 80);
-	Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
+    Lucifer_Game.load.spritesheet('uiStore', '../../static/images/game/UI/store/store.png', 455, 684);
+    Lucifer_Game.load.spritesheet('potionTab', '../../static/images/game/UI/store/PotionTab.png', 45, 80);
+    Lucifer_Game.load.spritesheet('swordTab', '../../static/images/game/UI/store/swordTab.png', 45, 80);
+    Lucifer_Game.load.spritesheet('armorTab', '../../static/images/game/UI/store/armorTab.png', 45, 80);
+    Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
 
 };
 
@@ -139,10 +142,10 @@ function itemsCreate(){
     //--------------------------------------------------------
     //--------------------------------------------------------
 
-	uiStore = Lucifer_Game.add.sprite(228, 330, 'uiStore');
-	uiStore.anchor.setTo(0.5, 0.5);	
+    uiStore = Lucifer_Game.add.sprite(228, 330, 'uiStore');
+    uiStore.anchor.setTo(0.5, 0.5); 
     uiStore.scale.setTo(0.9, 0.9);
-	uiStore.fixedToCamera = true;
+    uiStore.fixedToCamera = true;
     uiStore.visible = false;
 
     //itemStore font style
@@ -153,7 +156,7 @@ function itemsCreate(){
     };
 
     //itemStore font style
-	var itemStoreStyle = {
+    var itemStoreStyle = {
         font: "15px Courier", fill: "#fff", 
     };
 
@@ -170,7 +173,9 @@ function itemsCreate(){
     itemText = parsedItemData.text;
 
     redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[2].limited_job, itemText, itemStoreStyle);
-    redPotionRect = new Phaser.Rectangle(redPotion.x, redPotion.y, 60, 60);
+    redPotion.body.clearShapes();
+    redPotion.body.addRectangle(100, 100, 100, 100);
+    //draw rect ----------------------------------------------------------------------------
     Lucifer_Game.add.existing(redPotion);
 
     //---------------------------------------------------------------------------------------
@@ -205,12 +210,11 @@ function itemsCreate(){
 
     basicArmor = new armor(Lucifer_Game, 55, 105, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job, itemText, itemStoreStyle);
     Lucifer_Game.add.existing(basicArmor);
-	//---------------------------------------------------------------------------------------	
-	//---------------------------------------------------------------------------------------	
+    //---------------------------------------------------------------------------------------   
+    //---------------------------------------------------------------------------------------   
 }
 
 function itemsUpdate(){
-    redPotionRect.centerOn(redPotion.x, redPotion.y);
 }
 
 function showStore(){
@@ -265,5 +269,4 @@ function buyItem() {
 }
 
 function itemStoreRender(){
-    Lucifer_Game.debug.geom(redPotionRect, 'rgba(0,0,200,0.5)');
 }
