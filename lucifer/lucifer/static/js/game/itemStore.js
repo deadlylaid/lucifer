@@ -7,6 +7,29 @@ var potionSprite,
     armorActive,
     basicArmor;
 
+sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemText, itemStoreStyle){
+    Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
+
+    //item status
+    //name = spritekey name
+    this.name = spriteKey;
+    this.type_is = 'sword';
+    this.attack_point = attack_point;
+    this.limited_job = limited_job;
+
+	this.anchor.setTo(0.5, 0.5);
+    this.scale.setTo(0.5, 0.5);
+    this.fixedToCamera = true;
+    this.visible = false;
+
+    this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
+    this.text.fixedToCamera = true;
+    this.text.visible = false;
+}
+
+sword.prototype = Object.create(Phaser.Sprite.prototype);
+sword.prototype.constructor = sword;
+
 armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, itemText, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
     
@@ -29,6 +52,7 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
 
 armor.prototype = Object.create(Phaser.Sprite.prototype);
 armor.prototype.constructor = armor;
+
 function itemsPreload(){
 
     Lucifer_Game.load.spritesheet(itemList[0].name, '../../static/images/game/item/'+ itemList[0].image_name + '.png', 150, 150);
@@ -125,16 +149,19 @@ function itemsCreate(){
     ];
 
     parsedItemData = parseList(itemData);
+    itemText = parsedItemData.text;
 
-    swordSprite = Lucifer_Game.add.sprite(55, 105, itemList[1].name);
-    swordSprite.anchor.setTo(0.5, 0.5);
-    swordSprite.scale.setTo(0.5, 0.5);
-    swordSprite.fixedToCamera = true;
-    swordSprite.visible = false;
-
-    swordText = Lucifer_Game.add.text(swordSprite.x + 45, swordSprite.y - 20, parsedItemData.text, itemStoreStyle);
-    swordText.fixedToCamera = true;
-    swordText.visible = false;
+    basicSword = new sword(Lucifer_Game, 55, 105, itemList[1].name, itemList[1].attack_point, itemList[2].limited_job, itemText, itemStoreStyle);
+    Lucifer_Game.add.existing(basicSword);
+//    swordSprite = Lucifer_Game.add.sprite(55, 105, itemList[1].name);
+//    swordSprite.anchor.setTo(0.5, 0.5);
+//    swordSprite.scale.setTo(0.5, 0.5);
+//    swordSprite.fixedToCamera = true;
+//    swordSprite.visible = false;
+//
+//    swordText = Lucifer_Game.add.text(swordSprite.x + 45, swordSprite.y - 20, parsedItemData.text, itemStoreStyle);
+//    swordText.fixedToCamera = true;
+//    swordText.visible = false;
     //----------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------
 
@@ -189,8 +216,8 @@ function potionStoreTab(){
     armorTab.alpha = 0.7;
     potionSprite.visible = true;
     potionText.visible = true;
-    swordSprite.visible = false;
-    swordText.visible = false;
+    basicSword.visible = false;
+    basicSword.text.visible = false;
     basicArmor.visible = false;
     basicArmor.text.visible = false;
 }
@@ -201,8 +228,8 @@ function swordStoreTab(){
     armorTab.alpha = 0.7;
     potionSprite.visible = false;
     potionText.visible = false;
-    swordSprite.visible = true;
-    swordText.visible = true;
+    basicSword.visible = true;
+    basicSword.text.visible = true;
     basicArmor.visible = false;
     basicArmor.text.visible = false;
 }
@@ -213,8 +240,8 @@ function armorStoreTab(){
     armorTab.alpha = 1;
     potionSprite.visible = false;
     potionText.visible = false;
-    swordSprite.visible = false;
-    swordText.visible = false;
+    basicSword.visible = false;
+    basicSword.text.visible = false;
     basicArmor.visible=true;
     basicArmor.text.visible = true;
 }
