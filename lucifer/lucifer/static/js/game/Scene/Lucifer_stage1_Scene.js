@@ -84,6 +84,9 @@ var stage1_Scene =
 			golem_Redner();
 			fallen_Shaman_Render();
 
+            //itemStoreRender
+            itemStoreRender();
+
 			//Npc
 			npc_Debug_Render();
 

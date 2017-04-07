@@ -210,6 +210,7 @@ function itemsCreate(){
 }
 
 function itemsUpdate(){
+    redPotionRect.centerOn(redPotion.x, redPotion.y);
 }
 
 function showStore(){
