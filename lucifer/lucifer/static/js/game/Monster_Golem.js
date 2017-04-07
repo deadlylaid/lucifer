@@ -309,9 +309,11 @@ function golem_GetReturnDirection()
 					golem_Group.getChildAt(i).golem_ReturnDirection = 6;
 				}
 
+				golem_Group.getChildAt(i).golem_Direction = golem_Group.getChildAt(i).golem_ReturnDirection
+
 				if(golem_Group.getChildAt(i).golem_CompareCheck == false)
 				{
-					golem_Group.getChildAt(i).golem_PreDirection = golem_Group.getChildAt(i).golem_ReturnDirection;	
+					golem_Group.getChildAt(i).golem_PreDirection = golem_Group.getChildAt(i).golem_Direction;	
 					golem_Group.getChildAt(i).golem_CompareCheck = true;			
 				}
 			}
@@ -422,10 +424,10 @@ function golem_Move()
 					Golem.body.velocity.x = 0;
 					Golem.body.velocity.y = 0;
 				}
-			}
+			}	
 
-			compare_Direction(Golem.golem_PreDirection, Golem.golem_Direction, Golem);
-		}		
+			compare_Direction(Golem.golem_PreDirection, Golem.golem_Direction, Golem);		
+		}
 	}
 }
 
