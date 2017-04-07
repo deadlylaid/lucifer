@@ -27,6 +27,10 @@ potion = function (game, positionX, positionY, spriteKey, heal, limited_job, ite
 }
 
 potion.prototype = Object.create(Phaser.Sprite.prototype);
+potion.prototype.getVisible = function(bool){
+    this.visible = bool;
+    this.text.visible = bool;
+}
 potion.prototype.constructor = potion;
 
 sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemText, itemStoreStyle){
@@ -50,6 +54,10 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
 }
 
 sword.prototype = Object.create(Phaser.Sprite.prototype);
+sword.prototype.getVisible = function(bool){
+    this.visible = bool;
+    this.text.visible = bool;
+}
 sword.prototype.constructor = sword;
 
 armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, itemText, itemStoreStyle){
@@ -73,6 +81,10 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
 }
 
 armor.prototype = Object.create(Phaser.Sprite.prototype);
+armor.prototype.getVisible = function(bool){
+    this.visible = bool;
+    this.text.visible = bool;
+}
 armor.prototype.constructor = armor;
 
 function itemsPreload(){
@@ -197,19 +209,14 @@ function showStore(){
         potionTab.visible = false;
         swordTab.visible = false;
         armorTab.visible = false;
-        redPotion.visible = false;
-        redPotion.text.visible = false;
-        basicSword.visible = false;
-        basicSword.text.visible = false;
-        basicArmor.visible = false;
-        basicArmor.text.visible = false;
-        uiStore.visible = false;
+        redPotion.getVisible(false);
+        basicSword.getVisible(false);
+        basicArmor.getVisible(false);
     }else{
         potionTab.visible = true;
         swordTab.visible = true;
         armorTab.visible = true;
-        redPotion.visible = true;
-        redPotion.text.visible = true;
+        redPotion.getVisible(true);
         uiStore.visible = true;
     }
 }
@@ -219,34 +226,25 @@ function potionStoreTab(){
     potionTab.alpha = 1;
     swordTab.alpha = 0.7;
     armorTab.alpha = 0.7;
-    redPotion.visible = true;
-    redPotion.text.visible = true;
-    basicSword.visible = false;
-    basicSword.text.visible = false;
-    basicArmor.visible = false;
-    basicArmor.text.visible = false;
+    redPotion.getVisible(true);
+    basicSword.getVisible(false);
+    basicArmor.getVisible(false);
 }
 
 function swordStoreTab(){
     potionTab.alpha = 0.7;
     swordTab.alpha = 1;
     armorTab.alpha = 0.7;
-    redPotion.visible = false;
-    redPotion.text.visible = false;
-    basicSword.visible = true;
-    basicSword.text.visible = true;
-    basicArmor.visible = false;
-    basicArmor.text.visible = false;
+    redPotion.getVisible(false);
+    basicSword.getVisible(true);
+    basicArmor.getVisible(false);
 }
 
 function armorStoreTab(){
     potionTab.alpha = 0.7;
     swordTab.alpha = 0.7;
     armorTab.alpha = 1;
-    redPotion.visible = false;
-    redPotion.text.visible = false;
-    basicSword.visible = false;
-    basicSword.text.visible = false;
-    basicArmor.visible=true;
-    basicArmor.text.visible = true;
+    redPotion.getVisible(false);
+    basicSword.getVisible(false);
+    basicArmor.getVisible(true);
 }
