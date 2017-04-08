@@ -21,6 +21,7 @@ var stage1_Scene =
 		//Monster
 		golem_Create();
 		fallen_Shaman_Create();
+		andariel_Create();
 
         //items
         itemsCreate();
@@ -49,6 +50,7 @@ var stage1_Scene =
 		//Monster Update
 		golem_Update();
 		fallen_Shaman_Update();
+		andariel_Update();
 
         //items Update
         itemsUpdate();
@@ -83,7 +85,8 @@ var stage1_Scene =
 			//Monster Render
 			golem_Redner();
 			fallen_Shaman_Render();
-
+			andariel_Render();
+			
             //itemStoreRender
             itemStoreRender();
 
