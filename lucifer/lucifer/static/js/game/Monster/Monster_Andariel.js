@@ -64,7 +64,9 @@ function andariel_Create()
 {
 	andariel_Group = Lucifer_Game.add.group();
 	andariel_Clone(3800, 1592);
+	andariel_Clone(3600, 1592);
 
+	Lucifer_Game.renderer.setTexturePriority(['MON_Andariel_Stand', 'MON_Andariel_Walk', 'MON_Andariel_Attack', 'MON_Andariel_Dead']);
 }
 
 function andariel_Clone(PointX, PointY)
@@ -486,7 +488,9 @@ function andariel_Hpbar_Mask(Object)
 	if(Object.DeadCheck == false)
 	{
 		Object.HpMask.clear();
+		Object.HpMask.beginFill(0xffffff);
 		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
+		Object.HpMask.endFill();
 		Object.HpBar.mask = Object.HpMask;
 	}
 }
@@ -532,7 +536,8 @@ function andariel_Update()
 
 function andariel_Render()
 {
-	for(var i = 0; i < andariel_Group.length; ++i)
+	var length = andariel_Group.length;
+	for(var i = 0; i < length; ++i)
 	{
 		var andariel = andariel_Group.getChildAt(i);
 

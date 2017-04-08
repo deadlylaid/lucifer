@@ -20,6 +20,8 @@ function ui_Preload()
 
 function ui_Create()
 {
+    Lucifer_Game.renderer.setTexturePriority(['UI_UnderBar', 'UI_HpBar', 'UI_MpBar', 'UI_Stat', 'UI_Skill']);
+
 	//Uesr Interface
 	//---------------------------------------------------------------------------------------
 	//UI_Group = Lucifer_Game.add.group();
@@ -126,7 +128,9 @@ function ui_Update()
     hpRate = hpBarMaskRate(healthPercentage);
     //-------------------------------------------------
     hpMask.clear();
-    hpMask.drawRect(-66, hpRate, 134, 134);    
+    hpMask.beginFill(0xffffff);
+    hpMask.drawRect(-66, hpRate, 134, 134);  
+    hpMask.endFill();  
     //console.log("현재 HP 바의 비율은" + hpRate + "입니다.");    
     UI_HpBar.mask = hpMask;
 
