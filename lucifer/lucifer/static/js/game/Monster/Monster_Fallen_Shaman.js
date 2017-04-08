@@ -215,147 +215,136 @@ function fireBall_DelayTimer(Object)
 }
 
 //Name
-function fallen_Shaman_FollwName()
+function fallen_Shaman_FollwName(Object)
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
-	{	
-		if(fallenShaman_Group.getChildAt(i).DeadCheck == false)
-		{
-			fallenShaman_Group.getChildAt(i).Name.x = fallenShaman_Group.getChildAt(i).position.x;
+	if(Object.DeadCheck == false)
+	{
+		Object.Name.x = Object.position.x;
 
-			var shaman_NamePointY = fallenShaman_Group.getChildAt(i).position.y + 70;
-			fallenShaman_Group.getChildAt(i).Name.y = shaman_NamePointY;
-		}		
-	}
+		var shaman_NamePointY = Object.position.y + 70;
+		Object.Name.y = shaman_NamePointY;
+	}		
 }
 //-------------------------------------------------------------------------------------------
 
 //Direction
 //-------------------------------------------------------------------------------------------
-function fallen_Shaman_GetDirection()
+function fallen_Shaman_GetDirection(Object)
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	Object.Distance = Phaser.Math.distance(Object.x, Object.y, Player.x, Player.y);
+
+	if(Object.DeadCheck == false)
 	{
-		var Shaman = fallenShaman_Group.getChildAt(i);
-		Shaman.Distance = Phaser.Math.distance(Shaman.x, Shaman.y, Player.x, Player.y);
-
-		if(Shaman.DeadCheck == false)
+		if(Object.Distance < Object.CognizeRange)
 		{
-			if(Shaman.Distance < Shaman.CognizeRange)
+			Object.Angle = Lucifer_Game.physics.arcade.angleToXY(Object, Player.world.x, Player.world.y);
+			Object.Angle = Math.abs(Object.Angle);
+
+			if(Object.y < Player.y)
 			{
-				Shaman.Angle = Lucifer_Game.physics.arcade.angleToXY(Shaman, Player.world.x, Player.world.y);
-				Shaman.Angle = Math.abs(Shaman.Angle);
+				Object.Angle = 2 * Math.PI - Object.Angle;
+			}
 
-				if(Shaman.y < Player.y)
-				{
-					Shaman.Angle = 2 * Math.PI - Shaman.Angle;
-				}
+			if(Object.Angle >= 0 && Object.Angle <= 0.7)
+			{
+				Object.Direction = 7;
+			}
+			else if(Object.Angle > 0.7 && Object.Angle <= 1.9)
+			{
+				Object.Direction = 0;
+			}
+			else if(Object.Angle > 1.9 && Object.Angle <= 2.9)
+			{
+				Object.Direction = 1;
+			}
+			else if(Object.Angle > 2.9 && Object.Angle <= 3.9)
+			{
+				Object.Direction = 2;
+			}
+			else if(Object.Angle > 3.6 && Object.Angle <= 4.2)
+			{
+				Object.Direction = 3;
+			}
+			else if(Object.Angle > 4.2 && Object.Angle <= 4.9)
+			{
+				Object.Direction = 4;
+			}
+			else if(Object.Angle > 4.9 && Object.Angle <= 5.7)
+			{
+				Object.Direction = 5;
+			}
+			else if(Object.Angle > 5.7 && Object.Angle <= 6.2)
+			{
+				Object.Direction = 6;
+			}
 
-				if(Shaman.Angle >= 0 && Shaman.Angle <= 0.7)
-				{
-					Shaman.Direction = 7;
-				}
-				else if(Shaman.Angle > 0.7 && Shaman.Angle <= 1.9)
-				{
-					Shaman.Direction = 0;
-				}
-				else if(Shaman.Angle > 1.9 && Shaman.Angle <= 2.9)
-				{
-					Shaman.Direction = 1;
-				}
-				else if(Shaman.Angle > 2.9 && Shaman.Angle <= 3.9)
-				{
-					Shaman.Direction = 2;
-				}
-				else if(Shaman.Angle > 3.6 && Shaman.Angle <= 4.2)
-				{
-					Shaman.Direction = 3;
-				}
-				else if(Shaman.Angle > 4.2 && Shaman.Angle <= 4.9)
-				{
-					Shaman.Direction = 4;
-				}
-				else if(Shaman.Angle > 4.9 && Shaman.Angle <= 5.7)
-				{
-					Shaman.Direction = 5;
-				}
-				else if(Shaman.Angle > 5.7 && Shaman.Angle <= 6.2)
-				{
-					Shaman.Direction = 6;
-				}
-
-				if(Shaman.CompareCheck == false)
-				{
-					Shaman.PreDirection = Shaman.Direction;	
-					Shaman.CompareCheck = true;			
-				}
+			if(Object.CompareCheck == false)
+			{
+				Object.PreDirection = Object.Direction;	
+				Object.CompareCheck = true;			
 			}
 		}
-	}
+	}	
 }
 
-function fallen_Shaman_GetReturnDirection()
+function fallen_Shaman_GetReturnDirection(Object)
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	Object.ReturnDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
+
+	if(Object.DeadCheck == false)
 	{
-		var Shaman = fallenShaman_Group.getChildAt(i);
-		Shaman.ReturnDistance = Phaser.Math.distance(Shaman.x, Shaman.y, Shaman.ReturnPointX, Shaman.ReturnPointY);
-
-		if(Shaman.DeadCheck == false)
+		if(Object.ReturnDistance > Object.CognizeRange)
 		{
-			if(Shaman.ReturnDistance > Shaman.CognizeRange)
+			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
+			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
+
+			if(Object.y < Object.ReturnPointY)
 			{
-				Shaman.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Shaman, Shaman.ReturnPointX, Shaman.ReturnPointY);
-				Shaman.ReturnAngle = Math.abs(Shaman.ReturnAngle);
+				Object.ReturnAngle = 2 * Math.PI - Object.ReturnAngle;
+			}
 
-				if(Shaman.y < Shaman.ReturnPointY)
-				{
-					Shaman.ReturnAngle = 2 * Math.PI - Shaman.ReturnAngle;
-				}
+			if(Object.ReturnAngle >= 0 && Object.ReturnAngle <= 0.7)
+			{
+				Object.ReturnDirection = 7;
+			}
+			else if(Object.ReturnAngle > 0.7 && Object.ReturnAngle <= 1.9)
+			{
+				Object.ReturnDirection = 0;
+			}
+			else if(Object.ReturnAngle > 1.9 && Object.ReturnAngle <= 2.9)
+			{
+				Object.ReturnDirection = 1;
+			}
+			else if(Object.ReturnAngle > 2.9 && Object.ReturnAngle <= 3.9)
+			{
+				Object.ReturnDirection = 2;
+			}
+			else if(Object.ReturnAngle > 3.6 && Object.ReturnAngle <= 4.2)
+			{
+				Object.ReturnDirection = 3;
+			}
+			else if(Object.ReturnAngle > 4.2 && Object.ReturnAngle <= 4.9)
+			{
+				Object.ReturnDirection = 4;
+			}
+			else if(Object.ReturnAngle > 4.9 && Object.ReturnAngle <= 5.7)
+			{
+				Object.ReturnDirection = 5;
+			}
+			else if(Object.ReturnAngle > 5.7 && Object.ReturnAngle <= 6.2)
+			{
+				Object.ReturnDirection = 6;
+			}
 
-				if(Shaman.ReturnAngle >= 0 && Shaman.ReturnAngle <= 0.7)
-				{
-					Shaman.ReturnDirection = 7;
-				}
-				else if(Shaman.ReturnAngle > 0.7 && Shaman.ReturnAngle <= 1.9)
-				{
-					Shaman.ReturnDirection = 0;
-				}
-				else if(Shaman.ReturnAngle > 1.9 && Shaman.ReturnAngle <= 2.9)
-				{
-					Shaman.ReturnDirection = 1;
-				}
-				else if(Shaman.ReturnAngle > 2.9 && Shaman.ReturnAngle <= 3.9)
-				{
-					Shaman.ReturnDirection = 2;
-				}
-				else if(Shaman.ReturnAngle > 3.6 && Shaman.ReturnAngle <= 4.2)
-				{
-					Shaman.ReturnDirection = 3;
-				}
-				else if(Shaman.ReturnAngle > 4.2 && Shaman.ReturnAngle <= 4.9)
-				{
-					Shaman.ReturnDirection = 4;
-				}
-				else if(Shaman.ReturnAngle > 4.9 && Shaman.ReturnAngle <= 5.7)
-				{
-					Shaman.ReturnDirection = 5;
-				}
-				else if(Shaman.ReturnAngle > 5.7 && Shaman.ReturnAngle <= 6.2)
-				{
-					Shaman.ReturnDirection = 6;
-				}
+			Object.Direction = Object.ReturnDirection;
 
-				Shaman.Direction = Shaman.ReturnDirection;
-
-				if(Shaman.CompareCheck == false)
-				{
-					Shaman.PreDirection = Shaman.Direction;	
-					Shaman.CompareCheck = true;			
-				}
+			if(Object.CompareCheck == false)
+			{
+				Object.PreDirection = Object.Direction;	
+				Object.CompareCheck = true;			
 			}
 		}
-	}
+	}	
 }
 
 function fallen_Shaman_Compare_Direction(PreDirection, CurDirection, Object)
@@ -398,76 +387,71 @@ function fallen_Shaman_Animation_Change(Direction, Status, Object)
 
 //Shaman AI
 //-------------------------------------------------------------------------------------------
-function fallen_Shaman_Move()
+function fallen_Shaman_Move(Object)
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	if(Object.DeadCheck == false)
 	{
-		var Shaman = fallenShaman_Group.getChildAt(i);
-
-		if(Shaman.DeadCheck == false)
+		if(Object.Distance < Object.CognizeRange)
 		{
-			if(Shaman.Distance < Shaman.CognizeRange)
+			//Run
+			if(Object.MoveCheck == false)
 			{
-				//Run
-				if(Shaman.MoveCheck == false)
-				{
-					Shaman.AttackCheck = false;
-					Shaman.StandCheck = false;					
-					Shaman.DamageCheck = false;
-					Shaman.MoveCheck = true;
+				Object.AttackCheck = false;
+				Object.StandCheck = false;					
+				Object.DamageCheck = false;
+				Object.MoveCheck = true;
 
-					Lucifer_Game.physics.arcade.moveToObject(Shaman, Player, 80);
-					fallen_Shaman_Animation_Change(Shaman.Direction, 'Run', Shaman);
-				}
-
-				//Stand
-				if(Shaman.Distance < Shaman.AttackRange)
-				{
-					if(Shaman.StandCheck == false)
-					{
-						fallen_Shaman_Animation_Change(Shaman.Direction, 'Stand', Shaman);
-						Shaman.StandCheck = true;
-					}
-
-					//Attack
-					fallen_Shaman_Attack(Shaman);
-
-					Shaman.body.velocity.x = 0;
-					Shaman.body.velocity.y = 0;
-				}
-			}
-			else
-			{
-				//Return Run
-				if(Shaman.ReturnDistance > 10)
-				{
-					if(Shaman.MoveCheck == false)
-					{
-						Shaman.StandCheck = false;
-						Shaman.MoveCheck = true;
-						
-						Lucifer_Game.physics.arcade.moveToXY(Shaman, Shaman.ReturnPointX, Shaman.ReturnPointY, 80);
-						fallen_Shaman_Animation_Change(Shaman.ReturnDirection, 'Run', Shaman);	
-					}
-				}
-
-				//Return Stand
-				if(Shaman.ReturnDistance < 10)
-				{
-					if(Shaman.StandCheck == false)
-					{
-						fallen_Shaman_Animation_Change(Shaman.ReturnDirection, 'Stand', Shaman);
-						Shaman.StandCheck = true;
-					}					
-
-					Shaman.body.velocity.x = 0;
-					Shaman.body.velocity.y = 0;
-				}
+				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 80);
+				fallen_Shaman_Animation_Change(Object.Direction, 'Run', Object);
 			}
 
-			fallen_Shaman_Compare_Direction(Shaman.PreDirection, Shaman.Direction, Shaman);	
+			//Stand
+			if(Object.Distance < Object.AttackRange)
+			{
+				if(Object.StandCheck == false)
+				{
+					fallen_Shaman_Animation_Change(Object.Direction, 'Stand', Object);
+					Object.StandCheck = true;
+				}
+
+				//Attack
+				fallen_Shaman_Attack(Object);
+
+				Object.body.velocity.x = 0;
+				Object.body.velocity.y = 0;
+			}
 		}
-	}
+		else
+		{
+			//Return Run
+			if(Object.ReturnDistance > 10)
+			{
+				if(Object.MoveCheck == false)
+				{
+					Object.StandCheck = false;
+					Object.MoveCheck = true;
+					
+					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 80);
+					fallen_Shaman_Animation_Change(Object.ReturnDirection, 'Run', Object);	
+				}
+			}
+
+			//Return Stand
+			if(Object.ReturnDistance < 10)
+			{
+				if(Object.StandCheck == false)
+				{
+					fallen_Shaman_Animation_Change(Object.ReturnDirection, 'Stand', Object);
+					Object.StandCheck = true;
+				}					
+
+				Object.body.velocity.x = 0;
+				Object.body.velocity.y = 0;
+			}
+		}
+
+		fallen_Shaman_Compare_Direction(Object.PreDirection, Object.Direction, Object);	
+	}	
 }
 
 function fallen_Shaman_Attack(Object)
@@ -517,89 +501,82 @@ function fallen_Shaman_HitCount(Bullet, Object)
 	}	
 }
 
-function fallen_Shaman_Dead()
+function fallen_Shaman_Dead(Object)
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	if(Object.Hp < 0)
 	{
-		var Shaman = fallenShaman_Group.getChildAt(i);
-
-		if(Shaman.Hp < 0)
-		{
-			Shaman.DeadCheck = true;			
-		}
-
-		if(Shaman.DeadCheck == true)
-		{
-			if(Shaman.DeadMotionCheck == false)
-			{
-				Shaman.loadTexture('MON_FallenShaman_Dead', 0, true);
-				Shaman.animations.play('MON_FallenShaman_Dead_0', 10, true);
-				Shaman.DeadMotionCheck = true;
-			}			
-
-			var currentFrame = Shaman.animations.frame;
-
-			if(Shaman.DeadMotionCheck == true && currentFrame == 14)
-			{
-				Shaman.destroy();
-				Shaman.Name.destroy();
-			}					
-		}		
+		Object.DeadCheck = true;			
 	}
+
+	if(Object.DeadCheck == true)
+	{
+		if(Object.DeadMotionCheck == false)
+		{
+			Object.loadTexture('MON_FallenShaman_Dead', 0, true);
+			Object.animations.play('MON_FallenShaman_Dead_0', 10, true);
+			Object.DeadMotionCheck = true;
+		}			
+
+		var currentFrame = Object.animations.frame;
+
+		if(Object.DeadMotionCheck == true && currentFrame == 14)
+		{
+			Object.destroy();
+			Object.Name.destroy();
+		}					
+	}		
 }
 //-------------------------------------------------------------------------------------------
 
 //Hp Bar Mask
-function fallen_Shaman_Hpbar_Mask()
+function fallen_Shaman_Hpbar_Mask(Object)
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	if(Object.DeadCheck == false)
 	{
-		var Shaman = fallenShaman_Group.getChildAt(i);
-
-		if(Shaman.DeadCheck == false)
-		{
-			Shaman.HpMask.clear();
-			Shaman.HpMask.drawRect(Shaman.HpBar.x - 100, Shaman.HpBar.y, Shaman.Hp, 200);
-			Shaman.HpBar.mask = Shaman.HpMask;
-		}
-	}
+		Object.HpMask.clear();
+		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
+		Object.HpBar.mask = Object.HpMask;
+	}	
 }
 
 //Rect Position / FireBall Pos
-function fallen_Shaman_RectPos()
+function fallen_Shaman_RectPos(Object)
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	if(Object.DeadCheck == false)
 	{
-		var Shaman = fallenShaman_Group.getChildAt(i);
+		//Hir Rect
+		Object.HitRect.x = Object.x;
+		Object.HitRect.y = Object.y;
+		Object.HitRect.centerOn(Object.x, Object.y);
 
-		if(Shaman.DeadCheck == false)
-		{
-			//Hir Rect
-			Shaman.HitRect.x = Shaman.x;
-			Shaman.HitRect.y = Shaman.y;
-			Shaman.HitRect.centerOn(Shaman.x, Shaman.y);
-
-			//Attack Rect
-			Shaman.AttackRect.x = Shaman.x;
-			Shaman.AttackRect.y = Shaman.y;
-			Shaman.AttackRect.centerOn(Shaman.x, Shaman.y);				
-		}
-	}
+		//Attack Rect
+		Object.AttackRect.x = Object.x;
+		Object.AttackRect.y = Object.y;
+		Object.AttackRect.centerOn(Object.x, Object.y);				
+	}	
 }
 
 // Shaman Update / Render
 //-------------------------------------------------------------------------------------------
 function fallen_Shaman_Update()
 {
-	fallen_Shaman_Hpbar_Mask();
-	fallen_Shaman_RectPos();
-	fallen_Shaman_FollwName();
-	fallen_Shaman_GetDirection();
-	fallen_Shaman_GetReturnDirection();
-	fallen_Shaman_Move();
+	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	{
+		var Shaman = fallenShaman_Group.getChildAt(i);
 
-	//Dead
-	fallen_Shaman_Dead();
+		fallen_Shaman_Hpbar_Mask(Shaman);
+		fallen_Shaman_RectPos(Shaman);
+		fallen_Shaman_FollwName(Shaman);
+		fallen_Shaman_GetDirection(Shaman);
+		fallen_Shaman_GetReturnDirection(Shaman);
+		fallen_Shaman_Move(Shaman);
+
+		//Player Mosnter Collision
+		player_Monster_Col(Shaman);
+
+		//Dead
+		fallen_Shaman_Dead(Shaman);
+	}	
 }
 
 function fallen_Shaman_Render()
