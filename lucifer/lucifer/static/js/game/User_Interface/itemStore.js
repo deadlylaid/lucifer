@@ -182,7 +182,6 @@ function itemsCreate(){
         font: "15px Courier", fill: "#fff", 
     };
 
-
     //Postion -----------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
     var itemData = [
@@ -267,6 +266,21 @@ function itemsCreate(){
     Lucifer_Game.add.existing(basicArmor);
     //---------------------------------------------------------------------------------------   
     //---------------------------------------------------------------------------------------   
+
+    invenArrayLength = inventory.length;
+    for(i=0; i<invenArrayLength; i++){
+        switch(inventory[i].item_name){
+            case '빨간물약':
+                inventory[i]=redPotion;
+                break;
+            case '기본검':
+                inventory[i]=basicSword;
+                break;
+            case '기본갑옷':
+                inventory[i]=basicArmor;
+                break;
+        };
+    }
 }
 
 function itemsUpdate(){
