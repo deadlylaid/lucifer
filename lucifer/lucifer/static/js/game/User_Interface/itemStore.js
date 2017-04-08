@@ -2,7 +2,9 @@ var potionSprite,
     swordSprite,
     armorSprite,
     uiStore,
-    selectedItem = null;
+    selectedItem = null,
+    invenKeyTimer,
+    invenKeyValidCheck = 1;
 
 potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemText, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
@@ -96,12 +98,17 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet('swordTab', '../../static/images/game/UI/store/swordTab.png', 45, 80);
     Lucifer_Game.load.spritesheet('armorTab', '../../static/images/game/UI/store/armorTab.png', 45, 80);
     Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
+    Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
+
 
 };
 
 function itemsCreate(){
 
     //Tab 이미지 추가
+    //--------------------------------------------------------
+
+    //itemStore-----------------------------------------------
     //--------------------------------------------------------
     potionTab = Lucifer_Game.add.sprite(446, 100, 'potionTab');
     potionTab.anchor.setTo(0.5, 0.5);
@@ -139,14 +146,29 @@ function itemsCreate(){
 
     saleTab.inputEnabled = true;
     saleTab.events.onInputDown.add(buyItem, this);
-    //--------------------------------------------------------
-    //--------------------------------------------------------
 
     uiStore = Lucifer_Game.add.sprite(228, 330, 'uiStore');
     uiStore.anchor.setTo(0.5, 0.5); 
     uiStore.scale.setTo(0.9, 0.9);
     uiStore.fixedToCamera = true;
     uiStore.visible = false;
+    //--------------------------------------------------------
+    //--------------------------------------------------------
+
+    //inventory-----------------------------------------------
+    //--------------------------------------------------------
+    uiInventory = Lucifer_Game.add.sprite(445, 300, 'inven');
+    uiInventory.anchor.setTo(0.5, 0.5);
+    uiInventory.scale.setTo(0.8, 0.8);
+    uiInventory.fixedToCamera = true;
+    uiInventory.visible = false;
+
+    //inventory key setting -----------------------------------------
+    key_inven = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.E);
+
+    invenKeyTimer = Lucifer_Game.time.create(false);
+    invenKeyTimer.loop(400, invenTimeCheck, this);
+    //---------------------------------------------------------------
 
     //itemStore font style
     var style = {
@@ -248,6 +270,13 @@ function itemsCreate(){
 }
 
 function itemsUpdate(){
+    if(key_inven.isDown){
+        invenKeyTimer.start();
+        if(invenKeyValidCheck == 1){
+            invenUi();
+        }
+        invenKeyValidCheck = 0;
+    }
 }
 
 function showStore(){
@@ -301,6 +330,7 @@ function armorStoreTab(){
 function clickItem(sprite){
     selectedItem = sprite;
 }
+
 function buyItem() {
     if(selectedItem === null){
         alert("먼저 구매할 물건을 클릭하세요");
@@ -320,6 +350,18 @@ function inventoryPost(selectedItem){
             selectedItem:selectedItem,
         },
     })
+}
+
+function invenTimeCheck(){
+    invenKeyValidCheck = 1;
+}
+
+function invenUi(){
+    if(uiInventory.visible === true){
+        uiInventory.visible = false;
+    }else{
+        uiInventory.visible = true;
+    }
 }
 
 function itemStoreRender(){
