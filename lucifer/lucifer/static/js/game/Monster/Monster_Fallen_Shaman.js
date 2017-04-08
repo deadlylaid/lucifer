@@ -71,6 +71,9 @@ function fallen_Shaman_Preload()
 
 function fallen_Shaman_Create()
 {
+	Lucifer_Game.renderer.setTexturePriority(['MON_FallenShaman_Stand', 'MON_FallenShaman_Run', 
+											  'MON_FallenShaman_Attack', 'MON_FallenShaman_Dead']);
+
 	//Group
 	fallenShaman_Group = Lucifer_Game.add.group();
 	fallen_Shaman_Clone(3800, 1492);
@@ -534,7 +537,9 @@ function fallen_Shaman_Hpbar_Mask(Object)
 	if(Object.DeadCheck == false)
 	{
 		Object.HpMask.clear();
+		Object.HpMask.beginFill(0xffffff);
 		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
+		Object.HpMask.endFill();
 		Object.HpBar.mask = Object.HpMask;
 	}	
 }
@@ -560,7 +565,8 @@ function fallen_Shaman_RectPos(Object)
 //-------------------------------------------------------------------------------------------
 function fallen_Shaman_Update()
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	var length = fallenShaman_Group.length;
+	for(var i = 0; i < length; ++i)
 	{
 		var Shaman = fallenShaman_Group.getChildAt(i);
 
@@ -581,7 +587,8 @@ function fallen_Shaman_Update()
 
 function fallen_Shaman_Render()
 {
-	for(var i = 0; i < fallenShaman_Group.length; ++i)
+	var length = fallenShaman_Group.length;
+	for(var i = 0; i < length; ++i)
 	{
 		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).HitRect, 'rgba(0, 200, 0, 0.5)');
 		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).AttackRect, 'rgba(200, 0, 200, 0.5)');		

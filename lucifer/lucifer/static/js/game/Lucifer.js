@@ -6,8 +6,7 @@
 	처음 시작을 Loading 화면으로 해준다.
 */
 
-var Lucifer_Game = new Phaser.Game(1280, 800, Phaser.CANVAS, 'scene');
-
+var Lucifer_Game = new Phaser.Game(1280, 800, Phaser.WEBGL_MULTI, 'scene');
 
 Lucifer_Game.state.add('boot', bootScene);
 Lucifer_Game.state.add('load', loadScene);

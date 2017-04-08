@@ -24,6 +24,8 @@ function skill_Preload()
 
 function skill_Create()
 {
+	Lucifer_Game.renderer.setTexturePriority(['SK_Bavarian_Skill', 'SK_Bavarian_Skill2', 'SK_Icon_Skill', 'SK_Icon_Skill2']);
+	
 	//Skill - 1
 	skill_Bavarian = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill');
 	skill_Bavarian.anchor.setTo(0.5, 0.5);		

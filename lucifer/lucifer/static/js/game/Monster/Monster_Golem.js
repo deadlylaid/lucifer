@@ -64,6 +64,8 @@ function golem_Preload()
 
 function golem_Create()
 {
+	Lucifer_Game.renderer.setTexturePriority(['MON_Golem_Stand', 'MON_Golem_Walk', 'MON_Golem_Attack', 'monsterHealthBar']);
+
 	//골렘 그룹 생성 
 	//(그룹 부모 : null / 그룹 이름 : golem / Stage 등록 : false, body, Physics 등록 : true)
 	golem_Group = Lucifer_Game.add.group(/*null, 'Golem', false, true, true*/);
@@ -456,7 +458,9 @@ function Hpbar_Mask(Object)
 	if(Object.DeadCheck == false)
 	{
 		Object.HpMask.clear();
+		Object.HpMask.beginFill(0xffffff);
 		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
+		Object.HpMask.endFill();
 		Object.HpBar.mask = Object.HpMask;
 	}	
 }
@@ -482,6 +486,7 @@ function golem_RectPos(Object)
 //-------------------------------------------------------------------------------------------
 function golem_Update()
 {
+	//var length = golem_Group.length;
 	for(var i = 0; i < golem_Group.length; ++i)
 	{
 		var golem = golem_Group.getChildAt(i);
@@ -503,7 +508,8 @@ function golem_Update()
 
 function golem_Redner()
 {
-	for(var i = 0; i < golem_Group.length; ++i)
+	var length = golem_Group.length;
+	for(var i = 0; i < length; ++i)
 	{
 		Lucifer_Game.debug.geom(Object.HitRect, 'rgba(0, 0, 200, 0.5)');
 		Lucifer_Game.debug.geom(Object.AttackRect, 'rgba(0, 200, 0, 0.5)');
