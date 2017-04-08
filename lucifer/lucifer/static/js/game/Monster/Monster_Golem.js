@@ -7,8 +7,8 @@ var golem_Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 {
 	Phaser.Sprite.call(this, game, x, y, 'MON_Golem_Attack');
-	this.golem_Hp = Hp;
-	this.golem_MaxHp = MaxHp;
+	this.Hp = Hp;
+	this.MaxHp = MaxHp;
 	this.golem_CognizeRange = CognizeRange;
 	this.golem_AttackRange = AttackRange;
 
@@ -25,7 +25,7 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.golem_HpBar, this.golem_HpMask, this.golem_Name;
 
 	//Rect
-	this.golem_HitRect, this.golem_AttackRect;
+	this.HitRect, this.golem_AttackRect;
 	
 	//Time
 	this.golem_Attack_DelayTimer, this.golem_DelayTime_Total = 1;
@@ -141,7 +141,7 @@ function golem_Clone(PointX, PointY)
     golem_Object.events.onInputOut.add(out, golem_Object);
 
     //Rect
-    golem_Object.golem_HitRect = new Phaser.Rectangle(golem_Object.x, golem_Object.y, 60, 60);
+    golem_Object.HitRect = new Phaser.Rectangle(golem_Object.x, golem_Object.y, 60, 60);
     golem_Object.golem_AttackRect = new Phaser.Rectangle(golem_Object.x, golem_Object.y, 100, 100);
 
     //Delay Timer
@@ -464,7 +464,7 @@ function golem_Dead()
 	{
 		var Golem = golem_Group.getChildAt(i);
 
-		if(Golem.golem_Hp < 0)
+		if(Golem.Hp < 0)
 		{
 			Golem.golem_DeadCheck = true;
 			Golem.destroy();
@@ -484,7 +484,7 @@ function golem_Hpbar_Mask()
 		if(Golem.golem_DeadCheck == false)
 		{
 			Golem.golem_HpMask.clear();
-			Golem.golem_HpMask.drawRect(Golem.golem_HpBar.x - 100, Golem.golem_HpBar.y, Golem.golem_Hp, 200);
+			Golem.golem_HpMask.drawRect(Golem.golem_HpBar.x - 100, Golem.golem_HpBar.y, Golem.Hp, 200);
 			Golem.golem_HpBar.mask = Golem.golem_HpMask;
 		}		
 	}
@@ -500,9 +500,9 @@ function golem_RectPos()
 		if(Golem.golem_DeadCheck == false)
 		{
 			//Hit Rect
-			Golem.golem_HitRect.x = Golem.x;
-			Golem.golem_HitRect.y = Golem.y;
-			Golem.golem_HitRect.centerOn(Golem.x, Golem.y);
+			Golem.HitRect.x = Golem.x;
+			Golem.HitRect.y = Golem.y;
+			Golem.HitRect.centerOn(Golem.x, Golem.y);
 
 			//Attack Rect
 			Golem.golem_AttackRect.x = Golem.x;
@@ -531,7 +531,7 @@ function golem_Redner()
 {
 	for(var i = 0; i < golem_Group.length; ++i)
 	{
-		Lucifer_Game.debug.geom(golem_Group.getChildAt(i).golem_HitRect, 'rgba(0, 0, 200, 0.5)');
+		Lucifer_Game.debug.geom(golem_Group.getChildAt(i).HitRect, 'rgba(0, 0, 200, 0.5)');
 		Lucifer_Game.debug.geom(golem_Group.getChildAt(i).golem_AttackRect, 'rgba(0, 200, 0, 0.5)');
 	}
 }

@@ -318,42 +318,12 @@ function PlayerAttack()
 {
 	//Player Attack Motion (임시로 Monster를 Golem 으로 한정 시킴 나중에 이 함수를 바꿔서 여러 마리랑 가능하게 해야됨.)
 	//---------------------------------------------------------------------------------------
-	for(var i = 0; i < golem_Group.length; ++i)
-	{
-		DistanceToMonster = Phaser.Math.distance(Player.x, Player.y, golem_Group.getChildAt(i).x, golem_Group.getChildAt(i).y);
-
-		if(DistanceToMonster < 70)
-		{	
-			if( golem_Group.getChildAt(i).alive)
-			{
-				if(Phaser.Rectangle.intersects(Attack_Rect, golem_Group.getChildAt(i).golem_HitRect))
-				{	
-					//충돌된 상태에서 다른곳 클릭하게 되면 공격모션이 나오는것을 예외처리 해주어야 한다.
-					if(Lucifer_Game.input.mousePointer.isDown)
-					{
-						Animation_Change(Direction, 'Attack');	
-						Damage_Count(golem_Group.getChildAt(i));	
-
-						Player_AttackCheck = true;			
-					}	
-					else
-					{
-						Player_AttackCheck = false;
-					}		
-				}						
-			}											
-		}
-	}			
+	player_Golem_Col();
+	player_Shaman_Col();
 	
 	//console.log(Player.animations.frameTotal);
 	//console.log(Phaser.Rectangle.intersects(Attack_Rect, golem_HitRect));
 	//---------------------------------------------------------------------------------------	
-}
-
-function Damage_Count(Golem)
-{	
-	//golem
-	Golem.golem_Hp -= attack_point;	
 }
 
 function PlayerJump()
