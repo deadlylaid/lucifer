@@ -22,17 +22,18 @@ class InventoryAPIView(ListAPIView):
     def post(self, request):
         # 넘어온 데이터를 받는다
         character = self.request.user.character
-        item_name = self.request.POST.get('item_name')
-        count = self.request.POST.get('count')
+        item_name = request.data.get('character')
+        selected_item = request.data.get('selectedItem')
 
         # 해당 object가 존재하지 않을 경우 404
-        item = get_object_or_404(Item, name=item_name)
+        item = get_object_or_404(Item, name=selected_item)
 
         inventory = character.inventory_set.create(
                 character=character,
                 item=item,
-                count=count,
+                count=1,
                 )
+        inventory.save()
 
         serializer = InventorySerializer(inventory)
         if InventorySerializer(data=serializer.data):

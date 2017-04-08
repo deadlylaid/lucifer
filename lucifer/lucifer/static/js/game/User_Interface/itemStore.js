@@ -307,7 +307,19 @@ function buyItem() {
     }else{
         alert("구매한 물건 : " + selectedItem.name);
         inventory.push(selectedItem);
+        inventoryPost(selectedItem.name);
     }
+}
+
+function inventoryPost(selectedItem){
+    $.ajax({
+        method:'POST',
+        url:'/api/user/character/inventory/',
+        data:{
+            character:character.nickname,
+            selectedItem:selectedItem,
+        },
+    })
 }
 
 function itemStoreRender(){
