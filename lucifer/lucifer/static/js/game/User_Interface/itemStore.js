@@ -2,7 +2,7 @@ var potionSprite,
     swordSprite,
     armorSprite,
     uiStore,
-    selectedItem;
+    selectedItem = null;
 
 potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemText, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
@@ -302,7 +302,24 @@ function clickItem(sprite){
     selectedItem = sprite;
 }
 function buyItem() {
-    alert("구매한 물건 : " + selectedItem.name);
+    if(selectedItem === null){
+        alert("먼저 구매할 물건을 클릭하세요");
+    }else{
+        alert("구매한 물건 : " + selectedItem.name);
+        inventory.push(selectedItem);
+        inventoryPost(selectedItem.name);
+    }
+}
+
+function inventoryPost(selectedItem){
+    $.ajax({
+        method:'POST',
+        url:'/api/user/character/inventory/',
+        data:{
+            character:character.nickname,
+            selectedItem:selectedItem,
+        },
+    })
 }
 
 function itemStoreRender(){

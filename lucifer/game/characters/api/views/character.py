@@ -13,3 +13,7 @@ class CharacterAPIView(ListAPIView):
 
         user = self.request.user
         return Character.objects.filter(user=user)
+
+    def put(self, request):
+        user = self.request.user
+        return Character.objects.filter(user=user)
