@@ -173,8 +173,7 @@ function itemsCreate(){
     itemText = parsedItemData.text;
 
     redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[2].limited_job, itemText, itemStoreStyle);
-    redPotion.body.clearShapes();
-    redPotion.body.addRectangle(100, 100, 100, 100);
+    
     //draw rect ----------------------------------------------------------------------------
     Lucifer_Game.add.existing(redPotion);
 
