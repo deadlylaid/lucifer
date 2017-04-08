@@ -320,6 +320,7 @@ function PlayerAttack()
 	//---------------------------------------------------------------------------------------
 	player_Golem_Col();
 	player_Shaman_Col();
+	player_Andariel_Col();
 	
 	//console.log(Player.animations.frameTotal);
 	//console.log(Phaser.Rectangle.intersects(Attack_Rect, golem_HitRect));

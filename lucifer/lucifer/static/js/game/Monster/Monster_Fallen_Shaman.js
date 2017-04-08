@@ -1,6 +1,6 @@
 // Shaman 기본 변수 
 //------------------------------------------------------------------------------
-var fallenShaman_Group, fallenShaman_Object
+var fallenShaman_Group, fallenShaman_Object;
 //------------------------------------------------------------------------------
 
 // Shman
@@ -78,7 +78,7 @@ function fallen_Shaman_Create()
 
 function fallen_Shaman_Clone(PointX, PointY)
 {
-	fallenShaman_Object = new Fallen_Shaman(Lucifer_Game, PointX, PointY, 300, 300, 300, 200);
+	fallenShaman_Object = new Fallen_Shaman(Lucifer_Game, PointX, PointY, 300, 300, 250, 200);
 
 	Lucifer_Game.physics.p2.enable(fallenShaman_Object);
 	fallenShaman_Object.body.fixedRotation = true;
@@ -129,13 +129,13 @@ function fallen_Shaman_Clone(PointX, PointY)
 
 	//Dead
 	index = 0;
-	for(var i = 0; i < 8; ++i)
-	{
-		fallenShaman_Object.animations.add('MON_FallenShaman_Dead_' + i,
-										   [index, index + 1, index + 2, index + 3, index + 4], 
-										   60, true);
-		index += 5;
-	}
+	fallenShaman_Object.animations.add('MON_FallenShaman_Dead_0',
+									   [
+									   	  index,      index + 1,  index + 2,  index + 3,  index + 4,
+									   	  index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
+									   	  index + 10, index + 11, index + 12, index + 13, index + 14
+									   ], 
+									   60, true);	
 
 	fallenShaman_Object.loadTexture('MON_FallenShaman_Stand', 0, true);
 	fallenShaman_Object.animations.play('MON_FallenShaman_Stand_0', 10, true);
@@ -533,19 +533,17 @@ function fallen_Shaman_Dead()
 			if(Shaman.DeadMotionCheck == false)
 			{
 				Shaman.loadTexture('MON_FallenShaman_Dead', 0, true);
-				Shaman.animations.play('MON_FallenShaman_Dead_0', 5, true);
+				Shaman.animations.play('MON_FallenShaman_Dead_0', 10, true);
 				Shaman.DeadMotionCheck = true;
 			}			
 
 			var currentFrame = Shaman.animations.frame;
 
-			if(Shaman.DeadMotionCheck == true && currentFrame == 4)
+			if(Shaman.DeadMotionCheck == true && currentFrame == 14)
 			{
 				Shaman.destroy();
 				Shaman.Name.destroy();
-			}
-			
-			console.log(currentFrame);		
+			}					
 		}		
 	}
 }
