@@ -2,7 +2,7 @@ var potionSprite,
     swordSprite,
     armorSprite,
     uiStore,
-    isSelected;
+    selectedItem;
 
 potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemText, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
@@ -173,7 +173,21 @@ function itemsCreate(){
     itemText = parsedItemData.text;
 
     redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[2].limited_job, itemText, itemStoreStyle);
+
+    //input Rect ----------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
     
+    Lucifer_Game.physics.p2.enable(redPotion); 
+    redPotion.body.clearShapes();
+    redPotion.body.addRectangle();
+    redPotion.body.static = true;
+
+    redPotion.inputEnabled = true;
+    redPotion.events.onInputDown.add(clickItem, this);
+
+    //--------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------
+
     //draw rect ----------------------------------------------------------------------------
     Lucifer_Game.add.existing(redPotion);
 
@@ -192,6 +206,18 @@ function itemsCreate(){
     itemText = parsedItemData.text;
 
     basicSword = new sword(Lucifer_Game, 55, 105, itemList[1].name, itemList[1].attack_point, itemList[2].limited_job, itemText, itemStoreStyle);
+    
+    //input Rect ----------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
+    Lucifer_Game.physics.p2.enable(basicSword); 
+    basicSword.body.addRectangle(0, 0);
+    basicSword.body.static = true;
+
+    basicSword.inputEnabled = true;
+    basicSword.events.onInputDown.add(clickItem, this);
+    //--------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------
+
     Lucifer_Game.add.existing(basicSword);
     //----------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------
@@ -208,6 +234,14 @@ function itemsCreate(){
     itemText = parsedItemData.text;
 
     basicArmor = new armor(Lucifer_Game, 55, 105, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job, itemText, itemStoreStyle);
+
+    Lucifer_Game.physics.p2.enable(basicArmor); 
+    basicArmor.body.addRectangle(0, 0);
+    basicArmor.body.static = true;
+
+    basicArmor.inputEnabled = true;
+    basicArmor.events.onInputDown.add(clickItem, this);
+
     Lucifer_Game.add.existing(basicArmor);
     //---------------------------------------------------------------------------------------   
     //---------------------------------------------------------------------------------------   
@@ -264,7 +298,11 @@ function armorStoreTab(){
     basicArmor.getVisible(true);
 }
 
+function clickItem(sprite){
+    selectedItem = sprite;
+}
 function buyItem() {
+    alert("구매한 물건 : " + selectedItem.name);
 }
 
 function itemStoreRender(){
