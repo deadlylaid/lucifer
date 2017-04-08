@@ -87,22 +87,6 @@ function skill_Two_CoolTimer()
 	skill_Two_TimeTotal += 1000;
 }
 
-function skill_Attack()
-{	
-	if(skill_Bavarian_Two.visible == true)
-	{
-		for(var i = 0; i < golem_Group.length; ++i)
-		{
-			var Golem = golem_Group.getChildAt(i);
-
-			if(Phaser.Rectangle.intersects(skill_Two_Rect, Golem.golem_HitRect))
-			{
-		       	Golem.golem_Hp -= 10;						
-			}
-		}		
-	}	
-}
-
 function skill_Reset()
 {
 	if(skill_Bavarian.frame == 19 && skill_Bavarian.visible == true)
@@ -184,9 +168,6 @@ function skill_Update()
 	skill_Two_Rect.x = skill_Bavarian_Two.x;
 	skill_Two_Rect.y = skill_Bavarian_Two.y; 
 	skill_Two_Rect.centerOn(skill_Bavarian_Two.x, skill_Bavarian_Two.y);
-
-	//Attack
-	skill_Attack();
 
 	//Reset
 	skill_Reset();
