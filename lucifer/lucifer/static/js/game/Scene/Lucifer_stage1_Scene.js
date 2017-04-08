@@ -22,6 +22,7 @@ var stage1_Scene =
 		golem_Create();
 		fallen_Shaman_Create();
 		andariel_Create();
+		wraith_Create();
 
         //items
         itemsCreate();
@@ -51,6 +52,7 @@ var stage1_Scene =
 		golem_Update();
 		fallen_Shaman_Update();
 		andariel_Update();
+		wraith_Update();
 
         //items Update
         itemsUpdate();
@@ -86,6 +88,7 @@ var stage1_Scene =
 			golem_Redner();
 			fallen_Shaman_Render();
 			andariel_Render();
+			wraith_Render();
 			
             //itemStoreRender
             itemStoreRender();

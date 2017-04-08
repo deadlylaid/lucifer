@@ -69,8 +69,7 @@ function golem_Create()
 	//골렘 그룹 생성 
 	//(그룹 부모 : null / 그룹 이름 : golem / Stage 등록 : false, body, Physics 등록 : true)
 	golem_Group = Lucifer_Game.add.group(/*null, 'Golem', false, true, true*/);
-	golem_Clone(4000, 1492);
-	golem_Clone(4200, 1592);			
+	golem_Clone(4000, 1492);		
 }
 
 function golem_Clone(PointX, PointY)

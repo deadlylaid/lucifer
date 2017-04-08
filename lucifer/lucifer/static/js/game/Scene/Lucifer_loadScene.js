@@ -63,6 +63,7 @@ var loadScene =
 		golem_Preload();
 		fallen_Shaman_Preload();
 		andariel_Preload();
+		wraith_Preload();
 		//----------------------------------------------------------------------------------------------------------
 	
 		//Skill
