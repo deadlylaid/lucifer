@@ -20,9 +20,7 @@ function ui_Preload()
 
 function ui_Create()
 {
-    Lucifer_Game.renderer.setTexturePriority(['UI_UnderBar', 'UI_HpBar', 'UI_MpBar', 'UI_Stat', 'UI_Skill']);
-
-	//Uesr Interface
+    //Uesr Interface
 	//---------------------------------------------------------------------------------------
 	//UI_Group = Lucifer_Game.add.group();
 	UI_HpBar = Lucifer_Game.add.sprite(417, 735, 'UI_HpBar');

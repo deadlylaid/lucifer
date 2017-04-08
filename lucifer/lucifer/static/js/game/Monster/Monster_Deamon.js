@@ -1,17 +1,17 @@
-//Wraith
+//Deamon
 //------------------------------------------------------------------------------
-var wraith_Group, deamon_Object;
+var deamon_Group, deamon_Object;
 //------------------------------------------------------------------------------
 
-//Wraith
-Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
+//Deamon
+Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 {
-	Phaser.Sprite.call(this, game, x, y, 'MON_Wraith_Dead');
+	Phaser.Sprite.call(this, game, x, y, 'MON_Deamon_Dead');
 	this.Hp = Hp, this.MaxHp = MaxHp;
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
 	//Status
-	this.Status = new Array('Stand', 'Run', 'Attack', 'Dead');
+	this.Status = new Array('Stand', 'Run', 'Attack', 'Dead', 'Skill');
 
 	//Position
 	this.PointX = x, this.PointY = y, this.ReturnPointX = x, this.ReturnPointY = y;
@@ -38,90 +38,87 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.DeadMotionCheck = false;
 }
 
-Wraith.prototype = Object.create(Phaser.Sprite.prototype);
-Wraith.prototype.constructor = Wraith;
+Deamon.prototype = Object.create(Phaser.Sprite.prototype);
+Deamon.prototype.constructor = Deamon;
 
 //Preload / Create / Clone
 //------------------------------------------------------------------------------
-function wraith_Preload()
+function deamon_Preload()
 {
-	Lucifer_Game.load.spritesheet('MON_Wraith_Stand',
-								  '../../static/images/game/Monster/Wraith/stand/stand.png',
-								  138, 149);
-	Lucifer_Game.load.spritesheet('MON_Wraith_Run',
-								  '../../static/images/game/Monster/Wraith/run/run.png',
-								  152, 148);
-	Lucifer_Game.load.spritesheet('MON_Wraith_Attack',
-								  '../../static/images/game/Monster/Wraith/attack/attack.png',
-								  141, 186);
-	Lucifer_Game.load.spritesheet('MON_Wraith_Dead',
-								  '../../static/images/game/Monster/Wraith/death/death.png',
-								  182, 180);
+	Lucifer_Game.load.spritesheet('MON_Deamon_Stand',
+								  '../../static/images/game/Monster/Demon/stand/stand.png',
+								  184, 147);
+	Lucifer_Game.load.spritesheet('MON_Deamon_Run',
+								  '../../static/images/game/Monster/Demon/run/run.png',
+								  151, 152);
+	Lucifer_Game.load.spritesheet('MON_Deamon_Attack',
+								  '../../static/images/game/Monster/Demon/attack/attack.png',
+								  200, 140);
+	Lucifer_Game.load.spritesheet('MON_Deamon_Dead',
+								  '../../static/images/game/Monster/Demon/death/death.png',
+								  204, 172);
+	Lucifer_Game.load.spritesheet('MON_Deamon_Skill',
+								  '../../static/images/game/Monster/Demon/skill/skill.png',
+								  203, 153);
 }
 
-function wraith_Create()
+function deamon_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_Wraith_Stand', 'MON_Wraith_Run', 
-											  'MON_Wraith_Attack', 'MON_Wraith_Dead']);
+	Lucifer_Game.renderer.setTexturePriority(['MON_Deamon_Stand', 'MON_Deamon_Run', 
+											  'MON_Deamon_Attack', 'MON_Deamon_Dead', 'MON_Deamon_Skill']);
 
-	wraith_Group = Lucifer_Game.add.group();
-	wraith_Clone(3600, 1492);
+	deamon_Group = Lucifer_Game.add.group();
+	deamon_Clone(3400, 1492);
 }
-
-function wraith_Clone(PointX, PointY)
+//------------------------------------------------------------------------------
+function deamon_Clone(PointX, PointY)
 {
-	deamon_Object = new Wraith(Lucifer_Game, PointX, PointY, 100, 100, 180, 80);
+	deamon_Object = new Deamon(Lucifer_Game, PointX, PointY, 100, 100, 200, 100);
 
 	Lucifer_Game.physics.p2.enable(deamon_Object);
 	deamon_Object.body.fixedRotation = true;
 	deamon_Object.body.clearShapes();
 	deamon_Object.body.addRectangle(60, 60, 0, 0);
-	deamon_Object.body.debug = true;
-	deamon_Object.blendMode = Phaser.blendModes.ADD;
+	deamon_Object.body.debug = true;	
 
 	//Animation
 	//Stand
 	var index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		deamon_Object.animations.add('MON_Wraith_Stand_' + i,
+		deamon_Object.animations.add('MON_Deamon_Stand_' + i,
+									 [
+									 	index, index + 1, index + 2, index + 3, index + 4,
+									 	index + 5, index + 6, index + 7
+									 ], 60, true);
+
+		deamon_Object.animations.add('MON_Deamon_Run_' + i,
 									 [
 									 	index, index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7
 									 ], 60, true);
 		index += 8;		
-	}
-
-	//Run
-	index = 0;
-	for(var i = 0; i < 8; ++i)
-	{
-		deamon_Object.animations.add('MON_Wraith_Run_' + i,
-									 [
-									 	index,     index + 1, index + 2, index + 3, index + 4,
-									 	index + 5, index + 6, index + 7, index + 8, index + 9
-									 ], 60, true);
-		index += 10;
-	}
+	}	
 
 	//Attack
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		deamon_Object.animations.add('MON_Wraith_Attack_' + i,
+		deamon_Object.animations.add('MON_Deamon_Attack_' + i,
 									 [
-									 	index,      index + 1,  index + 2,  index + 3, index + 4,
-									 	index + 5,  index + 6,  index + 7,  index + 8, index + 9,
-									 	index + 10, index + 11, index + 12, index + 13
+									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
+									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
+									 	index + 10, index + 11, index + 12, index + 13, index + 14,
+									 	index + 15
 									 ], 60, true);
-		index += 14;
+		index += 16;
 	}
 
 	//Dead
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		deamon_Object.animations.add('MON_Wraith_Dead_' + i,
+		deamon_Object.animations.add('MON_Deamon_Dead_' + i,
 									[
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
@@ -131,8 +128,21 @@ function wraith_Clone(PointX, PointY)
 		index += 20;	
 	}
 
-	deamon_Object.loadTexture('MON_Wraith_Stand', 0, true);
-	deamon_Object.animations.play('MON_Wraith_Stand_0', 10, true);
+	//Skill
+	index = 0;
+	for(var i = 0; i < 8; ++i)
+	{
+		deamon_Object.animations.add('MON_Deamon_Skill_' + i,
+									[
+									   index,      index + 1,  index + 2,  index + 3,  index + 4,
+									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
+									   index + 10, index + 11 
+									], 60, true);	
+		index += 12;
+	}
+
+	deamon_Object.loadTexture('MON_Deamon_Stand', 0, true);
+	deamon_Object.animations.play('MON_Deamon_Stand_', 10, true);
 	deamon_Object.anchor.setTo(0.5, 0.5);
 
 	Lucifer_Game.physics.enable(deamon_Object, Phaser.Physics.ARCADE);
@@ -148,7 +158,7 @@ function wraith_Clone(PointX, PointY)
 	deamon_Object.HpMask.beginFill(0xffffff);
 
 	//Name
-	deamon_Object.Name = Lucifer_Game.add.text(deamon_Object.x, deamon_Object.y - 100, 'Wraith');
+	deamon_Object.Name = Lucifer_Game.add.text(deamon_Object.x, deamon_Object.y - 100, 'Deamon');
 	deamon_Object.Name.anchor.set(0.5);
 	deamon_Object.Name.align = 'center';
 	deamon_Object.Name.font = 'Arial';
@@ -159,40 +169,40 @@ function wraith_Clone(PointX, PointY)
 
 	//Input mouse Over / Up
 	deamon_Object.inputEnabled = true;
-	deamon_Object.events.onInputOver.add(wraith_over, deamon_Object);
-	deamon_Object.events.onInputOut.add(wraith_out, deamon_Object);
+	deamon_Object.events.onInputOver.add(deamon_over, deamon_Object);
+	deamon_Object.events.onInputOut.add(deamon_out, deamon_Object);
 
 	//Rect
-	deamon_Object.HitRect = new Phaser.Rectangle(deamon_Object.x, deamon_Object.y, 90, 90);
+	deamon_Object.HitRect = new Phaser.Rectangle(deamon_Object.x, deamon_Object.y, 100, 100);
 	deamon_Object.AttackRect = new Phaser.Rectangle(deamon_Object.x, deamon_Object.y, 100, 80);
 
 	//Delay Timer
 	deamon_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
-	deamon_Object.Attack_DelayTimer.loop(1000, wraith_DelayTimer, Lucifer_Game, deamon_Object);
+	deamon_Object.Attack_DelayTimer.loop(1000, deamon_DelayTimer, Lucifer_Game, deamon_Object);
 
-	wraith_Group.add(deamon_Object);
+	deamon_Group.add(deamon_Object);
 }
 //------------------------------------------------------------------------------
 //Over / Out
-function wraith_over(Object)
+function deamon_over(Object)
 {
 	Object.Name.visible = true;
 	Object.HpBar.visible = true;
 }
-function wraith_out(Object)
+function deamon_out(Object)
 {
 	Object.Name.visible = false;
 	Object.HpBar.visible = false;
 }
 
 //Timer
-function wraith_DelayTimer(Object)
+function deamon_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
 }
 
 //Name
-function wraith_FollwName(Object)
+function deamon_FollwName(Object)
 {
 	Object.Name.x = Object.position.x;
 
@@ -203,7 +213,7 @@ function wraith_FollwName(Object)
 
 //Direction
 //----------------------------------------------------------------------------------------------
-function wraith_GetDirection(Object)
+function deamon_GetDirection(Object)
 {
 	Object.Distance = Phaser.Math.distance(Object.x, Object.y, Player.x, Player.y);
 
@@ -261,7 +271,7 @@ function wraith_GetDirection(Object)
 	}	
 }
 
-function wraith_GetReturnDirection(Object)
+function deamon_GetReturnDirection(Object)
 {
 	Object.RetrunDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
 
@@ -321,7 +331,7 @@ function wraith_GetReturnDirection(Object)
 	}
 }
 
-function wraith_Compare_Direction(PreDirection, CurDirection, Object)
+function deamon_Compare_Direction(PreDirection, CurDirection, Object)
 {
 	if(PreDirection != CurDirection)
 	{
@@ -333,27 +343,33 @@ function wraith_Compare_Direction(PreDirection, CurDirection, Object)
 
 //Animation
 //----------------------------------------------------------------------------------------------
-function wraith_Animation_Change(Direction, Status, Object)
+function deamon_Animation_Change(Direction, Status, Object)
 {
 	if(Object.DeadCheck == false)
 	{
 		if(Object.Status[0] == Status)
 		{
 			//Stand
-			Object.loadTexture('MON_Wraith_Stand', 0, true);
-			Object.animations.play('MON_Wraith_Stand_' + Direction, 10, true);
+			Object.loadTexture('MON_Deamon_Stand', 0, true);
+			Object.animations.play('MON_Deamon_Stand_' + Direction, 10, true);
 		}	
 		else if(Object.Status[1] == Status)
 		{
 			//Walk
-			Object.loadTexture('MON_Wraith_Run', 0, true);
-			Object.animations.play('MON_Wraith_Run_' + Direction, 10, true);
+			Object.loadTexture('MON_Deamon_Run', 0, true);
+			Object.animations.play('MON_Deamon_Run_' + Direction, 10, true);
 		}
 		else if(Object.Status[2] == Status)
 		{
 			//Attack
-			Object.loadTexture('MON_Wraith_Attack', 0, true);
-			Object.animations.play('MON_Wraith_Attack_' + Direction, 10, true);
+			Object.loadTexture('MON_Deamon_Attack', 0, true);
+			Object.animations.play('MON_Deamon_Attack_' + Direction, 10, true);
+		}
+		else if(Object.Status[4] == Status)
+		{
+			//Skill
+			Object.loadTexture('MON_Deamon_Skill', 0, true);
+			Object.animations.play('MON_Deamon_Skill_' + Direction, 10, true);
 		}
 	}
 }
@@ -361,7 +377,7 @@ function wraith_Animation_Change(Direction, Status, Object)
 
 //AI
 //----------------------------------------------------------------------------------------------
-function wraith_Move(Object)
+function deamon_Move(Object)
 {
 	if(Object.DeadCheck == false)
 	{
@@ -376,7 +392,7 @@ function wraith_Move(Object)
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
-				wraith_Animation_Change(Object.Direction, 'Walk', Object);
+				deamon_Animation_Change(Object.Direction, 'Walk', Object);
 			}
 
 			//Stand
@@ -384,12 +400,12 @@ function wraith_Move(Object)
 			{
 				if(Object.StandCheck == false)
 				{
-					wraith_Animation_Change(Object.Direction, 'Stand', Object);
+					deamon_Animation_Change(Object.Direction, 'Stand', Object);
 					Object.StandCheck = true;
 				}
 
 				//Attack
-				wraith_Attack(Object);
+				deamon_Attack(Object);
 
 				Object.body.velocity.x = 0;
 				Object.body.velocity.y = 0;
@@ -406,7 +422,7 @@ function wraith_Move(Object)
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					wraith_Animation_Change(Object.ReturnDirection, 'Walk', Object);
+					deamon_Animation_Change(Object.ReturnDirection, 'Walk', Object);
 				}
 			}
 
@@ -415,7 +431,7 @@ function wraith_Move(Object)
 			{
 				if(Object.StandCheck == false)
 				{
-					wraith_Animation_Change(Object.ReturnDirection, 'Stand', Object);
+					deamon_Animation_Change(Object.ReturnDirection, 'Stand', Object);
 					Object.StandCheck = true;	
 				}
 
@@ -424,11 +440,11 @@ function wraith_Move(Object)
 			}
 		}
 
-		wraith_Compare_Direction(Object.PreDirection, Object.Direction, Object);
+		deamon_Compare_Direction(Object.PreDirection, Object.Direction, Object);
 	}
 }
 
-function wraith_Attack(Object)
+function deamon_Attack(Object)
 {
 	if(Object.StandCheck == true)
 	{
@@ -438,15 +454,15 @@ function wraith_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				wraith_Animation_Change(Object.Direction, 'Attack', Object);
-				wraith_HitCount(Object);
+				deamon_Animation_Change(Object.Direction, 'Attack', Object);
+				deamon_HitCount(Object);
 				Object.AttackCheck = true;
 			}
 		}
 	}
 }
 
-function wraith_HitCount(Object)
+function deamon_HitCount(Object)
 {
 	if(Object.DelayTime_Total > 1)
 	{
@@ -455,7 +471,7 @@ function wraith_HitCount(Object)
 	}
 }
 
-function wraith_Dead(Object)
+function deamon_Dead(Object)
 {
 	if(Object.Hp < 0)
 	{
@@ -466,8 +482,8 @@ function wraith_Dead(Object)
 	{
 		if(Object.DeadMotionCheck == false)
 		{
-			Object.loadTexture('MON_Wraith_Dead', 0, true);
-			Object.animations.play('MON_Wraith_Dead_' + Object.Direction, 10, true);
+			Object.loadTexture('MON_Deamon_Dead', 0, true);
+			Object.animations.play('MON_Deamon_Dead_' + Object.Direction, 10, true);
 			Object.DeadMotionCheck = true;
 		}
 
@@ -494,7 +510,7 @@ function wraith_Dead(Object)
 
 //UI
 //----------------------------------------------------------------------------------------------
-function wraith_Hpbar_Mask(Object)
+function deamon_Hpbar_Mask(Object)
 {
 	if(Object.DeadCheck == false)
 	{
@@ -506,7 +522,7 @@ function wraith_Hpbar_Mask(Object)
 	}
 }
 
-function wraith_RectPos(Object)
+function deamon_RectPos(Object)
 {
 	if(Object.DeadCheck == false)
 	{
@@ -525,35 +541,35 @@ function wraith_RectPos(Object)
 
 //Update & Render
 //----------------------------------------------------------------------------------------------
-function wraith_Update()
+function deamon_Update()
 {
-	for(var i = 0; i < wraith_Group.length; ++i)
+	for(var i = 0; i < deamon_Group.length; ++i)
 	{
-		var wraith = wraith_Group.getChildAt(i);
+		var deamon = deamon_Group.getChildAt(i);
 
-		wraith_Hpbar_Mask(wraith);
-		wraith_RectPos(wraith);
-		wraith_FollwName(wraith);
-		wraith_GetDirection(wraith);
-		wraith_GetReturnDirection(wraith);
-		wraith_Move(wraith);
+		deamon_Hpbar_Mask(deamon);
+		deamon_RectPos(deamon);
+		deamon_FollwName(deamon);
+		deamon_GetDirection(deamon);
+		deamon_GetReturnDirection(deamon);
+		deamon_Move(deamon);
 
 		//Player Mosnter Collision
-		player_Monster_Col(wraith);
+		player_Monster_Col(deamon);
 
-		wraith_Dead(wraith);
+		deamon_Dead(deamon);
 	}
 }
 
-function wraith_Render()
+function deamon_Render()
 {
-	var length = wraith_Group.length;
+	var length = deamon_Group.length;
 	for(var i = 0; i < length; ++i)
 	{
-		var wraith = wraith_Group.getChildAt(i);
+		var deamon = deamon_Group.getChildAt(i);
 
-		Lucifer_Game.debug.geom(wraith.HitRect, 'rgba(200, 0, 0, 0.5)');
-		Lucifer_Game.debug.geom(wraith.AttackRect, 'rgba(0, 0, 200, 0.5)');
+		Lucifer_Game.debug.geom(deamon.HitRect, 'rgba(200, 0, 0, 0.5)');
+		Lucifer_Game.debug.geom(deamon.AttackRect, 'rgba(0, 0, 200, 0.5)');
 	}
 }
 //----------------------------------------------------------------------------------------------

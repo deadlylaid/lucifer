@@ -23,6 +23,7 @@ var stage1_Scene =
 		fallen_Shaman_Create();
 		andariel_Create();
 		wraith_Create();
+		deamon_Create();
 
         //items
         itemsCreate();
@@ -53,6 +54,7 @@ var stage1_Scene =
 		fallen_Shaman_Update();
 		andariel_Update();
 		wraith_Update();
+		deamon_Update();
 
         //items Update
         itemsUpdate();
@@ -89,6 +91,7 @@ var stage1_Scene =
 			fallen_Shaman_Render();
 			andariel_Render();
 			wraith_Render();
+			deamon_Render();
 			
             //itemStoreRender
             itemStoreRender();
