@@ -64,6 +64,7 @@ var loadScene =
 		fallen_Shaman_Preload();
 		andariel_Preload();
 		wraith_Preload();
+		deamon_Preload();
 		//----------------------------------------------------------------------------------------------------------
 	
 		//Skill
