@@ -522,6 +522,10 @@ function andariel_Update()
 		andariel_GetDirection(andariel);
 		andariel_GetReturnDirection(andariel);
 		andariel_Move(andariel);
+
+		//Player Mosnter Collision
+		player_Monster_Col(andariel);
+
 		andariel_Dead(andariel);
 	}
 }

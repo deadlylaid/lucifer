@@ -318,10 +318,6 @@ function PlayerAttack()
 {
 	//Player Attack Motion (임시로 Monster를 Golem 으로 한정 시킴 나중에 이 함수를 바꿔서 여러 마리랑 가능하게 해야됨.)
 	//---------------------------------------------------------------------------------------
-	player_Golem_Col();
-	player_Shaman_Col();
-	player_Andariel_Col();
-	
 	//console.log(Player.animations.frameTotal);
 	//console.log(Phaser.Rectangle.intersects(Attack_Rect, golem_HitRect));
 	//---------------------------------------------------------------------------------------	

@@ -1,7 +1,7 @@
 // 골렘 기본 변수들 
 //------------------------------------------------------------------------------
 var golem_Group, golem_Object;
-var golem_Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
+var Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 
 //골렘 Create 함수 재정의
 Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
@@ -9,36 +9,36 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	Phaser.Sprite.call(this, game, x, y, 'MON_Golem_Attack');
 	this.Hp = Hp;
 	this.MaxHp = MaxHp;
-	this.golem_CognizeRange = CognizeRange;
-	this.golem_AttackRange = AttackRange;
+	this.CognizeRange = CognizeRange;
+	this.AttackRange = AttackRange;
 
 	//Status
-	this.golem_Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
+	this.Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 	
 	//Position
-	this.golem_PointX = x;
-	this.golem_PointY = y;
-	this.golem_ReturnPointX = x;
-	this.golem_ReturnPointY = y;
+	this.PointX = x;
+	this.PointY = y;
+	this.ReturnPointX = x;
+	this.ReturnPointY = y;
 	
 	//UI
-	this.golem_HpBar, this.golem_HpMask, this.golem_Name;
+	this.HpBar, this.HpMask, this.golem_Name;
 
 	//Rect
-	this.HitRect, this.golem_AttackRect;
+	this.HitRect, this.AttackRect;
 	
 	//Time
-	this.golem_Attack_DelayTimer, this.golem_DelayTime_Total = 1;
+	this.Attack_DelayTimer, this.DelayTime_Total = 1;
 
 	//Direction
-	this.golem_Distance, this.golem_Angle, this.golem_PreDirection, this.golem_Direction;
+	this.Distance, this.Angle, this.PreDirection, this.Direction;
 
 	//Return Direction
-	this.golem_ReturnDirection, this.golem_ReturnDistance, this.golem_ReturnAngle;
+	this.ReturnDirection, this.ReturnDistance, this.ReturnAngle;
 
 	//Motion Check
-	this.golem_MoveCheck = false, this.golem_StandCheck = false, this.golem_AttackCheck = false;
-	this.golem_CompareCheck = false, this.golem_DamageCheck = false, this.golem_DeadCheck = false;
+	this.MoveCheck = false, this.StandCheck = false, this.AttackCheck = false;
+	this.CompareCheck = false, this.DamageCheck = false, this.DeadCheck = false;
 }
 
 Golem.prototype = Object.create(Phaser.Sprite.prototype);
@@ -117,16 +117,16 @@ function golem_Clone(PointX, PointY)
 	Lucifer_Game.add.existing(golem_Object);
 
 	//Hp Bar
-	golem_Object.golem_HpBar = golem_Object.addChild(Lucifer_Game.make.sprite(0, -100,"monsterHealthBar"));
-	golem_Object.golem_HpBar.anchor.set(0.5, 0.5);
-	golem_Object.golem_HpBar.visible = false;
+	golem_Object.HpBar = golem_Object.addChild(Lucifer_Game.make.sprite(0, -100,"monsterHealthBar"));
+	golem_Object.HpBar.anchor.set(0.5, 0.5);
+	golem_Object.HpBar.visible = false;
 
 	//Hp Mask
-	golem_Object.golem_HpMask = golem_Object.addChild(Lucifer_Game.add.graphics(0, -100));
-	golem_Object.golem_HpMask.beginFill(0xffffff);
+	golem_Object.HpMask = golem_Object.addChild(Lucifer_Game.add.graphics(0, -100));
+	golem_Object.HpMask.beginFill(0xffffff);
 	
 	//Name
-	golem_Object.golem_Name = Lucifer_Game.add.text(golem_Object.golem_PointX, golem_Object.golem_PointY - 100, "Golem");
+	golem_Object.golem_Name = Lucifer_Game.add.text(golem_Object.PointX, golem_Object.PointY - 100, "Golem");
 	golem_Object.golem_Name.anchor.set(0.5);
 	golem_Object.golem_Name.align = "center";
 	golem_Object.golem_Name.font = 'Arial';
@@ -142,11 +142,11 @@ function golem_Clone(PointX, PointY)
 
     //Rect
     golem_Object.HitRect = new Phaser.Rectangle(golem_Object.x, golem_Object.y, 60, 60);
-    golem_Object.golem_AttackRect = new Phaser.Rectangle(golem_Object.x, golem_Object.y, 100, 100);
+    golem_Object.AttackRect = new Phaser.Rectangle(golem_Object.x, golem_Object.y, 100, 100);
 
     //Delay Timer
-    golem_Object.golem_Attack_DelayTimer = Lucifer_Game.time.create(false);
-    golem_Object.golem_Attack_DelayTimer.loop(1000, golem_DelayTimer, Lucifer_Game, golem_Object);
+    golem_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
+    golem_Object.Attack_DelayTimer.loop(1000, golem_DelayTimer, Lucifer_Game, golem_Object);
 
     Lucifer_Game.physics.enable(golem_Object, Phaser.Physics.ARCADE);
     golem_Group.add(golem_Object);
@@ -155,169 +155,156 @@ function golem_Clone(PointX, PointY)
 //Time Total add	
 function golem_DelayTimer(Object)
 {	
-	++Object.golem_DelayTime_Total;		
+	++Object.DelayTime_Total;		
 }
 
 //Name
-function golem_FollwName()
+function golem_FollwName(Object)
 {
-	for(var i = 0; i < golem_Group.length; ++i)
-	{	
-		if(golem_Group.getChildAt(i).golem_DeadCheck == false)
-		{
-			golem_Group.getChildAt(i).golem_Name.x = golem_Group.getChildAt(i).position.x;
+	if(Object.DeadCheck == false)
+	{
+		Object.golem_Name.x = Object.position.x;
 
-			var golem_NamePointY = golem_Group.getChildAt(i).position.y + 70;
-			golem_Group.getChildAt(i).golem_Name.y = golem_NamePointY;
-		}		
-	}
+		var golem_NamePointY = Object.position.y + 70;
+		Object.golem_Name.y = golem_NamePointY;
+	}	
 }
 
 //Over / Out
 function over(Object)
 {
 	Object.golem_Name.visible  = true;
-	Object.golem_HpBar.visible = true;
+	Object.HpBar.visible = true;
 }
 function out(Object)
 {
 	Object.golem_Name.visible  = false;
-	Object.golem_HpBar.visible = false;
+	Object.HpBar.visible = false;
 }
 //-------------------------------------------------------------------------------------------
 
 //Direction
 //-------------------------------------------------------------------------------------------
-function golem_GetDirection()
+function golem_GetDirection(Object)
 {
-	for(var i = 0; i < golem_Group.length; ++i)
+	
+	Object.Distance = Phaser.Math.distance(Object.x, Object.y, Player.x, Player.y);
+
+	if(Object.DeadCheck == false)
 	{
-		golem_Group.getChildAt(i).golem_Distance 
-			= Phaser.Math.distance(golem_Group.getChildAt(i).x, golem_Group.getChildAt(i).y,
-								   Player.x, Player.y);
-
-		if(golem_Group.getChildAt(i).golem_DeadCheck == false)
+		//CognizeRange 안으로 Player가 접근시 Direction
+		if(Object.Distance < Object.CognizeRange)
 		{
-			//CognizeRange 안으로 Player가 접근시 Direction
-			if(golem_Group.getChildAt(i).golem_Distance < golem_Group.getChildAt(i).golem_CognizeRange)
+			Object.Angle = Lucifer_Game.physics.arcade.angleToXY(Object, Player.world.x, Player.world.y);
+			Object.Angle = Math.abs(Object.Angle);
+
+			if(Object.PointY < Player.y)
 			{
-				golem_Group.getChildAt(i).golem_Angle 
-					= Lucifer_Game.physics.arcade.angleToXY(golem_Group.getChildAt(i), 
-														    Player.world.x, Player.world.y);
-				golem_Group.getChildAt(i).golem_Angle = Math.abs(golem_Group.getChildAt(i).golem_Angle);
+				Object.Angle = 2 * Math.PI - Object.Angle;		
+			}	
 
-				if(golem_Group.getChildAt(i).golem_PointY < Player.y)
-				{
-					golem_Group.getChildAt(i).golem_Angle = 2 * Math.PI - golem_Group.getChildAt(i).golem_Angle;		
-				}	
-
-				if(golem_Group.getChildAt(i).golem_Angle >= 0 && golem_Group.getChildAt(i).golem_Angle <= 0.7)
-				{
-					golem_Group.getChildAt(i).golem_Direction = 7;
-				}
-				else if(golem_Group.getChildAt(i).golem_Angle > 0.7 && golem_Group.getChildAt(i).golem_Angle <= 1.9)
-				{
-					golem_Group.getChildAt(i).golem_Direction = 0;
-				}
-				else if(golem_Group.getChildAt(i).golem_Angle > 1.9 && golem_Group.getChildAt(i).golem_Angle <= 2.9)
-				{
-					golem_Group.getChildAt(i).golem_Direction = 1;
-				}
-				else if(golem_Group.getChildAt(i).golem_Angle > 2.9 && golem_Group.getChildAt(i).golem_Angle <= 3.9)
-				{
-					golem_Group.getChildAt(i).golem_Direction = 2;
-				}
-				else if(golem_Group.getChildAt(i).golem_Angle > 3.6 && golem_Group.getChildAt(i).golem_Angle <= 4.2)
-				{
-					golem_Group.getChildAt(i).golem_Direction = 3;
-				}
-				else if(golem_Group.getChildAt(i).golem_Angle > 4.2 && golem_Group.getChildAt(i).golem_Angle <= 4.9)
-				{
-					golem_Group.getChildAt(i).golem_Direction = 4;
-				}
-				else if(golem_Group.getChildAt(i).golem_Angle > 4.9 && golem_Group.getChildAt(i).golem_Angle <= 5.7)
-				{
-					golem_Group.getChildAt(i).golem_Direction = 5;
-				}
-				else if(golem_Group.getChildAt(i).golem_Angle > 5.7 && golem_Group.getChildAt(i).golem_Angle <= 6.2)
-				{
-					golem_Group.getChildAt(i).golem_Direction = 6;
-				}
-
-				if(golem_Group.getChildAt(i).golem_CompareCheck == false)
-				{
-					golem_Group.getChildAt(i).golem_PreDirection = golem_Group.getChildAt(i).golem_Direction;	
-					golem_Group.getChildAt(i).golem_CompareCheck = true;			
-				}
+			if(Object.Angle >= 0 && Object.Angle <= 0.7)
+			{
+				Object.Direction = 7;
 			}
-		}			
-	}
+			else if(Object.Angle > 0.7 && Object.Angle <= 1.9)
+			{
+				Object.Direction = 0;
+			}
+			else if(Object.Angle > 1.9 && Object.Angle <= 2.9)
+			{
+				Object.Direction = 1;
+			}
+			else if(Object.Angle > 2.9 && Object.Angle <= 3.9)
+			{
+				Object.Direction = 2;
+			}
+			else if(Object.Angle > 3.6 && Object.Angle <= 4.2)
+			{
+				Object.Direction = 3;
+			}
+			else if(Object.Angle > 4.2 && Object.Angle <= 4.9)
+			{
+				Object.Direction = 4;
+			}
+			else if(Object.Angle > 4.9 && Object.Angle <= 5.7)
+			{
+				Object.Direction = 5;
+			}
+			else if(Object.Angle > 5.7 && Object.Angle <= 6.2)
+			{
+				Object.Direction = 6;
+			}
+			
+			if(Object.CompareCheck == false)
+			{
+				Object.PreDirection = Object.Direction;	
+				Object.CompareCheck = true;			
+			}
+		}
+	}		
 }
 
-function golem_GetReturnDirection()
+function golem_GetReturnDirection(Object)
 {
-	for(var i = 0; i < golem_Group.length; ++i)
+	Object.ReturnDistance = Phaser.Math.distance(Object.x, Object.y, Player.x, Player.y);
+
+	if(Object.DeadCheck == false)
 	{
-		golem_Group.getChildAt(i).golem_ReturnDistance 
-			= Phaser.Math.distance(golem_Group.getChildAt(i).x, golem_Group.getChildAt(i).y,
-								   Player.x, Player.y);
-
-		if(golem_Group.getChildAt(i).golem_DeadCheck == false)
+		//CognizeRange 안으로 Player가 접근시 Direction
+		if(Object.ReturnDistance > Object.CognizeRange)
 		{
-			//CognizeRange 안으로 Player가 접근시 Direction
-			if(golem_Group.getChildAt(i).golem_ReturnDistance > golem_Group.getChildAt(i).golem_CognizeRange)
+			Object.ReturnAngle 
+				= Lucifer_Game.physics.arcade.angleToXY(Object, 
+													    Player.world.x, Player.world.y);
+			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
+
+			if(Object.PointY < Player.y)
 			{
-				golem_Group.getChildAt(i).golem_ReturnAngle 
-					= Lucifer_Game.physics.arcade.angleToXY(golem_Group.getChildAt(i), 
-														    Player.world.x, Player.world.y);
-				golem_Group.getChildAt(i).golem_ReturnAngle = Math.abs(golem_Group.getChildAt(i).golem_ReturnAngle);
+				Object.ReturnAngle = 2 * Math.PI - Object.ReturnAngle;		
+			}	
 
-				if(golem_Group.getChildAt(i).golem_PointY < Player.y)
-				{
-					golem_Group.getChildAt(i).golem_ReturnAngle = 2 * Math.PI - golem_Group.getChildAt(i).golem_ReturnAngle;		
-				}	
-
-				if(golem_Group.getChildAt(i).golem_Angle >= 0 && golem_Group.getChildAt(i).golem_Angle <= 0.7)
-				{
-					golem_Group.getChildAt(i).golem_ReturnDirection = 7;
-				}
-				else if(golem_Group.getChildAt(i).golem_ReturnAngle > 0.7 && golem_Group.getChildAt(i).golem_ReturnAngle <= 1.9)
-				{
-					golem_Group.getChildAt(i).golem_ReturnDirection = 0;
-				}
-				else if(golem_Group.getChildAt(i).golem_ReturnAngle > 1.9 && golem_Group.getChildAt(i).golem_ReturnAngle <= 2.9)
-				{
-					golem_Group.getChildAt(i).golem_ReturnDirection = 1;
-				}
-				else if(golem_Group.getChildAt(i).golem_ReturnAngle > 2.9 && golem_Group.getChildAt(i).golem_ReturnAngle <= 3.9)
-				{
-					golem_Group.getChildAt(i).golem_ReturnDirection = 2;
-				}
-				else if(golem_Group.getChildAt(i).golem_ReturnAngle > 3.6 && golem_Group.getChildAt(i).golem_ReturnAngle <= 4.2)
-				{
-					golem_Group.getChildAt(i).golem_ReturnDirection = 3;
-				}
-				else if(golem_Group.getChildAt(i).golem_ReturnAngle > 4.2 && golem_Group.getChildAt(i).golem_ReturnAngle <= 4.9)
-				{
-					golem_Group.getChildAt(i).golem_ReturnDirection = 4;
-				}
-				else if(golem_Group.getChildAt(i).golem_ReturnAngle > 4.9 && golem_Group.getChildAt(i).golem_ReturnAngle <= 5.7)
-				{
-					golem_Group.getChildAt(i).golem_ReturnDirection = 5;
-				}
-				else if(golem_Group.getChildAt(i).golem_ReturnAngle > 5.7 && golem_Group.getChildAt(i).golem_ReturnAngle <= 6.2)
-				{
-					golem_Group.getChildAt(i).golem_ReturnDirection = 6;
-				}
-
-				if(golem_Group.getChildAt(i).golem_CompareCheck == false)
-				{
-					golem_Group.getChildAt(i).golem_PreDirection = golem_Group.getChildAt(i).golem_ReturnDirection;	
-					golem_Group.getChildAt(i).golem_CompareCheck = true;			
-				}
+			if(Object.Angle >= 0 && Object.Angle <= 0.7)
+			{
+				Object.ReturnDirection = 7;
 			}
-		}		
-	}
+			else if(Object.ReturnAngle > 0.7 && Object.ReturnAngle <= 1.9)
+			{
+				Object.ReturnDirection = 0;
+			}
+			else if(Object.ReturnAngle > 1.9 && Object.ReturnAngle <= 2.9)
+			{
+				Object.ReturnDirection = 1;
+			}
+			else if(Object.ReturnAngle > 2.9 && Object.ReturnAngle <= 3.9)
+			{
+				Object.ReturnDirection = 2;
+			}
+			else if(Object.ReturnAngle > 3.6 && Object.ReturnAngle <= 4.2)
+			{
+				Object.ReturnDirection = 3;
+			}
+			else if(Object.ReturnAngle > 4.2 && Object.ReturnAngle <= 4.9)
+			{
+				Object.ReturnDirection = 4;
+			}
+			else if(Object.ReturnAngle > 4.9 && Object.ReturnAngle <= 5.7)
+			{
+				Object.ReturnDirection = 5;
+			}
+			else if(Object.ReturnAngle > 5.7 && Object.ReturnAngle <= 6.2)
+			{
+				Object.ReturnDirection = 6;
+			}
+
+			if(Object.CompareCheck == false)
+			{
+				Object.PreDirection = Object.ReturnDirection;	
+				Object.CompareCheck = true;			
+			}
+		}
+	}		
+	
 }
 
 function compare_Direction(PreDirection, CurDirection, Object)
@@ -325,8 +312,8 @@ function compare_Direction(PreDirection, CurDirection, Object)
 	//Pre Direction 과 Cur Direction 비교
 	if(PreDirection != CurDirection)
 	{
-		Object.golem_MoveCheck = false;
-		Object.golem_CompareCheck = false;
+		Object.MoveCheck = false;
+		Object.CompareCheck = false;
 	} 
 }
 //-------------------------------------------------------------------------------------------
@@ -335,19 +322,19 @@ function compare_Direction(PreDirection, CurDirection, Object)
 //-------------------------------------------------------------------------------------------
 function golem_Animation_Change(Direction, Status, Object)
 {
-	if(Object.golem_Status[0] == Status)
+	if(Object.Status[0] == Status)
 	{
 		//Stand
 		Object.loadTexture('MON_Golem_Stand', 0, true);
 		Object.animations.play('MON_Golem_Stand_' + Direction, 10, true);	
 	}
-	else if(Object.golem_Status[1] == Status)
+	else if(Object.Status[1] == Status)
 	{
 		//Walk
 		Object.loadTexture('MON_Golem_Walk', 0, true);
 		Object.animations.play('MON_Golem_Walk_' + Direction, 10, true);
 	}
-	else if(Object.golem_Status[2] == Status)
+	else if(Object.Status[2] == Status)
 	{
 		//Attack
 		Object.loadTexture('MON_Golem_Attack', 0, true);
@@ -358,90 +345,84 @@ function golem_Animation_Change(Direction, Status, Object)
 
 //Golem_AI
 //-------------------------------------------------------------------------------------------
-function golem_Move()
+function golem_Move(Object)
 {
-	for(var i = 0; i < golem_Group.length; ++i)
+	if(Object.DeadCheck == false)
 	{
-		var Golem = golem_Group.getChildAt(i);
-			
-		if(Golem.golem_DeadCheck == false)
+		if(Object.Distance < Object.CognizeRange)
 		{
-			if(Golem.golem_Distance < Golem.golem_CognizeRange)
+			//Walk
+			if(Object.MoveCheck == false)
 			{
-				//Walk
-				if(Golem.golem_MoveCheck == false)
-				{
-					Golem.golem_StandCheck = false;
-					Golem.golem_AttackCheck = false;
-					Golem.golem_DamageCheck = false;
-					Golem.golem_MoveCheck = true;
+				Object.StandCheck = false;
+				Object.AttackCheck = false;
+				Object.DamageCheck = false;
+				Object.MoveCheck = true;
 
-					Lucifer_Game.physics.arcade.moveToObject(Golem, Player, 60);
-					golem_Animation_Change(Golem.golem_Direction, 'Walk', Golem);
-				}
-
-				//Stand
-				if(Golem.golem_Distance < Golem.golem_AttackRange)
-				{
-					if(Golem.golem_StandCheck == false)
-					{
-						golem_Animation_Change(Golem.golem_Direction, 'Stand', Golem);
-						Golem.golem_StandCheck = true;
-					}
-
-					//Attack
-					golem_Attack(Golem);
-
-					Golem.body.velocity.x = 0;
-					Golem.body.velocity.y = 0;
-				}
+				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
+				golem_Animation_Change(Object.Direction, 'Walk', Object);
 			}
-			else
-			{
-				//Return Walk
-				if(Golem.golem_ReturnDistance > 10)
-				{
-					if(Golem.golem_MoveCheck == false)
-					{
-						Golem.golem_StandCheck = false;
-						Golem.golem_MoveCheck = true;
 
-						Lucifer_Game.physics.arcade.moveToXY(Golem, Golem.golem_ReturnPointX, Golem.golem_ReturnPointY, 60);
-						golem_Animation_Change(Golem.golem_ReturnDirection, 'Walk', Golem);
-					}
+			//Stand
+			if(Object.Distance < Object.AttackRange)
+			{
+				if(Object.StandCheck == false)
+				{
+					golem_Animation_Change(Object.Direction, 'Stand', Object);
+					Object.StandCheck = true;
 				}
 
-				//Return Stand
-				if(Golem.golem_ReturnDistance < 10)
-				{
-					if(Golem.golem_StandCheck == false)
-					{
-						golem_Animation_Change(Golem.golem_ReturnDirection, 'Stand', Golem);
-						Golem.golem_StandCheck = true;
-					}
+				//Attack
+				golem_Attack(Object);
 
-					Golem.body.velocity.x = 0;
-					Golem.body.velocity.y = 0;
+				Object.body.velocity.x = 0;
+				Object.body.velocity.y = 0;
+			}
+		}
+		else
+		{
+			//Return Walk
+			if(Object.ReturnDistance > 10)
+			{
+				if(Object.MoveCheck == false)
+				{
+					Object.StandCheck = false;
+					Object.MoveCheck = true;
+
+					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
+					golem_Animation_Change(Object.ReturnDirection, 'Walk', Object);
 				}
 			}
 
-			compare_Direction(Golem.golem_PreDirection, Golem.golem_Direction, Golem);
-		}		
-	}
+			//Return Stand
+			if(Object.ReturnDistance < 10)
+			{
+				if(Object.StandCheck == false)
+				{
+					golem_Animation_Change(Object.ReturnDirection, 'Stand', Object);
+					Object.StandCheck = true;
+				}
+
+				Object.body.velocity.x = 0;
+				Object.body.velocity.y = 0;
+			}
+		}
+		compare_Direction(Object.PreDirection, Object.Direction, Object);
+	}	
 }
 
 function golem_Attack(Object)
 {
-	if(Object.golem_StandCheck == true)
+	if(Object.StandCheck == true)
 	{
-		if(Phaser.Rectangle.intersects(Object.golem_AttackRect, Hit_Rect))
+		if(Phaser.Rectangle.intersects(Object.AttackRect, Hit_Rect))
 		{
-			Object.golem_Attack_DelayTimer.start();
+			Object.Attack_DelayTimer.start();
 
-			if(Object.golem_AttackCheck == false)
+			if(Object.AttackCheck == false)
 			{
-				golem_Animation_Change(Object.golem_Direction, 'Attack', Object);
-				Object.golem_AttackCheck = true;
+				golem_Animation_Change(Object.Direction, 'Attack', Object);
+				Object.AttackCheck = true;
 			}	
 
 			golem_HitCount(Object);		
@@ -451,88 +432,81 @@ function golem_Attack(Object)
 
 function golem_HitCount(Object)
 {
-	if(Object.golem_DelayTime_Total > 1)
+	if(Object.DelayTime_Total > 1)
 	{
 		health -= 30; //몬스터 공격력도 넣어야됨.
-		Object.golem_DelayTime_Total = 0;
+		Object.DelayTime_Total = 0;
 	}	
 }
 
-function golem_Dead()
+function golem_Dead(Object)
 {
-	for(var i = 0; i < golem_Group.length; ++i)
+	if(Object.Hp < 0)
 	{
-		var Golem = golem_Group.getChildAt(i);
-
-		if(Golem.Hp < 0)
-		{
-			Golem.golem_DeadCheck = true;
-			Golem.destroy();
-			Golem.golem_Name.destroy();
-		}
-	}
+		Object.DeadCheck = true;
+		Object.destroy();
+		Object.golem_Name.destroy();
+	}	
 }
 //-------------------------------------------------------------------------------------------
 
 //Hp Bar Mask
-function golem_Hpbar_Mask()
+function Hpbar_Mask(Object)
 {
-	for(var i = 0; i < golem_Group.length; ++i)
+	if(Object.DeadCheck == false)
 	{
-		var Golem = golem_Group.getChildAt(i);
-
-		if(Golem.golem_DeadCheck == false)
-		{
-			Golem.golem_HpMask.clear();
-			Golem.golem_HpMask.drawRect(Golem.golem_HpBar.x - 100, Golem.golem_HpBar.y, Golem.Hp, 200);
-			Golem.golem_HpBar.mask = Golem.golem_HpMask;
-		}		
-	}
+		Object.HpMask.clear();
+		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
+		Object.HpBar.mask = Object.HpMask;
+	}	
 }
 
 //Rect Position
-function golem_RectPos()
+function golem_RectPos(Object)
 {
-	for(var i = 0; i < golem_Group.length; ++i)
+	if(Object.DeadCheck == false)
 	{
-		var Golem = golem_Group.getChildAt(i);
+		//Hit Rect
+		Object.HitRect.x = Object.x;
+		Object.HitRect.y = Object.y;
+		Object.HitRect.centerOn(Object.x, Object.y);
 
-		if(Golem.golem_DeadCheck == false)
-		{
-			//Hit Rect
-			Golem.HitRect.x = Golem.x;
-			Golem.HitRect.y = Golem.y;
-			Golem.HitRect.centerOn(Golem.x, Golem.y);
-
-			//Attack Rect
-			Golem.golem_AttackRect.x = Golem.x;
-			Golem.golem_AttackRect.y = Golem.y;
-			Golem.golem_AttackRect.centerOn(Golem.x, Golem.y);
-		}
-	}
+		//Attack Rect
+		Object.AttackRect.x = Object.x;
+		Object.AttackRect.y = Object.y;
+		Object.AttackRect.centerOn(Object.x, Object.y);
+	}	
 }
 
 //골렘 Update / Render 
 //-------------------------------------------------------------------------------------------
 function golem_Update()
 {
-	golem_Hpbar_Mask();
-	golem_FollwName();
-	golem_GetDirection();
-	golem_GetReturnDirection();
-	golem_Move();
-	golem_RectPos();
+	for(var i = 0; i < golem_Group.length; ++i)
+	{
+		var golem = golem_Group.getChildAt(i);
 
-	//Dead
-	golem_Dead();
+		Hpbar_Mask(golem);
+		golem_FollwName(golem);
+		golem_GetDirection(golem);
+		golem_GetReturnDirection(golem);
+		golem_Move(golem);
+		golem_RectPos(golem);
+
+		//Player Mosnter Collision
+		player_Monster_Col(golem);
+
+		//Dead
+		golem_Dead(golem);
+	}	
 }
 
 function golem_Redner()
 {
 	for(var i = 0; i < golem_Group.length; ++i)
 	{
-		Lucifer_Game.debug.geom(golem_Group.getChildAt(i).HitRect, 'rgba(0, 0, 200, 0.5)');
-		Lucifer_Game.debug.geom(golem_Group.getChildAt(i).golem_AttackRect, 'rgba(0, 200, 0, 0.5)');
+		Lucifer_Game.debug.geom(Object.HitRect, 'rgba(0, 0, 200, 0.5)');
+		Lucifer_Game.debug.geom(Object.AttackRect, 'rgba(0, 200, 0, 0.5)');
 	}
 }
 //-------------------------------------------------------------------------------------------
