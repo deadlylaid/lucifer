@@ -21,6 +21,8 @@ var stage2_Scene =
 
 		//UI
 		ui_Create();
+
+		go();
 	},
 
 	update: function()
@@ -29,7 +31,7 @@ var stage2_Scene =
 		player_Update();
 
 		//Monster Update(Golem)
-		golem_Rogic();
+		//golem_Rogic();
 
 		//Ui Update
 		ui_Update();
@@ -41,14 +43,21 @@ var stage2_Scene =
 		player_Render();
 
 		//Monster Render(Golem)
-		golem_Debug_Render();
+		//golem_Debug_Render();
 	},
 
 	goto_Stage3: function()
-	{
+	{	
+		stageTwo_Check = false;
 		//Sound
 		sound_StopStage2BGM();
 
-		Lucifer_Game.state.start('stage3');
+		Lucifer_Game.state.start('stage3_load');
 	}
+};
+
+function go()
+{
+		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+		enterKey.onDown.addOnce(stage2_Scene.goto_Stage3, this);
 };
