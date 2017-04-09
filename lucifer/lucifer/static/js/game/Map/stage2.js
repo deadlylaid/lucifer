@@ -116,7 +116,7 @@ function stageTwo_Create()
 
 	Stage2 = Stage2_Map.createLayer('Tile Layer 1');
 	Stage2_ObjLayer = Stage2_Map.createLayer('Object Layer');
-	//Collision_Layer = Stage2_Map.createLayer('Collision Layer');
+	Collision_Layer = Stage2_Map.createLayer('Collision Layer');
 	Stage2.resizeWorld();
 	//---------------------------------------------------------------------------------------
 

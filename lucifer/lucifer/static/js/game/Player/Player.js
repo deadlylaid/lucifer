@@ -14,10 +14,10 @@ var player_KeyJump, player_KeySkill, player_KeySkill2;
 
 function player_Create()
 {
-	//Player Create
+	//Player create one- 875, 1637 three - 874, 1955 
 	if(stageOne_Check == true)
 	{
-		Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
+		Player = Lucifer_Game.add.sprite(3027, 491, 'PY_Bavarian_Attack');	
 	}
 	else if(stageTwo_Check == true)
 	{
@@ -25,7 +25,7 @@ function player_Create()
 	}
 	else if(stageThree_Check == true)
 	{
-		Player = Lucifer_Game.add.sprite(200, 200, 'PY_Bavarian_Attack');	
+		Player = Lucifer_Game.add.sprite(3026, 839, 'PY_Bavarian_Attack');	
 	}
 	 	
 	//Player = Stage2_ObjectGroup.create(3582, 1466, 'PY_Bavarian_Attack');
@@ -411,7 +411,7 @@ function player_Update()
 
 	//Debug 용도
 	//intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
-	//console.log(Player.x, Player.y);
+	console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Sort
