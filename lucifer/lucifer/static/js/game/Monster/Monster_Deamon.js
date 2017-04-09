@@ -142,7 +142,7 @@ function deamon_Clone(PointX, PointY)
 	}
 
 	council_Group.loadTexture('MON_Deamon_Stand', 0, true);
-	council_Group.animations.play('MON_Deamon_Stand_', 10, true);
+	council_Group.animations.play('MON_Deamon_Stand_0', 10, true);
 	council_Group.anchor.setTo(0.5, 0.5);
 
 	Lucifer_Game.physics.enable(council_Group, Phaser.Physics.ARCADE);

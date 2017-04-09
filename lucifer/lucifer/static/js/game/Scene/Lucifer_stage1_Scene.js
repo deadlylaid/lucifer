@@ -25,6 +25,7 @@ var stage1_Scene =
 		wraith_Create();
 		deamon_Create();
 		council_Create();
+		countess_Create();
 
         //items
         itemsCreate();
@@ -57,6 +58,7 @@ var stage1_Scene =
 		wraith_Update();
 		deamon_Update();
 		council_Update();
+		countess_Update();
 
         //items Update
         itemsUpdate();
@@ -95,6 +97,7 @@ var stage1_Scene =
 			wraith_Render();
 			deamon_Render();
 			council_Render();
+			countess_Render();
 			
             //itemStoreRender
             itemStoreRender();

@@ -67,6 +67,7 @@ var loadScene =
 		wraith_Preload();
 		deamon_Preload();
 		council_Preload();
+		countess_Preload();
 		//----------------------------------------------------------------------------------------------------------
 	
 		//Skill
