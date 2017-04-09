@@ -56,7 +56,7 @@ function countess_Preload()
 								  106, 101);
 	Lucifer_Game.load.spritesheet('MON_Countess_Dead',
 								  '../../static/images/game/Monster/Countess/death/death.png',
-								  82, 159);
+								  82, 159);	
 }
 
 function countess_Create()
