@@ -49,6 +49,7 @@ var stage2_Scene =
 	goto_Stage3: function()
 	{	
 		stageTwo_Check = false;
+
 		//Sound
 		sound_StopStage2BGM();
 
