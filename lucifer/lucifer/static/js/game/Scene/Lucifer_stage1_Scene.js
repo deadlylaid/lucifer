@@ -28,7 +28,7 @@ var stage1_Scene =
 		countess_Create();
 
         //items
-        itemsCreate();
+        itemStoreCreate();
 
 		//UI
 		ui_Create();
