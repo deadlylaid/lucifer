@@ -56,7 +56,7 @@ function countess_Preload()
 								  106, 101);
 	Lucifer_Game.load.spritesheet('MON_Countess_Dead',
 								  '../../static/images/game/Monster/Countess/death/death.png',
-								  82, 159);
+								  82, 159);	
 }
 
 function countess_Create()
@@ -379,7 +379,7 @@ function countess_Move(Object)
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
-				countess_Animation_Change(Object.Direction, 'Walk', Object);
+				countess_Animation_Change(Object.Direction, 'Run', Object);
 			}
 
 			//Stand
@@ -409,7 +409,7 @@ function countess_Move(Object)
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					countess_Animation_Change(Object.ReturnDirection, 'Walk', Object);
+					countess_Animation_Change(Object.ReturnDirection, 'Run', Object);
 				}
 			}
 

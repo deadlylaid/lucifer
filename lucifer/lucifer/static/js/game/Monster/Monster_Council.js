@@ -24,6 +24,7 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Time
 	this.Attack_DelayTimer, this.DelayTime_Total = 1;
+	this.Skill_DelayTimer, this.Skill_Time_Total = 1;
 
 	//Direction
 	this.Distance, this.Angle, this.PreDirection, this.Direction;
@@ -32,10 +33,18 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.ReturnDistance, this.ReturnDirection, this.ReturnAngle;
 
 	//MotionCheck
-	this.MoveCheck = false, this.StandCheck = false;
+	this.MoveCheck = false,   this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false;
 	this.DamageCheck = false, this.DeadCheck = false;
 	this.DeadMotionCheck = false;
+
+	//Light
+	this.Skill_Light, this.Skill_Rect;
+
+	//Attack Pattern 
+	this.Pattern_Timer, this.Pattern_Time_Total = 0;
+	this.Pattern_Nomal_Check = false, this.Pattern_Skill_Check = false;
+	this.Pattern_Change_Value = 2;
 }
 
 Council.prototype = Object.create(Phaser.Sprite.prototype);
@@ -60,12 +69,15 @@ function council_Preload()
 	Lucifer_Game.load.spritesheet('MON_Council_Skill',
 								  '../../static/images/game/Monster/CouncilMember/skill/skill.png',
 								  89, 127);
+	Lucifer_Game.load.spritesheet('Council_Light',
+								  '../../static/images/game/Monster_Skill/Council_Light.png',
+								  200, 200);
 }
 
 function council_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_Council_Stand', 'MON_Council_Run', 
-											  'MON_Council_Attack', 'MON_Council_Dead', 'MON_Council_Skill']);
+	Lucifer_Game.renderer.setTexturePriority(['MON_Council_Stand', 'MON_Council_Run', 'MON_Council_Attack', 
+		 									  'MON_Council_Dead', 'MON_Council_Skill', 'Council_Light']);
 
 	council_Group = Lucifer_Game.add.group();
 	council_Clone(3200, 1592);	
@@ -187,6 +199,36 @@ function council_Clone(PointX, PointY)
 	council_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
 	council_Object.Attack_DelayTimer.loop(1000, council_DelayTimer, Lucifer_Game, council_Object);
 
+	//Skill
+	council_Object.Skill_Light = Lucifer_Game.add.sprite(council_Object.x, council_Object.y, 'Council_Light');
+
+	//Lucifer_Game.add.existing(council_Object.Skill_Light);
+	council_Object.Skill_Light.blendMode = Phaser.blendModes.ADD;
+	council_Object.Skill_Light.visible = false;
+	council_Object.Skill_Light.anchor.setTo(0.5, 0.5);
+	council_Object.Skill_Rect = new Phaser.Rectangle(council_Object.Skill_Light.x, council_Object.Skill_Light.y, 120, 120);
+	
+	//Skill Animation
+	index = 0;
+	for(var i = 0; i < 8; ++i)
+	{
+		council_Object.Skill_Light.animations.add('Council_Light_' + i, 
+												   [
+												   	  index,      index + 1,  index + 2,  index + 3, index + 4,
+												   	  index + 5,  index + 6,  index + 7,  index + 8, index + 9,
+												   	  index + 10, index + 11, index + 12, index + 13
+												   ], 60, true);
+
+		index += 14;
+	}
+
+	council_Object.Skill_DelayTimer = Lucifer_Game.time.create(false);
+	council_Object.Skill_DelayTimer.loop(1000, council_SkillDelayTimer, Lucifer_Game, council_Object);
+
+	//Pattern
+	council_Object.Pattern_Timer = Lucifer_Game.time.create(false);
+	council_Object.Pattern_Timer.loop(1000, council_PatternTimer, Lucifer_Game, council_Object);
+
 	council_Group.add(council_Object);
 }
 //------------------------------------------------------------------------------
@@ -206,6 +248,18 @@ function council_out(Object)
 function council_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
+}
+
+//skill Timer
+function council_SkillDelayTimer(Object)
+{
+	++Object.Skill_Time_Total;
+}
+
+//Pattern Timer
+function council_PatternTimer(Object)
+{
+	++Object.Pattern_Time_Total;
 }
 
 //Name
@@ -395,11 +449,11 @@ function council_Move(Object)
 			{
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
-				Object.DamageCheck = false;
-				Object.MoveCheck = true;
+				Object.DamageCheck = false;				
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
-				council_Animation_Change(Object.Direction, 'Walk', Object);
+				council_Animation_Change(Object.Direction, 'Run', Object);
+				Object.MoveCheck = true;
 			}
 
 			//Stand
@@ -412,7 +466,7 @@ function council_Move(Object)
 				}
 
 				//Attack
-				council_Attack(Object);
+				council_Attack_AI(Object);
 
 				Object.body.velocity.x = 0;
 				Object.body.velocity.y = 0;
@@ -429,7 +483,7 @@ function council_Move(Object)
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					council_Animation_Change(Object.ReturnDirection, 'Walk', Object);
+					council_Animation_Change(Object.ReturnDirection, 'Run', Object);
 				}
 			}
 
@@ -451,6 +505,62 @@ function council_Move(Object)
 	}
 }
 
+function council_Attack_AI(Object)
+{
+	//Timer를 돌리면서 Time Total 값을 일정하게 올린다.
+	//일정하게 올린값이 렌덤값 Pattern_Change_Value 값보다 커지면 다시 렌덤밗을 뽑고
+	//그 뽑은 값에 따라 Time Total은 초기화 시키고 Patten_Check 값을 True / false 로 바꿔주면서
+	//Pattern 을 바꾼다.
+	Object.Pattern_Timer.start();
+
+	if(Object.Pattern_Time_Total > Object.Pattern_Change_Value)
+	{
+		Object.Pattern_Change_Value = Lucifer_Game.rnd.integerInRange(0, 5);	
+		Object.Pattern_Time_Total = 0;
+	}
+
+	if(Object.Pattern_Skill_Check == false)
+	{
+		council_Attack(Object);			
+	}
+	else if(Object.Pattern_Skill_Check == true)
+	{
+		council_SkillAttack(Object);			
+	}
+
+	//console.log(Object.Pattern_Change_Value);
+	//console.log(Object.Pattern_Time_Total);	
+	//console.log(Object.Pattern_Skill_Check);
+}
+
+function council_SkillAttack(Object)
+{
+	if(Object.StandCheck == true)
+	{
+		if(Phaser.Rectangle.intersects(Object.AttackRect, Hit_Rect))
+		{
+			Object.Skill_DelayTimer.start();
+
+			if(Object.AttackCheck == false)
+			{
+				council_Animation_Change(Object.Direction, 'Skill', Object);
+				
+				Object.Skill_Light.visible = true;
+				Object.Skill_Light.loadTexture('Council_Light', 0, true);
+				Object.Skill_Light.animations.play('Council_Light_' + Direction, 10, true);
+
+				if(Phaser.Rectangle.intersects(Object.Skill_Rect, Hit_Rect))
+				{
+					council_SkillHitCount(Object);	
+				}				
+
+				Object.Pattern_Skill_Check = false;
+				Object.AttackCheck = true;
+			}
+		}
+	}
+}
+
 function council_Attack(Object)
 {
 	if(Object.StandCheck == true)
@@ -461,8 +571,11 @@ function council_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
+				Object.Skill_Light.visible = false;
 				council_Animation_Change(Object.Direction, 'Attack', Object);
 				council_HitCount(Object);
+
+				Object.Pattern_Skill_Check = true;
 				Object.AttackCheck = true;
 			}
 		}
@@ -475,6 +588,15 @@ function council_HitCount(Object)
 	{
 		health -= 20;	//Mosnter Attack Point Setting
 		Object.DelayTime_Total = 0;
+	}
+}
+
+function council_SkillHitCount(Object)
+{
+	if(Object.Skill_Time_Total > 1)
+	{
+		health -= 40;
+		Object.Skill_Time_Total = 0;
 	}
 }
 
@@ -510,6 +632,7 @@ function council_Dead(Object)
 		{
 			Object.destroy();
 			Object.Name.destroy();
+			Object.Skill_Light.destroy();
 		}				
 	}
 }
@@ -529,6 +652,15 @@ function council_Hpbar_Mask(Object)
 	}
 }
 
+function council_SkillPos(Object)
+{
+	if(Object.AttackCheck == false)
+	{		
+		Object.Skill_Light.x = Player.x;
+		Object.Skill_Light.y = Player.y;				
+	}	
+}
+
 function council_RectPos(Object)
 {
 	if(Object.DeadCheck == false)
@@ -542,6 +674,11 @@ function council_RectPos(Object)
 		Object.AttackRect.x = Object.x;
 		Object.AttackRect.y = Object.y;
 		Object.AttackRect.centerOn(Object.x, Object.y);
+
+		//Skill Rect
+		Object.Skill_Rect.x = Object.Skill_Light.x;
+		Object.Skill_Rect.y = Object.Skill_Light.y;
+		Object.Skill_Rect.centerOn(Object.Skill_Light.x, Object.Skill_Light.y);
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -555,6 +692,7 @@ function council_Update()
 		var council = council_Group.getChildAt(i);
 
 		council_Hpbar_Mask(council);
+		council_SkillPos(council);
 		council_RectPos(council);
 		council_FollwName(council);
 		council_GetDirection(council);
