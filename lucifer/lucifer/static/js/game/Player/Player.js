@@ -8,7 +8,7 @@ var DistanceToMonster;								//Monster에 대한 거리값 변수.
 var Attack_Rect, Hit_Rect;
 var Player_AttackCheck = false; 
 var intersects;										//Rect Collision
-var stageOne_Check = false, stageTwo_Check = false;
+var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
 var player_KeyJump, player_KeySkill, player_KeySkill2;
 //----------------------------------------------------------------------------------------------------------
 
@@ -22,6 +22,10 @@ function player_Create()
 	else if(stageTwo_Check == true)
 	{
 		Player = Lucifer_Game.add.sprite(3426, 4289, 'PY_Bavarian_Attack');	
+	}
+	else if(stageThree_Check == true)
+	{
+		Player = Lucifer_Game.add.sprite(200, 200, 'PY_Bavarian_Attack');	
 	}
 	 	
 	//Player = Stage2_ObjectGroup.create(3582, 1466, 'PY_Bavarian_Attack');
@@ -150,6 +154,11 @@ function player_Create()
 	{
 		Stage2_ObjectGroup.add(Player);
 		Stage2_ObjectGroup.sort();
+	}
+	else if(stageThree_Check == true)
+	{
+		Stage3_ObjectGroup.add(Player);
+		Stage3_ObjectGroup.sort();
 	}	
 	//----------------------------------------------------------------------------------------------------------
 }	
@@ -402,7 +411,7 @@ function player_Update()
 
 	//Debug 용도
 	//intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
-	//console.log(Player.x, Player.y);
+	console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 
 	//Sort
@@ -415,6 +424,10 @@ function player_Update()
 	{
 		Stage2_ObjectGroup.sort('y', Phaser.Group.SORT_ASCENDING);
 	}	
+	else if(stageThree_Check == true)
+	{
+		Stage3_ObjectGroup.sort('y', Phaser.Group.SORT_ASCENDING);
+	}
 	//---------------------------------------------------------------------------------------	
 }
 
