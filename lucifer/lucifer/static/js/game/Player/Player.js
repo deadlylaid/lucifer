@@ -14,7 +14,7 @@ var player_KeyJump, player_KeySkill, player_KeySkill2;
 
 function player_Create()
 {
-	//Player Create
+	//Player create 
 	if(stageOne_Check == true)
 	{
 		Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
@@ -25,7 +25,7 @@ function player_Create()
 	}
 	else if(stageThree_Check == true)
 	{
-		Player = Lucifer_Game.add.sprite(200, 200, 'PY_Bavarian_Attack');	
+		Player = Lucifer_Game.add.sprite(879, 2193, 'PY_Bavarian_Attack');	
 	}
 	 	
 	//Player = Stage2_ObjectGroup.create(3582, 1466, 'PY_Bavarian_Attack');
