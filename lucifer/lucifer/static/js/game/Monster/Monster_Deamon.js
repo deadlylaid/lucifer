@@ -392,7 +392,7 @@ function deamon_Move(Object)
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
-				deamon_Animation_Change(Object.Direction, 'Walk', Object);
+				deamon_Animation_Change(Object.Direction, 'Run', Object);
 			}
 
 			//Stand
@@ -422,7 +422,7 @@ function deamon_Move(Object)
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					deamon_Animation_Change(Object.ReturnDirection, 'Walk', Object);
+					deamon_Animation_Change(Object.ReturnDirection, 'Run', Object);
 				}
 			}
 
