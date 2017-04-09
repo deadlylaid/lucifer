@@ -1,12 +1,12 @@
-//Deamon
+//Council
 //------------------------------------------------------------------------------
-var deamon_Group, council_Group;
+var council_Group, council_Object;
 //------------------------------------------------------------------------------
 
-//Deamon
-Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
+//Council
+Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 {
-	Phaser.Sprite.call(this, game, x, y, 'MON_Deamon_Dead');
+	Phaser.Sprite.call(this, game, x, y, 'MON_Council_Dead');
 	this.Hp = Hp, this.MaxHp = MaxHp;
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
@@ -38,171 +38,178 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.DeadMotionCheck = false;
 }
 
-Deamon.prototype = Object.create(Phaser.Sprite.prototype);
-Deamon.prototype.constructor = Deamon;
+Council.prototype = Object.create(Phaser.Sprite.prototype);
+Council.prototype.constructor = Council;
 
 //Preload / Create / Clone
 //------------------------------------------------------------------------------
-function deamon_Preload()
+function council_Preload()
 {
-	Lucifer_Game.load.spritesheet('MON_Deamon_Stand',
-								  '../../static/images/game/Monster/Demon/stand/stand.png',
-								  184, 147);
-	Lucifer_Game.load.spritesheet('MON_Deamon_Run',
-								  '../../static/images/game/Monster/Demon/run/run.png',
-								  151, 152);
-	Lucifer_Game.load.spritesheet('MON_Deamon_Attack',
-								  '../../static/images/game/Monster/Demon/attack/attack.png',
-								  200, 140);
-	Lucifer_Game.load.spritesheet('MON_Deamon_Dead',
-								  '../../static/images/game/Monster/Demon/death/death.png',
-								  204, 172);
-	Lucifer_Game.load.spritesheet('MON_Deamon_Skill',
-								  '../../static/images/game/Monster/Demon/skill/skill.png',
-								  203, 153);
+	Lucifer_Game.load.spritesheet('MON_Council_Stand',
+								  '../../static/images/game/Monster/CouncilMember/stand/stand.png',
+								  65, 93);
+	Lucifer_Game.load.spritesheet('MON_Council_Run',
+								  '../../static/images/game/Monster/CouncilMember/run/run.png',
+								  97, 109);
+	Lucifer_Game.load.spritesheet('MON_Council_Attack',
+								  '../../static/images/game/Monster/CouncilMember/attack/attack.png',
+								  115, 103);
+	Lucifer_Game.load.spritesheet('MON_Council_Dead',
+								  '../../static/images/game/Monster/CouncilMember/death/death.png',
+								  154, 129);
+	Lucifer_Game.load.spritesheet('MON_Council_Skill',
+								  '../../static/images/game/Monster/CouncilMember/skill/skill.png',
+								  89, 127);
 }
 
-function deamon_Create()
+function council_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_Deamon_Stand', 'MON_Deamon_Run', 
-											  'MON_Deamon_Attack', 'MON_Deamon_Dead', 'MON_Deamon_Skill']);
+	Lucifer_Game.renderer.setTexturePriority(['MON_Council_Stand', 'MON_Council_Run', 
+											  'MON_Council_Attack', 'MON_Council_Dead', 'MON_Council_Skill']);
 
-	deamon_Group = Lucifer_Game.add.group();
-	deamon_Clone(3400, 1492);
+	council_Group = Lucifer_Game.add.group();
+	council_Clone(3200, 1592);	
 }
-//------------------------------------------------------------------------------
-function deamon_Clone(PointX, PointY)
-{
-	council_Group = new Deamon(Lucifer_Game, PointX, PointY, 100, 100, 200, 100);
 
-	Lucifer_Game.physics.p2.enable(council_Group);
-	council_Group.body.fixedRotation = true;
-	council_Group.body.clearShapes();
-	council_Group.body.addRectangle(60, 60, 0, 0);
-	council_Group.body.debug = true;	
+function council_Clone(PointX, PointY)
+{
+	council_Object = new Council(Lucifer_Game, PointX, PointY, 100, 100, 300, 100);
+
+	Lucifer_Game.physics.p2.enable(council_Object);
+	council_Object.body.fixedRotation = true;
+	council_Object.body.clearShapes();
+	council_Object.body.addRectangle(60, 60, 0, 0);
+	council_Object.body.debug = true;	
 
 	//Animation
 	//Stand
 	var index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Group.animations.add('MON_Deamon_Stand_' + i,
+		council_Object.animations.add('MON_Council_Stand_' + i,
 									 [
 									 	index, index + 1, index + 2, index + 3, index + 4,
-									 	index + 5, index + 6, index + 7
+									 	index + 5, index + 6
+									 ], 60, true);		
+		index += 7;		
+	}	
+
+	//Run
+	index = 0;
+	for(var i = 0; i < 8; ++i)
+	{
+		council_Object.animations.add('MON_Council_Run_' + i,
+									 [
+									 	index, index + 1, index + 2, index + 3, index + 4,
+									 	index + 5, index + 6, index + 7, index + 8, index + 9,
+									 	index + 10
 									 ], 60, true);
 
-		council_Group.animations.add('MON_Deamon_Run_' + i,
-									 [
-									 	index, index + 1, index + 2, index + 3, index + 4,
-									 	index + 5, index + 6, index + 7
-									 ], 60, true);
-		index += 8;		
-	}	
+		index += 11;
+	}
+	
 
 	//Attack
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Group.animations.add('MON_Deamon_Attack_' + i,
+		council_Object.animations.add('MON_Council_Attack_' + i,
 									 [
 									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
-									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
-									 	index + 10, index + 11, index + 12, index + 13, index + 14,
-									 	index + 15
+									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9									 	
 									 ], 60, true);
-		index += 16;
+		index += 10;
 	}
 
 	//Dead
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Group.animations.add('MON_Deamon_Dead_' + i,
+		council_Object.animations.add('MON_Council_Dead_' + i,
 									[
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									   index + 10, index + 11, index + 12, index + 13, index + 14,
-									   index + 15, index + 16, index + 17, index + 18, index + 19	
+									   index + 15, index + 16, index + 17, index + 18	
 									], 60, true);	
-		index += 20;	
+		index += 19;	
 	}
 
 	//Skill
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Group.animations.add('MON_Deamon_Skill_' + i,
+		council_Object.animations.add('MON_Council_Skill_' + i,
 									[
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
-									   index + 10, index + 11 
+									   index + 10, index + 11, index + 12, index + 13 
 									], 60, true);	
-		index += 12;
+		index += 14;
 	}
 
-	council_Group.loadTexture('MON_Deamon_Stand', 0, true);
-	council_Group.animations.play('MON_Deamon_Stand_', 10, true);
-	council_Group.anchor.setTo(0.5, 0.5);
+	council_Object.loadTexture('MON_Council_Stand', 0, true);
+	council_Object.animations.play('MON_Council_Stand_', 10, true);
+	council_Object.anchor.setTo(0.5, 0.5);
 
-	Lucifer_Game.physics.enable(council_Group, Phaser.Physics.ARCADE);
-	Lucifer_Game.add.existing(council_Group);
+	Lucifer_Game.physics.enable(council_Object, Phaser.Physics.ARCADE);
+	Lucifer_Game.add.existing(council_Object);
 
 	//Hp Bar
-	council_Group.HpBar = council_Group.addChild(Lucifer_Game.make.sprite(0, -100, 'monsterHealthBar'));
-	council_Group.HpBar.anchor.set(0.5, 0.5);
-	council_Group.HpBar.visible = false;
+	council_Object.HpBar = council_Object.addChild(Lucifer_Game.make.sprite(0, -100, 'monsterHealthBar'));
+	council_Object.HpBar.anchor.set(0.5, 0.5);
+	council_Object.HpBar.visible = false;
 
 	//Hp Mask
-	council_Group.HpMask = council_Group.addChild(Lucifer_Game.add.graphics(0, -100));
-	council_Group.HpMask.beginFill(0xffffff);
+	council_Object.HpMask = council_Object.addChild(Lucifer_Game.add.graphics(0, -100));
+	council_Object.HpMask.beginFill(0xffffff);
 
 	//Name
-	council_Group.Name = Lucifer_Game.add.text(council_Group.x, council_Group.y - 100, 'Deamon');
-	council_Group.Name.anchor.set(0.5);
-	council_Group.Name.align = 'center';
-	council_Group.Name.font = 'Arial';
-	council_Group.Name.fontSize = 13;
-	council_Group.Name.fontWeight = 'normal';
-	council_Group.Name.fill = '#19de65';
-	council_Group.Name.visible = false;
+	council_Object.Name = Lucifer_Game.add.text(council_Object.x, council_Object.y - 100, 'Council');
+	council_Object.Name.anchor.set(0.5);
+	council_Object.Name.align = 'center';
+	council_Object.Name.font = 'Arial';
+	council_Object.Name.fontSize = 13;
+	council_Object.Name.fontWeight = 'normal';
+	council_Object.Name.fill = '#19de65';
+	council_Object.Name.visible = false;
 
 	//Input mouse Over / Up
-	council_Group.inputEnabled = true;
-	council_Group.events.onInputOver.add(deamon_over, council_Group);
-	council_Group.events.onInputOut.add(deamon_out, council_Group);
+	council_Object.inputEnabled = true;
+	council_Object.events.onInputOver.add(council_over, council_Object);
+	council_Object.events.onInputOut.add(council_out, council_Object);
 
 	//Rect
-	council_Group.HitRect = new Phaser.Rectangle(council_Group.x, council_Group.y, 100, 100);
-	council_Group.AttackRect = new Phaser.Rectangle(council_Group.x, council_Group.y, 100, 80);
+	council_Object.HitRect = new Phaser.Rectangle(council_Object.x, council_Object.y, 80, 80);
+	council_Object.AttackRect = new Phaser.Rectangle(council_Object.x, council_Object.y, 90, 90);
 
 	//Delay Timer
-	council_Group.Attack_DelayTimer = Lucifer_Game.time.create(false);
-	council_Group.Attack_DelayTimer.loop(1000, deamon_DelayTimer, Lucifer_Game, council_Group);
+	council_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
+	council_Object.Attack_DelayTimer.loop(1000, council_DelayTimer, Lucifer_Game, council_Object);
 
-	deamon_Group.add(council_Group);
+	council_Group.add(council_Object);
 }
 //------------------------------------------------------------------------------
 //Over / Out
-function deamon_over(Object)
+function council_over(Object)
 {
 	Object.Name.visible = true;
 	Object.HpBar.visible = true;
 }
-function deamon_out(Object)
+function council_out(Object)
 {
 	Object.Name.visible = false;
 	Object.HpBar.visible = false;
 }
 
 //Timer
-function deamon_DelayTimer(Object)
+function council_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
 }
 
 //Name
-function deamon_FollwName(Object)
+function council_FollwName(Object)
 {
 	Object.Name.x = Object.position.x;
 
@@ -213,7 +220,7 @@ function deamon_FollwName(Object)
 
 //Direction
 //----------------------------------------------------------------------------------------------
-function deamon_GetDirection(Object)
+function council_GetDirection(Object)
 {
 	Object.Distance = Phaser.Math.distance(Object.x, Object.y, Player.x, Player.y);
 
@@ -271,7 +278,7 @@ function deamon_GetDirection(Object)
 	}	
 }
 
-function deamon_GetReturnDirection(Object)
+function council_GetReturnDirection(Object)
 {
 	Object.RetrunDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
 
@@ -331,7 +338,7 @@ function deamon_GetReturnDirection(Object)
 	}
 }
 
-function deamon_Compare_Direction(PreDirection, CurDirection, Object)
+function council_Compare_Direction(PreDirection, CurDirection, Object)
 {
 	if(PreDirection != CurDirection)
 	{
@@ -343,33 +350,33 @@ function deamon_Compare_Direction(PreDirection, CurDirection, Object)
 
 //Animation
 //----------------------------------------------------------------------------------------------
-function deamon_Animation_Change(Direction, Status, Object)
+function council_Animation_Change(Direction, Status, Object)
 {
 	if(Object.DeadCheck == false)
 	{
 		if(Object.Status[0] == Status)
 		{
 			//Stand
-			Object.loadTexture('MON_Deamon_Stand', 0, true);
-			Object.animations.play('MON_Deamon_Stand_' + Direction, 10, true);
+			Object.loadTexture('MON_Council_Stand', 0, true);
+			Object.animations.play('MON_Council_Stand_' + Direction, 10, true);
 		}	
 		else if(Object.Status[1] == Status)
 		{
 			//Walk
-			Object.loadTexture('MON_Deamon_Run', 0, true);
-			Object.animations.play('MON_Deamon_Run_' + Direction, 10, true);
+			Object.loadTexture('MON_Council_Run', 0, true);
+			Object.animations.play('MON_Council_Run_' + Direction, 10, true);
 		}
 		else if(Object.Status[2] == Status)
 		{
 			//Attack
-			Object.loadTexture('MON_Deamon_Attack', 0, true);
-			Object.animations.play('MON_Deamon_Attack_' + Direction, 10, true);
+			Object.loadTexture('MON_Council_Attack', 0, true);
+			Object.animations.play('MON_Council_Attack_' + Direction, 10, true);
 		}
 		else if(Object.Status[4] == Status)
 		{
 			//Skill
-			Object.loadTexture('MON_Deamon_Skill', 0, true);
-			Object.animations.play('MON_Deamon_Skill_' + Direction, 10, true);
+			Object.loadTexture('MON_Council_Skill', 0, true);
+			Object.animations.play('MON_Council_Skill_' + Direction, 10, true);
 		}
 	}
 }
@@ -377,7 +384,7 @@ function deamon_Animation_Change(Direction, Status, Object)
 
 //AI
 //----------------------------------------------------------------------------------------------
-function deamon_Move(Object)
+function council_Move(Object)
 {
 	if(Object.DeadCheck == false)
 	{
@@ -392,7 +399,7 @@ function deamon_Move(Object)
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
-				deamon_Animation_Change(Object.Direction, 'Walk', Object);
+				council_Animation_Change(Object.Direction, 'Walk', Object);
 			}
 
 			//Stand
@@ -400,12 +407,12 @@ function deamon_Move(Object)
 			{
 				if(Object.StandCheck == false)
 				{
-					deamon_Animation_Change(Object.Direction, 'Stand', Object);
+					council_Animation_Change(Object.Direction, 'Stand', Object);
 					Object.StandCheck = true;
 				}
 
 				//Attack
-				deamon_Attack(Object);
+				council_Attack(Object);
 
 				Object.body.velocity.x = 0;
 				Object.body.velocity.y = 0;
@@ -422,7 +429,7 @@ function deamon_Move(Object)
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					deamon_Animation_Change(Object.ReturnDirection, 'Walk', Object);
+					council_Animation_Change(Object.ReturnDirection, 'Walk', Object);
 				}
 			}
 
@@ -431,7 +438,7 @@ function deamon_Move(Object)
 			{
 				if(Object.StandCheck == false)
 				{
-					deamon_Animation_Change(Object.ReturnDirection, 'Stand', Object);
+					council_Animation_Change(Object.ReturnDirection, 'Stand', Object);
 					Object.StandCheck = true;	
 				}
 
@@ -440,11 +447,11 @@ function deamon_Move(Object)
 			}
 		}
 
-		deamon_Compare_Direction(Object.PreDirection, Object.Direction, Object);
+		council_Compare_Direction(Object.PreDirection, Object.Direction, Object);
 	}
 }
 
-function deamon_Attack(Object)
+function council_Attack(Object)
 {
 	if(Object.StandCheck == true)
 	{
@@ -454,15 +461,15 @@ function deamon_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				deamon_Animation_Change(Object.Direction, 'Attack', Object);
-				deamon_HitCount(Object);
+				council_Animation_Change(Object.Direction, 'Attack', Object);
+				council_HitCount(Object);
 				Object.AttackCheck = true;
 			}
 		}
 	}
 }
 
-function deamon_HitCount(Object)
+function council_HitCount(Object)
 {
 	if(Object.DelayTime_Total > 1)
 	{
@@ -471,7 +478,7 @@ function deamon_HitCount(Object)
 	}
 }
 
-function deamon_Dead(Object)
+function council_Dead(Object)
 {
 	if(Object.Hp < 0)
 	{
@@ -482,8 +489,8 @@ function deamon_Dead(Object)
 	{
 		if(Object.DeadMotionCheck == false)
 		{
-			Object.loadTexture('MON_Deamon_Dead', 0, true);
-			Object.animations.play('MON_Deamon_Dead_' + Object.Direction, 10, true);
+			Object.loadTexture('MON_Council_Dead', 0, true);
+			Object.animations.play('MON_Council_Dead_' + Object.Direction, 10, true);
 			Object.DeadMotionCheck = true;
 		}
 
@@ -492,11 +499,11 @@ function deamon_Dead(Object)
 
 		if(Object.Direction == 0)
 		{
-			EndFrame = 19;
+			EndFrame = 18;
 		}
 		else
 		{
-			EndFrame = 19 * (Object.Direction + 1);
+			EndFrame = 18 * (Object.Direction + 1);
 		}
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
@@ -510,7 +517,7 @@ function deamon_Dead(Object)
 
 //UI
 //----------------------------------------------------------------------------------------------
-function deamon_Hpbar_Mask(Object)
+function council_Hpbar_Mask(Object)
 {
 	if(Object.DeadCheck == false)
 	{
@@ -522,7 +529,7 @@ function deamon_Hpbar_Mask(Object)
 	}
 }
 
-function deamon_RectPos(Object)
+function council_RectPos(Object)
 {
 	if(Object.DeadCheck == false)
 	{
@@ -541,35 +548,35 @@ function deamon_RectPos(Object)
 
 //Update & Render
 //----------------------------------------------------------------------------------------------
-function deamon_Update()
+function council_Update()
 {
-	for(var i = 0; i < deamon_Group.length; ++i)
+	for(var i = 0; i < council_Group.length; ++i)
 	{
-		var deamon = deamon_Group.getChildAt(i);
+		var council = council_Group.getChildAt(i);
 
-		deamon_Hpbar_Mask(deamon);
-		deamon_RectPos(deamon);
-		deamon_FollwName(deamon);
-		deamon_GetDirection(deamon);
-		deamon_GetReturnDirection(deamon);
-		deamon_Move(deamon);
+		council_Hpbar_Mask(council);
+		council_RectPos(council);
+		council_FollwName(council);
+		council_GetDirection(council);
+		council_GetReturnDirection(council);
+		council_Move(council);
 
 		//Player Mosnter Collision
-		player_Monster_Col(deamon);
+		player_Monster_Col(council);
 
-		deamon_Dead(deamon);
+		council_Dead(council);
 	}
 }
 
-function deamon_Render()
+function council_Render()
 {
-	var length = deamon_Group.length;
+	var length = council_Group.length;
 	for(var i = 0; i < length; ++i)
 	{
-		var deamon = deamon_Group.getChildAt(i);
+		var council = council_Group.getChildAt(i);
 
-		Lucifer_Game.debug.geom(deamon.HitRect, 'rgba(200, 0, 0, 0.5)');
-		Lucifer_Game.debug.geom(deamon.AttackRect, 'rgba(0, 0, 200, 0.5)');
+		Lucifer_Game.debug.geom(council.HitRect, 'rgba(200, 0, 0, 0.5)');
+		Lucifer_Game.debug.geom(council.AttackRect, 'rgba(0, 0, 200, 0.5)');
 	}
 }
 //----------------------------------------------------------------------------------------------

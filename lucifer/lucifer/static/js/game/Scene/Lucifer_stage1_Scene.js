@@ -24,6 +24,7 @@ var stage1_Scene =
 		andariel_Create();
 		wraith_Create();
 		deamon_Create();
+		council_Create();
 
         //items
         itemsCreate();
@@ -55,6 +56,7 @@ var stage1_Scene =
 		andariel_Update();
 		wraith_Update();
 		deamon_Update();
+		council_Update();
 
         //items Update
         itemsUpdate();
@@ -92,6 +94,7 @@ var stage1_Scene =
 			andariel_Render();
 			wraith_Render();
 			deamon_Render();
+			council_Render();
 			
             //itemStoreRender
             itemStoreRender();
