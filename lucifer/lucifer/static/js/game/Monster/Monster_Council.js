@@ -201,6 +201,7 @@ function council_Clone(PointX, PointY)
 
 	//Skill
 	council_Object.Skill_Light = Lucifer_Game.add.sprite(council_Object.x, council_Object.y, 'Council_Light');
+
 	//Lucifer_Game.add.existing(council_Object.Skill_Light);
 	council_Object.Skill_Light.blendMode = Phaser.blendModes.ADD;
 	council_Object.Skill_Light.visible = false;
@@ -527,9 +528,9 @@ function council_Attack_AI(Object)
 		council_SkillAttack(Object);			
 	}
 
-	console.log(Object.Pattern_Change_Value);
-	console.log(Object.Pattern_Time_Total);	
-	console.log(Object.Pattern_Skill_Check);
+	//console.log(Object.Pattern_Change_Value);
+	//console.log(Object.Pattern_Time_Total);	
+	//console.log(Object.Pattern_Skill_Check);
 }
 
 function council_SkillAttack(Object)
