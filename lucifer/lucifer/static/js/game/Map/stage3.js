@@ -117,6 +117,6 @@ function stageThree_Create()
 	
 	//---------------------------------------------------------------------------------------
 
-	Stage3_Map.setCollision(267, true, "Collision Layer");
+	Stage3_Map.setCollision(273, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Stage3_Map, "Collision Layer");
 }
