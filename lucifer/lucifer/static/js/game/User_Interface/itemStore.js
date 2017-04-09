@@ -6,7 +6,13 @@ var potionSprite,
     invenKeyTimer,
     invenKeyValidCheck = 1;
 
-potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemText, itemStoreStyle){
+//itemStore font style
+var itemStoreStyle = {
+    font: "15px Courier", fill: "#fff", 
+};
+
+//potion 객체를 만들때 사용
+potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
     //item status
@@ -20,6 +26,14 @@ potion = function (game, positionX, positionY, spriteKey, heal, limited_job, ite
     this.scale.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
+    var itemData = [
+        [ itemList[0].name ],
+        [ '' ],
+        [ '      ', itemList[0].price ],
+    ];
+
+    parsedItemData = parseList(itemData);
+    itemText = parsedItemData.text;
 
     this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
     this.text.fixedToCamera = true;
@@ -31,9 +45,9 @@ potion.prototype.getVisible = function(bool){
     this.visible = bool;
     this.text.visible = bool;
 }
-
 potion.prototype.constructor = potion;
 
+//sword 객체를 만들때 사용 
 sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemText, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
@@ -61,6 +75,7 @@ sword.prototype.getVisible = function(bool){
 }
 sword.prototype.constructor = sword;
 
+//armor 객체를 만들때 사용 
 armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, itemText, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
     
@@ -177,28 +192,17 @@ function itemsCreate(){
         wordWrapWidth: 100,
     };
 
-    //itemStore font style
-    var itemStoreStyle = {
-        font: "15px Courier", fill: "#fff", 
-    };
+    
 
     //Postion -----------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
-    var itemData = [
-        [ itemList[0].name ],
-        [ '' ],
-        [ '      ', itemList[0].price ],
-    ];
-
-    parsedItemData = parseList(itemData);
-    itemText = parsedItemData.text;
-
-    redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[2].limited_job, itemText, itemStoreStyle);
+   
+    redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[0].limited_job, itemStoreStyle);
 
     //input Rect ----------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
     
-    Lucifer_Game.physics.p2.enable(redPotion); 
+    Lucifer_Game.physics.p2.enable(redPotion);
     redPotion.body.clearShapes();
     redPotion.body.addRectangle();
     redPotion.body.static = true;
@@ -271,7 +275,7 @@ function itemsCreate(){
     for(i=0; i<invenArrayLength; i++){
         switch(inventory[i].item_name){
             case '빨간물약':
-                inventory[i]=redPotion;
+                inventory[i]=redPotionClone(200, 300, itemStoreStyle);
                 break;
             case '기본검':
                 inventory[i]=basicSword;
@@ -350,9 +354,31 @@ function buyItem() {
         alert("먼저 구매할 물건을 클릭하세요");
     }else{
         alert("구매한 물건 : " + selectedItem.name);
+        switch (selectedItem.name){
+            case '빨간물약':
+                selectedItem=redPotionClone(55, 105);
+                break;
+            case '기본검':
+                inventory[i]=basicSword;
+                break;
+            case '기본갑옷':
+                inventory[i]=basicArmor;
+                break;
+        }
         inventory.push(selectedItem);
         inventoryPost(selectedItem.name);
     }
+}
+
+function redPotionClone(positionX, positionY, itemStoreStyle){
+    //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
+    redPotionObject = new potion(
+        Lucifer_Game, positionX, positionY, itemList[0].name, itemList[0].heal, itemList[0].limited_job, itemStoreStyle
+        );
+    redPotionObject.text.setText(redPotionObject.name);
+    redPotionObject.text.fontSize = 15; 
+    redPotionObject.text.fill = '#fff';
+    return redPotionObject;
 }
 
 function inventoryPost(selectedItem){
@@ -373,8 +399,10 @@ function invenTimeCheck(){
 function invenUi(){
     if(uiInventory.visible === true){
         uiInventory.visible = false;
+        inventory[0].getVisible(false);
     }else{
         uiInventory.visible = true;
+        inventory[0].getVisible(true);
     }
 }
 
