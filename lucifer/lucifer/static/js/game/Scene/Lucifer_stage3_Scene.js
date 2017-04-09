@@ -16,11 +16,13 @@ var stage3_Scene =
 		//Player
 		player_Create();
 
+		//UI
+		ui_Create();
+
 		//Monster
 		//golem_Create();
 
-		//UI
-		ui_Create();
+		
 	},
 
 	update: function()
