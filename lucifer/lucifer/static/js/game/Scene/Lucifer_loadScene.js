@@ -66,6 +66,7 @@ var loadScene =
 		andariel_Preload();
 		wraith_Preload();
 		deamon_Preload();
+		council_Preload();
 		//----------------------------------------------------------------------------------------------------------
 	
 		//Skill

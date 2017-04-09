@@ -1,11 +1,12 @@
 var Stage3_Map, Stage3, Stage3_ObjLayer;	//Stage 이미지 변수								
 var Stage3_ObjectGroup;						//Stage2 - Object 관련 변수.
+var stage3_Collision_Layer;
 
 function stageThree_Preload()
 {
 	Lucifer_Game.load.tilemap('MAP_Stage3', '../../static/images/game/Map/stage4/Stage3.json',
 							   null, Phaser.Tilemap.TILED_JSON);
-	Lucifer_Game.load.image('Stage3_TileSet', '../../static/images/game/Map/stage4/Stage4_TileSet.png');
+	Lucifer_Game.load.image('Stage4_TileSet', '../../static/images/game/Map/stage4/Stage4_TileSet.png');
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('Stage3_obj_struct', '../../static/images/game/Object/Stage3/Stage3_obj_struct.png');
 	
@@ -13,9 +14,6 @@ function stageThree_Preload()
 	//Lucifer_Game.load.image('STAGE3_Object_Tree', '../../static/images/game/Object/Stage3/Stage3_obj_flag2.png');
 	
 	//----------------------------------------------------------------------------------------------------------------
-	
-	
-	
 }
 
 function stageThree_Create()
@@ -25,13 +23,13 @@ function stageThree_Create()
 	//Map 
 	//---------------------------------------------------------------------------------------
 	Stage3_Map = Lucifer_Game.add.tilemap('MAP_Stage3');		
-	Stage3_Map.addTilesetImage('Stage3_TileSet', 'Stage3_TileSet');
+	Stage3_Map.addTilesetImage('Stage4_TileSet', 'Stage4_TileSet');
 	Stage3_Map.addTilesetImage('Collision_Tile', 'Collision_Tile');
 	Stage3_Map.addTilesetImage('Stage3_obj_struct', 'Stage3_obj_struct');
 
 	Stage3 = Stage3_Map.createLayer('Tile Layer 1');
 	Stage3_ObjLayer = Stage3_Map.createLayer('Object Layer');
-	Collision_Layer = Stage3_Map.createLayer('Collision Layer');
+	stage3_Collision_Layer = Stage3_Map.createLayer('Collision Layer');
 	Stage3.resizeWorld();
 	//---------------------------------------------------------------------------------------
 
