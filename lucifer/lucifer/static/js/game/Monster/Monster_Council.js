@@ -149,7 +149,7 @@ function council_Clone(PointX, PointY)
 	}
 
 	council_Object.loadTexture('MON_Council_Stand', 0, true);
-	council_Object.animations.play('MON_Council_Stand_', 10, true);
+	council_Object.animations.play('MON_Council_Stand_0', 10, true);
 	council_Object.anchor.setTo(0.5, 0.5);
 
 	Lucifer_Game.physics.enable(council_Object, Phaser.Physics.ARCADE);
