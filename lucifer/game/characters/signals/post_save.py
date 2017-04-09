@@ -64,9 +64,9 @@ def character_post_save(sender, instance, created, **kwargs):
         instance.user.save()
 
         item, is_true = Item.objects.get_or_create(
-                name='testitem1',
-                type_is='weapon',
-                image_name='testitem1',
+                name='빨간물약',
+                type_is='potion',
+                image_name='healthPotion1',
                 )
 
         Inventory.objects.create(
