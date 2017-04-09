@@ -1,107 +1,7 @@
-var potionSprite,
-    swordSprite,
-    armorSprite,
-    uiStore,
+var uiStore,
     selectedItem = null,
     invenKeyTimer,
     invenKeyValidCheck = 1;
-
-//itemStore font style
-var itemStoreStyle = {
-    font: "15px Courier", fill: "#fff", 
-};
-
-//potion 객체를 만들때 사용
-potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemStoreStyle){
-    Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
-
-    //item status
-    //name = spritekey name
-    this.name = spriteKey;
-    this.type_is = 'potion';
-    this.heal = heal;
-    this.limited_job = limited_job;
-
-    this.anchor.setTo(0.5, 0.5);
-    this.scale.setTo(0.5, 0.5);
-    this.fixedToCamera = true;
-    this.visible = false;
-    var itemData = [
-        [ itemList[0].name ],
-        [ '' ],
-        [ '      ', itemList[0].price ],
-    ];
-
-    parsedItemData = parseList(itemData);
-    itemText = parsedItemData.text;
-
-    this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
-    this.text.fixedToCamera = true;
-    this.text.visible = false;
-}
-
-potion.prototype = Object.create(Phaser.Sprite.prototype);
-potion.prototype.getVisible = function(bool){
-    this.visible = bool;
-    this.text.visible = bool;
-}
-potion.prototype.constructor = potion;
-
-//sword 객체를 만들때 사용 
-sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemText, itemStoreStyle){
-    Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
-
-    //item status
-    //name = spritekey name
-    this.name = spriteKey;
-    this.type_is = 'sword';
-    this.attack_point = attack_point;
-    this.limited_job = limited_job;
-
-    this.anchor.setTo(0.5, 0.5);
-    this.scale.setTo(0.5, 0.5);
-    this.fixedToCamera = true;
-    this.visible = false;
-
-    this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
-    this.text.fixedToCamera = true;
-    this.text.visible = false;
-}
-
-sword.prototype = Object.create(Phaser.Sprite.prototype);
-sword.prototype.getVisible = function(bool){
-    this.visible = bool;
-    this.text.visible = bool;
-}
-sword.prototype.constructor = sword;
-
-//armor 객체를 만들때 사용 
-armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, itemText, itemStoreStyle){
-    Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
-    
-    //item status
-    //name == spritekey name
-    this.name = spriteKey;
-    this.type_is = 'shield';
-    this.defence_point = defence_point;
-    this.limited_job = limited_job;
-
-    this.anchor.setTo(0.5, 0.5);
-    this.scale.setTo(0.5, 0.5);
-    this.fixedToCamera = true;
-    this.visible = false;
-
-    this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
-    this.text.fixedToCamera = true;
-    this.text.visible = false;
-}
-
-armor.prototype = Object.create(Phaser.Sprite.prototype);
-armor.prototype.getVisible = function(bool){
-    this.visible = bool;
-    this.text.visible = bool;
-}
-armor.prototype.constructor = armor;
 
 function itemsPreload(){
 
@@ -115,10 +15,9 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
 
-
 };
 
-function itemsCreate(){
+function itemStoreCreate(){
 
     //Tab 이미지 추가
     //--------------------------------------------------------
@@ -185,22 +84,10 @@ function itemsCreate(){
     invenKeyTimer.loop(400, invenTimeCheck, this);
     //---------------------------------------------------------------
 
-    //itemStore font style
-    var style = {
-        font : "32px Courier",
-        fill: "#00ff44",
-        wordWrapWidth: 100,
-    };
-
-    
 
     //Postion -----------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
-   
     redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[0].limited_job, itemStoreStyle);
-
-    //input Rect ----------------------------------------------------------------------------
-    //---------------------------------------------------------------------------------------
     
     Lucifer_Game.physics.p2.enable(redPotion);
     redPotion.body.clearShapes();
@@ -210,55 +97,31 @@ function itemsCreate(){
     redPotion.inputEnabled = true;
     redPotion.events.onInputDown.add(clickItem, this);
 
-    //--------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------
-
-    //draw rect ----------------------------------------------------------------------------
     Lucifer_Game.add.existing(redPotion);
+    //---------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
 
-    //---------------------------------------------------------------------------------------
-    //---------------------------------------------------------------------------------------
 
     //Sword--------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
-    var itemData = [
-        [ itemList[1].name ],
-        [ '' ],
-        [ '      ', itemList[1].price ],
-    ];
-
-    parsedItemData = parseList(itemData);
-    itemText = parsedItemData.text;
-
-    basicSword = new sword(Lucifer_Game, 55, 105, itemList[1].name, itemList[1].attack_point, itemList[2].limited_job, itemText, itemStoreStyle);
+    basicSword = new sword(Lucifer_Game, 55, 105, itemList[1].name, itemList[1].attack_point, itemList[2].limited_job, itemStoreStyle);
     
-    //input Rect ----------------------------------------------------------------------------
-    //---------------------------------------------------------------------------------------
     Lucifer_Game.physics.p2.enable(basicSword); 
     basicSword.body.addRectangle(0, 0);
     basicSword.body.static = true;
 
     basicSword.inputEnabled = true;
     basicSword.events.onInputDown.add(clickItem, this);
-    //--------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------
 
     Lucifer_Game.add.existing(basicSword);
     //----------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------
 
-    
+
     //Armor--------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
-    var itemData = [
-        [ itemList[2].name ],
-        [ '' ],
-        [ '      ', itemList[2].price ],
-    ]
-    parsedItemData = parseList(itemData);
-    itemText = parsedItemData.text;
-
-    basicArmor = new armor(Lucifer_Game, 55, 105, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job, itemText, itemStoreStyle);
+    
+    basicArmor = new armor(Lucifer_Game, 55, 105, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job, itemStoreStyle);
 
     Lucifer_Game.physics.p2.enable(basicArmor); 
     basicArmor.body.addRectangle(0, 0);
@@ -274,14 +137,14 @@ function itemsCreate(){
     invenArrayLength = inventory.length;
     for(i=0; i<invenArrayLength; i++){
         switch(inventory[i].item_name){
-            case '빨간물약':
-                inventory[i]=redPotionClone(200, 300, itemStoreStyle);
+            case '빨간물약':/*335, 470*/
+                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 break;
             case '기본검':
-                inventory[i]=basicSword;
+                inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 break;
             case '기본갑옷':
-                inventory[i]=basicArmor;
+                inventory[i]=basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 break;
         };
     }
@@ -295,6 +158,9 @@ function itemsUpdate(){
         }
         invenKeyValidCheck = 0;
     }
+}
+
+function itemStoreRender(){
 }
 
 function showStore(){
@@ -353,34 +219,17 @@ function buyItem() {
     if(selectedItem === null){
         alert("먼저 구매할 물건을 클릭하세요");
     }else{
-        alert("구매한 물건 : " + selectedItem.name);
-        switch (selectedItem.name){
-            case '빨간물약':
-                selectedItem=redPotionClone(55, 105);
-                break;
-            case '기본검':
-                inventory[i]=basicSword;
-                break;
-            case '기본갑옷':
-                inventory[i]=basicArmor;
-                break;
+        if(inventory.length>11){
+            alert("인벤토리가 가득 찼습니다.");
+        }else{
+            alert("구매한 물건 : " + selectedItem.name);
+            inventory.push(selectedItem);
+            inventoryPost(selectedItem.name);
         }
-        inventory.push(selectedItem);
-        inventoryPost(selectedItem.name);
     }
 }
 
-function redPotionClone(positionX, positionY, itemStoreStyle){
-    //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
-    redPotionObject = new potion(
-        Lucifer_Game, positionX, positionY, itemList[0].name, itemList[0].heal, itemList[0].limited_job, itemStoreStyle
-        );
-    redPotionObject.text.setText(redPotionObject.name);
-    redPotionObject.text.fontSize = 15; 
-    redPotionObject.text.fill = '#fff';
-    return redPotionObject;
-}
-
+//server-side로 인벤토리 데이터 실시간 전송 
 function inventoryPost(selectedItem){
     $.ajax({
         method:'POST',
@@ -399,12 +248,61 @@ function invenTimeCheck(){
 function invenUi(){
     if(uiInventory.visible === true){
         uiInventory.visible = false;
-        inventory[0].getVisible(false);
+        for(i=0; i<inventory.length; i++){
+            inventory[i].getVisible(false);
+        }
     }else{
         uiInventory.visible = true;
-        inventory[0].getVisible(true);
+        for(i=0; i<inventory.length; i++){
+            inventory[i].getVisible(true);
+        }
     }
 }
 
-function itemStoreRender(){
+function inventoryPosition(count){
+    switch(count){
+        case 0:
+            var positionX = 335;
+            var positionY = 250;
+            break;
+        case 1:
+            var positionX = 335;
+            var positionY = 300;
+            break;
+        case 2:
+            var positionX = 335;
+            var positionY = 350;
+            break;
+        case 3:
+            var positionX = 335;
+            var positionY = 400;
+            break;
+        case 4:
+            var positionX = 335;
+            var positionY = 450;
+            break;
+        case 5:
+            var positionX = 470;
+            var positionY = 250;
+            break;
+        case 6:
+            var positionX = 470;
+            var positionY = 300;
+            break;
+        case 7:
+            var positionX = 470;
+            var positionY = 350;
+            break;
+        case 8:
+            var positionX = 470;
+            var positionY = 400;
+            break;
+        case 9:
+            var positionX = 470;
+            var positionY = 450;
+            break;
+    }
+    return [ positionX, positionY ];
 }
+
+
