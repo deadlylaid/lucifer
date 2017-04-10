@@ -8,7 +8,13 @@
     <style>
     body{
         background: url("{% static "images/GameBG7.jpg" %}");
-        background-size: 1950px 1050px;
+        background-size: 1920px 1000px;
+        padding-top: 75px;
+        
+    }
+    canvas {
+        border-image:url("{% static "images/Frame_Top.png" %}") 26 0 round stretch;
+        border-top:26px solid; 
         
     }
     </style>
@@ -76,14 +82,13 @@
 <body>
     <!--<input class="higherfunction" name="" value="button" type="button">-->
 
-  <section id='scene' style="width:1280px; height:800px; margin: auto; margin-top: 30px;">
+  <section id='scene' style="width:1280px; height:800px; margin: auto; ">
     <!-- 로딩 화면 구성 -->
     <!--
     <div id="myProgress">
       <div id="myBar"></div>
     </div>
     -->
-    <p>Lucifer</p>
     <ul id="character">
     </ul>
 
