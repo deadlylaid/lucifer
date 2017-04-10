@@ -1,4 +1,5 @@
 var uiStore,
+    uiInventory,
     selectedItem = null,
     invenKeyTimer,
     invenKeyValidCheck = 1;
