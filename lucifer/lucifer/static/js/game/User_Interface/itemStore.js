@@ -134,6 +134,7 @@ function itemStoreCreate(){
     //---------------------------------------------------------------------------------------   
     //---------------------------------------------------------------------------------------   
 
+    //server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다. 
     invenArrayLength = inventory.length;
     for(i=0; i<invenArrayLength; i++){
         switch(inventory[i].item_name){
@@ -151,6 +152,11 @@ function itemStoreCreate(){
 }
 
 function itemsUpdate(){
+    /**************************
+
+            UPDATE문 작성 
+
+    ***************************/
     if(key_inven.isDown){
         invenKeyTimer.start();
         if(invenKeyValidCheck == 1){
@@ -212,7 +218,18 @@ function armorStoreTab(){
 }
 
 function clickItem(sprite){
-    selectedItem = sprite;
+    //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨 
+    console.log(sprite.name);
+    switch(sprite.name){
+        case '빨간물약':
+            selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+            break;
+        case '기본검':
+            selectedItem = basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+            break;
+        case '기본갑옷':
+            selectedItem = basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+    }
 }
 
 function buyItem() {
