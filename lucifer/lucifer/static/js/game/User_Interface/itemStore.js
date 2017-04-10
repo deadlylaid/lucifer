@@ -15,6 +15,7 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet('armorTab', '../../static/images/game/UI/store/armorTab.png', 45, 80);
     Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
+    Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
 
 };
 
@@ -83,6 +84,12 @@ function itemStoreCreate(){
 
     invenKeyTimer = Lucifer_Game.time.create(false);
     invenKeyTimer.loop(400, invenTimeCheck, this);
+
+    dropButton = Lucifer_Game.add.sprite(445, 520, 'dropButton');
+    dropButton.anchor.setTo(0.5, 0.5);
+    dropButton.scale.setTo(0.5, 0.5);
+    dropButton.fixedToCamera = true;
+    dropButton.visible = false;
     //---------------------------------------------------------------
 
 
@@ -266,11 +273,13 @@ function invenTimeCheck(){
 function invenUi(){
     if(uiInventory.visible === true){
         uiInventory.visible = false;
+        dropButton.visible = false;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
         }
     }else{
         uiInventory.visible = true;
+        dropButton.visible = true;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
         }
