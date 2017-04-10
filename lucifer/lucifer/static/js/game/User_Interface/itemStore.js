@@ -164,6 +164,7 @@ function itemsUpdate(){
         }
         invenKeyValidCheck = 0;
     }
+
 }
 
 function itemStoreRender(){
