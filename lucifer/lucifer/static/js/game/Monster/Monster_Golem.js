@@ -37,8 +37,9 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.ReturnDirection, this.ReturnDistance, this.ReturnAngle;
 
 	//Motion Check
-	this.MoveCheck = false, this.StandCheck = false, this.AttackCheck = false;
-	this.CompareCheck = false, this.DamageCheck = false, this.DeadCheck = false;
+	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
+	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
+	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 }
 
 Golem.prototype = Object.create(Phaser.Sprite.prototype);
@@ -81,6 +82,7 @@ function golem_Clone(PointX, PointY)
 	golem_Object.body.clearShapes();
 	golem_Object.body.addRectangle(40, 60, 0, 0);
 	golem_Object.body.debug = true;
+	golem_Object.body.static = true;
 	
 	//Animation
 	//Stand / Walk
@@ -253,7 +255,7 @@ function golem_GetReturnDirection(Object)
 	if(Object.DeadCheck == false)
 	{
 		//CognizeRange 안으로 Player가 접근시 Direction
-		if(Object.ReturnDistance > Object.CognizeRange)
+		if(Object.Distance > Object.CognizeRange)
 		{
 			Object.ReturnAngle 
 				= Lucifer_Game.physics.arcade.angleToXY(Object, 
@@ -352,42 +354,54 @@ function golem_Move(Object)
 	{
 		if(Object.Distance < Object.CognizeRange)
 		{
+			Object.AI_StartCheck = true;
+
 			//Walk
 			if(Object.MoveCheck == false)
 			{
 				Object.StandCheck = false;
 				Object.AttackCheck = false;
-				Object.DamageCheck = false;
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				golem_Animation_Change(Object.Direction, 'Walk', Object);
-			}
-
-			//Stand
-			if(Object.Distance < Object.AttackRange)
-			{
-				if(Object.StandCheck == false)
-				{
-					golem_Animation_Change(Object.Direction, 'Stand', Object);
-					Object.StandCheck = true;
-				}
-
-				//Attack
-				golem_Attack(Object);
-
-				Object.body.velocity.x = 0;
-				Object.body.velocity.y = 0;
-			}
+			}			
 		}
-		else
+
+		if(Object.Distance < Object.AttackRange)
+		{
+			//Stand			
+			if(Object.StandCheck == false)
+			{
+				golem_Animation_Change(Object.Direction, 'Stand', Object);
+				Object.StandCheck = true;
+			}
+
+			//Attack
+			golem_Attack(Object);
+
+			Object.body.velocity.x = 0;
+			Object.body.velocity.y = 0;
+		}
+
+		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
+		{
+			if(Object.ReturnCheck == false)
+			{
+				Object.MoveCheck = false;
+				Object.AttackCheck = false;
+				Object.StandCheck = false;
+				Object.ReturnCheck = true;
+			}			
+		}
+
+		if(Object.ReturnCheck == true)
 		{
 			//Return Walk
 			if(Object.ReturnDistance > 10)
 			{
 				if(Object.MoveCheck == false)
 				{
-					Object.StandCheck = false;
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
@@ -398,16 +412,20 @@ function golem_Move(Object)
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
+				Object.ReturnCheck = false;	
+
 				if(Object.StandCheck == false)
 				{
-					golem_Animation_Change(Object.ReturnDirection, 'Stand', Object);
 					Object.StandCheck = true;
+
+					golem_Animation_Change(Object.ReturnDirection, 'Stand', Object);					
 				}
 
 				Object.body.velocity.x = 0;
 				Object.body.velocity.y = 0;
 			}
 		}
+
 		compare_Direction(Object.PreDirection, Object.Direction, Object);
 	}	
 }
@@ -423,10 +441,14 @@ function golem_Attack(Object)
 			if(Object.AttackCheck == false)
 			{
 				golem_Animation_Change(Object.Direction, 'Attack', Object);
+				golem_HitCount(Object);	
 				Object.AttackCheck = true;
-			}	
-
-			golem_HitCount(Object);		
+			}				
+		}
+		else
+		{
+			Object.StandCheck = false;
+			Object.MoveCheck = false;
 		}		
 	}	
 }

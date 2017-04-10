@@ -1,6 +1,6 @@
 //Wraith
 //------------------------------------------------------------------------------
-var wraith_Group, deamon_Object;
+var wraith_Group, wraith_Object;
 //------------------------------------------------------------------------------
 
 //Wraith
@@ -32,10 +32,9 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.ReturnDistance, this.ReturnDirection, this.ReturnAngle;
 
 	//MotionCheck
-	this.MoveCheck = false, this.StandCheck = false;
-	this.AttackCheck = false, this.CompareCheck = false;
-	this.DamageCheck = false, this.DeadCheck = false;
-	this.DeadMotionCheck = false;
+	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
+	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
+	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 }
 
 Wraith.prototype = Object.create(Phaser.Sprite.prototype);
@@ -70,21 +69,21 @@ function wraith_Create()
 
 function wraith_Clone(PointX, PointY)
 {
-	deamon_Object = new Wraith(Lucifer_Game, PointX, PointY, 100, 100, 180, 80);
+	wraith_Object = new Wraith(Lucifer_Game, PointX, PointY, 200, 200, 280, 80);
 
-	Lucifer_Game.physics.p2.enable(deamon_Object);
-	deamon_Object.body.fixedRotation = true;
-	deamon_Object.body.clearShapes();
-	deamon_Object.body.addRectangle(60, 60, 0, 0);
-	deamon_Object.body.debug = true;
-	deamon_Object.blendMode = Phaser.blendModes.ADD;
+	Lucifer_Game.physics.p2.enable(wraith_Object);
+	wraith_Object.body.fixedRotation = true;
+	wraith_Object.body.clearShapes();
+	wraith_Object.body.addRectangle(60, 60, 0, 0);
+	wraith_Object.body.debug = true;
+	wraith_Object.blendMode = Phaser.blendModes.ADD;
 
 	//Animation
 	//Stand
 	var index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		deamon_Object.animations.add('MON_Wraith_Stand_' + i,
+		wraith_Object.animations.add('MON_Wraith_Stand_' + i,
 									 [
 									 	index, index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7
@@ -96,7 +95,7 @@ function wraith_Clone(PointX, PointY)
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		deamon_Object.animations.add('MON_Wraith_Run_' + i,
+		wraith_Object.animations.add('MON_Wraith_Run_' + i,
 									 [
 									 	index,     index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7, index + 8, index + 9
@@ -108,7 +107,7 @@ function wraith_Clone(PointX, PointY)
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		deamon_Object.animations.add('MON_Wraith_Attack_' + i,
+		wraith_Object.animations.add('MON_Wraith_Attack_' + i,
 									 [
 									 	index,      index + 1,  index + 2,  index + 3, index + 4,
 									 	index + 5,  index + 6,  index + 7,  index + 8, index + 9,
@@ -121,7 +120,7 @@ function wraith_Clone(PointX, PointY)
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		deamon_Object.animations.add('MON_Wraith_Dead_' + i,
+		wraith_Object.animations.add('MON_Wraith_Dead_' + i,
 									[
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
@@ -131,46 +130,46 @@ function wraith_Clone(PointX, PointY)
 		index += 20;	
 	}
 
-	deamon_Object.loadTexture('MON_Wraith_Stand', 0, true);
-	deamon_Object.animations.play('MON_Wraith_Stand_0', 10, true);
-	deamon_Object.anchor.setTo(0.5, 0.5);
+	wraith_Object.loadTexture('MON_Wraith_Stand', 0, true);
+	wraith_Object.animations.play('MON_Wraith_Stand_0', 10, true);
+	wraith_Object.anchor.setTo(0.5, 0.5);
 
-	Lucifer_Game.physics.enable(deamon_Object, Phaser.Physics.ARCADE);
-	Lucifer_Game.add.existing(deamon_Object);
+	Lucifer_Game.physics.enable(wraith_Object, Phaser.Physics.ARCADE);
+	Lucifer_Game.add.existing(wraith_Object);
 
 	//Hp Bar
-	deamon_Object.HpBar = deamon_Object.addChild(Lucifer_Game.make.sprite(0, -100, 'monsterHealthBar'));
-	deamon_Object.HpBar.anchor.set(0.5, 0.5);
-	deamon_Object.HpBar.visible = false;
+	wraith_Object.HpBar = wraith_Object.addChild(Lucifer_Game.make.sprite(0, -100, 'monsterHealthBar'));
+	wraith_Object.HpBar.anchor.set(0.5, 0.5);
+	wraith_Object.HpBar.visible = false;
 
 	//Hp Mask
-	deamon_Object.HpMask = deamon_Object.addChild(Lucifer_Game.add.graphics(0, -100));
-	deamon_Object.HpMask.beginFill(0xffffff);
+	wraith_Object.HpMask = wraith_Object.addChild(Lucifer_Game.add.graphics(0, -100));
+	wraith_Object.HpMask.beginFill(0xffffff);
 
 	//Name
-	deamon_Object.Name = Lucifer_Game.add.text(deamon_Object.x, deamon_Object.y - 100, 'Wraith');
-	deamon_Object.Name.anchor.set(0.5);
-	deamon_Object.Name.align = 'center';
-	deamon_Object.Name.font = 'Arial';
-	deamon_Object.Name.fontSize = 13;
-	deamon_Object.Name.fontWeight = 'normal';
-	deamon_Object.Name.fill = '#19de65';
-	deamon_Object.Name.visible = false;
+	wraith_Object.Name = Lucifer_Game.add.text(wraith_Object.x, wraith_Object.y - 100, 'Wraith');
+	wraith_Object.Name.anchor.set(0.5);
+	wraith_Object.Name.align = 'center';
+	wraith_Object.Name.font = 'Arial';
+	wraith_Object.Name.fontSize = 13;
+	wraith_Object.Name.fontWeight = 'normal';
+	wraith_Object.Name.fill = '#19de65';
+	wraith_Object.Name.visible = false;
 
 	//Input mouse Over / Up
-	deamon_Object.inputEnabled = true;
-	deamon_Object.events.onInputOver.add(wraith_over, deamon_Object);
-	deamon_Object.events.onInputOut.add(wraith_out, deamon_Object);
+	wraith_Object.inputEnabled = true;
+	wraith_Object.events.onInputOver.add(wraith_over, wraith_Object);
+	wraith_Object.events.onInputOut.add(wraith_out, wraith_Object);
 
 	//Rect
-	deamon_Object.HitRect = new Phaser.Rectangle(deamon_Object.x, deamon_Object.y, 90, 90);
-	deamon_Object.AttackRect = new Phaser.Rectangle(deamon_Object.x, deamon_Object.y, 100, 80);
+	wraith_Object.HitRect = new Phaser.Rectangle(wraith_Object.x, wraith_Object.y, 90, 90);
+	wraith_Object.AttackRect = new Phaser.Rectangle(wraith_Object.x, wraith_Object.y, 100, 100);
 
 	//Delay Timer
-	deamon_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
-	deamon_Object.Attack_DelayTimer.loop(1000, wraith_DelayTimer, Lucifer_Game, deamon_Object);
+	wraith_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
+	wraith_Object.Attack_DelayTimer.loop(1000, wraith_DelayTimer, Lucifer_Game, wraith_Object);
 
-	wraith_Group.add(deamon_Object);
+	wraith_Group.add(wraith_Object);
 }
 //------------------------------------------------------------------------------
 //Over / Out
@@ -263,11 +262,11 @@ function wraith_GetDirection(Object)
 
 function wraith_GetReturnDirection(Object)
 {
-	Object.RetrunDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
+	Object.ReturnDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
 
 	if(Object.DeadCheck == false)
 	{
-		if(Object.RetrunDistance > Object.CognizeRange)
+		if(Object.Distance > Object.CognizeRange)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
@@ -367,56 +366,71 @@ function wraith_Move(Object)
 	{
 		if(Object.Distance < Object.CognizeRange)
 		{
-			//Walk
+			Object.AI_StartCheck = true;
+
+			//Run
 			if(Object.MoveCheck == false)
 			{
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
-				Object.DamageCheck = false;
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
-				wraith_Animation_Change(Object.Direction, 'Walk', Object);
-			}
-
-			//Stand
-			if(Object.Distance < Object.AttackRange)
-			{
-				if(Object.StandCheck == false)
-				{
-					wraith_Animation_Change(Object.Direction, 'Stand', Object);
-					Object.StandCheck = true;
-				}
-
-				//Attack
-				wraith_Attack(Object);
-
-				Object.body.velocity.x = 0;
-				Object.body.velocity.y = 0;
-			}
+				wraith_Animation_Change(Object.Direction, 'Run', Object);
+			}			
 		}
-		else
+
+		if(Object.Distance < Object.AttackRange)
 		{
-			//Return Walk
-			if(Object.RetrunDistance > 10)
+			//Stand
+			if(Object.StandCheck == false)
+			{
+				wraith_Animation_Change(Object.Direction, 'Stand', Object);
+				Object.StandCheck = true;
+			}
+	
+			//Attack
+			wraith_Attack(Object);
+
+			Object.body.velocity.x = 0;
+			Object.body.velocity.y = 0;
+		}
+
+		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
+		{
+			if(Object.ReturnCheck == false)
+			{
+				Object.MoveCheck = false;
+				Object.AttackCheck = false;
+				Object.StandCheck = false;
+				Object.ReturnCheck = true;
+			}			
+		}
+
+		if(Object.ReturnCheck == true)
+		{
+			//Return Run
+			if(Object.ReturnDistance > 10)
 			{
 				if(Object.MoveCheck == false)
 				{
-					Object.StandCheck = false;
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					wraith_Animation_Change(Object.ReturnDirection, 'Walk', Object);
+					wraith_Animation_Change(Object.ReturnDirection, 'Run', Object);
 				}
 			}
 
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
+				Object.ReturnCheck = false;
+
 				if(Object.StandCheck == false)
 				{
-					wraith_Animation_Change(Object.ReturnDirection, 'Stand', Object);
-					Object.StandCheck = true;	
+					Object.StandCheck = true;
+
+					wraith_Animation_Change(Object.ReturnDirection, 'Stand', Object);						
 				}
 
 				Object.body.velocity.x = 0;
@@ -442,6 +456,11 @@ function wraith_Attack(Object)
 				wraith_HitCount(Object);
 				Object.AttackCheck = true;
 			}
+		}
+		else
+		{
+			Object.StandCheck = false;
+			Object.MoveCheck = false;
 		}
 	}
 }

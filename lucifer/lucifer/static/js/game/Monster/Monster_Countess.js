@@ -31,11 +31,10 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	//Return Direction
 	this.ReturnDistance, this.ReturnDirection, this.ReturnAngle;
 
-	//MotionCheck
-	this.MoveCheck = false, this.StandCheck = false;
-	this.AttackCheck = false, this.CompareCheck = false;
-	this.DamageCheck = false, this.DeadCheck = false;
-	this.DeadMotionCheck = false;
+	//Motion Check
+	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
+	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
+	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 }
 
 Countess.prototype = Object.create(Phaser.Sprite.prototype);
@@ -69,13 +68,14 @@ function countess_Create()
 
 function countess_Clone(PointX, PointY)
 {
-	countess_Object = new Council(Lucifer_Game, PointX, PointY, 100, 100, 300, 80);
+	countess_Object = new Council(Lucifer_Game, PointX, PointY, 100, 100, 300, 60);
 
 	Lucifer_Game.physics.p2.enable(countess_Object);
 	countess_Object.body.fixedRotation = true;
 	countess_Object.body.clearShapes();
 	countess_Object.body.addRectangle(60, 60, 0, 0);
 	countess_Object.body.debug = true;	
+	countess_Object.body.static = true;
 
 	//Animation
 	//Stand
@@ -270,7 +270,7 @@ function countess_GetReturnDirection(Object)
 
 	if(Object.DeadCheck == false)
 	{
-		if(Object.RetrunDistance > Object.CognizeRange)
+		if(Object.Distance > Object.CognizeRange)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
@@ -370,42 +370,54 @@ function countess_Move(Object)
 	{
 		if(Object.Distance < Object.CognizeRange)
 		{
-			//Walk
+			Object.AI_StartCheck = true;
+
+			//Run
 			if(Object.MoveCheck == false)
 			{
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
-				Object.DamageCheck = false;
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				countess_Animation_Change(Object.Direction, 'Run', Object);
-			}
-
-			//Stand
-			if(Object.Distance < Object.AttackRange)
-			{
-				if(Object.StandCheck == false)
-				{
-					countess_Animation_Change(Object.Direction, 'Stand', Object);
-					Object.StandCheck = true;
-				}
-
-				//Attack
-				countess_Attack(Object);
-
-				Object.body.velocity.x = 0;
-				Object.body.velocity.y = 0;
-			}
+			}			
 		}
-		else
+
+		if(Object.Distance < Object.AttackRange)
+		{
+			//Stand
+			if(Object.StandCheck == false)
+			{
+				countess_Animation_Change(Object.Direction, 'Stand', Object);
+				Object.StandCheck = true;
+			}
+			
+			//Attack
+			countess_Attack(Object);
+			
+			Object.body.velocity.x = 0;
+			Object.body.velocity.y = 0;
+		}
+
+		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
+		{
+			if(Object.ReturnCheck == false)
+			{
+				Object.MoveCheck = false;
+				Object.AttackCheck = false;
+				Object.StandCheck = false;
+				Object.ReturnCheck = true;
+			}			
+		}
+
+		if(Object.ReturnCheck == true)
 		{
 			//Return Walk
-			if(Object.RetrunDistance > 10)
+			if(Object.ReturnDistance > 10)
 			{
 				if(Object.MoveCheck == false)
 				{
-					Object.StandCheck = false;
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
@@ -418,8 +430,9 @@ function countess_Move(Object)
 			{
 				if(Object.StandCheck == false)
 				{
-					countess_Animation_Change(Object.ReturnDirection, 'Stand', Object);
-					Object.StandCheck = true;	
+					Object.StandCheck = true;
+
+					countess_Animation_Change(Object.ReturnDirection, 'Stand', Object);						
 				}
 
 				Object.body.velocity.x = 0;
@@ -445,6 +458,11 @@ function countess_Attack(Object)
 				countess_HitCount(Object);
 				Object.AttackCheck = true;
 			}
+		}
+		else
+		{
+			Object.StandCheck = false;
+			Object.MoveCheck = false;
 		}
 	}
 }
