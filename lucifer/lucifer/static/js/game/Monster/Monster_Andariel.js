@@ -30,13 +30,12 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Distance, this.Angle, this.PreDirection, this.Direction;
 
 	//Retrun Direction
-	this.RetrunDistance, this.ReturnDirection, this.ReturnAngle;
+	this.ReturnDistance, this.ReturnDirection, this.ReturnAngle;
 
 	//Motion Check
-	this.MoveCheck = false, this.StandCheck = false;
-	this.AttackCheck = false, this.CompareCheck = false;
-	this.DamageCheck = false, this.DeadCheck = false;
-	this.DeadMotionCheck = false;
+	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
+	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
+	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 }
 
 Andariel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -70,13 +69,14 @@ function andariel_Create()
 
 function andariel_Clone(PointX, PointY)
 {
-	andariel_Object = new Andariel(Lucifer_Game, PointX, PointY, 100, 100, 230, 180);
+	andariel_Object = new Andariel(Lucifer_Game, PointX, PointY, 100, 100, 230, 100);
 
 	Lucifer_Game.physics.p2.enable(andariel_Object);
 	andariel_Object.body.fixedRotation = true;
 	andariel_Object.body.clearShapes();
 	andariel_Object.body.addRectangle(80, 80, 0, 0);
 	andariel_Object.body.debug = true;
+	andariel_Object.body.static = true;
 
 	//Animaion
 	//Stand & Attack
@@ -163,7 +163,7 @@ function andariel_Clone(PointX, PointY)
 
 	//Rect
 	andariel_Object.HitRect = new Phaser.Rectangle(andariel_Object.x, andariel_Object.y, 150, 150);
-	andariel_Object.AttackRect = new Phaser.Rectangle(andariel_Object.x, andariel_Object.y, 180, 180);
+	andariel_Object.AttackRect = new Phaser.Rectangle(andariel_Object.x, andariel_Object.y, 150, 150);
 
 	//Delay Timer
 	andariel_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
@@ -262,11 +262,11 @@ function andariel_GetDirection(Object)
 
 function andariel_GetReturnDirection(Object)
 {
-	Object.RetrunDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
+	Object.ReturnDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
 
 	if(Object.DeadCheck == false)
 	{
-		if(Object.RetrunDistance > Object.CognizeRange)
+		if(Object.Distance > Object.CognizeRange)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
@@ -325,7 +325,7 @@ function andariel_Compare_Direction(PreDirection, CurDirection, Object)
 	if(PreDirection != CurDirection)
 	{
 		Object.CompareCheck = false;
-		Object.MoveCheck = false;
+		Object.MoveCheck = false;		
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -366,62 +366,77 @@ function andariel_Move(Object)
 	{
 		if(Object.Distance < Object.CognizeRange)
 		{
+			Object.AI_StartCheck = true;
+
 			//Walk
 			if(Object.MoveCheck == false)
 			{
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
-				Object.DamageCheck = false;
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				andariel_Animation_Change(Object.Direction, 'Walk', Object);
 			}
-
-			//Stand
-			if(Object.Distance < Object.AttackRange)
-			{
-				if(Object.StandCheck == false)
-				{
-					andariel_Animation_Change(Object.Direction, 'Stand', Object);
-					Object.StandCheck = true;
-				}
-
-				//Attack
-				andariel_Attack(Object);
-
-				Object.body.velocity.x = 0;
-				Object.body.velocity.y = 0;
-			}
 		}
-		else
+		
+		if(Object.Distance < Object.AttackRange)
+		{
+			//Stand			
+			if(Object.StandCheck == false)
+			{
+				andariel_Animation_Change(Object.Direction, 'Stand', Object);
+				Object.StandCheck = true;
+			}			
+
+			//Attack
+			andariel_Attack(Object);
+
+			Object.body.velocity.x = 0;
+			Object.body.velocity.y = 0;
+		}
+
+		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
+		{
+			if(Object.ReturnCheck == false)
+			{
+				Object.MoveCheck = false;
+				Object.AttackCheck = false;
+				Object.StandCheck = false;
+				Object.ReturnCheck = true;
+			}			
+		}		
+
+		if(Object.ReturnCheck == true)
 		{
 			//Return Walk
-			if(Object.RetrunDistance > 10)
-			{
+			if(Object.ReturnDistance > 10)
+			{	
 				if(Object.MoveCheck == false)
 				{
-					Object.StandCheck = false;
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					andariel_Animation_Change(Object.ReturnDirection, 'Walk', Object);
+					andariel_Animation_Change(Object.Direction, 'Walk', Object);					
 				}
 			}
 
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
+				Object.ReturnCheck = false;				
+
 				if(Object.StandCheck == false)
 				{
-					andariel_Animation_Change(Object.ReturnDirection, 'Stand', Object);
-					Object.StandCheck = true;	
+					Object.StandCheck = true;
+
+					andariel_Animation_Change(Object.Direction, 'Stand', Object);					
 				}
 
 				Object.body.velocity.x = 0;
 				Object.body.velocity.y = 0;
 			}
-		}
+		}	
 
 		andariel_Compare_Direction(Object.PreDirection, Object.Direction, Object);
 	}
@@ -441,6 +456,11 @@ function andariel_Attack(Object)
 				andariel_HitCount(Object);
 				Object.AttackCheck = true;
 			}
+		}
+		else
+		{
+			Object.StandCheck = false;
+			Object.MoveCheck = false;			
 		}
 	}
 }

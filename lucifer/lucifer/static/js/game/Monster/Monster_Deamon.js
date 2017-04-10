@@ -1,6 +1,6 @@
 //Deamon
 //------------------------------------------------------------------------------
-var deamon_Group, council_Group;
+var deamon_Group, deamon_Object;
 //------------------------------------------------------------------------------
 
 //Deamon
@@ -32,10 +32,9 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.ReturnDistance, this.ReturnDirection, this.ReturnAngle;
 
 	//MotionCheck
-	this.MoveCheck = false, this.StandCheck = false;
-	this.AttackCheck = false, this.CompareCheck = false;
-	this.DamageCheck = false, this.DeadCheck = false;
-	this.DeadMotionCheck = false;
+	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
+	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
+	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 }
 
 Deamon.prototype = Object.create(Phaser.Sprite.prototype);
@@ -73,26 +72,27 @@ function deamon_Create()
 //------------------------------------------------------------------------------
 function deamon_Clone(PointX, PointY)
 {
-	council_Group = new Deamon(Lucifer_Game, PointX, PointY, 100, 100, 200, 100);
+	deamon_Object = new Deamon(Lucifer_Game, PointX, PointY, 100, 100, 200, 90);
 
-	Lucifer_Game.physics.p2.enable(council_Group);
-	council_Group.body.fixedRotation = true;
-	council_Group.body.clearShapes();
-	council_Group.body.addRectangle(60, 60, 0, 0);
-	council_Group.body.debug = true;	
+	Lucifer_Game.physics.p2.enable(deamon_Object);
+	deamon_Object.body.fixedRotation = true;
+	deamon_Object.body.clearShapes();
+	deamon_Object.body.addRectangle(60, 60, 0, 0);
+	deamon_Object.body.debug = true;	
+	deamon_Object.body.static = true;
 
 	//Animation
 	//Stand
 	var index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Group.animations.add('MON_Deamon_Stand_' + i,
+		deamon_Object.animations.add('MON_Deamon_Stand_' + i,
 									 [
 									 	index, index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7
 									 ], 60, true);
 
-		council_Group.animations.add('MON_Deamon_Run_' + i,
+		deamon_Object.animations.add('MON_Deamon_Run_' + i,
 									 [
 									 	index, index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7
@@ -104,7 +104,7 @@ function deamon_Clone(PointX, PointY)
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Group.animations.add('MON_Deamon_Attack_' + i,
+		deamon_Object.animations.add('MON_Deamon_Attack_' + i,
 									 [
 									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
 									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
@@ -118,7 +118,7 @@ function deamon_Clone(PointX, PointY)
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Group.animations.add('MON_Deamon_Dead_' + i,
+		deamon_Object.animations.add('MON_Deamon_Dead_' + i,
 									[
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
@@ -132,7 +132,7 @@ function deamon_Clone(PointX, PointY)
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Group.animations.add('MON_Deamon_Skill_' + i,
+		deamon_Object.animations.add('MON_Deamon_Skill_' + i,
 									[
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
@@ -141,46 +141,46 @@ function deamon_Clone(PointX, PointY)
 		index += 12;
 	}
 
-	council_Group.loadTexture('MON_Deamon_Stand', 0, true);
-	council_Group.animations.play('MON_Deamon_Stand_0', 10, true);
-	council_Group.anchor.setTo(0.5, 0.5);
+	deamon_Object.loadTexture('MON_Deamon_Stand', 0, true);
+	deamon_Object.animations.play('MON_Deamon_Stand_0', 10, true);
+	deamon_Object.anchor.setTo(0.5, 0.5);
 
-	Lucifer_Game.physics.enable(council_Group, Phaser.Physics.ARCADE);
-	Lucifer_Game.add.existing(council_Group);
+	Lucifer_Game.physics.enable(deamon_Object, Phaser.Physics.ARCADE);
+	Lucifer_Game.add.existing(deamon_Object);
 
 	//Hp Bar
-	council_Group.HpBar = council_Group.addChild(Lucifer_Game.make.sprite(0, -100, 'monsterHealthBar'));
-	council_Group.HpBar.anchor.set(0.5, 0.5);
-	council_Group.HpBar.visible = false;
+	deamon_Object.HpBar = deamon_Object.addChild(Lucifer_Game.make.sprite(0, -100, 'monsterHealthBar'));
+	deamon_Object.HpBar.anchor.set(0.5, 0.5);
+	deamon_Object.HpBar.visible = false;
 
 	//Hp Mask
-	council_Group.HpMask = council_Group.addChild(Lucifer_Game.add.graphics(0, -100));
-	council_Group.HpMask.beginFill(0xffffff);
+	deamon_Object.HpMask = deamon_Object.addChild(Lucifer_Game.add.graphics(0, -100));
+	deamon_Object.HpMask.beginFill(0xffffff);
 
 	//Name
-	council_Group.Name = Lucifer_Game.add.text(council_Group.x, council_Group.y - 100, 'Deamon');
-	council_Group.Name.anchor.set(0.5);
-	council_Group.Name.align = 'center';
-	council_Group.Name.font = 'Arial';
-	council_Group.Name.fontSize = 13;
-	council_Group.Name.fontWeight = 'normal';
-	council_Group.Name.fill = '#19de65';
-	council_Group.Name.visible = false;
+	deamon_Object.Name = Lucifer_Game.add.text(deamon_Object.x, deamon_Object.y - 100, 'Deamon');
+	deamon_Object.Name.anchor.set(0.5);
+	deamon_Object.Name.align = 'center';
+	deamon_Object.Name.font = 'Arial';
+	deamon_Object.Name.fontSize = 13;
+	deamon_Object.Name.fontWeight = 'normal';
+	deamon_Object.Name.fill = '#19de65';
+	deamon_Object.Name.visible = false;
 
 	//Input mouse Over / Up
-	council_Group.inputEnabled = true;
-	council_Group.events.onInputOver.add(deamon_over, council_Group);
-	council_Group.events.onInputOut.add(deamon_out, council_Group);
+	deamon_Object.inputEnabled = true;
+	deamon_Object.events.onInputOver.add(deamon_over, deamon_Object);
+	deamon_Object.events.onInputOut.add(deamon_out, deamon_Object);
 
 	//Rect
-	council_Group.HitRect = new Phaser.Rectangle(council_Group.x, council_Group.y, 100, 100);
-	council_Group.AttackRect = new Phaser.Rectangle(council_Group.x, council_Group.y, 100, 80);
+	deamon_Object.HitRect = new Phaser.Rectangle(deamon_Object.x, deamon_Object.y, 100, 100);
+	deamon_Object.AttackRect = new Phaser.Rectangle(deamon_Object.x, deamon_Object.y, 120, 120);
 
 	//Delay Timer
-	council_Group.Attack_DelayTimer = Lucifer_Game.time.create(false);
-	council_Group.Attack_DelayTimer.loop(1000, deamon_DelayTimer, Lucifer_Game, council_Group);
+	deamon_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
+	deamon_Object.Attack_DelayTimer.loop(1000, deamon_DelayTimer, Lucifer_Game, deamon_Object);
 
-	deamon_Group.add(council_Group);
+	deamon_Group.add(deamon_Object);
 }
 //------------------------------------------------------------------------------
 //Over / Out
@@ -277,7 +277,7 @@ function deamon_GetReturnDirection(Object)
 
 	if(Object.DeadCheck == false)
 	{
-		if(Object.RetrunDistance > Object.CognizeRange)
+		if(Object.Distance > Object.CognizeRange)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
@@ -383,42 +383,54 @@ function deamon_Move(Object)
 	{
 		if(Object.Distance < Object.CognizeRange)
 		{
-			//Walk
+			Object.AI_StartCheck = true;
+
+			//Run
 			if(Object.MoveCheck == false)
 			{
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
-				Object.DamageCheck = false;
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				deamon_Animation_Change(Object.Direction, 'Run', Object);
-			}
-
-			//Stand
-			if(Object.Distance < Object.AttackRange)
-			{
-				if(Object.StandCheck == false)
-				{
-					deamon_Animation_Change(Object.Direction, 'Stand', Object);
-					Object.StandCheck = true;
-				}
-
-				//Attack
-				deamon_Attack(Object);
-
-				Object.body.velocity.x = 0;
-				Object.body.velocity.y = 0;
-			}
+			}			
 		}
-		else
+
+		if(Object.Distance < Object.AttackRange)
 		{
-			//Return Walk
-			if(Object.RetrunDistance > 10)
+			//Stand
+			if(Object.StandCheck == false)
+			{
+				deamon_Animation_Change(Object.Direction, 'Stand', Object);
+				Object.StandCheck = true;
+			}
+
+			//Attack
+			deamon_Attack(Object);
+
+			Object.body.velocity.x = 0;
+			Object.body.velocity.y = 0;
+		}
+
+		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
+		{
+			if(Object.ReturnCheck == false)
+			{
+				Object.MoveCheck = false;
+				Object.AttackCheck = false;
+				Object.StandCheck = false;
+				Object.ReturnCheck = true;
+			}			
+		}
+
+		if(Object.ReturnCheck == true)
+		{
+			//Return Run
+			if(Object.ReturnDistance > 10)
 			{
 				if(Object.MoveCheck == false)
 				{
-					Object.StandCheck = false;
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
@@ -429,10 +441,13 @@ function deamon_Move(Object)
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
+				Object.ReturnCheck = false;		
+
 				if(Object.StandCheck == false)
 				{
-					deamon_Animation_Change(Object.ReturnDirection, 'Stand', Object);
-					Object.StandCheck = true;	
+					Object.StandCheck = true;
+
+					deamon_Animation_Change(Object.ReturnDirection, 'Stand', Object);						
 				}
 
 				Object.body.velocity.x = 0;
@@ -458,6 +473,11 @@ function deamon_Attack(Object)
 				deamon_HitCount(Object);
 				Object.AttackCheck = true;
 			}
+		}
+		else
+		{
+			Object.StandCheck = false;
+			Object.MoveCheck = false;
 		}
 	}
 }

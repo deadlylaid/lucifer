@@ -32,11 +32,10 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	//Return Direction
 	this.ReturnDistance, this.ReturnDirection, this.ReturnAngle;
 
-	//MotionCheck
-	this.MoveCheck = false,   this.StandCheck = false;
-	this.AttackCheck = false, this.CompareCheck = false;
-	this.DamageCheck = false, this.DeadCheck = false;
-	this.DeadMotionCheck = false;
+	//Motion Check
+	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
+	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
+	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 
 	//Light
 	this.Skill_Light, this.Skill_Rect;
@@ -92,6 +91,7 @@ function council_Clone(PointX, PointY)
 	council_Object.body.clearShapes();
 	council_Object.body.addRectangle(60, 60, 0, 0);
 	council_Object.body.debug = true;	
+	council_Object.body.static = true;
 
 	//Animation
 	//Stand
@@ -338,7 +338,7 @@ function council_GetReturnDirection(Object)
 
 	if(Object.DeadCheck == false)
 	{
-		if(Object.RetrunDistance > Object.CognizeRange)
+		if(Object.Distance > Object.CognizeRange)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
@@ -444,42 +444,54 @@ function council_Move(Object)
 	{
 		if(Object.Distance < Object.CognizeRange)
 		{
-			//Walk
+			Object.AI_StartCheck = true;
+
+			//Run
 			if(Object.MoveCheck == false)
 			{
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
-				Object.DamageCheck = false;				
+				Object.MoveCheck = true;				
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
-				council_Animation_Change(Object.Direction, 'Run', Object);
-				Object.MoveCheck = true;
-			}
-
-			//Stand
-			if(Object.Distance < Object.AttackRange)
-			{
-				if(Object.StandCheck == false)
-				{
-					council_Animation_Change(Object.Direction, 'Stand', Object);
-					Object.StandCheck = true;
-				}
-
-				//Attack
-				council_Attack_AI(Object);
-
-				Object.body.velocity.x = 0;
-				Object.body.velocity.y = 0;
-			}
+				council_Animation_Change(Object.Direction, 'Run', Object);				
+			}			
 		}
-		else
+
+		if(Object.Distance < Object.AttackRange)
+		{
+			//Stand			
+			if(Object.StandCheck == false)
+			{
+				council_Animation_Change(Object.Direction, 'Stand', Object);
+				Object.StandCheck = true;
+			}
+
+			//Attack
+			council_Attack_AI(Object);
+
+			Object.body.velocity.x = 0;
+			Object.body.velocity.y = 0;
+		}
+
+		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
+		{
+			if(Object.ReturnCheck == false)
+			{
+				Object.MoveCheck = false;
+				Object.AttackCheck = false;
+				Object.StandCheck = false;
+				Object.ReturnCheck = true;
+			}			
+		}
+
+		if(Object.ReturnCheck == true)
 		{
 			//Return Walk
-			if(Object.RetrunDistance > 10)
+			if(Object.ReturnDistance > 10)
 			{
 				if(Object.MoveCheck == false)
 				{
-					Object.StandCheck = false;
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
@@ -490,10 +502,13 @@ function council_Move(Object)
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
+				Object.ReturnCheck = false;	
+
 				if(Object.StandCheck == false)
 				{
+					Object.StandCheck = true;
+
 					council_Animation_Change(Object.ReturnDirection, 'Stand', Object);
-					Object.StandCheck = true;	
 				}
 
 				Object.body.velocity.x = 0;
@@ -557,6 +572,12 @@ function council_SkillAttack(Object)
 				Object.Pattern_Skill_Check = false;
 				Object.AttackCheck = true;
 			}
+			else
+			{
+				Object.Skill_Light.visible = false;
+				Object.StandCheck = false;
+				Object.MoveCheck = false;
+			}
 		}
 	}
 }
@@ -578,6 +599,12 @@ function council_Attack(Object)
 				Object.Pattern_Skill_Check = true;
 				Object.AttackCheck = true;
 			}
+		}
+		else
+		{
+			Object.Skill_Light.visible = false;
+			Object.StandCheck = false;
+			Object.MoveCheck = false;
 		}
 	}
 }

@@ -38,10 +38,9 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.ReturnDistance, this.ReturnDirection, this.ReturnAngle;
 
 	//MotionCheck
-	this.MoveCheck = false, this.StandCheck = false;
-	this.AttackCheck = false, this.CompareCheck = false;
-	this.DamageCheck = false, this.DeadCheck = false;
-	this.DeadMotionCheck = false;	
+	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
+	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
+	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;	
 
 	//FireBall
 	this.FireBall, this.NextFire = 0, this.FireRate = 1500;	
@@ -174,7 +173,7 @@ function fallen_Shaman_Clone(PointX, PointY)
 
     //Rect
 	fallenShaman_Object.HitRect = new Phaser.Rectangle(fallenShaman_Object.x, fallenShaman_Object.y, 70, 70);
-	fallenShaman_Object.AttackRect = new Phaser.Rectangle(fallenShaman_Object.x, fallenShaman_Object.y, 200, 200);								  	
+	fallenShaman_Object.AttackRect = new Phaser.Rectangle(fallenShaman_Object.x, fallenShaman_Object.y, 300, 300);								  	
 
 	//Delay timer
 	fallenShaman_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
@@ -296,7 +295,7 @@ function fallen_Shaman_GetReturnDirection(Object)
 
 	if(Object.DeadCheck == false)
 	{
-		if(Object.ReturnDistance > Object.CognizeRange)
+		if(Object.Distance > Object.CognizeRange)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
@@ -396,42 +395,54 @@ function fallen_Shaman_Move(Object)
 	{
 		if(Object.Distance < Object.CognizeRange)
 		{
+			Object.AI_StartCheck = true;
+
 			//Run
 			if(Object.MoveCheck == false)
 			{
 				Object.AttackCheck = false;
 				Object.StandCheck = false;					
-				Object.DamageCheck = false;
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 80);
 				fallen_Shaman_Animation_Change(Object.Direction, 'Run', Object);
-			}
-
-			//Stand
-			if(Object.Distance < Object.AttackRange)
-			{
-				if(Object.StandCheck == false)
-				{
-					fallen_Shaman_Animation_Change(Object.Direction, 'Stand', Object);
-					Object.StandCheck = true;
-				}
-
-				//Attack
-				fallen_Shaman_Attack(Object);
-
-				Object.body.velocity.x = 0;
-				Object.body.velocity.y = 0;
-			}
+			}			
 		}
-		else
+
+		if(Object.Distance < Object.AttackRange)
+		{
+			//Stand
+			if(Object.StandCheck == false)
+			{
+				fallen_Shaman_Animation_Change(Object.Direction, 'Stand', Object);
+				Object.StandCheck = true;
+			}
+
+			//Attack
+			fallen_Shaman_Attack(Object);
+
+			Object.body.velocity.x = 0;
+			Object.body.velocity.y = 0;
+		}
+
+		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
+		{
+			if(Object.ReturnCheck == false)
+			{
+				Object.MoveCheck = false;
+				Object.AttackCheck = false;
+				Object.StandCheck = false;
+				Object.ReturnCheck = true;
+			}			
+		}
+
+		if(Object.ReturnCheck == true)
 		{
 			//Return Run
 			if(Object.ReturnDistance > 10)
 			{
 				if(Object.MoveCheck == false)
 				{
-					Object.StandCheck = false;
 					Object.MoveCheck = true;
 					
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 80);
@@ -442,10 +453,13 @@ function fallen_Shaman_Move(Object)
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
+				Object.ReturnCheck = false;	
+
 				if(Object.StandCheck == false)
 				{
-					fallen_Shaman_Animation_Change(Object.ReturnDirection, 'Stand', Object);
 					Object.StandCheck = true;
+
+					fallen_Shaman_Animation_Change(Object.ReturnDirection, 'Stand', Object);					
 				}					
 
 				Object.body.velocity.x = 0;
@@ -472,6 +486,11 @@ function fallen_Shaman_Attack(Object)
 			}
 
 			fallen_Shaman_FireBall_Fire(Object);			
+		}
+		else
+		{
+			Object.StandCheck = false;
+			Object.MoveCheck = false;
 		}
 	}
 }
