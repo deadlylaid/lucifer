@@ -122,7 +122,16 @@ function redPotionClone(positionX, positionY){
     redPotionObject.text.setText(redPotionObject.name);
     redPotionObject.text.fontSize = 15; 
     redPotionObject.text.fill = '#fff';
+
     Lucifer_Game.add.existing(redPotionObject);
+
+    Lucifer_Game.physics.p2.enable(redPotionObject);
+    redPotionObject.body.addRectangle();
+    redPotionObject.body.static = true;
+
+    redPotionObject.inputEnabled = true;
+    redPotionObject.events.onInputDown.add(clickItem, this);
+
     return redPotionObject;
 }
 
@@ -134,6 +143,14 @@ function basicSwordClone(positionX, positionY){
     basicSwordObject.text.fontSize = 15;
     basicSwordObject.text.fill = '#fff';
     Lucifer_Game.add.existing(basicSwordObject);
+
+    Lucifer_Game.physics.p2.enable(basicSwordObject);
+    basicSwordObject.body.addRectangle();
+    basicSwordObject.body.static = true;
+
+    basicSwordObject.inputEnabled = true;
+    basicSwordObject.events.onInputDown.add(clickItem, this);
+
     return basicSwordObject;
 }
 
@@ -145,6 +162,14 @@ function basicArmorClone(positionX, positionY){
     basicArmorObject.text.fontSize = 15;
     basicArmorObject.text.fill = '#fff';
     Lucifer_Game.add.existing(basicArmorObject);
+
+    Lucifer_Game.physics.p2.enable(basicArmorObject);
+    basicArmorObject.body.addRectangle();
+    basicArmorObject.body.static = true;
+
+    basicArmorObject.inputEnabled = true;
+    basicArmorObject.events.onInputDown.add(clickItem, this);
+
     return basicArmorObject;
 }
 

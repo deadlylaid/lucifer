@@ -1,4 +1,5 @@
 var uiStore,
+    uiInventory,
     selectedItem = null,
     invenKeyTimer,
     invenKeyValidCheck = 1;
@@ -14,6 +15,7 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet('armorTab', '../../static/images/game/UI/store/armorTab.png', 45, 80);
     Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
+    Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
 
 };
 
@@ -82,6 +84,15 @@ function itemStoreCreate(){
 
     invenKeyTimer = Lucifer_Game.time.create(false);
     invenKeyTimer.loop(400, invenTimeCheck, this);
+
+    dropButton = Lucifer_Game.add.sprite(445, 520, 'dropButton');
+    dropButton.anchor.setTo(0.5, 0.5);
+    dropButton.scale.setTo(0.5, 0.5);
+    dropButton.fixedToCamera = true;
+    dropButton.visible = false;
+
+    dropButton.inputEnabled = true;
+    dropButton.events.onInputDown.add(dropItem, this);
     //---------------------------------------------------------------
 
 
@@ -139,7 +150,7 @@ function itemStoreCreate(){
     for(i=0; i<invenArrayLength; i++){
         switch(inventory[i].item_name){
             case '빨간물약':/*335, 470*/
-                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]); 
                 break;
             case '기본검':
                 inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
@@ -266,15 +277,21 @@ function invenTimeCheck(){
 function invenUi(){
     if(uiInventory.visible === true){
         uiInventory.visible = false;
+        dropButton.visible = false;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
         }
     }else{
         uiInventory.visible = true;
+        dropButton.visible = true;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
         }
     }
+}
+
+function dropItem(){
+    alert(selectedItem.name);
 }
 
 function inventoryPosition(count){
@@ -322,5 +339,3 @@ function inventoryPosition(count){
     }
     return [ positionX, positionY ];
 }
-
-

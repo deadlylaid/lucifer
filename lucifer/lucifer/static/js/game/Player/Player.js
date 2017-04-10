@@ -392,7 +392,7 @@ function player_Update()
 	//Player Motion
 	//---------------------------------------------------------------------------------------
 	//Move
-	if(UI_Stat.visible === true || uiStore.visible === true)
+	if(UI_Stat.visible === true || uiStore.visible === true || uiInventory.visible === true)
 	{
 
 	}else{
