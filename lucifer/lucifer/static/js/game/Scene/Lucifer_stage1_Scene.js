@@ -36,6 +36,9 @@ var stage1_Scene =
 		//Skill
 		skill_Create();
 
+		//Quest
+		QuestCreate();
+
 		//Npc Create
 		npc_Create();
 
@@ -65,6 +68,9 @@ var stage1_Scene =
 
 		//Ui Update
 		ui_Update();
+
+		//Quest Update
+		QuestUpdate();
 
 		//Skill
 		skill_Update();
