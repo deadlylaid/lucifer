@@ -90,6 +90,9 @@ function itemStoreCreate(){
     dropButton.scale.setTo(0.5, 0.5);
     dropButton.fixedToCamera = true;
     dropButton.visible = false;
+
+    dropButton.inputEnabled = true;
+    dropButton.events.onInputDown.add(dropItem, this);
     //---------------------------------------------------------------
 
 
@@ -147,7 +150,7 @@ function itemStoreCreate(){
     for(i=0; i<invenArrayLength; i++){
         switch(inventory[i].item_name){
             case '빨간물약':/*335, 470*/
-                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]); 
                 break;
             case '기본검':
                 inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
@@ -286,6 +289,10 @@ function invenUi(){
     }
 }
 
+function dropItem(){
+    alert(selectedItem.name);
+}
+
 function inventoryPosition(count){
     switch(count){
         case 0:
@@ -331,5 +338,3 @@ function inventoryPosition(count){
     }
     return [ positionX, positionY ];
 }
-
-
