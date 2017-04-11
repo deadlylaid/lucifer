@@ -11,6 +11,9 @@ var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
 var player_KeyJump, player_KeySkill, player_KeySkill2;
 //----------------------------------------------------------------------------------------------------------
+//var isoCam = Lucifer_Game.world.camera.view;
+//var viewport = { left: isoCam.x, right: isoCam.x + 1280, top: isoCam.y, bottom: isoCam.y + 800 };
+//----------------------------------------------------------------------------------------------------------
 
 function player_Create()
 {
@@ -105,8 +108,7 @@ function player_Create()
 	//Sprite
 	Player.loadTexture('PY_Bavarian_Stand', 0, true);
 	Player.animations.play('PY_Bavarian_Stand_0', 10, true);
-	Player.anchor.setTo(0.5, 0.5);	
-	Lucifer_Game.camera.follow(Player);					//Camera follow
+	Player.anchor.setTo(0.5, 0.5);		
 	Lucifer_Game.input.onDown.add(GetDirection, this);	//Player Move	
 
 	//Collision
@@ -115,6 +117,7 @@ function player_Create()
 	Player.body.clearShapes();				   //Remove default Collision Box
 	Player.body.addRectangle(40, 60, 0, 0);    //Only the lower part of the player Collides
 	Player.body.debug = true;				   //Player Rect 표시	
+	Player.body.restitution = 0;
 
 	//Rect
 	Attack_Rect = new Phaser.Rectangle(Player.x, Player.y, 80, 80);	
@@ -131,10 +134,6 @@ function player_Create()
 	Player_ID.fill = '#19de65';
 
 	//Key Setting
-	player_KeyJump = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-	player_KeyJump.onDown.add(PlayerJump, Lucifer_Game);
-	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
-
 	player_KeySkill = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ONE);
 	player_KeySkill.onDown.add(PlayerSkill, Lucifer_Game);
 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.ONE);
@@ -161,6 +160,9 @@ function player_Create()
 		Stage3_ObjectGroup.sort();
 	}	
 	//----------------------------------------------------------------------------------------------------------
+
+	//Camera	
+	Lucifer_Game.camera.follow(Player);	//Camera follow	
 }	
 
 function GetDirection(){
@@ -332,22 +334,6 @@ function PlayerAttack()
 	//---------------------------------------------------------------------------------------	
 }
 
-function PlayerJump()
-{
-	Animation_Change(Direction, 'Jump');
-	//console.log('Jump');
-
-	Lucifer_Game.physics.arcade.moveToPointer(Player, 500);
-	//Player.body.moves = true;
-	//var xVector = (MousePosX - Player.x) * 2;
-	//var yVector = (MousePosY - Player.y) * 2;
-	//Player.body.velocity.x = xVector;
-	//Player.body.velocity.y = yVector;				
-
-	Lucifer_Game.camera.x = Player.x + 500;
-	Lucifer_Game.camera.y = Player.y + 500;			
-}
-
 function PlayerSkill()
 {	
 	if(skill_One_Check == false)
@@ -359,9 +345,7 @@ function PlayerSkill()
 			skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
 			Animation_Change(Direction, 'Skill');	
 		}	
-	}
-	
-	//console.log(skill_Bavarian.frame);
+	}	
 }
 
 function PlayerSkill2()
@@ -376,8 +360,6 @@ function PlayerSkill2()
 			Animation_Change(Direction, 'Skill');
 		}
 	}		
-
-	//console.log('Skill2');
 }
 
 function player_Update()

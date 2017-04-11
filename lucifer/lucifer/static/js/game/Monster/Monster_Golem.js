@@ -7,19 +7,14 @@ var Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 {
 	Phaser.Sprite.call(this, game, x, y, 'MON_Golem_Attack');
-	this.Hp = Hp;
-	this.MaxHp = MaxHp;
-	this.CognizeRange = CognizeRange;
-	this.AttackRange = AttackRange;
+	this.Hp = Hp, this.MaxHp = MaxHp;
+	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 	
 	//Position
-	this.PointX = x;
-	this.PointY = y;
-	this.ReturnPointX = x;
-	this.ReturnPointY = y;
+	this.PointX = x, this.PointY = y, this.ReturnPointX = x, this.ReturnPointY = y;
 	
 	//UI
 	this.HpBar, this.HpMask, this.golem_Name;
@@ -70,7 +65,7 @@ function golem_Create()
 	//골렘 그룹 생성 
 	//(그룹 부모 : null / 그룹 이름 : golem / Stage 등록 : false, body, Physics 등록 : true)
 	golem_Group = Lucifer_Game.add.group(/*null, 'Golem', false, true, true*/);
-	golem_Clone(4000, 1492);		
+	golem_Clone(3264, 463);		
 }
 
 function golem_Clone(PointX, PointY)
@@ -82,7 +77,7 @@ function golem_Clone(PointX, PointY)
 	golem_Object.body.clearShapes();
 	golem_Object.body.addRectangle(40, 60, 0, 0);
 	golem_Object.body.debug = true;
-	golem_Object.body.static = true;
+	golem_Object.body.restitution = 0;	
 	
 	//Animation
 	//Stand / Walk
@@ -189,8 +184,7 @@ function out(Object)
 //Direction
 //-------------------------------------------------------------------------------------------
 function golem_GetDirection(Object)
-{
-	
+{	
 	Object.Distance = Phaser.Math.distance(Object.x, Object.y, Player.x, Player.y);
 
 	if(Object.DeadCheck == false)
@@ -299,6 +293,8 @@ function golem_GetReturnDirection(Object)
 			{
 				Object.ReturnDirection = 6;
 			}
+
+			Object.Direction = Object.ReturnDirection;
 
 			if(Object.CompareCheck == false)
 			{
