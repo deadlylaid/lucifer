@@ -63,20 +63,26 @@ function countess_Create()
 	Lucifer_Game.renderer.setTexturePriority(['MON_Countess_Stand', 'MON_Countess_Run', 
 											  'MON_Countess_Attack', 'MON_Countess_Dead']);
 	countess_Group = Lucifer_Game.add.group();
-	countess_Clone(3000, 1492);
+	countess_Clone(4142, 2428);
+	countess_Clone(3964, 2315);
+	countess_Clone(4448, 2343);
+	countess_Clone(5265, 1238);
+	countess_Clone(5375, 1387);
+	countess_Clone(5059, 1296);
+	countess_Clone(4984, 1145);
 }
 
 function countess_Clone(PointX, PointY)
 {
-	countess_Object = new Council(Lucifer_Game, PointX, PointY, 100, 100, 300, 60);
+	countess_Object = new Countess(Lucifer_Game, PointX, PointY, 100, 100, 300, 60);
 
 	Lucifer_Game.physics.p2.enable(countess_Object);
 	countess_Object.body.fixedRotation = true;
 	countess_Object.body.clearShapes();
 	countess_Object.body.addRectangle(60, 60, 0, 0);
 	countess_Object.body.debug = true;	
-	countess_Object.body.static = true;
-
+	countess_Object.body.restitution = 0;
+	
 	//Animation
 	//Stand
 	var index = 0;
@@ -97,7 +103,7 @@ function countess_Clone(PointX, PointY)
 	{
 		countess_Object.animations.add('MON_Countess_Run_' + i,
 									 [
-									 	index, index + 1, index + 2, index + 3, index + 4,
+									 	index,     index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7, index + 8, index + 9
 									 ], 60, true);
 
@@ -266,7 +272,7 @@ function countess_GetDirection(Object)
 
 function countess_GetReturnDirection(Object)
 {
-	Object.RetrunDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
+	Object.ReturnDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
 
 	if(Object.DeadCheck == false)
 	{
@@ -491,7 +497,7 @@ function countess_Dead(Object)
 			Object.animations.play('MON_Countess_Dead_' + Object.Direction, 10, true);
 			Object.DeadMotionCheck = true;
 		}
-
+		
 		var CurFrame = Object.animations.frame;
 		var EndFrame;		
 
@@ -502,7 +508,7 @@ function countess_Dead(Object)
 		else
 		{
 			EndFrame = 24 * (Object.Direction + 1);
-		}
+		}		
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{

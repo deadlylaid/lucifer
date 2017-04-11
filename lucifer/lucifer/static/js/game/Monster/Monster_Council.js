@@ -79,7 +79,7 @@ function council_Create()
 		 									  'MON_Council_Dead', 'MON_Council_Skill', 'Council_Light']);
 
 	council_Group = Lucifer_Game.add.group();
-	council_Clone(3200, 1592);	
+	//council_Clone(3200, 1592);	
 }
 
 function council_Clone(PointX, PointY)
@@ -91,7 +91,7 @@ function council_Clone(PointX, PointY)
 	council_Object.body.clearShapes();
 	council_Object.body.addRectangle(60, 60, 0, 0);
 	council_Object.body.debug = true;	
-	council_Object.body.static = true;
+	council_Object.body.restitution = 0;
 
 	//Animation
 	//Stand

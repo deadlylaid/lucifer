@@ -64,7 +64,7 @@ function wraith_Create()
 											  'MON_Wraith_Attack', 'MON_Wraith_Dead']);
 
 	wraith_Group = Lucifer_Game.add.group();
-	wraith_Clone(3600, 1492);
+	//wraith_Clone(3600, 1492);
 }
 
 function wraith_Clone(PointX, PointY)
@@ -76,6 +76,7 @@ function wraith_Clone(PointX, PointY)
 	wraith_Object.body.clearShapes();
 	wraith_Object.body.addRectangle(60, 60, 0, 0);
 	wraith_Object.body.debug = true;
+	wraith_Object.body.restitution = 0;
 	wraith_Object.blendMode = Phaser.blendModes.ADD;
 
 	//Animation

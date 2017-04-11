@@ -56,14 +56,14 @@ function stageTwo_Preload()
 	Lucifer_Game.load.physics('STAGE2_Object_stone01Data', '../../static/images/game/Object/Stage2/struct0.json');
 	//*************************************************************************
 
-	Lucifer_Game.load.image('STAGE2_Object_stone02', '../../static/images/game/Object/Stage2/struct2.png');
-	Lucifer_Game.load.image('STAGE2_Object_stone03', '../../static/images/game/Object/Stage2/struct4.png');
-	Lucifer_Game.load.image('STAGE2_Object_stone04', '../../static/images/game/Object/Stage2/struct20.png');
-	Lucifer_Game.load.image('STAGE2_Object_stone05', '../../static/images/game/Object/Stage2/struct21.png');
-	Lucifer_Game.load.image('STAGE2_Object_stone06', '../../static/images/game/Object/Stage2/struct25.png');
-	Lucifer_Game.load.image('STAGE2_Object_stone07', '../../static/images/game/Object/Stage2/struct29.png');	
-	Lucifer_Game.load.image('STAGE2_Object_stone08', '../../static/images/game/Object/Stage2/struct33.png');	
-	Lucifer_Game.load.image('STAGE2_Object_stone09', '../../static/images/game/Object/Stage2/struct35.png');
+	Lucifer_Game.load.image('STAGE2_Object_stone2', '../../static/images/game/Object/Stage2/struct2.png');
+	Lucifer_Game.load.image('STAGE2_Object_stone3', '../../static/images/game/Object/Stage2/struct4.png');
+	Lucifer_Game.load.image('STAGE2_Object_stone4', '../../static/images/game/Object/Stage2/struct20.png');
+	Lucifer_Game.load.image('STAGE2_Object_stone5', '../../static/images/game/Object/Stage2/struct21.png');
+	Lucifer_Game.load.image('STAGE2_Object_stone6', '../../static/images/game/Object/Stage2/struct25.png');
+	Lucifer_Game.load.image('STAGE2_Object_stone7', '../../static/images/game/Object/Stage2/struct29.png');	
+	Lucifer_Game.load.image('STAGE2_Object_stone8', '../../static/images/game/Object/Stage2/struct33.png');	
+	Lucifer_Game.load.image('STAGE2_Object_stone9', '../../static/images/game/Object/Stage2/struct35.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone10', '../../static/images/game/Object/Stage2/struct39.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone11', '../../static/images/game/Object/Stage2/struct46.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone12', '../../static/images/game/Object/Stage2/struct48.png');
@@ -76,24 +76,24 @@ function stageTwo_Preload()
 	//----------------------------------------------------------------------------------------------------------------
 
 	//Object truck
-	Lucifer_Game.load.image('STAGE2_Object_truck01', '../../static/images/game/Object/Stage2/struct1.png');
-	Lucifer_Game.load.image('STAGE2_Object_truck02', '../../static/images/game/Object/Stage2/struct26.png');
-	Lucifer_Game.load.image('STAGE2_Object_truck03', '../../static/images/game/Object/Stage2/struct27.png');
-	Lucifer_Game.load.image('STAGE2_Object_truck04', '../../static/images/game/Object/Stage2/struct28.png');
-	Lucifer_Game.load.image('STAGE2_Object_truck05', '../../static/images/game/Object/Stage2/struct30.png');
-	Lucifer_Game.load.image('STAGE2_Object_truck06', '../../static/images/game/Object/Stage2/struct31.png');
-	Lucifer_Game.load.image('STAGE2_Object_truck07', '../../static/images/game/Object/Stage2/struct32.png');	
-	Lucifer_Game.load.image('STAGE2_Object_truck08', '../../static/images/game/Object/Stage2/struct44.png');	
+	Lucifer_Game.load.image('STAGE2_Object_truck1', '../../static/images/game/Object/Stage2/struct1.png');
+	Lucifer_Game.load.image('STAGE2_Object_truck2', '../../static/images/game/Object/Stage2/struct26.png');
+	Lucifer_Game.load.image('STAGE2_Object_truck3', '../../static/images/game/Object/Stage2/struct27.png');
+	Lucifer_Game.load.image('STAGE2_Object_truck4', '../../static/images/game/Object/Stage2/struct28.png');
+	Lucifer_Game.load.image('STAGE2_Object_truck5', '../../static/images/game/Object/Stage2/struct30.png');
+	Lucifer_Game.load.image('STAGE2_Object_truck6', '../../static/images/game/Object/Stage2/struct31.png');
+	Lucifer_Game.load.image('STAGE2_Object_truck7', '../../static/images/game/Object/Stage2/struct32.png');	
+	Lucifer_Game.load.image('STAGE2_Object_truck8', '../../static/images/game/Object/Stage2/struct44.png');	
 	//----------------------------------------------------------------------------------------------------------------
 
 	//Object wall
-	Lucifer_Game.load.image('STAGE2_Object_wall01', '../../static/images/game/Object/Stage2/struct3.png');
-	Lucifer_Game.load.image('STAGE2_Object_wall02', '../../static/images/game/Object/Stage2/struct5.png');
-	Lucifer_Game.load.image('STAGE2_Object_wall03', '../../static/images/game/Object/Stage2/struct36.png');
-	Lucifer_Game.load.image('STAGE2_Object_wall04', '../../static/images/game/Object/Stage2/struct37.png');
-	Lucifer_Game.load.image('STAGE2_Object_wall05', '../../static/images/game/Object/Stage2/struct41.png');
-	Lucifer_Game.load.image('STAGE2_Object_wall06', '../../static/images/game/Object/Stage2/struct59.png');
-	Lucifer_Game.load.image('STAGE2_Object_wall07', '../../static/images/game/Object/Stage2/struct66.png');	
+	Lucifer_Game.load.image('STAGE2_Object_wall1', '../../static/images/game/Object/Stage2/struct3.png');
+	Lucifer_Game.load.image('STAGE2_Object_wall2', '../../static/images/game/Object/Stage2/struct5.png');
+	Lucifer_Game.load.image('STAGE2_Object_wall3', '../../static/images/game/Object/Stage2/struct36.png');
+	Lucifer_Game.load.image('STAGE2_Object_wall4', '../../static/images/game/Object/Stage2/struct37.png');
+	Lucifer_Game.load.image('STAGE2_Object_wall5', '../../static/images/game/Object/Stage2/struct41.png');
+	Lucifer_Game.load.image('STAGE2_Object_wall6', '../../static/images/game/Object/Stage2/struct59.png');
+	Lucifer_Game.load.image('STAGE2_Object_wall7', '../../static/images/game/Object/Stage2/struct66.png');	
 	//----------------------------------------------------------------------------------------------------------------
 
 	
@@ -101,9 +101,27 @@ function stageTwo_Preload()
 }
 
 function stageTwo_Create()
-{
-	/* Stage Create Example */
+{	
+	for(var i = 0; i < 32; ++i)
+	{
+		Lucifer_Game.renderer.setTexturePriority(['STAGE2_Object_Tree' + i]);
+	}
 
+	for(var i = 2; i < 19; ++i)
+	{
+		Lucifer_Game.renderer.setTexturePriority(['STAGE2_Object_stone' + i]);
+	}
+
+	for(var i = 1; i < 9; ++i)
+	{
+		Lucifer_Game.renderer.setTexturePriority(['STAGE2_Object_truck' + i]);
+	}
+
+	for(var i = 1; i < 7; ++i)
+	{
+		Lucifer_Game.renderer.setTexturePriority(['STAGE2_Object_wall1' + i]);
+	}
+	
 	//Map 
 	//---------------------------------------------------------------------------------------
 	Stage2_Map = Lucifer_Game.add.tilemap('MAP_Stage2');		
@@ -114,9 +132,10 @@ function stageTwo_Create()
 	Stage2_Map.addTilesetImage('bossroom', 'bossroom');
 	Stage2_Map.addTilesetImage('bossroom2', 'bossroom2');
 
-	Stage2 = Stage2_Map.createLayer('Tile Layer 1');
-	Stage2_ObjLayer = Stage2_Map.createLayer('Object Layer');
+	Stage2 = Stage2_Map.createLayer('Tile Layer 1');			
+	Stage2_ObjLayer = Stage2_Map.createLayer('Object Layer');			
 	Collision_Layer = Stage2_Map.createLayer('Collision Layer');
+		
 	Stage2.resizeWorld();
 	//---------------------------------------------------------------------------------------
 
@@ -136,7 +155,7 @@ function stageTwo_Create()
 	//*************************************************************************
 
 	Stage2_ObjectGroup.create(3448, 4018, 'STAGE2_Object_Tree28');
-	Stage2_ObjectGroup.create(4292, 4276, 'STAGE2_Object_stone07');
+	Stage2_ObjectGroup.create(4292, 4276, 'STAGE2_Object_stone7');
 	Stage2_ObjectGroup.create(4635, 4695, 'STAGE2_Object_Tree29');
 	Stage2_ObjectGroup.create(4635, 5010, 'STAGE2_Object_Tree26');
 	Stage2_ObjectGroup.create(5299, 4984, 'STAGE2_Object_Tree19');
@@ -144,19 +163,19 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(4377, 4832, 'STAGE2_Object_stone15');
 	Stage2_ObjectGroup.create(6255, 5482, 'STAGE2_Object_Tree20');
 	Stage2_ObjectGroup.create(5887, 5653, 'STAGE2_Object_Tree19');
-	Stage2_ObjectGroup.create(6824, 5115, 'STAGE2_Object_truck05');
+	Stage2_ObjectGroup.create(6824, 5115, 'STAGE2_Object_truck5');
 	Stage2_ObjectGroup.create(3841, 4672, 'STAGE2_Object_Tree1');
 	Stage2_ObjectGroup.create(3986, 4745, 'STAGE2_Object_Tree1');
 	Stage2_ObjectGroup.create(4127, 4821, 'STAGE2_Object_Tree1');
-	Stage2_ObjectGroup.create(4966, 5225, 'STAGE2_Object_stone02');
-	Stage2_ObjectGroup.create(5058, 5260, 'STAGE2_Object_stone02');
-	Stage2_ObjectGroup.create(5151, 5302, 'STAGE2_Object_stone02');
+	Stage2_ObjectGroup.create(4966, 5225, 'STAGE2_Object_stone2');
+	Stage2_ObjectGroup.create(5058, 5260, 'STAGE2_Object_stone2');
+	Stage2_ObjectGroup.create(5151, 5302, 'STAGE2_Object_stone2');
 	Stage2_ObjectGroup.create(6077, 5637, 'STAGE2_Object_Tree');
-	Stage2_ObjectGroup.create(6563, 5338, 'STAGE2_Object_truck03');
+	Stage2_ObjectGroup.create(6563, 5338, 'STAGE2_Object_truck3');
 	Stage2_ObjectGroup.create(7327, 5043, 'STAGE2_Object_Tree17');
 	Stage2_ObjectGroup.create(7277, 4996, 'STAGE2_Object_Tree17');
 	Stage2_ObjectGroup.create(7424, 4956, 'STAGE2_Object_Tree14');
-	Stage2_ObjectGroup.create(7728, 4830, 'STAGE2_Object_stone09');
+	Stage2_ObjectGroup.create(7728, 4830, 'STAGE2_Object_stone9');
 	Stage2_ObjectGroup.create(7894, 4695, 'STAGE2_Object_stone10');
 	Stage2_ObjectGroup.create(8089, 4203, 'STAGE2_Object_stone10');
 	Stage2_ObjectGroup.create(8105, 4639, 'STAGE2_Object_Tree18');
@@ -168,7 +187,7 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(9014, 4131, 'STAGE2_Object_Tree27');
 	Stage2_ObjectGroup.create(8903, 4253, 'STAGE2_Object_Tree27');
 	Stage2_ObjectGroup.create(9186, 4129, 'STAGE2_Object_Tree27');
-	Stage2_ObjectGroup.create(9363, 3918, 'STAGE2_Object_wall06');
+	Stage2_ObjectGroup.create(9363, 3918, 'STAGE2_Object_wall6');
 	Stage2_ObjectGroup.create(9680, 3807, 'STAGE2_Object_Tree20');
 	Stage2_ObjectGroup.create(9577, 3926, 'STAGE2_Object_Tree20');
 	Stage2_ObjectGroup.create(9821, 3656, 'STAGE2_Object_stone11');
@@ -186,15 +205,15 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(9371, 2151, 'STAGE2_Object_stone15');
 	Stage2_ObjectGroup.create(9436, 2272, 'STAGE2_Object_stone14');
 	Stage2_ObjectGroup.create(9508, 2335, 'STAGE2_Object_stone17');
-	Stage2_ObjectGroup.create(9209, 2041, 'STAGE2_Object_wall06');
+	Stage2_ObjectGroup.create(9209, 2041, 'STAGE2_Object_wall6');
 	Stage2_ObjectGroup.create(9552, 1862, 'STAGE2_Object_stone16');
 	Stage2_ObjectGroup.create(8820, 2898, 'STAGE2_Object_stone16');
 	Stage2_ObjectGroup.create(9040, 3088, 'STAGE2_Object_stone16');
 	Stage2_ObjectGroup.create(8787, 3207, 'STAGE2_Object_stone16');
-	Stage2_ObjectGroup.create(8933, 3311, 'STAGE2_Object_stone06');
-	Stage2_ObjectGroup.create(9006, 3284, 'STAGE2_Object_stone06');
-	Stage2_ObjectGroup.create(8629, 3378, 'STAGE2_Object_stone07');
-	Stage2_ObjectGroup.create(9099, 3063, 'STAGE2_Object_wall03');
+	Stage2_ObjectGroup.create(8933, 3311, 'STAGE2_Object_stone6');
+	Stage2_ObjectGroup.create(9006, 3284, 'STAGE2_Object_stone6');
+	Stage2_ObjectGroup.create(8629, 3378, 'STAGE2_Object_stone7');
+	Stage2_ObjectGroup.create(9099, 3063, 'STAGE2_Object_wall3');
 	Stage2_ObjectGroup.create(8071, 1989, 'STAGE2_Object_stone12');
 	Stage2_ObjectGroup.create(7598, 1669, 'STAGE2_Object_stone12');
 	Stage2_ObjectGroup.create(7914, 1035, 'STAGE2_Object_stone17');
@@ -205,35 +224,35 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(7526, 1335, 'STAGE2_Object_Tree29');
 	Stage2_ObjectGroup.create(7436, 1376, 'STAGE2_Object_Tree29');
 	Stage2_ObjectGroup.create(7346, 1431, 'STAGE2_Object_Tree29');
-	Stage2_ObjectGroup.create(7332, 1103, 'STAGE2_Object_stone06');
-	Stage2_ObjectGroup.create(7591, 887, 'STAGE2_Object_stone02');
-	Stage2_ObjectGroup.create(7118, 974, 'STAGE2_Object_stone02');
-	Stage2_ObjectGroup.create(7271, 719, 'STAGE2_Object_stone06');
-	Stage2_ObjectGroup.create(7291, 926, 'STAGE2_Object_stone09');
+	Stage2_ObjectGroup.create(7332, 1103, 'STAGE2_Object_stone6');
+	Stage2_ObjectGroup.create(7591, 887, 'STAGE2_Object_stone2');
+	Stage2_ObjectGroup.create(7118, 974, 'STAGE2_Object_stone2');
+	Stage2_ObjectGroup.create(7271, 719, 'STAGE2_Object_stone6');
+	Stage2_ObjectGroup.create(7291, 926, 'STAGE2_Object_stone9');
 	Stage2_ObjectGroup.create(6798, 1120, 'STAGE2_Object_stone11');
 	Stage2_ObjectGroup.create(6680, 1173, 'STAGE2_Object_stone14');
 	Stage2_ObjectGroup.create(6631, 1132, 'STAGE2_Object_stone14');
 	Stage2_ObjectGroup.create(6593, 1212, 'STAGE2_Object_stone14');
 	Stage2_ObjectGroup.create(5857, 1374, 'STAGE2_Object_stone15');
-	Stage2_ObjectGroup.create(5674, 1491, 'STAGE2_Object_stone07');
-	Stage2_ObjectGroup.create(5527, 1564, 'STAGE2_Object_stone07');
-	Stage2_ObjectGroup.create(5365, 1640, 'STAGE2_Object_stone07');
+	Stage2_ObjectGroup.create(5674, 1491, 'STAGE2_Object_stone7');
+	Stage2_ObjectGroup.create(5527, 1564, 'STAGE2_Object_stone7');
+	Stage2_ObjectGroup.create(5365, 1640, 'STAGE2_Object_stone7');
 	Stage2_ObjectGroup.create(5209, 1737, 'STAGE2_Object_stone11');
 	Stage2_ObjectGroup.create(5366, 1130, 'STAGE2_Object_stone15');
-	Stage2_ObjectGroup.create(5196, 1232, 'STAGE2_Object_stone07');
-	Stage2_ObjectGroup.create(5038, 1320, 'STAGE2_Object_stone07');
-	Stage2_ObjectGroup.create(4872, 1403, 'STAGE2_Object_stone07');
+	Stage2_ObjectGroup.create(5196, 1232, 'STAGE2_Object_stone7');
+	Stage2_ObjectGroup.create(5038, 1320, 'STAGE2_Object_stone7');
+	Stage2_ObjectGroup.create(4872, 1403, 'STAGE2_Object_stone7');
 	Stage2_ObjectGroup.create(4719, 1501, 'STAGE2_Object_stone11');
-	Stage2_ObjectGroup.create(5205, 709, 'STAGE2_Object_wall06');
+	Stage2_ObjectGroup.create(5205, 709, 'STAGE2_Object_wall6');
 	Stage2_ObjectGroup.create(5359, 591, 'STAGE2_Object_stone15');
-	Stage2_ObjectGroup.create(5584, 542, 'STAGE2_Object_wall06');
+	Stage2_ObjectGroup.create(5584, 542, 'STAGE2_Object_wall6');
 	Stage2_ObjectGroup.create(6317, 576, 'STAGE2_Object_stone17');
 	Stage2_ObjectGroup.create(6272, 621, 'STAGE2_Object_stone14');
 	Stage2_ObjectGroup.create(6371, 616, 'STAGE2_Object_stone14');
-	Stage2_ObjectGroup.create(6478, 468, 'STAGE2_Object_stone06');
+	Stage2_ObjectGroup.create(6478, 468, 'STAGE2_Object_stone6');
 	Stage2_ObjectGroup.create(5779, 349, 'STAGE2_Object_Tree13');
-	Stage2_ObjectGroup.create(6699, 511, 'STAGE2_Object_stone07');
-	Stage2_ObjectGroup.create(6860, 627, 'STAGE2_Object_stone07');
+	Stage2_ObjectGroup.create(6699, 511, 'STAGE2_Object_stone7');
+	Stage2_ObjectGroup.create(6860, 627, 'STAGE2_Object_stone7');
 	Stage2_ObjectGroup.create(5540, 739, 'STAGE2_Object_Tree17');
 	Stage2_ObjectGroup.create(5371, 936, 'STAGE2_Object_Tree27');
 	Stage2_ObjectGroup.create(6276, 1355, 'STAGE2_Object_Tree28');
@@ -284,9 +303,9 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(4649, 2687, 'STAGE2_Object_stone15');
 	Stage2_ObjectGroup.create(4036, 1865, 'STAGE2_Object_Tree17');
 	Stage2_ObjectGroup.create(4180, 2251, 'STAGE2_Object_Tree21');
-	Stage2_ObjectGroup.create(4520, 2813, 'STAGE2_Object_stone09');
+	Stage2_ObjectGroup.create(4520, 2813, 'STAGE2_Object_stone9');
 	Stage2_ObjectGroup.create(4331, 2873, 'STAGE2_Object_stone15');
-	Stage2_ObjectGroup.create(4219, 2915, 'STAGE2_Object_stone06');
+	Stage2_ObjectGroup.create(4219, 2915, 'STAGE2_Object_stone6');
 	Stage2_ObjectGroup.create(4503, 3076, 'STAGE2_Object_Tree16');
 	Stage2_ObjectGroup.create(4294, 1465, 'STAGE2_Object_Tree21');
 	Stage2_ObjectGroup.create(3900, 1227, 'STAGE2_Object_Tree22');
@@ -313,13 +332,13 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(7012, 1473, 'STAGE2_Object_Tree26');
 	Stage2_ObjectGroup.create(6550, 1575, 'STAGE2_Object_Tree26');
 	Stage2_ObjectGroup.create(8879, 1622, 'STAGE2_Object_stone16');
-	Stage2_ObjectGroup.create(9079, 1606, 'STAGE2_Object_wall06');
+	Stage2_ObjectGroup.create(9079, 1606, 'STAGE2_Object_wall6');
 	Stage2_ObjectGroup.create(9314, 1762, 'STAGE2_Object_Tree21');
 	Stage2_ObjectGroup.create(10640, 2387, 'STAGE2_Object_Tree29');
 	Stage2_ObjectGroup.create(10547, 3455, 'STAGE2_Object_Tree28');
 	Stage2_ObjectGroup.create(10055, 2999, 'STAGE2_Object_Tree17');
 	Stage2_ObjectGroup.create(9978, 2935, 'STAGE2_Object_Tree17');
-	Stage2_ObjectGroup.create(9104, 2595, 'STAGE2_Object_stone05');
+	Stage2_ObjectGroup.create(9104, 2595, 'STAGE2_Object_stone5');
 	Stage2_ObjectGroup.create(7379, 2340, 'STAGE2_Object_Tree8');
 	Stage2_ObjectGroup.create(7460, 2366, 'STAGE2_Object_Tree8');
 	Stage2_ObjectGroup.create(7320, 2356, 'STAGE2_Object_Tree8');
@@ -345,7 +364,7 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(8510, 3457, 'STAGE2_Object_Tree13');
 	Stage2_ObjectGroup.create(6702, 3181, 'STAGE2_Object_stone01');
 	Stage2_ObjectGroup.create(7131, 2498, 'STAGE2_Object_Tree3');
-	Stage2_ObjectGroup.create(6731, 2907, 'STAGE2_Object_stone03');
+	Stage2_ObjectGroup.create(6731, 2907, 'STAGE2_Object_stone3');
 	Stage2_ObjectGroup.create(7061, 3174, 'STAGE2_Object_stone11');
 	Stage2_ObjectGroup.create(6680, 3446, 'STAGE2_Object_stone14');
 	Stage2_ObjectGroup.create(6375, 3223, 'STAGE2_Object_stone14');
@@ -368,17 +387,17 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(5698, 4397, 'STAGE2_Object_Tree17');
 	Stage2_ObjectGroup.create(5650, 4435, 'STAGE2_Object_Tree29');
 	Stage2_ObjectGroup.create(5213, 4049, 'STAGE2_Object_Tree29');
-	Stage2_ObjectGroup.create(4370, 4359, 'STAGE2_Object_stone07');
+	Stage2_ObjectGroup.create(4370, 4359, 'STAGE2_Object_stone7');
 	Stage2_ObjectGroup.create(3371, 3994, 'STAGE2_Object_Tree24');
 	Stage2_ObjectGroup.create(2870, 4158, 'STAGE2_Object_Tree24');
 	Stage2_ObjectGroup.create(2778, 4162, 'STAGE2_Object_Tree24');
 	Stage2_ObjectGroup.create(2571, 4057, 'STAGE2_Object_Tree26');
 	Stage2_ObjectGroup.create(2659, 4030, 'STAGE2_Object_Tree26');
 	Stage2_ObjectGroup.create(2484, 3985, 'STAGE2_Object_Tree26');
-	Stage2_ObjectGroup.create(4466, 4394, 'STAGE2_Object_stone07');
-	Stage2_ObjectGroup.create(2417, 3799, 'STAGE2_Object_stone06');
-	Stage2_ObjectGroup.create(1238, 2796, 'STAGE2_Object_stone04');
-	Stage2_ObjectGroup.create(1433, 2440, 'STAGE2_Object_stone04');
+	Stage2_ObjectGroup.create(4466, 4394, 'STAGE2_Object_stone7');
+	Stage2_ObjectGroup.create(2417, 3799, 'STAGE2_Object_stone6');
+	Stage2_ObjectGroup.create(1238, 2796, 'STAGE2_Object_stone4');
+	Stage2_ObjectGroup.create(1433, 2440, 'STAGE2_Object_stone4');
 	Stage2_ObjectGroup.create(1909, 2818, 'STAGE2_Object_stone11');
 	Stage2_ObjectGroup.create(2483, 3831, 'STAGE2_Object_stone13');
 	Stage2_ObjectGroup.create(1772, 3045, 'STAGE2_Object_stone11');
@@ -397,18 +416,18 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(2653, 2273, 'STAGE2_Object_Tree28');
 	Stage2_ObjectGroup.create(2732, 1923, 'STAGE2_Object_Tree2');
 	Stage2_ObjectGroup.create(2915, 1779, 'STAGE2_Object_Tree6');
-	Stage2_ObjectGroup.create(7817, 3938, 'STAGE2_Object_stone09');
+	Stage2_ObjectGroup.create(7817, 3938, 'STAGE2_Object_stone9');
 	Stage2_ObjectGroup.create(7485, 3546, 'STAGE2_Object_Tree16');
-	Stage2_ObjectGroup.create(6914, 3861, 'STAGE2_Object_stone03');
+	Stage2_ObjectGroup.create(6914, 3861, 'STAGE2_Object_stone3');
 	Stage2_ObjectGroup.create(3970, 3508, 'STAGE2_Object_Tree27');
 	Stage2_ObjectGroup.create(3593, 3127, 'STAGE2_Object_stone14');
-	Stage2_ObjectGroup.create(3247, 3391, 'STAGE2_Object_stone06');
+	Stage2_ObjectGroup.create(3247, 3391, 'STAGE2_Object_stone6');
 	Stage2_ObjectGroup.create(2557, 3751, 'STAGE2_Object_stone15');
 	Stage2_ObjectGroup.create(3135, 2633, 'STAGE2_Object_Tree17');
 	Stage2_ObjectGroup.create(8321, 1233, 'STAGE2_Object_stone13');
 	Stage2_ObjectGroup.create(8550, 3026, 'STAGE2_Object_stone15');
 	Stage2_ObjectGroup.create(2635, 2943, 'STAGE2_Object_stone16');
-	Stage2_ObjectGroup.create(1593, 2809, 'STAGE2_Object_stone05');
+	Stage2_ObjectGroup.create(1593, 2809, 'STAGE2_Object_stone5');
 	//---------------------------------------------------------------------------------------
 
 	for(var i = 0; i < Stage2_ObjectGroup.length; ++i)
@@ -417,7 +436,6 @@ function stageTwo_Create()
 	}		
 	
 	//---------------------------------------------------------------------------------------
-
 	Stage2_Map.setCollision(21, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Stage2_Map, "Collision Layer");
 }

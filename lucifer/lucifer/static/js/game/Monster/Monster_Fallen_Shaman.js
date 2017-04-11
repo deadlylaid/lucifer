@@ -75,7 +75,7 @@ function fallen_Shaman_Create()
 
 	//Group
 	fallenShaman_Group = Lucifer_Game.add.group();
-	fallen_Shaman_Clone(3800, 1492);
+	//fallen_Shaman_Clone(3800, 1492);
 }
 
 function fallen_Shaman_Clone(PointX, PointY)
@@ -87,6 +87,7 @@ function fallen_Shaman_Clone(PointX, PointY)
 	fallenShaman_Object.body.clearShapes();
 	fallenShaman_Object.body.addRectangle(40, 60, 0, 0);
 	fallenShaman_Object.body.debug = true;
+	fallenShaman_Object.body.restitution = 0;
 
 	//Animation
 	//Stand

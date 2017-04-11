@@ -67,7 +67,7 @@ function deamon_Create()
 											  'MON_Deamon_Attack', 'MON_Deamon_Dead', 'MON_Deamon_Skill']);
 
 	deamon_Group = Lucifer_Game.add.group();
-	deamon_Clone(3400, 1492);
+	//deamon_Clone(3400, 1492);
 }
 //------------------------------------------------------------------------------
 function deamon_Clone(PointX, PointY)
@@ -79,7 +79,7 @@ function deamon_Clone(PointX, PointY)
 	deamon_Object.body.clearShapes();
 	deamon_Object.body.addRectangle(60, 60, 0, 0);
 	deamon_Object.body.debug = true;	
-	deamon_Object.body.static = true;
+	deamon_Object.body.restitution = 0;
 
 	//Animation
 	//Stand
