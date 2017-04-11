@@ -123,11 +123,13 @@ function redPotionClone(positionX, positionY){
     redPotionObject.text.fontSize = 15; 
     redPotionObject.text.fill = '#fff';
 
-    Lucifer_Game.add.existing(redPotionObject);
-
-    Lucifer_Game.physics.p2.enable(redPotionObject);
-    redPotionObject.body.addRectangle();
-    redPotionObject.body.static = true;
+    Lucifer_Game.physics.p2.enable(redPotionObject);    
+    redPotionObject.body.clearShapes();
+    redPotionObject.body.addRectangle(30, 30, 0, 0);   
+    redPotionObject.body.debug = true;
+    redPotionObject.body.static = true; 
+    
+    Lucifer_Game.add.existing(redPotionObject);    
 
     redPotionObject.inputEnabled = true;
     redPotionObject.events.onInputDown.add(clickItem, this);

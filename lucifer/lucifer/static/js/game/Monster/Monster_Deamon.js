@@ -67,7 +67,12 @@ function deamon_Create()
 											  'MON_Deamon_Attack', 'MON_Deamon_Dead', 'MON_Deamon_Skill']);
 
 	deamon_Group = Lucifer_Game.add.group();
-	//deamon_Clone(3400, 1492);
+	deamon_Clone(4231, 1619);
+	deamon_Clone(4717, 1771);
+	deamon_Clone(5402, 2179);
+	deamon_Clone(10549, 2570);
+	deamon_Clone(7847, 1710);
+	deamon_Clone(8030, 1810);
 }
 //------------------------------------------------------------------------------
 function deamon_Clone(PointX, PointY)
@@ -273,7 +278,7 @@ function deamon_GetDirection(Object)
 
 function deamon_GetReturnDirection(Object)
 {
-	Object.RetrunDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
+	Object.ReturnDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
 
 	if(Object.DeadCheck == false)
 	{

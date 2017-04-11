@@ -1,5 +1,7 @@
 var Stage2_Map, Stage2, Stage2_ObjLayer;	//Stage 이미지 변수								
 var Stage2_ObjectGroup;						//Stage2 - Object 관련 변수.
+var Stage2_ObjectPool = [];
+var CameraRect;
 
 function stageTwo_Preload()
 {
@@ -132,16 +134,15 @@ function stageTwo_Create()
 	Stage2_Map.addTilesetImage('bossroom', 'bossroom');
 	Stage2_Map.addTilesetImage('bossroom2', 'bossroom2');
 
-	Stage2 = Stage2_Map.createLayer('Tile Layer 1');			
+	Stage2 = Stage2_Map.createLayer('Tile Layer 1');
 	Stage2_ObjLayer = Stage2_Map.createLayer('Object Layer');			
 	Collision_Layer = Stage2_Map.createLayer('Collision Layer');
 		
-	Stage2.resizeWorld();
+	Stage2.resizeWorld();	
 	//---------------------------------------------------------------------------------------
 
 	//Object
 	//---------------------------------------------------------------------------------------
-	
 	Stage2_ObjectGroup = Lucifer_Game.add.group();
 	Stage2_ObjectGroup = Lucifer_Game.add.physicsGroup(Phaser.Physics.P2JS);
 
@@ -431,11 +432,57 @@ function stageTwo_Create()
 	//---------------------------------------------------------------------------------------
 
 	for(var i = 0; i < Stage2_ObjectGroup.length; ++i)
-	{
-		Stage2_ObjectGroup.getChildAt(i).body.static = true;
+	{	
+		var Stage2_Object = Stage2_ObjectGroup.getChildAt(i);
+		var Object_Rect = new Phaser.Rectangle(Stage2_Object.x, Stage2_Object.y, 100, 100);
+		Stage2_ObjectPool.push(Object_Rect);
+
+		Stage2_ObjectGroup.getChildAt(i).body.static = true;		
 	}		
 	
 	//---------------------------------------------------------------------------------------
 	Stage2_Map.setCollision(21, true, "Collision Layer");
-	Lucifer_Game.physics.p2.convertTilemap(Stage2_Map, "Collision Layer");
+	Lucifer_Game.physics.p2.convertTilemap(Stage2_Map, "Collision Layer");		
 }
+
+function stage2_Culling()
+{
+	//var CameraRect;
+	//Lucifer_Game.camera.x = Player.x;
+	//Lucifer_Game.camera.y = Player.y;
+
+	CameraRect = Lucifer_Game.camera.bounds;
+	CameraRect.setTo(Player.x, Player.y, 1280, 800);
+	CameraRect.offset(-640, -400);
+	CameraRect.x = Player.x;
+	CameraRect.y = Player.y;
+	CameraRect.centerOn(Player.x, Player.y);
+
+	for(var i = 0 ; i < Stage2_ObjectGroup.length; ++i)
+	{
+		var Object = Stage2_ObjectGroup.getChildAt(i);
+
+		var Object_Rect;
+		for(var j = 0;  j < Stage2_ObjectPool.length; ++j)
+		{
+			Object_Rect = Stage2_ObjectPool[j];
+
+			if(Lucifer_Game.camera.bounds.containsRect(Object_Rect, CameraRect)
+			   /*CameraRect.containsRect(Object_Rect, CameraRect)*/)
+			{
+				if(Object.alive == false)
+				{
+					Object.revive();	
+				}				
+			}
+			else
+			{
+				if(Object.alive == true)
+				{
+					Object.kill();
+				}
+			}
+		}			
+	}
+}
+

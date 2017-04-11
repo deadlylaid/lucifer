@@ -35,6 +35,9 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
+
+	//Regen Time
+	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Check = false;
 }
 
 Countess.prototype = Object.create(Phaser.Sprite.prototype);
@@ -179,6 +182,10 @@ function countess_Clone(PointX, PointY)
 	countess_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
 	countess_Object.Attack_DelayTimer.loop(1000, countess_DelayTimer, Lucifer_Game, countess_Object);
 
+	//Regen Timer
+	countess_Object.Regen_Timer = Lucifer_Game.time.create(false);
+	countess_Object.Regen_Timer.loop(1000, countess_RegenTimer, Lucifer_Game, countess_Object);
+
 	countess_Group.add(countess_Object);
 }
 //----------------------------------------------------------------------------------------------
@@ -198,6 +205,12 @@ function countess_out(Object)
 function countess_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
+}
+
+//Regen
+function countess_RegenTimer(Object)
+{
+	++Object.Regen_Time_Total;
 }
 
 //Name
@@ -512,8 +525,8 @@ function countess_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
-			Object.destroy();
-			Object.Name.destroy();
+			Object.kill();
+			Object.Name.visible = false;
 		}				
 	}
 }
@@ -548,6 +561,39 @@ function countess_RectPos(Object)
 		Object.AttackRect.centerOn(Object.x, Object.y);
 	}
 }
+
+function countess_Regen(Object)
+{
+	if(Object.DeadMotionCheck == true)
+	{
+		Object.Regen_Check = true;
+		Object.Regen_Timer.start();
+
+		console.log(Object.Regen_Time_Total);
+
+		if(Object.Regen_Time_Total > 10)
+		{
+			Object.revive();
+			Object.Name.visible = true;
+
+			Object.Regen_Check = false;
+			
+			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
+			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
+			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+
+			Object.Hp = 100;
+			Object.MaxHp = 100;
+			Object.x = Object.ReturnPointX;
+			Object.y = Object.ReturnPointY;
+
+			countess_Animation_Change(Object.Direction, 'Stand', Object);
+
+			Object.Regen_Timer.stop();
+			Object.Regen_Time_Total = 0;
+		}
+	}
+}
 //----------------------------------------------------------------------------------------------
 
 //Update & Render
@@ -563,12 +609,16 @@ function countess_Update()
 		countess_FollwName(countess);
 		countess_GetDirection(countess);
 		countess_GetReturnDirection(countess);
-		countess_Move(countess);
+		countess_Move(countess);		
 
 		//Player Mosnter Collision
-		player_Monster_Col(countess);
+		if(countess.Regen_Check == false)
+		{
+			player_Monster_Col(countess);
+		}		
 
 		countess_Dead(countess);
+		countess_Regen(countess);
 	}
 }
 

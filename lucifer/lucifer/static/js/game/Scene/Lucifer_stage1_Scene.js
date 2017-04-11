@@ -19,12 +19,7 @@ var stage1_Scene =
 		player_Create();
 
 		//Monster
-		golem_Create();
-		fallen_Shaman_Create();
-		andariel_Create();
-		wraith_Create();
-		deamon_Create();
-		council_Create();
+		golem_Create();		
 		countess_Create();
 
         //items
@@ -55,12 +50,7 @@ var stage1_Scene =
 		player_Update();
 
 		//Monster Update
-		golem_Update();
-		fallen_Shaman_Update();
-		andariel_Update();
-		wraith_Update();
-		deamon_Update();
-		council_Update();
+		golem_Update();		
 		countess_Update();
 
         //items Update

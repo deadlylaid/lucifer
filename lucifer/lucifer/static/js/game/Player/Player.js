@@ -162,7 +162,8 @@ function player_Create()
 	//----------------------------------------------------------------------------------------------------------
 
 	//Camera	
-	Lucifer_Game.camera.follow(Player);	//Camera follow	
+	Lucifer_Game.camera.follow(Player);		//Camera follow	
+	Lucifer_Game.camera.setSize(1280, 800);
 }	
 
 function GetDirection(){

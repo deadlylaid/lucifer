@@ -61,12 +61,7 @@ var loadScene =
 	
 		//Monster
 		//----------------------------------------------------------------------------------------------------------
-		golem_Preload();
-		fallen_Shaman_Preload();
-		andariel_Preload();
-		wraith_Preload();
-		deamon_Preload();
-		council_Preload();
+		golem_Preload();		
 		countess_Preload();
 		//----------------------------------------------------------------------------------------------------------
 		

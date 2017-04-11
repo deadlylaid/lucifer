@@ -62,7 +62,7 @@ function andariel_Preload()
 function andariel_Create()
 {
 	andariel_Group = Lucifer_Game.add.group();
-	//andariel_Clone(3800, 1592);	
+	andariel_Clone(8306, 1550);	
 
 	Lucifer_Game.renderer.setTexturePriority(['MON_Andariel_Stand', 'MON_Andariel_Walk', 'MON_Andariel_Attack', 'MON_Andariel_Dead']);
 }

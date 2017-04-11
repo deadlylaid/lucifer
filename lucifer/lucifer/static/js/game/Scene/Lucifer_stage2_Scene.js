@@ -17,10 +17,20 @@ var stage2_Scene =
 		player_Create();
 
 		//Monster
-		golem_Create();
+		fallen_Shaman_Create();
+		andariel_Create();
+		wraith_Create();
+		deamon_Create();
+		council_Create();
 
 		//UI
 		ui_Create();
+
+		//Skill
+		skill_Create();
+
+		//Queset
+		QuestCreate();
 
 		go();
 	},
@@ -30,11 +40,27 @@ var stage2_Scene =
 		//Player Update
 		player_Update();
 
-		//Monster Update(Golem)
-		//golem_Rogic();
+		//Monster Update
+		fallen_Shaman_Update();
+		andariel_Update();
+		wraith_Update();
+		deamon_Update();
+		council_Update();
+
+		//items Update
+        itemsUpdate();
 
 		//Ui Update
 		ui_Update();
+
+		//Quest Update
+		QuestUpdate();
+
+		//Skill
+		skill_Update();
+
+		//Stage2 Culling
+		//stage2_Culling();
 	},
 
 	render: function()

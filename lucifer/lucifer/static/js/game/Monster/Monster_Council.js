@@ -79,7 +79,14 @@ function council_Create()
 		 									  'MON_Council_Dead', 'MON_Council_Skill', 'Council_Light']);
 
 	council_Group = Lucifer_Game.add.group();
-	//council_Clone(3200, 1592);	
+	
+	council_Clone(2143, 2528);
+	council_Clone(2381, 2316);
+	council_Clone(2127, 2808);
+	council_Clone(1658, 2517);
+	council_Clone(5821, 906);
+	council_Clone(6221, 873);
+	council_Clone(6141, 1149);
 }
 
 function council_Clone(PointX, PointY)
@@ -334,7 +341,7 @@ function council_GetDirection(Object)
 
 function council_GetReturnDirection(Object)
 {
-	Object.RetrunDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
+	Object.ReturnDistance = Phaser.Math.distance(Object.x, Object.y, Object.ReturnPointX, Object.ReturnPointY);
 
 	if(Object.DeadCheck == false)
 	{
