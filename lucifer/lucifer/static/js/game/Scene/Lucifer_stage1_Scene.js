@@ -54,7 +54,7 @@ var stage1_Scene =
 		countess_Update();
 
         //items Update
-        itemsUpdate();
+		itemsStoreUpdate();
 
 		//Ui Update
 		ui_Update();
@@ -94,6 +94,8 @@ var stage1_Scene =
 			deamon_Render();
 			council_Render();
 			countess_Render();
+			
+			itemsRender();
 			
             //itemStoreRender
             itemStoreRender();
