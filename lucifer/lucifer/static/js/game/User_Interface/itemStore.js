@@ -2,13 +2,14 @@ var uiStore,
     uiInventory,
     selectedItem = null,
     invenKeyTimer,
-    invenKeyValidCheck = 1;
+    invenKeyValidCheck = 1,
+    redPotionGroup;
 
 function itemsPreload(){
 
-    Lucifer_Game.load.spritesheet(itemList[0].name, '../../static/images/game/item/'+ itemList[0].image_name + '.png', 150, 150);
-    Lucifer_Game.load.spritesheet(itemList[1].name, '../../static/images/game/item/'+ itemList[1].image_name + '.png', 150, 150);
-    Lucifer_Game.load.spritesheet(itemList[2].name, '../../static/images/game/item/'+ itemList[2].image_name + '.png', 150, 150);
+    Lucifer_Game.load.spritesheet(itemList[0].name, '../../static/images/game/item/'+ itemList[0].image_name + '.png', 55, 55);
+    Lucifer_Game.load.spritesheet(itemList[1].name, '../../static/images/game/item/'+ itemList[1].image_name + '.png', 55, 55);
+    Lucifer_Game.load.spritesheet(itemList[2].name, '../../static/images/game/item/'+ itemList[2].image_name + '.png', 55, 55);
     Lucifer_Game.load.spritesheet('uiStore', '../../static/images/game/UI/store/store.png', 455, 684);
     Lucifer_Game.load.spritesheet('potionTab', '../../static/images/game/UI/store/PotionTab.png', 45, 80);
     Lucifer_Game.load.spritesheet('swordTab', '../../static/images/game/UI/store/swordTab.png', 45, 80);
@@ -100,11 +101,6 @@ function itemStoreCreate(){
     //-------------------------------------------------------------------------------------------
     redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[0].limited_job, itemStoreStyle);
     
-    Lucifer_Game.physics.p2.enable(redPotion);
-    redPotion.body.clearShapes();
-    redPotion.body.addRectangle();
-    redPotion.body.static = true;
-
     redPotion.inputEnabled = true;
     redPotion.events.onInputDown.add(clickItem, this);
 
@@ -151,6 +147,7 @@ function itemStoreCreate(){
         switch(inventory[i].item_name){
             case '빨간물약':/*335, 470*/
                 inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]); 
+                inventory[i].numberInArray = i;
                 break;
             case '기본검':
                 inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
@@ -162,7 +159,7 @@ function itemStoreCreate(){
     }
 }
 
-function itemsUpdate(){
+function itemsStoreUpdate(){
     /**************************
 
             UPDATE문 작성 

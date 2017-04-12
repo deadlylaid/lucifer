@@ -15,7 +15,6 @@ potion = function (game, positionX, positionY, spriteKey, heal, limited_job, ite
     this.limited_job = limited_job;
 
     this.anchor.setTo(0.5, 0.5);
-    this.scale.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
 
@@ -30,6 +29,8 @@ potion = function (game, positionX, positionY, spriteKey, heal, limited_job, ite
     this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
     this.text.fixedToCamera = true;
     this.text.visible = false;
+
+    this.numberInArray;
 }
 
 potion.prototype = Object.create(Phaser.Sprite.prototype);
@@ -52,7 +53,6 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.limited_job = limited_job;
 
     this.anchor.setTo(0.5, 0.5);
-    this.scale.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
 
@@ -89,7 +89,6 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.limited_job = limited_job;
 
     this.anchor.setTo(0.5, 0.5);
-    this.scale.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
 
@@ -123,14 +122,8 @@ function redPotionClone(positionX, positionY){
     redPotionObject.text.fontSize = 15; 
     redPotionObject.text.fill = '#fff';
 
-    Lucifer_Game.physics.p2.enable(redPotionObject);    
-    redPotionObject.body.clearShapes();
-    redPotionObject.body.addRectangle(30, 30, 0, 0);   
-    redPotionObject.body.debug = true;
-    redPotionObject.body.static = true; 
+    Lucifer_Game.add.existing(redPotionObject);
     
-    Lucifer_Game.add.existing(redPotionObject);    
-
     redPotionObject.inputEnabled = true;
     redPotionObject.events.onInputDown.add(clickItem, this);
 
@@ -144,11 +137,8 @@ function basicSwordClone(positionX, positionY){
     basicSwordObject.text.setText(basicSwordObject.name);
     basicSwordObject.text.fontSize = 15;
     basicSwordObject.text.fill = '#fff';
-    Lucifer_Game.add.existing(basicSwordObject);
 
-    Lucifer_Game.physics.p2.enable(basicSwordObject);
-    basicSwordObject.body.addRectangle();
-    basicSwordObject.body.static = true;
+    Lucifer_Game.add.existing(basicSwordObject);
 
     basicSwordObject.inputEnabled = true;
     basicSwordObject.events.onInputDown.add(clickItem, this);
@@ -164,10 +154,6 @@ function basicArmorClone(positionX, positionY){
     basicArmorObject.text.fontSize = 15;
     basicArmorObject.text.fill = '#fff';
     Lucifer_Game.add.existing(basicArmorObject);
-
-    Lucifer_Game.physics.p2.enable(basicArmorObject);
-    basicArmorObject.body.addRectangle();
-    basicArmorObject.body.static = true;
 
     basicArmorObject.inputEnabled = true;
     basicArmorObject.events.onInputDown.add(clickItem, this);
