@@ -141,22 +141,8 @@ function itemStoreCreate(){
     //---------------------------------------------------------------------------------------   
     //---------------------------------------------------------------------------------------   
 
-    //server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다. 
-    invenArrayLength = inventory.length;
-    for(i=0; i<invenArrayLength; i++){
-        switch(inventory[i].item_name){
-            case '빨간물약':/*335, 470*/
-                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]); 
-                inventory[i].numberInArray = i;
-                break;
-            case '기본검':
-                inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                break;
-            case '기본갑옷':
-                inventory[i]=basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                break;
-        };
-    }
+    changeServerListToClientList();
+
 }
 
 function itemsStoreUpdate(){
@@ -255,10 +241,25 @@ function buyItem() {
     }
 }
 
+function clickedItemInInventory(sprite){
+    selectedItem = sprite;
+}
+
 //server-side로 인벤토리 데이터 실시간 전송 
 function inventoryPost(selectedItem){
     $.ajax({
         method:'POST',
+        url:'/api/user/character/inventory/',
+        data:{
+            character:character.nickname,
+            selectedItem:selectedItem,
+        },
+    })
+}
+
+function inventoryDelete(selectedItem){
+    $.ajax({
+        method:'DELETE',
         url:'/api/user/character/inventory/',
         data:{
             character:character.nickname,
@@ -288,7 +289,17 @@ function invenUi(){
 }
 
 function dropItem(){
-    alert(selectedItem.name);
+
+    if(selectedItem === null){
+        alert('fuck you'); 
+    }else{
+        inventory.splice(selectedItem.numberInArray, 1);
+        changeServerListToClientList();
+        selectedItem.destroy();
+        selectedItem.text.destroy();
+        selectedItem = null;
+    }
+    console.log(inventory);
 }
 
 function inventoryPosition(count){
@@ -335,4 +346,25 @@ function inventoryPosition(count){
             break;
     }
     return [ positionX, positionY ];
+}
+
+//server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다. 
+function changeServerListToClientList(){
+    invenArrayLength = inventory.length;
+    for(i=0; i<invenArrayLength; i++){
+        switch(inventory[i].item_name){
+            case '빨간물약':/*335, 470*/
+                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]); 
+                inventory[i].numberInArray = i;
+                break;
+            case '기본검':
+                inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                inventory[i].numberInArray = i;
+                break;
+            case '기본갑옷':
+                inventory[i]=basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                inventory[i].numberInArray = i;
+                break;
+        };
+    }
 }

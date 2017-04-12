@@ -39,3 +39,6 @@ class InventoryAPIView(ListAPIView):
         if InventorySerializer(data=serializer.data):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.data, status=status.HTTP_400_BAD_REQEUST)
+
+    def delete(self, request):
+        pass
