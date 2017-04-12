@@ -64,7 +64,13 @@ function wraith_Create()
 											  'MON_Wraith_Attack', 'MON_Wraith_Dead']);
 
 	wraith_Group = Lucifer_Game.add.group();
-	//wraith_Clone(3600, 1492);
+	wraith_Clone(2834, 3345);
+	wraith_Clone(3260, 3105);
+	wraith_Clone(5999, 2580);
+	wraith_Clone(7038, 2869);
+	wraith_Clone(6759, 1691);
+	wraith_Clone(7067, 1867);
+	wraith_Clone(7020, 808);
 }
 
 function wraith_Clone(PointX, PointY)
