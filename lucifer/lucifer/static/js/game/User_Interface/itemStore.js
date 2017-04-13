@@ -300,7 +300,7 @@ function dropItem(){
         selectedItem = null;
     }
     console.log(inventory);
-    changeServerListToClientList();
+    changeArray();
 }
 
 function inventoryPosition(count){
@@ -347,6 +347,16 @@ function inventoryPosition(count){
             break;
     }
     return [ positionX, positionY ];
+}
+function changeArray(){
+    invenArrayLength = inventory.length;
+    for(i=0; i<invenArrayLength; i++){
+        Lucifer_Game.physics.arcade.moveToXY(inventory[i], inventoryPosition(i)[0], inventoryPosition(i)[1]);
+
+        console.log('---------------------------------------');
+        console.log(i);
+        console.log('---------------------------------------');
+    };
 }
 
 //server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다. 

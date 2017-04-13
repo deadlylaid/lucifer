@@ -127,6 +127,7 @@ function redPotionClone(positionX, positionY){
     redPotionObject.text.fill = '#fff';
 
     Lucifer_Game.add.existing(redPotionObject);
+    Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
 
     redPotionObject.inputEnabled = true;
     redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
@@ -143,6 +144,7 @@ function basicSwordClone(positionX, positionY){
     basicSwordObject.text.fill = '#fff';
 
     Lucifer_Game.add.existing(basicSwordObject);
+    Lucifer_Game.physics.enable(basicSwordObject, Phaser.Physics.ARCADE);
 
     basicSwordObject.inputEnabled = true;
     basicSwordObject.events.onInputDown.add(clickedItemInInventory, this);
@@ -158,6 +160,8 @@ function basicArmorClone(positionX, positionY){
     basicArmorObject.text.fontSize = 15;
     basicArmorObject.text.fill = '#fff';
     Lucifer_Game.add.existing(basicArmorObject);
+
+    Lucifer_Game.physics.enable(basicArmorObject, Phaser.Physics.ARCADE);
 
     basicArmorObject.inputEnabled = true;
     basicArmorObject.events.onInputDown.add(clickedItemInInventory, this);
