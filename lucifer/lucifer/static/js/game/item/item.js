@@ -123,9 +123,9 @@ function redPotionClone(positionX, positionY){
     redPotionObject.text.fill = '#fff';
 
     Lucifer_Game.add.existing(redPotionObject);
-    
+
     redPotionObject.inputEnabled = true;
-    redPotionObject.events.onInputDown.add(clickItem, this);
+    redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
 
     return redPotionObject;
 }
@@ -141,7 +141,7 @@ function basicSwordClone(positionX, positionY){
     Lucifer_Game.add.existing(basicSwordObject);
 
     basicSwordObject.inputEnabled = true;
-    basicSwordObject.events.onInputDown.add(clickItem, this);
+    basicSwordObject.events.onInputDown.add(clickedItemInInventory, this);
 
     return basicSwordObject;
 }
@@ -156,7 +156,7 @@ function basicArmorClone(positionX, positionY){
     Lucifer_Game.add.existing(basicArmorObject);
 
     basicArmorObject.inputEnabled = true;
-    basicArmorObject.events.onInputDown.add(clickItem, this);
+    basicArmorObject.events.onInputDown.add(clickedItemInInventory, this);
 
     return basicArmorObject;
 }
