@@ -67,6 +67,8 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
     this.text.fixedToCamera = true;
     this.text.visible = false;
+
+    this.numberInArray;
 }
 
 sword.prototype = Object.create(Phaser.Sprite.prototype);
@@ -103,6 +105,8 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
     this.text.fixedToCamera = true;
     this.text.visible = false;
+    
+    this.numberInArray;
 }
 
 armor.prototype = Object.create(Phaser.Sprite.prototype);

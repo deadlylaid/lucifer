@@ -1,3 +1,4 @@
+
 var uiStore,
     uiInventory,
     selectedItem = null,
@@ -147,9 +148,7 @@ function itemStoreCreate(){
 
 function itemsStoreUpdate(){
     /**************************
-
             UPDATE문 작성 
-
     ***************************/
     if(key_inven.isDown){
         invenKeyTimer.start();
@@ -231,7 +230,7 @@ function buyItem() {
     if(selectedItem === null){
         alert("먼저 구매할 물건을 클릭하세요");
     }else{
-        if(inventory.length>11){
+        if(inventory.length>=10){
             alert("인벤토리가 가득 찼습니다.");
         }else{
             alert("구매한 물건 : " + selectedItem.name);
@@ -239,6 +238,7 @@ function buyItem() {
             inventoryPost(selectedItem.name);
         }
     }
+    changeServerListToClientList();
 }
 
 function clickedItemInInventory(sprite){
@@ -294,12 +294,13 @@ function dropItem(){
         alert('fuck you'); 
     }else{
         inventory.splice(selectedItem.numberInArray, 1);
-        changeServerListToClientList();
         selectedItem.destroy();
         selectedItem.text.destroy();
+        inventoryDelete(selectedItem.name);
         selectedItem = null;
     }
     console.log(inventory);
+    changeServerListToClientList();
 }
 
 function inventoryPosition(count){
