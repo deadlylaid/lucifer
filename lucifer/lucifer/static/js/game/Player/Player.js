@@ -375,13 +375,27 @@ function player_Update()
 	//Player Motion
 	//---------------------------------------------------------------------------------------
 	//Move
-	if(UI_Stat.visible === true || uiStore.visible === true || uiInventory.visible === true)
+	if(stageOne_Check == true)
 	{
+		if(UI_Stat.visible === true || uiStore.visible === true || uiInventory.visible === true)
+		{
 
-	}else{
-		PlayerMove();
-		PlayerAttack();
-    }
+		}else{
+			PlayerMove();
+			PlayerAttack();
+   	 	}
+	}
+	else if(stageTwo_Check == true || stageThree_Check == true)
+	{
+		if(UI_Stat.visible === true /*|| uiInventory.visible === true*/)
+		{
+
+		}else{
+			PlayerMove();
+			PlayerAttack();
+   	 	}
+	}
+	
 	
 	//Rect
 	Attack_Rect.x = Player.x;
