@@ -44,6 +44,9 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//FireBall
 	this.FireBall, this.NextFire = 0, this.FireRate = 1500;	
+
+	//Regen Time
+	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 }
 
 Fallen_Shaman.prototype = Object.create(Phaser.Sprite.prototype);
@@ -192,6 +195,10 @@ function fallen_Shaman_Clone(PointX, PointY)
 	fallenShaman_Object.FireBall.setAll('outOfBoundsKill', true);
 	fallenShaman_Object.FireBall.setAll('checkWorldBounds', true);
 
+	//Regen Timer
+	fallenShaman_Object.Regen_Timer = Lucifer_Game.time.create(false);
+	fallenShaman_Object.Regen_Timer.loop(1000, fallenShaman_RegenTimer, Lucifer_Game, fallenShaman_Object);
+
 	fallenShaman_Group.add(fallenShaman_Object);
 } 
 //-------------------------------------------------------------------------------------------
@@ -212,6 +219,11 @@ function fallen_Shaman_out(Object)
 function fallen_Shaman_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
+}
+
+function fallenShaman_RegenTimer(Object)
+{
+	++Object.Regen_Time_Total;
 }
 
 function fireBall_DelayTimer(Object)
@@ -546,10 +558,41 @@ function fallen_Shaman_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && currentFrame == 14)
 		{
-			Object.destroy();
-			Object.Name.destroy();
+			Object.kill();
+			Object.Name.visible = false;
 		}					
 	}		
+}
+
+function fallen_Shaman_Regen(Object)
+{
+	if(Object.DeadMotionCheck == true)
+	{
+		Object.Regen_Check = true;
+		Object.Regen_Timer.start();
+
+		if(Object.Regen_Time_Total > Object.Regen_Time)
+		{
+			Object.revive();
+			Object.Name.visible = true;
+
+			Object.Regen_Check = false;
+			
+			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
+			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
+			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+
+			Object.Hp = 100;
+			Object.MaxHp = 100;
+			Object.x = Object.ReturnPointX;
+			Object.y = Object.ReturnPointY;
+
+			fallen_Shaman_Animation_Change(Object.Direction, 'Stand', Object);
+
+			Object.Regen_Timer.stop();
+			Object.Regen_Time_Total = 0;
+		}
+	}
 }
 //-------------------------------------------------------------------------------------------
 
@@ -600,10 +643,14 @@ function fallen_Shaman_Update()
 		fallen_Shaman_Move(Shaman);
 
 		//Player Mosnter Collision
-		player_Monster_Col(Shaman);
-
+		if(Shaman.Regen_Check == false)
+		{
+			player_Monster_Col(Shaman);
+		}
+		
 		//Dead
 		fallen_Shaman_Dead(Shaman);
+		fallen_Shaman_Regen(Shaman);
 	}	
 }
 

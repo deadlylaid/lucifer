@@ -35,6 +35,9 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
+
+	//Regen Time
+	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 }
 
 Wraith.prototype = Object.create(Phaser.Sprite.prototype);
@@ -176,6 +179,10 @@ function wraith_Clone(PointX, PointY)
 	wraith_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
 	wraith_Object.Attack_DelayTimer.loop(1000, wraith_DelayTimer, Lucifer_Game, wraith_Object);
 
+	//Regen Timer
+	wraith_Object.Regen_Timer = Lucifer_Game.time.create(false);
+	wraith_Object.Regen_Timer.loop(1000, wraith_RegenTimer, Lucifer_Game, wraith_Object);
+
 	wraith_Group.add(wraith_Object);
 }
 //------------------------------------------------------------------------------
@@ -195,6 +202,11 @@ function wraith_out(Object)
 function wraith_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
+}
+
+function wraith_RegenTimer(Object)
+{
+	++Object.Regen_Time_Total;
 }
 
 //Name
@@ -511,9 +523,40 @@ function wraith_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
-			Object.destroy();
-			Object.Name.destroy();
+			Object.kill();
+			Object.Name.visible = false;
 		}				
+	}
+}
+
+function wraith_Regen(Object)
+{
+	if(Object.DeadMotionCheck == true)
+	{
+		Object.Regen_Check = true;
+		Object.Regen_Timer.start();
+
+		if(Object.Regen_Time_Total > Object.Regen_Time)
+		{
+			Object.revive();
+			Object.Name.visible = true;
+
+			Object.Regen_Check = false;
+			
+			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
+			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
+			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+
+			Object.Hp = 100;
+			Object.MaxHp = 100;
+			Object.x = Object.ReturnPointX;
+			Object.y = Object.ReturnPointY;
+
+			wraith_Animation_Change(Object.Direction, 'Stand', Object);
+
+			Object.Regen_Timer.stop();
+			Object.Regen_Time_Total = 0;
+		}
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -565,9 +608,13 @@ function wraith_Update()
 		wraith_Move(wraith);
 
 		//Player Mosnter Collision
-		player_Monster_Col(wraith);
+		if(wraith.Regen_Check == false)
+		{
+			player_Monster_Col(wraith);	
+		}		
 
 		wraith_Dead(wraith);
+		wraith_Regen(wraith);
 	}
 }
 

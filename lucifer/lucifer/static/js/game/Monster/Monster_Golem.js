@@ -17,7 +17,7 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.PointX = x, this.PointY = y, this.ReturnPointX = x, this.ReturnPointY = y;
 	
 	//UI
-	this.HpBar, this.HpMask, this.golem_Name;
+	this.HpBar, this.HpMask, this.Name;
 
 	//Rect
 	this.HitRect, this.AttackRect;
@@ -35,6 +35,9 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
+
+	//Regen Time
+	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 }
 
 Golem.prototype = Object.create(Phaser.Sprite.prototype);
@@ -124,14 +127,14 @@ function golem_Clone(PointX, PointY)
 	golem_Object.HpMask.beginFill(0xffffff);
 	
 	//Name
-	golem_Object.golem_Name = Lucifer_Game.add.text(golem_Object.PointX, golem_Object.PointY - 100, "Golem");
-	golem_Object.golem_Name.anchor.set(0.5);
-	golem_Object.golem_Name.align = "center";
-	golem_Object.golem_Name.font = 'Arial';
-	golem_Object.golem_Name.fontSize = 13;
-	golem_Object.golem_Name.fontWeight = 'normal';
-	golem_Object.golem_Name.fill = '#19de65';
-    golem_Object.golem_Name.visible = false;
+	golem_Object.Name = Lucifer_Game.add.text(golem_Object.PointX, golem_Object.PointY - 100, "Golem");
+	golem_Object.Name.anchor.set(0.5);
+	golem_Object.Name.align = "center";
+	golem_Object.Name.font = 'Arial';
+	golem_Object.Name.fontSize = 13;
+	golem_Object.Name.fontWeight = 'normal';
+	golem_Object.Name.fill = '#19de65';
+    golem_Object.Name.visible = false;
 	
 	//enable all input lick 'click', 'over', etc...
 	golem_Object.inputEnabled = true;
@@ -146,6 +149,10 @@ function golem_Clone(PointX, PointY)
     golem_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
     golem_Object.Attack_DelayTimer.loop(1000, golem_DelayTimer, Lucifer_Game, golem_Object);
 
+    //Regen Timer
+	golem_Object.Regen_Timer = Lucifer_Game.time.create(false);
+	golem_Object.Regen_Timer.loop(1000, golem_RegenTimer, Lucifer_Game, golem_Object);
+
     Lucifer_Game.physics.enable(golem_Object, Phaser.Physics.ARCADE);
     golem_Group.add(golem_Object);
 }
@@ -156,27 +163,32 @@ function golem_DelayTimer(Object)
 	++Object.DelayTime_Total;		
 }
 
+function golem_RegenTimer(Object)
+{
+	++Object.Regen_Time_Total;
+}
+
 //Name
 function golem_FollwName(Object)
 {
 	if(Object.DeadCheck == false)
 	{
-		Object.golem_Name.x = Object.position.x;
+		Object.Name.x = Object.position.x;
 
 		var golem_NamePointY = Object.position.y + 70;
-		Object.golem_Name.y = golem_NamePointY;
+		Object.Name.y = golem_NamePointY;
 	}	
 }
 
 //Over / Out
 function over(Object)
 {
-	Object.golem_Name.visible  = true;
+	Object.Name.visible  = true;
 	Object.HpBar.visible = true;
 }
 function out(Object)
 {
-	Object.golem_Name.visible  = false;
+	Object.Name.visible  = false;
 	Object.HpBar.visible = false;
 }
 //-------------------------------------------------------------------------------------------
@@ -463,9 +475,40 @@ function golem_Dead(Object)
 	if(Object.Hp < 0)
 	{
 		Object.DeadCheck = true;
-		Object.destroy();
-		Object.golem_Name.destroy();
+		Object.kill();
+		Object.Name.visible = false;
 	}	
+}
+
+function golem_Regen(Object)
+{
+	if(Object.DeadCheck == true)
+	{
+		Object.Regen_Check = true;
+		Object.Regen_Timer.start();
+
+		if(Object.Regen_Time_Total > Object.Regen_Time)
+		{
+			Object.revive();
+			Object.Name.visible = true;
+
+			Object.Regen_Check = false;
+			
+			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
+			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
+			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+
+			Object.Hp = 100;
+			Object.MaxHp = 100;
+			Object.x = Object.ReturnPointX;
+			Object.y = Object.ReturnPointY;
+
+			golem_Animation_Change(Object.Direction, 'Stand', Object);
+
+			Object.Regen_Timer.stop();
+			Object.Regen_Time_Total = 0;
+		}
+	}
 }
 //-------------------------------------------------------------------------------------------
 
@@ -516,10 +559,13 @@ function golem_Update()
 		golem_RectPos(golem);
 
 		//Player Mosnter Collision
-		player_Monster_Col(golem);
+		if(golem.Regen_Check == false)
+		{
+			player_Monster_Col(golem);	
+		}	
 
-		//Dead
 		golem_Dead(golem);
+		golem_Regen(golem);
 	}	
 }
 
