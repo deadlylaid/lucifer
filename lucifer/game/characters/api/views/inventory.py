@@ -41,4 +41,14 @@ class InventoryAPIView(ListAPIView):
         return Response(serializer.data, status=status.HTTP_400_BAD_REQEUST)
 
     def delete(self, request):
-        pass
+        # 넘어온 데이터를 받는다
+        character = self.request.user.character
+        item_name = request.data.get('character')
+        selected_item = request.data.get('selectedItem')
+
+        item = get_object_or_404(Item, name=selected_item)
+
+        items = character.inventory_set.filter(item=item)
+        items[0].delete()
+
+        return Response(status=status.HTTP_200_OK)
