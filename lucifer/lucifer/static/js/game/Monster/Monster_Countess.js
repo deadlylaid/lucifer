@@ -37,7 +37,7 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 
 	//Regen Time
-	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Check = false;
+	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 }
 
 Countess.prototype = Object.create(Phaser.Sprite.prototype);
@@ -85,7 +85,7 @@ function countess_Clone(PointX, PointY)
 	countess_Object.body.addRectangle(60, 60, 0, 0);
 	countess_Object.body.debug = true;	
 	countess_Object.body.restitution = 0;
-	
+
 	//Animation
 	//Stand
 	var index = 0;
@@ -569,9 +569,7 @@ function countess_Regen(Object)
 		Object.Regen_Check = true;
 		Object.Regen_Timer.start();
 
-		console.log(Object.Regen_Time_Total);
-
-		if(Object.Regen_Time_Total > 10)
+		if(Object.Regen_Time_Total > Object.Regen_Time)
 		{
 			Object.revive();
 			Object.Name.visible = true;

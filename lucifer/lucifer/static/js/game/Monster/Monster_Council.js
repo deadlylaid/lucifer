@@ -44,6 +44,9 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Pattern_Timer, this.Pattern_Time_Total = 0;
 	this.Pattern_Nomal_Check = false, this.Pattern_Skill_Check = false;
 	this.Pattern_Change_Value = 2;
+
+	//Regen Time
+	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 }
 
 Council.prototype = Object.create(Phaser.Sprite.prototype);
@@ -236,6 +239,10 @@ function council_Clone(PointX, PointY)
 	council_Object.Pattern_Timer = Lucifer_Game.time.create(false);
 	council_Object.Pattern_Timer.loop(1000, council_PatternTimer, Lucifer_Game, council_Object);
 
+	//Regen Timer
+	council_Object.Regen_Timer = Lucifer_Game.time.create(false);
+	council_Object.Regen_Timer.loop(1000, council_RegenTimer, Lucifer_Game, council_Object);
+
 	council_Group.add(council_Object);
 }
 //------------------------------------------------------------------------------
@@ -255,6 +262,11 @@ function council_out(Object)
 function council_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
+}
+
+function council_RegenTimer(Object)
+{
+	++Object.Regen_Time_Total;
 }
 
 //skill Timer
@@ -664,10 +676,42 @@ function council_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
-			Object.destroy();
-			Object.Name.destroy();
-			Object.Skill_Light.destroy();
+			Object.kill();
+			Object.Name.visible = false;
+			Object.Skill_Light.visible = false;
 		}				
+	}
+}
+
+function council_Regen(Object)
+{
+	if(Object.DeadMotionCheck == true)
+	{
+		Object.Regen_Check = true;
+		Object.Regen_Timer.start();
+
+		if(Object.Regen_Time_Total > Object.Regen_Time)
+		{
+			Object.revive();
+			Object.Name.visible = true;
+
+			Object.Regen_Check = false;
+			
+			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
+			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
+			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.Pattern_Nomal_Check = false, Object.Pattern_Skill_Check = false;
+
+			Object.Hp = 100;
+			Object.MaxHp = 100;
+			Object.x = Object.ReturnPointX;
+			Object.y = Object.ReturnPointY;
+
+			council_Animation_Change(Object.Direction, 'Stand', Object);
+
+			Object.Regen_Timer.stop();
+			Object.Regen_Time_Total = 0;
+		}
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -734,9 +778,13 @@ function council_Update()
 		council_Move(council);
 
 		//Player Mosnter Collision
-		player_Monster_Col(council);
+		if(council.Regen_Check == false)
+		{
+			player_Monster_Col(council);	
+		}		
 
 		council_Dead(council);
+		council_Regen(council);
 	}
 }
 

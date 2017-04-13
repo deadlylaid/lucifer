@@ -36,6 +36,9 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
+
+	//Regen Time
+	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 30, this.Regen_Check = false;
 }
 
 Andariel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -169,6 +172,10 @@ function andariel_Clone(PointX, PointY)
 	andariel_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
 	andariel_Object.Attack_DelayTimer.loop(1000, andariel_DelayTimer, Lucifer_Game, andariel_Object);
 
+	//Regen Timer
+	andariel_Object.Regen_Timer = Lucifer_Game.time.create(false);
+	andariel_Object.Regen_Timer.loop(1000, andariel_RegenTimer, Lucifer_Game, andariel_Object);
+
 	andariel_Group.add(andariel_Object);
 }
 //----------------------------------------------------------------------------------------------
@@ -188,6 +195,12 @@ function andariel_out(Object)
 function andariel_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
+}
+
+//Regen Timer
+function andariel_RegenTimer(Object)
+{
+	++Object.Regen_Time_Total;
 }
 
 //Name
@@ -493,8 +506,8 @@ function andariel_Dead(Object)
 		var CurFrame = Object.animations.frame;
 		if(Object.DeadMotionCheck == true && CurFrame == 118)
 		{
-			Object.destroy();
-			Object.Name.destroy();
+			Object.kill();
+			Object.Name.visible = false;
 		}			
 	}
 }
@@ -529,6 +542,37 @@ function andariel_RectPos(Object)
 		Object.AttackRect.centerOn(Object.x, Object.y);
 	}
 }
+
+function andariel_Regen(Object)
+{
+	if(Object.DeadMotionCheck == true)
+	{
+		Object.Regen_Check = true;
+		Object.Regen_Timer.start();
+
+		if(Object.Regen_Time_Total > Object.RegenTime)
+		{
+			Object.revive();
+			Object.Name.visible = true;
+
+			Object.Regen_Check = false;
+
+			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
+			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
+			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+		
+			Object.Hp = 100;
+			Object.MaxHp = 100;
+			Object.x = Object.ReturnPointX;
+			Object.y = Object.ReturnPointY;
+
+			andariel_Animation_Change(Object.Direction, 'Stand', Object);
+
+			Object.Regen_Timer.stop();
+			Object.Regen_Time_Total = 0;
+		}
+	}
+}
 //----------------------------------------------------------------------------------------------
 
 //Update & Render
@@ -547,9 +591,13 @@ function andariel_Update()
 		andariel_Move(andariel);
 
 		//Player Mosnter Collision
-		player_Monster_Col(andariel);
+		if(andariel.Regen_Check == false)
+		{
+			player_Monster_Col(andariel);	
+		}		
 
 		andariel_Dead(andariel);
+		andariel_Regen(andariel);
 	}
 }
 
