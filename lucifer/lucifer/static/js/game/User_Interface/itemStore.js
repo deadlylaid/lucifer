@@ -1,3 +1,4 @@
+
 var uiStore,
     uiInventory,
     selectedItem = null,
@@ -147,9 +148,7 @@ function itemStoreCreate(){
 
 function itemsStoreUpdate(){
     /**************************
-
             UPDATE문 작성 
-
     ***************************/
     if(key_inven.isDown){
         invenKeyTimer.start();
@@ -239,6 +238,7 @@ function buyItem() {
             inventoryPost(selectedItem.name);
         }
     }
+    changeServerListToClientList();
 }
 
 function clickedItemInInventory(sprite){
