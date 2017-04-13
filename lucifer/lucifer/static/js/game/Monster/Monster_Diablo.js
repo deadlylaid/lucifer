@@ -27,6 +27,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	//Time
 	this.Attack_DelayTimer, this.DelayTime_Total = 1;
 	this.Skill_DelayTimer, this.SkillTime_Total = 1;	//->아직 clone 에서 만들지 않음.
+	this.Pattern_Attacktimer, this.Pattern_AttackTime = 0;
 
 	//Direction
 	this.Distance, this.Angle, this.PreDirection, this.Direction;
@@ -38,6 +39,9 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
+
+	//AI Pattern Check
+	this.Pattern_Attack = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 50, this.Regen_Check = false;
@@ -96,7 +100,7 @@ function diablo_Create()
 
 function diablo_Clone(PointX, PointY)
 {
-	diablo_Object = new Diablo(Lucifer_Game, PointX, PointY, 100, 100, 230, 100);
+	diablo_Object = new Diablo(Lucifer_Game, PointX, PointY, 300, 300, 1000, 150);
 
 	Lucifer_Game.physics.p2.enable(diablo_Object);
 	diablo_Object.body.fixedRotation = true;
@@ -250,8 +254,8 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.events.onInputOut.add(diablo_out, diablo_Object);
 
 	//Rect
-	diablo_Object.HitRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 150, 150);
-	diablo_Object.AttackRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 150, 150);
+	diablo_Object.HitRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 150, 200);
+	diablo_Object.AttackRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 200, 200);
 
 	//Delay Timer
 	diablo_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
@@ -260,6 +264,11 @@ function diablo_Clone(PointX, PointY)
 	//Regen Timer
 	diablo_Object.Regen_Timer = Lucifer_Game.time.create(false);
 	diablo_Object.Regen_Timer.loop(1000, diablo_RegenTimer, Lucifer_Game, diablo_Object);	
+
+	//Pattern Attack Timer
+	diablo_Object.Pattern_Attacktimer = Lucifer_Game.time.create(false);
+	diablo_Object.Pattern_Attacktimer.loop(1000, diablo_PatternAttack_Timer, Lucifer_Game, diablo_Object);
+
 }
 //----------------------------------------------------------------------------------------------
 //Over / Out
@@ -279,11 +288,15 @@ function diablo_DelayTimer(Object)
 {
 	++Object.DelayTime_Total;
 }
-
 //Regen Timer
 function diablo_RegenTimer(Object)
 {
 	++Object.Regen_Time_Total;
+}
+//Pattern Timer
+function diablo_PatternAttack_Timer(Object)
+{
+	++Object.Pattern_AttackTime;
 }
 
 //Name
@@ -521,7 +534,7 @@ function diablo_Move(Object)
 			}			
 
 			//Attack
-			//diablo_Attack(Object);
+			diablo_Attack(Object);
 
 			Object.body.velocity.x = 0;
 			Object.body.velocity.y = 0;
@@ -581,12 +594,26 @@ function diablo_Attack(Object)
 		if(Phaser.Rectangle.intersects(Object.AttackRect, Hit_Rect))
 		{
 			Object.Attack_DelayTimer.start();
-
+			
 			if(Object.AttackCheck == false)
-			{
-				diablo_Animation_Change(Object.Direction, 'Attack', Object);
-				diablo_HitCount(Object);
-				Object.AttackCheck = true;
+			{	
+				if(Object.Pattern_Attack == false)
+				{
+					//Attack Pattern - 1
+					diablo_Animation_Change(Object.Direction, 'Attack', Object);
+					diablo_HitCount(Object);					
+
+					Object.AttackCheck = true;				
+				}	
+
+				if(Object.Pattern_Attack == true)
+				{
+					//Attack Pattern - 2
+					diablo_Animation_Change(Object.Direction, 'Attack1', Object);
+					diablo_HitCount(Object);					
+
+					Object.AttackCheck = true;
+				}			
 			}
 		}
 		else
@@ -594,7 +621,64 @@ function diablo_Attack(Object)
 			Object.StandCheck = false;
 			Object.MoveCheck = false;			
 		}
+	}	
+}
+
+function diablo_Pattern_Attack(Object)
+{	
+	if(Object.Pattern_Attack == false)
+	{
+		var CurFrame = Object.animations.frame;
+		var EndFrame;
+
+		if(Object.Direction == 0)
+		{
+			EndFrame = 15;
+		}
+		else
+		{
+			EndFrame = 15 * (Object.Direction + 1);
+		}					
+
+		if(CurFrame == EndFrame)
+		{
+			Object.Pattern_Attacktimer.start();
+		
+			if(Object.Pattern_AttackTime > 3)
+			{
+				Object.Pattern_Attack = true;
+				Object.Pattern_AttackTime = 0;
+				Object.Pattern_Attacktimer.stop(false);	
+			}							
+		}		
 	}
+
+	if(Object.Pattern_Attack == true)
+	{
+		var CurFrame = Object.animations.frame;
+		var EndFrame;
+
+		if(Object.Direction == 0)
+		{
+			EndFrame = 19;
+		}
+		else
+		{
+			EndFrame = 19 * (Object.Direction + 1);
+		}					
+
+		if(CurFrame == EndFrame)
+		{
+			Object.Pattern_Attacktimer.start();
+		
+			if(Object.Pattern_AttackTime > 3)
+			{
+				Object.Pattern_Attack = false;
+				Object.Pattern_AttackTime = 0;
+				Object.Pattern_Attacktimer.stop(false);	
+			}
+		}		
+	}	
 }
 
 function diablo_HitCount(Object)
@@ -706,6 +790,7 @@ function diablo_Update()
 	diablo_GetDirection(diablo);
 	diablo_GetReturnDirection(diablo);
 	diablo_Move(diablo);
+	diablo_Pattern_Attack(diablo);
 
 	//Player Mosnter Collision
 	if(diablo.Regen_Check == false)

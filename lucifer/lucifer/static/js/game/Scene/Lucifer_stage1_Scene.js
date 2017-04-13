@@ -57,7 +57,7 @@ var stage1_Scene =
 		itemsStoreUpdate();
 
 		//Ui Update
-		ui_Update();
+		ui_Update();		
 
 		//Quest Update
 		QuestUpdate();
