@@ -2,7 +2,7 @@ var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수
 var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
-var PolygonArray = ["STAGE1_Object_wall7","STAGE1_Object_Tree1"];
+var PolygonArray = ["STAGE1_Object_wall7", "STAGE1_Object_Tree1"];
 var objectValueArray = [];
 
 function stageOne_Preload()
@@ -303,9 +303,19 @@ function stageOne_Create()
 	//---------------------------------------------------------------------------------------
 	for(var i = 0; i < Stage1_ObjectGroup.length; ++i)
 	{
+		if(Stage1_ObjectGroup.getChildAt(i).key == "STAGE1_Object_wall7")
+		{
+			Stage1_ObjectGroup.getChildAt(i).body.debug = true;	
+		}
+		else if(Stage1_ObjectGroup.getChildAt(i).key == "STAGE1_Object_Tree1")
+		{
+			Stage1_ObjectGroup.getChildAt(i).body.debug = true;	
+		}
+		
 		Stage1_ObjectGroup.getChildAt(i).body.static = true;
 		objectValueArray.push(Stage1_ObjectGroup.getChildAt(i).key);
 	}		
+
 	//---------------------------------------------------------------------------------------
 
 	//Polygon
@@ -322,7 +332,7 @@ function stageOne_Create()
 	item2.body.loadPolygon('Physics_polygon', 'test2');
 	item2.body.static = true;
 	console.log(Stage1_ObjectGroup.getChildAt(0).key);
-	*/
+	*/	
 	
 	for(var a = 0; a < objectValueArray.length; a++){
 
@@ -330,17 +340,16 @@ function stageOne_Create()
 		{
 			if(objectValueArray[a] == PolygonArray[i])
 			{	
-				//console.log(PolygonArray[i]);
-				console.log(Stage1_ObjectGroup.getChildAt(i).key);
-				
+				console.log(PolygonArray[i]);				
 				Stage1_ObjectGroup.getChildAt(i).body.clearShapes();
 				Stage1_ObjectGroup.getChildAt(i).body.loadPolygon("Physics_polygon", PolygonArray[i]);
-				
+			}
+			else
+			{
+				continue;
 			}
 		}		
-	}
-		
-	
+	}	
 	//---------------------------------------------------------------------------------------
 
 
