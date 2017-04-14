@@ -2,6 +2,8 @@ var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수
 var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
+var PolygonArray = ["STAGE1_Object_wall7","STAGE1_Object_Tree1"];
+var objectValueArray = [];
 
 function stageOne_Preload()
 {
@@ -10,6 +12,8 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('Stage1_TileSet', '../../static/images/game/Map/Stage1/Stage1_TileSet.png');
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('Object_WallTileSet', '../../static/images/game/Object/Stage1/Object_WallTileSet.png');
+
+	Lucifer_Game.load.physics("Physics_polygon", "../../static/js/game/Map/Physics_polygon.json");
 
 	//Object 
 	//----------------------------------------------------------------------------------------------------------------
@@ -133,7 +137,8 @@ function stageOne_Create()
 	Collision_Layer = Background_map.createLayer('Collision Layer');
 	Stage1.resizeWorld();
 	//---------------------------------------------------------------------------------------
-
+	
+	
 	//Object
 	//---------------------------------------------------------------------------------------
 	Stage1_ObjectGroup = Lucifer_Game.add.group();
@@ -160,7 +165,7 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(908, 1880, 'STAGE1_Object_item14');
 	Stage1_ObjectGroup.create(808, 1836, 'STAGE1_Object_item17');
 	Stage1_ObjectGroup.create(571, 1759, 'STAGE1_Object_wall22');
-	Stage1_ObjectGroup.create(1072, 1886, 'STAGE1_Object_item31');
+	
 	Stage1_ObjectGroup.create(1514, 1788, 'STAGE1_Object_item19');
 	Stage1_ObjectGroup.create(1583, 1759, 'STAGE1_Object_item20');
 	Stage1_ObjectGroup.create(1120, 1310, 'STAGE1_Object_item23');
@@ -176,7 +181,7 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(2425, 934, 'STAGE1_Object_item31');
 	Stage1_ObjectGroup.create(3031, 1126, 'STAGE1_Object_item0');
 	Stage1_ObjectGroup.create(3737, 2870, 'STAGE1_Object_item30');
-	Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');
+	
 	Stage1_ObjectGroup.create(3361, 3103, 'STAGE1_Object_wall6');
 	Stage1_ObjectGroup.create(3621, 2761, 'STAGE1_Object_item19');
 	Stage1_ObjectGroup.create(3686, 2797, 'STAGE1_Object_item19');
@@ -290,14 +295,54 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(5793, 1400, 'STAGE1_Object_Tree20');
 	Stage1_ObjectGroup.create(5793, 1320, 'STAGE1_Object_Tree17');
 	Stage1_ObjectGroup.create(5793, 1200, 'STAGE1_Object_Tree14');
+	Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');
+	Stage1_ObjectGroup.create(1072, 1886, 'STAGE1_Object_item31');
+	/*Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');*/
 	// forest end
 
 	//---------------------------------------------------------------------------------------
 	for(var i = 0; i < Stage1_ObjectGroup.length; ++i)
 	{
 		Stage1_ObjectGroup.getChildAt(i).body.static = true;
+		objectValueArray.push(Stage1_ObjectGroup.getChildAt(i).key);
 	}		
 	//---------------------------------------------------------------------------------------
+
+	//Polygon
+	//---------------------------------------------------------------------------------------
+	
+	/*
+	Lucifer_Game.physics.p2.enable([item1, item2], true);
+
+	item1.body.clearShapes();
+	item1.body.loadPolygon('Physics_polygon', 'test1');
+	item1.body.static = true;
+
+	item2.body.clearShapes();
+	item2.body.loadPolygon('Physics_polygon', 'test2');
+	item2.body.static = true;
+	console.log(Stage1_ObjectGroup.getChildAt(0).key);
+	*/
+	
+	for(var a = 0; a < objectValueArray.length; a++){
+
+		for(var i = 0; i < PolygonArray.length; i++)
+		{
+			if(objectValueArray[a] == PolygonArray[i])
+			{	
+				//console.log(PolygonArray[i]);
+				console.log(Stage1_ObjectGroup.getChildAt(i).key);
+				
+				Stage1_ObjectGroup.getChildAt(i).body.clearShapes();
+				Stage1_ObjectGroup.getChildAt(i).body.loadPolygon("Physics_polygon", PolygonArray[i]);
+				
+			}
+		}		
+	}
+		
+	
+	//---------------------------------------------------------------------------------------
+
 
 	//Portal
 	//---------------------------------------------------------------------------------------
@@ -324,7 +369,13 @@ function stageOne_Create()
 
 	Background_map.setCollision(21, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");	
+
+
+	
 }
+
+	
+
 
 function portal_Check()
 {

@@ -11,8 +11,7 @@ function stageTwo_Preload()
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('stage2_obj_tree', '../../static/images/game/Object/Stage2/stage2_obj_tree.png');
 	Lucifer_Game.load.image('stage2_obj_struct', '../../static/images/game/Object/Stage2/stage2_obj_struct.png');
-	Lucifer_Game.load.image('bossroom', '../../static/images/game/Object/Stage2/bossroom.png');
-	Lucifer_Game.load.image('bossroom2', '../../static/images/game/Object/Stage2/bossroom2.png');
+	Lucifer_Game.load.image('bossroom2', '../../static/images/game/Map/Stage2/bossroom2.png');
 	
 
 	//Object Tree
@@ -131,7 +130,6 @@ function stageTwo_Create()
 	Stage2_Map.addTilesetImage('Collision_Tile', 'Collision_Tile');
 	Stage2_Map.addTilesetImage('stage2_obj_tree', 'stage2_obj_tree');
 	Stage2_Map.addTilesetImage('stage2_obj_struct', 'stage2_obj_struct');
-	Stage2_Map.addTilesetImage('bossroom', 'bossroom');
 	Stage2_Map.addTilesetImage('bossroom2', 'bossroom2');
 
 	Stage2 = Stage2_Map.createLayer('Tile Layer 1');
