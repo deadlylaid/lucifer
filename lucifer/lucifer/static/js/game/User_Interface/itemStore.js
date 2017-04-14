@@ -299,6 +299,7 @@ function dropItem(){
         inventoryDelete(selectedItem.name);
         selectedItem = null;
     }
+    
     console.log(inventory);
     changeArray();
 }
@@ -346,6 +347,7 @@ function inventoryPosition(count){
             var positionY = 450;
             break;
     }
+
     return [ positionX, positionY ];
 }
 function changeArray(){
@@ -376,6 +378,6 @@ function changeServerListToClientList(){
                 inventory[i]=basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 inventory[i].numberInArray = i;
                 break;
-        };
-    }
+        }      
+    }  
 }
