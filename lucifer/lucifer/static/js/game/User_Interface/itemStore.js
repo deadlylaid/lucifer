@@ -299,7 +299,7 @@ function dropItem(){
         inventoryDelete(selectedItem.name);
         selectedItem = null;
     }
-
+    
     console.log(inventory);
     changeArray();
 }

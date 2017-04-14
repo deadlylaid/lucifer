@@ -40,7 +40,6 @@ potion.prototype.getVisible = function(bool){
 }
 potion.prototype.constructor = potion;
 
-
 //sword 객체를 만들때 사용 
 sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
