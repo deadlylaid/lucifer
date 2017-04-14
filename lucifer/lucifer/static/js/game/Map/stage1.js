@@ -377,10 +377,7 @@ function stageOne_Create()
 	//---------------------------------------------------------------------------------------
 
 	Background_map.setCollision(21, true, "Collision Layer");
-	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");	
-
-
-	
+	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");		
 }
 
 	
