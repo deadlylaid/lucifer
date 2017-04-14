@@ -141,6 +141,10 @@ function stageOne_Create()
 	
 	//Object
 	//---------------------------------------------------------------------------------------
+
+	Lucifer_Game.physics.startSystem(Phaser.Physics.P2JS);
+
+
 	Stage1_ObjectGroup = Lucifer_Game.add.group();
 	Stage1_ObjectGroup = Lucifer_Game.add.physicsGroup(Phaser.Physics.P2JS);
 
@@ -295,6 +299,7 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(5793, 1400, 'STAGE1_Object_Tree20');
 	Stage1_ObjectGroup.create(5793, 1320, 'STAGE1_Object_Tree17');
 	Stage1_ObjectGroup.create(5793, 1200, 'STAGE1_Object_Tree14');
+
 	Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');
 	Stage1_ObjectGroup.create(1072, 1886, 'STAGE1_Object_item31');
 	/*Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');*/
@@ -321,20 +326,7 @@ function stageOne_Create()
 	//Polygon
 	//---------------------------------------------------------------------------------------
 	
-	/*
-	Lucifer_Game.physics.p2.enable([item1, item2], true);
-
-	item1.body.clearShapes();
-	item1.body.loadPolygon('Physics_polygon', 'test1');
-	item1.body.static = true;
-
-	item2.body.clearShapes();
-	item2.body.loadPolygon('Physics_polygon', 'test2');
-	item2.body.static = true;
-	console.log(Stage1_ObjectGroup.getChildAt(0).key);
-	*/	
-	
-	for(var a = 0; a < objectValueArray.length; a++){
+for(var a = 0; a < objectValueArray.length; a++){
 
 		for(var i = 0; i < PolygonArray.length; i++)
 		{
