@@ -2,7 +2,7 @@ var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수
 var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
-var PolygonArray = ["STAGE1_Object_wall7", "STAGE1_Object_Tree1"];
+var PolygonArray = [ 'STAGE1_Object_wall7', 'STAGE1_Object_wall7', 'STAGE1_Object_wall15','STAGE1_Object_wall12', 'STAGE1_Object_wall16', 'STAGE1_Object_wall16', 'STAGE1_Object_wall7', 'STAGE1_Object_wall13', 'STAGE1_Object_wall5', 'STAGE1_Object_item12', 'STAGE1_Object_item35', 'STAGE1_Object_item35', 'STAGE1_Object_item21', 'STAGE1_Object_item12', 'STAGE1_Object_item18', 'STAGE1_Object_item21','STAGE1_Object_item21', 'STAGE1_Object_item18', 'STAGE1_Object_item14', 'STAGE1_Object_item17', 'STAGE1_Object_wall22', 'STAGE1_Object_item19', 'STAGE1_Object_item20', 'STAGE1_Object_item23', 'STAGE1_Object_item10', 'STAGE1_Object_item25', 'STAGE1_Object_item5', 'STAGE1_Object_item22', 'STAGE1_Object_item19', 'STAGE1_Object_item19',  'STAGE1_Object_item12', 'STAGE1_Object_wall25', 'STAGE1_Object_wall27', 'STAGE1_Object_item31', 'STAGE1_Object_item0', 'STAGE1_Object_item30', 'STAGE1_Object_wall6', 'STAGE1_Object_item19', 'STAGE1_Object_item19', 'STAGE1_Object_item20', 'STAGE1_Object_wall13', 'STAGE1_Object_Tree17', 'STAGE1_Object_item28', 'STAGE1_Object_item28', 'STAGE1_Object_item28', 'STAGE1_Object_Tree19', 'STAGE1_Object_item25',"STAGE1_Object_wall24", "STAGE1_Object_item15", "STAGE1_Object_item16","STAGE1_Object_wall9","STAGE1_Object_wall5", "STAGE1_Object_wall7", "STAGE1_Object_item2", "STAGE1_Object_wall7", "STAGE1_Object_item32","STAGE1_Object_item32","STAGE1_Object_item32","STAGE1_Object_item31", "STAGE1_Object_Tree20", "STAGE1_Object_item18", "STAGE1_Object_item34", "STAGE1_Object_Tree3", "STAGE1_Object_Tree1", "STAGE1_Object_item13","STAGE1_Object_Tree14", "STAGE1_Object_Tree19", "STAGE1_Object_Tree19", "STAGE1_Object_wall20", "STAGE1_Object_wall17", "STAGE1_Object_item8", "STAGE1_Object_item16","STAGE1_Object_item33", "STAGE1_Object_item17", "STAGE1_Object_item14", "STAGE1_Object_item11", "STAGE1_Object_Tree11", "STAGE1_Object_item9", "STAGE1_Object_item10", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_item5", "STAGE1_Object_item6", "STAGE1_Object_item5","STAGE1_Object_item0", "STAGE1_Object_wall29","STAGE1_Object_item1","STAGE1_Object_wall25","STAGE1_Object_wall25","STAGE1_Object_item37","STAGE1_Object_wall2","STAGE1_Object_item12","STAGE1_Object_item34", "STAGE1_Object_Tree19", "STAGE1_Object_Tree19", "STAGE1_Object_Tree19", "STAGE1_Object_item14", "STAGE1_Object_item22", "STAGE1_Object_item29", "STAGE1_Object_item28", "STAGE1_Object_Tree10", "STAGE1_Object_wall11","STAGE1_Object_item19", "STAGE1_Object_Tree14", "STAGE1_Object_Tree14", "STAGE1_Object_item3", "STAGE1_Object_item20", "STAGE1_Object_wall7", "STAGE1_Object_item31", "STAGE1_Object_item12", "STAGE1_Object_item34", "STAGE1_Object_item12","STAGE1_Object_item35", "STAGE1_Object_item8", "STAGE1_Object_item22", "STAGE1_Object_Tree2", "STAGE1_Object_Tree3", "STAGE1_Object_Tree5", "STAGE1_Object_Tree5", "STAGE1_Object_Tree3", "STAGE1_Object_Tree5", "STAGE1_Object_Tree3", "STAGE1_Object_Tree5","STAGE1_Object_Tree18", "STAGE1_Object_Tree18", "STAGE1_Object_Tree19","STAGE1_Object_Tree18", "STAGE1_Object_Tree19","STAGE1_Object_Tree20", "STAGE1_Object_Tree18", "STAGE1_Object_Tree18", "STAGE1_Object_Tree17", "STAGE1_Object_Tree19","STAGE1_Object_Tree19","STAGE1_Object_Tree20", "STAGE1_Object_Tree17", "STAGE1_Object_Tree18", "STAGE1_Object_Tree17", "STAGE1_Object_Tree19","STAGE1_Object_Tree18", "STAGE1_Object_Tree20", "STAGE1_Object_Tree17", "STAGE1_Object_Tree14", "STAGE1_Object_item1", "STAGE1_Object_item31" ];
 var objectValueArray = [];
 
 function stageOne_Preload()
@@ -13,7 +13,7 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('Object_WallTileSet', '../../static/images/game/Object/Stage1/Object_WallTileSet.png');
 
-	Lucifer_Game.load.physics("Physics_polygon", "../../static/js/game/Map/Physics_polygon.json");
+	Lucifer_Game.load.physics('Physics_polygon', '../../static/js/game/Map/Physics_polygon.json');
 
 	//Object 
 	//----------------------------------------------------------------------------------------------------------------
@@ -141,6 +141,10 @@ function stageOne_Create()
 	
 	//Object
 	//---------------------------------------------------------------------------------------
+
+	Lucifer_Game.physics.startSystem(Phaser.Physics.P2JS);
+
+
 	Stage1_ObjectGroup = Lucifer_Game.add.group();
 	Stage1_ObjectGroup = Lucifer_Game.add.physicsGroup(Phaser.Physics.P2JS);
 
@@ -165,7 +169,6 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(908, 1880, 'STAGE1_Object_item14');
 	Stage1_ObjectGroup.create(808, 1836, 'STAGE1_Object_item17');
 	Stage1_ObjectGroup.create(571, 1759, 'STAGE1_Object_wall22');
-	
 	Stage1_ObjectGroup.create(1514, 1788, 'STAGE1_Object_item19');
 	Stage1_ObjectGroup.create(1583, 1759, 'STAGE1_Object_item20');
 	Stage1_ObjectGroup.create(1120, 1310, 'STAGE1_Object_item23');
@@ -181,7 +184,6 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(2425, 934, 'STAGE1_Object_item31');
 	Stage1_ObjectGroup.create(3031, 1126, 'STAGE1_Object_item0');
 	Stage1_ObjectGroup.create(3737, 2870, 'STAGE1_Object_item30');
-	
 	Stage1_ObjectGroup.create(3361, 3103, 'STAGE1_Object_wall6');
 	Stage1_ObjectGroup.create(3621, 2761, 'STAGE1_Object_item19');
 	Stage1_ObjectGroup.create(3686, 2797, 'STAGE1_Object_item19');
@@ -265,8 +267,6 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(4419, 817, 'STAGE1_Object_item35');
 	Stage1_ObjectGroup.create(4366, 785, 'STAGE1_Object_item8');
 	Stage1_ObjectGroup.create(1403, 1317, 'STAGE1_Object_item22');
-	
-	//forest
 	Stage1_ObjectGroup.create(4653, 2024, 'STAGE1_Object_Tree2');
 	Stage1_ObjectGroup.create(6193, 1740, 'STAGE1_Object_Tree3');
 	Stage1_ObjectGroup.create(6193, 1640, 'STAGE1_Object_Tree5');
@@ -303,11 +303,11 @@ function stageOne_Create()
 	//---------------------------------------------------------------------------------------
 	for(var i = 0; i < Stage1_ObjectGroup.length; ++i)
 	{
-		if(Stage1_ObjectGroup.getChildAt(i).key == "STAGE1_Object_wall7")
+		if(Stage1_ObjectGroup.getChildAt(i).key == "STAGE1_Object_Tree14")
 		{
 			Stage1_ObjectGroup.getChildAt(i).body.debug = true;	
 		}
-		else if(Stage1_ObjectGroup.getChildAt(i).key == "STAGE1_Object_Tree1")
+		else if(Stage1_ObjectGroup.getChildAt(i).key == "STAGE1_Object_Tree17")
 		{
 			Stage1_ObjectGroup.getChildAt(i).body.debug = true;	
 		}
@@ -318,31 +318,20 @@ function stageOne_Create()
 
 	//---------------------------------------------------------------------------------------
 
+
 	//Polygon
 	//---------------------------------------------------------------------------------------
-	
-	/*
-	Lucifer_Game.physics.p2.enable([item1, item2], true);
 
-	item1.body.clearShapes();
-	item1.body.loadPolygon('Physics_polygon', 'test1');
-	item1.body.static = true;
-
-	item2.body.clearShapes();
-	item2.body.loadPolygon('Physics_polygon', 'test2');
-	item2.body.static = true;
-	console.log(Stage1_ObjectGroup.getChildAt(0).key);
-	*/	
-	
 	for(var a = 0; a < objectValueArray.length; a++){
 
 		for(var i = 0; i < PolygonArray.length; i++)
 		{
 			if(objectValueArray[a] == PolygonArray[i])
 			{	
-				console.log(PolygonArray[i]);				
+				console.log();
+				Lucifer_Game.physics.p2.enable(PolygonArray[i], true);			
 				Stage1_ObjectGroup.getChildAt(i).body.clearShapes();
-				Stage1_ObjectGroup.getChildAt(i).body.loadPolygon("Physics_polygon", PolygonArray[i]);
+				Stage1_ObjectGroup.getChildAt(i).body.loadPolygon('Physics_polygon' , PolygonArray[i]);
 			}
 			else
 			{
