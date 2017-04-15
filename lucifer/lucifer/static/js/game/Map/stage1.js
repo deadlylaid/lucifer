@@ -2,9 +2,6 @@ var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수
 var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
-<<<<<<< HEAD
-var PolygonArray = [ 'STAGE1_Object_wall7', 'STAGE1_Object_wall7', 'STAGE1_Object_wall15','STAGE1_Object_wall12', 'STAGE1_Object_wall16', 'STAGE1_Object_wall16', 'STAGE1_Object_wall7', 'STAGE1_Object_wall13', 'STAGE1_Object_wall5', 'STAGE1_Object_item12', 'STAGE1_Object_item35', 'STAGE1_Object_item35', 'STAGE1_Object_item21', 'STAGE1_Object_item12', 'STAGE1_Object_item18', 'STAGE1_Object_item21','STAGE1_Object_item21', 'STAGE1_Object_item18', 'STAGE1_Object_item14', 'STAGE1_Object_item17', 'STAGE1_Object_wall22', 'STAGE1_Object_item19', 'STAGE1_Object_item20', 'STAGE1_Object_item23', 'STAGE1_Object_item10', 'STAGE1_Object_item25', 'STAGE1_Object_item5', 'STAGE1_Object_item22', 'STAGE1_Object_item19', 'STAGE1_Object_item19',  'STAGE1_Object_item12', 'STAGE1_Object_wall25', 'STAGE1_Object_wall27', 'STAGE1_Object_item31', 'STAGE1_Object_item0', 'STAGE1_Object_item30', 'STAGE1_Object_wall6', 'STAGE1_Object_item19', 'STAGE1_Object_item19', 'STAGE1_Object_item20', 'STAGE1_Object_wall13', 'STAGE1_Object_Tree17', 'STAGE1_Object_item28', 'STAGE1_Object_item28', 'STAGE1_Object_item28', 'STAGE1_Object_Tree19', 'STAGE1_Object_item25',"STAGE1_Object_wall24", "STAGE1_Object_item15", "STAGE1_Object_item16","STAGE1_Object_wall9","STAGE1_Object_wall5", "STAGE1_Object_wall7", "STAGE1_Object_item2", "STAGE1_Object_wall7", "STAGE1_Object_item32","STAGE1_Object_item32","STAGE1_Object_item32","STAGE1_Object_item31", "STAGE1_Object_Tree20", "STAGE1_Object_item18", "STAGE1_Object_item34", "STAGE1_Object_Tree3", "STAGE1_Object_Tree1", "STAGE1_Object_item13","STAGE1_Object_Tree14", "STAGE1_Object_Tree19", "STAGE1_Object_Tree19", "STAGE1_Object_wall20", "STAGE1_Object_wall17", "STAGE1_Object_item8", "STAGE1_Object_item16","STAGE1_Object_item33", "STAGE1_Object_item17", "STAGE1_Object_item14", "STAGE1_Object_item11", "STAGE1_Object_Tree11", "STAGE1_Object_item9", "STAGE1_Object_item10", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_Tree4", "STAGE1_Object_item5", "STAGE1_Object_item6", "STAGE1_Object_item5","STAGE1_Object_item0", "STAGE1_Object_wall29","STAGE1_Object_item1","STAGE1_Object_wall25","STAGE1_Object_wall25","STAGE1_Object_item37","STAGE1_Object_wall2","STAGE1_Object_item12","STAGE1_Object_item34", "STAGE1_Object_Tree19", "STAGE1_Object_Tree19", "STAGE1_Object_Tree19", "STAGE1_Object_item14", "STAGE1_Object_item22", "STAGE1_Object_item29", "STAGE1_Object_item28", "STAGE1_Object_Tree10", "STAGE1_Object_wall11","STAGE1_Object_item19", "STAGE1_Object_Tree14", "STAGE1_Object_Tree14", "STAGE1_Object_item3", "STAGE1_Object_item20", "STAGE1_Object_wall7", "STAGE1_Object_item31", "STAGE1_Object_item12", "STAGE1_Object_item34", "STAGE1_Object_item12","STAGE1_Object_item35", "STAGE1_Object_item8", "STAGE1_Object_item22", "STAGE1_Object_Tree2", "STAGE1_Object_Tree3", "STAGE1_Object_Tree5", "STAGE1_Object_Tree5", "STAGE1_Object_Tree3", "STAGE1_Object_Tree5", "STAGE1_Object_Tree3", "STAGE1_Object_Tree5","STAGE1_Object_Tree18", "STAGE1_Object_Tree18", "STAGE1_Object_Tree19","STAGE1_Object_Tree18", "STAGE1_Object_Tree19","STAGE1_Object_Tree20", "STAGE1_Object_Tree18", "STAGE1_Object_Tree18", "STAGE1_Object_Tree17", "STAGE1_Object_Tree19","STAGE1_Object_Tree19","STAGE1_Object_Tree20", "STAGE1_Object_Tree17", "STAGE1_Object_Tree18", "STAGE1_Object_Tree17", "STAGE1_Object_Tree19","STAGE1_Object_Tree18", "STAGE1_Object_Tree20", "STAGE1_Object_Tree17", "STAGE1_Object_Tree14", "STAGE1_Object_item1", "STAGE1_Object_item31" ];
-=======
 var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Object_wall12',
 					'STAGE1_Object_wall16', 'STAGE1_Object_wall13', 'STAGE1_Object_wall5',
 					'STAGE1_Object_item12', 'STAGE1_Object_item35', 'STAGE1_Object_item21',
@@ -26,7 +23,6 @@ var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Objec
 					'STAGE1_Object_wall2', 'STAGE1_Object_Tree10', 'STAGE1_Object_wall11',
 					'STAGE1_Object_item3', 'STAGE1_Object_Tree2', 'STAGE1_Object_Tree5', 
 					'STAGE1_Object_Tree18', 'STAGE1_Object_Tree20'];
->>>>>>> Polygon : Stage1 적용 완료
 var objectValueArray = [];
 
 function stageOne_Preload()
@@ -37,11 +33,6 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('Object_WallTileSet', '../../static/images/game/Object/Stage1/Object_WallTileSet.png');
 
-<<<<<<< HEAD
-	Lucifer_Game.load.physics('Physics_polygon', '../../static/js/game/Map/Physics_polygon.json');
-
-=======
->>>>>>> Polygon : Stage1 적용 완료
 	//Object 
 	//----------------------------------------------------------------------------------------------------------------
 
