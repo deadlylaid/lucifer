@@ -663,7 +663,7 @@ function diablo_Attack(Object)
 						//Skill3
 						diablo_Animation_Change(Object.Direction, 'Skill3', Object);
 						Object.AttackCheck = true;
-					}	
+					}				
 				}					
 			}
 		}
@@ -730,7 +730,10 @@ function diablo_Pattern_Attack(Object)
 				Object.Pattern_Change = true;
 
 				Object.Pattern_AttackTime = 0;
-				Object.Pattern_Attacktimer.stop(false);					
+				Object.Pattern_Attacktimer.stop(false);	
+
+				//Pattern Skill Change
+				Pattern_Change = true;	
 			}
 		}		
 	}	
@@ -837,6 +840,69 @@ function diablo_Pattern_Skill(Object)
 				Object.Pattern_Change = false;
 			}
 		}		
+	}
+}
+
+function diablo_Pattern_Skill(Object)
+{
+	if(Object.Pattern_Skill == false)
+	{
+		//Skill Dialnferno
+		var CurFrame = Object.animations.frame;
+		var EndFrame;
+
+		if(Object.Direction == 0)
+		{
+			EndFrame = 16;
+		}
+		else
+		{
+			EndFrame = 16 * (Object.Direction + 1);
+		}					
+
+		if(CurFrame == EndFrame)
+		{
+			Object.Skill_DelayTimer.start();
+		
+			if(Object.SkillTime_Total > 2)
+			{
+				Object.Pattern_Skill = true;
+				Object.SkillTime_Total = 0;
+				Object.Skill_DelayTimer.stop(false);	
+			}							
+		}
+	}
+
+	if(Object.Pattern_Skill == true)
+	{
+		//Skill Fire
+		var CurFrame = Object.animations.frame;
+		var EndFrame;
+
+		if(Object.Direction == 0)
+		{
+			EndFrame = 17;
+		}
+		else
+		{
+			EndFrame = 17 * (Object.Direction + 1);
+		}					
+
+		if(CurFrame == EndFrame)
+		{
+			Object.Skill_DelayTimer.start();
+		
+			if(Object.SkillTime_Total > 2)
+			{
+				Object.Pattern_Skill = false;
+				
+				//Object.SkillTime_Total = 0;
+				//Object.Skill_DelayTimer.stop(false);	
+
+				//Skill Idle Pattern
+				
+			}							
+		}
 	}
 }
 
