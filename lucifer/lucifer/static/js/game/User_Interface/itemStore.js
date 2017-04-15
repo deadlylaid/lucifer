@@ -1,4 +1,3 @@
-
 var uiStore,
     uiInventory,
     selectedItem = null,
@@ -296,7 +295,7 @@ function invenUi(){
 function dropItem(){
 
     if(selectedItem === null){
-        alert('fuck you'); 
+        alert('버릴 아이템을 선택해주세요'); 
     }else{
         var startNumberSecondArray = selectedItem.numberInArray;
 
