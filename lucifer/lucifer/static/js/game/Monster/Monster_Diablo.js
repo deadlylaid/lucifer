@@ -191,6 +191,7 @@ function diablo_Clone(PointX, PointY)
 	}
 
 	//Skill1(18)
+	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
 		diablo_Object.animations.add('MON_Diablo_Skill1_' + i,
@@ -204,6 +205,7 @@ function diablo_Clone(PointX, PointY)
 	}
 
 	//Skill3(16)
+	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
 		diablo_Object.animations.add('MON_Diablo_Skill3_' + i,
@@ -218,7 +220,7 @@ function diablo_Clone(PointX, PointY)
 
 
 	//Dead
-	idnex = 0;
+	index = 0;
 	for(var i = 0; i < 11; ++i)
 	{
 		diablo_Object.animations.add('MON_Diablo_Dead',
@@ -616,6 +618,7 @@ function diablo_Attack(Object)
 			{	
 				if(Object.Pattern_Change == false)
 				{
+					//Attack Pattern
 					if(Object.Pattern_Attack == false)
 					{
 						//Attack Pattern - 1
@@ -634,9 +637,33 @@ function diablo_Attack(Object)
 						Object.AttackCheck = true;
 					}		
 				}
-				else
+				else if(Object.Pattern_Change == true)
 				{
 					//Skill Pattern
+					if(Object.Pattern_Skill == false && Object.Skill_Idle_Check == false)
+					{
+						//Skill
+						diablo_Animation_Change(Object.Direction, 'Skill', Object);
+						Object.AttackCheck = true;
+
+						//충돌 처리 해야됨.
+					}
+
+					if(Object.Pattern_Skill == true)
+					{
+						//Skill1
+						diablo_Animation_Change(Object.Direction, 'Skill1', Object);
+						Object.AttackCheck = true;
+
+						//충돌 처리 해야됨.
+					}
+
+					if(Object.Skill_Idle_Check == true)
+					{
+						//Skill3
+						diablo_Animation_Change(Object.Direction, 'Skill3', Object);
+						Object.AttackCheck = true;
+					}	
 				}					
 			}
 		}
@@ -650,8 +677,10 @@ function diablo_Attack(Object)
 
 function diablo_Pattern_Attack(Object)
 {	
-	if(Object.Pattern_Attack == false)
+	if(Object.Pattern_Attack == false && Object.Pattern_Change == false && Object.Pattern_Change == false)
 	{
+		Object.Pattern_Skill = false;
+
 		var CurFrame = Object.animations.frame;
 		var EndFrame;
 
@@ -677,7 +706,7 @@ function diablo_Pattern_Attack(Object)
 		}		
 	}
 
-	if(Object.Pattern_Attack == true)
+	if(Object.Pattern_Attack == true && Object.Pattern_Change == false)
 	{
 		var CurFrame = Object.animations.frame;
 		var EndFrame;
@@ -697,21 +726,28 @@ function diablo_Pattern_Attack(Object)
 		
 			if(Object.Pattern_AttackTime > 3)
 			{
-				Object.Pattern_Attack = false;
-				Object.Pattern_AttackTime = 0;
-				Object.Pattern_Attacktimer.stop(false);
-
 				//Pattern Skill Change
-				Pattern_Change = true;	
+				Object.Pattern_Change = true;
+
+				Object.Pattern_AttackTime = 0;
+				Object.Pattern_Attacktimer.stop(false);					
 			}
 		}		
 	}	
+
+	//console.log(Object.Pattern_Attack);
+	//console.log(Object.Pattern_Skill);
+	console.log(Object.Pattern_Change);	
+	console.log(Object.Pattern_AttackTime);
+	console.log(Object.SkillTime_Total);
 }
 
 function diablo_Pattern_Skill(Object)
 {
-	if(Object.Pattern_Skill == false)
+	if(Object.Pattern_Skill == false && Object.Skill_Idle_Check == false && Object.Pattern_Change == true)
 	{
+		Object.Pattern_Attack = false;
+
 		//Skill Dialnferno
 		var CurFrame = Object.animations.frame;
 		var EndFrame;
@@ -732,13 +768,14 @@ function diablo_Pattern_Skill(Object)
 			if(Object.SkillTime_Total > 2)
 			{
 				Object.Pattern_Skill = true;
+
 				Object.SkillTime_Total = 0;
 				Object.Skill_DelayTimer.stop(false);	
-			}							
+			}
 		}
 	}
 
-	if(Object.Pattern_Skill == true)
+	if(Object.Pattern_Skill == true && Object.Pattern_Change == true)
 	{
 		//Skill Fire
 		var CurFrame = Object.animations.frame;
@@ -760,14 +797,46 @@ function diablo_Pattern_Skill(Object)
 			if(Object.SkillTime_Total > 2)
 			{
 				Object.Pattern_Skill = false;
-				
-				//Object.SkillTime_Total = 0;
-				//Object.Skill_DelayTimer.stop(false);	
 
 				//Skill Idle Pattern
-				
+				Object.Skill_Idle_Check = true;
+
+				Object.SkillTime_Total = 0;
+				Object.Skill_DelayTimer.stop(false);
 			}							
 		}
+	}
+
+	if(Object.Skill_Idle_Check == true && Object.Pattern_Change == true)
+	{
+		//Skill Idle
+		var CurFrame = Object.animations.frame;
+		var EndFrame;
+
+		if(Object.Direction == 0)
+		{
+			EndFrame = 15;
+		}
+		else
+		{
+			EndFrame = 15 * (Object.Direction + 1);
+		}					
+
+		if(CurFrame == EndFrame)
+		{
+			Object.Skill_DelayTimer.start();
+
+			if(Object.SkillTime_Total > 1)
+			{
+				//Skill 패턴이 다시 1로 시작할 수 있도록 되돌리고 / 공격 패턴으로 체인지 시킴.
+				Object.Skill_Idle_Check = false;
+				Object.SkillTime_Total = 0;
+				Object.Skill_DelayTimer.stop(false);
+
+				//Pattern Change
+				Object.Pattern_Change = false;
+			}
+		}		
 	}
 }
 
@@ -881,6 +950,7 @@ function diablo_Update()
 	diablo_GetReturnDirection(diablo);
 	diablo_Move(diablo);
 	diablo_Pattern_Attack(diablo);
+	diablo_Pattern_Skill(diablo);
 
 	//Player Mosnter Collision
 	if(diablo.Regen_Check == false)
