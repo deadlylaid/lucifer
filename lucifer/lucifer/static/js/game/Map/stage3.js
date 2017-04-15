@@ -1,6 +1,20 @@
 var Stage3_Map, Stage3, Stage3_ObjLayer;	//Stage 이미지 변수								
 var Stage3_ObjectGroup;						//Stage2 - Object 관련 변수.
 var stage3_Collision_Layer;
+var Stage3_ObjectPool = [];
+
+var PolygonArray3 = ['STAGE3_Object_bridge01', 'STAGE3_Object_bridge02', 'STAGE3_Object_flag01',
+					'STAGE3_Object_flag02', 'STAGE3_Object_flag03', 'STAGE3_Object_flag04',
+					'STAGE3_Object_flag05', 'STAGE3_Object_flag06', 'STAGE3_Object_wall01',
+					'STAGE3_Object_wall02', 'STAGE3_Object_wall03', 'STAGE3_Object_wall04',
+					'STAGE3_Object_wall05', 'STAGE3_Object_wall06', 'STAGE3_Object_wall07',
+					'STAGE2_Object_Tree9', 'STAGE2_Object_Tree10', 'STAGE2_Object_Tree11',
+					'STAGE3_Object_wall08', 'STAGE3_Object_wall09', 'STAGE3_Object_wall10',
+					'STAGE3_Object_Obj01', 'STAGE3_Object_Obj05', 'STAGE3_Object_Obj02',
+					'STAGE3_Object_Obj06', 'STAGE3_Object_Obj07', 'STAGE3_Object_Obj03',
+					'STAGE3_Object_Obj04'];
+
+var objectValueArray3 = [];
 
 function stageThree_Preload()
 {
@@ -42,6 +56,8 @@ function stageThree_Preload()
 	Lucifer_Game.load.image('STAGE3_Object_Obj05', '../../static/images/game/Object/Stage3/struct12.png');
 	Lucifer_Game.load.image('STAGE3_Object_Obj06', '../../static/images/game/Object/Stage3/struct27.png');
 	Lucifer_Game.load.image('STAGE3_Object_Obj07', '../../static/images/game/Object/Stage3/struct28.png');
+
+	Lucifer_Game.load.physics('Physics_polygon4', '../../static/js/game/Map/Physics_polygon4.json');
 	
 	//----------------------------------------------------------------------------------------------------------------
 }
@@ -67,6 +83,8 @@ function stageThree_Create()
 	//Object
 	//---------------------------------------------------------------------------------------
 	
+	Lucifer_Game.physics.startSystem(Phaser.Physics.P2JS);
+
 	Stage3_ObjectGroup = Lucifer_Game.add.group();
 	Stage3_ObjectGroup = Lucifer_Game.add.physicsGroup(Phaser.Physics.P2JS);
 
@@ -110,11 +128,38 @@ function stageThree_Create()
 	
 	//---------------------------------------------------------------------------------------
 
-	for(var i = 0; i < Stage3_ObjectGroup.length; ++i)
-	{
-		Stage3_ObjectGroup.getChildAt(i).body.static = true;
-	}		
 	
+	for(var i = 0; i < Stage3_ObjectGroup.length; ++i)
+	{	
+		var Stage3_Object = Stage3_ObjectGroup.getChildAt(i);
+		var Object_Rect = new Phaser.Rectangle(Stage3_Object.x, Stage3_Object.y, 100, 100);
+		Stage3_ObjectPool.push(Object_Rect);
+
+		Stage3_ObjectGroup.getChildAt(i).body.static = true;
+		objectValueArray3.push(Stage3_ObjectGroup.getChildAt(i).key);		
+	}		
+
+
+	//Polygon
+	//---------------------------------------------------------------------------------------
+
+
+	for(var a = 0; a < Stage3_ObjectGroup.length; a++){
+		for(var i = 0; i < PolygonArray3.length; i++)
+		{
+			if(objectValueArray3[a] == PolygonArray3[i])
+			{	
+				Stage3_ObjectGroup.getChildAt(a).body.clearShapes();
+				Stage3_ObjectGroup.getChildAt(a).body.loadPolygon('Physics_polygon4', PolygonArray3[i]);
+				Stage3_ObjectGroup.getChildAt(a).body.debug = true;
+			}
+			else
+			{
+				continue;
+			}
+		}		
+	}	
+
 	//---------------------------------------------------------------------------------------
 
 	Stage3_Map.setCollision(273, true, "Collision Layer");

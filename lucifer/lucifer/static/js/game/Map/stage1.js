@@ -2,6 +2,7 @@ var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수
 var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
+
 var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Object_wall12',
 					'STAGE1_Object_wall16', 'STAGE1_Object_wall13', 'STAGE1_Object_wall5',
 					'STAGE1_Object_item12', 'STAGE1_Object_item35', 'STAGE1_Object_item21',
@@ -23,7 +24,9 @@ var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Objec
 					'STAGE1_Object_wall2', 'STAGE1_Object_Tree10', 'STAGE1_Object_wall11',
 					'STAGE1_Object_item3', 'STAGE1_Object_Tree2', 'STAGE1_Object_Tree5', 
 					'STAGE1_Object_Tree18', 'STAGE1_Object_Tree20'];
+
 var objectValueArray = [];
+
 
 function stageOne_Preload()
 {
@@ -32,6 +35,7 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('Stage1_TileSet', '../../static/images/game/Map/Stage1/Stage1_TileSet.png');
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('Object_WallTileSet', '../../static/images/game/Object/Stage1/Object_WallTileSet.png');
+
 
 	//Object 
 	//----------------------------------------------------------------------------------------------------------------
@@ -318,6 +322,10 @@ function stageOne_Create()
 	/*Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');*/
 	// forest end
 
+
+
+
+
 	//---------------------------------------------------------------------------------------
 	for(var i = 0; i < Stage1_ObjectGroup.length; ++i)
 	{
@@ -329,24 +337,28 @@ function stageOne_Create()
 
 	//Polygon
 	//---------------------------------------------------------------------------------------
+
 	for(var a = 0; a < objectValueArray.length; a++)
 	{
 		for(var i = 0; i < PolygonArray.length; i++)
 		{
 			if(objectValueArray[a] == PolygonArray[i])
 			{	
+
 				Stage1_ObjectGroup.getChildAt(a).body.clearShapes();
 				Stage1_ObjectGroup.getChildAt(a).body.loadPolygon('Physics_polygon2', PolygonArray[i]);
 				Stage1_ObjectGroup.getChildAt(a).body.debug = true;
 
-				console.log(PolygonArray[i]);
 			}
 			else
 			{
 				continue;
+				
 			}
 		}		
 	}	
+
+	
 	//---------------------------------------------------------------------------------------
 
 	//Portal
