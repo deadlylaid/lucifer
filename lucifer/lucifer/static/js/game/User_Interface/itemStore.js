@@ -305,7 +305,7 @@ function dropItem(){
             tempInventory.push(inventory[i]);
         }
 
-        //버린 아이템의 뒷 순서인 아이템들을 모두 inventory에서 삭제함
+        //버린 아이템의 뒷 순서인 아이템 sprite들을 모두 inventory에서 삭제함
         for(i=inventory.length - 1; i>=selectedItem.numberInArray; i--){
             inventory[i].destroy();
             inventory[i].text.destroy();
@@ -313,41 +313,38 @@ function dropItem(){
 
         //inventory에서 버릴 아이템을 뽑아 버림
         inventory.splice(selectedItem.numberInArray, 9);
+
         //ajax DELETE 요청으로 실시간 저장 
         inventoryDelete(selectedItem.name);
+
+        //selectedItem 값 초기화 
         selectedItem = null;
 
         var inventoryLength = inventory.length;
-        console.log("inventoryLength = " + inventoryLength);
-        console.log(tempInventory.length);
+
         //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장 
         for(i=0; i<tempInventory.length; i++){
             switch(tempInventory[i].name){
                 case '빨간물약':
                     inventory.push(redPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    inventory[i+1].getVisible(true);
-                    inventory[i+1].numberInArray = i+1;
-                    //console.log('빨간물약' + i);
                     break;
                 case '기본검':
                     inventory.push(basicSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    inventory[i+1].getVisible(true);
-                    inventory[i+1].numberInArray = i+1;
-                    //console.log('기본검' + i);
                     break;
                 case '기본갑옷':
-                    inventory.push(basicArmorClone(inventoryPosition(inventoryLength+1)[0], inventoryPosition(inventoryLength+1)[1]));
-                    inventory[i+1].getVisible(true);
-                    inventory[i+1].numberInArray = i+1;
-                    //console.log('기본갑옷' + i);
+                    inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;                    
             }
-            //console.log('for 문' + i + '번 반복');
         }
+
+        for(i=inventoryLength;i<inventory.length; i++){
+            inventory[i].getVisible(true);
+            inventory[i].numberInArray = i;
+        }
+
         //tempInventory 초기화
         tempInventory = [];
     }
-    //changeServerListToClientList();
 }
 
 function inventoryPosition(count){
@@ -393,7 +390,6 @@ function inventoryPosition(count){
             var positionY = 450;
             break;
     }
-
     return [ positionX, positionY ];
 }
 
@@ -402,14 +398,6 @@ function changeArray(){
     for(i=0; i<invenArrayLength; i++){
         inventory[i].x = inventoryPosition(i)[0];
         inventory[i].y = inventoryPosition(i)[1];
-
-        /*
-        console.log('---------------------------------------');
-        console.log(i);
-        console.log(inventory[i].x);
-        console.log(inventory[i].y);
-        console.log('---------------------------------------');
-        */
     };
 }
 
