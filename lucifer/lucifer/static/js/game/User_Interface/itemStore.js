@@ -4,7 +4,8 @@ var uiStore,
     selectedItem = null,
     invenKeyTimer,
     invenKeyValidCheck = 1,
-    redPotionGroup;
+    redPotionGroup,
+    tempInventory = [];
 
 function itemsPreload(){
 
@@ -293,15 +294,46 @@ function dropItem(){
     if(selectedItem === null){
         alert('fuck you'); 
     }else{
-        inventory.splice(selectedItem.numberInArray, 1);
-        selectedItem.destroy();
-        selectedItem.text.destroy();
+        var startNumberSecondArray = selectedItem.numberInArray;
+
+        //버린 아이템의 뒷 순서인 아이템들을 모두 tempInventory에 저장
+        for(i=startNumberSecondArray + 1; i<inventory.length; i++){
+            tempInventory.push(inventory[i]);
+        }
+
+        //버린 아이템의 뒷 순서인 아이템들을 모두 inventory에서 삭제함
+        for(i=inventory.length - 1; i>=selectedItem.numberInArray; i--){
+            inventory[i].destroy();
+            inventory[i].text.destroy();
+        }
+
+        //inventory에서 버릴 아이템을 뽑아 버림
+        inventory.splice(selectedItem.numberInArray, 9);
+        //ajax DELETE 요청으로 실시간 저
         inventoryDelete(selectedItem.name);
         selectedItem = null;
+
+        //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장 
+        for(i=0; i<tempInventory.length; i++){
+            switch(tempInventory[i].name){
+                case '빨간물약':
+                    inventory.push(redPotionClone(inventoryPosition(i+1)[0], inventoryPosition(i+1)[1]));
+                    inventory[i+1].visible = true;
+                case '기본검':
+                    inventory.push(basicSwordClone(inventoryPosition(i+1)[0], inventoryPosition(i+1)[1]));
+                    inventory[i+1].visible = true;
+                case '기본갑옷':
+                    inventory.push(basicArmorClone(inventoryPosition(i+1)[0], inventoryPosition(i+1)[1]));
+                    inventory[i+1].visible = true;
+                    
+            }
+            //inventory.push(tempInventory[i]);
+            console.log('for 문' + i + '번 반복');
+        }
+        //tempInventory 초기화
+        tempInventory = [];
     }
-    
-    console.log(inventory);
-    changeArray();
+    changeServerListToClientList();
 }
 
 function inventoryPosition(count){
@@ -353,11 +385,16 @@ function inventoryPosition(count){
 function changeArray(){
     invenArrayLength = inventory.length;
     for(i=0; i<invenArrayLength; i++){
-        Lucifer_Game.physics.arcade.moveToXY(inventory[i], inventoryPosition(i)[0], inventoryPosition(i)[1]);
+        inventory[i].x = inventoryPosition(i)[0];
+        inventory[i].y = inventoryPosition(i)[1];
 
+        /*
         console.log('---------------------------------------');
         console.log(i);
+        console.log(inventory[i].x);
+        console.log(inventory[i].y);
         console.log('---------------------------------------');
+        */
     };
 }
 
