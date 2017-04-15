@@ -212,6 +212,7 @@ function armorStoreTab(){
     basicArmor.getVisible(true);
 }
 
+
 function clickItem(sprite){
     //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨 
     console.log(sprite.name);
@@ -225,6 +226,7 @@ function clickItem(sprite){
         case '기본갑옷':
             selectedItem = basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
     }
+    console.log(selectedItem);
 }
 
 function buyItem() {
@@ -240,10 +242,12 @@ function buyItem() {
         }
     }
     changeServerListToClientList();
+    selectedItem = null;
 }
 
 function clickedItemInInventory(sprite){
     selectedItem = sprite;
+    console.log(selectedItem);
 }
 
 //server-side로 인벤토리 데이터 실시간 전송 
@@ -309,31 +313,41 @@ function dropItem(){
 
         //inventory에서 버릴 아이템을 뽑아 버림
         inventory.splice(selectedItem.numberInArray, 9);
-        //ajax DELETE 요청으로 실시간 저
+        //ajax DELETE 요청으로 실시간 저장 
         inventoryDelete(selectedItem.name);
         selectedItem = null;
 
+        var inventoryLength = inventory.length;
+        console.log("inventoryLength = " + inventoryLength);
+        console.log(tempInventory.length);
         //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장 
         for(i=0; i<tempInventory.length; i++){
             switch(tempInventory[i].name){
                 case '빨간물약':
-                    inventory.push(redPotionClone(inventoryPosition(i+1)[0], inventoryPosition(i+1)[1]));
-                    inventory[i+1].visible = true;
+                    inventory.push(redPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    inventory[i+1].getVisible(true);
+                    inventory[i+1].numberInArray = i+1;
+                    //console.log('빨간물약' + i);
+                    break;
                 case '기본검':
-                    inventory.push(basicSwordClone(inventoryPosition(i+1)[0], inventoryPosition(i+1)[1]));
-                    inventory[i+1].visible = true;
+                    inventory.push(basicSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    inventory[i+1].getVisible(true);
+                    inventory[i+1].numberInArray = i+1;
+                    //console.log('기본검' + i);
+                    break;
                 case '기본갑옷':
-                    inventory.push(basicArmorClone(inventoryPosition(i+1)[0], inventoryPosition(i+1)[1]));
-                    inventory[i+1].visible = true;
-                    
+                    inventory.push(basicArmorClone(inventoryPosition(inventoryLength+1)[0], inventoryPosition(inventoryLength+1)[1]));
+                    inventory[i+1].getVisible(true);
+                    inventory[i+1].numberInArray = i+1;
+                    //console.log('기본갑옷' + i);
+                    break;                    
             }
-            //inventory.push(tempInventory[i]);
-            console.log('for 문' + i + '번 반복');
+            //console.log('for 문' + i + '번 반복');
         }
         //tempInventory 초기화
         tempInventory = [];
     }
-    changeServerListToClientList();
+    //changeServerListToClientList();
 }
 
 function inventoryPosition(count){
@@ -382,6 +396,7 @@ function inventoryPosition(count){
 
     return [ positionX, positionY ];
 }
+
 function changeArray(){
     invenArrayLength = inventory.length;
     for(i=0; i<invenArrayLength; i++){
