@@ -45,10 +45,7 @@ var stage2_Scene =
 		andariel_Update();
 		wraith_Update();
 		deamon_Update();
-		council_Update();
-
-		//items Update
-        itemsUpdate();
+		council_Update();		
 
 		//Ui Update
 		ui_Update();
