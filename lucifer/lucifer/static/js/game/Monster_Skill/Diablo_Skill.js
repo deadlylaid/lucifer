@@ -6,8 +6,9 @@ Inferno = function(game, x, y)
 	this.PointX = x;
 	this.PointY = y;
 
-	this.Timer, this.Time_Total = 0;
+	this.Timer, this.Time_Total = 1;
 
+	this.SkillRect;
 	this.Attack_Check = false;
 }
 
@@ -53,6 +54,9 @@ function diaSkill_Inferno_Clone(x, y)
 	//Timer
 	diablo_Inferno.Timer = Lucifer_Game.time.create(false);
 	diablo_Inferno.Timer.loop(1000, diaSkill_Timer, Lucifer_Game, diablo_Inferno);
+
+	//Rect
+	diablo_Inferno.SkillRect = new Phaser.Rectangle(diablo_Inferno.x, diablo_Inferno.y, 220, 160); 
 
 	return diablo_Inferno;
 }
@@ -139,7 +143,42 @@ function diaSkill_Direction_Inferno_Position(Direction, Object)
 		Object.Inferno.x = Object.x + 50;
 		Object.Inferno.y = Object.y - 40;
 		break;
-	}		
+	}	
+
+	//Rect Pos
+	Object.Inferno.SkillRect.x = Object.Inferno.x;
+	Object.Inferno.SkillRect.y = Object.Inferno.y;
+	Object.Inferno.SkillRect.centerOn(Object.Inferno.x, Object.Inferno.y);	
+}
+	
+function diaSkill_Fire_Col(Object)
+{
+	if(Phaser.Rectangle.intersects(Object.FireRect, Hit_Rect))
+	{
+		Object.Skill_DelayTimer.start();
+
+		if(Object.SkillTime_Total > 1)
+		{
+			health -= 100;	//Diablo Fire Skill Dagame
+			Object.SkillTime_Total = 0;
+
+			console.log(health);
+		}
+	}
+}
+
+function diaSkill_Inferno_Col(Object)
+{
+	if(Phaser.Rectangle.intersects(Object.Inferno.SkillRect, Hit_Rect))
+	{
+		Object.Inferno.Timer.start();
+
+		if(Object.Inferno.Time_Total > 1)
+		{
+			health -= 50;	//Diablo Inferno Skill Damage
+			Object.Inferno.Time_Total = 0;			
+		}
+	}
 }
 
 function diaSkill_Update()

@@ -22,11 +22,11 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.HpBar, this.HpMask, this.Name;
 
 	//Rect
-	this.HitRect, this.AttackRect, this.SkillRect;
+	this.HitRect, this.AttackRect, this.FireRect;
 
 	//Time
 	this.Attack_DelayTimer, this.DelayTime_Total = 1;
-	this.Skill_DelayTimer, this.SkillTime_Total = 0;	//->아직 clone 에서 만들지 않음.
+	this.Skill_DelayTimer, this.SkillTime_Total = 1;	//->아직 clone 에서 만들지 않음.
 	this.Pattern_Attacktimer, this.Pattern_AttackTime = 0;
 
 	//Direction
@@ -115,7 +115,7 @@ function diablo_Clone(PointX, PointY)
 	Lucifer_Game.physics.p2.enable(diablo_Object);
 	diablo_Object.body.fixedRotation = true;
 	diablo_Object.body.clearShapes();
-	diablo_Object.body.addRectangle(80, 80, 0, 0);
+	diablo_Object.body.addRectangle(80, 120, 0, 0);
 	diablo_Object.body.debug = true;
 	diablo_Object.body.restitution = 0;
 
@@ -267,7 +267,8 @@ function diablo_Clone(PointX, PointY)
 
 	//Rect
 	diablo_Object.HitRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 150, 200);
-	diablo_Object.AttackRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 200, 200);
+	diablo_Object.AttackRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 230, 230);
+	diablo_Object.FireRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 1000, 1000);
 
 	//Delay Timer
 	diablo_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
@@ -662,7 +663,8 @@ function diablo_Attack(Object)
 						//Inferno
 						diaSkill_Inferno_Animation_Change(Object.Direction, Object);						
 
-						//충돌 처리 해야됨.
+						//Collision
+						diaSkill_Inferno_Col(Object);
 					}
 
 					if(Object.Pattern_Skill == true)
@@ -674,7 +676,8 @@ function diablo_Attack(Object)
 						//Fire
 						diaSkill_Fire_Attack(Object);
 
-						//충돌 처리 해야됨.
+						//Collision
+						diaSkill_Fire_Col(Object);
 					}
 
 					if(Object.Skill_Idle_Check == true)
@@ -849,18 +852,11 @@ function diablo_Pattern_Skill(Object)
 
 		if(CurFrame == EndFrame)
 		{
-			//Object.Skill_DelayTimer.start();
-
-			//if(Object.SkillTime_Total > 1)
-			//{
-				//Skill 패턴이 다시 1로 시작할 수 있도록 되돌리고 / 공격 패턴으로 체인지 시킴.
-				Object.Skill_Idle_Check = false;
-				//Object.SkillTime_Total = 0;
-				//Object.Skill_DelayTimer.stop(false);
-
-				//Pattern Change
-				Object.Pattern_Change = false;
-			//}
+			//Skill 패턴이 다시 1로 시작할 수 있도록 되돌리고 / 공격 패턴으로 체인지 시킴.
+			Object.Skill_Idle_Check = false;
+			
+			//Pattern Change
+			Object.Pattern_Change = false;
 		}		
 	}
 }
@@ -958,6 +954,11 @@ function diablo_RectPos(Object)
 		Object.AttackRect.x = Object.x;
 		Object.AttackRect.y = Object.y;
 		Object.AttackRect.centerOn(Object.x, Object.y);
+
+		//Fire Rect
+		Object.FireRect.x = Object.x;
+		Object.FireRect.y = Object.y;
+		Object.FireRect.centerOn(Object.x, Object.y);
 	}
 }
 //----------------------------------------------------------------------------------------------
