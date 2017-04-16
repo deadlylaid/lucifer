@@ -50,28 +50,15 @@ function ui_Create()
     hpMask.fixedToCamera = true;
     hpMask.beginFill(0xffffff);
 
-    //mpMask is show real-time MP
-//    mpMask = Lucifer_Game.add.graphics(878, 735);
-//    mpMask.fixedToCamera = true;
-//    mpMask.beginFill(0xffffff);
-
     //hpBar 계산을 위해서 사용
     //-------------------------------------------------
     healthPercentage = playerHealth(health, maxHealth);
     hpRate = hpBarMaskRate(healthPercentage);
     //-------------------------------------------------
     
-    //hpBar 계산을 위해서 사용
-    //-------------------------------------------------
-//    manaPercentage = playerHealth(mana, maxMana);
-//    mpRate = hpBarMaskRate(manaPercentage);
-    //------------------------------------------------
-
     hpMask.drawRect(-66, hpRate, 85, 87);
-//    mpMask.drawRect(-66, mpRate, 85, 87);
 
     UI_HpBar.mask = hpMask;
- //   UI_MpBar.mask = mpMask;
 
 	//UI Key Setting
 	key_Stat = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.S);
@@ -131,15 +118,6 @@ function ui_Update()
     hpMask.endFill();  
     //console.log("현재 HP 바의 비율은" + hpRate + "입니다.");    
     UI_HpBar.mask = hpMask;
-
-    //hpBar 계산을 위해서 사용
-    //-------------------------------------------------
-    //manaPercentage = playerHealth(mana, maxMana);
-    //mpRate = hpBarMaskRate(manaPercentage);
-    //------------------------------------------------
-    //mpMask.clear();
-    //mpMask.drawRect(-66, mpRate, 134, 134);    
-    //UI_MpBar.mask = mpMask;
 
 	//UI_Stat
 	if(UI_Stat.visible == true)
