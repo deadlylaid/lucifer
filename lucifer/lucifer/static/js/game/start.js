@@ -18,6 +18,8 @@ var inventory = [];
 
 var itemList = [];
 
+var equipmentList = [];
+
 get_gamestart_api_url = '/api/gamestart/data/';
 
 /*****************************
@@ -61,4 +63,6 @@ $.ajax({
     inventory = character.inventory_set;
 
     itemList = data[2].item;
+
+    equipmentList = character.equipment_set;
 });
