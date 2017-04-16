@@ -312,12 +312,18 @@ function invenUi(){
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
         }
+        for(i=0; i<equipmentList.length; i++){
+            equipmentList[i].getVisible(false);
+        }
     }else{
         uiInventory.visible = true;
         dropButton.visible = true;
         useButton.visible = true;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
+        }
+        for(i=0; i<equipmentList.length; i++){
+            equipmentList[i].getVisible(true);
         }
     }
 }
@@ -425,8 +431,40 @@ function useItem(){
         
         if(selectedItem.type_is==='potion'){
 
-        }else{
-            equipmentList.push(equipmentPosition(selectedItem.name));
+        }else if(selectedItem.type_is==='weapon'){
+            if(equipmentList[0]!==undefined){
+                equipmentList[0].destroy();
+                equipmentList[0].text.destroy();
+                var previousItem = equipmentList.splice(0, 1);
+                var inventoryLength = inventory.length;
+
+                switch(previousItem[0].name){
+                    case '기본검':
+                        var inserted_item = basicSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+
+                }
+
+            }
+            equipmentList[0] = (createEquipmentAndSetPosition(selectedItem.name));
+
+        }else if(selectedItem.type_is==='armor'){
+            if(equipmentList[1]!==undefined){
+                equipmentList[1].destroy();
+                equipmentList[1].text.destroy();
+                equipmentList.splice(1, 1);
+
+                var inventoryLength = inventory.length;
+
+                switch(previousItem[0].name){
+                    case '기본갑옷':
+                        var inserted_item = basicArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                }
+            }
+            equipmentList[1] = (createEquipmentAndSetPosition(selectedItem.name));
         }
 
         //selectedItem 값 초기화 
@@ -435,7 +473,7 @@ function useItem(){
     }   
 }
 
-function equipmentPosition(itemName){
+function createEquipmentAndSetPosition(itemName){
     var item;
     switch(itemName){
         case '기본검':
