@@ -4,14 +4,8 @@ from game.characters.models import Character, Inventory
 
 class Equipment(models.Model):
 
-    characters = models.ForeignKey(
+    character = models.ForeignKey(
             Character,
-            # 상위 object 삭제시 같이 삭제됨
-            on_delete=models.CASCADE,
-            )
-
-    inventory = models.ForeignKey(
-            Inventory,
             # 상위 object 삭제시 같이 삭제됨
             on_delete=models.CASCADE,
             )
