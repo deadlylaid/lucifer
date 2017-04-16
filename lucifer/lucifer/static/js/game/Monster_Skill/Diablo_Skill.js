@@ -14,20 +14,6 @@ Inferno = function(game, x, y)
 Inferno.prototype = Object.create(Phaser.Sprite.prototype);
 Inferno.prototype.constructor = Inferno;
 
-DiaFire = function(game, x, y)
-{
-	Phaser.Sprite.call(this, game, x, y, 'Fire');
-	this.PointX = x;
-	this.PointY = y;
-
-	this.Timer, this.Time_Total = 0;
-
-	this.Attack_Check = false;
-}
-
-DiaFire.prototype = Object.create(Phaser.Sprite.prototype);
-DiaFire.prototype.constructor = DiaFire;
-
 function diaSkill_Preload()
 {
 	//Skill    
@@ -41,11 +27,9 @@ function diaSkill_Inferno_Clone(x, y)
 {
 	var diablo_Inferno = new Inferno(Lucifer_Game, x, y);
 
-	Lucifer_Game.physics.p2.enable(diablo_Inferno);
-	diablo_Inferno.body.fixedRotation = true;
-	diablo_Inferno.body.clearShapes();
-	diablo_Inferno.body.debug = true;
-	diablo_Inferno.restitution = 0;
+	diablo_Inferno.anchor.setTo(0.5, 0.5);
+	diablo_Inferno.visible = false;
+	diablo_Inferno.blendMode = Phaser.blendModes.ADD;		
 
 	//Animation
 	var index = 0;
@@ -62,30 +46,15 @@ function diaSkill_Inferno_Clone(x, y)
 	}	
 
 	diablo_Inferno.loadTexture('Inferno', 0, true);
-	diablo_Inferno.animations.play('Inferno_0', 5, true);
-	diablo_Inferno.anchor.setTo(0.5, 0.5);
-	diablo_Inferno.visible = false;
-	diablo_Inferno.blendMode = Phaser.blendModes.ADD;
+	diablo_Inferno.animations.play('Inferno_0', 5, true);	
+
+	Lucifer_Game.add.existing(diablo_Inferno);
 
 	//Timer
 	diablo_Inferno.Timer = Lucifer_Game.time.create(false);
 	diablo_Inferno.Timer.loop(1000, diaSkill_Timer, Lucifer_Game, diablo_Inferno);
 
 	return diablo_Inferno;
-}
-
-function diaSkill_Fire_Clone(x, y)
-{
-	var diablo_Fire = new DiaFire(Lucifer_Game, x, y);
-	diablo_Fire.anchor.setTo(0.5, 0.5);
-	diablo_Fire.visible = false;
-	diablo_Fire.blendMode = Phaser.blendModes.ADD;
-
-	//Timer
-	diablo_Fire.Timer = Lucifer_Game.time.create(false);
-	diablo_Fire.Timer.loop(1000, diaSkill_Timer, Lucifer_Game, diablo_Fire);
-
-	return diablo_Fire;
 }
 
 function diaSkill_Timer(Object)
@@ -124,6 +93,53 @@ function diaSkill_Fire_Attack(Object)
 			--i;
 		}
 	}
+}
+
+//Inferno Animation Change
+function diaSkill_Inferno_Animation_Change(Direction, Object)
+{	
+	Object.Inferno.visible = true;
+	Object.Inferno.loadTexture('Inferno', 0, true);
+	Object.Inferno.animations.play('Inferno_' + Direction, 10, true);		
+}
+
+function diaSkill_Direction_Inferno_Position(Direction, Object)
+{
+	switch(Direction)
+	{
+	case 0:
+		Object.Inferno.x = Object.x;
+		Object.Inferno.y = Object.y - 40;
+		break;
+	case 1:
+		Object.Inferno.x = Object.x - 50;
+		Object.Inferno.y = Object.y - 40;
+		break;
+	case 2:
+		Object.Inferno.x = Object.x - 80;
+		Object.Inferno.y = Object.y;
+		break;
+	case 3:
+		Object.Inferno.x = Object.x - 50;
+		Object.Inferno.y = Object.y + 40;
+		break;
+	case 4:
+		Object.Inferno.x = Object.x;
+		Object.Inferno.y = Object.y + 40;
+		break;
+	case 5:
+		Object.Inferno.x = Object.x + 50;
+		Object.Inferno.y = Object.y + 40;
+		break;
+	case 6:
+		Object.Inferno.x = Object.x + 80;
+		Object.Inferno.y = Object.y;
+		break;
+	case 7:
+		Object.Inferno.x = Object.x + 50;
+		Object.Inferno.y = Object.y - 40;
+		break;
+	}		
 }
 
 function diaSkill_Update()
