@@ -18,6 +18,7 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
     Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
+    Lucifer_Game.load.spritesheet('useButton', '../../static/images/game/UI/Inventory/useButton.png', 196, 51);
 
 };
 
@@ -95,8 +96,16 @@ function itemStoreCreate(){
 
     dropButton.inputEnabled = true;
     dropButton.events.onInputDown.add(dropItem, this);
-    //---------------------------------------------------------------
 
+    useButton = Lucifer_Game.add.sprite(445, 560,'useButton');
+    useButton.anchor.setTo(0.5, 0.5);
+    useButton.scale.setTo(0.5, 0.5);
+    useButton.fixedToCamera = true;
+    useButton.visible = false;
+
+    useButton.inputEnabled = true;
+    useButton.events.onInputDown.add(useItem, this);
+    //---------------------------------------------------------------
 
     //Postion -----------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
@@ -284,12 +293,14 @@ function invenUi(){
     if(uiInventory.visible === true){
         uiInventory.visible = false;
         dropButton.visible = false;
+        useButton.visible = false;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
         }
     }else{
         uiInventory.visible = true;
         dropButton.visible = true;
+        useButton.visible = true;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
         }
@@ -348,6 +359,15 @@ function dropItem(){
         //tempInventory 초기화
         tempInventory = [];
     }
+}
+
+function useItem(){
+    if(selectedItem === null){
+        alert('장착할 아이템을 선택하세요');
+    }else{
+        
+    }  
+    selectedItem = null;
 }
 
 function inventoryPosition(count){
