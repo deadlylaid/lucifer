@@ -160,9 +160,7 @@ function diaSkill_Fire_Col(Object)
 		if(Object.SkillTime_Total > 1)
 		{
 			health -= 100;	//Diablo Fire Skill Dagame
-			Object.SkillTime_Total = 0;
-
-			console.log(health);
+			Object.SkillTime_Total = 0;			
 		}
 	}
 }
