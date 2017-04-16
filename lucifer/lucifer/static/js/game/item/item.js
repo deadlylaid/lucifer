@@ -158,8 +158,8 @@ function basicArmorClone(positionX, positionY){
     basicArmorObject.text.setText(basicArmorObject.name);
     basicArmorObject.text.fontSize = 15;
     basicArmorObject.text.fill = '#fff';
-    Lucifer_Game.add.existing(basicArmorObject);
 
+    Lucifer_Game.add.existing(basicArmorObject);
     Lucifer_Game.physics.enable(basicArmorObject, Phaser.Physics.ARCADE);
 
     basicArmorObject.inputEnabled = true;
