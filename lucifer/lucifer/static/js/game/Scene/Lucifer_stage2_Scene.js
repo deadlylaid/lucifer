@@ -63,6 +63,16 @@ var stage2_Scene =
 
 		//Stage2 Culling
 		//stage2_Culling();
+
+		//Portal
+		portal_Check();
+
+		if(Portal_Check == true)
+		{
+			sound_StopStage1BGM();
+			this.goto_Stage3();
+			Portal_Check = false;
+		}
 	},
 
 	render: function()
