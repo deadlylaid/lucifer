@@ -18,6 +18,7 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
     Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
+    Lucifer_Game.load.spritesheet('useButton', '../../static/images/game/UI/Inventory/useButton.png', 196, 51);
 
 };
 
@@ -95,8 +96,16 @@ function itemStoreCreate(){
 
     dropButton.inputEnabled = true;
     dropButton.events.onInputDown.add(dropItem, this);
-    //---------------------------------------------------------------
 
+    useButton = Lucifer_Game.add.sprite(445, 560,'useButton');
+    useButton.anchor.setTo(0.5, 0.5);
+    useButton.scale.setTo(0.5, 0.5);
+    useButton.fixedToCamera = true;
+    useButton.visible = false;
+
+    useButton.inputEnabled = true;
+    useButton.events.onInputDown.add(useItem, this);
+    //---------------------------------------------------------------
 
     //Postion -----------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
@@ -253,7 +262,9 @@ function clickedItemInInventory(sprite){
     //console.log(selectedItem);
 }
 
-//server-side로 인벤토리 데이터 실시간 전송 
+//server-side로 데이터 실시간 전송 
+//---------------------------------------------------
+//---------------------------------------------------
 function inventoryPost(selectedItem){
     $.ajax({
         method:'POST',
@@ -276,6 +287,19 @@ function inventoryDelete(selectedItem){
     })
 }
 
+function equipmentPost(selectedItem){
+    $.ajax({
+        method:'POST',
+        url:'/api/user/character/equipment/',
+        data:{
+            character:character.nickname,
+            selectedItem:selectedItem,
+        },
+    })
+}
+//---------------------------------------------------
+//---------------------------------------------------
+
 function invenTimeCheck(){
     invenKeyValidCheck = 1;
 }
@@ -284,14 +308,22 @@ function invenUi(){
     if(uiInventory.visible === true){
         uiInventory.visible = false;
         dropButton.visible = false;
+        useButton.visible = false;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
+        }
+        for(i=0; i<equipmentList.length; i++){
+            equipmentList[i].getVisible(false);
         }
     }else{
         uiInventory.visible = true;
         dropButton.visible = true;
+        useButton.visible = true;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
+        }
+        for(i=0; i<equipmentList.length; i++){
+            equipmentList[i].getVisible(true);
         }
     }
 }
@@ -348,6 +380,114 @@ function dropItem(){
         //tempInventory 초기화
         tempInventory = [];
     }
+}
+
+function useItem(){
+    if(selectedItem === null){
+        alert('장착할 아이템을 선택하세요');
+    }else{
+        var startNumberSecondArray = selectedItem.numberInArray;
+
+        //버린 아이템의 뒷 순서인 아이템들을 모두 tempInventory에 저장
+        for(i=startNumberSecondArray + 1; i<inventory.length; i++){
+            tempInventory.push(inventory[i]);
+        }
+
+        //버린 아이템의 뒷 순서인 아이템 sprite들을 모두 inventory에서 삭제함
+        for(i=inventory.length - 1; i>=selectedItem.numberInArray; i--){
+            inventory[i].destroy();
+            inventory[i].text.destroy();
+        }
+
+        //inventory에서 버릴 아이템을 뽑아 버림
+        inventory.splice(selectedItem.numberInArray, 9);
+
+        //ajax DELETE 요청으로 실시간 저장 
+        //inventoryDelete(selectedItem.name);
+
+        var inventoryLength = inventory.length;
+
+        //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장 
+        for(i=0; i<tempInventory.length; i++){
+            switch(tempInventory[i].name){
+                case '빨간물약':
+                    inventory.push(redPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '기본검':
+                    inventory.push(basicSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '기본갑옷':
+                    inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;                    
+            }
+        }
+
+        for(i=inventoryLength;i<inventory.length; i++){
+            inventory[i].getVisible(true);
+            inventory[i].numberInArray = i;
+        }
+        tempInventory = [];
+
+        
+        if(selectedItem.type_is==='potion'){
+
+        }else if(selectedItem.type_is==='weapon'){
+            if(equipmentList[0]!==undefined){
+                equipmentList[0].destroy();
+                equipmentList[0].text.destroy();
+                var previousItem = equipmentList.splice(0, 1);
+                var inventoryLength = inventory.length;
+
+                switch(previousItem[0].name){
+                    case '기본검':
+                        var inserted_item = basicSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+
+                }
+
+            }
+            equipmentList[0] = (createEquipmentAndSetPosition(selectedItem.name));
+
+        }else if(selectedItem.type_is==='armor'){
+            if(equipmentList[1]!==undefined){
+                equipmentList[1].destroy();
+                equipmentList[1].text.destroy();
+                equipmentList.splice(1, 1);
+
+                var inventoryLength = inventory.length;
+
+                switch(previousItem[0].name){
+                    case '기본갑옷':
+                        var inserted_item = basicArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                }
+            }
+            equipmentList[1] = (createEquipmentAndSetPosition(selectedItem.name));
+        }
+
+        //selectedItem 값 초기화 
+        selectedItem = null;
+
+    }   
+}
+
+function createEquipmentAndSetPosition(itemName){
+    var item;
+    switch(itemName){
+        case '기본검':
+            item = basicSwordClone(397, 150);
+            item.text.setText('');
+            item.getVisible(true);
+            break;
+        case '기본갑옷':
+            item = basicArmorClone(493, 150);
+            item.text.setText('');
+            item.getVisible(true);
+            break;
+    }
+    return item;
 }
 
 function inventoryPosition(count){
