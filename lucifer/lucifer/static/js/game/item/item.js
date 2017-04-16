@@ -47,7 +47,7 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     //item status
     //name = spritekey name
     this.name = spriteKey;
-    this.type_is = 'sword';
+    this.type_is = 'weapon';
     this.attack_point = attack_point;
     this.limited_job = limited_job;
 
@@ -85,7 +85,7 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     //item status
     //name == spritekey name
     this.name = spriteKey;
-    this.type_is = 'shield';
+    this.type_is = 'armor';
     this.defence_point = defence_point;
     this.limited_job = limited_job;
 
