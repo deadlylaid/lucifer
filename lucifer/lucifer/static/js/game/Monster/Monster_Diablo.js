@@ -50,7 +50,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 50, this.Regen_Check = false;
 
 	//Dia_lnferno
-	this.Inferno, this.Fire, this.Fire_Bullet;
+	this.Inferno, this.Inferno_Bullet, this.Fire, this.Fire_Bullet;
 }
 
 Diablo.prototype = Object.create(Phaser.Sprite.prototype);
@@ -286,20 +286,12 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.Skill_DelayTimer.loop(1000, diablo_Skill_Timer, Lucifer_Game, diablo_Object);
 
 	//Skill Effect / this.Inferno, this.Fire
-	diablo_Object.Inferno = diaSkill_Inferno_Clone(diablo_Object.x, diablo_Object.y);
+	diablo_Object.Inferno = diaSkill_Inferno_Clone(diablo_Object.x, diablo_Object.y);	
 	
 	diablo_Object.Fire = Lucifer_Game.add.group();
-	/*
-	for(var i = 0; i < 100; ++i)
-	{
-		diablo_Object.Fire_Bullet = diaSkill_Fire_Clone(diablo_Object.x, diablo_Object.y);
-		diablo_Object.Fire.add(diablo_Object.Fire_Bullet);
-	}
-	*/
-
 	diablo_Object.Fire.enableBody = true;
 	diablo_Object.Fire.physicsBodyType = Phaser.Physics.ARCADE;
-	diablo_Object.Fire.createMultiple(1000, 'Fire');
+	diablo_Object.Fire.createMultiple(3000, 'Fire');
 	diablo_Object.Fire.setAll('chechkWorldBounds', true);
 	diablo_Object.Fire.setAll('outOfBoundsKill', true);	
 	diablo_Object.Fire.setAll('visible', false);
@@ -540,21 +532,6 @@ function diablo_Animation_Change(Direction, Status, Object)
 		}
 	}
 }
-
-/*
-function diablo_Skill_Animation_Change(Direction, Status, Object)
-{
-	if(Object.DeadCheck == false)
-	{
-		if(Object.Status[5] == Status)
-		{
-			//Skill
-			Object.Dialnferno.loadTexture('Dialnferno', 0, true);
-			Object.Dialnferno.animations.play('SKILL_Dialnferno_' + Direction, 5, true);
-		}
-	}
-}
-*/
 //----------------------------------------------------------------------------------------------
 
 //AI
@@ -679,9 +656,11 @@ function diablo_Attack(Object)
 					if(Object.Pattern_Skill == false && Object.Skill_Idle_Check == false)
 					{
 						//Skill
-						diablo_Animation_Change(Object.Direction, 'Skill', Object);
-						//diablo_Skill_Animation_Change(Object.Direction, 'Skill', Object.Dialnferno);
+						diablo_Animation_Change(Object.Direction, 'Skill', Object);						
 						Object.AttackCheck = true;
+
+						//Inferno
+						diaSkill_Inferno_Animation_Change(Object.Direction, Object);						
 
 						//충돌 처리 해야됨.
 					}
@@ -717,7 +696,7 @@ function diablo_Attack(Object)
 
 function diablo_Pattern_Attack(Object)
 {	
-	if(Object.Pattern_Attack == false && Object.Pattern_Change == false && Object.Pattern_Change == false)
+	if(Object.Pattern_Attack == false && Object.Pattern_Change == false)
 	{
 		Object.Pattern_Skill = false;
 
@@ -741,7 +720,7 @@ function diablo_Pattern_Attack(Object)
 			{
 				Object.Pattern_Attack = true;
 				Object.Pattern_AttackTime = 0;
-				Object.Pattern_Attacktimer.stop(false);	
+				Object.Pattern_Attacktimer.stop(false);					
 			}							
 		}		
 	}
@@ -820,6 +799,9 @@ function diablo_Pattern_Skill(Object)
 
 	if(Object.Pattern_Skill == true && Object.Pattern_Change == true)
 	{
+		//Skill Visible (이전 패턴 스킬 안보이게 하기)
+		Object.Inferno.visible = false;
+
 		//Skill Fire
 		var CurFrame = Object.animations.frame;
 		var EndFrame;
@@ -867,18 +849,18 @@ function diablo_Pattern_Skill(Object)
 
 		if(CurFrame == EndFrame)
 		{
-			Object.Skill_DelayTimer.start();
+			//Object.Skill_DelayTimer.start();
 
-			if(Object.SkillTime_Total > 1)
-			{
+			//if(Object.SkillTime_Total > 1)
+			//{
 				//Skill 패턴이 다시 1로 시작할 수 있도록 되돌리고 / 공격 패턴으로 체인지 시킴.
 				Object.Skill_Idle_Check = false;
-				Object.SkillTime_Total = 0;
-				Object.Skill_DelayTimer.stop(false);
+				//Object.SkillTime_Total = 0;
+				//Object.Skill_DelayTimer.stop(false);
 
 				//Pattern Change
 				Object.Pattern_Change = false;
-			}
+			//}
 		}		
 	}
 }
@@ -994,6 +976,9 @@ function diablo_Update()
 	diablo_Move(diablo);
 	diablo_Pattern_Attack(diablo);
 	diablo_Pattern_Skill(diablo);
+
+	//Skill
+	diaSkill_Direction_Inferno_Position(diablo.Direction, diablo);
 
 	//Player Mosnter Collision
 	if(diablo.Regen_Check == false)
