@@ -48,6 +48,9 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 50, this.Regen_Check = false;
+
+	//Dia_lnferno
+	this.Inferno, this.Fire, this.Fire_Bullet;
 }
 
 Diablo.prototype = Object.create(Phaser.Sprite.prototype);
@@ -89,13 +92,10 @@ function diablo_Preload()
 								  300, 300);
 	Lucifer_Game.load.spritesheet('monsterHealthBar', 
                                   '../../static/images/game/Monster/monsterHealthBar.png',
-                                   228, 48);
+                                   228, 48);   
 
     //Skill
-    Lucifer_Game.load.spritesheet('Dialnferno', 
-                                  '../../static/images/game/Monster_Skill/Diablo_Dialnferno.png',
-                                   220, 160);	
-    Lucifer_Game.load.image('Fire', '../../static/images/game/Monster_Skill/Diablo_Fire.png');
+    diaSkill_Preload(); 
 }
 
 function diablo_Create()
@@ -104,7 +104,8 @@ function diablo_Create()
 
 	Lucifer_Game.renderer.setTexturePriority(['MON_Diablo_Stand', 'MON_Diablo_Walk', 'MON_Diablo_Attack', 
 											  'MON_Diablo_Attack1', 'MON_Diablo_Skill', 'MON_Diablo_Skill1',
-											  'MON_Diablo_Skill2', 'MON_Diablo_Skill3', 'MON_Diablo_Dead']);
+											  'MON_Diablo_Skill2', 'MON_Diablo_Skill3', 'MON_Diablo_Dead',
+											 ]);
 }
 
 function diablo_Clone(PointX, PointY)
@@ -283,6 +284,26 @@ function diablo_Clone(PointX, PointY)
 	//Skill Timer
 	diablo_Object.Skill_DelayTimer = Lucifer_Game.time.create(false);
 	diablo_Object.Skill_DelayTimer.loop(1000, diablo_Skill_Timer, Lucifer_Game, diablo_Object);
+
+	//Skill Effect / this.Inferno, this.Fire
+	diablo_Object.Inferno = diaSkill_Inferno_Clone(diablo_Object.x, diablo_Object.y);
+	
+	diablo_Object.Fire = Lucifer_Game.add.group();
+	/*
+	for(var i = 0; i < 100; ++i)
+	{
+		diablo_Object.Fire_Bullet = diaSkill_Fire_Clone(diablo_Object.x, diablo_Object.y);
+		diablo_Object.Fire.add(diablo_Object.Fire_Bullet);
+	}
+	*/
+
+	diablo_Object.Fire.enableBody = true;
+	diablo_Object.Fire.physicsBodyType = Phaser.Physics.ARCADE;
+	diablo_Object.Fire.createMultiple(1000, 'Fire');
+	diablo_Object.Fire.setAll('chechkWorldBounds', true);
+	diablo_Object.Fire.setAll('outOfBoundsKill', true);	
+	diablo_Object.Fire.setAll('visible', false);
+	diablo_Object.Fire.setAll('blendMode', Phaser.blendModes.ADD);	
 }
 //----------------------------------------------------------------------------------------------
 //Over / Out
@@ -519,6 +540,21 @@ function diablo_Animation_Change(Direction, Status, Object)
 		}
 	}
 }
+
+/*
+function diablo_Skill_Animation_Change(Direction, Status, Object)
+{
+	if(Object.DeadCheck == false)
+	{
+		if(Object.Status[5] == Status)
+		{
+			//Skill
+			Object.Dialnferno.loadTexture('Dialnferno', 0, true);
+			Object.Dialnferno.animations.play('SKILL_Dialnferno_' + Direction, 5, true);
+		}
+	}
+}
+*/
 //----------------------------------------------------------------------------------------------
 
 //AI
@@ -644,6 +680,7 @@ function diablo_Attack(Object)
 					{
 						//Skill
 						diablo_Animation_Change(Object.Direction, 'Skill', Object);
+						//diablo_Skill_Animation_Change(Object.Direction, 'Skill', Object.Dialnferno);
 						Object.AttackCheck = true;
 
 						//충돌 처리 해야됨.
@@ -654,6 +691,9 @@ function diablo_Attack(Object)
 						//Skill1
 						diablo_Animation_Change(Object.Direction, 'Skill1', Object);
 						Object.AttackCheck = true;
+
+						//Fire
+						diaSkill_Fire_Attack(Object);
 
 						//충돌 처리 해야됨.
 					}
@@ -740,9 +780,9 @@ function diablo_Pattern_Attack(Object)
 
 	//console.log(Object.Pattern_Attack);
 	//console.log(Object.Pattern_Skill);
-	console.log(Object.Pattern_Change);	
-	console.log(Object.Pattern_AttackTime);
-	console.log(Object.SkillTime_Total);
+	//console.log(Object.Pattern_Change);	
+	//console.log(Object.Pattern_AttackTime);
+	//console.log(Object.SkillTime_Total);
 }
 
 function diablo_Pattern_Skill(Object)
@@ -840,69 +880,6 @@ function diablo_Pattern_Skill(Object)
 				Object.Pattern_Change = false;
 			}
 		}		
-	}
-}
-
-function diablo_Pattern_Skill(Object)
-{
-	if(Object.Pattern_Skill == false)
-	{
-		//Skill Dialnferno
-		var CurFrame = Object.animations.frame;
-		var EndFrame;
-
-		if(Object.Direction == 0)
-		{
-			EndFrame = 16;
-		}
-		else
-		{
-			EndFrame = 16 * (Object.Direction + 1);
-		}					
-
-		if(CurFrame == EndFrame)
-		{
-			Object.Skill_DelayTimer.start();
-		
-			if(Object.SkillTime_Total > 2)
-			{
-				Object.Pattern_Skill = true;
-				Object.SkillTime_Total = 0;
-				Object.Skill_DelayTimer.stop(false);	
-			}							
-		}
-	}
-
-	if(Object.Pattern_Skill == true)
-	{
-		//Skill Fire
-		var CurFrame = Object.animations.frame;
-		var EndFrame;
-
-		if(Object.Direction == 0)
-		{
-			EndFrame = 17;
-		}
-		else
-		{
-			EndFrame = 17 * (Object.Direction + 1);
-		}					
-
-		if(CurFrame == EndFrame)
-		{
-			Object.Skill_DelayTimer.start();
-		
-			if(Object.SkillTime_Total > 2)
-			{
-				Object.Pattern_Skill = false;
-				
-				//Object.SkillTime_Total = 0;
-				//Object.Skill_DelayTimer.stop(false);	
-
-				//Skill Idle Pattern
-				
-			}							
-		}
 	}
 }
 
