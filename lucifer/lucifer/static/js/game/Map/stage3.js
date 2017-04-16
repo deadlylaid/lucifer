@@ -3,6 +3,7 @@ var Stage3_ObjectGroup;						//Stage2 - Object 관련 변수.
 var stage3_Collision_Layer;
 var Stage3_ObjectPool = [];
 
+
 var PolygonArray3 = ['STAGE3_Object_bridge01', 'STAGE3_Object_bridge02', 'STAGE3_Object_flag01',
 					'STAGE3_Object_flag02', 'STAGE3_Object_flag03', 'STAGE3_Object_flag04',
 					'STAGE3_Object_flag05', 'STAGE3_Object_flag06', 'STAGE3_Object_wall01',
