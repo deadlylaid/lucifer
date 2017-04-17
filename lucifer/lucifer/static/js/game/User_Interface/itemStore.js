@@ -224,6 +224,7 @@ function armorStoreTab(){
 function clickItem(sprite){
     //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨 
     //console.log(sprite.name);
+    var i = inventory.length;
     switch(sprite.name){
         case '빨간물약':
             selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
@@ -441,6 +442,7 @@ function useItem(){
                 switch(previousItem[0].name){
                     case '기본검':
                         var inserted_item = basicSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
 
@@ -453,13 +455,14 @@ function useItem(){
             if(equipmentList[1]!==undefined){
                 equipmentList[1].destroy();
                 equipmentList[1].text.destroy();
-                equipmentList.splice(1, 1);
+                var previousItem = equipmentList.splice(1, 1);
 
                 var inventoryLength = inventory.length;
 
                 switch(previousItem[0].name){
                     case '기본갑옷':
                         var inserted_item = basicArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
                 }

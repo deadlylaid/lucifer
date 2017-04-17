@@ -53,6 +53,25 @@ var stage3_Scene =
 
 		//Skill
 		skill_Update();
+
+		//Portal
+		portal_Check();
+
+		if(Portal_Check == true)
+		{
+			sound_StopStage1BGM();
+			this.goto_Stage1();
+			Portal_Check = false;
+		}
+
+		portal_Check2();
+		
+		if (Portal_Check2 == true)
+		{
+			sound_StopStage1BGM();
+			this.goto_Stage_back();
+			Portal_Check2 = false;
+		}
 	},
 
 	render: function()
@@ -65,14 +84,26 @@ var stage3_Scene =
 		}		
 	},
 	
-	goto_Stageend: function()
-	{
+	goto_Stage1: function()
+	{	
 		stageThree_Check = false;
-		//Sound
-		//sound_StopStage2BGM();
 
-		//Lucifer_Game.state.start('stage3');
-	}
+		//Sound
+		sound_StopStage2BGM();
+
+		Lucifer_Game.state.start('load');
+	},
+
+	goto_Stage_back: function()
+	{	
+		stageThree_Check = false;
+		
+		BackStageMove = 0;
+		//Sound
+		sound_StopStage2BGM();
+
+		Lucifer_Game.state.start('stage2_load');
+	},
 };
 
 function debug_Down()

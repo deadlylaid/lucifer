@@ -63,6 +63,26 @@ var stage2_Scene =
 
 		//Stage2 Culling
 		//stage2_Culling();
+
+		//Portal
+		portal_Check();
+
+		if(Portal_Check == true)
+		{
+			sound_StopStage1BGM();
+			this.goto_Stage3();
+			Portal_Check = false;
+		}
+
+		portal_Check2();
+		
+		if (Portal_Check2 == true)
+		{
+			sound_StopStage1BGM();
+			this.goto_Stage_back();
+			Portal_Check2 = false;
+		}
+
 	},
 
 	render: function()
@@ -82,7 +102,19 @@ var stage2_Scene =
 		sound_StopStage2BGM();
 
 		Lucifer_Game.state.start('stage3_load');
-	}
+	},
+
+	goto_Stage_back: function()
+	{	
+
+		stageTwo_Check = false;
+		
+		BackStageMove = 0;
+		//Sound
+		sound_StopStage2BGM();
+
+		Lucifer_Game.state.start('load');
+	},
 };
 
 function go()
