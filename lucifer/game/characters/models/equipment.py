@@ -10,6 +10,10 @@ class Equipment(models.Model):
             on_delete=models.CASCADE,
             )
 
+    item_name = models.CharField(
+        max_length=30,
+        )
+
     body_parts = models.CharField(
             max_length=10,
             )

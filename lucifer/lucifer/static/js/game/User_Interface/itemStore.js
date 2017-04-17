@@ -152,7 +152,7 @@ function itemStoreCreate(){
     //---------------------------------------------------------------------------------------   
 
     changeServerListToClientList();
-
+    changeServerListToClientListEquipment();
 }
 
 function itemsStoreUpdate(){
@@ -288,13 +288,14 @@ function inventoryDelete(selectedItem){
     })
 }
 
-function equipmentPost(selectedItem){
+function equipmentPost(selectedItem, type_is){
     $.ajax({
         method:'POST',
         url:'/api/user/character/equipment/',
         data:{
             character:character.nickname,
             selectedItem:selectedItem,
+            type_is: type_is,
         },
     })
 }
@@ -445,11 +446,11 @@ function useItem(){
                         inserted_item.numberInArray = inventory.length;
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
-
                 }
 
             }
             equipmentList[0] = (createEquipmentAndSetPosition(selectedItem.name));
+            equipmentPost(equipmentList[0].name, equipmentList[0].type_is);
 
         }else if(selectedItem.type_is==='armor'){
             if(equipmentList[1]!==undefined){
@@ -547,6 +548,19 @@ function changeArray(){
     };
 }
 
+function changeServerListToClientListEquipment(){
+    var equipmentLength = equipmentList.length;
+    for(i=0; i<equipmentLength; i++){
+        switch(equipmentList[i].item_name){
+            case '기본검':
+                equipmentList[0] = createEquipmentAndSetPosition('기본검');
+                break;
+            case '기본갑옷':
+                equipmentList[1] = createEquipmentAndSetPosition('기본갑옷');
+                break;
+        }
+    }
+}
 //server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다. 
 function changeServerListToClientList(){
     invenArrayLength = inventory.length;
