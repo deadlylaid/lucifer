@@ -75,4 +75,13 @@ function skill_Attack(Monster)
 			Monster.Hp -= 1;
 		}
 	}
+
+	//Bavarian Skill_Five Attack Collision
+	if(skill_Bavarian_Five.visible == true)
+	{
+		if(Phaser.Rectangle.intersects(skill_Five_Rect, Monster.HitRect))
+		{
+			Monster.Hp -= 100;
+		}
+	}
 }

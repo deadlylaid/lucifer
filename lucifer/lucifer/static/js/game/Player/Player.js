@@ -9,7 +9,7 @@ var Attack_Rect, Hit_Rect, Whirlwind_Rect;
 var Player_AttackCheck = false; 
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
-var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4;
+var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4, player_KeySkill5;
 //----------------------------------------------------------------------------------------------------------
 //var isoCam = Lucifer_Game.world.camera.view;
 //var viewport = { left: isoCam.x, right: isoCam.x + 1280, top: isoCam.y, bottom: isoCam.y + 800 };
@@ -138,6 +138,10 @@ function player_Create()
 	player_KeySkill4 = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
 	player_KeySkill4.onDown.add(PlayerSkill4, Lucifer_Game);
 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.FOUR);
+
+	player_KeySkill5 = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.FIVE);
+	player_KeySkill5.onDown.add(PlayerSkill5, Lucifer_Game);
+	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.FIVE);	
 	//----------------------------------------------------------------------------------------------------------
 	//Player Sort
 	//----------------------------------------------------------------------------------------------------------
@@ -390,6 +394,19 @@ function PlayerSkill4()
 		{
 			skill_Bavarian_Four.animations.play('SK_Bavarian_Ani4', 20, true);
 			Animation_Change(Direction, 'Skill');
+		}
+	}
+}
+
+function PlayerSkill5()
+{
+	if(skill_Five_Check == false)
+	{
+		skill_Bavarian_Five.visible = true;
+
+		if(skill_Bavarian_Five.visible == true)
+		{
+			skill_Bavarian_Five.animations.play('SK_Bavarian_Ani5', 20, true);			
 		}
 	}
 }
