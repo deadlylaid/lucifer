@@ -130,6 +130,7 @@ function stageTwo_Preload()
 	Lucifer_Game.load.spritesheet('Stage2_Portal', '../../static/images/game/Object/Portal/Portal.png', 115, 154);
 	Lucifer_Game.load.spritesheet('Stage2_Portal_back', '../../static/images/game/Object/Portal/Portal2.png', 115, 154);
 
+
 	Lucifer_Game.load.physics('Physics_polygon3', '../../static/js/game/Map/Physics_polygon3.json');
 
 	//----------------------------------------------------------------------------------------------------------------
@@ -605,6 +606,7 @@ function portal_Check()
 	{
 		Portal_Check = true;
 	}
+
 };
 
 function portal_Check2()

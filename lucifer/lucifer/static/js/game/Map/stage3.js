@@ -6,6 +6,7 @@ var Stage3_Portal, Portal_Rect, Portal_Check;
 var Stage3_Portal_back, Portal_Rect2, Portal_Check2;
 var BackStageMove=1;
 
+
 var PolygonArray3 = ['STAGE3_Object_bridge01', 'STAGE3_Object_bridge02', 'STAGE3_Object_flag01',
 					'STAGE3_Object_flag02', 'STAGE3_Object_flag03', 'STAGE3_Object_flag04',
 					'STAGE3_Object_flag05', 'STAGE3_Object_flag06', 'STAGE3_Object_wall01',
