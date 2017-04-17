@@ -1,7 +1,8 @@
 var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수								
 var Collision_Layer;								//Collision Layer
-var Stage1_ObjectGroup;								//Stage1 - Object 관련 변수.
+var Stage1_ObjectGroup = [];								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
+
 
 var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Object_wall12',
 					'STAGE1_Object_wall16', 'STAGE1_Object_wall13', 'STAGE1_Object_wall5',
@@ -36,9 +37,9 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('Object_WallTileSet', '../../static/images/game/Object/Stage1/Object_WallTileSet.png');
 
-
 	//Object 
 	//----------------------------------------------------------------------------------------------------------------
+	
 
 	// Tree
 	Lucifer_Game.load.image('STAGE1_Object_Tree', '../../static/images/game/Object/Stage1/struct13.png');
@@ -142,10 +143,18 @@ function stageOne_Preload()
 	Lucifer_Game.load.spritesheet('Stage1_Portal', '../../static/images/game/Object/Portal/Portal.png', 115, 154);
 	//----------------------------------------------------------------------------------------------------------------
 	Lucifer_Game.load.physics('Physics_polygon2', '../../static/js/game/Map/Physics_polygon2.json');
+
 }
 
 function stageOne_Create()
 {
+	//Stage2 -> Stage1 Portal move 
+	//---------------------------------------------------------------------------------------
+	if(BackStageMove == 0){
+		objectValueArray=[];
+	}
+	//---------------------------------------------------------------------------------------
+	
 	//Map 
 	//---------------------------------------------------------------------------------------
 	Background_map = Lucifer_Game.add.tilemap('MAP_Stage1');		
@@ -319,11 +328,9 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(5793, 1200, 'STAGE1_Object_Tree14');
 	Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');
 	Stage1_ObjectGroup.create(1072, 1886, 'STAGE1_Object_item31');
+	
 	/*Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');*/
 	// forest end
-
-
-
 
 
 	//---------------------------------------------------------------------------------------

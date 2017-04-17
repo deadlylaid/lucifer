@@ -2,6 +2,9 @@ var Stage2_Map, Stage2, Stage2_ObjLayer;	//Stage 이미지 변수
 var Stage2_ObjectGroup;						//Stage2 - Object 관련 변수.
 var Stage2_ObjectPool = [];
 var CameraRect;
+var Stage2_Portal, Portal_Rect, Portal_Check;
+var Stage2_Portal_back, Portal_Rect2, Portal_Check2;
+var BackStageMove=1;
 
 var PolygonArray2 = ['STAGE2_Object_stone01', 'STAGE2_Object_truck1', 'STAGE2_Object_stone2',
 					'STAGE2_Object_wall1', 'STAGE2_Object_stone3', 'STAGE2_Object_wall2',
@@ -29,7 +32,6 @@ var PolygonArray2 = ['STAGE2_Object_stone01', 'STAGE2_Object_truck1', 'STAGE2_Ob
 var objectValueArray2 = [];
 
 
-
 function stageTwo_Preload()
 {
 	Lucifer_Game.load.tilemap('MAP_Stage2', '../../static/images/game/Map/Stage2/Stage2.json',
@@ -40,8 +42,6 @@ function stageTwo_Preload()
 	Lucifer_Game.load.image('stage2_obj_struct', '../../static/images/game/Object/Stage2/stage2_obj_struct.png');
 	Lucifer_Game.load.image('bossroom2', '../../static/images/game/Map/Stage2/bossroom2.png');
 
-
-	
 
 	//Object Tree
 	Lucifer_Game.load.image('STAGE2_Object_Tree', '../../static/images/game/Object/Stage2/struct6.png');
@@ -60,7 +60,6 @@ function stageTwo_Preload()
 	Lucifer_Game.load.image('STAGE2_Object_Tree13', '../../static/images/game/Object/Stage2/struct22.png');
 	Lucifer_Game.load.image('STAGE2_Object_Tree14', '../../static/images/game/Object/Stage2/struct23.png');
 	Lucifer_Game.load.image('STAGE2_Object_Tree15', '../../static/images/game/Object/Stage2/struct24.png');
-	Lucifer_Game.load.image('STAGE2_Object_Tree16', '../../static/images/game/Object/Stage2/struct33.png');
 	Lucifer_Game.load.image('STAGE2_Object_Tree17', '../../static/images/game/Object/Stage2/struct34.png');
 	Lucifer_Game.load.image('STAGE2_Object_Tree18', '../../static/images/game/Object/Stage2/struct40.png');
 	Lucifer_Game.load.image('STAGE2_Object_Tree19', '../../static/images/game/Object/Stage2/struct42.png');
@@ -126,11 +125,16 @@ function stageTwo_Preload()
 	Lucifer_Game.load.image('STAGE2_Object_wall6', '../../static/images/game/Object/Stage2/struct59.png');
 	Lucifer_Game.load.image('STAGE2_Object_wall7', '../../static/images/game/Object/Stage2/struct66.png');
 
+	//Portal
+	//----------------------------------------------------------------------------------------------------------------
+	Lucifer_Game.load.spritesheet('Stage2_Portal', '../../static/images/game/Object/Portal/Portal.png', 115, 154);
+	Lucifer_Game.load.spritesheet('Stage2_Portal_back', '../../static/images/game/Object/Portal/Portal2.png', 115, 154);
+
+
 	Lucifer_Game.load.physics('Physics_polygon3', '../../static/js/game/Map/Physics_polygon3.json');
 
 	//----------------------------------------------------------------------------------------------------------------
 
-	
 	
 }
 
@@ -155,6 +159,13 @@ function stageTwo_Create()
 	{
 		Lucifer_Game.renderer.setTexturePriority(['STAGE2_Object_wall1' + i]);
 	}
+
+	//Stage3 -> Stage2 Portal move 
+	//---------------------------------------------------------------------------------------
+	if(BackStageMove == 0){
+		objectValueArray2=[];
+	}
+	//---------------------------------------------------------------------------------------
 	
 	//Map 
 	//---------------------------------------------------------------------------------------
@@ -317,7 +328,7 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(5495, 1753, 'STAGE2_Object_Tree22');
 	Stage2_ObjectGroup.create(5589, 1730, 'STAGE2_Object_Tree27');
 	Stage2_ObjectGroup.create(5538, 1924, 'STAGE2_Object_Tree27');
-	Stage2_ObjectGroup.create(5704, 1658, 'STAGE2_Object_Tree16');
+	Stage2_ObjectGroup.create(5704, 1658, 'STAGE2_Object_stone8');
 	Stage2_ObjectGroup.create(5691, 1829, 'STAGE2_Object_Tree22');
 	Stage2_ObjectGroup.create(5783, 1791, 'STAGE2_Object_Tree27');
 	Stage2_ObjectGroup.create(5854, 1637, 'STAGE2_Object_Tree19');
@@ -341,7 +352,7 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(4520, 2813, 'STAGE2_Object_stone9');
 	Stage2_ObjectGroup.create(4331, 2873, 'STAGE2_Object_stone15');
 	Stage2_ObjectGroup.create(4219, 2915, 'STAGE2_Object_stone6');
-	Stage2_ObjectGroup.create(4503, 3076, 'STAGE2_Object_Tree16');
+	Stage2_ObjectGroup.create(4503, 3076, 'STAGE2_Object_stone8');
 	Stage2_ObjectGroup.create(4294, 1465, 'STAGE2_Object_Tree21');
 	Stage2_ObjectGroup.create(3900, 1227, 'STAGE2_Object_Tree22');
 	Stage2_ObjectGroup.create(3789, 1253, 'STAGE2_Object_Tree22');
@@ -403,7 +414,7 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(7061, 3174, 'STAGE2_Object_stone11');
 	Stage2_ObjectGroup.create(6680, 3446, 'STAGE2_Object_stone14');
 	Stage2_ObjectGroup.create(6375, 3223, 'STAGE2_Object_stone14');
-	Stage2_ObjectGroup.create(6233, 2994, 'STAGE2_Object_Tree16');
+	Stage2_ObjectGroup.create(6233, 2994, 'STAGE2_Object_stone8');
 	Stage2_ObjectGroup.create(5523, 2660, 'STAGE2_Object_Tree21');
 	Stage2_ObjectGroup.create(5435, 3623, 'STAGE2_Object_stone17');
 	Stage2_ObjectGroup.create(7537, 4316, 'STAGE2_Object_Tree21');
@@ -452,7 +463,7 @@ function stageTwo_Create()
 	Stage2_ObjectGroup.create(2732, 1923, 'STAGE2_Object_Tree2');
 	Stage2_ObjectGroup.create(2915, 1779, 'STAGE2_Object_Tree6');
 	Stage2_ObjectGroup.create(7817, 3938, 'STAGE2_Object_stone9');
-	Stage2_ObjectGroup.create(7485, 3546, 'STAGE2_Object_Tree16');
+	Stage2_ObjectGroup.create(7485, 3546, 'STAGE2_Object_stone8');
 	Stage2_ObjectGroup.create(6914, 3861, 'STAGE2_Object_stone3');
 	Stage2_ObjectGroup.create(3970, 3508, 'STAGE2_Object_Tree27');
 	Stage2_ObjectGroup.create(3593, 3127, 'STAGE2_Object_stone14');
@@ -480,7 +491,6 @@ function stageTwo_Create()
 	//Polygon
 	//---------------------------------------------------------------------------------------
 
-
 	for(var a = 0; a < Stage2_ObjectGroup.length; a++){
 		for(var i = 0; i < PolygonArray2.length; i++)
 		{
@@ -497,6 +507,51 @@ function stageTwo_Create()
 		}		
 	}	
 
+	//Portal
+	//---------------------------------------------------------------------------------------
+	Stage2_Portal = Lucifer_Game.add.sprite(8561, 1419, 'Stage2_Portal');
+	Lucifer_Game.physics.p2.enable(Stage2_Portal);
+	Stage2_Portal.anchor.setTo(0.5, 0.5);
+	Stage2_Portal.body.clearShapes();
+	Stage2_Portal.body.debug = true;
+	Stage2_Portal.body.static = true;
+	Stage2_Portal.blendMode = Phaser.blendModes.ADD;
+
+	//Animation
+	Stage2_Portal.animations.add('Portal_Sprite', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+								 60, true);
+	Stage2_Portal.animations.play('Portal_Sprite', 10, true);
+
+	//Aracade Physics Setting
+	Lucifer_Game.physics.enable(Stage2_Portal, Phaser.Physics.ARCADE);
+
+	//Portal_Rect
+	Portal_Rect = new Phaser.Rectangle(Stage2_Portal.x, Stage2_Portal.y, 100, 100);
+	Portal_Check = false;	
+	//---------------------------------------------------------------------------------------
+
+	//Portal_Back
+	//---------------------------------------------------------------------------------------
+	Stage2_Portal_back = Lucifer_Game.add.sprite(3271, 4422, 'Stage2_Portal_back');
+	Lucifer_Game.physics.p2.enable(Stage2_Portal_back);
+	Stage2_Portal_back.anchor.setTo(0.5, 0.5);
+	Stage2_Portal_back.body.clearShapes();
+	Stage2_Portal_back.body.debug = true;
+	Stage2_Portal_back.body.static = true;
+	Stage2_Portal_back.blendMode = Phaser.blendModes.ADD;
+
+	//Animation
+	Stage2_Portal_back.animations.add('Portal_Sprite', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+								 60, true);
+	Stage2_Portal_back.animations.play('Portal_Sprite', 10, true);
+
+	//Aracade Physics Setting
+	Lucifer_Game.physics.enable(Stage2_Portal_back, Phaser.Physics.ARCADE);
+
+	//Portal_Rect
+	Portal_Rect2 = new Phaser.Rectangle(Stage2_Portal_back.x, Stage2_Portal_back.y, 100, 100);
+	Portal_Check2 = false;	
+	//---------------------------------------------------------------------------------------
 	
 	//---------------------------------------------------------------------------------------
 
@@ -544,4 +599,22 @@ function stage2_Culling()
 		}			
 	}
 }
+
+function portal_Check()
+{
+	if(Phaser.Rectangle.intersects(Portal_Rect, Hit_Rect))
+	{
+		Portal_Check = true;
+	}
+
+};
+
+function portal_Check2()
+{
+	if(Phaser.Rectangle.intersects(Portal_Rect2, Hit_Rect))
+	{
+		Portal_Check2 = true;
+	}
+};
+
 

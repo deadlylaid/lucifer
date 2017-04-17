@@ -104,6 +104,7 @@ var stage1_Scene =
 	goto_Stage2: function()
 	{
 		stageOne_Check = false;
+		
 		Lucifer_Game.state.start('stage2_load');
 	}	
 };
