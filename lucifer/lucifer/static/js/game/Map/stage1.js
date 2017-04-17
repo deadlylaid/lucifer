@@ -2,6 +2,7 @@ var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수
 var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup = [];								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
+var BackStageMove=1;
 
 
 var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Object_wall12',

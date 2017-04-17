@@ -88,6 +88,7 @@ var stage3_Scene =
 	{	
 		stageThree_Check = false;
 
+		BackStageMove = 0;
 		//Sound
 		sound_StopStage2BGM();
 
