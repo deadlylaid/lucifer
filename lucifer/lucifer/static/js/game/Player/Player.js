@@ -21,14 +21,33 @@ function player_Create()
 	if(stageOne_Check == true)
 	{
 		Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
+
+		if(BackStageMove == 0)
+			{
+				Player = Lucifer_Game.add.sprite(3128, 582, 'PY_Bavarian_Attack');	
+				BackStageMove = 1;
+			}
 	}
 	else if(stageTwo_Check == true)
 	{
 		Player = Lucifer_Game.add.sprite(3426, 4289, 'PY_Bavarian_Attack');	
+
+		if(BackStageMove == 0)
+			{
+				Player = Lucifer_Game.add.sprite(8400, 1553, 'PY_Bavarian_Attack');	
+				BackStageMove = 1;
+			}
+
 	}
 	else if(stageThree_Check == true)
 	{
 		Player = Lucifer_Game.add.sprite(879, 2193, 'PY_Bavarian_Attack');	
+
+		if(BackStageMove == 0)
+			{
+				Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
+				BackStageMove = 1;
+			}
 	}
 	 	
 	//Player = Stage2_ObjectGroup.create(3582, 1466, 'PY_Bavarian_Attack');
