@@ -442,6 +442,7 @@ function useItem(){
                 switch(previousItem[0].name){
                     case '기본검':
                         var inserted_item = basicSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
 
@@ -454,13 +455,14 @@ function useItem(){
             if(equipmentList[1]!==undefined){
                 equipmentList[1].destroy();
                 equipmentList[1].text.destroy();
-                equipmentList.splice(1, 1);
+                var previousItem = equipmentList.splice(1, 1);
 
                 var inventoryLength = inventory.length;
 
                 switch(previousItem[0].name){
                     case '기본갑옷':
                         var inserted_item = basicArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
                 }
