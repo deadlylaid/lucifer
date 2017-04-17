@@ -224,6 +224,7 @@ function armorStoreTab(){
 function clickItem(sprite){
     //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨 
     //console.log(sprite.name);
+    var i = inventory.length;
     switch(sprite.name){
         case '빨간물약':
             selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
