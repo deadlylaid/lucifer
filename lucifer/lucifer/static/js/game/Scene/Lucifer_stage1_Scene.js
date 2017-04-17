@@ -87,15 +87,8 @@ var stage1_Scene =
 			player_Render();
 
 			//Monster Render
-			golem_Redner();
-			fallen_Shaman_Render();
-			andariel_Render();
-			wraith_Render();
-			deamon_Render();
-			council_Render();
-			countess_Render();
-			
-			itemsRender();
+			golem_Redner();			
+			countess_Render();					
 			
             //itemStoreRender
             itemStoreRender();

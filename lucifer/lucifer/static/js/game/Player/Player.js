@@ -9,7 +9,7 @@ var Attack_Rect, Hit_Rect;
 var Player_AttackCheck = false; 
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
-var player_KeyJump, player_KeySkill, player_KeySkill2;
+var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3;
 //----------------------------------------------------------------------------------------------------------
 //var isoCam = Lucifer_Game.world.camera.view;
 //var viewport = { left: isoCam.x, right: isoCam.x + 1280, top: isoCam.y, bottom: isoCam.y + 800 };
@@ -141,6 +141,10 @@ function player_Create()
 	player_KeySkill2 = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.TWO);
 	player_KeySkill2.onDown.add(PlayerSkill2, Lucifer_Game);
 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.TWO);	
+
+	player_KeySkill3 = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+	player_KeySkill3.onDown.add(PlayerSkill3, Lucifer_Game);
+	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.THREE);	
 	//----------------------------------------------------------------------------------------------------------
 	//Player Sort
 	//----------------------------------------------------------------------------------------------------------
@@ -361,6 +365,20 @@ function PlayerSkill2()
 			Animation_Change(Direction, 'Skill');
 		}
 	}		
+}
+
+function PlayerSkill3()
+{
+	if(skill_Three_Check == false)
+	{
+		skill_Bavarian_Three.visible = true;
+
+		if(skill_Bavarian_Three.visible == true)
+		{
+			skill_Bavarian_Three.animations.play('SK_Bavarian_Ani3', 20, true);
+			Animation_Change(Direction, 'Skill');	//동작은 찾아봐야됨
+		}
+	}
 }
 
 function player_Update()

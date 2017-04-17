@@ -630,8 +630,7 @@ function fallen_Shaman_RectPos(Object)
 //-------------------------------------------------------------------------------------------
 function fallen_Shaman_Update()
 {
-	var length = fallenShaman_Group.length;
-	for(var i = 0; i < length; ++i)
+	for(var i = 0; i < fallenShaman_Group.length; ++i)
 	{
 		var Shaman = fallenShaman_Group.getChildAt(i);
 
@@ -656,8 +655,7 @@ function fallen_Shaman_Update()
 
 function fallen_Shaman_Render()
 {
-	var length = fallenShaman_Group.length;
-	for(var i = 0; i < length; ++i)
+	for(var i = 0; i < fallenShaman_Group.length; ++i)
 	{
 		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).HitRect, 'rgba(0, 200, 0, 0.5)');
 		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).AttackRect, 'rgba(200, 0, 200, 0.5)');		
