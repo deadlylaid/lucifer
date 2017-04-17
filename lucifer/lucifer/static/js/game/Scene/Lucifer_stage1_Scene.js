@@ -39,7 +39,7 @@ var stage1_Scene =
 
 		//Key Go to Stage2
 		debugCheck = false;
-		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
 		enterKey.onDown.add(debug_Rendering_Down, this);
 		enterKey.onUp.add(debug_Rendering_Up, this);
 	},

@@ -644,7 +644,7 @@ function fallen_Shaman_Update()
 		//Player Mosnter Collision
 		if(Shaman.Regen_Check == false)
 		{
-			player_Monster_Col(Shaman);
+			player_Monster_Col(Shaman);			
 		}
 		
 		//Dead

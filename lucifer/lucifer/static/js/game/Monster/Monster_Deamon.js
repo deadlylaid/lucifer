@@ -625,7 +625,7 @@ function deamon_Update()
 		//Player Mosnter Collision
 		if(deamon.Regen_Check == false)
 		{
-			player_Monster_Col(deamon);	
+			player_Monster_Col(deamon);			
 		}		
 
 		deamon_Dead(deamon);

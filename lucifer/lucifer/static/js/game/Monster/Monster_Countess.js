@@ -612,7 +612,7 @@ function countess_Update()
 		//Player Mosnter Collision
 		if(countess.Regen_Check == false)
 		{
-			player_Monster_Col(countess);
+			player_Monster_Col(countess);			
 		}		
 
 		countess_Dead(countess);
