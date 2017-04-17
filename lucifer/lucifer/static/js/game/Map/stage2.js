@@ -3,6 +3,8 @@ var Stage2_ObjectGroup;						//Stage2 - Object 관련 변수.
 var Stage2_ObjectPool = [];
 var CameraRect;
 var Stage2_Portal, Portal_Rect, Portal_Check;
+var Stage2_Portal_back, Portal_Rect2, Portal_Check2;
+var BackStageMove=1;
 
 var PolygonArray2 = ['STAGE2_Object_stone01', 'STAGE2_Object_truck1', 'STAGE2_Object_stone2',
 					'STAGE2_Object_wall1', 'STAGE2_Object_stone3', 'STAGE2_Object_wall2',
@@ -30,7 +32,6 @@ var PolygonArray2 = ['STAGE2_Object_stone01', 'STAGE2_Object_truck1', 'STAGE2_Ob
 var objectValueArray2 = [];
 
 
-
 function stageTwo_Preload()
 {
 	Lucifer_Game.load.tilemap('MAP_Stage2', '../../static/images/game/Map/Stage2/Stage2.json',
@@ -41,8 +42,6 @@ function stageTwo_Preload()
 	Lucifer_Game.load.image('stage2_obj_struct', '../../static/images/game/Object/Stage2/stage2_obj_struct.png');
 	Lucifer_Game.load.image('bossroom2', '../../static/images/game/Map/Stage2/bossroom2.png');
 
-
-	
 
 	//Object Tree
 	Lucifer_Game.load.image('STAGE2_Object_Tree', '../../static/images/game/Object/Stage2/struct6.png');
@@ -129,12 +128,12 @@ function stageTwo_Preload()
 	//Portal
 	//----------------------------------------------------------------------------------------------------------------
 	Lucifer_Game.load.spritesheet('Stage2_Portal', '../../static/images/game/Object/Portal/Portal.png', 115, 154);
+	Lucifer_Game.load.spritesheet('Stage2_Portal_back', '../../static/images/game/Object/Portal/Portal2.png', 115, 154);
 
 	Lucifer_Game.load.physics('Physics_polygon3', '../../static/js/game/Map/Physics_polygon3.json');
 
 	//----------------------------------------------------------------------------------------------------------------
 
-	
 	
 }
 
@@ -159,6 +158,13 @@ function stageTwo_Create()
 	{
 		Lucifer_Game.renderer.setTexturePriority(['STAGE2_Object_wall1' + i]);
 	}
+
+	//Stage3 -> Stage2 Portal move 
+	//---------------------------------------------------------------------------------------
+	if(BackStageMove == 0){
+		objectValueArray2=[];
+	}
+	//---------------------------------------------------------------------------------------
 	
 	//Map 
 	//---------------------------------------------------------------------------------------
@@ -484,7 +490,6 @@ function stageTwo_Create()
 	//Polygon
 	//---------------------------------------------------------------------------------------
 
-
 	for(var a = 0; a < Stage2_ObjectGroup.length; a++){
 		for(var i = 0; i < PolygonArray2.length; i++)
 		{
@@ -522,6 +527,29 @@ function stageTwo_Create()
 	//Portal_Rect
 	Portal_Rect = new Phaser.Rectangle(Stage2_Portal.x, Stage2_Portal.y, 100, 100);
 	Portal_Check = false;	
+	//---------------------------------------------------------------------------------------
+
+	//Portal_Back
+	//---------------------------------------------------------------------------------------
+	Stage2_Portal_back = Lucifer_Game.add.sprite(3271, 4422, 'Stage2_Portal_back');
+	Lucifer_Game.physics.p2.enable(Stage2_Portal_back);
+	Stage2_Portal_back.anchor.setTo(0.5, 0.5);
+	Stage2_Portal_back.body.clearShapes();
+	Stage2_Portal_back.body.debug = true;
+	Stage2_Portal_back.body.static = true;
+	Stage2_Portal_back.blendMode = Phaser.blendModes.ADD;
+
+	//Animation
+	Stage2_Portal_back.animations.add('Portal_Sprite', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+								 60, true);
+	Stage2_Portal_back.animations.play('Portal_Sprite', 10, true);
+
+	//Aracade Physics Setting
+	Lucifer_Game.physics.enable(Stage2_Portal_back, Phaser.Physics.ARCADE);
+
+	//Portal_Rect
+	Portal_Rect2 = new Phaser.Rectangle(Stage2_Portal_back.x, Stage2_Portal_back.y, 100, 100);
+	Portal_Check2 = false;	
 	//---------------------------------------------------------------------------------------
 	
 	//---------------------------------------------------------------------------------------
@@ -577,5 +605,14 @@ function portal_Check()
 	{
 		Portal_Check = true;
 	}
-}
+};
+
+function portal_Check2()
+{
+	if(Phaser.Rectangle.intersects(Portal_Rect2, Hit_Rect))
+	{
+		Portal_Check2 = true;
+	}
+};
+
 

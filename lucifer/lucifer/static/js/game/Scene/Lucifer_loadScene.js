@@ -81,6 +81,8 @@ var loadScene =
 		//----------------------------------------------------------------------------------------------------------
 		npc_Preload();
 		//----------------------------------------------------------------------------------------------------------
+		
+
 	},
 
 	create: function()
@@ -88,29 +90,25 @@ var loadScene =
 		menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
 		menuImage.anchor.setTo(0.5, 0.5);		
 
-		loadtext = Lucifer_Game.add.text(this.world.centerX - 170, 715, 'Loading...',
+		loadtext = Lucifer_Game.add.text(this.world.centerX - 170, 715, 'Press \"Enter\" Key to Start',
 											{font: '30px Roboto', fill: '#ffffff'});
 		loadtext.fixedToCamera = true;
 
-		loadComplete();
+		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+		enterKey.onDown.addOnce(loadScene.start, this);
+
+		
 	},
 
 	start: function()
 	{
 		//Sound
 		sound_StopMenuBGM();
-
+		
 		stageOne_Check = true;
 		Lucifer_Game.state.start('stage1');
+		
 	},
 
 	
-};
-
-function loadComplete()
-{
-	loadtext.setText("Press \"Enter\" Key to Start ");
-
-		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-		enterKey.onDown.addOnce(loadScene.start, this);
 };

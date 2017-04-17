@@ -2,7 +2,9 @@ var Stage3_Map, Stage3, Stage3_ObjLayer;	//Stage 이미지 변수
 var Stage3_ObjectGroup;						//Stage2 - Object 관련 변수.
 var stage3_Collision_Layer;
 var Stage3_ObjectPool = [];
-
+var Stage3_Portal, Portal_Rect, Portal_Check;
+var Stage3_Portal_back, Portal_Rect2, Portal_Check2;
+var BackStageMove=1;
 
 var PolygonArray3 = ['STAGE3_Object_bridge01', 'STAGE3_Object_bridge02', 'STAGE3_Object_flag01',
 					'STAGE3_Object_flag02', 'STAGE3_Object_flag03', 'STAGE3_Object_flag04',
@@ -58,6 +60,11 @@ function stageThree_Preload()
 	Lucifer_Game.load.image('STAGE3_Object_Obj06', '../../static/images/game/Object/Stage3/struct27.png');
 	Lucifer_Game.load.image('STAGE3_Object_Obj07', '../../static/images/game/Object/Stage3/struct28.png');
 
+	//Portal
+	//----------------------------------------------------------------------------------------------------------------
+	Lucifer_Game.load.spritesheet('Stage3_Portal', '../../static/images/game/Object/Portal/Portal.png', 115, 154);
+	Lucifer_Game.load.spritesheet('Stage3_Portal_back', '../../static/images/game/Object/Portal/Portal2.png', 115, 154);
+
 	Lucifer_Game.load.physics('Physics_polygon4', '../../static/js/game/Map/Physics_polygon4.json');
 	
 	//----------------------------------------------------------------------------------------------------------------
@@ -66,6 +73,13 @@ function stageThree_Preload()
 function stageThree_Create()
 {
 	/* Stage Create Example */
+
+	//Stage3 -> Stage2 Portal move 
+	//---------------------------------------------------------------------------------------
+	if(BackStageMove == 0){
+		objectValueArray3=[];
+	}
+	//---------------------------------------------------------------------------------------
 
 	//Map 
 	//---------------------------------------------------------------------------------------
@@ -163,6 +177,70 @@ function stageThree_Create()
 
 	//---------------------------------------------------------------------------------------
 
+	//Portal
+	//---------------------------------------------------------------------------------------
+	Stage3_Portal = Lucifer_Game.add.sprite(2958, 846, 'Stage3_Portal');
+	Lucifer_Game.physics.p2.enable(Stage3_Portal);
+	Stage3_Portal.anchor.setTo(0.5, 0.5);
+	Stage3_Portal.body.clearShapes();
+	Stage3_Portal.body.debug = true;
+	Stage3_Portal.body.static = true;
+	Stage3_Portal.blendMode = Phaser.blendModes.ADD;
+
+	//Animation
+	Stage3_Portal.animations.add('Portal_Sprite', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+								 60, true);
+	Stage3_Portal.animations.play('Portal_Sprite', 10, true);
+
+	//Aracade Physics Setting
+	Lucifer_Game.physics.enable(Stage3_Portal, Phaser.Physics.ARCADE);
+
+	//Portal_Rect
+	Portal_Rect = new Phaser.Rectangle(Stage3_Portal.x, Stage3_Portal.y, 100, 100);
+	Portal_Check = false;	
+	//---------------------------------------------------------------------------------------
+
+	//Portal_Back
+	//---------------------------------------------------------------------------------------
+	Stage3_Portal_back = Lucifer_Game.add.sprite(689, 2346, 'Stage3_Portal_back');
+	Lucifer_Game.physics.p2.enable(Stage3_Portal_back);
+	Stage3_Portal_back.anchor.setTo(0.5, 0.5);
+	Stage3_Portal_back.body.clearShapes();
+	Stage3_Portal_back.body.debug = true;
+	Stage3_Portal_back.body.static = true;
+	Stage3_Portal_back.blendMode = Phaser.blendModes.ADD;
+
+	//Animation
+	Stage3_Portal_back.animations.add('Portal_Sprite', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+								 60, true);
+	Stage3_Portal_back.animations.play('Portal_Sprite', 10, true);
+
+	//Aracade Physics Setting
+	Lucifer_Game.physics.enable(Stage3_Portal_back, Phaser.Physics.ARCADE);
+
+	//Portal_Rect
+	Portal_Rect2 = new Phaser.Rectangle(Stage3_Portal_back.x, Stage3_Portal_back.y, 100, 100);
+	Portal_Check2 = false;	
+	//---------------------------------------------------------------------------------------
+	
+
 	Stage3_Map.setCollision(273, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Stage3_Map, "Collision Layer");
 }
+
+function portal_Check()
+{
+	if(Phaser.Rectangle.intersects(Portal_Rect, Hit_Rect))
+	{
+		Portal_Check = true;
+	}
+};
+
+function portal_Check2()
+{
+	if(Phaser.Rectangle.intersects(Portal_Rect2, Hit_Rect))
+	{
+		Portal_Check2 = true;
+	}
+};
+
