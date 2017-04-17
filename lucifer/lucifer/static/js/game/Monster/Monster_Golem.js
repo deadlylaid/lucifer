@@ -561,7 +561,7 @@ function golem_Update()
 		//Player Mosnter Collision
 		if(golem.Regen_Check == false)
 		{
-			player_Monster_Col(golem);	
+			player_Monster_Col(golem);				
 		}	
 
 		golem_Dead(golem);

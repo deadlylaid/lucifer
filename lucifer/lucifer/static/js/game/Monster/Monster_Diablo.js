@@ -984,7 +984,7 @@ function diablo_Update()
 	//Player Mosnter Collision
 	if(diablo.Regen_Check == false)
 	{
-		player_Monster_Col(diablo);	
+		player_Monster_Col(diablo);			
 	}		
 
 	diablo_Dead(diablo);

@@ -593,7 +593,7 @@ function andariel_Update()
 		//Player Mosnter Collision
 		if(andariel.Regen_Check == false)
 		{
-			player_Monster_Col(andariel);	
+			player_Monster_Col(andariel);			
 		}		
 
 		andariel_Dead(andariel);

@@ -610,7 +610,7 @@ function wraith_Update()
 		//Player Mosnter Collision
 		if(wraith.Regen_Check == false)
 		{
-			player_Monster_Col(wraith);	
+			player_Monster_Col(wraith);				
 		}		
 
 		wraith_Dead(wraith);

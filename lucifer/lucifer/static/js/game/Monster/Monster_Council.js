@@ -780,7 +780,7 @@ function council_Update()
 		//Player Mosnter Collision
 		if(council.Regen_Check == false)
 		{
-			player_Monster_Col(council);	
+			player_Monster_Col(council);			
 		}		
 
 		council_Dead(council);

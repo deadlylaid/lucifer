@@ -1,15 +1,16 @@
 // Bavarian Skill
 //***************************************************************************************
-var skill_Bavarian, skill_Bavarian_Two, skill_Bavarian_Three;
-var skill_Two_Rect, skill_Three_Rect, skill_intersects;
-var skill_One_CoolTime, skill_Two_CoolTime, skill_Three_CoolTime;
-var skill_One_Timer, skill_One_TimeTotal;
-var skill_Two_Timer, skill_Two_TimeTotal;
-var skill_Three_Timer, skill_Three_TimeTotal;
-var skill_One_Check = false, skill_Two_Check = false, skill_Three_Check = false;
-var skill_Three_Count = 0;
+var skill_Bavarian, skill_Bavarian_Two, skill_Bavarian_Three; 
+var skill_Bavarian_Four, skill_Bavarian_Four_Effect;
+var skill_Two_Rect, skill_Three_Rect, skill_FourEffect_Rect, skill_intersects;
+var skill_One_CoolTime, skill_Two_CoolTime, skill_Three_CoolTime, skill_Four_CoolTime;
+var skill_One_Timer, skill_One_TimeTotal, skill_Two_Timer, skill_Two_TimeTotal;
+var skill_Three_Timer, skill_Three_TimeTotal, skill_Four_Timer, skill_Four_TimeTotal;
+var skill_One_Check = false, skill_Two_Check = false, skill_Three_Check = false, skill_Four_Check = false;
+var skill_Four_EffectCheck = false;
+var skill_Three_Count = 0, skill_Four_Count = 0;
 //***************************************************************************************
-var skill_Icon_One, skill_Icon_Two, skill_Icon_Three;
+var skill_Icon_One, skill_Icon_Two, skill_Icon_Three, skill_Icon_Four;
 //---------------------------------------------------------------------------------------
 
 function skill_Preload()
@@ -20,6 +21,10 @@ function skill_Preload()
 								  '../../static/images/game/Skill/Bavarian/Bavarian_Skill2.png', 150, 100);
 	Lucifer_Game.load.spritesheet('SK_Bavarian_Skill3',
 								  '../../static/images/game/Skill/Bavarian/Bavarian_Skill3.png', 117, 98);
+	Lucifer_Game.load.spritesheet('SK_Bavarian_Skill4',
+								  '../../static/images/game/Skill/Bavarian/Bavarian_Skill4.png', 164, 144);
+	Lucifer_Game.load.spritesheet('SK_Bavarian_Skill4_Effect',
+								  '../../static/images/game/Skill/Bavarian/Bavarian_Skill4_Effect.png', 65, 71);
 
     //Skill Icon
     Lucifer_Game.load.spritesheet('SK_Icon_Skill',
@@ -28,12 +33,15 @@ function skill_Preload()
                                   '../../static/images/game/UI/SkillIcon/skill_Icon1.png', 31, 30);
     Lucifer_Game.load.spritesheet('SK_Icon_Skill3',
                                   '../../static/images/game/UI/SkillIcon/skill_Icon2.png', 31, 30);
+	Lucifer_Game.load.spritesheet('SK_Icon_Skill4',
+                                  '../../static/images/game/UI/SkillIcon/skill_Icon3.png', 31, 30);
 }
 
 function skill_Create()
 {
 	Lucifer_Game.renderer.setTexturePriority(['SK_Bavarian_Skill', 'SK_Bavarian_Skill2', 'SK_Bavarian_Skill3',
-										      'SK_Icon_Skill', 'SK_Icon_Skill2', 'SK_Icon_Skill3']);
+										      'SK_Bavarian_Skill4', 'SK_Icon_Skill', 'SK_Icon_Skill2', 
+										      'SK_Icon_Skill3', 'SK_Icon_Skill4']);
 	
 	//Skill - 1(버프)
 	skill_Bavarian = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill');
@@ -55,6 +63,18 @@ function skill_Create()
     skill_Bavarian_Three.visible = false;
     skill_Bavarian_Three.blendMode = Phaser.blendModes.ADD;
     skill_Three_CoolTime = 3000;
+
+    //Skill - 4(전기 공격)
+    skill_Bavarian_Four = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill4');
+    skill_Bavarian_Four.anchor.setTo(0.5, 0.5);
+    skill_Bavarian_Four.visible = false;
+    skill_Bavarian_Four.blendMode = Phaser.blendModes.ADD;
+    skill_Four_CoolTime = 3000;
+
+   	skill_Bavarian_Four_Effect = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill4_Effect');
+   	skill_Bavarian_Four_Effect.anchor.setTo(0.5, 0.5);
+   	skill_Bavarian_Four_Effect.visible = false;
+   	skill_Bavarian_Four_Effect.blendMode = Phaser.blendModes.ADD;
 
 	//Skill - 1 Animation
 	skill_Bavarian.animations.add('SK_Bavarian_Ani', 
@@ -82,6 +102,17 @@ function skill_Create()
 										], 60, true);
 	skill_Bavarian_Three.animations.play('SK_Bavarian_Ani3', 20, true);
 
+	//Skill - 4 Animation
+	skill_Bavarian_Four.animations.add('SK_Bavarian_Ani4',
+									    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 60, true);
+	skill_Bavarian_Four.animations.play('SK_Bavarian_Ani4', 20, true);
+
+	skill_Bavarian_Four_Effect.animations.add('SK_Bavarian_Effect4',
+											   [
+											   	 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+												 11, 12, 13, 14, 15, 16, 17, 18, 19
+											   ], 60, true);
+	skill_Bavarian_Four_Effect.animations.play('SK_Bavarian_Effect4', 20, true);
     //Skill Icon
     //Skill - 1 Icon
     skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x - 159, UI_UnderBar.y + 32, 'SK_Icon_Skill');
@@ -97,6 +128,11 @@ function skill_Create()
     skill_Icon_Three = Lucifer_Game.add.sprite(UI_UnderBar.x - 83, UI_UnderBar.y + 32, 'SK_Icon_Skill3');
     skill_Icon_Three.anchor.setTo(0.5, 0.5);
     skill_Icon_Three.fixedToCamera = true;
+
+    //Skill - 4 Icon
+    skill_Icon_Four = Lucifer_Game.add.sprite(UI_UnderBar.x - 45, UI_UnderBar.y + 32, 'SK_Icon_Skill4');
+    skill_Icon_Four.anchor.setTo(0.5, 0.5);
+    skill_Icon_Four.fixedToCamera = true;
     
 	//Skill Rect
 	//Skill - 2 Rect
@@ -106,14 +142,21 @@ function skill_Create()
 	//Skill - 3 Rect
 	skill_Three_Rect = new Phaser.Rectangle(skill_Bavarian_Three.x, skill_Bavarian_Three.y, 117, 98);
 
+	//Skill - 4 Rect
+	skill_FourEffect_Rect = new Phaser.Rectangle(skill_Bavarian_Four_Effect.x, skill_Bavarian_Four_Effect.y, 65, 71);
 
 	//Skill Timer
 	skill_One_Timer = Lucifer_Game.time.create(false);
 	skill_One_Timer.loop(1000, skill_One_CoolTimer, this);
+
 	skill_Two_Timer = Lucifer_Game.time.create(false);
 	skill_Two_Timer.loop(1000, skill_Two_CoolTimer, this);
+
 	skill_Three_Timer = Lucifer_Game.time.create(false);
 	skill_Three_Timer.loop(1000, skill_Three_CoolTimer, this);
+
+	skill_Four_Timer = Lucifer_Game.time.create(false);
+	skill_Four_Timer.loop(1000, skill_Four_CoolTimer, this);
 }
 
 function skill_One_CoolTimer()
@@ -131,6 +174,11 @@ function skill_Three_CoolTimer()
 	skill_Three_TimeTotal += 1000;
 }
 
+function skill_Four_CoolTimer()
+{
+	skill_Four_TimeTotal += 1000;
+}
+
 function skill_Three_Counting()
 {
 	if(skill_Bavarian_Three.frame == 7 && skill_Bavarian_Three.visible == true)
@@ -139,8 +187,28 @@ function skill_Three_Counting()
 	}
 }
 
+function skill_Four_Counting()
+{
+	if(skill_Four_EffectCheck == true)
+	{
+		++skill_Four_Count;
+
+		//Skill 4 set Position
+		/*
+		if(skill_Bavarian_Four_Effect.visible == true)
+		{
+			skill_Bavarian_Four_Effect.x = Monster_PositionX;
+			skill_Bavarian_Four_Effect.y = Monster_PositionY;		
+		}
+		*/		
+
+		console.log(skill_Four_Count);
+	}	
+}
+
 function skill_Reset()
 {
+	//Skill One
 	if(skill_Bavarian.frame == 19 && skill_Bavarian.visible == true)
 	{
 		skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
@@ -150,6 +218,7 @@ function skill_Reset()
 		Animation_Change(Direction, 'Stand');
 	}	
 
+	//Skill Two
 	if(skill_Bavarian_Two.frame == 14 && skill_Bavarian_Two.visible == true)
 	{
 		skill_Bavarian_Two.animations.stop('SK_Bavarian_Ani2', true);
@@ -165,9 +234,38 @@ function skill_Reset()
 		skill_Bavarian_Three.animations.stop('SK_Bavarian_Ani3', true);
 		skill_Bavarian_Three.visible = false;
 		skill_Bavarian_Three.frame = 0;
+		skill_Three_Count = 0;
 
 		Animation_Change(Direction, 'Stand');
 	}		
+
+	//Skill Four
+	if(skill_Bavarian_Four.frame == 9 && skill_Bavarian_Four.visible == true)
+	{
+		skill_Bavarian_Four.animations.stop('SK_Bavarian_Ani4', true);
+		skill_Bavarian_Four.visible = false;
+		skill_Bavarian_Four.frame = 0;		
+
+		Animation_Change(Direction, 'Stand');
+
+		//Effect Start
+		skill_Four_EffectCheck = true;		
+	}
+
+	//Skill Four Effect
+	if(skill_Four_EffectCheck == true && skill_Four_Count > 800)
+	{
+		skill_Bavarian_Four_Effect.animations.stop('SK_Bavarian_Effect4', true);
+		skill_Bavarian_Four_Effect.visible = false;
+		skill_Bavarian_Four_Effect.frame = 0;
+		skill_Four_Count = 0;
+
+		skill_Four_EffectCheck = false;		
+	}
+
+	console.log(skill_Bavarian_Four_Effect.visible);
+	console.log(skill_Bavarian_Four_Effect.x, skill_Bavarian_Four_Effect.y);
+	console.log(skill_Four_EffectCheck);
 }
 
 function skill_CoolTime()
@@ -216,17 +314,58 @@ function skill_CoolTime()
 		skill_Two_Check = false;		//두번째 스킬 coolTime 체크
 	}
 
-	//Skill Three Cool Time / 쿨타임 처리는 나중에.
-	/*
-	if(player_Ke)
+	//Skill Three Cool Time 
+	if(player_KeySkill3.isDown == true)
+	{
+		skill_Three_Timer.start();
+		
+		if(skill_Three_Check == false)
+		{
+			skill_Three_TimeTotal = 0;
+		}	
+	}
 
 	if(skill_Three_TimeTotal < skill_Three_CoolTime)
 	{
-		skill_Icon_Three.alpha = 1.0;
-
+		skill_Icon_Three.alpha = 0.5;
+		skill_Three_Check = true;
 	}
-	*/
-	//console.log(skill_One_TimeTotal, skill_Two_TimeTotal);
+	else if(skill_Three_TimeTotal > skill_Three_CoolTime)
+	{
+		skill_Icon_Three.alpha = 1.0;
+		skill_Three_Check = false;	
+	}	
+
+	//Skill Four Cool Time
+	if(player_KeySkill4.isDown == true)
+	{
+		skill_Four_Timer.start();
+
+		if(skill_Four_Check == false)
+		{
+			skill_Four_TimeTotal = 0;
+		}
+	}
+
+	if(skill_Four_TimeTotal < skill_Four_CoolTime)
+	{
+		skill_Icon_Four.alpha = 0.5;
+		skill_Four_Check = true;
+	}
+	else if(skill_Four_TimeTotal > skill_Four_CoolTime)
+	{
+		skill_Icon_Four.alpha = 1.0;
+		skill_Four_Check = false;
+	}
+}
+
+function skill4_Effect()
+{
+	if(skill_Four_EffectCheck == true)
+	{
+		skill_Bavarian_Four_Effect.visible = true;
+		skill_Bavarian_Four_Effect.animations.play('SK_Bavarian_Effect4', 20, true);								
+	}	
 }
 
 function skill_Update()
@@ -240,6 +379,9 @@ function skill_Update()
 	skill_Bavarian_Three.x = Player.x;
 	skill_Bavarian_Three.y = Player.y;
 
+	skill_Bavarian_Four.x = Player.x;
+	skill_Bavarian_Four.y = Player.y;
+
 	//Rect
 	skill_Two_Rect.x = skill_Bavarian_Two.x;
 	skill_Two_Rect.y = skill_Bavarian_Two.y; 
@@ -249,17 +391,22 @@ function skill_Update()
 	skill_Three_Rect.y = skill_Bavarian_Three.y;
 	skill_Three_Rect.centerOn(skill_Bavarian_Three.x, skill_Bavarian_Three.y);
 
+	skill_FourEffect_Rect.x = skill_Bavarian_Four_Effect.x;
+	skill_FourEffect_Rect.y = skill_Bavarian_Four_Effect.y;
+	skill_FourEffect_Rect.centerOn(skill_Bavarian_Four_Effect.x, skill_Bavarian_Four_Effect.y);
+
 	//Skill Count
 	skill_Three_Counting();
+	skill_Four_Counting();	
+
+	//Skill Effect
+	skill4_Effect();
 
 	//Reset
 	skill_Reset();
 
 	//Cool Time
-	skill_CoolTime();
-
-	//Debug
-	//skill_intersects = Phaser.Rectangle.intersection(skill_Two_Rect, golem_HitRect);
+	skill_CoolTime();	
 }
 
 function skill_Debug_Render()

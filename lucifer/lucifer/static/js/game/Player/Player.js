@@ -1,15 +1,15 @@
 var Player, Player_ID;
-var Player_Status = new Array('Stand', 'Walk', 'Attack', 'Damage', 'Dash', 'Jump', 'Skill');
+var Player_Status = new Array('Stand', 'Walk', 'Attack', 'Damage', 'Dash', 'Whirlwind', 'Skill');
 var MoveCheck = false;								//Mouse가 클릭 됬는지 체크 하는 변수
 var StandCheck = false;								//Stand 상태 한번만 들어오게 하기 위해서.
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들	
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 var DistanceToMonster;								//Monster에 대한 거리값 변수.
-var Attack_Rect, Hit_Rect;
+var Attack_Rect, Hit_Rect, Whirlwind_Rect;
 var Player_AttackCheck = false; 
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
-var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3;
+var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4;
 //----------------------------------------------------------------------------------------------------------
 //var isoCam = Lucifer_Game.world.camera.view;
 //var viewport = { left: isoCam.x, right: isoCam.x + 1280, top: isoCam.y, bottom: isoCam.y + 800 };
@@ -64,20 +64,7 @@ function player_Create()
 							  ], 
 							  60, true);
 		aniIndex += 16;								
-	}
-	//Jump
-	j = 0;
-	for(var i = 0; i < 8; ++i)
-	{
-		Player.animations.add('PY_Bavarian_Jump_' + i,
-							  [
-							  	j,      j + 1,  j + 2,  j + 3, j + 4,  j + 5,
-							  	j + 6,  j + 7,  j + 8,  j + 9, j + 10, j + 11,
-							  	j + 12, j + 13, j + 14
-							  ],
-							  60, true);
-	    j += 15;
-	}
+	}	
 	//Dash
 	j = 0;
 	for(var i = 0; i < 8; ++i)
@@ -101,6 +88,8 @@ function player_Create()
 
 		j += 14;
 	}
+	//Whirlwind
+	Player.animations.add('PY_Bavarian_Whirlwind', [ 0, 1, 2, 3, 4, 5, 6, 7 ], 60, true);
 	//----------------------------------------------------------------------------------------------------------
 
 	//Player Seting
@@ -121,7 +110,7 @@ function player_Create()
 
 	//Rect
 	Attack_Rect = new Phaser.Rectangle(Player.x, Player.y, 80, 80);	
-	Hit_Rect = new Phaser.Rectangle(Player.x, Player.y, 60, 60);
+	Hit_Rect = new Phaser.Rectangle(Player.x, Player.y, 60, 60);	
 
 	//ID(닉네임)
 	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, nickname); //Test 부분에 Player Id 가 들어가면 됨.
@@ -145,6 +134,10 @@ function player_Create()
 	player_KeySkill3 = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.THREE);
 	player_KeySkill3.onDown.add(PlayerSkill3, Lucifer_Game);
 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.THREE);	
+
+	player_KeySkill4 = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
+	player_KeySkill4.onDown.add(PlayerSkill4, Lucifer_Game);
+	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.FOUR);
 	//----------------------------------------------------------------------------------------------------------
 	//Player Sort
 	//----------------------------------------------------------------------------------------------------------
@@ -253,15 +246,15 @@ function Animation_Change(Direction, Status)
 	}
 	else if(Status == Player_Status[4])
 	{
-		//Dash	
+		//Dash
 		Player.loadTexture('PY_Bavarian_Dash', 0, true);
 		Player.animations.play('PY_Bavarian_Dash_' + Direction, 20, true);	
 	}
 	else if(Status == Player_Status[5])
 	{
-		//Jump
-		Player.loadTexture('PY_Bavarian_Jump', 0, true);
-		Player.animations.play('PY_Bavarian_Jump_' + Direction, 10, true);
+		//Whirlwind
+		Player.loadTexture('PY_Bavarian_Whirlwind', 0, true);
+		Player.animations.play('PY_Bavarian_Whirlwind', 10, true);
 	}
 	else if(Status == Player_Status[6])
 	{
@@ -286,7 +279,10 @@ function PlayerMove()
 			//Walk / Dash Animation Change
 			if(Lucifer_Game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
 			{
-				Animation_Change(Direction, 'Dash');				
+				if(skill_Bavarian_Three.visible == false)
+				{
+					Animation_Change(Direction, 'Dash');	
+				}								
 
 				Lucifer_Game.physics.arcade.moveToPointer(Player, 250);
 				Lucifer_Game.camera.x = Player.x + 250;
@@ -294,7 +290,10 @@ function PlayerMove()
 			}			
 			else
 			{
-				Animation_Change(Direction, 'Walk');	
+				if(skill_Bavarian_Three.visible == false)
+				{
+					Animation_Change(Direction, 'Walk');
+				}					
 
 				Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
 				Lucifer_Game.camera.x = Player.x + 150;
@@ -376,7 +375,21 @@ function PlayerSkill3()
 		if(skill_Bavarian_Three.visible == true)
 		{
 			skill_Bavarian_Three.animations.play('SK_Bavarian_Ani3', 20, true);
-			Animation_Change(Direction, 'Skill');	//동작은 찾아봐야됨
+			Animation_Change(Direction, 'Whirlwind');	
+		}
+	}
+}
+
+function PlayerSkill4()
+{
+	if(skill_Four_Check == false)
+	{
+		skill_Bavarian_Four.visible = true;					
+
+		if(skill_Bavarian_Four.visible == true)
+		{
+			skill_Bavarian_Four.animations.play('SK_Bavarian_Ani4', 20, true);
+			Animation_Change(Direction, 'Skill');
 		}
 	}
 }
