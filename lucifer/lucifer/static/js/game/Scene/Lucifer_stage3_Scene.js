@@ -55,15 +55,6 @@ var stage3_Scene =
 		skill_Update();
 
 		//Portal
-		portal_Check();
-
-		if(Portal_Check == true)
-		{
-			sound_StopStage1BGM();
-			this.goto_Stage1();
-			Portal_Check = false;
-		}
-
 		portal_Check2();
 		
 		if (Portal_Check2 == true)
@@ -84,16 +75,6 @@ var stage3_Scene =
 		}		
 	},
 	
-	goto_Stage1: function()
-	{	
-		stageThree_Check = false;
-
-		BackStageMove = 0;
-		//Sound
-		sound_StopStage2BGM();
-
-		Lucifer_Game.state.start('load');
-	},
 
 	goto_Stage_back: function()
 	{	
