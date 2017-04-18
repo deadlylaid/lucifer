@@ -2,7 +2,6 @@ var Stage3_Map, Stage3, Stage3_ObjLayer;	//Stage 이미지 변수
 var Stage3_ObjectGroup;						//Stage2 - Object 관련 변수.
 var stage3_Collision_Layer;
 var Stage3_ObjectPool = [];
-var Stage3_Portal, Portal_Rect, Portal_Check;
 var Stage3_Portal_back, Portal_Rect2, Portal_Check2;
 var BackStageMove=1;
 
@@ -179,27 +178,6 @@ function stageThree_Create()
 	//---------------------------------------------------------------------------------------
 
 	//Portal
-	//---------------------------------------------------------------------------------------
-	Stage3_Portal = Lucifer_Game.add.sprite(2958, 846, 'Stage3_Portal');
-	Lucifer_Game.physics.p2.enable(Stage3_Portal);
-	Stage3_Portal.anchor.setTo(0.5, 0.5);
-	Stage3_Portal.body.clearShapes();
-	Stage3_Portal.body.debug = true;
-	Stage3_Portal.body.static = true;
-	Stage3_Portal.blendMode = Phaser.blendModes.ADD;
-
-	//Animation
-	Stage3_Portal.animations.add('Portal_Sprite', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-								 60, true);
-	Stage3_Portal.animations.play('Portal_Sprite', 10, true);
-
-	//Aracade Physics Setting
-	Lucifer_Game.physics.enable(Stage3_Portal, Phaser.Physics.ARCADE);
-
-	//Portal_Rect
-	Portal_Rect = new Phaser.Rectangle(Stage3_Portal.x, Stage3_Portal.y, 100, 100);
-	Portal_Check = false;	
-	//---------------------------------------------------------------------------------------
 
 	//Portal_Back
 	//---------------------------------------------------------------------------------------
@@ -228,14 +206,6 @@ function stageThree_Create()
 	Stage3_Map.setCollision(273, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Stage3_Map, "Collision Layer");
 }
-
-function portal_Check()
-{
-	if(Phaser.Rectangle.intersects(Portal_Rect, Hit_Rect))
-	{
-		Portal_Check = true;
-	}
-};
 
 function portal_Check2()
 {
