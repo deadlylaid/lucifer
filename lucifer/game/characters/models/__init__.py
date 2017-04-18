@@ -4,3 +4,4 @@ from .learnedskill import LearnedSkill
 from .inventory import Inventory
 from .quickslot import QuickSlot
 from .equipment import Equipment
+from .characterquest import CharacterQuest
