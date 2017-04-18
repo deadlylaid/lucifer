@@ -35,10 +35,12 @@ function player_Monster_Col(Object)
 
 					skill_Four_EffectCheck = false;
 				}
+				//----------------------------------------------------------------------------
 
+				//Player Attack Damage(Attack Motion)
+				//----------------------------------------------------------------------------
 				if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
 				{
-					//Player Attack Motion Damage
 					var CurFrame = Player.animations.frame;
 					var EndFrame = 0;
 
@@ -54,14 +56,17 @@ function player_Monster_Col(Object)
 					if(CurFrame < EndFrame)
 					{
 						Damage_Count(Object);	
-					}
-					console.log(CurFrame, EndFrame);	
+					}					
 				}
 				//----------------------------------------------------------------------------		
 			}			
 
+			//Skill Damage
 			skill_Attack(Object);				
-		}											
+		}	
+
+		Player.body.velocity.x = 0;
+		Player.body.velocity.y = 0;										
 	}	
 }
 

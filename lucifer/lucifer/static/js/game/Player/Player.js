@@ -461,8 +461,7 @@ function player_Update()
 			PlayerMove();
 			PlayerAttack();
    	 	}
-	}
-	
+	}	
 	
 	//Rect
 	Attack_Rect.x = Player.x;
