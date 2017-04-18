@@ -437,10 +437,11 @@ function useItem(){
             if(equipmentList[0]!==undefined){
                 equipmentList[0].destroy();
                 equipmentList[0].text.destroy();
-                var previousItem = equipmentList.splice(0, 1);
+
+                var previousItem = equipmentList[0].name;
                 var inventoryLength = inventory.length;
 
-                switch(previousItem[0].name){
+                switch(previousItem){
                     case '기본검':
                         var inserted_item = basicSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
                         inserted_item.numberInArray = inventory.length;
@@ -449,18 +450,18 @@ function useItem(){
                 }
 
             }
-            equipmentList[0] = (createEquipmentAndSetPosition(selectedItem.name));
+            equipmentList[0] = createEquipmentAndSetPosition(selectedItem.name);
             equipmentPost(equipmentList[0].name, equipmentList[0].type_is);
 
         }else if(selectedItem.type_is==='armor'){
             if(equipmentList[1]!==undefined){
                 equipmentList[1].destroy();
                 equipmentList[1].text.destroy();
-                var previousItem = equipmentList.splice(1, 1);
+                var previousItem = equipmentList[1].name;
 
                 var inventoryLength = inventory.length;
 
-                switch(previousItem[0].name){
+                switch(previousItem){
                     case '기본갑옷':
                         var inserted_item = basicArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
                         inserted_item.numberInArray = inventory.length;
@@ -468,7 +469,8 @@ function useItem(){
                         inserted_item.getVisible(true);
                 }
             }
-            equipmentList[1] = (createEquipmentAndSetPosition(selectedItem.name));
+            equipmentList[1] = createEquipmentAndSetPosition(selectedItem.name);
+            equipmentPost(equipmentList[1].name, equipmentList[1].type_is);
         }
 
         //selectedItem 값 초기화 
@@ -483,12 +485,12 @@ function createEquipmentAndSetPosition(itemName){
         case '기본검':
             item = basicSwordClone(397, 150);
             item.text.setText('');
-            item.getVisible(true);
+            item.getVisible(false);
             break;
         case '기본갑옷':
             item = basicArmorClone(493, 150);
             item.text.setText('');
-            item.getVisible(true);
+            item.getVisible(false);
             break;
     }
     return item;
