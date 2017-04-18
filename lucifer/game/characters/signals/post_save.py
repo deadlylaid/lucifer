@@ -2,8 +2,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from users.models import User
-from game.characters.models import Character, Status, Inventory
+from game.characters.models import Character, Status, Inventory, CharacterQuest
 from game.items.models import Item
+from game.quests.models import Quest
 
 
 @receiver(post_save, sender=Character)
@@ -73,3 +74,9 @@ def character_post_save(sender, instance, created, **kwargs):
                 character=instance,
                 item=item,
                 )
+
+        for quest in Quest.objects.all():
+            CharacterQuest.objects.create(
+                    character=instance,
+                    quest=quest,
+                    )

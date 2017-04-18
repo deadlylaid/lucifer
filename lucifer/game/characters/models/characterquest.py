@@ -28,3 +28,6 @@ class CharacterQuest(models.Model):
     is_completed = models.BooleanField(
             default=False,
             )
+
+    def __str__(self):
+        return "%s 의 퀘스트 '%s'" % (self.character.nickname, self.quest)
