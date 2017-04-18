@@ -116,7 +116,7 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.body.fixedRotation = true;
 	diablo_Object.body.clearShapes();
 	diablo_Object.body.addRectangle(80, 120, 0, 0);
-	diablo_Object.body.debug = true;
+	diablo_Object.body.debug = false;
 	diablo_Object.body.restitution = 0;
 
 	//Animaion

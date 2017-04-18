@@ -86,7 +86,7 @@ function deamon_Clone(PointX, PointY)
 	deamon_Object.body.fixedRotation = true;
 	deamon_Object.body.clearShapes();
 	deamon_Object.body.addRectangle(60, 60, 0, 0);
-	deamon_Object.body.debug = true;	
+	deamon_Object.body.debug = false;	
 	deamon_Object.body.restitution = 0;
 
 	//Animation

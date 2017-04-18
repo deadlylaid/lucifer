@@ -84,7 +84,7 @@ function wraith_Clone(PointX, PointY)
 	wraith_Object.body.fixedRotation = true;
 	wraith_Object.body.clearShapes();
 	wraith_Object.body.addRectangle(60, 60, 0, 0);
-	wraith_Object.body.debug = true;
+	wraith_Object.body.debug = false;
 	wraith_Object.body.restitution = 0;
 	wraith_Object.blendMode = Phaser.blendModes.ADD;
 

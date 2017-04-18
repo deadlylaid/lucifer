@@ -78,7 +78,7 @@ function andariel_Clone(PointX, PointY)
 	andariel_Object.body.fixedRotation = true;
 	andariel_Object.body.clearShapes();
 	andariel_Object.body.addRectangle(80, 80, 0, 0);
-	andariel_Object.body.debug = true;
+	andariel_Object.body.debug = false;
 	andariel_Object.body.restitution = 0;
 
 	//Animaion

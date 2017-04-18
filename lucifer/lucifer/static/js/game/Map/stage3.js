@@ -91,6 +91,7 @@ function stageThree_Create()
 	Stage3 = Stage3_Map.createLayer('Tile Layer 1');
 	Stage3_ObjLayer = Stage3_Map.createLayer('Object Layer');
 	stage3_Collision_Layer = Stage3_Map.createLayer('Collision Layer');
+	stage3_Collision_Layer.visible = false;
 
 	Stage3.resizeWorld();
 	//---------------------------------------------------------------------------------------
@@ -166,7 +167,7 @@ function stageThree_Create()
 			{	
 				Stage3_ObjectGroup.getChildAt(a).body.clearShapes();
 				Stage3_ObjectGroup.getChildAt(a).body.loadPolygon('Physics_polygon4', PolygonArray3[i]);
-				Stage3_ObjectGroup.getChildAt(a).body.debug = true;
+				Stage3_ObjectGroup.getChildAt(a).body.debug = false;
 			}
 			else
 			{
