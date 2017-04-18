@@ -37,15 +37,15 @@ function skill_Preload()
 
     //Skill Icon
     Lucifer_Game.load.spritesheet('SK_Icon_Skill',
-                                  '../../static/images/game/UI/SkillIcon/skill_Icon0.png', 31, 30);
+                                  '../../static/images/game/UI/SkillIcon/skill_Icon0.png', 33, 33);
     Lucifer_Game.load.spritesheet('SK_Icon_Skill2',
-                                  '../../static/images/game/UI/SkillIcon/skill_Icon1.png', 31, 30);
+                                  '../../static/images/game/UI/SkillIcon/skill_Icon1.png', 33, 33);
     Lucifer_Game.load.spritesheet('SK_Icon_Skill3',
-                                  '../../static/images/game/UI/SkillIcon/skill_Icon2.png', 31, 30);
+                                  '../../static/images/game/UI/SkillIcon/skill_Icon2.png', 33, 33);
 	Lucifer_Game.load.spritesheet('SK_Icon_Skill4',
-                                  '../../static/images/game/UI/SkillIcon/skill_Icon3.png', 31, 30);
+                                  '../../static/images/game/UI/SkillIcon/skill_Icon3.png', 33, 33);
 	Lucifer_Game.load.spritesheet('SK_Icon_Skill5',
-                                  '../../static/images/game/UI/SkillIcon/skill_Icon4.png', 31, 30);
+                                  '../../static/images/game/UI/SkillIcon/skill_Icon4.png', 33, 33);
 }
 
 function skill_Create()
@@ -146,27 +146,27 @@ function skill_Create()
 
     //Skill Icon
     //Skill - 1 Icon
-    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x - 159, UI_UnderBar.y + 32, 'SK_Icon_Skill');
+    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x - 170, UI_UnderBar.y + 44, 'SK_Icon_Skill');
     skill_Icon_One.anchor.setTo(0.5, 0.5);  
     skill_Icon_One.fixedToCamera = true;     
 
     //Skill - 2 Icon
-    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x - 121, UI_UnderBar.y + 32, 'SK_Icon_Skill2');
+    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x - 130, UI_UnderBar.y + 44, 'SK_Icon_Skill2');
     skill_Icon_Two.anchor.setTo(0.5, 0.5); 
     skill_Icon_Two.fixedToCamera = true;    
 
     //Skill - 3 Icon
-    skill_Icon_Three = Lucifer_Game.add.sprite(UI_UnderBar.x - 83, UI_UnderBar.y + 32, 'SK_Icon_Skill3');
+    skill_Icon_Three = Lucifer_Game.add.sprite(UI_UnderBar.x - 90, UI_UnderBar.y + 44, 'SK_Icon_Skill3');
     skill_Icon_Three.anchor.setTo(0.5, 0.5);
     skill_Icon_Three.fixedToCamera = true;
 
     //Skill - 4 Icon
-    skill_Icon_Four = Lucifer_Game.add.sprite(UI_UnderBar.x - 45, UI_UnderBar.y + 32, 'SK_Icon_Skill4');
+    skill_Icon_Four = Lucifer_Game.add.sprite(UI_UnderBar.x - 50, UI_UnderBar.y + 44, 'SK_Icon_Skill4');
     skill_Icon_Four.anchor.setTo(0.5, 0.5);
     skill_Icon_Four.fixedToCamera = true;
 
     //Skill - 5 Icon
-    skill_Icon_Five = Lucifer_Game.add.sprite(UI_UnderBar.x - 7, UI_UnderBar.y + 32, 'SK_Icon_Skill5');
+    skill_Icon_Five = Lucifer_Game.add.sprite(UI_UnderBar.x - 10, UI_UnderBar.y + 44, 'SK_Icon_Skill5');
     skill_Icon_Five.anchor.setTo(0.5, 0.5);
     skill_Icon_Five.fixedToCamera = true;
     

@@ -11,9 +11,9 @@ var key_Stat, Key_Skill, ui_Delay_Time;
 function ui_Preload()
 {
 	//UI
-	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 752, 123);
-	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/UI_HpBar.png', 85, 87);
-	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 85, 87);
+	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 800, 150);
+	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/UI_HpBar.png', 92, 92);
+	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 92, 92);
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status.png', 300, 500);
     Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 256);
 }
@@ -23,11 +23,11 @@ function ui_Create()
     //Uesr Interface
 	//---------------------------------------------------------------------------------------
 	//UI_Group = Lucifer_Game.add.group();
-	UI_HpBar = Lucifer_Game.add.sprite(417, 735, 'UI_HpBar');
+	UI_HpBar = Lucifer_Game.add.sprite(403, 745, 'UI_HpBar');
 	UI_HpBar.anchor.setTo(0.5, 0.5);
 	UI_HpBar.fixedToCamera = true;
 
-	UI_MpBar = Lucifer_Game.add.sprite(878, 735, 'UI_MpBar');
+	UI_MpBar = Lucifer_Game.add.sprite(895, 745, 'UI_MpBar');
 	UI_MpBar.anchor.setTo(0.5, 0.5);
 	UI_MpBar.fixedToCamera = true;	
 
@@ -56,7 +56,7 @@ function ui_Create()
     hpRate = hpBarMaskRate(healthPercentage);
     //-------------------------------------------------
     
-    hpMask.drawRect(-66, hpRate, 85, 87);
+    hpMask.drawRect(-66, hpRate, 92, 92);
 
     UI_HpBar.mask = hpMask;
 
