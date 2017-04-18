@@ -307,9 +307,18 @@ function PlayerMove()
 					Animation_Change(Direction, 'Dash');	
 				}								
 
-				Lucifer_Game.physics.arcade.moveToPointer(Player, 250);
-				Lucifer_Game.camera.x = Player.x + 250;
-				Lucifer_Game.camera.y = Player.y + 250;
+				/*if(stageTwo_Check == true)
+				{
+					Lucifer_Game.physics.arcade.moveToPointer(Player, 250);
+					Lucifer_Game.camera.x = Player.x + 250;
+					Lucifer_Game.camera.y = Player.y + 250;
+				}
+				else
+				{*/
+					Lucifer_Game.physics.arcade.moveToPointer(Player, 250);
+					Lucifer_Game.camera.x = Player.x + 250;
+					Lucifer_Game.camera.y = Player.y + 250;
+				//}				
 			}			
 			else
 			{
@@ -318,9 +327,18 @@ function PlayerMove()
 					Animation_Change(Direction, 'Walk');
 				}					
 
-				Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
-				Lucifer_Game.camera.x = Player.x + 150;
-				Lucifer_Game.camera.y = Player.y + 150;	
+				/*if(stageTwo_Check == true)
+				{
+					Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
+					Lucifer_Game.camera.x = Player.x + 150;
+					Lucifer_Game.camera.y = Player.y + 150;	
+				}
+				else
+				{*/
+					Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
+					Lucifer_Game.camera.x = Player.x + 150;
+					Lucifer_Game.camera.y = Player.y + 150;	
+				//}				
 			}				
 		}			
 

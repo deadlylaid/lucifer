@@ -29,7 +29,6 @@ function player_Monster_Col(Object)
 				{
 					skill_Bavarian_Four_Effect.visible = false;
 					skill_Bavarian_Four_Effect.animations.stop('SK_Bavarian_Effect4', true);
-					skill_Bavarian_Four_Effect.visible = false;
 					skill_Bavarian_Four_Effect.frame = 0;
 					skill_Four_Count = 0;
 
@@ -57,6 +56,10 @@ function player_Monster_Col(Object)
 					{
 						Damage_Count(Object);	
 					}					
+
+					//Player Move Control
+					Player.body.velocity.x = 0;
+					Player.body.velocity.y = 0;	
 				}
 				//----------------------------------------------------------------------------		
 			}			
@@ -64,9 +67,6 @@ function player_Monster_Col(Object)
 			//Skill Damage
 			skill_Attack(Object);				
 		}	
-
-		Player.body.velocity.x = 0;
-		Player.body.velocity.y = 0;										
 	}	
 }
 

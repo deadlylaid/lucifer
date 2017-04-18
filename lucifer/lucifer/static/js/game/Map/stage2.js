@@ -498,7 +498,7 @@ function stageTwo_Create()
 			{	
 				Stage2_ObjectGroup.getChildAt(a).body.clearShapes();
 				Stage2_ObjectGroup.getChildAt(a).body.loadPolygon('Physics_polygon3', PolygonArray2[i]);
-				Stage2_ObjectGroup.getChildAt(a).body.debug = true;
+				Stage2_ObjectGroup.getChildAt(a).body.debug = false;
 			}
 			else
 			{

@@ -88,7 +88,7 @@ var stage2_Scene =
 	render: function()
 	{
 		//Player Render
-		player_Render();
+		//player_Render();
 
 		//Monster Render(Golem)
 		//golem_Debug_Render();
