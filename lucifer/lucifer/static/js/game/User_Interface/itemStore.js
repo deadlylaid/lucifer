@@ -432,7 +432,7 @@ function useItem(){
 
         
         if(selectedItem.type_is==='potion'){
-
+            inventoryDelete(selectedItem.name);
         }else if(selectedItem.type_is==='weapon'){
             if(equipmentList[0]!==undefined){
                 equipmentList[0].destroy();
