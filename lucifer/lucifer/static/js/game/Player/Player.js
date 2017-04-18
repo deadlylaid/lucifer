@@ -48,9 +48,10 @@ function player_Create()
 				Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
 				BackStageMove = 1;
 			}
-	}
-	 	
-	//Player = Stage2_ObjectGroup.create(3582, 1466, 'PY_Bavarian_Attack');
+	}	
+
+	//Player Dead / Revive Effect
+	player_Effect_Create();
 
 	//Player_Bavarian Animation
 	//----------------------------------------------------------------------------------------------------------
@@ -466,9 +467,14 @@ function player_Update()
 		{
 
 		}else{
-			PlayerMove();
-			PlayerAttack();
+			if(Player_Regen_Check == false)
+			{
+				PlayerMove();
+				PlayerAttack();
+			}						
    	 	}
+
+   	 	player_Effect_Update();
 	}
 	else if(stageTwo_Check == true || stageThree_Check == true)
 	{
@@ -476,9 +482,14 @@ function player_Update()
 		{
 
 		}else{
-			PlayerMove();
-			PlayerAttack();
+			if(Player_Regen_Check == false)
+			{
+				PlayerMove();
+				PlayerAttack();
+			}		
    	 	}
+
+   	 	player_Effect_Update();
 	}	
 	
 	//Rect
