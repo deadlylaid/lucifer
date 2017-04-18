@@ -91,7 +91,7 @@ function fallen_Shaman_Clone(PointX, PointY)
 	fallenShaman_Object.body.fixedRotation = true;
 	fallenShaman_Object.body.clearShapes();
 	fallenShaman_Object.body.addRectangle(40, 60, 0, 0);
-	fallenShaman_Object.body.debug = true;
+	fallenShaman_Object.body.debug = false;
 	fallenShaman_Object.body.restitution = 0;
 
 	//Animation

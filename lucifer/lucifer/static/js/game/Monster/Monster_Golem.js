@@ -1,7 +1,6 @@
 // 골렘 기본 변수들 
 //------------------------------------------------------------------------------
 var golem_Group, golem_Object;
-var Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
 
 //골렘 Create 함수 재정의
 Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
@@ -11,7 +10,7 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
 	//Status
-	this.Status = new Array('Stand', 'Walk', 'Attack', 'Damage');
+	this.Status = new Array('Stand', 'Walk', 'Attack', 'Dead');
 	
 	//Position
 	this.PointX = x, this.PointY = y, this.ReturnPointX = x, this.ReturnPointY = y;
@@ -55,7 +54,10 @@ function golem_Preload()
 								   220, 210);
 	Lucifer_Game.load.spritesheet('MON_Golem_Attack',
 								  '../../static/images/game/Monster/Golem/attack/attack.png',
-								   220, 210);	
+								   220, 210);
+	Lucifer_Game.load.spritesheet('MON_Golem_Dead',
+								  '../../static/images/game/Monster/Golem/dead/dead.png',
+								   214, 133);							   	
     Lucifer_Game.load.spritesheet('monsterHealthBar', 
                                   '../../static/images/game/Monster/monsterHealthBar.png',
                                    228, 48);	
@@ -63,7 +65,7 @@ function golem_Preload()
 
 function golem_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_Golem_Stand', 'MON_Golem_Walk', 'MON_Golem_Attack', 'monsterHealthBar']);
+	Lucifer_Game.renderer.setTexturePriority(['MON_Golem_Stand', 'MON_Golem_Walk', 'MON_Golem_Attack', 'MON_Golem_Dead', 'monsterHealthBar']);
 
 	//골렘 그룹 생성 
 	//(그룹 부모 : null / 그룹 이름 : golem / Stage 등록 : false, body, Physics 등록 : true)
@@ -79,7 +81,7 @@ function golem_Clone(PointX, PointY)
 	golem_Object.body.fixedRotation = true;
 	golem_Object.body.clearShapes();
 	golem_Object.body.addRectangle(40, 60, 0, 0);
-	golem_Object.body.debug = true;
+	golem_Object.body.debug = false;
 	golem_Object.body.restitution = 0;	
 	
 	//Animation
@@ -110,9 +112,18 @@ function golem_Clone(PointX, PointY)
 		index += 16;
 	}
 
+	//Dead
+	golem_Object.animations.add('MON_Golem_Dead',
+								[
+								   0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+								   11, 12, 13, 14, 15, 16, 17, 18, 19,
+								   20, 21, 22, 23, 24, 25
+								], 60, true);
+
 	golem_Object.loadTexture('MON_Golem_Stand', 0, true);
 	golem_Object.animations.play('MON_Golem_Stand_0', 10, true);
 	golem_Object.anchor.setTo(0.5, 0.5);
+	golem_Object.blendMode = Phaser.blendModes.ADD;
 	
 	Lucifer_Game.physics.enable(golem_Object, Phaser.Physics.ARCADE);
 	Lucifer_Game.add.existing(golem_Object);
@@ -350,7 +361,7 @@ function golem_Animation_Change(Direction, Status, Object)
 		//Attack
 		Object.loadTexture('MON_Golem_Attack', 0, true);
 		Object.animations.play('MON_Golem_Attack_' + Direction, 10, true);
-	}
+	}	
 }
 //-------------------------------------------------------------------------------------------
 
@@ -474,13 +485,30 @@ function golem_Dead(Object)
 {
 	if(Object.Hp < 0)
 	{
-		Object.DeadCheck = true;
-		Object.kill();
-		Object.Name.visible = false;
-
-		//Collision false
-		Object.body.static = true;
+		Object.DeadCheck = true;		
 	}	
+
+	if(Object.DeadCheck == true)
+	{
+		if(Object.DeadMotionCheck == false)
+		{
+			Object.loadTexture('MON_Golem_Dead', 0, true);
+			Object.animations.play('MON_Golem_Dead', 10, true);
+			Object.DeadMotionCheck = true;
+
+			//Collision false
+			Object.body.static = true;
+		}
+
+		var CurFrame = Object.animations.frame;
+		var EndFrame = 25;
+
+		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
+		{
+			Object.kill();
+			Object.Name.visible = false;
+		}
+	}
 }
 
 function golem_Regen(Object)

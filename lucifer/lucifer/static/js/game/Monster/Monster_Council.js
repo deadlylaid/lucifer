@@ -100,7 +100,7 @@ function council_Clone(PointX, PointY)
 	council_Object.body.fixedRotation = true;
 	council_Object.body.clearShapes();
 	council_Object.body.addRectangle(60, 60, 0, 0);
-	council_Object.body.debug = true;	
+	council_Object.body.debug = false;	
 	council_Object.body.restitution = 0;
 
 	//Animation

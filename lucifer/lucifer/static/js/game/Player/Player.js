@@ -124,7 +124,7 @@ function player_Create()
 	Player.body.fixedRotation = true;
 	Player.body.clearShapes();				   //Remove default Collision Box
 	Player.body.addRectangle(40, 60, 0, 0);    //Only the lower part of the player Collides
-	Player.body.debug = true;				   //Player Rect 표시	
+	Player.body.debug = false;				   //Player Rect 표시	
 	Player.body.restitution = 0;
 
 	//Rect
