@@ -469,7 +469,7 @@ function countess_Attack(Object)
 	{
 		if(Phaser.Rectangle.intersects(Object.AttackRect, Hit_Rect))
 		{
-			Object.Attack_DelayTimer.start();
+			Object.Attack_DelayTimer.start();	
 
 			if(Object.AttackCheck == false)
 			{
@@ -509,6 +509,9 @@ function countess_Dead(Object)
 			Object.loadTexture('MON_Countess_Dead', 0, true);
 			Object.animations.play('MON_Countess_Dead_' + Object.Direction, 10, true);
 			Object.DeadMotionCheck = true;
+
+			//Collision false
+			Object.body.static = true;
 		}
 		
 		var CurFrame = Object.animations.frame;
@@ -573,6 +576,7 @@ function countess_Regen(Object)
 		{
 			Object.revive();
 			Object.Name.visible = true;
+			Object.body.static = false;		//Collision true
 
 			Object.Regen_Check = false;
 			

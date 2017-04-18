@@ -501,6 +501,9 @@ function andariel_Dead(Object)
 			Object.loadTexture('MON_Andariel_Dead', 0, true);
 			Object.animations.play('MON_Andariel_Dead_0', 10, true);
 			Object.DeadMotionCheck = true;
+
+			//Collision false
+			Object.body.static = true;
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -554,6 +557,7 @@ function andariel_Regen(Object)
 		{
 			Object.revive();
 			Object.Name.visible = true;
+			Object.body.static = false;
 
 			Object.Regen_Check = false;
 

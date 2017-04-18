@@ -522,6 +522,9 @@ function deamon_Dead(Object)
 			Object.loadTexture('MON_Deamon_Dead', 0, true);
 			Object.animations.play('MON_Deamon_Dead_' + Object.Direction, 10, true);
 			Object.DeadMotionCheck = true;
+
+			//Collision false
+			Object.body.static = true;
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -555,6 +558,7 @@ function deamon_Regen(Object)
 		{
 			Object.revive();
 			Object.Name.visible = true;
+			Object.body.static = false;
 
 			Object.Regen_Check = false;
 			

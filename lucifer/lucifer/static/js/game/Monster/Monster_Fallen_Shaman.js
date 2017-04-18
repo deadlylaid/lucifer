@@ -552,6 +552,9 @@ function fallen_Shaman_Dead(Object)
 			Object.loadTexture('MON_FallenShaman_Dead', 0, true);
 			Object.animations.play('MON_FallenShaman_Dead_0', 10, true);
 			Object.DeadMotionCheck = true;
+
+			//Collision false
+			Object.body.static = true;
 		}			
 
 		var currentFrame = Object.animations.frame;
@@ -575,6 +578,7 @@ function fallen_Shaman_Regen(Object)
 		{
 			Object.revive();
 			Object.Name.visible = true;
+			Object.body.static = false;
 
 			Object.Regen_Check = false;
 			
