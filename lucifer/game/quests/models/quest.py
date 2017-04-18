@@ -4,20 +4,16 @@ from game.npc.models import NPC
 
 class Quest(models.Model):
 
-    npc = models.ForeignKey(
-            NPC,
-            )
-
     title = models.CharField(
             max_length=50,
             )
 
-    contents = models.TextField(
-            max_length=255,
-            )
-
     ex_reward = models.IntegerField(
+            blank=True,
+            null=True,
             )
 
     gold_reward = models.IntegerField(
+            blank=True,
+            null=True,
             )
