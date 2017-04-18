@@ -52,12 +52,14 @@ function player_Monster_Col(Object)
 						EndFrame = 15 * (Direction + 1);
 					}
 
-					if(CurFrame < EndFrame)
+					if(CurFrame + 5 < EndFrame)
 					{
 						Damage_Count(Object);	
 					}					
 
 					//Player Move Control
+					//Attack Rect를 방향대로 움직여서 몬스터와 플레이어 간의 거리에 대한 상한점을 변수로 두어서
+					//이렇게 된 것들을 충돌 처리해서 뒤로 돌아 봤을때 공격 모션이 나오지 않도록 한다.
 					Player.body.velocity.x = 0;
 					Player.body.velocity.y = 0;	
 				}

@@ -477,6 +477,9 @@ function golem_Dead(Object)
 		Object.DeadCheck = true;
 		Object.kill();
 		Object.Name.visible = false;
+
+		//Collision false
+		Object.body.static = true;
 	}	
 }
 
@@ -491,6 +494,7 @@ function golem_Regen(Object)
 		{
 			Object.revive();
 			Object.Name.visible = true;
+			Object.body.static = false;
 
 			Object.Regen_Check = false;
 			

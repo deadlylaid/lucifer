@@ -660,6 +660,9 @@ function council_Dead(Object)
 			Object.loadTexture('MON_Council_Dead', 0, true);
 			Object.animations.play('MON_Council_Dead_' + Object.Direction, 10, true);
 			Object.DeadMotionCheck = true;
+
+			//Collision false
+			Object.body.static = true;
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -694,6 +697,7 @@ function council_Regen(Object)
 		{
 			Object.revive();
 			Object.Name.visible = true;
+			Object.body.static = false;		//Collision true
 
 			Object.Regen_Check = false;
 			
