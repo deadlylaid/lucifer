@@ -485,12 +485,12 @@ function createEquipmentAndSetPosition(itemName){
         case '기본검':
             item = basicSwordClone(397, 150);
             item.text.setText('');
-            item.getVisible(true);
+            item.getVisible(false);
             break;
         case '기본갑옷':
             item = basicArmorClone(493, 150);
             item.text.setText('');
-            item.getVisible(true);
+            item.getVisible(false);
             break;
     }
     return item;
