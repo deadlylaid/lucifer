@@ -84,7 +84,7 @@ function countess_Clone(PointX, PointY)
 	countess_Object.body.clearShapes();
 	countess_Object.body.addRectangle(60, 60, 0, 0);
 	countess_Object.body.debug = true;	
-	countess_Object.body.restitution = 0;
+	countess_Object.body.restitution = 0;	
 
 	//Animation
 	//Stand

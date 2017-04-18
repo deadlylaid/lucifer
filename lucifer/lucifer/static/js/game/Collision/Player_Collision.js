@@ -12,16 +12,16 @@ function player_Monster_Col(Object)
 				if(Lucifer_Game.input.mousePointer.isDown)
 				{
 					Animation_Change(Direction, 'Attack');	
-					Damage_Count(Object);	
 
-					Player_AttackCheck = true;	
+					Player_AttackCheck = true;								
 				}	
 				else
-				{
+				{					
 					Player_AttackCheck = false;
 				}		
 
-				//Bavarian Skill Four Effect 
+				//Bavarian Skill Four Effect
+				//---------------------------------------------------------------------------- 
 				skill_Bavarian_Four_Effect.x = Object.x;
 				skill_Bavarian_Four_Effect.y = Object.y;	
 
@@ -34,8 +34,31 @@ function player_Monster_Col(Object)
 					skill_Four_Count = 0;
 
 					skill_Four_EffectCheck = false;
-				}		
-			}
+				}
+
+				if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
+				{
+					//Player Attack Motion Damage
+					var CurFrame = Player.animations.frame;
+					var EndFrame = 0;
+
+					if(Direction == 0)
+					{
+						EndFrame = 15;
+					}
+					else
+					{
+						EndFrame = 15 * (Direction + 1);
+					}
+
+					if(CurFrame < EndFrame)
+					{
+						Damage_Count(Object);	
+					}
+					console.log(CurFrame, EndFrame);	
+				}
+				//----------------------------------------------------------------------------		
+			}			
 
 			skill_Attack(Object);				
 		}											
