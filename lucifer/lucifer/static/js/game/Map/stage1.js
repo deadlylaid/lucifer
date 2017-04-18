@@ -25,7 +25,7 @@ var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Objec
 					'STAGE1_Object_wall29', 'STAGE1_Object_item1', 'STAGE1_Object_item37',
 					'STAGE1_Object_wall2', 'STAGE1_Object_Tree10', 'STAGE1_Object_wall11',
 					'STAGE1_Object_item3', 'STAGE1_Object_Tree2', 'STAGE1_Object_Tree5', 
-					'STAGE1_Object_Tree18', 'STAGE1_Object_Tree20'];
+					'STAGE1_Object_Tree18', 'STAGE1_Object_Tree20', 'STAGE1_Object_item29'];
 
 var objectValueArray = [];
 
