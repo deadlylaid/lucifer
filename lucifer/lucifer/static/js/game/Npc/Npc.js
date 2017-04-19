@@ -1,7 +1,7 @@
 var store_Npc;
 var npc_Angle, npc_Direction, npc_PreDirection, npc_Distance, npc_Range;
 var npc_compareCheck = false;
-//---------------------------------------------------------------------------------------	
+//---------------------------------------------------------------------------------------
 
 function npc_Preload()
 {
@@ -26,7 +26,7 @@ function npc_Create()
 		store_Npc.animations.add('NPC_Store_Ani_' + i,
 								 [
 								 	j,     j + 1, j + 2, j + 3,  j + 4,  j + 5,  j + 6,
-								 	j + 7, j + 8, j + 9, j + 10, j + 11, j + 12 
+								 	j + 7, j + 8, j + 9, j + 10, j + 11, j + 12
 								 ],
 								 60, true);
 		j += 13;
@@ -100,7 +100,7 @@ function npc_GetDirection()
 			npc_PreDirection = npc_Direction;
 			npc_compareCheck = true;
 		}
-		
+
 		npc_Animation_Change(npc_Direction);
 	}
 }
@@ -114,7 +114,7 @@ function npc_Compare_Direction(PreDirection, CurDirection)
 }
 
 function npc_Animation_Change(Direction)
-{	
+{
 	store_Npc.animations.play('NPC_Store_Ani_' + Direction, 10, true);
 }
 
