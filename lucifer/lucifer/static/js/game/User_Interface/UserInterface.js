@@ -14,7 +14,7 @@ function ui_Preload()
 	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 800, 150);
 	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/UI_HpBar.png', 92, 92);
 	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 92, 92);
-	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status.png', 300, 500);
+	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status2.png', 496, 961);
     Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 256);
 }
 
@@ -35,7 +35,7 @@ function ui_Create()
     UI_UnderBar.anchor.setTo(0.5, 0.5); 
     UI_UnderBar.fixedToCamera = true;
 
-	UI_Stat = Lucifer_Game.add.sprite(190, 275, 'UI_Stat');
+	UI_Stat = Lucifer_Game.add.sprite(250, 360, 'UI_Stat');
 	UI_Stat.anchor.setTo(0.5, 0.5);
 	UI_Stat.fixedToCamera = true;
 	UI_Stat.visible = false;
@@ -73,17 +73,27 @@ function ui_Create()
 
     //add needed data in the list
     var statusData = [
-        [ '직업', job ],
         [ '', '' ],
-        [ '체력', health ],
-        [ '마나', mana ],
         [ '', '' ],
-        [ '힘', health ],
-        [ '민첩', dexterity ],
-        [ '지능', intelligence ],
         [ '', '' ],
-        [ '명중률', accuracy ],
-        [ '회피율', evasion ],
+        [ '', job ],
+        [ '', '' ],
+        [ '', '' ],
+        [ '', health ],
+        [ '', '' ],
+        [ '', mana ],
+        [ '', '' ],
+        [ '', '' ],
+        [ '', health ],
+        [ '', '' ],
+        [ '', dexterity ],
+        [ '', '' ],
+        [ '', intelligence ],
+        [ '', '' ],
+        [ '', '' ],
+        [ '', accuracy ],
+        [ '', '' ],
+        [ '', evasion ],
     ];
 
     //리스트로 저장된 데이터를 파싱함
