@@ -19,6 +19,7 @@ var stage2_LoadScene =
 	
 		//Player(Bavarian)
 		//----------------------------------------------------------------------------------------------------------
+		player_Effect_Preload();
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Stand', 
 								  	  '../../static/images/game/Player/Bavarian/stand/Stand.png', 200, 200);
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Walk', 
