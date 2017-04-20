@@ -31,6 +31,8 @@ def character_post_save(sender, instance, created, **kwargs):
 
             Status.objects.create(
                     character_set=instance,
+                    attack_point=5,
+                    defence_point=7,
                     experience=1,
                     max_health=170,
                     health=170,
@@ -39,7 +41,6 @@ def character_post_save(sender, instance, created, **kwargs):
                     strong=10,
                     dexterity=8,
                     intelligence=8,
-                    defence_point=7,
                     accuracy=38,
                     evasion=6,
                     )
