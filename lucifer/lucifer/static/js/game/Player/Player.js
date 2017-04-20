@@ -11,8 +11,7 @@ var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
 var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4, player_KeySkill5;
 //----------------------------------------------------------------------------------------------------------
-//var isoCam = Lucifer_Game.world.camera.view;
-//var viewport = { left: isoCam.x, right: isoCam.x + 1280, top: isoCam.y, bottom: isoCam.y + 800 };
+
 //----------------------------------------------------------------------------------------------------------
 
 function player_Create()
@@ -471,6 +470,7 @@ function player_Update()
 			{
 				PlayerMove();
 				PlayerAttack();
+				player_Level_Update();
 			}						
    	 	}
 
@@ -486,6 +486,7 @@ function player_Update()
 			{
 				PlayerMove();
 				PlayerAttack();
+				player_Level_Update();
 			}		
    	 	}
 

@@ -38,6 +38,9 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
+
+	//Level System
+	this.ExpCheck = false;
 }
 
 Countess.prototype = Object.create(Phaser.Sprite.prototype);
@@ -530,6 +533,7 @@ function countess_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
+			Object.ExpCheck = true;
 		}				
 	}
 }
@@ -621,6 +625,12 @@ function countess_Update()
 
 		countess_Dead(countess);
 		countess_Regen(countess);
+
+		//Level System Check
+		if(countess.ExpCheck == true)
+		{
+			check_Monster_Dead(countess);	
+		}		
 	}
 }
 
