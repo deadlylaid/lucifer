@@ -9,6 +9,9 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Hp = Hp, this.MaxHp = MaxHp;
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
+	//Stat
+	this.Attack_Point = 50, this.Defence_Point = 30;
+
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Dead');
 	
@@ -78,7 +81,7 @@ function golem_Create()
 
 function golem_Clone(PointX, PointY)
 {
-	golem_Object = new Golem(Lucifer_Game, PointX, PointY, 200, 200, 300, 80);
+	golem_Object = new Golem(Lucifer_Game, PointX, PointY, 250, 250, 300, 80);
 		
 	Lucifer_Game.physics.p2.enable(golem_Object);
 	golem_Object.body.fixedRotation = true;
@@ -507,7 +510,17 @@ function golem_HitCount(Object)
 
 			if(CurFrame + 4 < EndFrame)
 			{
-				health -= 30; //몬스터 공격력도 넣어야됨.
+				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
+
+				if(monster_Attack_Damage > 0)
+				{
+					health -= monster_Attack_Damage;		
+				}
+				else if(monster_Attack_Damage < 0)
+				{
+					health -= 0;
+				}
+				
 				Object.DelayTime_Total = 0;
 			}		
 		}		

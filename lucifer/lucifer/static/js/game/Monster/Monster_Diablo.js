@@ -11,6 +11,10 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.CognizeRange = CognizeRange;
 	this.AttackRange = AttackRange;
 
+	//Stat (스킬 Attack Point도 추가해야 된다.)
+	this.Attack_Point = 300, this.Defence_Point = 350;
+	this.Skill_Attack_Point = 400, this.Skill_Attack_Point1 = 500; 
+
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Attack1', 'Dead', 
 							'Skill', 'Skill1', 'Skill2', 'Skill3');
@@ -113,7 +117,7 @@ function diablo_Create()
 
 function diablo_Clone(PointX, PointY)
 {
-	diablo_Object = new Diablo(Lucifer_Game, PointX, PointY, 300, 300, 1000, 150);
+	diablo_Object = new Diablo(Lucifer_Game, PointX, PointY, 6000, 6000, 1000, 150);
 
 	Lucifer_Game.physics.p2.enable(diablo_Object);
 	diablo_Object.body.fixedRotation = true;
@@ -891,7 +895,17 @@ function diablo_HitCount(Object)
 
 			if(CurFrame + 5 < EndFrame)
 			{
-				health -= 40;	//Mosnter Attack Point Setting
+				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
+
+				if(monster_Attack_Damage > 0)
+				{
+					health -= monster_Attack_Damage;		
+				}
+				else if(monster_Attack_Damage < 0)
+				{
+					health -= 0;
+				}
+
 				Object.DelayTime_Total = 0;
 			}		
 		}
@@ -911,7 +925,17 @@ function diablo_HitCount(Object)
 
 			if(CurFrame + 9 < EndFrame)
 			{
-				health -= 40;	//Mosnter Attack Point Setting
+				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
+
+				if(monster_Attack_Damage > 0)
+				{
+					health -= monster_Attack_Damage;		
+				}
+				else if(monster_Attack_Damage < 0)
+				{
+					health -= 0;
+				}
+
 				Object.DelayTime_Total = 0;
 			}
 		}			

@@ -175,7 +175,17 @@ function diaSkill_Fire_Col(Object)
 
 				if(CurFrame + 7 < EndFrame)
 				{
-					health -= 100;	//Diablo Fire Skill Dagame
+					var monster_Attack_Damage = (Object.Skill_Attack_Point1 - defence_point);
+
+					if(monster_Attack_Damage > 0)
+					{
+						health -= monster_Attack_Damage;		
+					}
+					else if(monster_Attack_Damage < 0)
+					{
+						health -= 0;
+					}
+				
 					Object.SkillTime_Total = 0;		
 				}
 			}				
@@ -207,7 +217,17 @@ function diaSkill_Inferno_Col(Object)
 
 				if(CurFrame + 6 < EndFrame)
 				{
-					health -= 50;	//Diablo Inferno Skill Damage
+					var monster_Attack_Damage = (Object.skill_Attack_Point - defence_point);
+
+					if(monster_Attack_Damage > 0)
+					{
+						health -= monster_Attack_Damage;		
+					}
+					else if(monster_Attack_Damage < 0)
+					{
+						health -= 0;
+					}
+
 					Object.Inferno.Time_Total = 0;		
 				}
 			}				

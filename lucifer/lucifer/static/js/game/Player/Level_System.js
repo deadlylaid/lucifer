@@ -57,6 +57,7 @@ function player_Level_Update(Object)
 
 function player_State_Up()
 {
+	//Level Up 될시에 Skill Level 을 자동으로 올릴 것인가 말것인가를 정해서 적용 시켜야 된다.	
 	if(level <= 10)
 	{
 		experience = 0;
