@@ -74,7 +74,16 @@ function player_Monster_Col(Object)
 
 function Damage_Count(Monster)
 {	
-	Monster.Hp -= attack_point;	
+	var player_Attack_Dagmage = attack_point - Monster.Defence_Point;
+	
+	if(player_Attack_Dagmage > 0)
+	{
+		Monster.Hp -= player_Attack_Dagmage;
+	}
+	else if(player_Attack_Dagmage < 0)
+	{
+		Monster.Hp -= 0;
+	}	 	
 }
 
 function skill_Attack(Monster)

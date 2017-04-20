@@ -10,6 +10,9 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Hp = Hp, this.MaxHp = MaxHp;
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
+	//Stat
+	this.Attack_Point = 60, this.Defence_Point = 35;
+
 	//Status
 	this.Status = new Array('Stand', 'Run', 'Attack', 'Dead', 'Skill');
 
@@ -97,7 +100,7 @@ function council_Create()
 
 function council_Clone(PointX, PointY)
 {
-	council_Object = new Council(Lucifer_Game, PointX, PointY, 100, 100, 300, 100);
+	council_Object = new Council(Lucifer_Game, PointX, PointY, 300, 300, 300, 100);
 
 	Lucifer_Game.physics.p2.enable(council_Object);
 	council_Object.body.fixedRotation = true;
@@ -661,7 +664,17 @@ function council_HitCount(Object)
 
 			if(CurFrame + 1 < EndFrame)
 			{
-				health -= 20;	//Mosnter Attack Point Setting
+				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
+
+				if(monster_Attack_Damage > 0)
+				{
+					health -= monster_Attack_Damage;		
+				}
+				else if(monster_Attack_Damage < 0)
+				{
+					health -= 0;
+				}
+
 				Object.DelayTime_Total = 0;	
 			}		
 		}		
@@ -688,7 +701,17 @@ function council_SkillHitCount(Object)
 
 			if(CurFrame + 3 < EndFrame)
 			{
-				health -= 40;	//Skill Attack Point
+				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
+
+				if(monster_Attack_Damage > 0)
+				{
+					health -= monster_Attack_Damage + 10;		
+				}
+				else if(monster_Attack_Damage < 0)
+				{
+					health -= 0;
+				}
+				
 				Object.Skill_Time_Total = 0;
 			}		
 		}		
