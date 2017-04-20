@@ -67,7 +67,7 @@ function itemStoreCreate(){
     saleTab.events.onInputDown.add(buyItem, this);
 
     uiStore = Lucifer_Game.add.sprite(228, 330, 'uiStore');
-    uiStore.anchor.setTo(0.5, 0.5); 
+    uiStore.anchor.setTo(0.5, 0.5);
     uiStore.scale.setTo(0.9, 0.9);
     uiStore.fixedToCamera = true;
     uiStore.visible = false;
@@ -83,7 +83,7 @@ function itemStoreCreate(){
     uiInventory.visible = false;
 
     //inventory key setting -----------------------------------------
-    key_inven = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.E);
+    key_inven = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.I);
 
     invenKeyTimer = Lucifer_Game.time.create(false);
     invenKeyTimer.loop(400, invenTimeCheck, this);
@@ -110,7 +110,7 @@ function itemStoreCreate(){
     //Postion -----------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
     redPotion = new potion(Lucifer_Game, 55, 105, itemList[0].name, itemList[0].heal, itemList[0].limited_job, itemStoreStyle);
-    
+
     redPotion.inputEnabled = true;
     redPotion.events.onInputDown.add(clickItem, this);
 
@@ -122,8 +122,8 @@ function itemStoreCreate(){
     //Sword--------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
     basicSword = new sword(Lucifer_Game, 55, 105, itemList[1].name, itemList[1].attack_point, itemList[2].limited_job, itemStoreStyle);
-    
-    Lucifer_Game.physics.p2.enable(basicSword); 
+
+    Lucifer_Game.physics.p2.enable(basicSword);
     basicSword.body.addRectangle(0, 0);
     basicSword.body.static = true;
 
@@ -137,10 +137,10 @@ function itemStoreCreate(){
 
     //Armor--------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
-    
+
     basicArmor = new armor(Lucifer_Game, 55, 105, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job, itemStoreStyle);
 
-    Lucifer_Game.physics.p2.enable(basicArmor); 
+    Lucifer_Game.physics.p2.enable(basicArmor);
     basicArmor.body.addRectangle(0, 0);
     basicArmor.body.static = true;
 
@@ -148,8 +148,8 @@ function itemStoreCreate(){
     basicArmor.events.onInputDown.add(clickItem, this);
 
     Lucifer_Game.add.existing(basicArmor);
-    //---------------------------------------------------------------------------------------   
-    //---------------------------------------------------------------------------------------   
+    //---------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
 
     changeServerListToClientList();
     changeServerListToClientListEquipment();
@@ -157,7 +157,7 @@ function itemStoreCreate(){
 
 function itemsStoreUpdate(){
     /**************************
-            UPDATE문 작성 
+            UPDATE문 작성
     ***************************/
     if(key_inven.isDown){
         invenKeyTimer.start();
@@ -222,7 +222,7 @@ function armorStoreTab(){
 
 
 function clickItem(sprite){
-    //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨 
+    //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨
     //console.log(sprite.name);
     var i = inventory.length;
     switch(sprite.name){
@@ -263,7 +263,7 @@ function clickedItemInInventory(sprite){
     //console.log(selectedItem);
 }
 
-//server-side로 데이터 실시간 전송 
+//server-side로 데이터 실시간 전송
 //---------------------------------------------------
 //---------------------------------------------------
 function inventoryPost(selectedItem){
@@ -333,7 +333,7 @@ function invenUi(){
 function dropItem(){
 
     if(selectedItem === null){
-        alert('버릴 아이템을 선택해주세요'); 
+        alert('버릴 아이템을 선택해주세요');
     }else{
         var startNumberSecondArray = selectedItem.numberInArray;
 
@@ -351,15 +351,15 @@ function dropItem(){
         //inventory에서 버릴 아이템을 뽑아 버림
         inventory.splice(selectedItem.numberInArray, 9);
 
-        //ajax DELETE 요청으로 실시간 저장 
+        //ajax DELETE 요청으로 실시간 저장
         inventoryDelete(selectedItem.name);
 
-        //selectedItem 값 초기화 
+        //selectedItem 값 초기화
         selectedItem = null;
 
         var inventoryLength = inventory.length;
 
-        //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장 
+        //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장
         for(i=0; i<tempInventory.length; i++){
             switch(tempInventory[i].name){
                 case '빨간물약':
@@ -370,7 +370,7 @@ function dropItem(){
                     break;
                 case '기본갑옷':
                     inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;                    
+                    break;
             }
         }
 
@@ -404,12 +404,12 @@ function useItem(){
         //inventory에서 버릴 아이템을 뽑아 버림
         inventory.splice(selectedItem.numberInArray, 9);
 
-        //ajax DELETE 요청으로 실시간 저장 
+        //ajax DELETE 요청으로 실시간 저장
         //inventoryDelete(selectedItem.name);
 
         var inventoryLength = inventory.length;
 
-        //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장 
+        //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장
         for(i=0; i<tempInventory.length; i++){
             switch(tempInventory[i].name){
                 case '빨간물약':
@@ -420,7 +420,7 @@ function useItem(){
                     break;
                 case '기본갑옷':
                     inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;                    
+                    break;
             }
         }
 
@@ -430,7 +430,7 @@ function useItem(){
         }
         tempInventory = [];
 
-        
+
         if(selectedItem.type_is==='potion'){
             inventoryDelete(selectedItem.name);
         }else if(selectedItem.type_is==='weapon'){
@@ -473,10 +473,10 @@ function useItem(){
             equipmentPost(equipmentList[1].name, equipmentList[1].type_is);
         }
 
-        //selectedItem 값 초기화 
+        //selectedItem 값 초기화
         selectedItem = null;
 
-    }   
+    }
 }
 
 function createEquipmentAndSetPosition(itemName){
@@ -563,13 +563,13 @@ function changeServerListToClientListEquipment(){
         }
     }
 }
-//server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다. 
+//server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다.
 function changeServerListToClientList(){
     invenArrayLength = inventory.length;
     for(i=0; i<invenArrayLength; i++){
         switch(inventory[i].item_name){
             case '빨간물약':/*335, 470*/
-                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]); 
+                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 inventory[i].numberInArray = i;
                 break;
             case '기본검':
@@ -580,6 +580,6 @@ function changeServerListToClientList(){
                 inventory[i]=basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 inventory[i].numberInArray = i;
                 break;
-        }      
-    }  
+        }
+    }
 }
