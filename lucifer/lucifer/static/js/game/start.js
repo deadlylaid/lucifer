@@ -12,7 +12,8 @@ var nickname,
     dexterity,
     intelligence,
     accuracy,
-    evasion;
+    evasion,
+    experience;
 
 var inventory = [];
 
@@ -46,6 +47,8 @@ $.ajax({
 
     health = character.status.health;
     mana = character.status.mana;
+
+    experience = character.status.experience;
 
     maxHealth = character.status.max_health;
     maxMana = character.status.max_mana;
