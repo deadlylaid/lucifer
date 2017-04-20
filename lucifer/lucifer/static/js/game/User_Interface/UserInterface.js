@@ -6,7 +6,7 @@ var statusDataText,
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat, UI_Skill;	//UI 이미지 변수.
 //----------------------------------------------------------------------------------------------------------
-var key_Stat, Key_Skill, ui_Delay_Time; 
+var key_Stat, Key_Skill, ui_Delay_Time;
 
 function ui_Preload()
 {
@@ -29,10 +29,10 @@ function ui_Create()
 
 	UI_MpBar = Lucifer_Game.add.sprite(895, 745, 'UI_MpBar');
 	UI_MpBar.anchor.setTo(0.5, 0.5);
-	UI_MpBar.fixedToCamera = true;	
+	UI_MpBar.fixedToCamera = true;
 
     UI_UnderBar = Lucifer_Game.add.sprite(640, 725, 'UI_UnderBar');
-    UI_UnderBar.anchor.setTo(0.5, 0.5); 
+    UI_UnderBar.anchor.setTo(0.5, 0.5);
     UI_UnderBar.fixedToCamera = true;
 
 	UI_Stat = Lucifer_Game.add.sprite(190, 275, 'UI_Stat');
@@ -55,7 +55,7 @@ function ui_Create()
     healthPercentage = playerHealth(health, maxHealth);
     hpRate = hpBarMaskRate(healthPercentage);
     //-------------------------------------------------
-    
+
     hpMask.drawRect(-66, hpRate, 92, 92);
 
     UI_HpBar.mask = hpMask;
@@ -102,7 +102,7 @@ function ui_Create()
     //timer를 이용하여 조정할 것이다.
     keyValidTimer = Lucifer_Game.time.create(false);
     keyValidTimer.loop(400, timeCheck, this);
-	//---------------------------------------------------------------------------------------	
+	//---------------------------------------------------------------------------------------
 }
 
 function ui_Update()
@@ -114,9 +114,9 @@ function ui_Update()
     //-------------------------------------------------
     hpMask.clear();
     hpMask.beginFill(0xffffff);
-    hpMask.drawRect(-66, hpRate, 134, 134);  
-    hpMask.endFill();  
-    //console.log("현재 HP 바의 비율은" + hpRate + "입니다.");    
+    hpMask.drawRect(-66, hpRate, 92, 92);
+    hpMask.endFill();
+    //console.log("현재 HP 바의 비율은" + hpRate + "입니다.");
     UI_HpBar.mask = hpMask;
 
 	//UI_Stat
@@ -124,7 +124,7 @@ function ui_Update()
 	{
 		statusDataText.position.x = UI_Stat.x - 80;
     	statusDataText.position.y = UI_Stat.y + 30;
-	}		
+	}
 
 	if(key_Stat.isDown)
 	{
@@ -134,7 +134,7 @@ function ui_Update()
             statusUi();
         }
         validCheck = 0;
-	}	
+	}
 
     if(Key_Skill.isDown)
     {
@@ -161,8 +161,8 @@ function statusUi(){
 		}
 		else
 		{
-			viewStatus();						
-		}		
+			viewStatus();
+		}
 };
 
 function viewSkill()
@@ -195,14 +195,14 @@ function playerHealth(health, maxHealth){
 function hpBarMaskRate(healthPercentage){
     //퍼센트에 따라서 산출되도록 수정
     if(healthPercentage > 50){
-        hpRate = 43.5 - (0.87 * healthPercentage);
+        hpRate = 43 - (0.86 * healthPercentage);
     }else if(healthPercentage < 50){
         hpRate = 0.435 * (50 - healthPercentage);
     }else if(healthPercentage === 50){
-        hpRate = 0;
+        hpRate = 11;
     }else{
         hpRate = 43.5;
-    }    
+    }
 
     return hpRate;
 }
