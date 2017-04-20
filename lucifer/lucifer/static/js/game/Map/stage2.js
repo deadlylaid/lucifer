@@ -5,6 +5,8 @@ var CameraRect;
 var Stage2_Portal, Portal_Rect, Portal_Check;
 var Stage2_Portal_back, Portal_Rect2, Portal_Check2;
 var BackStageMove=1;
+var text_wel2;
+var Stage2_AlertText ;
 
 var PolygonArray2 = ['STAGE2_Object_stone01', 'STAGE2_Object_truck1', 'STAGE2_Object_stone2',
 					'STAGE2_Object_wall1', 'STAGE2_Object_stone3', 'STAGE2_Object_wall2',
@@ -557,7 +559,43 @@ function stageTwo_Create()
 	//---------------------------------------------------------------------------------------
 
 	Stage2_Map.setCollision(21, true, "Collision Layer");
-	Lucifer_Game.physics.p2.convertTilemap(Stage2_Map, "Collision Layer");		
+	Lucifer_Game.physics.p2.convertTilemap(Stage2_Map, "Collision Layer");	
+
+	//Welcome TEXT (Stage2 진입 시)
+	//---------------------------------------------------------------------------------------
+    text_wel2 = Lucifer_Game.add.text(650, 150, "Stage2 : 점령된 사원", {font: '50px Roboto', fill: '#ffffff'});
+    text_wel2.anchor.set(0.5);
+    text_wel2.alpha = 0.1;
+    text_wel2.fixedToCamera = true;
+    text_wel2.stroke = '#000000';
+    text_wel2.strokeThickness = 2;
+    text_wel2.setShadow(3, 3, '#000000', 0, true, true);
+    text_wel2.padding.set(10, 16);
+    text_wel2.fontWeight = 'bold';
+
+    var grd2 = text_wel2.context.createLinearGradient(0, 0, 0, text_wel2.height);
+
+    //  Add in 2 color stops
+    grd2.addColorStop(0, '#d13034');   
+    grd2.addColorStop(1, '#66191b');
+
+    //  And apply to the Text
+    text_wel2.fill = grd2;
+
+
+    Lucifer_Game.add.tween(text_wel2).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
+
+    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, TextVisible2, this);	
+
+    //-------------------------------------------------------------------------------------------
+
+    Stage2_AlertText = Lucifer_Game.add.text(115, 780, "Stage2 : 점령된 사원", {font: '20px Roboto', fill: '#8f442f'});
+    Stage2_AlertText.anchor.set(0.5);
+    Stage2_AlertText.fixedToCamera = true;
+    Stage2_AlertText.fontWeight = 'bold';
+    Stage2_AlertText.stroke = '#000000';
+    Stage2_AlertText.strokeThickness = 1;
+    Stage2_AlertText.setShadow(1, 1, '#000000', 0, true, true);	
 }
 
 function stage2_Culling()
@@ -618,4 +656,7 @@ function portal_Check2()
 	}
 };
 
+function TextVisible2(){
+	text_wel2.destroy();
+};
 

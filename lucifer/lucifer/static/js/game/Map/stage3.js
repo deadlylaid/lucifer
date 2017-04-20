@@ -4,7 +4,8 @@ var stage3_Collision_Layer;
 var Stage3_ObjectPool = [];
 var Stage3_Portal_back, Portal_Rect2, Portal_Check2;
 var BackStageMove=1;
-
+var text_wel3;
+var Stage3_AlertText ;
 
 var PolygonArray3 = ['STAGE3_Object_bridge01', 'STAGE3_Object_bridge02', 'STAGE3_Object_flag01',
 					'STAGE3_Object_flag02', 'STAGE3_Object_flag03', 'STAGE3_Object_flag04',
@@ -206,6 +207,45 @@ function stageThree_Create()
 
 	Stage3_Map.setCollision(273, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Stage3_Map, "Collision Layer");
+
+	//Welcome TEXT (Stage2 진입 시)
+	//---------------------------------------------------------------------------------------
+    text_wel3 = Lucifer_Game.add.text(640, 150, "-  DANGEROUS BOSS  -", {font: '50px Roboto', fill: '#ffffff'});
+    text_wel3.anchor.set(0.5);
+    text_wel3.alpha = 0.1;
+    text_wel3.fixedToCamera = true;
+    text_wel3.stroke = '#000000';
+    text_wel3.strokeThickness = 2;
+    text_wel3.setShadow(3, 3, '#000000', 0, true, true);
+    text_wel3.padding.set(10, 16);
+    text_wel3.fontWeight = 'bold';
+
+    var grd3 = text_wel3.context.createLinearGradient(0, 0, 0, text_wel3.height);
+
+    //  Add in 2 color stops
+    grd3.addColorStop(0, '#d13034');   
+    grd3.addColorStop(1, '#66191b');
+
+    //  And apply to the Text
+    text_wel3.fill = grd3;
+
+
+    var yoyo1 = Lucifer_Game.add.tween(text_wel3).to({ alpha: 1}, 800, "Linear", true, 0, -1);
+    yoyo1.yoyo(true, 1000);
+
+    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 10, TextVisible3, this);	
+
+    
+    //-------------------------------------------------------------------------------------------
+
+    Stage3_AlertText = Lucifer_Game.add.text(90, 780, "BOSS Stage", {font: '20px Roboto', fill: '#d13034'});
+    Stage3_AlertText.anchor.set(0.5);
+    Stage3_AlertText.fixedToCamera = true;
+    Stage3_AlertText.fontWeight = 'bold';
+    Stage3_AlertText.stroke = '#000000';
+    Stage3_AlertText.strokeThickness = 1;
+    Stage3_AlertText.setShadow(1, 1, '#000000', 0, true, true);	
+
 }
 
 function portal_Check2()
@@ -214,5 +254,9 @@ function portal_Check2()
 	{
 		Portal_Check2 = true;
 	}
+};
+
+function TextVisible3(){
+	text_wel3.destroy();
 };
 
