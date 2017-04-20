@@ -12,12 +12,22 @@ var QuestContent_lv1, QuestContent_lv2, QuestContent_lv3,
     QuestContent_lv7, QuestContent_lv8, QuestContent_lv9, QuestContent_lv10 ;
 
 var text, text2, text3, text4, text5, text6, text7, text8, text9, text10, style;
+var btnText, btnText2, btnText3, btnText4, btnText5, btnText6, btnText7, btnText8, btnText9, btnText10 ;
 
 function QuestPreload(){
 
     Lucifer_Game.load.spritesheet('UI_Quest', '../../static/images/game/UI/Quest/QuestFrame.png', 867, 580);
     Lucifer_Game.load.spritesheet('Questbtn', '../../static/images/game/UI/Quest/QuestBtn.png', 325, 43);
     Lucifer_Game.load.spritesheet('QuestContent', '../../static/images/game/UI/Quest/Questcontent.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent2', '../../static/images/game/UI/Quest/Questcontent2.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent3', '../../static/images/game/UI/Quest/Questcontent3.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent4', '../../static/images/game/UI/Quest/Questcontent4.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent5', '../../static/images/game/UI/Quest/Questcontent5.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent6', '../../static/images/game/UI/Quest/Questcontent6.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent7', '../../static/images/game/UI/Quest/Questcontent7.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent8', '../../static/images/game/UI/Quest/Questcontent8.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent9', '../../static/images/game/UI/Quest/Questcontent9.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent10', '../../static/images/game/UI/Quest/Questcontent10.png', 463, 439);
 
 };
 
@@ -49,6 +59,9 @@ function QuestCreate(){
      Questbtn_lv1.anchor.setTo(0.5, 0.5);
      Questbtn_lv1.fixedToCamera = true;
      Questbtn_lv1.visible = false;
+
+     btnText = Lucifer_Game.add.text(203, 600, "LV.1    -    [ 인터페이스를 알아보자 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 2 
@@ -56,6 +69,9 @@ function QuestCreate(){
      Questbtn_lv2.anchor.setTo(0.5, 0.5);
      Questbtn_lv2.fixedToCamera = true;
      Questbtn_lv2.visible = false;
+
+     btnText2 = Lucifer_Game.add.text(203, 600, "LV.2    -    [ 기본 아이템 구매 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText2.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 3 
@@ -63,6 +79,9 @@ function QuestCreate(){
      Questbtn_lv3.anchor.setTo(0.5, 0.5);
      Questbtn_lv3.fixedToCamera = true;
      Questbtn_lv3.visible = false;
+
+     btnText3 = Lucifer_Game.add.text(203, 600, "LV.3    -    [ Countess 처치하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText3.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 4 
@@ -70,6 +89,9 @@ function QuestCreate(){
      Questbtn_lv4.anchor.setTo(0.5, 0.5);
      Questbtn_lv4.fixedToCamera = true;
      Questbtn_lv4.visible = false;
+
+     btnText4 = Lucifer_Game.add.text(203, 600, "LV.4    -    [ Golem을 저지하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText4.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 5 
@@ -77,6 +99,9 @@ function QuestCreate(){
      Questbtn_lv5.anchor.setTo(0.5, 0.5);
      Questbtn_lv5.fixedToCamera = true;
      Questbtn_lv5.visible = false;
+
+     btnText5 = Lucifer_Game.add.text(203, 600, "LV.5    -    [ Demon을 잡아보자 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText5.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 6 
@@ -84,6 +109,9 @@ function QuestCreate(){
      Questbtn_lv6.anchor.setTo(0.5, 0.5);
      Questbtn_lv6.fixedToCamera = true;
      Questbtn_lv6.visible = false;
+
+     btnText6 = Lucifer_Game.add.text(203, 600, "LV.6    -    [ Council를 처치하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText6.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 7 
@@ -91,6 +119,9 @@ function QuestCreate(){
      Questbtn_lv7.anchor.setTo(0.5, 0.5);
      Questbtn_lv7.fixedToCamera = true;
      Questbtn_lv7.visible = false;
+
+     btnText7 = Lucifer_Game.add.text(203, 600, "LV.7    -    [ Wraith를 무찌르자 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText7.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 8 
@@ -98,6 +129,9 @@ function QuestCreate(){
      Questbtn_lv8.anchor.setTo(0.5, 0.5);
      Questbtn_lv8.fixedToCamera = true;
      Questbtn_lv8.visible = false;
+
+     btnText8 = Lucifer_Game.add.text(203, 600, "LV.8    -    [ Fallen_Shaman을 막자 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText8.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 9 
@@ -105,6 +139,9 @@ function QuestCreate(){
      Questbtn_lv9.anchor.setTo(0.5, 0.5);
      Questbtn_lv9.fixedToCamera = true;
      Questbtn_lv9.visible = false;
+
+     btnText9 = Lucifer_Game.add.text(203, 600, "LV.9    -    [ Andariel을 처치하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText9.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //QuestButton Level 10 
@@ -112,6 +149,9 @@ function QuestCreate(){
      Questbtn_lv10.anchor.setTo(0.5, 0.5);
      Questbtn_lv10.fixedToCamera = true;
      Questbtn_lv10.visible = false;
+
+     btnText10 = Lucifer_Game.add.text(203, 600, "LV.10    -    [ Diablo를 봉인하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText10.anchor.set(0.5);
      //---------------------------------------------------------------
 
      //---------------------------------------------------------------------------------------------
@@ -123,99 +163,109 @@ function QuestCreate(){
      //---------------------------------------------------------------
 
      //QuestContent 2
-     QuestContent_lv2 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv2 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent2');
      QuestContent_lv2.anchor.setTo(0.5, 0.5);
      QuestContent_lv2.fixedToCamera = true;
      QuestContent_lv2.visible = false;
      //---------------------------------------------------------------
 
      //QuestContent 3
-     QuestContent_lv3 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv3 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent3');
      QuestContent_lv3.anchor.setTo(0.5, 0.5);
      QuestContent_lv3.fixedToCamera = true;
      QuestContent_lv3.visible = false;
      //---------------------------------------------------------------
 
      //QuestContent 4
-     QuestContent_lv4 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv4 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent4');
      QuestContent_lv4.anchor.setTo(0.5, 0.5);
      QuestContent_lv4.fixedToCamera = true;
      QuestContent_lv4.visible = false;
      //---------------------------------------------------------------
 
      //QuestContent 5
-     QuestContent_lv5 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv5 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent5');
      QuestContent_lv5.anchor.setTo(0.5, 0.5);
      QuestContent_lv5.fixedToCamera = true;
      QuestContent_lv5.visible = false;
      //---------------------------------------------------------------
 
      //QuestContent 6
-     QuestContent_lv6 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv6 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent6');
      QuestContent_lv6.anchor.setTo(0.5, 0.5);
      QuestContent_lv6.fixedToCamera = true;
      QuestContent_lv6.visible = false;
      //---------------------------------------------------------------
 
      //QuestContent 7
-     QuestContent_lv7 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv7 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent7');
      QuestContent_lv7.anchor.setTo(0.5, 0.5);
      QuestContent_lv7.fixedToCamera = true;
      QuestContent_lv7.visible = false;
      //---------------------------------------------------------------
 
      //QuestContent 8
-     QuestContent_lv8 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv8 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent8');
      QuestContent_lv8.anchor.setTo(0.5, 0.5);
      QuestContent_lv8.fixedToCamera = true;
      QuestContent_lv8.visible = false;
      //---------------------------------------------------------------
 
      //QuestContent 9
-     QuestContent_lv9 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv9 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent9');
      QuestContent_lv9.anchor.setTo(0.5, 0.5);
      QuestContent_lv9.fixedToCamera = true;
      QuestContent_lv9.visible = false;
      //---------------------------------------------------------------
 
      //QuestContent 10
-     QuestContent_lv10 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent');
+     QuestContent_lv10 = Lucifer_Game.add.sprite(817, 382.5, 'QuestContent10');
      QuestContent_lv10.anchor.setTo(0.5, 0.5);
      QuestContent_lv10.fixedToCamera = true;
      QuestContent_lv10.visible = false;
      //---------------------------------------------------------------
 
      //Quest TEXT
-     style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: QuestContent_lv1.width, align: "center", backgroundColor: "#ffff00" };
+     style = { font: "20px Roboto", fill: "#ffffff", wordWrap: true, wordWrapWidth: QuestContent_lv1.width, align: "left", stroke: "#000000", strokeThickness: 2};
 
-     text = Lucifer_Game.add.text(0, 0 , " Quest 1", style);
+     text = Lucifer_Game.add.text(0, 0 , " 경험치 :  300 Exp \n Gold :  - Lup ", style);
+     text.setShadow(2, 2, '#000000', 0, true, true);
      text.anchor.set(0.5);
 
-     text2 = Lucifer_Game.add.text(0, 0 , " Quest 2", style);
+     text2 = Lucifer_Game.add.text(0, 0 , " 경험치 :  500 Exp \n Gold :  500 Lup ", style);
+     text2.setShadow(2, 2, '#000000', 0, true, true);
      text2.anchor.set(0.5);
 
-     text3 = Lucifer_Game.add.text(0, 0 , " Quest 3", style);
+     text3 = Lucifer_Game.add.text(0, 0 , " 경험치 :  500 Exp \n Gold :  500 Lup ", style);
+     text3.setShadow(2, 2, '#000000', 0, true, true);
      text3.anchor.set(0.5);
 
-     text4 = Lucifer_Game.add.text(0, 0 , " Quest 4", style);
+     text4 = Lucifer_Game.add.text(0, 0 , " 경험치 :  1000 Exp \n Gold :  2000 Lup ", style);
+     text4.setShadow(2, 2, '#000000', 0, true, true);
      text4.anchor.set(0.5);
 
-     text5 = Lucifer_Game.add.text(0, 0 , " Quest 5", style);
+     text5 = Lucifer_Game.add.text(0, 0 , " 경험치 :  700 Exp \n Gold :  700 Lup ", style);
+     text5.setShadow(2, 2, '#000000', 0, true, true);
      text5.anchor.set(0.5);
 
-     text6 = Lucifer_Game.add.text(0, 0 , " Quest 6", style);
+     text6 = Lucifer_Game.add.text(0, 0 , " 경험치 :  1000 Exp \n Gold :  1000 Lup ", style);
+     text6.setShadow(2, 2, '#000000', 0, true, true);
      text6.anchor.set(0.5);
 
-     text7 = Lucifer_Game.add.text(0, 0 , " Quest 7", style);
+     text7 = Lucifer_Game.add.text(0, 0 , " 경험치 :  1000 Exp \n Gold :  1000 Lup ", style);
+     text7.setShadow(2, 2, '#000000', 0, true, true);
      text7.anchor.set(0.5);
 
-     text8 = Lucifer_Game.add.text(0, 0 , " Quest 8", style);
+     text8 = Lucifer_Game.add.text(0, 0 , " 경험치 :  1500 Exp \n Gold :  1500 Lup ", style);
+     text8.setShadow(2, 2, '#000000', 0, true, true);
      text8.anchor.set(0.5);
 
-     text9 = Lucifer_Game.add.text(0, 0 , " Quest 9", style);
+     text9 = Lucifer_Game.add.text(0, 0 , " 경험치 :  2000 Exp \n Gold :  2000 Lup ", style);
+     text9.setShadow(2, 2, '#000000', 0, true, true);
      text9.anchor.set(0.5);
 
-     text10 = Lucifer_Game.add.text(0, 0 , " Quest 10", style);
+     text10 = Lucifer_Game.add.text(0, 0 , " 경험치 :  2500 Exp \n Gold :  2500 Lup ", style);
+     text10.setShadow(2, 2, '#000000', 0, true, true);
      text10.anchor.set(0.5);
 
      text.visible = false;
@@ -228,6 +278,17 @@ function QuestCreate(){
      text8.visible = false;
      text9.visible = false;
      text10.visible = false;
+
+     btnText.visible = false;
+     btnText2.visible = false;
+     btnText3.visible = false;
+     btnText4.visible = false;
+     btnText5.visible = false;
+     btnText6.visible = false;
+     btnText7.visible = false;
+     btnText8.visible = false;
+     btnText9.visible = false;
+     btnText10.visible = false;
      //----------------------------------------------------------------
 
 
@@ -250,35 +311,67 @@ function QuestUpdate(){
         validCheck = 0;
     }
 
-    text.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text.x = Math.floor(QuestContent_lv1.x - 340 + QuestContent_lv1.width / 2);
+    text.y = Math.floor(QuestContent_lv1.y - 65 + QuestContent_lv1.height / 2);
 
-    text2.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text2.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text2.x = Math.floor(QuestContent_lv2.x - 340 + QuestContent_lv2.width / 2);
+    text2.y = Math.floor(QuestContent_lv2.y - 65 + QuestContent_lv2.height / 2);
 
-    text3.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text3.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text3.x = Math.floor(QuestContent_lv3.x - 340 + QuestContent_lv3.width / 2);
+    text3.y = Math.floor(QuestContent_lv3.y - 65 + QuestContent_lv3.height / 2);
 
-    text4.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text4.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text4.x = Math.floor(QuestContent_lv4.x - 340 + QuestContent_lv4.width / 2);
+    text4.y = Math.floor(QuestContent_lv4.y - 65 + QuestContent_lv4.height / 2);
 
-    text5.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text5.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text5.x = Math.floor(QuestContent_lv5.x - 340 + QuestContent_lv5.width / 2);
+    text5.y = Math.floor(QuestContent_lv5.y - 65 + QuestContent_lv5.height / 2);
 
-    text6.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text6.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text6.x = Math.floor(QuestContent_lv6.x - 340 + QuestContent_lv6.width / 2);
+    text6.y = Math.floor(QuestContent_lv6.y - 65 + QuestContent_lv6.height / 2);
 
-    text7.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text7.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text7.x = Math.floor(QuestContent_lv7.x - 340 + QuestContent_lv7.width / 2);
+    text7.y = Math.floor(QuestContent_lv7.y - 65 + QuestContent_lv7.height / 2);
 
-    text8.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text8.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text8.x = Math.floor(QuestContent_lv8.x - 340 + QuestContent_lv8.width / 2);
+    text8.y = Math.floor(QuestContent_lv8.y - 65 + QuestContent_lv8.height / 2);
 
-    text9.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text9.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text9.x = Math.floor(QuestContent_lv9.x - 340 + QuestContent_lv9.width / 2);
+    text9.y = Math.floor(QuestContent_lv9.y - 65 + QuestContent_lv9.height / 2);
 
-    text10.x = Math.floor(QuestContent_lv1.x - 230 + QuestContent_lv1.width / 2);
-    text10.y = Math.floor(QuestContent_lv1.y - 180 + QuestContent_lv1.height / 2);
+    text10.x = Math.floor(QuestContent_lv10.x - 340 + QuestContent_lv10.width / 2);
+    text10.y = Math.floor(QuestContent_lv10.y - 65 + QuestContent_lv10.height / 2);
+
+    //btnTEXT
+
+    btnText.x = Math.floor(Questbtn_lv1.x - 170 + Questbtn_lv1.width / 2);
+    btnText.y = Math.floor(Questbtn_lv1.y - 18 + Questbtn_lv1.height / 2);
+
+    btnText2.x = Math.floor(Questbtn_lv2.x - 193 + Questbtn_lv2.width / 2);
+    btnText2.y = Math.floor(Questbtn_lv2.y - 18 + Questbtn_lv2.height / 2);
+
+    btnText3.x = Math.floor(Questbtn_lv3.x - 185 + Questbtn_lv3.width / 2);
+    btnText3.y = Math.floor(Questbtn_lv3.y - 18 + Questbtn_lv3.height / 2);
+
+    btnText4.x = Math.floor(Questbtn_lv4.x - 188 + Questbtn_lv4.width / 2);
+    btnText4.y = Math.floor(Questbtn_lv4.y - 18 + Questbtn_lv4.height / 2);
+
+    btnText5.x = Math.floor(Questbtn_lv5.x - 186 + Questbtn_lv5.width / 2);
+    btnText5.y = Math.floor(Questbtn_lv5.y - 18 + Questbtn_lv5.height / 2);
+
+    btnText6.x = Math.floor(Questbtn_lv6.x - 184 + Questbtn_lv6.width / 2);
+    btnText6.y = Math.floor(Questbtn_lv6.y - 18 + Questbtn_lv6.height / 2);
+
+    btnText7.x = Math.floor(Questbtn_lv7.x - 188 + Questbtn_lv7.width / 2);
+    btnText7.y = Math.floor(Questbtn_lv7.y - 18 + Questbtn_lv7.height / 2);
+
+    btnText8.x = Math.floor(Questbtn_lv8.x - 172 + Questbtn_lv8.width / 2);
+    btnText8.y = Math.floor(Questbtn_lv8.y - 18 + Questbtn_lv8.height / 2);
+
+    btnText9.x = Math.floor(Questbtn_lv9.x - 181 + Questbtn_lv9.width / 2);
+    btnText9.y = Math.floor(Questbtn_lv9.y - 18 + Questbtn_lv9.height / 2);
+
+    btnText10.x = Math.floor(Questbtn_lv10.x - 183 + Questbtn_lv10.width / 2);
+    btnText10.y = Math.floor(Questbtn_lv10.y - 18 + Questbtn_lv10.height / 2);
 }
 
 
@@ -300,6 +393,17 @@ function viewQuest()
 
     //QuestContent
     //QuestContent.visible = true;
+
+    btnText.visible = true;
+    btnText2.visible = true;
+    btnText3.visible = true;
+    btnText4.visible = true;
+    btnText5.visible = true;
+    btnText6.visible = true;
+    btnText7.visible = true;
+    btnText8.visible = true;
+    btnText9.visible = true;
+    btnText10.visible = true;
 
 
 
@@ -346,6 +450,18 @@ function QuestUi()
         text8.visible = false;
         text9.visible = false;
         text10.visible = false;
+
+        //Quest btn TEXT
+        btnText.visible = false;
+        btnText2.visible = false;
+        btnText3.visible = false;
+        btnText4.visible = false;
+        btnText5.visible = false;
+        btnText6.visible = false;
+        btnText7.visible = false;
+        btnText8.visible = false;
+        btnText9.visible = false;
+        btnText10.visible = false;
     }
     else
     {
