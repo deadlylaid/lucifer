@@ -5,6 +5,7 @@ from .inventory_serializer import InventorySerializer
 from .learnedskill_serializer import LearnedSkillSerializer
 from .quickslot_serializer import QuickSlotSerializer
 from .equipment_serializer import EquipmentSerializer
+from .characterquest_serializer import CharacterQuestSerializer
 
 
 class CharacterSerializer(serializers.ModelSerializer):
@@ -14,6 +15,7 @@ class CharacterSerializer(serializers.ModelSerializer):
     learnedskill_set = LearnedSkillSerializer(many=True)
     quickslot_set = QuickSlotSerializer(many=True)
     equipment_set = EquipmentSerializer(many=True)
+    characterquest_set = CharacterQuestSerializer(many=True)
 
     class Meta:
         model = Character
@@ -28,4 +30,5 @@ class CharacterSerializer(serializers.ModelSerializer):
                 'learnedskill_set',
                 'quickslot_set',
                 'equipment_set',
+                'characterquest_set',
                 )

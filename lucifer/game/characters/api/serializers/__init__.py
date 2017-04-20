@@ -4,3 +4,4 @@ from .inventory_serializer import InventorySerializer
 from .learnedskill_serializer import LearnedSkillSerializer
 from .quickslot_serializer import QuickSlotSerializer
 from .equipment_serializer import EquipmentSerializer
+from .characterquest_serializer import CharacterQuestSerializer
