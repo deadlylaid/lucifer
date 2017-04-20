@@ -519,6 +519,8 @@ function fallen_Shaman_Attack(Object)
 			Object.StandCheck = false;
 			Object.MoveCheck = false;
 		}
+
+		fallen_Shaman_HitCount(Object)
 	}
 }
 
@@ -538,15 +540,33 @@ function fallen_Shaman_FireBall_Fire(Object)
 	}	
 }
 
-function fallen_Shaman_HitCount(Bullet, Object)
+function fallen_Shaman_HitCount(/*Bullet,*/ Object)
 {
-	Object.FireBall.remove(Bullet);
+	//Object.FireBall.remove(Bullet);
 
 	if(Object.DelayTime_Total > 1)
 	{
-		health -= 10; //몬스터 공격력 만큼 빼줘야됨.		
-		Object.DelayTime_Total = 0;
-		//Object.AttackCheck = false;
+		if(Object.animations.name == 'MON_FallenShaman_Attack_' + Object.Direction)
+		{
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 16;
+			}
+			else
+			{
+				EndFrame = 16 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 6 < EndFrame)
+			{
+				health -= 10; //몬스터 공격력 만큼 빼줘야됨.		
+				Object.DelayTime_Total = 0;
+				//Object.AttackCheck = false;
+			}		
+		}		
 	}	
 }
 

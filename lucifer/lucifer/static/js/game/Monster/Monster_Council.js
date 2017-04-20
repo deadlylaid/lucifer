@@ -625,8 +625,7 @@ function council_Attack(Object)
 			{
 				Object.Skill_Light.visible = false;
 				council_Animation_Change(Object.Direction, 'Attack', Object);
-				council_HitCount(Object);
-
+				
 				Object.Pattern_Skill_Check = true;
 				Object.AttackCheck = true;
 			}
@@ -637,6 +636,8 @@ function council_Attack(Object)
 			Object.StandCheck = false;
 			Object.MoveCheck = false;
 		}
+
+		council_HitCount(Object);
 	}
 }
 
@@ -644,17 +645,53 @@ function council_HitCount(Object)
 {
 	if(Object.DelayTime_Total > 1)
 	{
-		health -= 20;	//Mosnter Attack Point Setting
-		Object.DelayTime_Total = 0;
+		if(Object.animations.name == 'MON_Council_Attack_' + Object.Direction)
+		{
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 9;
+			}
+			else
+			{
+				EndFrame = 9 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 1 < EndFrame)
+			{
+				health -= 20;	//Mosnter Attack Point Setting
+				Object.DelayTime_Total = 0;	
+			}		
+		}		
 	}
 }
 
 function council_SkillHitCount(Object)
 {
 	if(Object.Skill_Time_Total > 1)
-	{
-		health -= 40;
-		Object.Skill_Time_Total = 0;
+	{	
+		if(Object.Skill_Light.animations.name == 'Council_Light_' + Object.Direction)
+		{
+			var CurFrame = Object.Skill_Light.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 13;
+			}
+			else
+			{
+				EndFrame = 13 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 3 < EndFrame)
+			{
+				health -= 40;	//Skill Attack Point
+				Object.Skill_Time_Total = 0;
+			}		
+		}		
 	}
 }
 

@@ -478,8 +478,7 @@ function andariel_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				andariel_Animation_Change(Object.Direction, 'Attack', Object);
-				andariel_HitCount(Object);
+				andariel_Animation_Change(Object.Direction, 'Attack', Object);				
 				Object.AttackCheck = true;
 			}
 		}
@@ -488,6 +487,8 @@ function andariel_Attack(Object)
 			Object.StandCheck = false;
 			Object.MoveCheck = false;			
 		}
+
+		andariel_HitCount(Object);
 	}
 }
 
@@ -495,8 +496,26 @@ function andariel_HitCount(Object)
 {
 	if(Object.DelayTime_Total > 1)
 	{
-		health -= 40;	//Mosnter Attack Point Setting
-		Object.DelayTime_Total = 0;
+		if(Object.animations.name == 'MON_Andariel_Attack_' + Object.Direction)
+		{
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 15;
+			}
+			else
+			{
+				EndFrame = 15 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 5 < EndFrame)
+			{
+				health -= 40;	//Mosnter Attack Point Setting
+				Object.DelayTime_Total = 0;
+			}		
+		}		
 	}
 }
 

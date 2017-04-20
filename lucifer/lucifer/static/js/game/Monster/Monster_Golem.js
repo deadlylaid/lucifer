@@ -473,8 +473,7 @@ function golem_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				golem_Animation_Change(Object.Direction, 'Attack', Object);
-				golem_HitCount(Object);	
+				golem_Animation_Change(Object.Direction, 'Attack', Object);				
 				Object.AttackCheck = true;
 			}				
 		}
@@ -482,7 +481,9 @@ function golem_Attack(Object)
 		{
 			Object.StandCheck = false;
 			Object.MoveCheck = false;
-		}		
+		}
+
+		golem_HitCount(Object);			
 	}	
 }
 
@@ -490,8 +491,26 @@ function golem_HitCount(Object)
 {
 	if(Object.DelayTime_Total > 1)
 	{
-		health -= 30; //몬스터 공격력도 넣어야됨.
-		Object.DelayTime_Total = 0;
+		if(Object.animations.name == 'MON_Golem_Attack_' + Object.Direction)
+		{
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 14;
+			}
+			else
+			{
+				EndFrame = 14 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 4 < EndFrame)
+			{
+				health -= 30; //몬스터 공격력도 넣어야됨.
+				Object.DelayTime_Total = 0;
+			}		
+		}		
 	}	
 }
 
