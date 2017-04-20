@@ -589,11 +589,13 @@ function stageTwo_Create()
 
     //-------------------------------------------------------------------------------------------
 
-    Stage2_AlertText = Lucifer_Game.add.text(120, 780, "Stage2 : 점령된 사원", {font: '20px Roboto', fill: '#a7533b'});
+    Stage2_AlertText = Lucifer_Game.add.text(115, 780, "Stage2 : 점령된 사원", {font: '20px Roboto', fill: '#8f442f'});
     Stage2_AlertText.anchor.set(0.5);
     Stage2_AlertText.fixedToCamera = true;
     Stage2_AlertText.fontWeight = 'bold';
-    Stage2_AlertText.setShadow(3, 3, '#000000', 0, true, true);	
+    Stage2_AlertText.stroke = '#000000';
+    Stage2_AlertText.strokeThickness = 1;
+    Stage2_AlertText.setShadow(1, 1, '#000000', 0, true, true);	
 }
 
 function stage2_Culling()

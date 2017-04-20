@@ -242,7 +242,9 @@ function stageThree_Create()
     Stage3_AlertText.anchor.set(0.5);
     Stage3_AlertText.fixedToCamera = true;
     Stage3_AlertText.fontWeight = 'bold';
-    Stage3_AlertText.setShadow(3, 3, '#000000', 0, true, true);	
+    Stage3_AlertText.stroke = '#000000';
+    Stage3_AlertText.strokeThickness = 1;
+    Stage3_AlertText.setShadow(1, 1, '#000000', 0, true, true);	
 
 }
 
