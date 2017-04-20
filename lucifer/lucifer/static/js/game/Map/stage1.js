@@ -3,6 +3,8 @@ var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup = [];								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
 var BackStageMove=1;
+var text_wel;
+var Stage1_AlertText ;
 
 
 var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Object_wall12',
@@ -148,7 +150,7 @@ function stageOne_Preload()
 }
 
 function stageOne_Create()
-{
+{	
 	//Stage2 -> Stage1 Portal move 
 	//---------------------------------------------------------------------------------------
 	if(BackStageMove == 0){
@@ -395,11 +397,78 @@ function stageOne_Create()
 	//---------------------------------------------------------------------------------------
 
 	Background_map.setCollision(21, true, "Collision Layer");
-	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");		
+	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");
+
+
+	//Welcome TEXT (게임 첫 시작에만 나옴.)
+	if(BackStageMove == 1) 
+	{
+    text_wel = Lucifer_Game.add.text(640, 150, "LUCIFER 세계에 오신 걸 환영합니다.", {font: '50px Roboto', fill: '#ffffff'});
+    text_wel.anchor.set(0.5);
+    text_wel.alpha = 0.1;
+    text_wel.fixedToCamera = true;
+    text_wel.stroke = '#000000';
+    text_wel.strokeThickness = 2;
+    text_wel.setShadow(3, 3, '#000000', 0, true, true);
+    text_wel.padding.set(10, 16);
+    text_wel.fontWeight = 'bold';
+
+    var grd = text_wel.context.createLinearGradient(0, 0, 0, text_wel.height);
+
+    //  Add in 2 color stops
+    grd.addColorStop(0, '#d13034');   
+    grd.addColorStop(1, '#66191b');
+
+    //  And apply to the Text
+    text_wel.fill = grd;
+
+
+    Lucifer_Game.add.tween(text_wel).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
+
+    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, TextVisible, this);	
+
+	} 
+	else {
+	text_wel = Lucifer_Game.add.text(640, 150, "Stage1 : 마을", {font: '50px Roboto', fill: '#ffffff'});
+    text_wel.anchor.set(0.5);
+    text_wel.alpha = 0.1;
+    text_wel.fixedToCamera = true;
+    text_wel.stroke = '#000000';
+    text_wel.strokeThickness = 2;
+    text_wel.setShadow(3, 3, '#000000', 0, true, true);
+    text_wel.padding.set(10, 16);
+    text_wel.fontWeight = 'bold';
+
+    var grd = text_wel.context.createLinearGradient(0, 0, 0, text_wel.height);
+
+    //  Add in 2 color stops
+    grd.addColorStop(0, '#d13034');   
+    grd.addColorStop(1, '#66191b');
+
+    //  And apply to the Text
+    text_wel.fill = grd;
+
+
+    Lucifer_Game.add.tween(text_wel).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
+
+    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, TextVisible, this);
+
+	}
+    //-------------------------------------------------------------------------------------------
+
+    Stage1_AlertText = Lucifer_Game.add.text(80, 780, "Stage1 : 마을", {font: '20px Roboto', fill: '#a7533b'});
+    Stage1_AlertText.anchor.set(0.5);
+    Stage1_AlertText.fixedToCamera = true;
+    Stage1_AlertText.fontWeight = 'bold';
+    Stage1_AlertText.setShadow(3, 3, '#000000', 0, true, true);
+
+
 }
 
 	
-
+function TextVisible(){
+	text_wel.destroy();
+}
 
 function portal_Check()
 {
