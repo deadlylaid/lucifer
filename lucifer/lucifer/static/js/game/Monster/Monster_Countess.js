@@ -38,6 +38,9 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
+
+	//Level System
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
 }
 
 Countess.prototype = Object.create(Phaser.Sprite.prototype);
@@ -186,6 +189,10 @@ function countess_Clone(PointX, PointY)
 	countess_Object.Regen_Timer = Lucifer_Game.time.create(false);
 	countess_Object.Regen_Timer.loop(1000, countess_RegenTimer, Lucifer_Game, countess_Object);
 
+	//Exp Timer
+	countess_Object.ExpTimer = Lucifer_Game.time.create(false);
+	countess_Object.ExpTimer.loop(10, countess_ExpTimer, Lucifer_Game, countess_Object);
+
 	countess_Group.add(countess_Object);
 }
 //----------------------------------------------------------------------------------------------
@@ -211,6 +218,12 @@ function countess_DelayTimer(Object)
 function countess_RegenTimer(Object)
 {
 	++Object.Regen_Time_Total;
+}
+
+//Exp
+function countess_ExpTimer(Object)
+{
+	++Object.ExpTime_Total;
 }
 
 //Name
@@ -530,6 +543,7 @@ function countess_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
+			Object.ExpCheck = true;
 		}				
 	}
 }
@@ -621,6 +635,9 @@ function countess_Update()
 
 		countess_Dead(countess);
 		countess_Regen(countess);
+
+		//Level System Check
+		check_Monster_Dead(countess);			
 	}
 }
 

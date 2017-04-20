@@ -38,6 +38,9 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
+
+	//Level System
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
 }
 
 Wraith.prototype = Object.create(Phaser.Sprite.prototype);
@@ -183,6 +186,10 @@ function wraith_Clone(PointX, PointY)
 	wraith_Object.Regen_Timer = Lucifer_Game.time.create(false);
 	wraith_Object.Regen_Timer.loop(1000, wraith_RegenTimer, Lucifer_Game, wraith_Object);
 
+	//Exp Timer
+	wraith_Object.ExpTimer = Lucifer_Game.time.create(false);
+	wraith_Object.ExpTimer.loop(10, wraith_ExpTimer, Lucifer_Game, wraith_Object);
+
 	wraith_Group.add(wraith_Object);
 }
 //------------------------------------------------------------------------------
@@ -207,6 +214,11 @@ function wraith_DelayTimer(Object)
 function wraith_RegenTimer(Object)
 {
 	++Object.Regen_Time_Total;
+}
+
+function wraith_ExpTimer(Object)
+{
+	++Object.ExpTime_Total;
 }
 
 //Name
@@ -528,6 +540,7 @@ function wraith_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
+			Object.ExpCheck = true;
 		}				
 	}
 }
@@ -619,6 +632,9 @@ function wraith_Update()
 
 		wraith_Dead(wraith);
 		wraith_Regen(wraith);
+
+		//Level System
+		check_Monster_Dead(wraith);
 	}
 }
 
