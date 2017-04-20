@@ -649,17 +649,13 @@ function diablo_Attack(Object)
 					{
 						//Attack Pattern - 1
 						diablo_Animation_Change(Object.Direction, 'Attack', Object);
-						diablo_HitCount(Object);					
-
 						Object.AttackCheck = true;				
 					}	
 
 					if(Object.Pattern_Attack == true)
 					{
 						//Attack Pattern - 2
-						diablo_Animation_Change(Object.Direction, 'Attack1', Object);
-						diablo_HitCount(Object);					
-
+						diablo_Animation_Change(Object.Direction, 'Attack1', Object);			
 						Object.AttackCheck = true;
 					}		
 				}
@@ -673,10 +669,7 @@ function diablo_Attack(Object)
 						Object.AttackCheck = true;
 
 						//Inferno
-						diaSkill_Inferno_Animation_Change(Object.Direction, Object);						
-
-						//Collision
-						diaSkill_Inferno_Col(Object);
+						diaSkill_Inferno_Animation_Change(Object.Direction, Object);					
 					}
 
 					if(Object.Pattern_Skill == true)
@@ -686,10 +679,7 @@ function diablo_Attack(Object)
 						Object.AttackCheck = true;
 
 						//Fire
-						diaSkill_Fire_Attack(Object);
-
-						//Collision
-						diaSkill_Fire_Col(Object);
+						diaSkill_Fire_Attack(Object);						
 					}
 
 					if(Object.Skill_Idle_Check == true)
@@ -706,6 +696,11 @@ function diablo_Attack(Object)
 			Object.StandCheck = false;
 			Object.MoveCheck = false;			
 		}
+
+		//HitCount
+		diaSkill_Fire_Col(Object);
+		diaSkill_Inferno_Col(Object);
+		diablo_HitCount(Object);
 	}	
 }
 
@@ -875,10 +870,51 @@ function diablo_Pattern_Skill(Object)
 
 function diablo_HitCount(Object)
 {
+	//'MON_Diablo_Attack1', 'MON_Diablo_Skill', 'MON_Diablo_Skill1',
+	//'MON_Diablo_Skill2', 'MON_Diablo_Skill3', 'MON_Diablo_Dead'
+
 	if(Object.DelayTime_Total > 1)
 	{
-		health -= 40;	//Mosnter Attack Point Setting
-		Object.DelayTime_Total = 0;
+		if(Object.animations.name == 'MON_Diablo_Attack_' + Object.Direction)
+		{
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 15;
+			}
+			else
+			{
+				EndFrame = 15 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 5 < EndFrame)
+			{
+				health -= 40;	//Mosnter Attack Point Setting
+				Object.DelayTime_Total = 0;
+			}		
+		}
+		else if(Object.animations.name == 'MON_Diablo_Attack1_' + Object.Direction)
+		{
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 19;
+			}
+			else
+			{
+				EndFrame = 19 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 9 < EndFrame)
+			{
+				health -= 40;	//Mosnter Attack Point Setting
+				Object.DelayTime_Total = 0;
+			}
+		}			
 	}
 }
 

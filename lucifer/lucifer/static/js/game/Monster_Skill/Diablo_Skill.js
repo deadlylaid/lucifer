@@ -159,8 +159,26 @@ function diaSkill_Fire_Col(Object)
 
 		if(Object.SkillTime_Total > 1)
 		{
-			health -= 100;	//Diablo Fire Skill Dagame
-			Object.SkillTime_Total = 0;			
+			if(Object.animations.name == 'MON_Diablo_Skill2_' + Object.Direction)
+			{
+				var CurFrame = Object.animations.frame;
+				var EndFrame = 0;
+
+				if(Object.Direction == 0)
+				{
+					EndFrame = 17;
+				}
+				else
+				{
+					EndFrame = 17 * (Object.Direction + 1);
+				}
+
+				if(CurFrame + 7 < EndFrame)
+				{
+					health -= 100;	//Diablo Fire Skill Dagame
+					Object.SkillTime_Total = 0;		
+				}
+			}				
 		}
 	}
 }
@@ -173,8 +191,26 @@ function diaSkill_Inferno_Col(Object)
 
 		if(Object.Inferno.Time_Total > 1)
 		{
-			health -= 50;	//Diablo Inferno Skill Damage
-			Object.Inferno.Time_Total = 0;			
+			if(Object.animations.name == 'MON_Diablo_Skill_' + Object.Direction)
+			{
+				var CurFrame = Object.animations.frame;
+				var EndFrame = 0;
+
+				if(Object.Direction == 0)
+				{
+					EndFrame = 16;
+				}
+				else
+				{
+					EndFrame = 16 * (Object.Direction + 1);
+				}
+
+				if(CurFrame + 6 < EndFrame)
+				{
+					health -= 50;	//Diablo Inferno Skill Damage
+					Object.Inferno.Time_Total = 0;		
+				}
+			}				
 		}
 	}
 }

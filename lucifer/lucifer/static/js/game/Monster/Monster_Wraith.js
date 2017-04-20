@@ -483,8 +483,7 @@ function wraith_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				wraith_Animation_Change(Object.Direction, 'Attack', Object);
-				wraith_HitCount(Object);
+				wraith_Animation_Change(Object.Direction, 'Attack', Object);				
 				Object.AttackCheck = true;
 			}
 		}
@@ -493,6 +492,8 @@ function wraith_Attack(Object)
 			Object.StandCheck = false;
 			Object.MoveCheck = false;
 		}
+
+		wraith_HitCount(Object);
 	}
 }
 
@@ -500,8 +501,26 @@ function wraith_HitCount(Object)
 {
 	if(Object.DelayTime_Total > 1)
 	{
-		health -= 20;	//Mosnter Attack Point Setting
-		Object.DelayTime_Total = 0;
+		if(Object.animations.name == 'MON_Wraith_Attack_' + Object.Direction)
+		{
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 13;
+			}
+			else
+			{
+				EndFrame = 13 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 3 < EndFrame)
+			{
+				health -= 20;	//Mosnter Attack Point Setting
+				Object.DelayTime_Total = 0;	
+			}		
+		}		
 	}
 }
 

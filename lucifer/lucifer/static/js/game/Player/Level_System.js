@@ -51,9 +51,7 @@ function player_Level_Update(Object)
 		}
 
 		Object.ExpTime_Total = 0;
-		Object.ExpTimer.stop();
-
-		console.log(experience);
+		Object.ExpTimer.stop();	
 	}		
 }
 

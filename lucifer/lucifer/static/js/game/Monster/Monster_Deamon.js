@@ -498,8 +498,7 @@ function deamon_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				deamon_Animation_Change(Object.Direction, 'Attack', Object);
-				deamon_HitCount(Object);
+				deamon_Animation_Change(Object.Direction, 'Attack', Object);			
 				Object.AttackCheck = true;
 			}
 		}
@@ -508,6 +507,8 @@ function deamon_Attack(Object)
 			Object.StandCheck = false;
 			Object.MoveCheck = false;
 		}
+
+		deamon_HitCount(Object);
 	}
 }
 
@@ -515,8 +516,26 @@ function deamon_HitCount(Object)
 {
 	if(Object.DelayTime_Total > 1)
 	{
-		health -= 20;	//Mosnter Attack Point Setting
-		Object.DelayTime_Total = 0;
+		if(Object.animations.name == 'MON_Deamon_Attack_' + Object.Direction)
+		{
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
+			{
+				EndFrame = 15;
+			}
+			else
+			{
+				EndFrame = 15 * (Object.Direction + 1);
+			}
+
+			if(CurFrame + 5 < EndFrame)
+			{
+				health -= 20;	//Mosnter Attack Point Setting
+				Object.DelayTime_Total = 0;	
+			}		
+		}		
 	}
 }
 
