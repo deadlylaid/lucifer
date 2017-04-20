@@ -3,8 +3,8 @@ var validCheck = 1,
     Key_Quest,
     keyValidTimer;
 
-var Questbtn_lv1, Questbtn_lv2, Questbtn_lv3, 
-    Questbtn_lv4, Questbtn_lv5, Questbtn_lv6, 
+var Questbtn_lv1, Questbtn_lv2, Questbtn_lv3,
+    Questbtn_lv4, Questbtn_lv5, Questbtn_lv6,
     Questbtn_lv7, Questbtn_lv8, Questbtn_lv9, Questbtn_lv10 ;
 
 var QuestContent_lv1, QuestContent_lv2, QuestContent_lv3,
@@ -31,7 +31,29 @@ function QuestPreload(){
 
 };
 
+quest = function(title, exReword, goldReword, advanced, goal, isCompleted){
+    this.questTitle = title;
+    this.exReword = exReword;
+    this.goldReword = goldReword;
+    this.advanced = advanced;
+    this.goal = goal;
+    this.isCompleted = isCompleted;
+}
+
 function QuestCreate(){
+
+    var characterQuestLength = characterQuest.length;
+    for(i=0; i<characterQuestLength; i++){
+
+        title = characterQuest[i].title;
+        exReword = characterQuest[i].ex_reword;
+        goldReword = characterQuest[i].gold_reword;
+        advanced = characterQuest[i].advanced;
+        goal = characterQuest[i].goal;
+        isCompleted = characterQuest[i].isCompleted;
+
+        characterQuest[i] = new quest(title, exReword, goldReword, advanced, goal, isCompleted);
+    }
 
     //Tab 이미지 추가
     //--------------------------------------------------------
@@ -52,9 +74,9 @@ function QuestCreate(){
     keyValidTimer.loop(400, timeCheck, this);
 
      //---------------------------------------------------------------
-     // button (over , normal , click) 
+     // button (over , normal , click)
 
-     //QuestButton Level 1 
+     //QuestButton Level 1
      Questbtn_lv1 = Lucifer_Game.add.button(393, 600, 'Questbtn', actionOnClick1, this, 1, 0, 2);
      Questbtn_lv1.anchor.setTo(0.5, 0.5);
      Questbtn_lv1.fixedToCamera = true;
@@ -64,7 +86,7 @@ function QuestCreate(){
      btnText.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 2 
+     //QuestButton Level 2
      Questbtn_lv2 = Lucifer_Game.add.button(393, 557, 'Questbtn', actionOnClick2, this, 1, 0, 2);
      Questbtn_lv2.anchor.setTo(0.5, 0.5);
      Questbtn_lv2.fixedToCamera = true;
@@ -74,7 +96,7 @@ function QuestCreate(){
      btnText2.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 3 
+     //QuestButton Level 3
      Questbtn_lv3 = Lucifer_Game.add.button(393, 514, 'Questbtn', actionOnClick3, this, 1, 0, 2);
      Questbtn_lv3.anchor.setTo(0.5, 0.5);
      Questbtn_lv3.fixedToCamera = true;
@@ -84,7 +106,7 @@ function QuestCreate(){
      btnText3.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 4 
+     //QuestButton Level 4
      Questbtn_lv4 = Lucifer_Game.add.button(393, 471, 'Questbtn', actionOnClick4, this, 1, 0, 2);
      Questbtn_lv4.anchor.setTo(0.5, 0.5);
      Questbtn_lv4.fixedToCamera = true;
@@ -94,7 +116,7 @@ function QuestCreate(){
      btnText4.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 5 
+     //QuestButton Level 5
      Questbtn_lv5 = Lucifer_Game.add.button(393, 428, 'Questbtn', actionOnClick5, this, 1, 0, 2);
      Questbtn_lv5.anchor.setTo(0.5, 0.5);
      Questbtn_lv5.fixedToCamera = true;
@@ -104,7 +126,7 @@ function QuestCreate(){
      btnText5.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 6 
+     //QuestButton Level 6
      Questbtn_lv6 = Lucifer_Game.add.button(393, 385, 'Questbtn', actionOnClick6, this, 1, 0, 2);
      Questbtn_lv6.anchor.setTo(0.5, 0.5);
      Questbtn_lv6.fixedToCamera = true;
@@ -114,7 +136,7 @@ function QuestCreate(){
      btnText6.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 7 
+     //QuestButton Level 7
      Questbtn_lv7 = Lucifer_Game.add.button(393, 342, 'Questbtn', actionOnClick7, this, 1, 0, 2);
      Questbtn_lv7.anchor.setTo(0.5, 0.5);
      Questbtn_lv7.fixedToCamera = true;
@@ -124,7 +146,7 @@ function QuestCreate(){
      btnText7.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 8 
+     //QuestButton Level 8
      Questbtn_lv8 = Lucifer_Game.add.button(393, 299, 'Questbtn', actionOnClick8, this, 1, 0, 2);
      Questbtn_lv8.anchor.setTo(0.5, 0.5);
      Questbtn_lv8.fixedToCamera = true;
@@ -134,7 +156,7 @@ function QuestCreate(){
      btnText8.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 9 
+     //QuestButton Level 9
      Questbtn_lv9 = Lucifer_Game.add.button(393, 256, 'Questbtn', actionOnClick9, this, 1, 0, 2);
      Questbtn_lv9.anchor.setTo(0.5, 0.5);
      Questbtn_lv9.fixedToCamera = true;
@@ -144,7 +166,7 @@ function QuestCreate(){
      btnText9.anchor.set(0.5);
      //---------------------------------------------------------------
 
-     //QuestButton Level 10 
+     //QuestButton Level 10
      Questbtn_lv10 = Lucifer_Game.add.button(393, 213, 'Questbtn', actionOnClick10, this, 1, 0, 2);
      Questbtn_lv10.anchor.setTo(0.5, 0.5);
      Questbtn_lv10.fixedToCamera = true;
@@ -297,8 +319,8 @@ function QuestCreate(){
 function QuestUpdate(){
     /**************************
 
-            UPDATE문 작성 
-    
+            UPDATE문 작성
+
     ***************************/
 
     if(Key_Quest.isDown)
@@ -484,10 +506,10 @@ function actionOnClick1() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
@@ -519,10 +541,10 @@ function actionOnClick2() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
@@ -545,7 +567,7 @@ function actionOnClick2() {
 
 function actionOnClick3() {
     console.log('click3');
-    
+
     QuestContent_lv1.visible = false;
     text.visible = false;
 
@@ -554,10 +576,10 @@ function actionOnClick3() {
 
     QuestContent_lv3.visible = true;
     text3.visible = true;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
@@ -580,7 +602,7 @@ function actionOnClick3() {
 
 function actionOnClick4() {
     console.log('click4');
-    
+
     QuestContent_lv1.visible = false;
     text.visible = false;
 
@@ -589,10 +611,10 @@ function actionOnClick4() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = true;
     text4.visible = true;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
@@ -615,7 +637,7 @@ function actionOnClick4() {
 
 function actionOnClick5() {
     console.log('click5');
-    
+
     QuestContent_lv1.visible = false;
     text.visible = false;
 
@@ -624,10 +646,10 @@ function actionOnClick5() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = true;
     text5.visible = true;
 
@@ -650,7 +672,7 @@ function actionOnClick5() {
 
 function actionOnClick6() {
     console.log('click6');
-    
+
     QuestContent_lv1.visible = false;
     text.visible = false;
 
@@ -659,10 +681,10 @@ function actionOnClick6() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
@@ -685,7 +707,7 @@ function actionOnClick6() {
 
 function actionOnClick7() {
     console.log('click7');
-    
+
     QuestContent_lv1.visible = false;
     text.visible = false;
 
@@ -694,10 +716,10 @@ function actionOnClick7() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
@@ -720,7 +742,7 @@ function actionOnClick7() {
 
 function actionOnClick8() {
     console.log('click8');
-    
+
     QuestContent_lv1.visible = false;
     text.visible = false;
 
@@ -729,10 +751,10 @@ function actionOnClick8() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
@@ -764,10 +786,10 @@ function actionOnClick9() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
@@ -799,10 +821,10 @@ function actionOnClick10() {
 
     QuestContent_lv3.visible = false;
     text3.visible = false;
-    
+
     QuestContent_lv4.visible = false;
     text4.visible = false;
-    
+
     QuestContent_lv5.visible = false;
     text5.visible = false;
 
