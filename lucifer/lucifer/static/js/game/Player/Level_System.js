@@ -1,16 +1,11 @@
 // Lving System
 //----------------------------------------------------------------------------------------------
-var get_Exp;
+var get_Exp = 0;
 
 function check_Monster_Dead(Object)
 {
-	if(Object.DeadCheck == true)
+	if(Object.ExpCheck == true)
 	{
-		if(Object.ExpCheck == false)
-		{
-			return;
-		}
-
 		switch(Object.Name.text)
 		{
 		case "Golem":
@@ -34,24 +29,32 @@ function check_Monster_Dead(Object)
 		case "Wraith":
 			get_Exp = 90;
 			break;
-		}
+		case "Diablo":
+			get_Exp = 500;
+			break;
+		}		
 
-		player_Level_Update();
-		Object.ExpCheck = false;	
-	}	
+		player_Level_Update(Object);		
+		Object.ExpCheck = false;		
+	}		
 }
 
-function player_Level_Update()
+function player_Level_Update(Object)
 {	
-	experience += get_Exp;
+	Object.ExpTimer.start();
 
-	if(experience >= 1000)
-	{
-		//Level Up Stat
-		player_State_Up();		
-	}
+	if(Object.ExpTime_Total > 1)
+	{		
+		if(experience < 1000)
+		{
+			experience += get_Exp;		
+		}
 
-	console.log(level, experience);
+		Object.ExpTime_Total = 0;
+		Object.ExpTimer.stop();
+
+		console.log(experience);
+	}		
 }
 
 function player_State_Up()
@@ -72,7 +75,16 @@ function player_State_Up()
     	health = maxHealth;
 
     	//무기상수 * ((4 * 힘) + (체력총합 * 0.1)) * (무기공격력 * 0.01)
-    	attack_point = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (10 * 0.01);
+    	attack_point = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (10 * 0.01);    	
 	}
 	else{}
+}
+
+function player_Level_Up()
+{
+	if(experience >= 1000)
+	{
+		//Level Up Stat
+		player_State_Up();		
+	}
 }

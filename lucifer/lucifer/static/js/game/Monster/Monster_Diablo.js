@@ -51,6 +51,9 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Dia_lnferno
 	this.Inferno, this.Inferno_Bullet, this.Fire, this.Fire_Bullet;
+
+	//Level System
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
 }
 
 Diablo.prototype = Object.create(Phaser.Sprite.prototype);
@@ -297,6 +300,10 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.Fire.setAll('outOfBoundsKill', true);	
 	diablo_Object.Fire.setAll('visible', false);
 	diablo_Object.Fire.setAll('blendMode', Phaser.blendModes.ADD);	
+
+	//Exp Timer
+	diablo_Object.ExpTimer = Lucifer_Game.time.create(false);
+	diablo_Object.ExpTimer.loop(10, diablo_ExpTimer, Lucifer_Game, diablo_Object);
 }
 //----------------------------------------------------------------------------------------------
 //Over / Out
@@ -330,6 +337,11 @@ function diablo_PatternAttack_Timer(Object)
 function diablo_Skill_Timer(Object)
 {
 	++Object.SkillTime_Total;
+}
+//Exp Timer
+function diablo_ExpTimer(Object)
+{
+	++Object.ExpTime_Total;
 }
 
 //Name
@@ -894,6 +906,7 @@ function diablo_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
+			Object.ExpCheck = true;
 		}			
 	}
 }
@@ -993,6 +1006,9 @@ function diablo_Update()
 
 	diablo_Dead(diablo);
 	diablo_Regen(diablo);	
+
+	//Level System
+	check_Monster_Dead(diablo);
 }
 
 function diablo_Render()

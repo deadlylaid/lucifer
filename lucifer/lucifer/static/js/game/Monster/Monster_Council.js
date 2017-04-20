@@ -47,6 +47,9 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
+
+	//Level System
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
 }
 
 Council.prototype = Object.create(Phaser.Sprite.prototype);
@@ -243,6 +246,10 @@ function council_Clone(PointX, PointY)
 	council_Object.Regen_Timer = Lucifer_Game.time.create(false);
 	council_Object.Regen_Timer.loop(1000, council_RegenTimer, Lucifer_Game, council_Object);
 
+	//Exp Timer
+	council_Object.ExpTimer = Lucifer_Game.time.create(false);
+	council_Object.ExpTimer.loop(10, council_ExpTiemr, Lucifer_Game, council_Object);
+
 	council_Group.add(council_Object);
 }
 //------------------------------------------------------------------------------
@@ -267,6 +274,11 @@ function council_DelayTimer(Object)
 function council_RegenTimer(Object)
 {
 	++Object.Regen_Time_Total;
+}
+
+function council_ExpTiemr(Object)
+{
+	++Object.ExpTime_Total;
 }
 
 //skill Timer
@@ -682,6 +694,7 @@ function council_Dead(Object)
 			Object.kill();
 			Object.Name.visible = false;
 			Object.Skill_Light.visible = false;
+			Object.ExpCheck = true;
 		}				
 	}
 }
@@ -789,6 +802,9 @@ function council_Update()
 
 		council_Dead(council);
 		council_Regen(council);
+
+		//Level System
+		check_Monster_Dead(council);
 	}
 }
 

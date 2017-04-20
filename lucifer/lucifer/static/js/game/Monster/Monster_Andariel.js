@@ -39,6 +39,9 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 30, this.Regen_Check = false;
+
+	//Level System
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
 }
 
 Andariel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -176,6 +179,10 @@ function andariel_Clone(PointX, PointY)
 	andariel_Object.Regen_Timer = Lucifer_Game.time.create(false);
 	andariel_Object.Regen_Timer.loop(1000, andariel_RegenTimer, Lucifer_Game, andariel_Object);
 
+	//Exp Timer
+	andariel_Object.ExpTimer = Lucifer_Game.time.create(false);
+	andariel_Object.ExpTimer.loop(10, andariel_ExpTimer, Lucifer_Game, andariel_Object);
+
 	andariel_Group.add(andariel_Object);
 }
 //----------------------------------------------------------------------------------------------
@@ -201,6 +208,12 @@ function andariel_DelayTimer(Object)
 function andariel_RegenTimer(Object)
 {
 	++Object.Regen_Time_Total;
+}
+
+//Exp Timer
+function andariel_ExpTimer(Object)
+{
+	++Object.ExpTime_Total;
 }
 
 //Name
@@ -511,6 +524,7 @@ function andariel_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
+			Object.ExpCheck = true;
 		}			
 	}
 }
@@ -602,6 +616,9 @@ function andariel_Update()
 
 		andariel_Dead(andariel);
 		andariel_Regen(andariel);
+
+		//Level System
+		check_Monster_Dead(andariel);
 	}
 }
 

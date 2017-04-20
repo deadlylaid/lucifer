@@ -37,6 +37,9 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
+
+	//Level System
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
 }
 
 Golem.prototype = Object.create(Phaser.Sprite.prototype);
@@ -165,6 +168,11 @@ function golem_Clone(PointX, PointY)
 	golem_Object.Regen_Timer.loop(1000, golem_RegenTimer, Lucifer_Game, golem_Object);
 
     Lucifer_Game.physics.enable(golem_Object, Phaser.Physics.ARCADE);
+
+    //Exp Timer
+	golem_Object.ExpTimer = Lucifer_Game.time.create(false);
+	golem_Object.ExpTimer.loop(10, golem_ExpTimer, Lucifer_Game, golem_Object);
+
     golem_Group.add(golem_Object);
 }
 //-------------------------------------------------------------------------------------------
@@ -177,6 +185,12 @@ function golem_DelayTimer(Object)
 function golem_RegenTimer(Object)
 {
 	++Object.Regen_Time_Total;
+}
+
+//Exp
+function golem_ExpTimer(Object)
+{
+	++Object.ExpTime_Total;
 }
 
 //Name
@@ -507,6 +521,7 @@ function golem_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
+			Object.ExpCheck = true;
 		}
 	}
 }
@@ -598,6 +613,9 @@ function golem_Update()
 
 		golem_Dead(golem);
 		golem_Regen(golem);
+
+		//Level System Check
+		check_Monster_Dead(golem);
 	}	
 }
 

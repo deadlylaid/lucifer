@@ -469,8 +469,8 @@ function player_Update()
 			if(Player_Regen_Check == false)
 			{
 				PlayerMove();
-				PlayerAttack();
-				player_Level_Update();
+				PlayerAttack();	
+				player_Level_Up();			
 			}						
    	 	}
 
@@ -485,8 +485,8 @@ function player_Update()
 			if(Player_Regen_Check == false)
 			{
 				PlayerMove();
-				PlayerAttack();
-				player_Level_Update();
+				PlayerAttack();	
+				player_Level_Up();			
 			}		
    	 	}
 

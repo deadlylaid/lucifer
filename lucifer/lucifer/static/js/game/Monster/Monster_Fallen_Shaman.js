@@ -47,6 +47,9 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
+
+	//Level System
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
 }
 
 Fallen_Shaman.prototype = Object.create(Phaser.Sprite.prototype);
@@ -199,6 +202,10 @@ function fallen_Shaman_Clone(PointX, PointY)
 	fallenShaman_Object.Regen_Timer = Lucifer_Game.time.create(false);
 	fallenShaman_Object.Regen_Timer.loop(1000, fallenShaman_RegenTimer, Lucifer_Game, fallenShaman_Object);
 
+	//Exp Timer
+	fallenShaman_Object.ExpTimer = Lucifer_Game.time.create(false);
+	fallenShaman_Object.ExpTimer.loop(10, fallenShaman_ExpTimer, Lucifer_Game, fallenShaman_Object);
+
 	fallenShaman_Group.add(fallenShaman_Object);
 } 
 //-------------------------------------------------------------------------------------------
@@ -224,6 +231,11 @@ function fallen_Shaman_DelayTimer(Object)
 function fallenShaman_RegenTimer(Object)
 {
 	++Object.Regen_Time_Total;
+}
+
+function fallenShaman_ExpTimer(Object)
+{
+	++Object.ExpTime_Total;
 }
 
 function fireBall_DelayTimer(Object)
@@ -563,6 +575,7 @@ function fallen_Shaman_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
+			Object.ExpCheck = true;
 		}					
 	}		
 }
@@ -654,6 +667,9 @@ function fallen_Shaman_Update()
 		//Dead
 		fallen_Shaman_Dead(Shaman);
 		fallen_Shaman_Regen(Shaman);
+
+		//Level System
+		check_Monster_Dead(Shaman);
 	}	
 }
 
