@@ -21,6 +21,8 @@ var itemList = [];
 
 var equipmentList = [];
 
+var characterQuest = [];
+
 get_gamestart_api_url = '/api/gamestart/data/';
 
 /*****************************
@@ -68,4 +70,6 @@ $.ajax({
     itemList = data[2].item;
 
     equipmentList = character.equipment_set;
+
+    characterQuest = character.characterquest_set;
 });
