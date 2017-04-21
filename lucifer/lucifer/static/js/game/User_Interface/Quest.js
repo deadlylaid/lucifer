@@ -32,7 +32,7 @@ function QuestPreload(){
     Lucifer_Game.load.spritesheet('QuestContent10', '../../static/images/game/UI/Quest/Questcontent10.png', 463, 439);
 
     //QuestContent 완료한 퀘스트 이미지 //
-    Lucifer_Game.load.spritesheet('QuestContent_C', '../../static/images/game/UI/Quest/Questcontent_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent1_C', '../../static/images/game/UI/Quest/Questcontent_complete.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent2_C', '../../static/images/game/UI/Quest/Questcontent2_complete.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent3_C', '../../static/images/game/UI/Quest/Questcontent3_complete.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent4_C', '../../static/images/game/UI/Quest/Questcontent4_complete.png', 463, 439);
@@ -196,6 +196,8 @@ function QuestCreate(){
      QuestContent_lv1.anchor.setTo(0.5, 0.5);
      QuestContent_lv1.fixedToCamera = true;
      QuestContent_lv1.visible = false;
+
+     //QuestContent_lv1.loadTexture('QuestContent_C');
      //---------------------------------------------------------------
 
      //QuestContent 2
@@ -327,6 +329,7 @@ function QuestCreate(){
      btnText10.visible = false;
      //----------------------------------------------------------------
 
+     checkQuestIsComplete();
 
 }
 
@@ -857,4 +860,18 @@ function actionOnClick10() {
     QuestContent_lv10.visible = true;
     text10.visible = true;
 
+}
+
+function checkQuestIsComplete(){
+    var characterQuestLength = characterQuest.length;
+    for(i=0; i<characterQuestLength; i++){
+        if(characterQuest[i].isCompleted){
+            var questOrder = i+1;
+            var theQuest = eval('QuestContent_lv'+questOrder);
+            var completeSprite = 'QuestContent'+questOrder+'_C';
+            theQuest.loadTexture(completeSprite);
+        }else{
+
+        }
+    }
 }
