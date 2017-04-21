@@ -22,6 +22,9 @@ var stage1_Scene =
 		golem_Create();		
 		countess_Create();
 
+		//Npc Create
+		npc_Create();
+
         //items
         itemStoreCreate();
 
@@ -32,10 +35,7 @@ var stage1_Scene =
 		skill_Create();
 
 		//Quest
-		QuestCreate();
-
-		//Npc Create
-		npc_Create();
+		QuestCreate();		
 
 		//Rain Particle
 		rain_Create();
