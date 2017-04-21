@@ -96,7 +96,7 @@ function QuestCreate(){
      Questbtn_lv1.fixedToCamera = true;
      Questbtn_lv1.visible = false;
 
-     btnText = Lucifer_Game.add.text(203, 600, "LV.1    -    [ 인터페이스를 알아보자 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText = Lucifer_Game.add.text(203, 600, "LV.1    -    [ "+ characterQuest[0].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -106,7 +106,7 @@ function QuestCreate(){
      Questbtn_lv2.fixedToCamera = true;
      Questbtn_lv2.visible = false;
 
-     btnText2 = Lucifer_Game.add.text(203, 600, "LV.2    -    [ 기본 아이템 구매 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText2 = Lucifer_Game.add.text(203, 600, "LV.2    -    [ "+ characterQuest[1].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText2.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -116,7 +116,7 @@ function QuestCreate(){
      Questbtn_lv3.fixedToCamera = true;
      Questbtn_lv3.visible = false;
 
-     btnText3 = Lucifer_Game.add.text(203, 600, "LV.3    -    [ Countess 처치하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText3 = Lucifer_Game.add.text(203, 600, "LV.3    -    [ "+ characterQuest[2].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText3.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -126,7 +126,7 @@ function QuestCreate(){
      Questbtn_lv4.fixedToCamera = true;
      Questbtn_lv4.visible = false;
 
-     btnText4 = Lucifer_Game.add.text(203, 600, "LV.4    -    [ Golem을 저지하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText4 = Lucifer_Game.add.text(203, 600, "LV.4    -    [ "+ characterQuest[3].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText4.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -136,7 +136,7 @@ function QuestCreate(){
      Questbtn_lv5.fixedToCamera = true;
      Questbtn_lv5.visible = false;
 
-     btnText5 = Lucifer_Game.add.text(203, 600, "LV.5    -    [ Demon을 잡아보자 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText5 = Lucifer_Game.add.text(203, 600, "LV.5    -    [ "+ characterQuest[4].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText5.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -146,7 +146,7 @@ function QuestCreate(){
      Questbtn_lv6.fixedToCamera = true;
      Questbtn_lv6.visible = false;
 
-     btnText6 = Lucifer_Game.add.text(203, 600, "LV.6    -    [ Council를 처치하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText6 = Lucifer_Game.add.text(203, 600, "LV.6    -    [ "+ characterQuest[5].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText6.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -156,7 +156,7 @@ function QuestCreate(){
      Questbtn_lv7.fixedToCamera = true;
      Questbtn_lv7.visible = false;
 
-     btnText7 = Lucifer_Game.add.text(203, 600, "LV.7    -    [ Wraith를 무찌르자 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText7 = Lucifer_Game.add.text(203, 600, "LV.7    -    [ "+ characterQuest[6].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText7.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -166,7 +166,7 @@ function QuestCreate(){
      Questbtn_lv8.fixedToCamera = true;
      Questbtn_lv8.visible = false;
 
-     btnText8 = Lucifer_Game.add.text(203, 600, "LV.8    -    [ Fallen_Shaman을 막자 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText8 = Lucifer_Game.add.text(203, 600, "LV.8    -    [ "+ characterQuest[7].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText8.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -176,7 +176,7 @@ function QuestCreate(){
      Questbtn_lv9.fixedToCamera = true;
      Questbtn_lv9.visible = false;
 
-     btnText9 = Lucifer_Game.add.text(203, 600, "LV.9    -    [ Andariel을 처치하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText9 = Lucifer_Game.add.text(203, 600, "LV.9    -    [ "+ characterQuest[8].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText9.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -186,7 +186,7 @@ function QuestCreate(){
      Questbtn_lv10.fixedToCamera = true;
      Questbtn_lv10.visible = false;
 
-     btnText10 = Lucifer_Game.add.text(203, 600, "LV.10    -    [ Diablo를 봉인하라 ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText10 = Lucifer_Game.add.text(203, 600, "LV.10    -    [ "+ characterQuest[9].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText10.anchor.set(0.5);
      //---------------------------------------------------------------
 
