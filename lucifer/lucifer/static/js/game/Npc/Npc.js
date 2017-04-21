@@ -1,4 +1,4 @@
-var store_Npc;
+var store_Npc, cain_Npc;
 var npc_Angle, npc_Direction, npc_PreDirection, npc_Distance, npc_Range;
 var npc_compareCheck = false;
 //---------------------------------------------------------------------------------------
@@ -7,8 +7,9 @@ function npc_Preload()
 {
 	//NPC
 	Lucifer_Game.load.spritesheet('NPC_Store',
-								  '../../static/images/game/Npc/Npc1.png',
-								  100, 100);
+								  '../../static/images/game/Npc/Npc1.png', 100, 100);
+	Lucifer_Game.load.spritesheet('NPC_Cain',
+								  '../../static/images/game/Npc/cain/cain.png', 256, 256);
 }
 
 function npc_Create()
@@ -18,6 +19,8 @@ function npc_Create()
 	//NPC Create
 	store_Npc = Lucifer_Game.add.sprite(1343, 1483, 'NPC_Store');
 	npc_Range = 200;
+
+	cain_Npc = Lucifer_Game.add.sprite(1941, 961, 'NPC_Cain');
 
 	//NPC Animation
 	var j = 0;
@@ -31,21 +34,39 @@ function npc_Create()
 								 60, true);
 		j += 13;
 	}
-
-	//NPC Setting
 	store_Npc.animations.play('NPC_Store_Ani_4', 10, true);
 	store_Npc.anchor.setTo(0.5, 0.5);
 
+	cain_Npc.animations.add('NPC_Cain_Ani',
+							[	
+							   0, 1, 2, 3, 4, 5, 6, 7
+							], 60, true);
+	cain_Npc.animations.play('NPC_Cain_Ani', 10, true);
+	cain_Npc.anchor.setTo(0.5, 0.5);
+
+	//NPC Setting
 	Lucifer_Game.physics.p2.enable(store_Npc);
 	store_Npc.body.fixedRotation = true;
 	store_Npc.body.clearShapes();
 	store_Npc.body.addRectangle(40, 60, 0, 0);
-	store_Npc.body.debug = true;
+	store_Npc.body.debug = false;
 	store_Npc.body.static = true;
+
+	//Cain
+	Lucifer_Game.physics.p2.enable(cain_Npc);
+	cain_Npc.body.fixedRotation = true;
+	cain_Npc.body.clearShapes();
+	cain_Npc.body.addRectangle(40, 60, 0, 0);
+	cain_Npc.body.debug = true;
+	cain_Npc.body.static = true;
 
 	Lucifer_Game.physics.enable(store_Npc, Phaser.Physics.ARCADE);
     store_Npc.inputEnabled = true;
     store_Npc.events.onInputDown.add(showStore, this);
+
+    Lucifer_Game.physics.enable(cain_Npc, Phaser.Physics.ARCADE);
+	cain_Npc.inputEnabled = true;
+	//cain_Npc.events.onInputDown.add();  퀘스트 관련 된 UI 보이면 됨.
 }
 
 function npc_GetDirection()
