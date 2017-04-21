@@ -37,9 +37,6 @@ var stage1_Scene =
 		//Skill
 		skill_Create();
 
-		//Quest
-		QuestCreate();		
-		
 		//Rain Particle
 		rain_Create();
 
