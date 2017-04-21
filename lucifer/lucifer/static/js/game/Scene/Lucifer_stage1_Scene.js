@@ -37,6 +37,9 @@ var stage1_Scene =
 		//Npc Create
 		npc_Create();
 
+		//Rain Particle
+		rain_Create();
+
 		//Key Go to Stage2
 		debugCheck = false;
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
