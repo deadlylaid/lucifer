@@ -76,7 +76,7 @@ function itemStoreCreate(){
 
     //inventory-----------------------------------------------
     //--------------------------------------------------------
-    uiInventory = Lucifer_Game.add.sprite(445, 300, 'inven');
+    uiInventory = Lucifer_Game.add.sprite(1000, 355, 'inven'); //445, 300  //555 55
     uiInventory.anchor.setTo(0.5, 0.5);
     uiInventory.scale.setTo(0.8, 0.8);
     uiInventory.fixedToCamera = true;
@@ -88,7 +88,7 @@ function itemStoreCreate(){
     invenKeyTimer = Lucifer_Game.time.create(false);
     invenKeyTimer.loop(400, invenTimeCheck, this);
 
-    dropButton = Lucifer_Game.add.sprite(445, 520, 'dropButton');
+    dropButton = Lucifer_Game.add.sprite(1027, 580, 'dropButton');
     dropButton.anchor.setTo(0.5, 0.5);
     dropButton.scale.setTo(0.5, 0.5);
     dropButton.fixedToCamera = true;
@@ -97,7 +97,7 @@ function itemStoreCreate(){
     dropButton.inputEnabled = true;
     dropButton.events.onInputDown.add(dropItem, this);
 
-    useButton = Lucifer_Game.add.sprite(445, 560,'useButton');
+    useButton = Lucifer_Game.add.sprite(925, 580,'useButton');
     useButton.anchor.setTo(0.5, 0.5);
     useButton.scale.setTo(0.5, 0.5);
     useButton.fixedToCamera = true;
@@ -262,7 +262,6 @@ function buyItem() {
 
 function clickedItemInInventory(sprite){
     selectedItem = sprite;
-    //console.log(selectedItem);
 }
 
 //server-side로 데이터 실시간 전송
@@ -499,12 +498,12 @@ function createEquipmentAndSetPosition(itemName){
     var item;
     switch(itemName){
         case '기본검':
-            item = basicSwordClone(397, 150);
+            item = basicSwordClone(952, 205);
             item.text.setText('');
             item.getVisible(false);
             break;
         case '기본갑옷':
-            item = basicArmorClone(493, 150);
+            item = basicArmorClone(1048, 205);
             item.text.setText('');
             item.getVisible(false);
             break;
@@ -514,45 +513,45 @@ function createEquipmentAndSetPosition(itemName){
 
 function inventoryPosition(count){
     switch(count){
-        case 0:
-            var positionX = 335;
-            var positionY = 250;
+        case 0: //445 300 //555 55
+            var positionX = 890;
+            var positionY = 305;
             break;
         case 1:
-            var positionX = 335;
-            var positionY = 300;
+            var positionX = 890;
+            var positionY = 355;
             break;
         case 2:
-            var positionX = 335;
-            var positionY = 350;
+            var positionX = 890;
+            var positionY = 405;
             break;
         case 3:
-            var positionX = 335;
-            var positionY = 400;
+            var positionX = 890;
+            var positionY = 455;
             break;
         case 4:
-            var positionX = 335;
-            var positionY = 450;
+            var positionX = 890;
+            var positionY = 505;
             break;
         case 5:
-            var positionX = 470;
-            var positionY = 250;
+            var positionX = 1025;
+            var positionY = 305;
             break;
         case 6:
-            var positionX = 470;
-            var positionY = 300;
+            var positionX = 1025;
+            var positionY = 355;
             break;
         case 7:
-            var positionX = 470;
-            var positionY = 350;
+            var positionX = 1025;
+            var positionY = 405;
             break;
         case 8:
-            var positionX = 470;
-            var positionY = 400;
+            var positionX = 1025;
+            var positionY = 455;
             break;
         case 9:
-            var positionX = 470;
-            var positionY = 450;
+            var positionX = 1025;
+            var positionY = 505;
             break;
     }
     return [ positionX, positionY ];

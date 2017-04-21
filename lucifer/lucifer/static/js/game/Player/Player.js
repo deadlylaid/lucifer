@@ -503,7 +503,7 @@ function player_Update()
 	//Move
 	if(stageOne_Check == true)
 	{
-		if(UI_Stat.visible === true || uiStore.visible === true || uiInventory.visible === true || UI_Quest.visible === true)
+		if(UI_Stat.visible === true || uiStore.visible === true || uiInventory.visible === true || UI_Quest.visible === true || UI_Skill.visible === true)
 		{
 
 		}else{
