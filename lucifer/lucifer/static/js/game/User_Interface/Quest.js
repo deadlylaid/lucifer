@@ -875,3 +875,7 @@ function checkQuestIsComplete(){
         }
     }
 }
+
+function playerQuestAdvence(){
+    console.log('quest');
+}
