@@ -359,14 +359,8 @@ function PlayerMove()
 		
 		//P2 Physics
 		Player.body.velocity.x = 0;				
-		Player.body.velocity.y = 0;
-		//Player.body.velocity.setTo(0, 0);		//Arcade Physics			
-	}
-
-	//console.log(MousePosX);
-	//console.log(MousePosY);
-	//console.log(DistanceToMouse);
-	//console.log(Direction);
+		Player.body.velocity.y = 0;		
+	}	
 	//---------------------------------------------------------------------------------------
 }
 

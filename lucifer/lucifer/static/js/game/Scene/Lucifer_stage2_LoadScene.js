@@ -32,6 +32,8 @@ var stage2_LoadScene =
 									  '../../static/images/game/Player/Bavarian/dash/dash.png', 200, 200);
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Skill',
 									  '../../static/images/game/Player/Bavarian/skill/skill.png', 200, 200);
+		Lucifer_Game.load.spritesheet('PY_Bavarian_Whirlwind',
+									  '../../static/images/game/Player/Bavarian/whirlwind/whirlwind.png', 200, 200);
 		//----------------------------------------------------------------------------------------------------------
 	
 		//Monster

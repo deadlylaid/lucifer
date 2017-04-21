@@ -98,9 +98,7 @@ function player_Effect_Dead()
 
 			Player_Dead.animations.stop('PY_Bavarian_Dead', true);
 			Player_Regen_Check = true;			
-		}
-
-		console.log(CurFrame, EndFrame);
+		}		
 	}
 }
 
@@ -134,9 +132,7 @@ function player_Effect_Regen()
 
 			Player_Revival.animations.stop('PY_Bavarian_Revival', true);
 			Animation_Change(Direction, 'Stand');
-		}		
-
-		console.log(CurFrame, EndFrame);
+		}			
 	}
 }
 
