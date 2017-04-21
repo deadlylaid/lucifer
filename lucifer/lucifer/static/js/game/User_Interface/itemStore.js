@@ -402,24 +402,27 @@ function useItem(){
         }
 
         //inventory에서 버릴 아이템을 뽑아 버림
+        //선택된 아이템의 다음 인덱스 아이템들 까지 모두 뽑는다
+        //왜냐하면 선택된 인덱스의 칸을 채우기 위해 인덱스를 다시 설정해 줘야하기 때문
         inventory.splice(selectedItem.numberInArray, 9);
 
         //ajax DELETE 요청으로 실시간 저장
-        //inventoryDelete(selectedItem.name);
+        inventoryDelete(selectedItem.name);
 
         var inventoryLength = inventory.length;
+        console.log('테스트' + tempInventory.length);
 
         //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장
         for(i=0; i<tempInventory.length; i++){
             switch(tempInventory[i].name){
                 case '빨간물약':
-                    inventory.push(redPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    var postedItem = inventory.push(redPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
                 case '기본검':
-                    inventory.push(basicSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    var postedItem = inventory.push(basicSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
                 case '기본갑옷':
-                    inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    var postedItem = inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
             }
         }
@@ -447,10 +450,13 @@ function useItem(){
                         inserted_item.numberInArray = inventory.length;
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
+
+                        inventoryPost(inserted_item.name);
                 }
 
             }
             equipmentList[0] = createEquipmentAndSetPosition(selectedItem.name);
+            equipmentList[0].getVisible(true);
             equipmentPost(equipmentList[0].name, equipmentList[0].type_is);
 
         }else if(selectedItem.type_is==='armor'){
@@ -467,9 +473,12 @@ function useItem(){
                         inserted_item.numberInArray = inventory.length;
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
+
+                        inventoryPost(inserted_item.name);
                 }
             }
             equipmentList[1] = createEquipmentAndSetPosition(selectedItem.name);
+            equipmentList[1].getVisible(true);
             equipmentPost(equipmentList[1].name, equipmentList[1].type_is);
         }
 
