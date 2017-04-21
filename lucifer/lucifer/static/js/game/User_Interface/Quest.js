@@ -18,6 +18,8 @@ function QuestPreload(){
 
     Lucifer_Game.load.spritesheet('UI_Quest', '../../static/images/game/UI/Quest/QuestFrame.png', 867, 580);
     Lucifer_Game.load.spritesheet('Questbtn', '../../static/images/game/UI/Quest/QuestBtn.png', 325, 43);
+
+    //QuestContent 완료안한 퀘스트 //
     Lucifer_Game.load.spritesheet('QuestContent', '../../static/images/game/UI/Quest/Questcontent.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent2', '../../static/images/game/UI/Quest/Questcontent2.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent3', '../../static/images/game/UI/Quest/Questcontent3.png', 463, 439);
@@ -28,6 +30,18 @@ function QuestPreload(){
     Lucifer_Game.load.spritesheet('QuestContent8', '../../static/images/game/UI/Quest/Questcontent8.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent9', '../../static/images/game/UI/Quest/Questcontent9.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent10', '../../static/images/game/UI/Quest/Questcontent10.png', 463, 439);
+
+    //QuestContent 완료한 퀘스트 이미지 //
+    Lucifer_Game.load.spritesheet('QuestContent_C', '../../static/images/game/UI/Quest/Questcontent_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent2_C', '../../static/images/game/UI/Quest/Questcontent2_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent3_C', '../../static/images/game/UI/Quest/Questcontent3_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent4_C', '../../static/images/game/UI/Quest/Questcontent4_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent5_C', '../../static/images/game/UI/Quest/Questcontent5_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent6_C', '../../static/images/game/UI/Quest/Questcontent6_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent7_C', '../../static/images/game/UI/Quest/Questcontent7_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent8_C', '../../static/images/game/UI/Quest/Questcontent8_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent9_C', '../../static/images/game/UI/Quest/Questcontent9_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent10_C', '../../static/images/game/UI/Quest/Questcontent10_complete.png', 463, 439);
 
 };
 
