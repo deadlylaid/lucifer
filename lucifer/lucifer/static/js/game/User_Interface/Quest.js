@@ -64,7 +64,7 @@ function QuestCreate(){
         goldReword = characterQuest[i].gold_reward;
         advanced = characterQuest[i].advanced;
         goal = characterQuest[i].goal;
-        isCompleted = characterQuest[i].isCompleted;
+        isCompleted = characterQuest[i].is_completed;
 
         characterQuest[i] = new quest(title, exReword, goldReword, advanced, goal, isCompleted);
     }
