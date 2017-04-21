@@ -1,5 +1,7 @@
 //Diablo Skill
 //-----------------------------------------------------------------------------------------
+var diaFire_Timer, diaFire_Time_Total = 0;
+
 Inferno = function(game, x, y)
 {
 	Phaser.Sprite.call(this, game, x, y, 'Inferno');
@@ -22,6 +24,18 @@ function diaSkill_Preload()
                                   '../../static/images/game/Monster_Skill/Diablo_Dialnferno.png',
                                    220, 160);	
     Lucifer_Game.load.image('Fire', '../../static/images/game/Monster_Skill/Diablo_Fire.png');
+}
+
+function diaSkill_Create()
+{
+	diaFire_Timer = Lucifer_Game.time.create(false);
+	diaFire_Timer.loop(1000, diaFire_Time_loop, Lucifer_Game);
+}
+
+//Diablo Fire Timer
+function diaFire_Time_loop()
+{
+	++diaFire_Time_Total;
 }
 
 function diaSkill_Inferno_Clone(x, y)
@@ -155,11 +169,11 @@ function diaSkill_Fire_Col(Object)
 {
 	if(Phaser.Rectangle.intersects(Object.FireRect, Hit_Rect))
 	{
-		Object.Skill_DelayTimer.start();
+		diaFire_Timer.start();
 
-		if(Object.SkillTime_Total > 1)
+		if(diaFire_Time_Total > 0)
 		{
-			if(Object.animations.name == 'MON_Diablo_Skill2_' + Object.Direction)
+			/*if(Object.animations.name == 'MON_Diablo_Skill1_' + Object.Direction)
 			{
 				var CurFrame = Object.animations.frame;
 				var EndFrame = 0;
@@ -173,23 +187,24 @@ function diaSkill_Fire_Col(Object)
 					EndFrame = 17 * (Object.Direction + 1);
 				}
 
-				if(CurFrame + 7 < EndFrame)
-				{
+				if(CurFrame < EndFrame)
+				{*/
 					var monster_Attack_Damage = (Object.Skill_Attack_Point1 - defence_point);
 
-					if(monster_Attack_Damage > 0)
-					{
-						health -= monster_Attack_Damage;		
-					}
-					else if(monster_Attack_Damage < 0)
-					{
-						health -= 0;
-					}
+					//if(monster_Attack_Damage > 0)
+					//{
+						health -= Object.Skill_Attack_Point1;		
+					//}
+					//else if(monster_Attack_Damage < 0)
+					//{
+					//	health -= 0;
+					//}					
 				
-					Object.SkillTime_Total = 0;		
-				}
-			}				
-		}
+					diaFire_Time_Total = 0;	
+					diaFire_Timer.stop();	
+				//}				
+			//}				
+		}		
 	}
 }
 
@@ -201,7 +216,7 @@ function diaSkill_Inferno_Col(Object)
 
 		if(Object.Inferno.Time_Total > 1)
 		{
-			if(Object.animations.name == 'MON_Diablo_Skill_' + Object.Direction)
+			/*if(Object.animations.name == 'MON_Diablo_Skill_' + Object.Direction)
 			{
 				var CurFrame = Object.animations.frame;
 				var EndFrame = 0;
@@ -215,24 +230,24 @@ function diaSkill_Inferno_Col(Object)
 					EndFrame = 16 * (Object.Direction + 1);
 				}
 
-				if(CurFrame + 6 < EndFrame)
-				{
+				if(CurFrame < EndFrame)
+				{*/
 					var monster_Attack_Damage = (Object.skill_Attack_Point - defence_point);
 
-					if(monster_Attack_Damage > 0)
-					{
-						health -= monster_Attack_Damage;		
-					}
-					else if(monster_Attack_Damage < 0)
-					{
-						health -= 0;
-					}
+					//if(monster_Attack_Damage > 0)
+					//{
+						health -= Object.skill_Attack_Point;		
+					//}
+					//else if(monster_Attack_Damage < 0)
+					//{
+					//	health -= 0;
+					//}					
 
 					Object.Inferno.Time_Total = 0;		
-				}
-			}				
+				//}				
+			//}				
 		}
-	}
+	}	
 }
 
 function diaSkill_Update()
