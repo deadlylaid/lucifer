@@ -262,7 +262,6 @@ function buyItem() {
 
 function clickedItemInInventory(sprite){
     selectedItem = sprite;
-    //console.log(selectedItem);
 }
 
 //server-side로 데이터 실시간 전송

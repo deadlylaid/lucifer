@@ -18,7 +18,6 @@ function QuestPreload(){
 
     Lucifer_Game.load.spritesheet('UI_Quest', '../../static/images/game/UI/Quest/QuestFrame.png', 867, 580);
     Lucifer_Game.load.spritesheet('Questbtn', '../../static/images/game/UI/Quest/QuestBtn.png', 325, 43);
-
     //QuestContent 완료안한 퀘스트 //
     Lucifer_Game.load.spritesheet('QuestContent', '../../static/images/game/UI/Quest/Questcontent.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent2', '../../static/images/game/UI/Quest/Questcontent2.png', 463, 439);
@@ -876,6 +875,12 @@ function checkQuestIsComplete(){
     }
 }
 
-function playerQuestAdvence(){
-    console.log('quest');
+function playerQuestAdvence(index){
+    characterQuest[index];
+    if(characterQuest[index].isCompleted === false){
+        characterQuest[index].isCompleted = true;
+        console.log('완료');
+    }else{
+
+    }
 }
