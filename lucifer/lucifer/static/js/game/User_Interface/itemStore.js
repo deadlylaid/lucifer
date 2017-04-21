@@ -256,6 +256,8 @@ function buyItem() {
     }
     changeServerListToClientList();
     selectedItem = null;
+    //퀘스트 검사
+    playerQuestAdvence(0);
 }
 
 function clickedItemInInventory(sprite){
@@ -571,15 +573,17 @@ function changeServerListToClientListEquipment(){
             case '기본검':
                 equipmentList[0] = createEquipmentAndSetPosition('기본검');
 
+                equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
                 break;
             case '기본갑옷':
                 equipmentList[1] = createEquipmentAndSetPosition('기본갑옷');
 
+                equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
                 break;
         }
     }
-    equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
-    equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+
+
 }
 
 //server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다.
