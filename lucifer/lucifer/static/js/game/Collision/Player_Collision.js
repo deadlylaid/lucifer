@@ -82,7 +82,7 @@ function Damage_Count(Monster)
 	}
 	else if(player_Attack_Dagmage < 0)
 	{
-		Monster.Hp -= 0;
+		Monster.Hp -= attack_point;
 	}	 	
 }
 
