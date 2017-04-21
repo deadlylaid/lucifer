@@ -40,7 +40,7 @@ function ui_Create()
 	UI_Stat.fixedToCamera = true;
 	UI_Stat.visible = false;
 
-    UI_Skill = Lucifer_Game.add.sprite(640, 300, 'UI_Skill');
+    UI_Skill = Lucifer_Game.add.sprite(640, 355, 'UI_Skill');
     UI_Skill.anchor.setTo(0.5, 0.5);
     UI_Skill.fixedToCamera = true;
     UI_Skill.visible = false;

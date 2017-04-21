@@ -11,7 +11,7 @@ var QuestContent_lv1, QuestContent_lv2, QuestContent_lv3,
     QuestContent_lv4, QuestContent_lv5, QuestContent_lv6,
     QuestContent_lv7, QuestContent_lv8, QuestContent_lv9, QuestContent_lv10 ;
 
-var text, text2, text3, text4, text5, text6, text7, text8, text9, text10, style;
+var text1, text2, text3, text4, text5, text6, text7, text8, text9, text10, style;
 var btnText, btnText2, btnText3, btnText4, btnText5, btnText6, btnText7, btnText8, btnText9, btnText10 ;
 
 function QuestPreload(){
@@ -265,9 +265,9 @@ function QuestCreate(){
      //Quest TEXT
      style = { font: "20px Roboto", fill: "#ffffff", wordWrap: true, wordWrapWidth: QuestContent_lv1.width, align: "left", stroke: "#000000", strokeThickness: 2};
 
-     text = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[0].exReword +" Exp \n Gold :  - Lup ", style);
-     text.setShadow(2, 2, '#000000', 0, true, true);
-     text.anchor.set(0.5);
+     text1 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[0].exReword +" Exp \n Gold :  - Lup ", style);
+     text1.setShadow(2, 2, '#000000', 0, true, true);
+     text1.anchor.set(0.5);
 
      text2 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[1].exReword +" Exp \n Gold : "+ characterQuest[1].goldReword +" Lup ", style);
      text2.setShadow(2, 2, '#000000', 0, true, true);
@@ -305,7 +305,7 @@ function QuestCreate(){
      text10.setShadow(2, 2, '#000000', 0, true, true);
      text10.anchor.set(0.5);
 
-     text.visible = false;
+     text1.visible = false;
      text2.visible = false;
      text3.visible = false;
      text4.visible = false;
@@ -349,8 +349,8 @@ function QuestUpdate(){
         validCheck = 0;
     }
 
-    text.x = Math.floor(QuestContent_lv1.x - 340 + QuestContent_lv1.width / 2);
-    text.y = Math.floor(QuestContent_lv1.y - 65 + QuestContent_lv1.height / 2);
+    text1.x = Math.floor(QuestContent_lv1.x - 340 + QuestContent_lv1.width / 2);
+    text1.y = Math.floor(QuestContent_lv1.y - 65 + QuestContent_lv1.height / 2);
 
     text2.x = Math.floor(QuestContent_lv2.x - 340 + QuestContent_lv2.width / 2);
     text2.y = Math.floor(QuestContent_lv2.y - 65 + QuestContent_lv2.height / 2);
@@ -381,34 +381,34 @@ function QuestUpdate(){
 
     //btnTEXT
 
-    btnText.x = Math.floor(Questbtn_lv1.x - 170 + Questbtn_lv1.width / 2);
+    btnText.x = Math.floor(Questbtn_lv1.x - 180 + Questbtn_lv1.width / 2);
     btnText.y = Math.floor(Questbtn_lv1.y - 18 + Questbtn_lv1.height / 2);
 
-    btnText2.x = Math.floor(Questbtn_lv2.x - 193 + Questbtn_lv2.width / 2);
+    btnText2.x = Math.floor(Questbtn_lv2.x - 197 + Questbtn_lv2.width / 2);
     btnText2.y = Math.floor(Questbtn_lv2.y - 18 + Questbtn_lv2.height / 2);
 
-    btnText3.x = Math.floor(Questbtn_lv3.x - 185 + Questbtn_lv3.width / 2);
+    btnText3.x = Math.floor(Questbtn_lv3.x - 162 + Questbtn_lv3.width / 2);
     btnText3.y = Math.floor(Questbtn_lv3.y - 18 + Questbtn_lv3.height / 2);
 
-    btnText4.x = Math.floor(Questbtn_lv4.x - 188 + Questbtn_lv4.width / 2);
+    btnText4.x = Math.floor(Questbtn_lv4.x - 200 + Questbtn_lv4.width / 2);
     btnText4.y = Math.floor(Questbtn_lv4.y - 18 + Questbtn_lv4.height / 2);
 
-    btnText5.x = Math.floor(Questbtn_lv5.x - 186 + Questbtn_lv5.width / 2);
+    btnText5.x = Math.floor(Questbtn_lv5.x - 193 + Questbtn_lv5.width / 2);
     btnText5.y = Math.floor(Questbtn_lv5.y - 18 + Questbtn_lv5.height / 2);
 
-    btnText6.x = Math.floor(Questbtn_lv6.x - 184 + Questbtn_lv6.width / 2);
+    btnText6.x = Math.floor(Questbtn_lv6.x - 196 + Questbtn_lv6.width / 2);
     btnText6.y = Math.floor(Questbtn_lv6.y - 18 + Questbtn_lv6.height / 2);
 
-    btnText7.x = Math.floor(Questbtn_lv7.x - 188 + Questbtn_lv7.width / 2);
+    btnText7.x = Math.floor(Questbtn_lv7.x - 200 + Questbtn_lv7.width / 2);
     btnText7.y = Math.floor(Questbtn_lv7.y - 18 + Questbtn_lv7.height / 2);
 
-    btnText8.x = Math.floor(Questbtn_lv8.x - 172 + Questbtn_lv8.width / 2);
+    btnText8.x = Math.floor(Questbtn_lv8.x - 167 + Questbtn_lv8.width / 2);
     btnText8.y = Math.floor(Questbtn_lv8.y - 18 + Questbtn_lv8.height / 2);
 
-    btnText9.x = Math.floor(Questbtn_lv9.x - 181 + Questbtn_lv9.width / 2);
+    btnText9.x = Math.floor(Questbtn_lv9.x - 194 + Questbtn_lv9.width / 2);
     btnText9.y = Math.floor(Questbtn_lv9.y - 18 + Questbtn_lv9.height / 2);
 
-    btnText10.x = Math.floor(Questbtn_lv10.x - 183 + Questbtn_lv10.width / 2);
+    btnText10.x = Math.floor(Questbtn_lv10.x - 196 + Questbtn_lv10.width / 2);
     btnText10.y = Math.floor(Questbtn_lv10.y - 18 + Questbtn_lv10.height / 2);
 }
 
@@ -478,7 +478,7 @@ function QuestUi()
         QuestContent_lv10.visible = false;
 
         //Quest TEXT
-        text.visible = false;
+        text1.visible = false;
         text2.visible = false;
         text3.visible = false;
         text4.visible = false;
@@ -512,10 +512,9 @@ function timeCheck(){
 }
 
 function actionOnClick1() {
-    console.log('click1');
 
     QuestContent_lv1.visible = true;
-    text.visible = true;
+    text1.visible = true;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
@@ -547,10 +546,9 @@ function actionOnClick1() {
 }
 
 function actionOnClick2() {
-    console.log('click2');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = true;
     text2.visible = true;
@@ -582,10 +580,9 @@ function actionOnClick2() {
 }
 
 function actionOnClick3() {
-    console.log('click3');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
@@ -617,10 +614,9 @@ function actionOnClick3() {
 }
 
 function actionOnClick4() {
-    console.log('click4');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
@@ -652,10 +648,9 @@ function actionOnClick4() {
 }
 
 function actionOnClick5() {
-    console.log('click5');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
@@ -687,10 +682,9 @@ function actionOnClick5() {
 }
 
 function actionOnClick6() {
-    console.log('click6');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
@@ -722,10 +716,9 @@ function actionOnClick6() {
 }
 
 function actionOnClick7() {
-    console.log('click7');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
@@ -757,10 +750,9 @@ function actionOnClick7() {
 }
 
 function actionOnClick8() {
-    console.log('click8');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
@@ -792,10 +784,9 @@ function actionOnClick8() {
 }
 
 function actionOnClick9() {
-    console.log('click9');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
@@ -827,10 +818,9 @@ function actionOnClick9() {
 }
 
 function actionOnClick10() {
-    console.log('click10');
 
     QuestContent_lv1.visible = false;
-    text.visible = false;
+    text1.visible = false;
 
     QuestContent_lv2.visible = false;
     text2.visible = false;
