@@ -1,14 +1,10 @@
 //Diablo Skill
 //-----------------------------------------------------------------------------------------
-var diaFire_Timer, diaFire_Time_Total = 0;
-
 Inferno = function(game, x, y)
 {
 	Phaser.Sprite.call(this, game, x, y, 'Inferno');
 	this.PointX = x;
 	this.PointY = y;
-
-	this.Timer, this.Time_Total = 1;
 
 	this.SkillRect;
 	this.Attack_Check = false;
@@ -24,18 +20,6 @@ function diaSkill_Preload()
                                   '../../static/images/game/Monster_Skill/Diablo_Dialnferno.png',
                                    220, 160);	
     Lucifer_Game.load.image('Fire', '../../static/images/game/Monster_Skill/Diablo_Fire.png');
-}
-
-function diaSkill_Create()
-{
-	diaFire_Timer = Lucifer_Game.time.create(false);
-	diaFire_Timer.loop(1000, diaFire_Time_loop, Lucifer_Game);
-}
-
-//Diablo Fire Timer
-function diaFire_Time_loop()
-{
-	++diaFire_Time_Total;
 }
 
 function diaSkill_Inferno_Clone(x, y)
@@ -65,19 +49,10 @@ function diaSkill_Inferno_Clone(x, y)
 
 	Lucifer_Game.add.existing(diablo_Inferno);
 
-	//Timer
-	diablo_Inferno.Timer = Lucifer_Game.time.create(false);
-	diablo_Inferno.Timer.loop(1000, diaSkill_Timer, Lucifer_Game, diablo_Inferno);
-
 	//Rect
-	diablo_Inferno.SkillRect = new Phaser.Rectangle(diablo_Inferno.x, diablo_Inferno.y, 220, 160); 
+	diablo_Inferno.SkillRect = new Phaser.Rectangle(diablo_Inferno.x, diablo_Inferno.y, 100, 100); 
 
 	return diablo_Inferno;
-}
-
-function diaSkill_Timer(Object)
-{
-	++Object.Time_Total;
 }
 
 //Diablo Fire Logic
@@ -172,42 +147,34 @@ function diaSkill_Fire_Col(Object)
 
 	if(Phaser.Rectangle.intersects(Object.FireRect, Hit_Rect))
 	{
-		diaFire_Timer.start();
-
-		if(diaFire_Time_Total > 0)
+		if(Object.animations.name == 'MON_Diablo_Skill1_' + Object.Direction)
 		{
-			/*if(Object.animations.name == 'MON_Diablo_Skill1_' + Object.Direction)
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+	
+			if(Object.Direction == 0)
 			{
-				var CurFrame = Object.animations.frame;
-				var EndFrame = 0;
+				EndFrame = 17;
+			}
+			else
+			{
+				EndFrame = 17 * (Object.Direction + 1);
+			}
 
-				if(Object.Direction == 0)
+			if(CurFrame < EndFrame)
+			{
+				var monster_Attack_Damage = (Object.Skill_Attack_Point1 - defence_point);
+
+				if(monster_Attack_Damage > 0)
 				{
-					EndFrame = 17;
+					health -= Object.Skill_Attack_Point1;		
 				}
-				else
+				else if(monster_Attack_Damage < 0)
 				{
-					EndFrame = 17 * (Object.Direction + 1);
-				}
-
-				if(CurFrame < EndFrame)
-				{*/
-					var monster_Attack_Damage = (Object.Skill_Attack_Point1 - defence_point);
-
-					//if(monster_Attack_Damage > 0)
-					//{
-						health -= Object.Skill_Attack_Point1;		
-					//}
-					//else if(monster_Attack_Damage < 0)
-					//{
-					//	health -= 0;
-					//}					
-				
-					diaFire_Time_Total = 0;	
-					diaFire_Timer.stop();	
-				//}				
-			//}				
-		}		
+					health -= 0;
+				}					
+			}				
+		}					
 	}
 }
 
@@ -215,41 +182,34 @@ function diaSkill_Inferno_Col(Object)
 {
 	if(Phaser.Rectangle.intersects(Object.Inferno.SkillRect, Hit_Rect))
 	{
-		Object.Inferno.Timer.start();
-
-		if(Object.Inferno.Time_Total > 1)
+		if(Object.animations.name == 'MON_Diablo_Skill_' + Object.Direction)
 		{
-			/*if(Object.animations.name == 'MON_Diablo_Skill_' + Object.Direction)
+			var CurFrame = Object.animations.frame;
+			var EndFrame = 0;
+
+			if(Object.Direction == 0)
 			{
-				var CurFrame = Object.animations.frame;
-				var EndFrame = 0;
-
-				if(Object.Direction == 0)
+				EndFrame = 16;
+			}
+			else
+			{
+				EndFrame = 16 * (Object.Direction + 1);
+			}
+	
+			if(CurFrame < EndFrame)
+			{
+				var monster_Attack_Damage = (Object.Skill_Attack_Point - defence_point);
+	
+				if(monster_Attack_Damage > 0)
 				{
-					EndFrame = 16;
+					health -= Object.Skill_Attack_Point;		
 				}
-				else
+				else if(monster_Attack_Damage < 0)
 				{
-					EndFrame = 16 * (Object.Direction + 1);
-				}
-
-				if(CurFrame < EndFrame)
-				{*/
-					var monster_Attack_Damage = (Object.skill_Attack_Point - defence_point);
-
-					//if(monster_Attack_Damage > 0)
-					//{
-						health -= Object.skill_Attack_Point;		
-					//}
-					//else if(monster_Attack_Damage < 0)
-					//{
-					//	health -= 0;
-					//}					
-
-					Object.Inferno.Time_Total = 0;		
-				//}				
-			//}				
-		}
+					health -= 0;
+				}				
+			}				
+		}		
 	}	
 }
 
