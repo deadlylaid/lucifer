@@ -32,7 +32,7 @@ function QuestPreload(){
     Lucifer_Game.load.spritesheet('QuestContent10', '../../static/images/game/UI/Quest/Questcontent10.png', 463, 439);
 
     //QuestContent 완료한 퀘스트 이미지 //
-    Lucifer_Game.load.spritesheet('QuestContent_C', '../../static/images/game/UI/Quest/Questcontent_complete.png', 463, 439);
+    Lucifer_Game.load.spritesheet('QuestContent1_C', '../../static/images/game/UI/Quest/Questcontent_complete.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent2_C', '../../static/images/game/UI/Quest/Questcontent2_complete.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent3_C', '../../static/images/game/UI/Quest/Questcontent3_complete.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent4_C', '../../static/images/game/UI/Quest/Questcontent4_complete.png', 463, 439);
@@ -196,6 +196,8 @@ function QuestCreate(){
      QuestContent_lv1.anchor.setTo(0.5, 0.5);
      QuestContent_lv1.fixedToCamera = true;
      QuestContent_lv1.visible = false;
+
+     //QuestContent_lv1.loadTexture('QuestContent_C');
      //---------------------------------------------------------------
 
      //QuestContent 2
@@ -264,43 +266,43 @@ function QuestCreate(){
      //Quest TEXT
      style = { font: "20px Roboto", fill: "#ffffff", wordWrap: true, wordWrapWidth: QuestContent_lv1.width, align: "left", stroke: "#000000", strokeThickness: 2};
 
-     text = Lucifer_Game.add.text(0, 0 , " 경험치 :  300 Exp \n Gold :  - Lup ", style);
+     text = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[0].exReword +" Exp \n Gold :  - Lup ", style);
      text.setShadow(2, 2, '#000000', 0, true, true);
      text.anchor.set(0.5);
 
-     text2 = Lucifer_Game.add.text(0, 0 , " 경험치 :  500 Exp \n Gold :  500 Lup ", style);
+     text2 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[1].exReword +" Exp \n Gold : "+ characterQuest[1].goldReword +" Lup ", style);
      text2.setShadow(2, 2, '#000000', 0, true, true);
      text2.anchor.set(0.5);
 
-     text3 = Lucifer_Game.add.text(0, 0 , " 경험치 :  500 Exp \n Gold :  500 Lup ", style);
+     text3 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[2].exReword +" Exp \n Gold : "+ characterQuest[2].goldReword +" Lup ", style);
      text3.setShadow(2, 2, '#000000', 0, true, true);
      text3.anchor.set(0.5);
 
-     text4 = Lucifer_Game.add.text(0, 0 , " 경험치 :  1000 Exp \n Gold :  2000 Lup ", style);
+     text4 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[3].exReword +" Exp \n Gold : "+ characterQuest[3].goldReword +" Lup ", style);
      text4.setShadow(2, 2, '#000000', 0, true, true);
      text4.anchor.set(0.5);
 
-     text5 = Lucifer_Game.add.text(0, 0 , " 경험치 :  700 Exp \n Gold :  700 Lup ", style);
+     text5 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[4].exReword +" Exp \n Gold : "+ characterQuest[4].goldReword +" Lup ", style);
      text5.setShadow(2, 2, '#000000', 0, true, true);
      text5.anchor.set(0.5);
 
-     text6 = Lucifer_Game.add.text(0, 0 , " 경험치 :  1000 Exp \n Gold :  1000 Lup ", style);
+     text6 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[5].exReword +" Exp \n Gold : "+ characterQuest[5].goldReword +" Lup ", style);
      text6.setShadow(2, 2, '#000000', 0, true, true);
      text6.anchor.set(0.5);
 
-     text7 = Lucifer_Game.add.text(0, 0 , " 경험치 :  1000 Exp \n Gold :  1000 Lup ", style);
+     text7 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[6].exReword +" Exp \n Gold : "+ characterQuest[6].goldReword +" Lup ", style);
      text7.setShadow(2, 2, '#000000', 0, true, true);
      text7.anchor.set(0.5);
 
-     text8 = Lucifer_Game.add.text(0, 0 , " 경험치 :  1500 Exp \n Gold :  1500 Lup ", style);
+     text8 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[7].exReword +" Exp \n Gold : "+ characterQuest[7].goldReword +" Lup ", style);
      text8.setShadow(2, 2, '#000000', 0, true, true);
      text8.anchor.set(0.5);
 
-     text9 = Lucifer_Game.add.text(0, 0 , " 경험치 :  2000 Exp \n Gold :  2000 Lup ", style);
+     text9 = Lucifer_Game.add.text(0, 0 , " 경험치 :  "+ characterQuest[8].exReword +" Exp \n Gold : "+ characterQuest[8].goldReword +" Lup ", style);
      text9.setShadow(2, 2, '#000000', 0, true, true);
      text9.anchor.set(0.5);
 
-     text10 = Lucifer_Game.add.text(0, 0 , " 경험치 :  2500 Exp \n Gold :  2500 Lup ", style);
+     text10 = Lucifer_Game.add.text(0, 0 , " 경험치 : "+ characterQuest[9].exReword +" Exp \n Gold : "+ characterQuest[9].goldReword +" Lup ", style);
      text10.setShadow(2, 2, '#000000', 0, true, true);
      text10.anchor.set(0.5);
 
@@ -327,6 +329,7 @@ function QuestCreate(){
      btnText10.visible = false;
      //----------------------------------------------------------------
 
+     checkQuestIsComplete();
 
 }
 
@@ -857,4 +860,18 @@ function actionOnClick10() {
     QuestContent_lv10.visible = true;
     text10.visible = true;
 
+}
+
+function checkQuestIsComplete(){
+    var characterQuestLength = characterQuest.length;
+    for(i=0; i<characterQuestLength; i++){
+        if(characterQuest[i].isCompleted){
+            var questOrder = i+1;
+            var theQuest = eval('QuestContent_lv'+questOrder);
+            var completeSprite = 'QuestContent'+questOrder+'_C';
+            theQuest.loadTexture(completeSprite);
+        }else{
+
+        }
+    }
 }
