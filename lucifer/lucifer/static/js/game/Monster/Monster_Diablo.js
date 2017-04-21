@@ -15,7 +15,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	/*this.Attack_Point = 300, this.Defence_Point = 350;
 	this.Skill_Attack_Point = 400, this.Skill_Attack_Point1 = 500;*/ 
 	this.Attack_Point = 1, this.Defence_Point = 1;
-	this.Skill_Attack_Point = 100, this.Skill_Attack_Point1 = 200;
+	this.Skill_Attack_Point = 10, this.Skill_Attack_Point1 = 10;
 
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Attack1', 'Dead', 
@@ -309,10 +309,7 @@ function diablo_Clone(PointX, PointY)
 
 	//Exp Timer
 	diablo_Object.ExpTimer = Lucifer_Game.time.create(false);
-	diablo_Object.ExpTimer.loop(10, diablo_ExpTimer, Lucifer_Game, diablo_Object);
-
-	//Fire Timer
-	diaSkill_Create();
+	diablo_Object.ExpTimer.loop(10, diablo_ExpTimer, Lucifer_Game, diablo_Object);	
 }
 //----------------------------------------------------------------------------------------------
 //Over / Out
@@ -675,14 +672,14 @@ function diablo_Attack(Object)
 					{
 						//Inferno Animation Change
 						diablo_Animation_Change(Object.Direction, 'Skill', Object);
-						diaSkill_Inferno_Animation_Change(Object.Direction, Object);											
+						diaSkill_Inferno_Animation_Change(Object.Direction, Object);																
 					}
 
 					if(Object.Pattern_Skill == true)
 					{
 						//Fire
 						diablo_Animation_Change(Object.Direction, 'Skill1', Object);
-						diaSkill_Fire_Attack(Object);										
+						diaSkill_Fire_Attack(Object);													
 					}
 
 					if(Object.Skill_Idle_Check == true)
@@ -701,9 +698,9 @@ function diablo_Attack(Object)
 		}
 
 		//HitCount		
-		diaSkill_Fire_Col(Object);
-		diaSkill_Inferno_Col(Object);
 		diablo_HitCount(Object);
+		diaSkill_Inferno_Col(Object);
+		diaSkill_Fire_Col(Object);
 	}	
 }
 
