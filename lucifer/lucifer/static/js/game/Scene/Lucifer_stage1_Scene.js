@@ -1,9 +1,9 @@
 var debugCheck;
 
-var stage1_Scene = 
+var stage1_Scene =
 {
 	/*
-		STAGE1 
+		STAGE1
 		--마을 Stage--
 	*/
 
@@ -15,11 +15,14 @@ var stage1_Scene =
 		//Stage
 		stageOne_Create();
 
+		//Quest
+		QuestCreate();
+
 		//Player
 		player_Create();
 
 		//Monster
-		golem_Create();		
+		golem_Create();
 		countess_Create();
 
 		//Npc Create
@@ -36,7 +39,7 @@ var stage1_Scene =
 
 		//Quest
 		QuestCreate();		
-
+		
 		//Rain Particle
 		rain_Create();
 
@@ -46,7 +49,7 @@ var stage1_Scene =
 		enterKey.onDown.add(debug_Rendering_Down, this);
 		enterKey.onUp.add(debug_Rendering_Up, this);
 
-	
+
 	},
 
 	update: function()
@@ -55,14 +58,14 @@ var stage1_Scene =
 		player_Update();
 
 		//Monster Update
-		golem_Update();		
+		golem_Update();
 		countess_Update();
 
         //items Update
 		itemsStoreUpdate();
 
 		//Ui Update
-		ui_Update();		
+		ui_Update();
 
 		//Quest Update
 		QuestUpdate();
@@ -92,9 +95,9 @@ var stage1_Scene =
 			player_Render();
 
 			//Monster Render
-			golem_Redner();			
-			countess_Render();					
-			
+			golem_Redner();
+			countess_Render();
+
             //itemStoreRender
             itemStoreRender();
 
@@ -103,23 +106,23 @@ var stage1_Scene =
 
 			//Skill
 	        skill_Debug_Render();
-		}		
+		}
 	},
 
 	goto_Stage2: function()
 	{
 		stageOne_Check = false;
-		
+
 		Lucifer_Game.state.start('stage2_load');
-	}	
+	}
 };
 
 function debug_Rendering_Down()
 {
 	if(debugCheck == false)
 	{
-		debugCheck = true;	
-	}			
+		debugCheck = true;
+	}
 }
 
 function debug_Rendering_Up()
@@ -127,5 +130,5 @@ function debug_Rendering_Up()
 	if(debugCheck == true)
 	{
 		debugCheck = false;
-	}	
+	}
 }

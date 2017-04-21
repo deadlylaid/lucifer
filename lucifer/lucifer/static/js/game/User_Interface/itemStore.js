@@ -256,6 +256,8 @@ function buyItem() {
     }
     changeServerListToClientList();
     selectedItem = null;
+    //퀘스트 검사
+    playerQuestAdvence(0);
 }
 
 function clickedItemInInventory(sprite){
@@ -410,7 +412,6 @@ function useItem(){
         inventoryDelete(selectedItem.name);
 
         var inventoryLength = inventory.length;
-        console.log('테스트' + tempInventory.length);
 
         //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장
         for(i=0; i<tempInventory.length; i++){
@@ -457,6 +458,9 @@ function useItem(){
             }
             equipmentList[0] = createEquipmentAndSetPosition(selectedItem.name);
             equipmentList[0].getVisible(true);
+
+            equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+
             equipmentPost(equipmentList[0].name, equipmentList[0].type_is);
 
         }else if(selectedItem.type_is==='armor'){
@@ -479,6 +483,9 @@ function useItem(){
             }
             equipmentList[1] = createEquipmentAndSetPosition(selectedItem.name);
             equipmentList[1].getVisible(true);
+
+            equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+
             equipmentPost(equipmentList[1].name, equipmentList[1].type_is);
         }
 
@@ -565,13 +572,20 @@ function changeServerListToClientListEquipment(){
         switch(equipmentList[i].item_name){
             case '기본검':
                 equipmentList[0] = createEquipmentAndSetPosition('기본검');
+
+                equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
                 break;
             case '기본갑옷':
                 equipmentList[1] = createEquipmentAndSetPosition('기본갑옷');
+
+                equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
                 break;
         }
     }
+
+
 }
+
 //server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다.
 function changeServerListToClientList(){
     invenArrayLength = inventory.length;
@@ -590,5 +604,16 @@ function changeServerListToClientList(){
                 inventory[i].numberInArray = i;
                 break;
         }
+    }
+}
+
+//장비착용 계산 함수
+function equipmentCalculater(point, type){
+    if(type==='armor'){
+    	var rawDefencePoint = 2 * ( (4 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
+        defence_point = Number(rawDefencePoint.toFixed(2));
+    }else{
+    	var rawAttackPoint = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
+        attack_point = Number(rawAttackPoint.toFixed(2));
     }
 }
