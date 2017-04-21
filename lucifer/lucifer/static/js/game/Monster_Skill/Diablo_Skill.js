@@ -167,6 +167,9 @@ function diaSkill_Direction_Inferno_Position(Direction, Object)
 	
 function diaSkill_Fire_Col(Object)
 {
+	/*Player defence_point 가 제대로 안들어 왔는지 NaN의 값이 나온다. 확인해 봐야 된다.
+	  그 부분만 해결하면 이부분은 더이상 수정할 필요 없을듯.*/
+
 	if(Phaser.Rectangle.intersects(Object.FireRect, Hit_Rect))
 	{
 		diaFire_Timer.start();

@@ -43,10 +43,10 @@ function player_Create()
 		Player = Lucifer_Game.add.sprite(879, 2193, 'PY_Bavarian_Attack');	
 
 		if(BackStageMove == 0)
-			{
-				Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
-				BackStageMove = 1;
-			}
+		{
+			Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
+			BackStageMove = 1;
+		}
 	}	
 
 	//Player Dead / Revive Effect
@@ -128,7 +128,7 @@ function player_Create()
 	Player.body.restitution = 0;
 
 	//Rect
-	Attack_Rect = new Phaser.Rectangle(Player.x, Player.y, 80, 80);	
+	Attack_Rect = new Phaser.Rectangle(Player.x, Player.y, 40, 40);	
 	Hit_Rect = new Phaser.Rectangle(Player.x, Player.y, 60, 60);	
 
 	//ID(닉네임)
@@ -442,6 +442,53 @@ function PlayerSkill5()
 	}
 }
 
+function player_AttackRect_Setting()
+{
+	switch(Direction)
+	{
+	case 0:
+		Attack_Rect.x = Player.x;
+		Attack_Rect.y = Player.y;
+		Attack_Rect.centerOn(Attack_Rect.x, Attack_Rect.y - 30);	
+		break;
+	case 1:
+		Attack_Rect.x = Player.x;
+		Attack_Rect.y = Player.y;
+		Attack_Rect.centerOn(Attack_Rect.x - 30, Attack_Rect.y - 30);
+		break;
+	case 2:
+		Attack_Rect.x = Player.x;
+		Attack_Rect.y = Player.y;
+		Attack_Rect.centerOn(Attack_Rect.x - 30, Attack_Rect.y);
+		break;
+	case 3:
+		Attack_Rect.x = Player.x;
+		Attack_Rect.y = Player.y;
+		Attack_Rect.centerOn(Attack_Rect.x - 30, Attack_Rect.y + 30);
+		break;
+	case 4:
+		Attack_Rect.x = Player.x;
+		Attack_Rect.y = Player.y;
+		Attack_Rect.centerOn(Attack_Rect.x, Attack_Rect.y + 30);
+		break;
+	case 5:
+		Attack_Rect.x = Player.x;
+		Attack_Rect.y = Player.y;
+		Attack_Rect.centerOn(Attack_Rect.x + 30, Attack_Rect.y + 30);
+		break;
+	case 6:
+		Attack_Rect.x = Player.x;
+		Attack_Rect.y = Player.y;
+		Attack_Rect.centerOn(Attack_Rect.x + 30, Attack_Rect.y);
+		break;
+	case 7:
+		Attack_Rect.x = Player.x;
+		Attack_Rect.y = Player.y;
+		Attack_Rect.centerOn(Attack_Rect.x + 30, Attack_Rect.y - 30);
+		break;
+	}
+}
+
 function player_Update()
 {
 	//Player ID
@@ -488,13 +535,11 @@ function player_Update()
 	}	
 	
 	//Rect
-	Attack_Rect.x = Player.x;
-	Attack_Rect.y = Player.y;
-	Attack_Rect.centerOn(Player.x, Player.y);	
-
 	Hit_Rect.x = Player.x;
 	Hit_Rect.y = Player.y;
 	Hit_Rect.centerOn(Player.x, Player.y);
+
+	player_AttackRect_Setting();
 
 	//Debug 용도
 	//intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
