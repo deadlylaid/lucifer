@@ -46,8 +46,8 @@ function QuestCreate(){
     for(i=0; i<characterQuestLength; i++){
 
         title = characterQuest[i].title;
-        exReword = characterQuest[i].ex_reword;
-        goldReword = characterQuest[i].gold_reword;
+        exReword = characterQuest[i].ex_reward;
+        goldReword = characterQuest[i].gold_reward;
         advanced = characterQuest[i].advanced;
         goal = characterQuest[i].goal;
         isCompleted = characterQuest[i].isCompleted;
