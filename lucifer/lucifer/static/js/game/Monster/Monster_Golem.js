@@ -81,7 +81,7 @@ function golem_Create()
 
 function golem_Clone(PointX, PointY)
 {
-	golem_Object = new Golem(Lucifer_Game, PointX, PointY, 250, 250, 300, 80);
+	golem_Object = new Golem(Lucifer_Game, PointX, PointY, 500, 500, 300, 80);
 		
 	Lucifer_Game.physics.p2.enable(golem_Object);
 	golem_Object.body.fixedRotation = true;
@@ -129,7 +129,7 @@ function golem_Clone(PointX, PointY)
 	golem_Object.loadTexture('MON_Golem_Stand', 0, true);
 	golem_Object.animations.play('MON_Golem_Stand_0', 10, true);
 	golem_Object.anchor.setTo(0.5, 0.5);
-	golem_Object.blendMode = Phaser.blendModes.ADD;
+	//golem_Object.blendMode = Phaser.blendModes.ADD;
 	
 	Lucifer_Game.physics.enable(golem_Object, Phaser.Physics.ARCADE);
 	Lucifer_Game.add.existing(golem_Object);
@@ -577,8 +577,8 @@ function golem_Regen(Object)
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 
-			Object.Hp = 100;
-			Object.MaxHp = 100;
+			Object.Hp = 500;
+			Object.MaxHp = 500;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 

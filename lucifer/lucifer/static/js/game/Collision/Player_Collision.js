@@ -52,7 +52,7 @@ function player_Monster_Col(Object)
 						EndFrame = 15 * (Direction + 1);
 					}
 
-					if(CurFrame + 5 < EndFrame)
+					if(CurFrame + 10 < EndFrame)
 					{
 						Damage_Count(Object);	
 					}					
@@ -83,7 +83,7 @@ function Damage_Count(Monster)
 	else if(player_Attack_Dagmage < 0)
 	{
 		Monster.Hp -= attack_point;
-	}	 	
+	}	 
 }
 
 function skill_Attack(Monster)

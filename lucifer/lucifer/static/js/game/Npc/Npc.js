@@ -57,7 +57,7 @@ function npc_Create()
 	cain_Npc.body.fixedRotation = true;
 	cain_Npc.body.clearShapes();
 	cain_Npc.body.addRectangle(40, 60, 0, 0);
-	cain_Npc.body.debug = true;
+	cain_Npc.body.debug = false;
 	cain_Npc.body.static = true;
 
 	Lucifer_Game.physics.enable(store_Npc, Phaser.Physics.ARCADE);
