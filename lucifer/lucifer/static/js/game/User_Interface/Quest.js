@@ -870,7 +870,18 @@ function playerQuestAdvence(index){
     if(characterQuest[index].isCompleted === false){
         characterQuest[index].isCompleted = true;
         console.log('완료');
+        characterQuestPost(index);
     }else{
 
     }
+}
+
+function characterQuestPost(index){
+    $.ajax({
+        method:'POST',
+        url:'/api/user/character/characterquest/',
+        data:{
+            index: index,
+        },
+    });
 }
