@@ -27,8 +27,9 @@ var loadScene =
 		Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);
 
-		//Rain Particle
+		//Rain Particle & Sight Filter 
 		rain_Preload();		
+		sight_Filter_Preload();
 
 		//Stage Preload
 		//----------------------------------------------------------------------------------------------------------

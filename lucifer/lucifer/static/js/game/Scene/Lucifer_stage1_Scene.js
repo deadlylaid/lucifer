@@ -15,9 +15,6 @@ var stage1_Scene =
 		//Stage
 		stageOne_Create();
 
-		//Quest
-		QuestCreate();
-
 		//Player
 		player_Create();
 
@@ -28,6 +25,12 @@ var stage1_Scene =
 		//Npc Create
 		npc_Create();
 
+		//Sight Effect
+		sight_Filter_Create();		
+
+		//Quest
+		QuestCreate();		
+
         //items
         itemStoreCreate();
 
@@ -37,16 +40,17 @@ var stage1_Scene =
 		//Skill
 		skill_Create();
 
+		//Quest
+		QuestCreate();			
+
 		//Rain Particle
-		rain_Create();
+		rain_Create();		
 
 		//Key Go to Stage2
 		debugCheck = false;
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
 		enterKey.onDown.add(debug_Rendering_Down, this);
 		enterKey.onUp.add(debug_Rendering_Up, this);
-
-
 	},
 
 	update: function()
