@@ -3,9 +3,22 @@ var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup = [];								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
 var BackStageMove=1;
-var text_wel;
+var text_wel = null;
 var Stage1_AlertText ;
 
+WebFontConfig = {
+
+    //  'active' means all requested fonts have finished loading
+    //  We set a 1 second delay before calling 'createText'.
+    //  For some reason if we don't the browser cannot render the text the first time it's created.
+    //active: function() { Lucifer_Game.time.events.add(Phaser.Timer.SECOND, createText, this); },
+
+    //  The Google Fonts we want to load (specify as many as you like in the array)
+    google: {
+      families: ['Ranga']
+    }
+
+};
 
 var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Object_wall12',
 					'STAGE1_Object_wall16', 'STAGE1_Object_wall13', 'STAGE1_Object_wall5',
@@ -33,7 +46,12 @@ var objectValueArray = [];
 
 
 function stageOne_Preload()
-{
+{	
+	Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+
+	Lucifer_Game.load.spritesheet('Ingame_Banner', '../../static/images/game/Map/Stage1/Ingame_Banner.png');
+	Lucifer_Game.load.spritesheet('BannerTEXT', '../../static/images/game/Map/Stage1/BannerTEXT.png');
+
 	Lucifer_Game.load.tilemap('MAP_Stage1', '../../static/images/game/Map/Stage1/Stage1.json',
 							   null, Phaser.Tilemap.TILED_JSON);
 	Lucifer_Game.load.image('Stage1_TileSet', '../../static/images/game/Map/Stage1/Stage1_TileSet.png');
@@ -400,32 +418,32 @@ function stageOne_Create()
 	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");
 
 
+	
+
 	//Welcome TEXT (게임 첫 시작에만 나옴.)
 	if(BackStageMove == 1) 
 	{
-    text_wel = Lucifer_Game.add.text(640, 150, "LUCIFER 세계에 오신 걸 환영합니다.", {font: '50px Roboto', fill: '#ffffff'});
-    text_wel.anchor.set(0.5);
-    text_wel.alpha = 0.1;
-    text_wel.fixedToCamera = true;
-    text_wel.stroke = '#000000';
-    text_wel.strokeThickness = 2;
-    text_wel.setShadow(3, 3, '#000000', 0, true, true);
-    text_wel.padding.set(10, 16);
-    text_wel.fontWeight = 'bold';
 
-    var grd = text_wel.context.createLinearGradient(0, 0, 0, text_wel.height);
+    Ingame_Banner = Lucifer_Game.add.sprite(640, 120, 'Ingame_Banner');
+    Ingame_Banner.anchor.setTo(0.5, 0.5);
+    Ingame_Banner.fixedToCamera = true;
+    Ingame_Banner.alpha = 0.1;
+    Ingame_Banner.fixedToCamera = true;
+    Ingame_Banner.visible = true;
 
-    //  Add in 2 color stops
-    grd.addColorStop(0, '#d13034');   
-    grd.addColorStop(1, '#66191b');
-
-    //  And apply to the Text
-    text_wel.fill = grd;
+    BannerTEXT = Lucifer_Game.add.sprite(640, 140, 'BannerTEXT');
+    BannerTEXT.anchor.setTo(0.5, 0.5);
+    BannerTEXT.fixedToCamera = true;
+    BannerTEXT.alpha = 0.1;
+    BannerTEXT.fixedToCamera = true;
+    BannerTEXT.visible = true;
 
 
-    Lucifer_Game.add.tween(text_wel).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
+    Lucifer_Game.add.tween(Ingame_Banner).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
+    Lucifer_Game.add.tween(BannerTEXT).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, TextVisible, this);	
+
+    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, imagedestroy, this);	
 
 	} 
 	else {
@@ -470,6 +488,12 @@ function stageOne_Create()
 	
 function TextVisible(){
 	text_wel.destroy();
+
+}
+
+function imagedestroy(){
+	Ingame_Banner.destroy();
+	BannerTEXT.destroy();
 }
 
 function portal_Check()

@@ -223,8 +223,8 @@ function stageThree_Create()
     var grd3 = text_wel3.context.createLinearGradient(0, 0, 0, text_wel3.height);
 
     //  Add in 2 color stops
-    grd3.addColorStop(0, '#d13034');   
-    grd3.addColorStop(1, '#66191b');
+    grd3.addColorStop(0, '#fc1b1b');   
+    grd3.addColorStop(1, '#130b0b');
 
     //  And apply to the Text
     text_wel3.fill = grd3;
