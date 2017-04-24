@@ -576,8 +576,8 @@ function stageTwo_Create()
     var grd2 = text_wel2.context.createLinearGradient(0, 0, 0, text_wel2.height);
 
     //  Add in 2 color stops
-    grd2.addColorStop(0, '#d13034');   
-    grd2.addColorStop(1, '#66191b');
+    grd2.addColorStop(0, '#fc1b1b');   
+    grd2.addColorStop(1, '#130b0b');
 
     //  And apply to the Text
     text_wel2.fill = grd2;
