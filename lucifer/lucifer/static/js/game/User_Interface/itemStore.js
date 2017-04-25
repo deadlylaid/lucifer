@@ -154,9 +154,9 @@ function itemStoreCreate(){
     changeServerListToClientList();
     changeServerListToClientListEquipment();
 
-    gold = Lucifer_Game.add.text(1030, 605, gold, itemStoreStyle);
-    gold.fixedToCamera = true;
-    gold.visible = false;
+    gold_text = Lucifer_Game.add.text(1030, 605, gold, itemStoreStyle);
+    gold_text.fixedToCamera = true;
+    gold_text.visible = false;
 }
 
 function itemsStoreUpdate(){
@@ -201,9 +201,7 @@ function potionStoreTab(){
     potionTab.alpha = 1;
     swordTab.alpha = 0.7;
     armorTab.alpha = 0.7;
-    redPotion.getVisible(true);
-    basicSword.getVisible(false);
-    basicArmor.getVisible(false);
+    redPotion.getVisible(true); basicSword.getVisible(false); basicArmor.getVisible(false);
 }
 
 function swordStoreTab(){
@@ -250,9 +248,16 @@ function buyItem() {
         if(inventory.length>=10){
             alert("인벤토리가 가득 찼습니다.");
         }else{
-            alert("구매한 물건 : " + selectedItem.name);
-            inventory.push(selectedItem);
-            inventoryPost(selectedItem.name);
+            if(gold>selectedItem.price){
+                alert("구매한 물건 : " + selectedItem.name);
+                inventory.push(selectedItem);
+                inventoryPost(selectedItem.name);
+                gold -= selectedItem.price;
+                goldUpdate();
+            }else{
+                alert("소지한 골드가 부족합니다");
+            }
+
         }
     }
     changeServerListToClientList();
@@ -313,7 +318,7 @@ function invenUi(){
         uiInventory.visible = false;
         dropButton.visible = false;
         useButton.visible = false;
-        gold.visible = false;
+        gold_text.visible = false;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
         }
@@ -324,7 +329,7 @@ function invenUi(){
         uiInventory.visible = true;
         dropButton.visible = true;
         useButton.visible = true;
-        gold.visible = true;
+        gold_text.visible = true;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
         }
@@ -618,4 +623,8 @@ function equipmentCalculater(point, type){
     	var rawAttackPoint = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
         attack_point = Number(rawAttackPoint.toFixed(2));
     }
+}
+
+function goldUpdate(){
+    gold_text.setText(gold);
 }
