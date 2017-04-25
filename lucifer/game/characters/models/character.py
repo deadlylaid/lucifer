@@ -30,9 +30,8 @@ class Character(models.Model):
             blank=True,
             )
 
-    # 어떤 퀘스트를 완료했는지
-    complete_quest_set = models.ManyToManyField(
-            Quest,
+    gold = models.IntegerField(
+            default=3000,
             )
 
     def __str__(self):

@@ -23,7 +23,7 @@ class CharacterSerializer(serializers.ModelSerializer):
                 'nickname',
                 'level',
                 'job',
-                'complete_quest_set',
+                'gold',
 
                 'status',
                 'inventory_set',
