@@ -11,7 +11,7 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
 	//Stat
-	this.Attack_Point = 80, this.Defence_Point = 50;
+	this.Attack_Point = 100, this.Defence_Point = 50;
 
 	//Status
 	this.Status = new Array('Stand', 'Run', 'Attack', 'Dead', 'Skill');
@@ -72,7 +72,7 @@ function deamon_Preload()
 
 function deamon_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_Deamon_Stand', 'MON_Deamon_Run', 
+	Lucifer_Game.renderer.setTexturePriority(['MON_Deamon_Stand', 'MON_Deamon_Run',
 											  'MON_Deamon_Attack', 'MON_Deamon_Dead', 'MON_Deamon_Skill']);
 
 	deamon_Group = Lucifer_Game.add.group();
@@ -92,7 +92,7 @@ function deamon_Clone(PointX, PointY)
 	deamon_Object.body.fixedRotation = true;
 	deamon_Object.body.clearShapes();
 	deamon_Object.body.addRectangle(60, 60, 0, 0);
-	deamon_Object.body.debug = false;	
+	deamon_Object.body.debug = false;
 	deamon_Object.body.restitution = 0;
 
 	//Animation
@@ -111,8 +111,8 @@ function deamon_Clone(PointX, PointY)
 									 	index, index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7
 									 ], 60, true);
-		index += 8;		
-	}	
+		index += 8;
+	}
 
 	//Attack
 	index = 0;
@@ -137,9 +137,9 @@ function deamon_Clone(PointX, PointY)
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									   index + 10, index + 11, index + 12, index + 13, index + 14,
-									   index + 15, index + 16, index + 17, index + 18, index + 19	
-									], 60, true);	
-		index += 20;	
+									   index + 15, index + 16, index + 17, index + 18, index + 19
+									], 60, true);
+		index += 20;
 	}
 
 	//Skill
@@ -150,8 +150,8 @@ function deamon_Clone(PointX, PointY)
 									[
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
-									   index + 10, index + 11 
-									], 60, true);	
+									   index + 10, index + 11
+									], 60, true);
 		index += 12;
 	}
 
@@ -296,11 +296,11 @@ function deamon_GetDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
-	}	
+	}
 }
 
 function deamon_GetReturnDirection(Object)
@@ -313,11 +313,11 @@ function deamon_GetReturnDirection(Object)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
-			
+
 			if(Object.y < Object.ReturnPointY)
 			{
 				Object.ReturnAngle = 2 * Math.PI - Object.ReturnAngle;
-			}	
+			}
 
 			if(Object.ReturnAngle >= 0 && Object.ReturnAngle <= 0.7)
 			{
@@ -356,8 +356,8 @@ function deamon_GetReturnDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
 	}
@@ -384,7 +384,7 @@ function deamon_Animation_Change(Direction, Status, Object)
 			//Stand
 			Object.loadTexture('MON_Deamon_Stand', 0, true);
 			Object.animations.play('MON_Deamon_Stand_' + Direction, 10, true);
-		}	
+		}
 		else if(Object.Status[1] == Status)
 		{
 			//Walk
@@ -426,7 +426,7 @@ function deamon_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				deamon_Animation_Change(Object.Direction, 'Run', Object);
-			}			
+			}
 		}
 
 		if(Object.Distance < Object.AttackRange)
@@ -453,7 +453,7 @@ function deamon_Move(Object)
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
 				Object.ReturnCheck = true;
-			}			
+			}
 		}
 
 		if(Object.ReturnCheck == true)
@@ -473,13 +473,13 @@ function deamon_Move(Object)
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
-				Object.ReturnCheck = false;		
+				Object.ReturnCheck = false;
 
 				if(Object.StandCheck == false)
 				{
 					Object.StandCheck = true;
 
-					deamon_Animation_Change(Object.ReturnDirection, 'Stand', Object);						
+					deamon_Animation_Change(Object.ReturnDirection, 'Stand', Object);
 				}
 
 				Object.body.velocity.x = 0;
@@ -501,7 +501,7 @@ function deamon_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				deamon_Animation_Change(Object.Direction, 'Attack', Object);			
+				deamon_Animation_Change(Object.Direction, 'Attack', Object);
 				Object.AttackCheck = true;
 			}
 		}
@@ -539,16 +539,16 @@ function deamon_HitCount(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage;		
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage < 0)
 				{
 					health -= 0;
-				}	
-				
-				Object.DelayTime_Total = 0;	
-			}		
-		}		
+				}
+
+				Object.DelayTime_Total = 0;
+			}
+		}
 	}
 }
 
@@ -572,7 +572,7 @@ function deamon_Dead(Object)
 		}
 
 		var CurFrame = Object.animations.frame;
-		var EndFrame;		
+		var EndFrame;
 
 		if(Object.Direction == 0)
 		{
@@ -588,7 +588,7 @@ function deamon_Dead(Object)
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
-		}				
+		}
 	}
 }
 
@@ -606,7 +606,7 @@ function deamon_Regen(Object)
 			Object.body.static = false;
 
 			Object.Regen_Check = false;
-			
+
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
@@ -674,8 +674,8 @@ function deamon_Update()
 		//Player Mosnter Collision
 		if(deamon.Regen_Check == false)
 		{
-			player_Monster_Col(deamon);			
-		}		
+			player_Monster_Col(deamon);
+		}
 
 		deamon_Dead(deamon);
 		deamon_Regen(deamon);
