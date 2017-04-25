@@ -1,6 +1,7 @@
 var nickname,
     level,
     job,
+    gold,
     attack_point,
     defence_point,
     strong,
@@ -46,6 +47,7 @@ $.ajax({
     nickname = character.nickname;
     level = character.level;
     job = character.job;
+    gold = character.gold;
 
     health = character.status.health;
     mana = character.status.mana;
