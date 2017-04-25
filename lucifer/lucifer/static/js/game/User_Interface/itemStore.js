@@ -153,6 +153,10 @@ function itemStoreCreate(){
 
     changeServerListToClientList();
     changeServerListToClientListEquipment();
+
+    gold = Lucifer_Game.add.text(1030, 605, gold, itemStoreStyle);
+    gold.fixedToCamera = true;
+    gold.visible = false;
 }
 
 function itemsStoreUpdate(){
@@ -226,17 +230,14 @@ function clickItem(sprite){
     //console.log(sprite.name);
     var i = inventory.length;
     switch(sprite.name){
-        case '빨간물약':
-            selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+        case '빨간물약': selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
             break;
         case '기본검':
             selectedItem = basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
             break;
-        case '기본갑옷':
-            selectedItem = basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-            selectedItem.numberInArray = i;
+        case '기본갑옷': selectedItem = basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]); selectedItem.numberInArray = i;
             break;
     }
     //console.log(selectedItem);
@@ -312,6 +313,7 @@ function invenUi(){
         uiInventory.visible = false;
         dropButton.visible = false;
         useButton.visible = false;
+        gold.visible = false;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
         }
@@ -322,6 +324,7 @@ function invenUi(){
         uiInventory.visible = true;
         dropButton.visible = true;
         useButton.visible = true;
+        gold.visible = true;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
         }

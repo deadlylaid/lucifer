@@ -1,6 +1,6 @@
 //itemStore font style
 var itemStoreStyle = {
-    font: "15px Courier", fill: "#fff", 
+    font: "15px Courier", fill: "#fff",
 };
 
 //potion 객체를 만들때 사용
@@ -40,7 +40,7 @@ potion.prototype.getVisible = function(bool){
 }
 potion.prototype.constructor = potion;
 
-//sword 객체를 만들때 사용 
+//sword 객체를 만들때 사용
 sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
@@ -78,10 +78,10 @@ sword.prototype.getVisible = function(bool){
 sword.prototype.constructor = sword;
 
 
-//armor 객체를 만들때 사용 
+//armor 객체를 만들때 사용
 armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
-    
+
     //item status
     //name == spritekey name
     this.name = spriteKey;
@@ -104,7 +104,7 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.text = game.add.text(positionX + 45, positionY - 20, itemText, itemStoreStyle);
     this.text.fixedToCamera = true;
     this.text.visible = false;
-    
+
     this.numberInArray;
 }
 
@@ -122,7 +122,7 @@ function redPotionClone(positionX, positionY){
         Lucifer_Game, positionX, positionY, itemList[0].name, itemList[0].heal, itemList[0].limited_job
         );
     redPotionObject.text.setText(redPotionObject.name);
-    redPotionObject.text.fontSize = 15; 
+    redPotionObject.text.fontSize = 15;
     redPotionObject.text.fill = '#fff';
 
     Lucifer_Game.add.existing(redPotionObject);
@@ -169,5 +169,5 @@ function basicArmorClone(positionX, positionY){
 }
 
 function itemsCreate(){
-	
+
 }
