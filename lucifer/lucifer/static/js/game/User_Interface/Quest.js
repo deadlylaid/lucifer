@@ -879,7 +879,7 @@ function playerQuestAdvence(index){
 
 function characterQuestPost(index){
     $.ajax({
-        method:'POST',
+        method:'PUT',
         url:'/api/user/character/characterquest/',
         data:{
             index: index,
