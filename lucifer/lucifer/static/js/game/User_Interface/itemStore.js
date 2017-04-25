@@ -201,7 +201,9 @@ function potionStoreTab(){
     potionTab.alpha = 1;
     swordTab.alpha = 0.7;
     armorTab.alpha = 0.7;
-    redPotion.getVisible(true); basicSword.getVisible(false); basicArmor.getVisible(false);
+    redPotion.getVisible(true);
+    basicSword.getVisible(false);
+    basicArmor.getVisible(false);
 }
 
 function swordStoreTab(){
