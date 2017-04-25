@@ -17,6 +17,7 @@ potion = function (game, positionX, positionY, spriteKey, heal, limited_job, ite
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
+    this.price = 100;
 
     var itemData = [
         [ itemList[0].name ],
@@ -54,6 +55,7 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
+    this.price = 1000;
 
     var itemData = [
         [ itemList[1].name ],
@@ -92,6 +94,7 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
+    this.price = 1000;
 
     var itemData = [
             [ itemList[2].name ],
