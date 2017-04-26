@@ -265,7 +265,7 @@ function buyItem() {
     changeServerListToClientList();
     selectedItem = null;
     //퀘스트 검사
-    playerQuestAdvence(0);
+    playerQuestAdvence(1);
 }
 
 function clickedItemInInventory(sprite){
