@@ -71,38 +71,9 @@ function ui_Create()
         font: "16px Courier", fill: "#fff", tabs: [ 100 ],
     };
 
-    //add needed data in the list
-    var statusData = [
-        [ '', '' ],
-        [ '', '' ],
-        [ '', '' ],
-        [ '', job ],
-        [ '', '' ],
-        [ '', '' ],
-        [ '', health ],
-        [ '', '' ],
-        [ '', mana ],
-        [ '', '' ],
-        [ '', '' ],
-        [ '', health ],
-        [ '', '' ],
-        [ '', dexterity ],
-        [ '', '' ],
-        [ '', intelligence ],
-        [ '', '' ],
-        [ '', '' ],
-        [ '', accuracy ],
-        [ '', '' ],
-        [ '', evasion ],
-    ];
-
-    //리스트로 저장된 데이터를 파싱함
-    //.text를 이용하여 파싱된 string을 출력
-    parsedStatusData = parseList(statusData);
-
     //파싱된 텍스트를 작성
     //작성되는 위치는 Ui_stat 창이 적용되는 곳을 기준으로 할 것
-    statusDataText = Lucifer_Game.add.text(UI_Stat.x, UI_Stat.y - 20 , parsedStatusData.text, UI_StatText_Style);
+    statusDataText = Lucifer_Game.add.text(UI_Stat.x, UI_Stat.y - 20 , updateStatus(), UI_StatText_Style);
     statusDataText.anchor.set(0.5);
     statusDataText.fixedToCamera = true;
     statusDataText.visible = false;
@@ -216,3 +187,36 @@ function hpBarMaskRate(healthPercentage){
 
     return hpRate;
 }
+
+//add needed data in the list
+function updateStatus(){
+    var statusData = [
+        [ '', '' ],
+        [ '', '' ],
+        [ '', '' ],
+        [ '', job ],
+        [ '', '' ],
+        [ '', '' ],
+        [ '', health ],
+        [ '', '' ],
+        [ '', mana ],
+        [ '', '' ],
+        [ '', '' ],
+        [ '', health ],
+        [ '', '' ],
+        [ '', dexterity ],
+        [ '', '' ],
+        [ '', intelligence ],
+        [ '', '' ],
+        [ '', '' ],
+        [ '', accuracy ],
+        [ '', '' ],
+        [ '', evasion ],
+    ];
+
+    //리스트로 저장된 데이터를 파싱함
+    //.text를 이용하여 파싱된 string을 출력
+    parsedStatusData = parseList(statusData);
+    return parsedStatusData.text;
+}
+
