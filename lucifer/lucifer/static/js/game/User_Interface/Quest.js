@@ -14,6 +14,8 @@ var QuestContent_lv1, QuestContent_lv2, QuestContent_lv3,
 var text1, text2, text3, text4, text5, text6, text7, text8, text9, text10, style;
 var btnText, btnText2, btnText3, btnText4, btnText5, btnText6, btnText7, btnText8, btnText9, btnText10 ;
 
+var UI_info;
+
 function QuestPreload(){
 
     Lucifer_Game.load.spritesheet('UI_Quest', '../../static/images/game/UI/Quest/QuestFrame.png', 867, 580);
@@ -42,6 +44,7 @@ function QuestPreload(){
     Lucifer_Game.load.spritesheet('QuestContent9_C', '../../static/images/game/UI/Quest/Questcontent9_complete.png', 463, 439);
     Lucifer_Game.load.spritesheet('QuestContent10_C', '../../static/images/game/UI/Quest/Questcontent10_complete.png', 463, 439);
 
+    Lucifer_Game.load.spritesheet('UI_Info', '../../static/images/game/UI/KeyInfo/KeyInfo.png', 785, 539);
 };
 
 quest = function(title, exReword, goldReword, advanced, goal, isCompleted){
@@ -81,7 +84,14 @@ function QuestCreate(){
     UI_Quest.fixedToCamera = true;
     UI_Quest.visible = false;
 
+    UI_Info = Lucifer_Game.add.sprite(640, 360, 'UI_Info');
+    UI_Info.anchor.setTo(0.5, 0.5);
+    UI_Info.alpha= 0.9;
+    UI_Info.fixedToCamera = true;
+    UI_Info.visible = false;
+
     Key_Quest = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.Q);
+    Key_Info = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F1);
 
     keyValidTimer = Lucifer_Game.time.create(false);
     keyValidTimer.loop(400, timeCheck, this);
@@ -349,6 +359,16 @@ function QuestUpdate(){
         validCheck = 0;
     }
 
+    if(Key_Info.isDown)
+    {
+        keyValidTimer.start();
+        if(validCheck == 1)
+        {
+            InfoUi();
+        }
+        validCheck = 0;
+    }
+
     text1.x = Math.floor(QuestContent_lv1.x - 340 + QuestContent_lv1.width / 2);
     text1.y = Math.floor(QuestContent_lv1.y - 65 + QuestContent_lv1.height / 2);
 
@@ -387,7 +407,7 @@ function QuestUpdate(){
     btnText2.x = Math.floor(Questbtn_lv2.x - 197 + Questbtn_lv2.width / 2);
     btnText2.y = Math.floor(Questbtn_lv2.y - 18 + Questbtn_lv2.height / 2);
 
-    btnText3.x = Math.floor(Questbtn_lv3.x - 162 + Questbtn_lv3.width / 2);
+    btnText3.x = Math.floor(Questbtn_lv3.x - 200 + Questbtn_lv3.width / 2);
     btnText3.y = Math.floor(Questbtn_lv3.y - 18 + Questbtn_lv3.height / 2);
 
     btnText4.x = Math.floor(Questbtn_lv4.x - 200 + Questbtn_lv4.width / 2);
@@ -443,8 +463,11 @@ function viewQuest()
     btnText9.visible = true;
     btnText10.visible = true;
 
+}
 
-
+function viewInfo()
+{
+    UI_Info.visible = true;
 }
 
 function QuestUi()
@@ -504,6 +527,18 @@ function QuestUi()
     else
     {
         viewQuest();
+    }
+}
+
+function InfoUi()
+{
+    if(UI_Info.visible == true)
+    {
+        UI_Info.visible = false;
+    }
+    else
+    {
+        viewInfo();
     }
 }
 
