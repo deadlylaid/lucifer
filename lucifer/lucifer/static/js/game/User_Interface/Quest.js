@@ -115,7 +115,7 @@ function QuestCreate(){
      Questbtn_lv3.fixedToCamera = true;
      Questbtn_lv3.visible = false;
 
-     btnText3 = Lucifer_Game.add.text(203, 600, "LV.3    -    [ "+ characterQuest[3].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText3 = Lucifer_Game.add.text(203, 600, "LV.3    -    [ "+ characterQuest[2].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText3.anchor.set(0.5);
      //---------------------------------------------------------------
 
