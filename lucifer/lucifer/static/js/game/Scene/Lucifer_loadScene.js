@@ -1,19 +1,3 @@
-var loadtext, menuImage;
-
-WebFontConfig = {
-
-    //  'active' means all requested fonts have finished loading
-    //  We set a 1 second delay before calling 'createText'.
-    //  For some reason if we don't the browser cannot render the text the first time it's created.
-    //active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
-
-    //  The Google Fonts we want to load (specify as many as you like in the array)
-    google: {
-      families: ['Revalia']
-    }
-
-};
-
 var loadScene = 
 {
 	/*
@@ -92,12 +76,15 @@ var loadScene =
 
 	create: function()
 	{		
-		menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
+		var menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
 		menuImage.anchor.setTo(0.5, 0.5);		
 
-		loadtext = Lucifer_Game.add.text(this.world.centerX - 170, 715, 'Press \"Enter\" Key to Start',
+		var loadtext = Lucifer_Game.add.text(470, 715, 'Press \"Enter\" Key to Start',
 											{font: '30px Roboto', fill: '#ffffff'});
 		loadtext.fixedToCamera = true;
+		loadtext.addColor('#161cf7', 7);
+		loadtext.addColor('#ffffff', 12);
+		loadtext.addColor('#00b44c', 21);
 
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		enterKey.onDown.addOnce(loadScene.start, this);

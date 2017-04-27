@@ -12,6 +12,8 @@ var stage3_LoadScene =
 		var loadingLabel = Lucifer_Game.add.text(80, 150, 'loading...',
 											{font: '15px Courier', fill: '#ffffff'});
 
+		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg3.png', 1280, 800);
+
 		//Stage Preload
 		//----------------------------------------------------------------------------------------------------------
 		stageThree_Preload();
@@ -63,8 +65,31 @@ var stage3_LoadScene =
 	},
 
 	create: function()
+	{		
+		var menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
+		menuImage.anchor.setTo(0.5, 0.5);		
+
+		var loadtext3 = Lucifer_Game.add.text(435, 715, 'Press \"Enter\" Key to BOSS Stage',
+											{font: '30px Roboto', fill: '#ffffff'});
+		loadtext3.fixedToCamera = true;
+		loadtext3.addColor('#161cf7', 7);
+		loadtext3.addColor('#ffffff', 12);
+		loadtext3.addColor('#ff0000', 21);
+
+		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+		enterKey.onDown.addOnce(stage3_LoadScene.start, this);
+
+		
+	},
+
+	start: function()
 	{
+		//Sound
+		sound_StopMenuBGM();
+		
 		stageThree_Check = true;
 		Lucifer_Game.state.start('stage3');
-	}
+		
+	},
+
 };
