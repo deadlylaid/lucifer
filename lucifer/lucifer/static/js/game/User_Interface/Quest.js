@@ -894,7 +894,6 @@ function characterQuestPut(index){
 //퀘스트 완료시 경험치 업데이트
 function characterQuestExperienceUp(index){
     experience += characterQuest[index].exReword;
-    console.log(experience);
 }
 
 //퀘스트 완료시 골드 업데이트
