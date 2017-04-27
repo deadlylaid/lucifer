@@ -191,7 +191,7 @@ function player_Create()
 function GetDirection(){
 	//Player Direction
 	//---------------------------------------------------------------------------------------
-	if(Lucifer_Game.input.mousePointer.isDown)
+	if(Lucifer_Game.input.activePointer.leftButton.isDown)
 	{
 		//Mouse Click Event
 		MousePosX = Lucifer_Game.input.worldX;
@@ -296,11 +296,12 @@ function PlayerMove()
 	if(MoveCheck == true)
 	{
 		//Player Translate & Distance
-		if(Lucifer_Game.input.mousePointer.isDown)
+		if(Lucifer_Game.input.activePointer.leftButton.isDown)
 		{
 			//Stand Check 를 원상태로 초기화.
-			StandCheck = false;			
-
+			StandCheck = false;		
+			mouseIcon.loadTexture('Default_Icon', 0, false);
+			
 			//Walk / Dash Animation Change
 			if(Lucifer_Game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
 			{
