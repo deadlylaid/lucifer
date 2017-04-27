@@ -26,10 +26,10 @@ var stage1_Scene =
 		npc_Create();
 
 		//Sight Effect
-		sight_Filter_Create();		
+		sight_Filter_Create();
 
 		//Quest
-		QuestCreate();		
+		QuestCreate();
 
         //items
         itemStoreCreate();
@@ -40,11 +40,8 @@ var stage1_Scene =
 		//Skill
 		skill_Create();
 
-		//Quest
-		QuestCreate();			
-
 		//Rain Particle
-		rain_Create();		
+		rain_Create();
 
 		//Key Go to Stage2
 		debugCheck = false;

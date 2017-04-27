@@ -14,14 +14,15 @@ class CharacterQuestAPIView(ListAPIView):
         character = self.request.user.character
         return CharacterQuest.objects.filter(character=character)
 
-    def post(self, request):
+    def put(self, request):
 
         character = self.request.user.character
         index = int(self.request.data.get('index'))
 
         character_quest = CharacterQuest.objects.filter(character=character)
 
-        character_quest[index].is_completed = True
-        character_quest[index].save()
+        selected_quest = character_quest[index]
+        selected_quest.is_completed = True
+        selected_quest.save()
 
         return Response(status=status.HTTP_200_OK)

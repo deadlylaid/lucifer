@@ -15,7 +15,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	/*this.Attack_Point = 300, this.Defence_Point = 350;
 	this.Skill_Attack_Point = 400, this.Skill_Attack_Point1 = 500;*/ 
 	this.Attack_Point = 1, this.Defence_Point = 1;
-	this.Skill_Attack_Point = 0, this.Skill_Attack_Point1 = 0;
+	this.Skill_Attack_Point = 10, this.Skill_Attack_Point1 = 10;
 
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Attack1', 'Dead', 

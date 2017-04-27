@@ -71,7 +71,7 @@ function andariel_Preload()
 function andariel_Create()
 {
 	andariel_Group = Lucifer_Game.add.group();
-	andariel_Clone(8306, 1550);	
+	andariel_Clone(8306, 1550);
 
 	Lucifer_Game.renderer.setTexturePriority(['MON_Andariel_Stand', 'MON_Andariel_Walk', 'MON_Andariel_Attack', 'MON_Andariel_Dead']);
 }
@@ -116,7 +116,7 @@ function andariel_Clone(PointX, PointY)
 									   [
 									   	  index,      index + 1, index + 2, index + 3, index + 4,
 									   	  index + 5,  index + 6, index + 7, index + 8, index + 9,
-									   	  index + 10, index + 11 
+									   	  index + 10, index + 11
 									   ], 60, true);
 
 		index += 12;
@@ -282,11 +282,11 @@ function andariel_GetDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
-	}	
+	}
 }
 
 function andariel_GetReturnDirection(Object)
@@ -299,11 +299,11 @@ function andariel_GetReturnDirection(Object)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
-			
+
 			if(Object.y < Object.ReturnPointY)
 			{
 				Object.ReturnAngle = 2 * Math.PI - Object.ReturnAngle;
-			}	
+			}
 
 			if(Object.ReturnAngle >= 0 && Object.ReturnAngle <= 0.7)
 			{
@@ -342,8 +342,8 @@ function andariel_GetReturnDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
 	}
@@ -354,7 +354,7 @@ function andariel_Compare_Direction(PreDirection, CurDirection, Object)
 	if(PreDirection != CurDirection)
 	{
 		Object.CompareCheck = false;
-		Object.MoveCheck = false;		
+		Object.MoveCheck = false;
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -370,7 +370,7 @@ function andariel_Animation_Change(Direction, Status, Object)
 			//Stand
 			Object.loadTexture('MON_Andariel_Stand', 0, true);
 			Object.animations.play('MON_Andariel_Stand_' + Direction, 10, true);
-		}	
+		}
 		else if(Object.Status[1] == Status)
 		{
 			//Walk
@@ -408,15 +408,15 @@ function andariel_Move(Object)
 				andariel_Animation_Change(Object.Direction, 'Walk', Object);
 			}
 		}
-		
+
 		if(Object.Distance < Object.AttackRange)
 		{
-			//Stand			
+			//Stand
 			if(Object.StandCheck == false)
 			{
 				andariel_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
-			}			
+			}
 
 			//Attack
 			andariel_Attack(Object);
@@ -433,39 +433,39 @@ function andariel_Move(Object)
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
 				Object.ReturnCheck = true;
-			}			
-		}		
+			}
+		}
 
 		if(Object.ReturnCheck == true)
 		{
 			//Return Walk
 			if(Object.ReturnDistance > 10)
-			{	
+			{
 				if(Object.MoveCheck == false)
 				{
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					andariel_Animation_Change(Object.Direction, 'Walk', Object);					
+					andariel_Animation_Change(Object.Direction, 'Walk', Object);
 				}
 			}
 
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
-				Object.ReturnCheck = false;				
+				Object.ReturnCheck = false;
 
 				if(Object.StandCheck == false)
 				{
 					Object.StandCheck = true;
 
-					andariel_Animation_Change(Object.Direction, 'Stand', Object);					
+					andariel_Animation_Change(Object.Direction, 'Stand', Object);
 				}
 
 				Object.body.velocity.x = 0;
 				Object.body.velocity.y = 0;
 			}
-		}	
+		}
 
 		andariel_Compare_Direction(Object.PreDirection, Object.Direction, Object);
 	}
@@ -481,14 +481,14 @@ function andariel_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				andariel_Animation_Change(Object.Direction, 'Attack', Object);				
+				andariel_Animation_Change(Object.Direction, 'Attack', Object);
 				Object.AttackCheck = true;
 			}
 		}
 		else
 		{
 			Object.StandCheck = false;
-			Object.MoveCheck = false;			
+			Object.MoveCheck = false;
 		}
 
 		andariel_HitCount(Object);
@@ -519,16 +519,16 @@ function andariel_HitCount(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage;		
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage < 0)
 				{
 					health -= 0;
 				}
 
-				Object.DelayTime_Total = 0;						
-			}		
-		}		
+				Object.DelayTime_Total = 0;
+			}
+		}
 	}
 }
 
@@ -557,7 +557,7 @@ function andariel_Dead(Object)
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
-		}			
+		}
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -610,7 +610,7 @@ function andariel_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-		
+
 			Object.Hp = 100;
 			Object.MaxHp = 100;
 			Object.x = Object.ReturnPointX;
@@ -643,8 +643,8 @@ function andariel_Update()
 		//Player Mosnter Collision
 		if(andariel.Regen_Check == false)
 		{
-			player_Monster_Col(andariel);			
-		}		
+			player_Monster_Col(andariel);
+		}
 
 		andariel_Dead(andariel);
 		andariel_Regen(andariel);

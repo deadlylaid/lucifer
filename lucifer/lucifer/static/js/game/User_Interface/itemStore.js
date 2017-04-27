@@ -153,6 +153,10 @@ function itemStoreCreate(){
 
     changeServerListToClientList();
     changeServerListToClientListEquipment();
+
+    gold_text = Lucifer_Game.add.text(1030, 605, gold, itemStoreStyle);
+    gold_text.fixedToCamera = true;
+    gold_text.visible = false;
 }
 
 function itemsStoreUpdate(){
@@ -226,17 +230,14 @@ function clickItem(sprite){
     //console.log(sprite.name);
     var i = inventory.length;
     switch(sprite.name){
-        case '빨간물약':
-            selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+        case '빨간물약': selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
             break;
         case '기본검':
             selectedItem = basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
             break;
-        case '기본갑옷':
-            selectedItem = basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-            selectedItem.numberInArray = i;
+        case '기본갑옷': selectedItem = basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]); selectedItem.numberInArray = i;
             break;
     }
     //console.log(selectedItem);
@@ -249,15 +250,22 @@ function buyItem() {
         if(inventory.length>=10){
             alert("인벤토리가 가득 찼습니다.");
         }else{
-            alert("구매한 물건 : " + selectedItem.name);
-            inventory.push(selectedItem);
-            inventoryPost(selectedItem.name);
+            if(gold>selectedItem.price){
+                alert("구매한 물건 : " + selectedItem.name);
+                inventory.push(selectedItem);
+                inventoryPost(selectedItem.name);
+                gold -= selectedItem.price;
+                goldUpdate();
+            }else{
+                alert("소지한 골드가 부족합니다");
+            }
+
         }
     }
     changeServerListToClientList();
     selectedItem = null;
     //퀘스트 검사
-    playerQuestAdvence(0);
+    playerQuestAdvence(1);
 }
 
 function clickedItemInInventory(sprite){
@@ -312,6 +320,7 @@ function invenUi(){
         uiInventory.visible = false;
         dropButton.visible = false;
         useButton.visible = false;
+        gold_text.visible = false;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
         }
@@ -322,6 +331,7 @@ function invenUi(){
         uiInventory.visible = true;
         dropButton.visible = true;
         useButton.visible = true;
+        gold_text.visible = true;
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
         }
@@ -615,4 +625,8 @@ function equipmentCalculater(point, type){
     	var rawAttackPoint = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
         attack_point = Number(rawAttackPoint.toFixed(2));
     }
+}
+
+function goldUpdate(){
+    gold_text.setText(gold);
 }

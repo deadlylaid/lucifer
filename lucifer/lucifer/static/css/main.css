@@ -47,34 +47,34 @@
 .Container .Bot .Screenshot .Screenmove .carousel { margin-bottom:50px;}
 
 /* 컨테이너 스크린샷 경로, 사이즈*/
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:first-child { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:first-child { background:url(../images/1.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:first-child { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(2) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(2) { background:url(../images/2.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(2) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(3) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(3) { background:url(../images/3.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(3) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(4) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(4) { background:url(../images/4.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(4) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(5) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(5) { background:url(../images/5.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(5) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(6) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(6) { background:url(../images/6.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(6) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(7) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(7) { background:url(../images/7.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(7) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(8) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(8) { background:url(../images/1.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(8) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(9) { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:nth-child(9) { background:url(../images/2.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:nth-child(9) { background-size:150px 100px;}
 
-.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:last-child { background:url(../images/Fifth_picture.jpg) no-repeat; background-size:530px 200px;} 
+.Container .Bot .Screenshot .Screenmove .carousel .carousel-cell:last-child { background:url(../images/3.jpg) no-repeat; background-size:530px 200px;} 
 .Container .Bot .Screenshot .Screenmove .carousel-nav .carousel-cell:last-child { background-size:150px 100px;}
 
 /*-------------------------------*/	
