@@ -55,6 +55,7 @@ urlpatterns = [
     url(r'^gamestart/$', GameStartView.as_view(), name='gamestart'),
 
     url(r'^api/gamestart/data/$', GameStartAPIView.as_view(), name='api_gamestart'),
+    url(r'^api/gamesave/data/$', GameSaveAPIView.as_view(), name='api_gamesave'),
 
     url(r'^api/user/character/$', CharacterAPIView.as_view(), name='api_character'),
     url(r'^api/user/character/status/$', StatusAPIView.as_view(), name='api_status'),
