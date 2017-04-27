@@ -80,6 +80,7 @@ function player_State_Up()
 	else{}
     //스테이터스창도 같이 업데이트
     statusDataText.setText(updateStatus());
+    gameSave();
 }
 
 function player_Level_Up()
