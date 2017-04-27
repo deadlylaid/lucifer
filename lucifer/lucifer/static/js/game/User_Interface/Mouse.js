@@ -34,9 +34,9 @@ function mouse_ColCheck(Object)
 {
 	monster_Object = Object;
 
-	if(Object.DeadCheck == false)
+	if(Object.DeadCheck == false) 
 	{	
-		if(Lucifer_Game.input.mousePointer.isDown)
+		if(Lucifer_Game.input.activePointer.leftButton.isDown)
 		{
 			if(Phaser.Rectangle.intersects(mouse_Rect, Object.HitRect))
 			{
