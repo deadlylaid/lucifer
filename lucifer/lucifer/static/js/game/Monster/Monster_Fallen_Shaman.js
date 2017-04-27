@@ -44,6 +44,7 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;	
+	this.MouseCheck = false;
 
 	//FireBall
 	this.FireBall, this.NextFire = 0, this.FireRate = 1500;	
@@ -703,6 +704,9 @@ function fallen_Shaman_Update()
 
 		//Level System
 		check_Monster_Dead(Shaman);
+
+		//Mouse
+		mouse_ColCheck(Shaman);
 	}	
 }
 

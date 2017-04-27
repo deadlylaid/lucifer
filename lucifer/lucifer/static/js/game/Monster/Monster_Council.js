@@ -39,6 +39,7 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
+	this.MouseCheck = false;
 
 	//Light
 	this.Skill_Light, this.Skill_Rect;
@@ -865,6 +866,9 @@ function council_Update()
 
 		//Level System
 		check_Monster_Dead(council);
+
+		//Mouse
+		mouse_ColCheck(council);
 	}
 }
 

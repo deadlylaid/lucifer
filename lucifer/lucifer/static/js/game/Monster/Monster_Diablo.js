@@ -45,6 +45,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false,       this.StandCheck = false;
 	this.AttackCheck = false,   this.CompareCheck = false,    this.DamageCheck = false;
 	this.DeadCheck = false,	    this.DeadMotionCheck = false, this.ReturnCheck = false;
+	this.MouseCheck = false;
 
 	//AI Pattern Check
 	this.Pattern_Change = false, this.Pattern_Attack = false, this.Pattern_Skill = false;
@@ -1071,6 +1072,9 @@ function diablo_Update()
 
 	//Level System
 	check_Monster_Dead(diablo);
+
+	//Mouse
+	mouse_ColCheck(diablo);
 }
 
 function diablo_Render()

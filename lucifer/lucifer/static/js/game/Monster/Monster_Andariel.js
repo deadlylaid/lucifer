@@ -39,6 +39,7 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
+	this.MouseCheck = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 30, this.Regen_Check = false;
@@ -651,6 +652,9 @@ function andariel_Update()
 
 		//Level System
 		check_Monster_Dead(andariel);
+
+		//Mouse
+		mouse_ColCheck(andariel);
 	}
 }
 

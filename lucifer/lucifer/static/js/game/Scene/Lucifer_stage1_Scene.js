@@ -43,6 +43,9 @@ var stage1_Scene =
 		//Rain Particle
 		rain_Create();
 
+		//Mouse
+		mouse_Create();
+
 		//Key Go to Stage2
 		debugCheck = false;
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
@@ -74,6 +77,9 @@ var stage1_Scene =
 		//Npc
 		npc_Update();
 
+		//Mouse
+		mouse_Update();
+
 		//Portal
 		portal_Check();
 
@@ -104,6 +110,9 @@ var stage1_Scene =
 
 			//Skill
 	        skill_Debug_Render();
+
+	        //Mouse
+	        mouse_Render();
 		}
 	},
 

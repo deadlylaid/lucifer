@@ -38,6 +38,7 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
+	this.MouseCheck = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
@@ -671,7 +672,10 @@ function countess_Update()
 		countess_Regen(countess);
 
 		//Level System Check
-		check_Monster_Dead(countess);			
+		check_Monster_Dead(countess);	
+
+		//Mouse
+		mouse_ColCheck(countess);		
 	}
 }
 
