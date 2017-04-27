@@ -45,6 +45,9 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Level System
 	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+
+	//Blood Effect
+	this.blood_Effect;
 }
 
 Countess.prototype = Object.create(Phaser.Sprite.prototype);
@@ -196,6 +199,9 @@ function countess_Clone(PointX, PointY)
 	//Exp Timer
 	countess_Object.ExpTimer = Lucifer_Game.time.create(false);
 	countess_Object.ExpTimer.loop(10, countess_ExpTimer, Lucifer_Game, countess_Object);
+
+	//Blood Effect
+	countess_Object.blood_Effect = blood_Effect_Clone(countess_Object.x, countess_Object.y);
 
 	countess_Group.add(countess_Object);
 }
@@ -675,7 +681,10 @@ function countess_Update()
 		check_Monster_Dead(countess);	
 
 		//Mouse
-		mouse_ColCheck(countess);		
+		mouse_ColCheck(countess);	
+
+		//Blood Effect
+		blood_Effect_Update(countess);	
 	}
 }
 

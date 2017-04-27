@@ -55,6 +55,13 @@ function player_Monster_Col(Object)
 					if(CurFrame + 10 < EndFrame)
 					{
 						Damage_Count(Object);	
+
+						//Monster Blood Effect
+						if(Object.blood_Effect)
+						{
+							Object.blood_Effect.visible = true;
+							Object.blood_Effect.animations.play('blood_Ani', 10, true);
+						}
 					}					
 
 					//Player Move Control
