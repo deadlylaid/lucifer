@@ -1,6 +1,7 @@
 #scene {
     position: relative;
-    cursor:url(../../images/game/UI/Mouse/0.png), auto;
+    /*cursor:url(../../images/game/UI/Mouse/0.png), auto;*/
+    cursor : none;
 }
 
 #progressbarfull {

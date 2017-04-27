@@ -32,6 +32,9 @@ var stage2_Scene =
 		//Queset
 		QuestCreate();
 
+		//Mouse
+		mouse_Create();
+
 		go();
 	},
 
@@ -63,6 +66,9 @@ var stage2_Scene =
 
 		//Stage2 Culling
 		//stage2_Culling();
+
+		//Mouse
+		mouse_Update();
 
 		//Portal
 		portal_Check();

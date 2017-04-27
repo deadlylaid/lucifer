@@ -32,6 +32,9 @@ var stage3_Scene =
 		//Quest
 		QuestCreate();
 
+		//Mouse
+		mouse_Create();
+
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
 		enterKey.onDown.add(debug_Down, this);
 		enterKey.onUp.add(debug_Up, this);
@@ -53,6 +56,9 @@ var stage3_Scene =
 
 		//Skill
 		skill_Update();
+
+		//Mouse
+		mouse_Update();
 
 		//Portal
 		portal_Check2();
