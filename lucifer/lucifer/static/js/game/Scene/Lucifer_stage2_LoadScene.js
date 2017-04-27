@@ -12,6 +12,8 @@ var stage2_LoadScene =
 		var loadingLabel = Lucifer_Game.add.text(80, 150, 'loading...',
 											{font: '15px Courier', fill: '#ffffff'});
 
+		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg2.png', 1280, 800);
+
 		//Stage Preload
 		//----------------------------------------------------------------------------------------------------------
 		stageTwo_Preload();
@@ -61,8 +63,31 @@ var stage2_LoadScene =
 	},
 
 	create: function()
+	{		
+		var menuImage = Lucifer_Game.add.sprite(640, 400, 'Menu_Image');
+		menuImage.anchor.setTo(0.5, 0.5);		
+
+		var loadtext2 = Lucifer_Game.add.text(435, 715, 'Press \"Enter\" Key to Next Stage',
+											{font: '30px Roboto', fill: '#ffffff'});
+		loadtext2.fixedToCamera = true;
+		loadtext2.addColor('#161cf7', 7);
+		loadtext2.addColor('#ffffff', 12);
+		loadtext2.addColor('#e9dd16', 21);
+
+		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+		enterKey.onDown.addOnce(stage2_LoadScene.start, this);
+
+		
+	},
+
+	start: function()
 	{
+		//Sound
+		sound_StopMenuBGM();
+		
 		stageTwo_Check = true;
 		Lucifer_Game.state.start('stage2');
-	}
+		
+	},
+
 };
