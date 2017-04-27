@@ -78,6 +78,8 @@ function player_State_Up()
     	attack_point = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (10 * 0.01);
 	}
 	else{}
+    //스테이터스창도 같이 업데이트
+    statusDataText.setText(updateStatus());
 }
 
 function player_Level_Up()

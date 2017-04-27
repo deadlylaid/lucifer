@@ -8,12 +8,12 @@ var Player_LevelUp_Effect, level_Up_Key;
 
 function player_Effect_Preload()
 {
-	Lucifer_Game.load.spritesheet('PY_Bavarian_Dead', 
+	Lucifer_Game.load.spritesheet('PY_Bavarian_Dead',
 								  	  '../../static/images/game/Player/Bavarian/dead/dead.png', 200, 280);
-	Lucifer_Game.load.spritesheet('PY_Bavarian_Revival', 
+	Lucifer_Game.load.spritesheet('PY_Bavarian_Revival',
 								  	  '../../static/images/game/Player/Bavarian/revival/revival.png', 128, 211);
 	Lucifer_Game.load.spritesheet('PY_LevelUp_Effect',
- +								  '../../static/images/game/Effect/LevelUp_Effect/Level_Effect.png', 128, 113);
+ 								  '../../static/images/game/Effect/LevelUp_Effect/Level_Effect.png', 128, 113);
 }
 
 function player_Effect_Create()
@@ -33,7 +33,7 @@ function player_Effect_Create()
 	//Animation
 	//Dead
 	Player_Dead.animations.add('PY_Bavarian_Dead',
-							   [	
+							   [
 							   	  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 							   	  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 							   	  21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
@@ -58,15 +58,15 @@ function player_Effect_Create()
  	Player_LevelUp_Effect.anchor.setTo(0.5, 0.5);
  	Player_LevelUp_Effect.visible = false;
  	Player_LevelUp_Effect.blendMode = Phaser.blendModes.ADD;
- 
+
  	//Level Up Effect Animation
- 	Player_LevelUp_Effect.animations.add('PY_LevelUp_Effect_Ani', 
+ 	Player_LevelUp_Effect.animations.add('PY_LevelUp_Effect_Ani',
  										 [
  										 	0,  1,  2, 3, 4, 5, 6, 7, 8, 9,
  										 	10, 11, 12
  										 ], 60, true);
  	Player_LevelUp_Effect.animations.play('PY_LevelUp_Effect_Ani', 10, true);
- 
+
  	//Level Up Key(임시로)
  	level_Up_Key = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
  	level_Up_Key.onDown.add(player_Levelup_Key, Lucifer_Game);
@@ -84,7 +84,7 @@ function player_Levelup_Key()
 }
 
 function player_Effect_Dead()
-{	
+{
 	if(health < 0)
 	{
 		Player_DeadCheck = true;
@@ -96,7 +96,7 @@ function player_Effect_Dead()
 	{
 		if(Player_DeadMotion_Check == false)
 		{
-			Player_Dead.visible = true;			
+			Player_Dead.visible = true;
 			Player_Dead.animations.play('PY_Bavarian_Dead', 10, true);
 			Player_DeadMotion_Check = true;
 		}
@@ -105,12 +105,12 @@ function player_Effect_Dead()
 		var EndFrame = 35;
 
 		if(Player_DeadMotion_Check == true && CurFrame == EndFrame)
-		{	
+		{
 			//이부분 이 잘 안됨.
 			if(stageOne_Check == true)
 			{
 				Player.x = 875;
-				Player.y = 1637;					
+				Player.y = 1637;
 			}
 			else if(stageTwo_Check == true)
 			{
@@ -124,8 +124,8 @@ function player_Effect_Dead()
 			}
 
 			Player_Dead.animations.stop('PY_Bavarian_Dead', true);
-			Player_Regen_Check = true;			
-		}		
+			Player_Regen_Check = true;
+		}
 	}
 }
 
@@ -163,22 +163,22 @@ function player_Effect_Regen()
 		MoveCheck = false;
 		StandCheck = false;
 		Player_AttackCheck = false;
-		Player_DeadCheck = false;	
-		Player_DeadMotion_Check = false;	
+		Player_DeadCheck = false;
+		Player_DeadMotion_Check = false;
 
-		health = maxHealth;		
+		health = maxHealth;
 
 		var CurFrame = Player_Revival.animations.frame;
 		var EndFrame = 19;
 
 		if(CurFrame == EndFrame)
-		{			
+		{
 			Player_Regen_Check = false;
 			Player_Revival.visible = false;
 
 			Player_Revival.animations.stop('PY_Bavarian_Revival', true);
 			Animation_Change(Direction, 'Stand');
-		}			
+		}
 	}
 }
 
