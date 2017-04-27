@@ -1,6 +1,7 @@
 // Lving System
 //----------------------------------------------------------------------------------------------
 var get_Exp = 0;
+var Player_levelUp_Check = false;
 
 function check_Monster_Dead(Object)
 {
@@ -85,5 +86,6 @@ function player_Level_Up()
 	{
 		//Level Up Stat
 		player_State_Up();
+		Player_levelUp_Check = true;
 	}
 }
