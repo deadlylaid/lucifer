@@ -115,7 +115,7 @@ function QuestCreate(){
      Questbtn_lv3.fixedToCamera = true;
      Questbtn_lv3.visible = false;
 
-     btnText3 = Lucifer_Game.add.text(203, 600, "LV.3    -    [ "+ characterQuest[3].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
+     btnText3 = Lucifer_Game.add.text(203, 600, "LV.3    -    [ "+ characterQuest[2].questTitle +" ]" , {font: '17px Roboto', fill: '#ffffff'});
      btnText3.anchor.set(0.5);
      //---------------------------------------------------------------
 
@@ -851,6 +851,7 @@ function actionOnClick10() {
 
 }
 
+//게임 로딩시 퀘스트 체크
 function checkQuestIsComplete(){
     var characterQuestLength = characterQuest.length;
     for(i=0; i<characterQuestLength; i++){
@@ -870,14 +871,17 @@ function playerQuestAdvence(index){
     if(characterQuest[index].isCompleted === false){
         characterQuest[index].isCompleted = true;
         console.log('완료');
-        characterQuestPost(index);
+        characterQuestPut(index);
+        characterQuestExperienceUp(index);
+        characterQuestGoldUp(index);
     }else{
 
     }
     checkQuestIsComplete();
 }
 
-function characterQuestPost(index){
+//퀘스트 완료 체크
+function characterQuestPut(index){
     $.ajax({
         method:'PUT',
         url:'/api/user/character/characterquest/',
@@ -885,4 +889,19 @@ function characterQuestPost(index){
             index: index,
         },
     });
+}
+
+//퀘스트 완료시 경험치 업데이트
+function characterQuestExperienceUp(index){
+    experience += characterQuest[index].exReword;
+    console.log(experience);
+}
+
+//퀘스트 완료시 골드 업데이트
+function characterQuestGoldUp(index){
+    if(characterQuest[index].goldReword === undefined){
+    }else{
+    gold+=characterQuest[index].goldReword;
+    goldUpdate();
+    }
 }
