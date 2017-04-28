@@ -3,7 +3,7 @@
 //-------------------------------------------------------------------------------------
 var mouse_Rect, mouseIcon, mouse_colcheck = false, mouse_IconCheck = false;
 
-var MovePoint, MovePointX, MovePointY; 
+var MovePoint, MovePointX, MovePointY;
 
 function mouse_Preload()
 {
@@ -45,25 +45,25 @@ function mouse_Create()
 
 function mouse_ColCheck(Object)
 {
-	if(Object.DeadCheck == false) 
-	{	
-		if(Lucifer_Game.input.mousePointer)
+	if(Object.DeadCheck == false)
+	{
+		if(Lucifer_Game.input.activePointer.leftButton.isDown)
 		{
 			if(Phaser.Rectangle.intersects(mouse_Rect, Object.HitRect))
 			{
 				if(Object.MouseCheck == false)
-				{	
+				{
 					mouseIcon.loadTexture('Attack_Icon', 0);
 					Object.MouseCheck = true;
-				}					
+				}
 			}
 			else if(Phaser.Rectangle.intersects(mouse_Rect, Object.HitRect) == false)
 			{
 				if(Object.MouseCheck == true)
-				{			
-					mouseIcon.loadTexture('Default_Icon', 0);	
-					Object.MouseCheck = false;		
-				}										
+				{
+					mouseIcon.loadTexture('Default_Icon', 0);
+					Object.MouseCheck = false;
+				}
 			}
 		}
 		else
@@ -71,44 +71,43 @@ function mouse_ColCheck(Object)
 			if(Phaser.Rectangle.intersects(mouse_Rect, Object.HitRect))
 			{
 				if(Object.MouseCheck == false)
-				{	
+				{
 					mouseIcon.loadTexture('Attack_Icon', 0);
 					Object.MouseCheck = true;
-				}					
+				}
 			}
 			else if(Phaser.Rectangle.intersects(mouse_Rect, Object.HitRect) == false)
 			{
 				if(Object.MouseCheck == true)
-				{			
-					mouseIcon.loadTexture('Default_Icon', 0);	
-					Object.MouseCheck = false;		
-				}											
+				{
+					mouseIcon.loadTexture('Default_Icon', 0);
+					Object.MouseCheck = false;
+				}
 			}
 		}
-	}	
+	}
 	else
-	{	
+	{
 		if(Phaser.Rectangle.intersects(mouse_Rect, Object.HitRect) == false)
 		{
 			if(Object.MouseCheck == true)
 			{
-				mouseIcon.loadTexture('Default_Icon', 0);	
-				Object.MouseCheck = false;	
+				mouseIcon.loadTexture('Default_Icon', 0);
+				Object.MouseCheck = false;
 			}
-		}		
-	}	
-
+		}
+	}
 }
 
 function mouse_Update()
-{	
+{
 	//Rect Position
 	var mouseposX = Lucifer_Game.input.mousePointer.x + Lucifer_Game.camera.x;
 	var mouseposY = Lucifer_Game.input.mousePointer.y + Lucifer_Game.camera.y;
 
 	mouse_Rect.x = mouseposX;
 	mouse_Rect.y = mouseposY;
-	mouse_Rect.centerOn(mouseposX, mouseposY);	
+	mouse_Rect.centerOn(mouseposX, mouseposY);
 
 	//Icon
 	mouseIcon.x = mouseposX;
@@ -118,8 +117,8 @@ function mouse_Update()
 	//
 
 	if(Lucifer_Game.input.activePointer.isDown)
-	{	
-		
+	{
+
 		MovePoint.x = Lucifer_Game.input.mousePointer.x + Lucifer_Game.camera.x - 900;
 		MovePoint.y = Lucifer_Game.input.mousePointer.y + Lucifer_Game.camera.y - 500;
 
@@ -130,7 +129,7 @@ function mouse_Update()
 	}
 
 
-	
+
 }
 
 function mouse_Render()
