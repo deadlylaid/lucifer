@@ -4,7 +4,7 @@ var itemStoreStyle = {
 };
 
 //potion 객체를 만들때 사용
-potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemStoreStyle){
+potion = function (game, positionX, positionY, spriteKey, heal, price, index, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
     //item status
@@ -12,15 +12,16 @@ potion = function (game, positionX, positionY, spriteKey, heal, limited_job, ite
     this.name = spriteKey;
     this.type_is = 'potion';
     this.heal = heal;
-    this.limited_job = limited_job;
 
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
-    this.price = 100;
+    this.price = price;
+
+    console.log(index);
 
     var itemData = [
-        [ itemList[0].name ],
+        [ itemList[index].name ],
         [ '' ],
         [ '      ', itemList[0].price ],
     ];
@@ -122,7 +123,25 @@ armor.prototype.constructor = armor;
 function redPotionClone(positionX, positionY){
     //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
     redPotionObject = new potion(
-        Lucifer_Game, positionX, positionY, itemList[0].name, itemList[0].heal, itemList[0].limited_job
+        Lucifer_Game, positionX, positionY, itemList[0].name, itemList[0].heal, itemList[0].price, 0
+        );
+    redPotionObject.text.setText(redPotionObject.name);
+    redPotionObject.text.fontSize = 15;
+    redPotionObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(redPotionObject);
+    Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
+
+    redPotionObject.inputEnabled = true;
+    redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return redPotionObject;
+}
+
+function goodRedPotionClone(positionX, positionY){
+    //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
+    redPotionObject = new potion(
+        Lucifer_Game, positionX, positionY, itemList[3].name, itemList[3].heal, itemList[3].price, 3
         );
     redPotionObject.text.setText(redPotionObject.name);
     redPotionObject.text.fontSize = 15;
