@@ -113,10 +113,10 @@ function golem_Clone(PointX, PointY)
 								  		index,      index + 1,  index + 2,  index + 3, 
 								    	index + 4,  index + 5,  index + 6,  index + 7, 
 								    	index + 8,  index + 9,  index + 10, index + 11, 
-								    	index + 12, index + 13, index + 14, index + 15
+								    	index + 12, index + 13, index + 14
 								  	],
 								  	60, true);
-		index += 16;
+		index += 15;
 	}
 
 	//Dead
@@ -129,8 +129,7 @@ function golem_Clone(PointX, PointY)
 
 	golem_Object.loadTexture('MON_Golem_Stand', 0, true);
 	golem_Object.animations.play('MON_Golem_Stand_0', 10, true);
-	golem_Object.anchor.setTo(0.5, 0.5);
-	//golem_Object.blendMode = Phaser.blendModes.ADD;
+	golem_Object.anchor.setTo(0.5, 0.5);	
 	
 	Lucifer_Game.physics.enable(golem_Object, Phaser.Physics.ARCADE);
 	Lucifer_Game.add.existing(golem_Object);
@@ -517,14 +516,14 @@ function golem_HitCount(Object)
 				{
 					health -= monster_Attack_Damage;		
 				}
-				else if(monster_Attack_Damage < 0)
+				else if(monster_Attack_Damage <= 0)
 				{
-					health -= 0;
+					health -= (Object.Attack_Point * 0.01);
 				}
 				
-				Object.DelayTime_Total = 0;
-			}		
-		}		
+				Object.DelayTime_Total = 0;	
+			}				
+		}
 	}	
 }
 
@@ -577,6 +576,7 @@ function golem_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.MouseCheck = false;
 
 			Object.Hp = 500;
 			Object.MaxHp = 500;
@@ -657,8 +657,7 @@ function golem_Update()
 
 function golem_Redner()
 {
-	var length = golem_Group.length;
-	for(var i = 0; i < length; ++i)
+	for(var i = 0; i < golem_Group.length; ++i)
 	{
 		Lucifer_Game.debug.geom(Object.HitRect, 'rgba(0, 0, 200, 0.5)');
 		Lucifer_Game.debug.geom(Object.AttackRect, 'rgba(0, 200, 0, 0.5)');

@@ -536,16 +536,14 @@ function countess_HitCount(Object)
 				{
 					health -= monster_Attack_Damage;		
 				}
-				else if(monster_Attack_Damage < 0)
+				else if(monster_Attack_Damage <= 0)
 				{
-					health -= 0;
-				}
+					health -= (Object.Attack_Point * 0.01);
+				}				
 
-				Object.DelayTime_Total = 0;				
+				Object.DelayTime_Total = 0;							
 			}		
-		}	
-
-		console.log(Object.Hp);	
+		}			
 	}
 }
 
@@ -638,6 +636,7 @@ function countess_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.MouseCheck = false;
 
 			Object.Hp = 100;
 			Object.MaxHp = 100;
