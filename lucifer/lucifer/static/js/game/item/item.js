@@ -4,7 +4,7 @@ var itemStoreStyle = {
 };
 
 //potion 객체를 만들때 사용
-potion = function (game, positionX, positionY, spriteKey, heal, limited_job, itemStoreStyle){
+potion = function (game, positionX, positionY, spriteKey, heal, price, index, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
     //item status
@@ -12,17 +12,16 @@ potion = function (game, positionX, positionY, spriteKey, heal, limited_job, ite
     this.name = spriteKey;
     this.type_is = 'potion';
     this.heal = heal;
-    this.limited_job = limited_job;
 
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
-    this.price = 100;
+    this.price = price;
 
     var itemData = [
-        [ itemList[0].name ],
+        [ itemList[index].name ],
         [ '' ],
-        [ '      ', itemList[0].price ],
+        [ '      ', itemList[index].price ],
     ];
     parsedItemData = parseList(itemData);
     itemText = parsedItemData.text;
@@ -42,7 +41,7 @@ potion.prototype.getVisible = function(bool){
 potion.prototype.constructor = potion;
 
 //sword 객체를 만들때 사용
-sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, itemStoreStyle){
+sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, index, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
     //item status
@@ -55,12 +54,14 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
-    this.price = 1000;
+    this.price = price;
+
+    console.log(index);
 
     var itemData = [
-        [ itemList[1].name ],
+        [ itemList[index].name ],
         [ '' ],
-        [ '      ', itemList[1].price ],
+        [ '      ', itemList[index].price ],
     ];
     parsedItemData = parseList(itemData);
     itemText = parsedItemData.text;
@@ -81,7 +82,7 @@ sword.prototype.constructor = sword;
 
 
 //armor 객체를 만들때 사용
-armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, itemStoreStyle){
+armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, index, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
     //item status
@@ -94,12 +95,12 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
-    this.price = 1000;
+    this.price = price;
 
     var itemData = [
-            [ itemList[2].name ],
+            [ itemList[index].name ],
             [ '' ],
-            [ '      ', itemList[2].price ],
+            [ '      ', itemList[index].price ],
         ]
     parsedItemData = parseList(itemData);
     itemText = parsedItemData.text;
@@ -122,7 +123,43 @@ armor.prototype.constructor = armor;
 function redPotionClone(positionX, positionY){
     //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
     redPotionObject = new potion(
-        Lucifer_Game, positionX, positionY, itemList[0].name, itemList[0].heal, itemList[0].limited_job
+        Lucifer_Game, positionX, positionY, itemList[0].name, itemList[0].heal, itemList[0].price, 0
+        );
+    redPotionObject.text.setText(redPotionObject.name);
+    redPotionObject.text.fontSize = 15;
+    redPotionObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(redPotionObject);
+    Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
+
+    redPotionObject.inputEnabled = true;
+    redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return redPotionObject;
+}
+
+function goodRedPotionClone(positionX, positionY){
+    //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
+    redPotionObject = new potion(
+        Lucifer_Game, positionX, positionY, itemList[3].name, itemList[3].heal, itemList[3].price, 3
+        );
+    redPotionObject.text.setText(redPotionObject.name);
+    redPotionObject.text.fontSize = 15;
+    redPotionObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(redPotionObject);
+    Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
+
+    redPotionObject.inputEnabled = true;
+    redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return redPotionObject;
+}
+
+function bestRedPotionClone(positionX, positionY){
+    //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
+    redPotionObject = new potion(
+        Lucifer_Game, positionX, positionY, itemList[6].name, itemList[6].heal, itemList[6].price, 6
         );
     redPotionObject.text.setText(redPotionObject.name);
     redPotionObject.text.fontSize = 15;
@@ -139,7 +176,41 @@ function redPotionClone(positionX, positionY){
 
 function basicSwordClone(positionX, positionY){
     basicSwordObject = new sword(
-        Lucifer_Game, positionX, positionY, itemList[1].name, itemList[1].attack_point, itemList[1].limited_job
+        Lucifer_Game, positionX, positionY, itemList[1].name, itemList[1].attack_point, itemList[1].limited_job, 1
+        );
+    basicSwordObject.text.setText(basicSwordObject.name);
+    basicSwordObject.text.fontSize = 15;
+    basicSwordObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(basicSwordObject);
+    Lucifer_Game.physics.enable(basicSwordObject, Phaser.Physics.ARCADE);
+
+    basicSwordObject.inputEnabled = true;
+    basicSwordObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return basicSwordObject;
+}
+
+function strongSwordClone(positionX, positionY){
+    basicSwordObject = new sword(
+        Lucifer_Game, positionX, positionY, itemList[4].name, itemList[4].attack_point, itemList[4].limited_job, 4
+        );
+    basicSwordObject.text.setText(basicSwordObject.name);
+    basicSwordObject.text.fontSize = 15;
+    basicSwordObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(basicSwordObject);
+    Lucifer_Game.physics.enable(basicSwordObject, Phaser.Physics.ARCADE);
+
+    basicSwordObject.inputEnabled = true;
+    basicSwordObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return basicSwordObject;
+}
+
+function superSwordClone(positionX, positionY){
+    basicSwordObject = new sword(
+        Lucifer_Game, positionX, positionY, itemList[7].name, itemList[7].attack_point, itemList[7].limited_job, 7
         );
     basicSwordObject.text.setText(basicSwordObject.name);
     basicSwordObject.text.fontSize = 15;
