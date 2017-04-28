@@ -208,6 +208,23 @@ function strongSwordClone(positionX, positionY){
     return basicSwordObject;
 }
 
+function superSwordClone(positionX, positionY){
+    basicSwordObject = new sword(
+        Lucifer_Game, positionX, positionY, itemList[7].name, itemList[7].attack_point, itemList[7].limited_job, 7
+        );
+    basicSwordObject.text.setText(basicSwordObject.name);
+    basicSwordObject.text.fontSize = 15;
+    basicSwordObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(basicSwordObject);
+    Lucifer_Game.physics.enable(basicSwordObject, Phaser.Physics.ARCADE);
+
+    basicSwordObject.inputEnabled = true;
+    basicSwordObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return basicSwordObject;
+}
+
 function basicArmorClone(positionX, positionY){
     basicArmorObject = new armor(
         Lucifer_Game, positionX, positionY, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job

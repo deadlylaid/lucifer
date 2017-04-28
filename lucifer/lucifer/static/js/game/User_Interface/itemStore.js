@@ -22,7 +22,8 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet('swordTab', '../../static/images/game/UI/store/swordTab.png', 45, 80);
     Lucifer_Game.load.spritesheet('armorTab', '../../static/images/game/UI/store/armorTab.png', 45, 80);
     Lucifer_Game.load.spritesheet('saleTab', '../../static/images/game/UI/store/sale.png', 45, 80);
-    Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716); Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
+    Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
+    Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
     Lucifer_Game.load.spritesheet('useButton', '../../static/images/game/UI/Inventory/useButton.png', 196, 51);
 
 };
@@ -163,6 +164,17 @@ function itemStoreCreate(){
     strongSword.events.onInputDown.add(clickItem, this);
 
     Lucifer_Game.add.existing(strongSword);
+
+    superSword = new sword(Lucifer_Game, 55, 300, itemList[7].name, itemList[7].attack_point, itemList[7].limited_job, 7, itemStoreStyle);
+
+    Lucifer_Game.physics.p2.enable(superSword);
+    superSword.body.addRectangle(0, 0);
+    superSword.body.static = true;
+
+    superSword.inputEnabled = true;
+    superSword.events.onInputDown.add(clickItem, this);
+
+    Lucifer_Game.add.existing(superSword);
     //----------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------
 
@@ -219,6 +231,7 @@ function showStore(){
         hyperPotion.getVisible(false);
         basicSword.getVisible(false);
         strongSword.getVisible(false);
+        superSword.getVisible(false);
         basicArmor.getVisible(false);
         uiStore.visible = false;
     }else{
@@ -243,6 +256,7 @@ function potionStoreTab(){
     hyperPotion.getVisible(true);
     basicSword.getVisible(false);
     strongSword.getVisible(false);
+    superSword.getVisible(false);
     basicArmor.getVisible(false);
 }
 
@@ -255,6 +269,7 @@ function swordStoreTab(){
     hyperPotion.getVisible(false);
     basicSword.getVisible(true);
     strongSword.getVisible(true);
+    superSword.getVisible(true);
     basicArmor.getVisible(false);
 }
 
@@ -267,6 +282,7 @@ function armorStoreTab(){
     hyperPotion.getVisible(false);
     basicSword.getVisible(false);
     strongSword.getVisible(false);
+    superSword.getVisible(false);
     basicArmor.getVisible(true);
 }
 
@@ -294,6 +310,10 @@ function clickItem(sprite){
             break;
         case '강화된검':
             selectedItem = strongSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+            selectedItem.numberInArray = i;
+            break;
+        case '마검':
+            selectedItem = superSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
             break;
         case '기본갑옷':
@@ -449,6 +469,9 @@ function dropItem(){
                 case '강화된검':
                     inventory.push(strongSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
+                case '마검':
+                    inventory.push(superSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
                 case '기본갑옷':
                     inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
@@ -510,6 +533,9 @@ function useItem(){
                 case '강화된검':
                     inventory.push(strongSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
+                case '마검':
+                    inventory.push(superSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
                 case '기본갑옷':
                     inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
@@ -551,6 +577,11 @@ function useItem(){
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
                         break;
+                    case '마검':
+                        var inserted_item = superSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
                 }
                 inventoryPost(inserted_item.name);
 
@@ -604,6 +635,11 @@ function createEquipmentAndSetPosition(itemName){
             break;
         case '강화된검':
             item = strongSwordClone(952, 205);
+            item.text.setText('');
+            item.getVisible(false);
+            break;
+        case '마검':
+            item = superSwordClone(952, 205);
             item.text.setText('');
             item.getVisible(false);
             break;
@@ -684,6 +720,11 @@ function changeServerListToClientListEquipment(){
 
                 equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
                 break;
+            case '마검':
+                equipmentList[0] = createEquipmentAndSetPosition('마검');
+
+                equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+                break;
             case '기본갑옷':
                 equipmentList[1] = createEquipmentAndSetPosition('기본갑옷');
 
@@ -718,6 +759,10 @@ function changeServerListToClientList(){
                 break;
             case '강화된검':
                 inventory[i]=strongSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                inventory[i].numberInArray = i;
+                break;
+            case '마검':
+                inventory[i]=superSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 inventory[i].numberInArray = i;
                 break;
             case '기본갑옷':
