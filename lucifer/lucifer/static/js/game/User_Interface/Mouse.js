@@ -21,11 +21,6 @@ function mouse_Create()
 	//Rect
 	mouse_Rect = new Phaser.Rectangle(Lucifer_Game.input.mousePointer.x, Lucifer_Game.input.mousePointer.y,
 									  40, 40);
-<<<<<<< HEAD
-}
-=======
->>>>>>>  Update : Player MovePoint effet add
-
 
 	MovePoint = Lucifer_Game.add.sprite(640, 400, 'MovePoint');
 
