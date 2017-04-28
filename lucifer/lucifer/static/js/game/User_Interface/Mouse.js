@@ -107,19 +107,15 @@ function mouse_Update()
 	//Icon
 	mouseIcon.x = mouseposX;
 	mouseIcon.y = mouseposY;
-
-	console.log(mouseIcon.x , mouseIcon.y);
+	
 	//
 
 	if(Lucifer_Game.input.activePointer.isDown)
-	{
 
-		MovePoint.x = Lucifer_Game.input.mousePointer.x + Lucifer_Game.camera.x - 900;
-		MovePoint.y = Lucifer_Game.input.mousePointer.y + Lucifer_Game.camera.y - 500;
-
-		console.log(MovePoint.x , MovePoint.y);
-
-
+	{	
+		
+		MovePoint.x = Lucifer_Game.input.mousePointer.x + Lucifer_Game.camera.x - 773;
+		MovePoint.y = Lucifer_Game.input.mousePointer.y + Lucifer_Game.camera.y - 551;
 
 	}
 
