@@ -1,4 +1,4 @@
-var Stage3_Map, Stage3, Stage3_ObjLayer;	//Stage 이미지 변수								
+var Stage3_Map, Stage3, Stage3_ObjLayer;	//Stage 이미지 변수
 var Stage3_ObjectGroup;						//Stage2 - Object 관련 변수.
 var stage3_Collision_Layer;
 var Stage3_ObjectPool = [];
@@ -27,7 +27,7 @@ function stageThree_Preload()
 	Lucifer_Game.load.image('Stage4_TileSet', '../../static/images/game/Map/stage4/Stage4_TileSet.png');
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('Stage3_obj_struct', '../../static/images/game/Object/Stage3/Stage3_obj_struct.png');
-	
+
 	//Object flag
 	Lucifer_Game.load.image('STAGE3_Object_flag01', '../../static/images/game/Object/Stage3/Stage3_obj_flag1.png');
 	Lucifer_Game.load.image('STAGE3_Object_flag02', '../../static/images/game/Object/Stage3/Stage3_obj_flag2.png');
@@ -67,7 +67,7 @@ function stageThree_Preload()
 	Lucifer_Game.load.spritesheet('Stage3_Portal_back', '../../static/images/game/Object/Portal/Portal2.png', 115, 154);
 
 	Lucifer_Game.load.physics('Physics_polygon4', '../../static/js/game/Map/Physics_polygon4.json');
-	
+
 	//----------------------------------------------------------------------------------------------------------------
 }
 
@@ -75,16 +75,16 @@ function stageThree_Create()
 {
 	/* Stage Create Example */
 
-	//Stage3 -> Stage2 Portal move 
+	//Stage3 -> Stage2 Portal move
 	//---------------------------------------------------------------------------------------
 	if(BackStageMove == 0){
 		objectValueArray3=[];
 	}
 	//---------------------------------------------------------------------------------------
 
-	//Map 
+	//Map
 	//---------------------------------------------------------------------------------------
-	Stage3_Map = Lucifer_Game.add.tilemap('MAP_Stage3');		
+	Stage3_Map = Lucifer_Game.add.tilemap('MAP_Stage3');
 	Stage3_Map.addTilesetImage('Stage4_TileSet', 'Stage4_TileSet');
 	Stage3_Map.addTilesetImage('Collision_Tile', 'Collision_Tile');
 	Stage3_Map.addTilesetImage('Stage3_obj_struct', 'Stage3_obj_struct');
@@ -99,7 +99,7 @@ function stageThree_Create()
 
 	//Object
 	//---------------------------------------------------------------------------------------
-	
+
 	Lucifer_Game.physics.startSystem(Phaser.Physics.P2JS);
 
 	Stage3_ObjectGroup = Lucifer_Game.add.group();
@@ -142,19 +142,19 @@ function stageThree_Create()
 	Stage3_ObjectGroup.create(707, 2062, 'STAGE3_Object_flag02');
 
 
-	
+
 	//---------------------------------------------------------------------------------------
 
-	
+
 	for(var i = 0; i < Stage3_ObjectGroup.length; ++i)
-	{	
+	{
 		var Stage3_Object = Stage3_ObjectGroup.getChildAt(i);
 		var Object_Rect = new Phaser.Rectangle(Stage3_Object.x, Stage3_Object.y, 100, 100);
 		Stage3_ObjectPool.push(Object_Rect);
 
 		Stage3_ObjectGroup.getChildAt(i).body.static = true;
-		objectValueArray3.push(Stage3_ObjectGroup.getChildAt(i).key);		
-	}		
+		objectValueArray3.push(Stage3_ObjectGroup.getChildAt(i).key);
+	}
 
 
 	//Polygon
@@ -165,7 +165,7 @@ function stageThree_Create()
 		for(var i = 0; i < PolygonArray3.length; i++)
 		{
 			if(objectValueArray3[a] == PolygonArray3[i])
-			{	
+			{
 				Stage3_ObjectGroup.getChildAt(a).body.clearShapes();
 				Stage3_ObjectGroup.getChildAt(a).body.loadPolygon('Physics_polygon4', PolygonArray3[i]);
 				Stage3_ObjectGroup.getChildAt(a).body.debug = false;
@@ -174,8 +174,8 @@ function stageThree_Create()
 			{
 				continue;
 			}
-		}		
-	}	
+		}
+	}
 
 	//---------------------------------------------------------------------------------------
 
@@ -201,9 +201,9 @@ function stageThree_Create()
 
 	//Portal_Rect
 	Portal_Rect2 = new Phaser.Rectangle(Stage3_Portal_back.x, Stage3_Portal_back.y, 100, 100);
-	Portal_Check2 = false;	
+	Portal_Check2 = false;
 	//---------------------------------------------------------------------------------------
-	
+
 
 	Stage3_Map.setCollision(273, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Stage3_Map, "Collision Layer");
@@ -223,7 +223,7 @@ function stageThree_Create()
     var grd3 = text_wel3.context.createLinearGradient(0, 0, 0, text_wel3.height);
 
     //  Add in 2 color stops
-    grd3.addColorStop(0, '#fc1b1b');   
+    grd3.addColorStop(0, '#fc1b1b');
     grd3.addColorStop(1, '#130b0b');
 
     //  And apply to the Text
@@ -233,9 +233,9 @@ function stageThree_Create()
     var yoyo1 = Lucifer_Game.add.tween(text_wel3).to({ alpha: 1}, 800, "Linear", true, 0, -1);
     yoyo1.yoyo(true, 1000);
 
-    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 10, TextVisible3, this);	
+    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 10, TextVisible3, this);
 
-    
+
     //-------------------------------------------------------------------------------------------
 
     Stage3_AlertText = Lucifer_Game.add.text(90, 780, "BOSS Stage", {font: '20px Roboto', fill: '#d13034'});
@@ -244,7 +244,7 @@ function stageThree_Create()
     Stage3_AlertText.fontWeight = 'bold';
     Stage3_AlertText.stroke = '#000000';
     Stage3_AlertText.strokeThickness = 1;
-    Stage3_AlertText.setShadow(1, 1, '#000000', 0, true, true);	
+    Stage3_AlertText.setShadow(1, 1, '#000000', 0, true, true);
 
 }
 

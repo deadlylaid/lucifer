@@ -1,6 +1,6 @@
 // Bavarian Skill
 //***************************************************************************************
-var skill_Bavarian, skill_Bavarian_Two, skill_Bavarian_Three; 
+var skill_Bavarian, skill_Bavarian_Two, skill_Bavarian_Three;
 var skill_Bavarian_Four, skill_Bavarian_Four_Effect, skill_Bavarian_Five;
 //***************************************************************************************
 var skill_Two_Rect, skill_Three_Rect, skill_FourEffect_Rect, skill_Five_Rect, skill_intersects;
@@ -52,13 +52,13 @@ function skill_Preload()
 function skill_Create()
 {
 	Lucifer_Game.renderer.setTexturePriority(['SK_Bavarian_Skill', 'SK_Bavarian_Skill2', 'SK_Bavarian_Skill3',
-										      'SK_Bavarian_Skill4', 'SK_Bavarian_Skill5', 'SK_Icon_Skill', 
+										      'SK_Bavarian_Skill4', 'SK_Bavarian_Skill5', 'SK_Icon_Skill',
 										      'SK_Icon_Skill2', 'SK_Icon_Skill3', 'SK_Icon_Skill4',
 										      'SK_Icon_Skill5']);
-	
+
 	//Skill - 1(버프)
 	skill_Bavarian = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill');
-	skill_Bavarian.anchor.setTo(0.5, 0.5);		
+	skill_Bavarian.anchor.setTo(0.5, 0.5);
 	skill_Bavarian.visible = false;
 	skill_Bavarian.blendMode = Phaser.blendModes.ADD;
 	skill_One_CoolTime = 60000;
@@ -90,7 +90,7 @@ function skill_Create()
     skill_Bavarian_Five.anchor.setTo(0.5, 0.5);
     skill_Bavarian_Five.visible = false;
     skill_Bavarian_Five.blendMode = Phaser.blendModes.ADD;
-    skill_Five_CoolTime = 20000; 
+    skill_Five_CoolTime = 20000;
 
    	skill_Bavarian_Four_Effect = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill4_Effect');
    	skill_Bavarian_Four_Effect.anchor.setTo(0.5, 0.5);
@@ -98,28 +98,28 @@ function skill_Create()
    	skill_Bavarian_Four_Effect.blendMode = Phaser.blendModes.ADD;
 
 	//Skill - 1 Animation
-	skill_Bavarian.animations.add('SK_Bavarian_Ani', 
+	skill_Bavarian.animations.add('SK_Bavarian_Ani',
 								  [
-								 	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+								 	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 									11, 12, 13, 14, 15, 16, 17, 18, 19
 								  ]
-								  , 60, true);	
+								  , 60, true);
 
-	skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);	
+	skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
 
-	//Skill - 2 Animation	
-	skill_Bavarian_Two.animations.add('SK_Bavarian_Ani2', 
+	//Skill - 2 Animation
+	skill_Bavarian_Two.animations.add('SK_Bavarian_Ani2',
 									  [
 									  	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 									  ],
-									  60, true);	
+									  60, true);
 	skill_Bavarian_Two.animations.play('SK_Bavarian_Ani2', 20, true);
 	skill_Bavarian_Two.scale.setTo(2, 2);
 
 	//Skill - 3 Animation
-	skill_Bavarian_Three.animations.add('SK_Bavarian_Ani3', 
+	skill_Bavarian_Three.animations.add('SK_Bavarian_Ani3',
 										[
-											0,  1,  2,  3,  4,  5,  6,  7											
+											0,  1,  2,  3,  4,  5,  6,  7
 										], 60, true);
 	skill_Bavarian_Three.animations.play('SK_Bavarian_Ani3', 20, true);
 
@@ -139,7 +139,7 @@ function skill_Create()
 	skill_Bavarian_Five.animations.add('SK_Bavarian_Ani5',
 									   [
 									   	  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-									   	  11, 12, 13, 14, 15, 16, 17, 18, 19, 
+									   	  11, 12, 13, 14, 15, 16, 17, 18, 19,
 									   	  20, 21, 22, 23, 24, 25, 26, 27, 28,
 									   	  29, 30, 31
 									   ], 60, true);
@@ -148,13 +148,13 @@ function skill_Create()
     //Skill Icon
     //Skill - 1 Icon
     skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x - 170, UI_UnderBar.y + 44, 'SK_Icon_Skill');
-    skill_Icon_One.anchor.setTo(0.5, 0.5);  
-    skill_Icon_One.fixedToCamera = true;     
+    skill_Icon_One.anchor.setTo(0.5, 0.5);
+    skill_Icon_One.fixedToCamera = true;
 
     //Skill - 2 Icon
     skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x - 130, UI_UnderBar.y + 44, 'SK_Icon_Skill2');
-    skill_Icon_Two.anchor.setTo(0.5, 0.5); 
-    skill_Icon_Two.fixedToCamera = true;    
+    skill_Icon_Two.anchor.setTo(0.5, 0.5);
+    skill_Icon_Two.fixedToCamera = true;
 
     //Skill - 3 Icon
     skill_Icon_Three = Lucifer_Game.add.sprite(UI_UnderBar.x - 90, UI_UnderBar.y + 44, 'SK_Icon_Skill3');
@@ -170,7 +170,7 @@ function skill_Create()
     skill_Icon_Five = Lucifer_Game.add.sprite(UI_UnderBar.x - 10, UI_UnderBar.y + 44, 'SK_Icon_Skill5');
     skill_Icon_Five.anchor.setTo(0.5, 0.5);
     skill_Icon_Five.fixedToCamera = true;
-    
+
 	//Skill Rect
 	//Skill - 2 Rect
 	skill_Two_Rect = new Phaser.Rectangle(skill_Bavarian_Two.x, skill_Bavarian_Two.y, 150, 100);
@@ -231,7 +231,7 @@ function skill_Three_Counting()
 {
 	if(skill_Bavarian_Three.frame == 7 && skill_Bavarian_Three.visible == true)
 	{
-		++skill_Three_Count;		
+		++skill_Three_Count;
 	}
 }
 
@@ -239,8 +239,8 @@ function skill_Four_Counting()
 {
 	if(skill_Four_EffectCheck == true)
 	{
-		++skill_Four_Count;		
-	}	
+		++skill_Four_Count;
+	}
 }
 
 function skill_Five_Counting()
@@ -261,7 +261,7 @@ function skill_Reset()
 		skill_Bavarian.frame = 0;
 
 		Animation_Change(Direction, 'Stand');
-	}	
+	}
 
 	//Skill Two
 	if(skill_Bavarian_Two.frame == 14 && skill_Bavarian_Two.visible == true)
@@ -271,7 +271,7 @@ function skill_Reset()
 		skill_Bavarian_Two.frame = 0;
 
 		Animation_Change(Direction, 'Stand');
-	}	
+	}
 
 	//Skill Three Count : 흴인더 스킬의 지속 정도 값.
 	if(skill_Three_Count > 14 && skill_Bavarian_Three.visible == true)
@@ -282,19 +282,19 @@ function skill_Reset()
 		skill_Three_Count = 0;
 
 		Animation_Change(Direction, 'Stand');
-	}		
+	}
 
 	//Skill Four
 	if(skill_Bavarian_Four.frame == 9 && skill_Bavarian_Four.visible == true)
 	{
 		skill_Bavarian_Four.animations.stop('SK_Bavarian_Ani4', true);
 		skill_Bavarian_Four.visible = false;
-		skill_Bavarian_Four.frame = 0;		
+		skill_Bavarian_Four.frame = 0;
 
 		Animation_Change(Direction, 'Stand');
 
 		//Effect Start
-		skill_Four_EffectCheck = true;		
+		skill_Four_EffectCheck = true;
 	}
 
 	//Skill Four Effect
@@ -305,18 +305,18 @@ function skill_Reset()
 		skill_Bavarian_Four_Effect.frame = 0;
 		skill_Four_Count = 0;
 
-		skill_Four_EffectCheck = false;		
+		skill_Four_EffectCheck = false;
 	}
 
-	//Skill Five 
+	//Skill Five
 	if(skill_Five_Count > 14 && skill_Bavarian_Five.visible == true)
 	{
 		skill_Bavarian_Five.animations.stop('SK_Bavarian_Ani5', true);
 		skill_Bavarian_Five.visible = false;
 		skill_Bavarian_Five.frame = 0;
 		skill_Five_Count = 0;
-		
-		Animation_Change(Direction, 'Stand');	
+
+		Animation_Change(Direction, 'Stand');
 	}
 
 	//console.log(skill_Bavarian_Four_Effect.visible);
@@ -326,20 +326,20 @@ function skill_Reset()
 
 function skill_CoolTime()
 {
-	//Skill One Cool Time	
+	//Skill One Cool Time
 	if(player_KeySkill.isDown == true)
 	{
 		skill_One_Timer.start();
 
 		if(skill_One_Check == false)
 		{
-			skill_One_TimeTotal = 0;		
+			skill_One_TimeTotal = 0;
 		}
 	}
 
 	if(skill_One_TimeTotal < skill_One_CoolTime)
 	{
-		skill_Icon_One.alpha = 0.5;	
+		skill_Icon_One.alpha = 0.5;
 		skill_One_Check = true;			  //첫번째 스킬 coolTime 체크
 
 		if(skill_One_Attribute == false)
@@ -348,16 +348,16 @@ function skill_CoolTime()
 			attack_point = tempAttack_Point + 10; //Attack Point Plus
 
 			skill_One_Attribute = true;
-		}				
+		}
 	}
 	else if(skill_One_TimeTotal > skill_One_CoolTime)
 	{
-		skill_Icon_One.alpha = 1.0;		
+		skill_Icon_One.alpha = 1.0;
 		skill_One_Check = false;		  //첫번째 스킬 coolTime 체크
-		
-		attack_point = tempAttack_Point;  //Attack Point 복원 
+
+		attack_point = tempAttack_Point;  //Attack Point 복원
 		skill_One_Attribute = false;
-	}	
+	}
 
 	//Skill Two Cool Time
 	if(player_KeySkill2.isDown == true)
@@ -367,29 +367,29 @@ function skill_CoolTime()
 		if(skill_Two_Check == false)
 		{
 			skill_Two_TimeTotal = 0;
-		}			
+		}
 	}
 
 	if(skill_Two_TimeTotal < skill_Two_CoolTime)
 	{
 		skill_Icon_Two.alpha = 0.5;
 		skill_Two_Check = true;			//두번째 스킬 coolTime 체크
-	}	
+	}
 	else if(skill_Two_TimeTotal > skill_Two_CoolTime)
 	{
-		skill_Icon_Two.alpha = 1.0;		
+		skill_Icon_Two.alpha = 1.0;
 		skill_Two_Check = false;		//두번째 스킬 coolTime 체크
 	}
 
-	//Skill Three Cool Time 
+	//Skill Three Cool Time
 	if(player_KeySkill3.isDown == true)
 	{
 		skill_Three_Timer.start();
-		
+
 		if(skill_Three_Check == false)
 		{
 			skill_Three_TimeTotal = 0;
-		}	
+		}
 	}
 
 	if(skill_Three_TimeTotal < skill_Three_CoolTime)
@@ -400,8 +400,8 @@ function skill_CoolTime()
 	else if(skill_Three_TimeTotal > skill_Three_CoolTime)
 	{
 		skill_Icon_Three.alpha = 1.0;
-		skill_Three_Check = false;	
-	}	
+		skill_Three_Check = false;
+	}
 
 	//Skill Four Cool Time
 	if(player_KeySkill4.isDown == true)
@@ -432,7 +432,7 @@ function skill_CoolTime()
 
 		if(skill_Five_Check == false)
 		{
-			skill_Five_TimeTotal = 0;			
+			skill_Five_TimeTotal = 0;
 		}
 	}
 
@@ -453,8 +453,8 @@ function skill4_Effect()
 	if(skill_Four_EffectCheck == true)
 	{
 		skill_Bavarian_Four_Effect.visible = true;
-		skill_Bavarian_Four_Effect.animations.play('SK_Bavarian_Effect4', 20, true);								
-	}	
+		skill_Bavarian_Four_Effect.animations.play('SK_Bavarian_Effect4', 20, true);
+	}
 }
 
 function skill_Update()
@@ -476,7 +476,7 @@ function skill_Update()
 
 	//Rect
 	skill_Two_Rect.x = skill_Bavarian_Two.x;
-	skill_Two_Rect.y = skill_Bavarian_Two.y; 
+	skill_Two_Rect.y = skill_Bavarian_Two.y;
 	skill_Two_Rect.centerOn(skill_Bavarian_Two.x, skill_Bavarian_Two.y);
 
 	skill_Three_Rect.x = skill_Bavarian_Three.x;
@@ -493,7 +493,7 @@ function skill_Update()
 
 	//Skill Count
 	skill_Three_Counting();
-	skill_Four_Counting();	
+	skill_Four_Counting();
 	skill_Five_Counting();
 
 	//Skill Effect
@@ -503,7 +503,7 @@ function skill_Update()
 	skill_Reset();
 
 	//Cool Time
-	skill_CoolTime();	
+	skill_CoolTime();
 }
 
 function skill_Debug_Render()

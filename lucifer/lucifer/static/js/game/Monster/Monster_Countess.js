@@ -68,12 +68,12 @@ function countess_Preload()
 								  106, 101);
 	Lucifer_Game.load.spritesheet('MON_Countess_Dead',
 								  '../../static/images/game/Monster/Countess/death/death.png',
-								  82, 159);	
+								  82, 159);
 }
 
 function countess_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_Countess_Stand', 'MON_Countess_Run', 
+	Lucifer_Game.renderer.setTexturePriority(['MON_Countess_Stand', 'MON_Countess_Run',
 											  'MON_Countess_Attack', 'MON_Countess_Dead']);
 	countess_Group = Lucifer_Game.add.group();
 	countess_Clone(4142, 2428);
@@ -93,8 +93,8 @@ function countess_Clone(PointX, PointY)
 	countess_Object.body.fixedRotation = true;
 	countess_Object.body.clearShapes();
 	countess_Object.body.addRectangle(60, 60, 0, 0);
-	countess_Object.body.debug = false;	
-	countess_Object.body.restitution = 0;	
+	countess_Object.body.debug = false;
+	countess_Object.body.restitution = 0;
 
 	//Animation
 	//Stand
@@ -105,10 +105,10 @@ function countess_Clone(PointX, PointY)
 									 [
 									 	index, 	   index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7, index + 8, index + 9,
-									 	index + 10 
-									 ], 60, true);		
-		index += 11;		
-	}	
+									 	index + 10
+									 ], 60, true);
+		index += 11;
+	}
 
 	//Run
 	index = 0;
@@ -122,7 +122,7 @@ function countess_Clone(PointX, PointY)
 
 		index += 10;
 	}
-	
+
 
 	//Attack
 	index = 0;
@@ -133,7 +133,7 @@ function countess_Clone(PointX, PointY)
 									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
 									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									 	index + 10, index + 11, index + 12, index + 13, index + 14,
-									 	index + 15									 	
+									 	index + 15
 									 ], 60, true);
 		index += 16;
 	}
@@ -148,10 +148,10 @@ function countess_Clone(PointX, PointY)
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									   index + 10, index + 11, index + 12, index + 13, index + 14,
 									   index + 15, index + 16, index + 17, index + 18, index + 19,
-									   index + 20, index + 21, index + 22, index + 23, index + 24	
-									], 60, true);	
-		index += 25;	
-	}	
+									   index + 20, index + 21, index + 22, index + 23, index + 24
+									], 60, true);
+		index += 25;
+	}
 
 	countess_Object.loadTexture('MON_Countess_Stand', 0, true);
 	countess_Object.animations.play('MON_Countess_Stand_0', 10, true);
@@ -299,11 +299,11 @@ function countess_GetDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
-	}	
+	}
 }
 
 function countess_GetReturnDirection(Object)
@@ -316,11 +316,11 @@ function countess_GetReturnDirection(Object)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
-			
+
 			if(Object.y < Object.ReturnPointY)
 			{
 				Object.ReturnAngle = 2 * Math.PI - Object.ReturnAngle;
-			}	
+			}
 
 			if(Object.ReturnAngle >= 0 && Object.ReturnAngle <= 0.7)
 			{
@@ -359,8 +359,8 @@ function countess_GetReturnDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
 	}
@@ -387,7 +387,7 @@ function countess_Animation_Change(Direction, Status, Object)
 			//Stand
 			Object.loadTexture('MON_Countess_Stand', 0, true);
 			Object.animations.play('MON_Countess_Stand_' + Direction, 10, true);
-		}	
+		}
 		else if(Object.Status[1] == Status)
 		{
 			//Walk
@@ -399,7 +399,7 @@ function countess_Animation_Change(Direction, Status, Object)
 			//Attack
 			Object.loadTexture('MON_Countess_Attack', 0, true);
 			Object.animations.play('MON_Countess_Attack_' + Direction, 10, true);
-		}		
+		}
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -423,7 +423,7 @@ function countess_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				countess_Animation_Change(Object.Direction, 'Run', Object);
-			}			
+			}
 		}
 
 		if(Object.Distance < Object.AttackRange)
@@ -434,10 +434,10 @@ function countess_Move(Object)
 				countess_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
 			}
-			
+
 			//Attack
 			countess_Attack(Object);
-			
+
 			Object.body.velocity.x = 0;
 			Object.body.velocity.y = 0;
 		}
@@ -450,7 +450,7 @@ function countess_Move(Object)
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
 				Object.ReturnCheck = true;
-			}			
+			}
 		}
 
 		if(Object.ReturnCheck == true)
@@ -474,7 +474,7 @@ function countess_Move(Object)
 				{
 					Object.StandCheck = true;
 
-					countess_Animation_Change(Object.ReturnDirection, 'Stand', Object);						
+					countess_Animation_Change(Object.ReturnDirection, 'Stand', Object);
 				}
 
 				Object.body.velocity.x = 0;
@@ -492,11 +492,11 @@ function countess_Attack(Object)
 	{
 		if(Phaser.Rectangle.intersects(Object.AttackRect, Hit_Rect))
 		{
-			Object.Attack_DelayTimer.start();	
+			Object.Attack_DelayTimer.start();
 
 			if(Object.AttackCheck == false)
 			{
-				countess_Animation_Change(Object.Direction, 'Attack', Object);				
+				countess_Animation_Change(Object.Direction, 'Attack', Object);
 				Object.AttackCheck = true;
 			}
 		}
@@ -534,16 +534,16 @@ function countess_HitCount(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage;		
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage <= 0)
 				{
 					health -= (Object.Attack_Point * 0.01);
-				}				
+				}
 
-				Object.DelayTime_Total = 0;							
-			}		
-		}			
+				Object.DelayTime_Total = 0;
+			}
+		}
 	}
 }
 
@@ -565,9 +565,9 @@ function countess_Dead(Object)
 			//Collision false
 			Object.body.static = true;
 		}
-		
+
 		var CurFrame = Object.animations.frame;
-		var EndFrame;		
+		var EndFrame;
 
 		if(Object.Direction == 0)
 		{
@@ -576,14 +576,14 @@ function countess_Dead(Object)
 		else
 		{
 			EndFrame = 24 * (Object.Direction + 1);
-		}		
+		}
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
-		}				
+		}
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -632,7 +632,7 @@ function countess_Regen(Object)
 			Object.body.static = false;		//Collision true
 
 			Object.Regen_Check = false;
-			
+
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
@@ -665,25 +665,25 @@ function countess_Update()
 		countess_FollwName(countess);
 		countess_GetDirection(countess);
 		countess_GetReturnDirection(countess);
-		countess_Move(countess);		
+		countess_Move(countess);
 
 		//Player Mosnter Collision
 		if(countess.Regen_Check == false)
 		{
-			player_Monster_Col(countess);			
-		}		
+			player_Monster_Col(countess);
+		}
 
 		countess_Dead(countess);
 		countess_Regen(countess);
 
 		//Level System Check
-		check_Monster_Dead(countess);	
+		check_Monster_Dead(countess);
 
 		//Mouse
-		mouse_ColCheck(countess);	
+		mouse_ColCheck(countess);
 
 		//Blood Effect
-		blood_Effect_Update(countess);	
+		blood_Effect_Update(countess);
 	}
 }
 

@@ -2,13 +2,13 @@ var button;
 var closebtn;
 var background;
 
-var menuSelectScene = 
-{	
+var menuSelectScene =
+{
 	preload: function()
 	{
 		this.load.spritesheet('button', '../../static/images/game/Menu/startbutton.png', 355, 54);
 		this.load.spritesheet('closebtn', '../../static/images/game/Menu/close.png', 355, 54);
-		this.load.image('background', '../../static/images/game/Menu/menu.png');		
+		this.load.image('background', '../../static/images/game/Menu/menu.png');
 
 		//Mouse
 		//----------------------------------------------------------------------------------------------------------

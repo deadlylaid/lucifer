@@ -1,7 +1,7 @@
 var stage2_Scene =
 {
 	/*
-		STAGE2 
+		STAGE2
 		--몬스터 출몰 지역--
 	*/
 
@@ -81,7 +81,7 @@ var stage2_Scene =
 		}
 
 		portal_Check2();
-		
+
 		if (Portal_Check2 == true)
 		{
 			sound_StopStage1BGM();
@@ -101,7 +101,7 @@ var stage2_Scene =
 	},
 
 	goto_Stage3: function()
-	{	
+	{
 		stageTwo_Check = false;
 
 		//Sound
@@ -111,10 +111,10 @@ var stage2_Scene =
 	},
 
 	goto_Stage_back: function()
-	{	
+	{
 
 		stageTwo_Check = false;
-		
+
 		BackStageMove = 0;
 		//Sound
 		sound_StopStage2BGM();

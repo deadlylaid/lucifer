@@ -1,4 +1,4 @@
-var Stage2_Map, Stage2, Stage2_ObjLayer;	//Stage 이미지 변수								
+var Stage2_Map, Stage2, Stage2_ObjLayer;	//Stage 이미지 변수
 var Stage2_ObjectGroup;						//Stage2 - Object 관련 변수.
 var Stage2_ObjectPool = [];
 var CameraRect;
@@ -27,8 +27,8 @@ var PolygonArray2 = ['STAGE2_Object_stone01', 'STAGE2_Object_truck1', 'STAGE2_Ob
 					'STAGE2_Object_Tree23', 'STAGE2_Object_Tree24', 'STAGE2_Object_stone14',
 					'STAGE2_Object_stone15', 'STAGE2_Object_Tree25', 'STAGE2_Object_stone16',
 					'STAGE2_Object_stone17', 'STAGE2_Object_stone18', 'STAGE2_Object_wall6',
-					'STAGE2_Object_Tree26', 'STAGE2_Object_Tree27', 'STAGE2_Object_Tree28', 
-					'STAGE2_Object_Tree29', 'STAGE2_Object_Tree30', 'STAGE2_Object_Tree31', 
+					'STAGE2_Object_Tree26', 'STAGE2_Object_Tree27', 'STAGE2_Object_Tree28',
+					'STAGE2_Object_Tree29', 'STAGE2_Object_Tree30', 'STAGE2_Object_Tree31',
 					'STAGE2_Object_wall7'];
 
 var objectValueArray2 = [];
@@ -78,7 +78,7 @@ function stageTwo_Preload()
 	Lucifer_Game.load.image('STAGE2_Object_Tree30', '../../static/images/game/Object/Stage2/struct64.png');
 	Lucifer_Game.load.image('STAGE2_Object_Tree31', '../../static/images/game/Object/Stage2/struct65.png');
 	//----------------------------------------------------------------------------------------------------------------
-	
+
 	//Object stone struct
 
 	//임의로 폴리곤 충돌 테스트(최영준)
@@ -92,15 +92,15 @@ function stageTwo_Preload()
 	Lucifer_Game.load.image('STAGE2_Object_stone4', '../../static/images/game/Object/Stage2/struct20.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone5', '../../static/images/game/Object/Stage2/struct21.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone6', '../../static/images/game/Object/Stage2/struct25.png');
-	Lucifer_Game.load.image('STAGE2_Object_stone7', '../../static/images/game/Object/Stage2/struct29.png');	
-	Lucifer_Game.load.image('STAGE2_Object_stone8', '../../static/images/game/Object/Stage2/struct33.png');	
+	Lucifer_Game.load.image('STAGE2_Object_stone7', '../../static/images/game/Object/Stage2/struct29.png');
+	Lucifer_Game.load.image('STAGE2_Object_stone8', '../../static/images/game/Object/Stage2/struct33.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone9', '../../static/images/game/Object/Stage2/struct35.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone10', '../../static/images/game/Object/Stage2/struct39.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone11', '../../static/images/game/Object/Stage2/struct46.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone12', '../../static/images/game/Object/Stage2/struct48.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone13', '../../static/images/game/Object/Stage2/struct49.png');
-	Lucifer_Game.load.image('STAGE2_Object_stone14', '../../static/images/game/Object/Stage2/struct53.png');	
-	Lucifer_Game.load.image('STAGE2_Object_stone15', '../../static/images/game/Object/Stage2/struct54.png');	
+	Lucifer_Game.load.image('STAGE2_Object_stone14', '../../static/images/game/Object/Stage2/struct53.png');
+	Lucifer_Game.load.image('STAGE2_Object_stone15', '../../static/images/game/Object/Stage2/struct54.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone16', '../../static/images/game/Object/Stage2/struct56.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone17', '../../static/images/game/Object/Stage2/struct57.png');
 	Lucifer_Game.load.image('STAGE2_Object_stone18', '../../static/images/game/Object/Stage2/struct58.png');
@@ -113,8 +113,8 @@ function stageTwo_Preload()
 	Lucifer_Game.load.image('STAGE2_Object_truck4', '../../static/images/game/Object/Stage2/struct28.png');
 	Lucifer_Game.load.image('STAGE2_Object_truck5', '../../static/images/game/Object/Stage2/struct30.png');
 	Lucifer_Game.load.image('STAGE2_Object_truck6', '../../static/images/game/Object/Stage2/struct31.png');
-	Lucifer_Game.load.image('STAGE2_Object_truck7', '../../static/images/game/Object/Stage2/struct32.png');	
-	Lucifer_Game.load.image('STAGE2_Object_truck8', '../../static/images/game/Object/Stage2/struct44.png');	
+	Lucifer_Game.load.image('STAGE2_Object_truck7', '../../static/images/game/Object/Stage2/struct32.png');
+	Lucifer_Game.load.image('STAGE2_Object_truck8', '../../static/images/game/Object/Stage2/struct44.png');
 	//----------------------------------------------------------------------------------------------------------------
 
 	//Object wall
@@ -137,11 +137,11 @@ function stageTwo_Preload()
 
 	//----------------------------------------------------------------------------------------------------------------
 
-	
+
 }
 
 function stageTwo_Create()
-{	
+{
 	for(var i = 0; i < 32; ++i)
 	{
 		Lucifer_Game.renderer.setTexturePriority(['STAGE2_Object_Tree' + i]);
@@ -162,16 +162,16 @@ function stageTwo_Create()
 		Lucifer_Game.renderer.setTexturePriority(['STAGE2_Object_wall1' + i]);
 	}
 
-	//Stage3 -> Stage2 Portal move 
+	//Stage3 -> Stage2 Portal move
 	//---------------------------------------------------------------------------------------
 	if(BackStageMove == 0){
 		objectValueArray2=[];
 	}
 	//---------------------------------------------------------------------------------------
-	
-	//Map 
+
+	//Map
 	//---------------------------------------------------------------------------------------
-	Stage2_Map = Lucifer_Game.add.tilemap('MAP_Stage2');		
+	Stage2_Map = Lucifer_Game.add.tilemap('MAP_Stage2');
 	Stage2_Map.addTilesetImage('Stage2_TileSet', 'Stage2_TileSet');
 	Stage2_Map.addTilesetImage('Collision_Tile', 'Collision_Tile');
 	Stage2_Map.addTilesetImage('stage2_obj_tree', 'stage2_obj_tree');
@@ -179,11 +179,11 @@ function stageTwo_Create()
 	Stage2_Map.addTilesetImage('bossroom2', 'bossroom2');
 
 	Stage2 = Stage2_Map.createLayer('Tile Layer 1');
-	Stage2_ObjLayer = Stage2_Map.createLayer('Object Layer');			
+	Stage2_ObjLayer = Stage2_Map.createLayer('Object Layer');
 	Collision_Layer = Stage2_Map.createLayer('Collision Layer');
 	Collision_Layer.visible = false;
-		
-	Stage2.resizeWorld();	
+
+	Stage2.resizeWorld();
 	//---------------------------------------------------------------------------------------
 
 	//Object
@@ -480,15 +480,15 @@ function stageTwo_Create()
 	//---------------------------------------------------------------------------------------
 
 	for(var i = 0; i < Stage2_ObjectGroup.length; ++i)
-	{	
+	{
 		var Stage2_Object = Stage2_ObjectGroup.getChildAt(i);
 		var Object_Rect = new Phaser.Rectangle(Stage2_Object.x, Stage2_Object.y, 100, 100);
 		Stage2_ObjectPool.push(Object_Rect);
 
 		Stage2_ObjectGroup.getChildAt(i).body.static = true;
-		objectValueArray2.push(Stage2_ObjectGroup.getChildAt(i).key);		
-	}		
-	
+		objectValueArray2.push(Stage2_ObjectGroup.getChildAt(i).key);
+	}
+
 	//---------------------------------------------------------------------------------------
 
 	//Polygon
@@ -498,7 +498,7 @@ function stageTwo_Create()
 		for(var i = 0; i < PolygonArray2.length; i++)
 		{
 			if(objectValueArray2[a] == PolygonArray2[i])
-			{	
+			{
 				Stage2_ObjectGroup.getChildAt(a).body.clearShapes();
 				Stage2_ObjectGroup.getChildAt(a).body.loadPolygon('Physics_polygon3', PolygonArray2[i]);
 				Stage2_ObjectGroup.getChildAt(a).body.debug = false;
@@ -507,8 +507,8 @@ function stageTwo_Create()
 			{
 				continue;
 			}
-		}		
-	}	
+		}
+	}
 
 	//Portal
 	//---------------------------------------------------------------------------------------
@@ -530,7 +530,7 @@ function stageTwo_Create()
 
 	//Portal_Rect
 	Portal_Rect = new Phaser.Rectangle(Stage2_Portal.x, Stage2_Portal.y, 100, 100);
-	Portal_Check = false;	
+	Portal_Check = false;
 	//---------------------------------------------------------------------------------------
 
 	//Portal_Back
@@ -553,13 +553,13 @@ function stageTwo_Create()
 
 	//Portal_Rect
 	Portal_Rect2 = new Phaser.Rectangle(Stage2_Portal_back.x, Stage2_Portal_back.y, 100, 100);
-	Portal_Check2 = false;	
+	Portal_Check2 = false;
 	//---------------------------------------------------------------------------------------
-	
+
 	//---------------------------------------------------------------------------------------
 
 	Stage2_Map.setCollision(21, true, "Collision Layer");
-	Lucifer_Game.physics.p2.convertTilemap(Stage2_Map, "Collision Layer");	
+	Lucifer_Game.physics.p2.convertTilemap(Stage2_Map, "Collision Layer");
 
 	//Welcome TEXT (Stage2 진입 시)
 	//---------------------------------------------------------------------------------------
@@ -576,7 +576,7 @@ function stageTwo_Create()
     var grd2 = text_wel2.context.createLinearGradient(0, 0, 0, text_wel2.height);
 
     //  Add in 2 color stops
-    grd2.addColorStop(0, '#fc1b1b');   
+    grd2.addColorStop(0, '#fc1b1b');
     grd2.addColorStop(1, '#130b0b');
 
     //  And apply to the Text
@@ -585,7 +585,7 @@ function stageTwo_Create()
 
     Lucifer_Game.add.tween(text_wel2).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, TextVisible2, this);	
+    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, TextVisible2, this);
 
     //-------------------------------------------------------------------------------------------
 
@@ -595,7 +595,7 @@ function stageTwo_Create()
     Stage2_AlertText.fontWeight = 'bold';
     Stage2_AlertText.stroke = '#000000';
     Stage2_AlertText.strokeThickness = 1;
-    Stage2_AlertText.setShadow(1, 1, '#000000', 0, true, true);	
+    Stage2_AlertText.setShadow(1, 1, '#000000', 0, true, true);
 }
 
 function stage2_Culling()
@@ -625,8 +625,8 @@ function stage2_Culling()
 			{
 				if(Object.alive == false)
 				{
-					Object.revive();	
-				}				
+					Object.revive();
+				}
 			}
 			else
 			{
@@ -635,7 +635,7 @@ function stage2_Culling()
 					Object.kill();
 				}
 			}
-		}			
+		}
 	}
 }
 

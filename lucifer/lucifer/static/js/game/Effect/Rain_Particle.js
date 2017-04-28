@@ -28,5 +28,5 @@ function rain_Create()
 	rain_Particle.maxRotation = 0;
 
 	//Particle Start
-	rain_Particle.start(false, 1600, 15, 0);	
+	rain_Particle.start(false, 1600, 15, 0);
 }

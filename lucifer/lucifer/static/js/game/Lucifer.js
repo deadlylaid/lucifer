@@ -1,6 +1,6 @@
 /*
 	##Lucifer Game SceneMgr(최영준)
-	여기서 게임 이라는 Lucifer_Game을 생성하고 
+	여기서 게임 이라는 Lucifer_Game을 생성하고
 	나머지 게임의 상태(Sccene)을 추가해주는 역항르 한다.
 
 	처음 시작을 Loading 화면으로 해준다.

@@ -25,7 +25,7 @@ function blood_Effect_Clone(x, y)
 
 	blood_Effect.anchor.setTo(0.5, 0.5);
 	blood_Effect.visible = false;
-	blood_Effect.blendMode = Phaser.blendModes.ADD;	
+	blood_Effect.blendMode = Phaser.blendModes.ADD;
 
 	//Animation
 	blood_Effect.animations.add('blood_Ani',
@@ -33,7 +33,7 @@ function blood_Effect_Clone(x, y)
 								   0, 1, 2, 3, 4, 5, 6, 7, 8
 								], 60, true);
 	blood_Effect.animations.play('blood_Ani', 10, true);
-	Lucifer_Game.add.existing(blood_Effect);	
+	Lucifer_Game.add.existing(blood_Effect);
 
 	return blood_Effect;
 }

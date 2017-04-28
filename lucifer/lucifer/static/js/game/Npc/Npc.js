@@ -38,7 +38,7 @@ function npc_Create()
 	store_Npc.anchor.setTo(0.5, 0.5);
 
 	cain_Npc.animations.add('NPC_Cain_Ani',
-							[	
+							[
 							   0, 1, 2, 3, 4, 5, 6, 7
 							], 60, true);
 	cain_Npc.animations.play('NPC_Cain_Ani', 10, true);

@@ -44,7 +44,7 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	//Light
 	this.Skill_Light, this.Skill_Rect;
 
-	//Attack Pattern 
+	//Attack Pattern
 	this.Pattern_Timer, this.Pattern_Time_Total = 0;
 	this.Pattern_Nomal_Check = false, this.Pattern_Skill_Check = false;
 	this.Pattern_Change_Value = 2;
@@ -88,11 +88,11 @@ function council_Preload()
 
 function council_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_Council_Stand', 'MON_Council_Run', 'MON_Council_Attack', 
+	Lucifer_Game.renderer.setTexturePriority(['MON_Council_Stand', 'MON_Council_Run', 'MON_Council_Attack',
 		 									  'MON_Council_Dead', 'MON_Council_Skill', 'Council_Light']);
 
 	council_Group = Lucifer_Game.add.group();
-	
+
 	council_Clone(2143, 2528);
 	council_Clone(2381, 2316);
 	council_Clone(2127, 2808);
@@ -110,7 +110,7 @@ function council_Clone(PointX, PointY)
 	council_Object.body.fixedRotation = true;
 	council_Object.body.clearShapes();
 	council_Object.body.addRectangle(60, 60, 0, 0);
-	council_Object.body.debug = false;	
+	council_Object.body.debug = false;
 	council_Object.body.restitution = 0;
 
 	//Animation
@@ -122,9 +122,9 @@ function council_Clone(PointX, PointY)
 									 [
 									 	index, index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6
-									 ], 60, true);		
-		index += 7;		
-	}	
+									 ], 60, true);
+		index += 7;
+	}
 
 	//Run
 	index = 0;
@@ -139,7 +139,7 @@ function council_Clone(PointX, PointY)
 
 		index += 11;
 	}
-	
+
 
 	//Attack
 	index = 0;
@@ -148,7 +148,7 @@ function council_Clone(PointX, PointY)
 		council_Object.animations.add('MON_Council_Attack_' + i,
 									 [
 									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
-									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9									 	
+									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9
 									 ], 60, true);
 		index += 10;
 	}
@@ -162,9 +162,9 @@ function council_Clone(PointX, PointY)
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									   index + 10, index + 11, index + 12, index + 13, index + 14,
-									   index + 15, index + 16, index + 17, index + 18	
-									], 60, true);	
-		index += 19;	
+									   index + 15, index + 16, index + 17, index + 18
+									], 60, true);
+		index += 19;
 	}
 
 	//Skill
@@ -175,8 +175,8 @@ function council_Clone(PointX, PointY)
 									[
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
-									   index + 10, index + 11, index + 12, index + 13 
-									], 60, true);	
+									   index + 10, index + 11, index + 12, index + 13
+									], 60, true);
 		index += 14;
 	}
 
@@ -227,12 +227,12 @@ function council_Clone(PointX, PointY)
 	council_Object.Skill_Light.visible = false;
 	council_Object.Skill_Light.anchor.setTo(0.5, 0.5);
 	council_Object.Skill_Rect = new Phaser.Rectangle(council_Object.Skill_Light.x, council_Object.Skill_Light.y, 120, 120);
-	
+
 	//Skill Animation
 	index = 0;
 	for(var i = 0; i < 8; ++i)
 	{
-		council_Object.Skill_Light.animations.add('Council_Light_' + i, 
+		council_Object.Skill_Light.animations.add('Council_Light_' + i,
 												   [
 												   	  index,      index + 1,  index + 2,  index + 3, index + 4,
 												   	  index + 5,  index + 6,  index + 7,  index + 8, index + 9,
@@ -366,11 +366,11 @@ function council_GetDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
-	}	
+	}
 }
 
 function council_GetReturnDirection(Object)
@@ -383,11 +383,11 @@ function council_GetReturnDirection(Object)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
-			
+
 			if(Object.y < Object.ReturnPointY)
 			{
 				Object.ReturnAngle = 2 * Math.PI - Object.ReturnAngle;
-			}	
+			}
 
 			if(Object.ReturnAngle >= 0 && Object.ReturnAngle <= 0.7)
 			{
@@ -426,8 +426,8 @@ function council_GetReturnDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
 	}
@@ -454,7 +454,7 @@ function council_Animation_Change(Direction, Status, Object)
 			//Stand
 			Object.loadTexture('MON_Council_Stand', 0, true);
 			Object.animations.play('MON_Council_Stand_' + Direction, 10, true);
-		}	
+		}
 		else if(Object.Status[1] == Status)
 		{
 			//Walk
@@ -492,16 +492,16 @@ function council_Move(Object)
 			{
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
-				Object.MoveCheck = true;				
+				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
-				council_Animation_Change(Object.Direction, 'Run', Object);				
-			}			
+				council_Animation_Change(Object.Direction, 'Run', Object);
+			}
 		}
 
 		if(Object.Distance < Object.AttackRange)
 		{
-			//Stand			
+			//Stand
 			if(Object.StandCheck == false)
 			{
 				council_Animation_Change(Object.Direction, 'Stand', Object);
@@ -523,7 +523,7 @@ function council_Move(Object)
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
 				Object.ReturnCheck = true;
-			}			
+			}
 		}
 
 		if(Object.ReturnCheck == true)
@@ -543,7 +543,7 @@ function council_Move(Object)
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
-				Object.ReturnCheck = false;	
+				Object.ReturnCheck = false;
 
 				if(Object.StandCheck == false)
 				{
@@ -571,21 +571,21 @@ function council_Attack_AI(Object)
 
 	if(Object.Pattern_Time_Total > Object.Pattern_Change_Value)
 	{
-		Object.Pattern_Change_Value = Lucifer_Game.rnd.integerInRange(0, 5);	
+		Object.Pattern_Change_Value = Lucifer_Game.rnd.integerInRange(0, 5);
 		Object.Pattern_Time_Total = 0;
 	}
 
 	if(Object.Pattern_Skill_Check == false)
 	{
-		council_Attack(Object);			
+		council_Attack(Object);
 	}
 	else if(Object.Pattern_Skill_Check == true)
 	{
-		council_SkillAttack(Object);			
+		council_SkillAttack(Object);
 	}
 
 	//console.log(Object.Pattern_Change_Value);
-	//console.log(Object.Pattern_Time_Total);	
+	//console.log(Object.Pattern_Time_Total);
 	//console.log(Object.Pattern_Skill_Check);
 }
 
@@ -600,15 +600,15 @@ function council_SkillAttack(Object)
 			if(Object.AttackCheck == false)
 			{
 				council_Animation_Change(Object.Direction, 'Skill', Object);
-				
+
 				Object.Skill_Light.visible = true;
 				Object.Skill_Light.loadTexture('Council_Light', 0, true);
 				Object.Skill_Light.animations.play('Council_Light_' + Direction, 10, true);
 
 				if(Phaser.Rectangle.intersects(Object.Skill_Rect, Hit_Rect))
 				{
-					council_SkillHitCount(Object);	
-				}				
+					council_SkillHitCount(Object);
+				}
 
 				Object.Pattern_Skill_Check = false;
 				Object.AttackCheck = true;
@@ -635,7 +635,7 @@ function council_Attack(Object)
 			{
 				Object.Skill_Light.visible = false;
 				council_Animation_Change(Object.Direction, 'Attack', Object);
-				
+
 				Object.Pattern_Skill_Check = true;
 				Object.AttackCheck = true;
 			}
@@ -675,23 +675,23 @@ function council_HitCount(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage;		
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage <= 0)
 				{
 					health -= (Object.Attack_Point * 0.01);
 				}
 
-				Object.DelayTime_Total = 0;	
-			}		
-		}		
+				Object.DelayTime_Total = 0;
+			}
+		}
 	}
 }
 
 function council_SkillHitCount(Object)
 {
 	if(Object.Skill_Time_Total > 1)
-	{	
+	{
 		if(Object.Skill_Light.animations.name == 'Council_Light_' + Object.Direction)
 		{
 			var CurFrame = Object.Skill_Light.animations.frame;
@@ -712,16 +712,16 @@ function council_SkillHitCount(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage + 10;		
+					health -= monster_Attack_Damage + 10;
 				}
 				else if(monster_Attack_Damage <= 0)
 				{
 					health -= (Object.Attack_Point * 0.01);
 				}
-				
+
 				Object.Skill_Time_Total = 0;
-			}		
-		}		
+			}
+		}
 	}
 }
 
@@ -745,7 +745,7 @@ function council_Dead(Object)
 		}
 
 		var CurFrame = Object.animations.frame;
-		var EndFrame;		
+		var EndFrame;
 
 		if(Object.Direction == 0)
 		{
@@ -762,7 +762,7 @@ function council_Dead(Object)
 			Object.Name.visible = false;
 			Object.Skill_Light.visible = false;
 			Object.ExpCheck = true;
-		}				
+		}
 	}
 }
 
@@ -780,7 +780,7 @@ function council_Regen(Object)
 			Object.body.static = false;		//Collision true
 
 			Object.Regen_Check = false;
-			
+
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
@@ -818,10 +818,10 @@ function council_Hpbar_Mask(Object)
 function council_SkillPos(Object)
 {
 	if(Object.AttackCheck == false)
-	{		
+	{
 		Object.Skill_Light.x = Player.x;
-		Object.Skill_Light.y = Player.y;				
-	}	
+		Object.Skill_Light.y = Player.y;
+	}
 }
 
 function council_RectPos(Object)
@@ -865,8 +865,8 @@ function council_Update()
 		//Player Mosnter Collision
 		if(council.Regen_Check == false)
 		{
-			player_Monster_Col(council);			
-		}		
+			player_Monster_Col(council);
+		}
 
 		council_Dead(council);
 		council_Regen(council);
