@@ -2,8 +2,6 @@
 // Mouse Icon
 //-------------------------------------------------------------------------------------
 var mouse_Rect, mouseIcon, mouse_colcheck = false, mouse_IconCheck = false;
-var mouse_Timer, mouse_Time_Total = 0;
-var monster_Object;
 
 function mouse_Preload()
 {
@@ -20,9 +18,6 @@ function mouse_Create()
 	//Rect
 	mouse_Rect = new Phaser.Rectangle(Lucifer_Game.input.mousePointer.x, Lucifer_Game.input.mousePointer.y,
 									  40, 40);
-	//timer
-	mouse_Timer = Lucifer_Game.time.create(false);
-	mouse_Timer.loop(100, mouse_timer, Lucifer_Game);
 }
 
 function mouse_timer()
@@ -32,8 +27,6 @@ function mouse_timer()
 
 function mouse_ColCheck(Object)
 {
-	monster_Object = Object;
-
 	if(Object.DeadCheck == false) 
 	{	
 		if(Lucifer_Game.input.activePointer.leftButton.isDown)

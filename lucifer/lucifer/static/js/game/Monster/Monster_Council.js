@@ -671,9 +671,9 @@ function council_HitCount(Object)
 				{
 					health -= monster_Attack_Damage;		
 				}
-				else if(monster_Attack_Damage < 0)
+				else if(monster_Attack_Damage <= 0)
 				{
-					health -= 0;
+					health -= (Object.Attack_Point * 0.01);
 				}
 
 				Object.DelayTime_Total = 0;	
@@ -708,9 +708,9 @@ function council_SkillHitCount(Object)
 				{
 					health -= monster_Attack_Damage + 10;		
 				}
-				else if(monster_Attack_Damage < 0)
+				else if(monster_Attack_Damage <= 0)
 				{
-					health -= 0;
+					health -= (Object.Attack_Point * 0.01);
 				}
 				
 				Object.Skill_Time_Total = 0;

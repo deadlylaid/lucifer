@@ -572,9 +572,9 @@ function fallen_Shaman_HitCount(/*Bullet,*/ Object)
 				{
 					health -= monster_Attack_Damage;		
 				}
-				else if(monster_Attack_Damage < 0)
+				else if(monster_Attack_Damage <= 0)
 				{
-					health -= 0;
+					health -= (Object.Attack_Point * 0.01);
 				}
 				
 				Object.DelayTime_Total = 0;
