@@ -445,6 +445,11 @@ function useItem(){
 
 
         if(selectedItem.type_is==='potion'){
+            if(health + selectedItem.heal > maxHealth){
+                health = maxHealth;
+            }else{
+                health += selectedItem.heal;
+            }
             inventoryDelete(selectedItem.name);
         }else if(selectedItem.type_is==='weapon'){
             if(equipmentList[0]!==undefined){
