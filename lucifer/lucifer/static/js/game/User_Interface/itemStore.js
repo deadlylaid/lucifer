@@ -128,6 +128,14 @@ function itemStoreCreate(){
     superPotion.events.onInputDown.add(clickItem, this);
 
     Lucifer_Game.add.existing(superPotion);
+
+
+    hyperPotion = new potion(Lucifer_Game, 55, 300, itemList[6].name, itemList[6].heal, itemList[6].price, 6, itemStoreStyle);
+
+    hyperPotion.inputEnabled = true;
+    hyperPotion.events.onInputDown.add(clickItem, this);
+
+    Lucifer_Game.add.existing(hyperPotion);
     //---------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
 
@@ -197,6 +205,7 @@ function showStore(){
         saleTab.visible = false;
         redPotion.getVisible(false);
         superPotion.getVisible(false);
+        hyperPotion.getVisible(false);
         basicSword.getVisible(false);
         basicArmor.getVisible(false);
         uiStore.visible = false;
@@ -207,6 +216,7 @@ function showStore(){
         saleTab.visible = true;
         redPotion.getVisible(true);
         superPotion.getVisible(true);
+        hyperPotion.getVisible(true);
         uiStore.visible = true;
     }
 }
@@ -218,6 +228,7 @@ function potionStoreTab(){
     armorTab.alpha = 0.7;
     redPotion.getVisible(true);
     superPotion.getVisible(true);
+    hyperPotion.getVisible(true);
     basicSword.getVisible(false);
     basicArmor.getVisible(false);
 }
@@ -228,6 +239,7 @@ function swordStoreTab(){
     armorTab.alpha = 0.7;
     redPotion.getVisible(false);
     superPotion.getVisible(false);
+    hyperPotion.getVisible(false);
     basicSword.getVisible(true);
     basicArmor.getVisible(false);
 }
@@ -238,6 +250,7 @@ function armorStoreTab(){
     armorTab.alpha = 1;
     redPotion.getVisible(false);
     superPotion.getVisible(false);
+    hyperPotion.getVisible(false);
     basicSword.getVisible(false);
     basicArmor.getVisible(true);
 }
@@ -254,6 +267,10 @@ function clickItem(sprite){
             break;
         case '좋은빨간물약':
             selectedItem = goodRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+            selectedItem.numberInArray = i;
+            break;
+        case '최고의물약':
+            selectedItem = bestRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
             break;
         case '기본검':
@@ -398,6 +415,12 @@ function dropItem(){
             switch(tempInventory[i].name){
                 case '빨간물약':
                     inventory.push(redPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '좋은빨간물약':
+                    inventory.push(goodRedPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '최고의물약':
+                    inventory.push(bestRedPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
                 case '기본검':
                     inventory.push(basicSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
@@ -632,8 +655,12 @@ function changeServerListToClientList(){
                 inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 inventory[i].numberInArray = i;
                 break;
-            case '좋은빨간물약':/*335, 470*/
+            case '좋은빨간물약':
                 inventory[i]=goodRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                inventory[i].numberInArray = i;
+                break;
+            case '최고의물약':
+                inventory[i]=bestRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 inventory[i].numberInArray = i;
                 break;
             case '기본검':

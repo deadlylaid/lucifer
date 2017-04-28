@@ -18,12 +18,10 @@ potion = function (game, positionX, positionY, spriteKey, heal, price, index, it
     this.visible = false;
     this.price = price;
 
-    console.log(index);
-
     var itemData = [
         [ itemList[index].name ],
         [ '' ],
-        [ '      ', itemList[0].price ],
+        [ '      ', itemList[index].price ],
     ];
     parsedItemData = parseList(itemData);
     itemText = parsedItemData.text;
@@ -142,6 +140,24 @@ function goodRedPotionClone(positionX, positionY){
     //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
     redPotionObject = new potion(
         Lucifer_Game, positionX, positionY, itemList[3].name, itemList[3].heal, itemList[3].price, 3
+        );
+    redPotionObject.text.setText(redPotionObject.name);
+    redPotionObject.text.fontSize = 15;
+    redPotionObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(redPotionObject);
+    Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
+
+    redPotionObject.inputEnabled = true;
+    redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return redPotionObject;
+}
+
+function bestRedPotionClone(positionX, positionY){
+    //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
+    redPotionObject = new potion(
+        Lucifer_Game, positionX, positionY, itemList[6].name, itemList[6].heal, itemList[6].price, 6
         );
     redPotionObject.text.setText(redPotionObject.name);
     redPotionObject.text.fontSize = 15;
