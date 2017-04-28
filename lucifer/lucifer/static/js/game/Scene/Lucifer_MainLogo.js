@@ -1,12 +1,12 @@
-var logoScene = 
-{	
+var logoScene =
+{
 
 	preload: function()
 	{
 		this.load.image('space', '../../static/images/game/Menu/logospace.png', 138, 15);
 		this.load.image('logo', '../../static/images/game/Menu/logo.png');
 
-		//Sound 
+		//Sound
 		sound_Preload();
 
 	},
@@ -25,14 +25,14 @@ var logoScene =
 		sprite.alpha = 0;
 
 		this.add.tween(sprite).to({ alpha: 1}, 2000, Phaser.Easing.Linear.None, true, 0, 0, true);
-		
+
 		this.time.events.add(Phaser.Timer.SECOND * 4.5, start, this);
 
 	},
 
 };
 
-function start() 
+function start()
 {
 	Lucifer_Game.state.start('select');
 }

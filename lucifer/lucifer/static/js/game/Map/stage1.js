@@ -1,4 +1,4 @@
-var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수								
+var Background_map, Stage1, Stage1_Wall_Layer;		//Stage 이미지 변수
 var Collision_Layer;								//Collision Layer
 var Stage1_ObjectGroup = [];								//Stage1 - Object 관련 변수.
 var Stage1_Portal, Portal_Rect, Portal_Check;
@@ -39,14 +39,14 @@ var PolygonArray = ['STAGE1_Object_wall7', 'STAGE1_Object_wall15', 'STAGE1_Objec
 					'STAGE1_Object_item9', 'STAGE1_Object_Tree4', 'STAGE1_Object_item6',
 					'STAGE1_Object_wall29', 'STAGE1_Object_item1', 'STAGE1_Object_item37',
 					'STAGE1_Object_wall2', 'STAGE1_Object_Tree10', 'STAGE1_Object_wall11',
-					'STAGE1_Object_item3', 'STAGE1_Object_Tree2', 'STAGE1_Object_Tree5', 
+					'STAGE1_Object_item3', 'STAGE1_Object_Tree2', 'STAGE1_Object_Tree5',
 					'STAGE1_Object_Tree18', 'STAGE1_Object_Tree20', 'STAGE1_Object_item29'];
 
 var objectValueArray = [];
 
 
 function stageOne_Preload()
-{	
+{
 	Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
 	Lucifer_Game.load.spritesheet('Ingame_Banner', '../../static/images/game/Map/Stage1/Ingame_Banner.png');
@@ -58,9 +58,9 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('Collision_Tile', '../../static/images/game/Map/Collision_Tile.png');
 	Lucifer_Game.load.image('Object_WallTileSet', '../../static/images/game/Object/Stage1/Object_WallTileSet.png');
 
-	//Object 
+	//Object
 	//----------------------------------------------------------------------------------------------------------------
-	
+
 
 	// Tree
 	Lucifer_Game.load.image('STAGE1_Object_Tree', '../../static/images/game/Object/Stage1/struct13.png');
@@ -84,7 +84,7 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('STAGE1_Object_Tree18', '../../static/images/game/Object/Stage1/struct52.png');
 	Lucifer_Game.load.image('STAGE1_Object_Tree19', '../../static/images/game/Object/Stage1/struct53.png');
 	Lucifer_Game.load.image('STAGE1_Object_Tree20', '../../static/images/game/Object/Stage1/struct54.png');
-	//----------------------------------------------------------------------------------------------------------------	
+	//----------------------------------------------------------------------------------------------------------------
 
 	// Item
 	Lucifer_Game.load.image('STAGE1_Object_item0', '../../static/images/game/Object/Stage1/struct8.png');
@@ -93,8 +93,8 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('STAGE1_Object_item3', '../../static/images/game/Object/Stage1/struct11.png');
 	Lucifer_Game.load.image('STAGE1_Object_item4', '../../static/images/game/Object/Stage1/struct12.png');
 	Lucifer_Game.load.image('STAGE1_Object_item5', '../../static/images/game/Object/Stage1/struct15.png');
-	Lucifer_Game.load.image('STAGE1_Object_item6', '../../static/images/game/Object/Stage1/struct16.png');	
-	Lucifer_Game.load.image('STAGE1_Object_item7', '../../static/images/game/Object/Stage1/struct18.png');	
+	Lucifer_Game.load.image('STAGE1_Object_item6', '../../static/images/game/Object/Stage1/struct16.png');
+	Lucifer_Game.load.image('STAGE1_Object_item7', '../../static/images/game/Object/Stage1/struct18.png');
 	Lucifer_Game.load.image('STAGE1_Object_item8', '../../static/images/game/Object/Stage1/struct19.png');
 	Lucifer_Game.load.image('STAGE1_Object_item9', '../../static/images/game/Object/Stage1/struct20.png');
 	Lucifer_Game.load.image('STAGE1_Object_item10', '../../static/images/game/Object/Stage1/struct21.png');
@@ -103,8 +103,8 @@ function stageOne_Preload()
 	Lucifer_Game.load.image('STAGE1_Object_item13', '../../static/images/game/Object/Stage1/struct44.png');
 	Lucifer_Game.load.image('STAGE1_Object_item14', '../../static/images/game/Object/Stage1/struct55.png');
 	Lucifer_Game.load.image('STAGE1_Object_item15', '../../static/images/game/Object/Stage1/struct58.png');
-	Lucifer_Game.load.image('STAGE1_Object_item16', '../../static/images/game/Object/Stage1/struct59.png');	
-	Lucifer_Game.load.image('STAGE1_Object_item17', '../../static/images/game/Object/Stage1/struct60.png');	
+	Lucifer_Game.load.image('STAGE1_Object_item16', '../../static/images/game/Object/Stage1/struct59.png');
+	Lucifer_Game.load.image('STAGE1_Object_item17', '../../static/images/game/Object/Stage1/struct60.png');
 	Lucifer_Game.load.image('STAGE1_Object_item18', '../../static/images/game/Object/Stage1/struct65.png');
 	Lucifer_Game.load.image('STAGE1_Object_item19', '../../static/images/game/Object/Stage1/struct66.png');
 	Lucifer_Game.load.image('STAGE1_Object_item20', '../../static/images/game/Object/Stage1/struct67.png');
@@ -168,17 +168,17 @@ function stageOne_Preload()
 }
 
 function stageOne_Create()
-{	
-	//Stage2 -> Stage1 Portal move 
+{
+	//Stage2 -> Stage1 Portal move
 	//---------------------------------------------------------------------------------------
 	if(BackStageMove == 0){
 		objectValueArray=[];
 	}
 	//---------------------------------------------------------------------------------------
-	
-	//Map 
+
+	//Map
 	//---------------------------------------------------------------------------------------
-	Background_map = Lucifer_Game.add.tilemap('MAP_Stage1');		
+	Background_map = Lucifer_Game.add.tilemap('MAP_Stage1');
 	Background_map.addTilesetImage('Stage1_TileSet', 'Stage1_TileSet');
 	Background_map.addTilesetImage('Collision_Tile', 'Collision_Tile');
 	Background_map.addTilesetImage('Object_WallTileSet', 'Object_WallTileSet');
@@ -191,8 +191,8 @@ function stageOne_Create()
 
 	Stage1.resizeWorld();
 	//---------------------------------------------------------------------------------------
-	
-	
+
+
 	//Object
 	//---------------------------------------------------------------------------------------
 
@@ -351,7 +351,7 @@ function stageOne_Create()
 	Stage1_ObjectGroup.create(5793, 1200, 'STAGE1_Object_Tree14');
 	Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');
 	Stage1_ObjectGroup.create(1072, 1886, 'STAGE1_Object_item31');
-	
+
 	/*Stage1_ObjectGroup.create(1005, 1759, 'STAGE1_Object_item1');*/
 	// forest end
 
@@ -360,8 +360,8 @@ function stageOne_Create()
 	for(var i = 0; i < Stage1_ObjectGroup.length; ++i)
 	{
 		Stage1_ObjectGroup.getChildAt(i).body.static = true;
-		objectValueArray.push(Stage1_ObjectGroup.getChildAt(i).key);		
-	}		
+		objectValueArray.push(Stage1_ObjectGroup.getChildAt(i).key);
+	}
 	//---------------------------------------------------------------------------------------
 
 
@@ -373,7 +373,7 @@ function stageOne_Create()
 		for(var i = 0; i < PolygonArray.length; i++)
 		{
 			if(objectValueArray[a] == PolygonArray[i])
-			{	
+			{
 
 				Stage1_ObjectGroup.getChildAt(a).body.clearShapes();
 				Stage1_ObjectGroup.getChildAt(a).body.loadPolygon('Physics_polygon2', PolygonArray[i]);
@@ -383,12 +383,12 @@ function stageOne_Create()
 			else
 			{
 				continue;
-				
-			}
-		}		
-	}	
 
-	
+			}
+		}
+	}
+
+
 	//---------------------------------------------------------------------------------------
 
 	//Portal
@@ -411,17 +411,17 @@ function stageOne_Create()
 
 	//Portal_Rect
 	Portal_Rect = new Phaser.Rectangle(Stage1_Portal.x, Stage1_Portal.y, 100, 100);
-	Portal_Check = false;	
+	Portal_Check = false;
 	//---------------------------------------------------------------------------------------
 
 	Background_map.setCollision(21, true, "Collision Layer");
 	Lucifer_Game.physics.p2.convertTilemap(Background_map, "Collision Layer");
 
 
-	
+
 
 	//Welcome TEXT (게임 첫 시작에만 나옴.)
-	if(BackStageMove == 1) 
+	if(BackStageMove == 1)
 	{
 
     Ingame_Banner = Lucifer_Game.add.sprite(640, 120, 'Ingame_Banner');
@@ -443,9 +443,9 @@ function stageOne_Create()
     Lucifer_Game.add.tween(BannerTEXT).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
 
 
-    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, imagedestroy, this);	
+    Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 6, imagedestroy, this);
 
-	} 
+	}
 	else {
 	text_wel = Lucifer_Game.add.text(640, 150, "Stage1 : 마을", {font: '50px Roboto', fill: '#ffffff'});
     text_wel.anchor.set(0.5);
@@ -460,7 +460,7 @@ function stageOne_Create()
     var grd = text_wel.context.createLinearGradient(0, 0, 0, text_wel.height);
 
     //  Add in 2 color stops
-    grd.addColorStop(0, '#d13034');   
+    grd.addColorStop(0, '#d13034');
     grd.addColorStop(1, '#66191b');
 
     //  And apply to the Text
@@ -485,7 +485,7 @@ function stageOne_Create()
 
 }
 
-	
+
 function TextVisible(){
 	text_wel.destroy();
 

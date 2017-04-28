@@ -12,12 +12,12 @@ function sound_Create()
 {
 	sound_MenuBgm   = Lucifer_Game.add.audio('Menu_Bgm', 0.2, true);
 	sound_Stage1Bgm = Lucifer_Game.add.audio('Stage1_Bgm', 0.2, true);
-	sound_Stage2Bgm = Lucifer_Game.add.audio('stage2_Bgm', 0.2, true);	
+	sound_Stage2Bgm = Lucifer_Game.add.audio('stage2_Bgm', 0.2, true);
 }
 
 function sound_PlayMenuBGM()
 {
-	//sound_MenuBgm.play();	
+	//sound_MenuBgm.play();
 }
 
 function sound_StopMenuBGM()
@@ -42,5 +42,5 @@ function sound_PlayStage2BGM()
 
 function sound_StopStage2BGM()
 {
-	//sound_Stage2Bgm.stop();	
+	//sound_Stage2Bgm.stop();
 }

@@ -15,10 +15,10 @@ Inferno.prototype.constructor = Inferno;
 
 function diaSkill_Preload()
 {
-	//Skill    
-    Lucifer_Game.load.spritesheet('Inferno', 
+	//Skill
+    Lucifer_Game.load.spritesheet('Inferno',
                                   '../../static/images/game/Monster_Skill/Diablo_Dialnferno.png',
-                                   220, 160);	
+                                   220, 160);
     Lucifer_Game.load.image('Fire', '../../static/images/game/Monster_Skill/Diablo_Fire.png');
 }
 
@@ -28,7 +28,7 @@ function diaSkill_Inferno_Clone(x, y)
 
 	diablo_Inferno.anchor.setTo(0.5, 0.5);
 	diablo_Inferno.visible = false;
-	diablo_Inferno.blendMode = Phaser.blendModes.ADD;		
+	diablo_Inferno.blendMode = Phaser.blendModes.ADD;
 
 	//Animation
 	var index = 0;
@@ -42,15 +42,15 @@ function diaSkill_Inferno_Clone(x, y)
 									  ], 60, true);
 
 		index += 15;
-	}	
+	}
 
 	diablo_Inferno.loadTexture('Inferno', 0, true);
-	diablo_Inferno.animations.play('Inferno_0', 5, true);	
+	diablo_Inferno.animations.play('Inferno_0', 5, true);
 
 	Lucifer_Game.add.existing(diablo_Inferno);
 
 	//Rect
-	diablo_Inferno.SkillRect = new Phaser.Rectangle(diablo_Inferno.x, diablo_Inferno.y, 100, 100); 
+	diablo_Inferno.SkillRect = new Phaser.Rectangle(diablo_Inferno.x, diablo_Inferno.y, 100, 100);
 
 	return diablo_Inferno;
 }
@@ -60,7 +60,7 @@ function diaSkill_Fire_Attack(Object)
 {
 	if(Object.Pattern_Skill == true && Object.Pattern_Change == true)
 	{
-		Object.Fire.setAll('visible', true);	
+		Object.Fire.setAll('visible', true);
 
 		var amount, start, step, i, angle, speed;
 		amount = 36;
@@ -70,7 +70,7 @@ function diaSkill_Fire_Attack(Object)
 
 		while(i > 0)
 		{
-			Object.Fire_Bullet = Object.Fire.getFirstDead(); 			
+			Object.Fire_Bullet = Object.Fire.getFirstDead();
 
 			if(Object.Fire_Bullet)
 			{
@@ -80,7 +80,7 @@ function diaSkill_Fire_Attack(Object)
 				speed = 300;
 
 				Object.Fire_Bullet.body.velocity.x = Math.cos(angle) * speed;
-				Object.Fire_Bullet.body.velocity.y = Math.sin(angle) * speed;			
+				Object.Fire_Bullet.body.velocity.y = Math.sin(angle) * speed;
 			}
 
 			--i;
@@ -90,10 +90,10 @@ function diaSkill_Fire_Attack(Object)
 
 //Inferno Animation Change
 function diaSkill_Inferno_Animation_Change(Direction, Object)
-{	
+{
 	Object.Inferno.visible = true;
 	Object.Inferno.loadTexture('Inferno', 0, true);
-	Object.Inferno.animations.play('Inferno_' + Direction, 10, true);		
+	Object.Inferno.animations.play('Inferno_' + Direction, 10, true);
 }
 
 function diaSkill_Direction_Inferno_Position(Direction, Object)
@@ -132,14 +132,14 @@ function diaSkill_Direction_Inferno_Position(Direction, Object)
 		Object.Inferno.x = Object.x + 50;
 		Object.Inferno.y = Object.y - 40;
 		break;
-	}	
+	}
 
 	//Rect Pos
 	Object.Inferno.SkillRect.x = Object.Inferno.x;
 	Object.Inferno.SkillRect.y = Object.Inferno.y;
-	Object.Inferno.SkillRect.centerOn(Object.Inferno.x, Object.Inferno.y);	
+	Object.Inferno.SkillRect.centerOn(Object.Inferno.x, Object.Inferno.y);
 }
-	
+
 function diaSkill_Fire_Col(Object)
 {
 	/*Player defence_point 가 제대로 안들어 왔는지 NaN의 값이 나온다. 확인해 봐야 된다.
@@ -151,7 +151,7 @@ function diaSkill_Fire_Col(Object)
 		{
 			var CurFrame = Object.animations.frame;
 			var EndFrame = 0;
-	
+
 			if(Object.Direction == 0)
 			{
 				EndFrame = 17;
@@ -167,14 +167,14 @@ function diaSkill_Fire_Col(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= Object.Skill_Attack_Point1;		
+					health -= Object.Skill_Attack_Point1;
 				}
 				else if(monster_Attack_Damage < 0)
 				{
 					health -= 0;
-				}					
-			}				
-		}					
+				}
+			}
+		}
 	}
 }
 
@@ -195,22 +195,22 @@ function diaSkill_Inferno_Col(Object)
 			{
 				EndFrame = 16 * (Object.Direction + 1);
 			}
-	
+
 			if(CurFrame < EndFrame)
 			{
 				var monster_Attack_Damage = (Object.Skill_Attack_Point - defence_point);
-	
+
 				if(monster_Attack_Damage > 0)
 				{
-					health -= Object.Skill_Attack_Point;		
+					health -= Object.Skill_Attack_Point;
 				}
 				else if(monster_Attack_Damage < 0)
 				{
 					health -= 0;
-				}				
-			}				
-		}		
-	}	
+				}
+			}
+		}
+	}
 }
 
 function diaSkill_Update()

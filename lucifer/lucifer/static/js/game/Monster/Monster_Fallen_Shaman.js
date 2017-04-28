@@ -1,4 +1,4 @@
-// Shaman 기본 변수 
+// Shaman 기본 변수
 //------------------------------------------------------------------------------
 var fallenShaman_Group, fallenShaman_Object;
 //------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Attack_DelayTimer, this.DelayTime_Total = 1;
 
 	//Direction
-	this.Distance, this.Angle, 
+	this.Distance, this.Angle,
 	this.PreDirection, this.Direction;
 
 	//Return Direction
@@ -43,11 +43,11 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	//MotionCheck
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
-	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;	
+	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 	this.MouseCheck = false;
 
 	//FireBall
-	this.FireBall, this.NextFire = 0, this.FireRate = 1500;	
+	this.FireBall, this.NextFire = 0, this.FireRate = 1500;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
@@ -77,13 +77,13 @@ function fallen_Shaman_Preload()
 								   120, 120);
 	Lucifer_Game.load.spritesheet('MON_FallenShaman_Dead',
 								  '../../static/images/game/Monster/FallenShaman/Death/Death.png',
-								   83, 83);	
+								   83, 83);
 	Lucifer_Game.load.image('SK_FireBall', '../../static/images/game/Monster_Skill/Fire_Ball.png');
 }
 
 function fallen_Shaman_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_FallenShaman_Stand', 'MON_FallenShaman_Run', 
+	Lucifer_Game.renderer.setTexturePriority(['MON_FallenShaman_Stand', 'MON_FallenShaman_Run',
 											  'MON_FallenShaman_Attack', 'MON_FallenShaman_Dead']);
 
 	//Group
@@ -111,9 +111,9 @@ function fallen_Shaman_Clone(PointX, PointY)
 	{
 		fallenShaman_Object.animations.add('MON_FallenShaman_Stand_' + i,
 										   [
-										   	  index,      index + 1, index + 2, index + 3, index + 4, 
-										   	  index + 5,  index + 6, index + 7, index + 8, index + 9, 
-										   	  index + 10, index + 11 
+										   	  index,      index + 1, index + 2, index + 3, index + 4,
+										   	  index + 5,  index + 6, index + 7, index + 8, index + 9,
+										   	  index + 10, index + 11
 										   ], 60, true);
 		index += 12;
 	}
@@ -124,9 +124,9 @@ function fallen_Shaman_Clone(PointX, PointY)
 	{
 		fallenShaman_Object.animations.add('MON_FallenShaman_Run_' + i,
 										   [
-										   	  index,      index + 1,  index + 2,  index + 3, index + 4, 
-										   	  index + 5,  index + 6,  index + 7,  index + 8, index + 9, 
-										   	  index + 10, index + 11, index + 12, index + 13 
+										   	  index,      index + 1,  index + 2,  index + 3, index + 4,
+										   	  index + 5,  index + 6,  index + 7,  index + 8, index + 9,
+										   	  index + 10, index + 11, index + 12, index + 13
 										   ], 60, true);
 		index += 14;
 	}
@@ -137,10 +137,10 @@ function fallen_Shaman_Clone(PointX, PointY)
 	{
 		fallenShaman_Object.animations.add('MON_FallenShaman_Attack_' + i,
 										   [
-										   	  index,      index + 1,  index + 2,  index + 3,  index + 4, 
-										   	  index + 5,  index + 6,  index + 7,  index + 8,  index + 9, 
+										   	  index,      index + 1,  index + 2,  index + 3,  index + 4,
+										   	  index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 										   	  index + 10, index + 11, index + 12, index + 13, index + 14,
-										   	  index + 15, index + 16 
+										   	  index + 15, index + 16
 										   ], 60, true);
 		index += 17;
 	}
@@ -152,8 +152,8 @@ function fallen_Shaman_Clone(PointX, PointY)
 									   	  index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   	  index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									   	  index + 10, index + 11, index + 12, index + 13, index + 14
-									   ], 
-									   60, true);	
+									   ],
+									   60, true);
 
 	fallenShaman_Object.loadTexture('MON_FallenShaman_Stand', 0, true);
 	fallenShaman_Object.animations.play('MON_FallenShaman_Stand_0', 10, true);
@@ -174,33 +174,33 @@ function fallen_Shaman_Clone(PointX, PointY)
 	//Name
 	fallenShaman_Object.Name = Lucifer_Game.add.text(fallenShaman_Object.x, fallenShaman_Object.y - 100,
 													 'Fallen Shman');
-	fallenShaman_Object.Name.anchor.set(0.5);	
+	fallenShaman_Object.Name.anchor.set(0.5);
 	fallenShaman_Object.Name.align = "center";
 	fallenShaman_Object.Name.font = 'Arial';
 	fallenShaman_Object.Name.fontSize = 13;
 	fallenShaman_Object.Name.fontWeight = 'normal';
 	fallenShaman_Object.Name.fill = '#19de65';
-    fallenShaman_Object.Name.visible = false;		
+    fallenShaman_Object.Name.visible = false;
 
-    //input Mouse Over / Up 
+    //input Mouse Over / Up
     fallenShaman_Object.inputEnabled = true;
     fallenShaman_Object.events.onInputOver.add(fallen_Shaman_over, fallenShaman_Object);
-    fallenShaman_Object.events.onInputOut.add(fallen_Shaman_out, fallenShaman_Object);		
+    fallenShaman_Object.events.onInputOut.add(fallen_Shaman_out, fallenShaman_Object);
 
     //Rect
 	fallenShaman_Object.HitRect = new Phaser.Rectangle(fallenShaman_Object.x, fallenShaman_Object.y, 70, 70);
-	fallenShaman_Object.AttackRect = new Phaser.Rectangle(fallenShaman_Object.x, fallenShaman_Object.y, 300, 300);								  	
+	fallenShaman_Object.AttackRect = new Phaser.Rectangle(fallenShaman_Object.x, fallenShaman_Object.y, 300, 300);
 
 	//Delay timer
 	fallenShaman_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
-	fallenShaman_Object.Attack_DelayTimer.loop(1000, fallen_Shaman_DelayTimer, Lucifer_Game, fallenShaman_Object);	
+	fallenShaman_Object.Attack_DelayTimer.loop(1000, fallen_Shaman_DelayTimer, Lucifer_Game, fallenShaman_Object);
 
 	//FireBall
 	fallenShaman_Object.FireBall = Lucifer_Game.add.group();
 	fallenShaman_Object.FireBall.enableBody = true;
 	fallenShaman_Object.FireBall.physicsBodyType = Phaser.Physics.ARCADE;
 	fallenShaman_Object.FireBall.createMultiple(30, 'SK_FireBall');
-	fallenShaman_Object.FireBall.setAll('anchor.x', 0.5);	
+	fallenShaman_Object.FireBall.setAll('anchor.x', 0.5);
 	fallenShaman_Object.FireBall.setAll('anchor.y', 0.5);
 	fallenShaman_Object.FireBall.setAll('outOfBoundsKill', true);
 	fallenShaman_Object.FireBall.setAll('checkWorldBounds', true);
@@ -217,7 +217,7 @@ function fallen_Shaman_Clone(PointX, PointY)
 	fallenShaman_Object.blood_Effect = blood_Effect_Clone(fallenShaman_Object.x, fallenShaman_Object.y);
 
 	fallenShaman_Group.add(fallenShaman_Object);
-} 
+}
 //-------------------------------------------------------------------------------------------
 //Over / Out
 function fallen_Shaman_over(Object)
@@ -262,7 +262,7 @@ function fallen_Shaman_FollwName(Object)
 
 		var shaman_NamePointY = Object.position.y + 70;
 		Object.Name.y = shaman_NamePointY;
-	}		
+	}
 }
 //-------------------------------------------------------------------------------------------
 
@@ -319,11 +319,11 @@ function fallen_Shaman_GetDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
-	}	
+	}
 }
 
 function fallen_Shaman_GetReturnDirection(Object)
@@ -379,11 +379,11 @@ function fallen_Shaman_GetReturnDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
-	}	
+	}
 }
 
 function fallen_Shaman_Compare_Direction(PreDirection, CurDirection, Object)
@@ -391,7 +391,7 @@ function fallen_Shaman_Compare_Direction(PreDirection, CurDirection, Object)
 	if(PreDirection != CurDirection)
 	{
 		Object.CompareCheck = false;
-		Object.MoveCheck = false;		
+		Object.MoveCheck = false;
 	}
 }
 //-------------------------------------------------------------------------------------------
@@ -418,9 +418,9 @@ function fallen_Shaman_Animation_Change(Direction, Status, Object)
 		{
 			//Attack
 			Object.loadTexture('MON_FallenShaman_Attack', 0, true);
-			Object.animations.play('MON_FallenShaman_Attack_' + Direction, 10, true);		
+			Object.animations.play('MON_FallenShaman_Attack_' + Direction, 10, true);
 		}
-	}		
+	}
 }
 //-------------------------------------------------------------------------------------------
 
@@ -438,12 +438,12 @@ function fallen_Shaman_Move(Object)
 			if(Object.MoveCheck == false)
 			{
 				Object.AttackCheck = false;
-				Object.StandCheck = false;					
+				Object.StandCheck = false;
 				Object.MoveCheck = true;
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 80);
 				fallen_Shaman_Animation_Change(Object.Direction, 'Run', Object);
-			}			
+			}
 		}
 
 		if(Object.Distance < Object.AttackRange)
@@ -470,7 +470,7 @@ function fallen_Shaman_Move(Object)
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
 				Object.ReturnCheck = true;
-			}			
+			}
 		}
 
 		if(Object.ReturnCheck == true)
@@ -481,31 +481,31 @@ function fallen_Shaman_Move(Object)
 				if(Object.MoveCheck == false)
 				{
 					Object.MoveCheck = true;
-					
+
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 80);
-					fallen_Shaman_Animation_Change(Object.ReturnDirection, 'Run', Object);	
+					fallen_Shaman_Animation_Change(Object.ReturnDirection, 'Run', Object);
 				}
 			}
 
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
-				Object.ReturnCheck = false;	
+				Object.ReturnCheck = false;
 
 				if(Object.StandCheck == false)
 				{
 					Object.StandCheck = true;
 
-					fallen_Shaman_Animation_Change(Object.ReturnDirection, 'Stand', Object);					
-				}					
+					fallen_Shaman_Animation_Change(Object.ReturnDirection, 'Stand', Object);
+				}
 
 				Object.body.velocity.x = 0;
 				Object.body.velocity.y = 0;
 			}
 		}
 
-		fallen_Shaman_Compare_Direction(Object.PreDirection, Object.Direction, Object);	
-	}	
+		fallen_Shaman_Compare_Direction(Object.PreDirection, Object.Direction, Object);
+	}
 }
 
 function fallen_Shaman_Attack(Object)
@@ -519,10 +519,10 @@ function fallen_Shaman_Attack(Object)
 			if(Object.AttackCheck == false)
 			{
 				fallen_Shaman_Animation_Change(Object.Direction, 'Attack', Object);
-				Object.AttackCheck = true;	
+				Object.AttackCheck = true;
 			}
 
-			fallen_Shaman_FireBall_Fire(Object);			
+			fallen_Shaman_FireBall_Fire(Object);
 		}
 		else
 		{
@@ -542,12 +542,12 @@ function fallen_Shaman_FireBall_Fire(Object)
 
 		var fire_Ball = Object.FireBall.getFirstExists(false);
 		fire_Ball.reset(Object.x, Object.y);
-		
-		Lucifer_Game.physics.arcade.moveToObject(fire_Ball, Player, 200);	
+
+		Lucifer_Game.physics.arcade.moveToObject(fire_Ball, Player, 200);
 
 		//충돌 처리 안됨. 좀더 생각해 봐야됨.
-		Lucifer_Game.physics.arcade.overlap(fire_Ball, Player, fallen_Shaman_HitCount, null, this);	
-	}	
+		Lucifer_Game.physics.arcade.overlap(fire_Ball, Player, fallen_Shaman_HitCount, null, this);
+	}
 }
 
 function fallen_Shaman_HitCount(/*Bullet,*/ Object)
@@ -576,25 +576,25 @@ function fallen_Shaman_HitCount(/*Bullet,*/ Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage;		
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage <= 0)
 				{
 					health -= (Object.Attack_Point * 0.01);
 				}
-				
+
 				Object.DelayTime_Total = 0;
 				//Object.AttackCheck = false;
-			}		
-		}		
-	}	
+			}
+		}
+	}
 }
 
 function fallen_Shaman_Dead(Object)
 {
 	if(Object.Hp < 0)
 	{
-		Object.DeadCheck = true;			
+		Object.DeadCheck = true;
 	}
 
 	if(Object.DeadCheck == true)
@@ -607,7 +607,7 @@ function fallen_Shaman_Dead(Object)
 
 			//Collision false
 			Object.body.static = true;
-		}			
+		}
 
 		var currentFrame = Object.animations.frame;
 
@@ -616,8 +616,8 @@ function fallen_Shaman_Dead(Object)
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
-		}					
-	}		
+		}
+	}
 }
 
 function fallen_Shaman_Regen(Object)
@@ -634,7 +634,7 @@ function fallen_Shaman_Regen(Object)
 			Object.body.static = false;
 
 			Object.Regen_Check = false;
-			
+
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
@@ -664,7 +664,7 @@ function fallen_Shaman_Hpbar_Mask(Object)
 		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
 		Object.HpMask.endFill();
 		Object.HpBar.mask = Object.HpMask;
-	}	
+	}
 }
 
 //Rect Position / FireBall Pos
@@ -680,8 +680,8 @@ function fallen_Shaman_RectPos(Object)
 		//Attack Rect
 		Object.AttackRect.x = Object.x;
 		Object.AttackRect.y = Object.y;
-		Object.AttackRect.centerOn(Object.x, Object.y);				
-	}	
+		Object.AttackRect.centerOn(Object.x, Object.y);
+	}
 }
 
 // Shaman Update / Render
@@ -702,9 +702,9 @@ function fallen_Shaman_Update()
 		//Player Mosnter Collision
 		if(Shaman.Regen_Check == false)
 		{
-			player_Monster_Col(Shaman);			
+			player_Monster_Col(Shaman);
 		}
-		
+
 		//Dead
 		fallen_Shaman_Dead(Shaman);
 		fallen_Shaman_Regen(Shaman);
@@ -717,7 +717,7 @@ function fallen_Shaman_Update()
 
 		//Blood Effect
 		blood_Effect_Update(Shaman);
-	}	
+	}
 }
 
 function fallen_Shaman_Render()
@@ -725,7 +725,7 @@ function fallen_Shaman_Render()
 	for(var i = 0; i < fallenShaman_Group.length; ++i)
 	{
 		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).HitRect, 'rgba(0, 200, 0, 0.5)');
-		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).AttackRect, 'rgba(200, 0, 200, 0.5)');		
+		Lucifer_Game.debug.geom(fallenShaman_Group.getChildAt(i).AttackRect, 'rgba(200, 0, 200, 0.5)');
 	}
 }
 //-------------------------------------------------------------------------------------------

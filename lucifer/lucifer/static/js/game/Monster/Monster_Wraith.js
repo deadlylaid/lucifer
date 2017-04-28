@@ -44,7 +44,7 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 
 	//Level System
-	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;	
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
 }
 
 Wraith.prototype = Object.create(Phaser.Sprite.prototype);
@@ -70,7 +70,7 @@ function wraith_Preload()
 
 function wraith_Create()
 {
-	Lucifer_Game.renderer.setTexturePriority(['MON_Wraith_Stand', 'MON_Wraith_Run', 
+	Lucifer_Game.renderer.setTexturePriority(['MON_Wraith_Stand', 'MON_Wraith_Run',
 											  'MON_Wraith_Attack', 'MON_Wraith_Dead']);
 
 	wraith_Group = Lucifer_Game.add.group();
@@ -105,7 +105,7 @@ function wraith_Clone(PointX, PointY)
 									 	index, index + 1, index + 2, index + 3, index + 4,
 									 	index + 5, index + 6, index + 7
 									 ], 60, true);
-		index += 8;		
+		index += 8;
 	}
 
 	//Run
@@ -142,9 +142,9 @@ function wraith_Clone(PointX, PointY)
 									   index,      index + 1,  index + 2,  index + 3,  index + 4,
 									   index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									   index + 10, index + 11, index + 12, index + 13, index + 14,
-									   index + 15, index + 16, index + 17, index + 18, index + 19	
-									], 60, true);	
-		index += 20;	
+									   index + 15, index + 16, index + 17, index + 18, index + 19
+									], 60, true);
+		index += 20;
 	}
 
 	wraith_Object.loadTexture('MON_Wraith_Stand', 0, true);
@@ -288,11 +288,11 @@ function wraith_GetDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
-	}	
+	}
 }
 
 function wraith_GetReturnDirection(Object)
@@ -305,11 +305,11 @@ function wraith_GetReturnDirection(Object)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
-			
+
 			if(Object.y < Object.ReturnPointY)
 			{
 				Object.ReturnAngle = 2 * Math.PI - Object.ReturnAngle;
-			}	
+			}
 
 			if(Object.ReturnAngle >= 0 && Object.ReturnAngle <= 0.7)
 			{
@@ -348,8 +348,8 @@ function wraith_GetReturnDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
 	}
@@ -376,7 +376,7 @@ function wraith_Animation_Change(Direction, Status, Object)
 			//Stand
 			Object.loadTexture('MON_Wraith_Stand', 0, true);
 			Object.animations.play('MON_Wraith_Stand_' + Direction, 10, true);
-		}	
+		}
 		else if(Object.Status[1] == Status)
 		{
 			//Walk
@@ -412,7 +412,7 @@ function wraith_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				wraith_Animation_Change(Object.Direction, 'Run', Object);
-			}			
+			}
 		}
 
 		if(Object.Distance < Object.AttackRange)
@@ -423,7 +423,7 @@ function wraith_Move(Object)
 				wraith_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
 			}
-	
+
 			//Attack
 			wraith_Attack(Object);
 
@@ -439,7 +439,7 @@ function wraith_Move(Object)
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
 				Object.ReturnCheck = true;
-			}			
+			}
 		}
 
 		if(Object.ReturnCheck == true)
@@ -465,7 +465,7 @@ function wraith_Move(Object)
 				{
 					Object.StandCheck = true;
 
-					wraith_Animation_Change(Object.ReturnDirection, 'Stand', Object);						
+					wraith_Animation_Change(Object.ReturnDirection, 'Stand', Object);
 				}
 
 				Object.body.velocity.x = 0;
@@ -487,7 +487,7 @@ function wraith_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				wraith_Animation_Change(Object.Direction, 'Attack', Object);				
+				wraith_Animation_Change(Object.Direction, 'Attack', Object);
 				Object.AttackCheck = true;
 			}
 		}
@@ -525,16 +525,16 @@ function wraith_HitCount(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage;		
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage <= 0)
 				{
 					health -= (Object.Attack_Point * 0.01);
 				}
-				
-				Object.DelayTime_Total = 0;	
-			}		
-		}		
+
+				Object.DelayTime_Total = 0;
+			}
+		}
 	}
 }
 
@@ -558,7 +558,7 @@ function wraith_Dead(Object)
 		}
 
 		var CurFrame = Object.animations.frame;
-		var EndFrame;		
+		var EndFrame;
 
 		if(Object.Direction == 0)
 		{
@@ -574,7 +574,7 @@ function wraith_Dead(Object)
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
-		}				
+		}
 	}
 }
 
@@ -592,7 +592,7 @@ function wraith_Regen(Object)
 			Object.body.static = false;
 
 			Object.Regen_Check = false;
-			
+
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
@@ -661,8 +661,8 @@ function wraith_Update()
 		//Player Mosnter Collision
 		if(wraith.Regen_Check == false)
 		{
-			player_Monster_Col(wraith);				
-		}		
+			player_Monster_Col(wraith);
+		}
 
 		wraith_Dead(wraith);
 		wraith_Regen(wraith);

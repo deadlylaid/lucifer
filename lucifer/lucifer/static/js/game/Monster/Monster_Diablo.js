@@ -13,12 +13,12 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Stat (스킬 Attack Point도 추가해야 된다.)
 	/*this.Attack_Point = 300, this.Defence_Point = 350;
-	this.Skill_Attack_Point = 400, this.Skill_Attack_Point1 = 500;*/ 
+	this.Skill_Attack_Point = 400, this.Skill_Attack_Point1 = 500;*/
 	this.Attack_Point = 1, this.Defence_Point = 1;
 	this.Skill_Attack_Point = 10, this.Skill_Attack_Point1 = 10;
 
 	//Status
-	this.Status = new Array('Stand', 'Walk', 'Attack', 'Attack1', 'Dead', 
+	this.Status = new Array('Stand', 'Walk', 'Attack', 'Attack1', 'Dead',
 							'Skill', 'Skill1', 'Skill2', 'Skill3');
 
 	//Pos
@@ -103,19 +103,19 @@ function diablo_Preload()
 	Lucifer_Game.load.spritesheet('MON_Diablo_Blank',
 								  '../../static/images/game/Monster/Diablo/Blank.png',
 								  300, 300);
-	Lucifer_Game.load.spritesheet('monsterHealthBar', 
+	Lucifer_Game.load.spritesheet('monsterHealthBar',
                                   '../../static/images/game/Monster/monsterHealthBar.png',
-                                   228, 48);   
+                                   228, 48);
 
     //Skill
-    diaSkill_Preload(); 
+    diaSkill_Preload();
 }
 
 function diablo_Create()
 {
-	diablo_Clone(2811, 912);	
+	diablo_Clone(2811, 912);
 
-	Lucifer_Game.renderer.setTexturePriority(['MON_Diablo_Stand', 'MON_Diablo_Walk', 'MON_Diablo_Attack', 
+	Lucifer_Game.renderer.setTexturePriority(['MON_Diablo_Stand', 'MON_Diablo_Walk', 'MON_Diablo_Attack',
 											  'MON_Diablo_Attack1', 'MON_Diablo_Skill', 'MON_Diablo_Skill1',
 											  'MON_Diablo_Skill2', 'MON_Diablo_Skill3', 'MON_Diablo_Dead',
 											 ]);
@@ -174,11 +174,11 @@ function diablo_Clone(PointX, PointY)
 	{
 		diablo_Object.animations.add('MON_Diablo_Attack1_' + i,
 									 [
-									 	index,      index + 1,  index + 2,  index + 3,  index + 4, 
+									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
 									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									 	index + 10, index + 11, index + 12, index + 13, index + 14,
 									 	index + 15, index + 16, index + 17, index + 18, index + 19
-									 ], 60, true);	
+									 ], 60, true);
 		index += 20;
 	}
 
@@ -188,7 +188,7 @@ function diablo_Clone(PointX, PointY)
 	{
 		diablo_Object.animations.add('MON_Diablo_Skill_' + i,
 									 [
-									 	index,      index + 1,  index + 2,  index + 3,  index + 4, 
+									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
 									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									 	index + 10, index + 11, index + 12, index + 13, index + 14,
 									 	index + 15, index + 16
@@ -196,7 +196,7 @@ function diablo_Clone(PointX, PointY)
 
 		diablo_Object.animations.add('MON_Diablo_Skill2_' + i,
 									 [
-									 	index,      index + 1,  index + 2,  index + 3,  index + 4, 
+									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
 									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									 	index + 10, index + 11, index + 12, index + 13, index + 14,
 									 	index + 15, index + 16
@@ -210,11 +210,11 @@ function diablo_Clone(PointX, PointY)
 	{
 		diablo_Object.animations.add('MON_Diablo_Skill1_' + i,
 									 [
-									 	index,      index + 1,  index + 2,  index + 3,  index + 4, 
+									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
 									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									 	index + 10, index + 11, index + 12, index + 13, index + 14,
-									 	index + 15, index + 16, index + 17, 
-									 ], 60, true);	
+									 	index + 15, index + 16, index + 17,
+									 ], 60, true);
 		index += 18;
 	}
 
@@ -224,11 +224,11 @@ function diablo_Clone(PointX, PointY)
 	{
 		diablo_Object.animations.add('MON_Diablo_Skill3_' + i,
 									 [
-									 	index,      index + 1,  index + 2,  index + 3,  index + 4, 
+									 	index,      index + 1,  index + 2,  index + 3,  index + 4,
 									 	index + 5,  index + 6,  index + 7,  index + 8,  index + 9,
 									 	index + 10, index + 11, index + 12, index + 13, index + 14,
 									 	index + 15
-									 ], 60, true);	
+									 ], 60, true);
 		index += 16;
 	}
 
@@ -289,7 +289,7 @@ function diablo_Clone(PointX, PointY)
 
 	//Regen Timer
 	diablo_Object.Regen_Timer = Lucifer_Game.time.create(false);
-	diablo_Object.Regen_Timer.loop(1000, diablo_RegenTimer, Lucifer_Game, diablo_Object);	
+	diablo_Object.Regen_Timer.loop(1000, diablo_RegenTimer, Lucifer_Game, diablo_Object);
 
 	//Pattern Attack Timer
 	diablo_Object.Pattern_Attacktimer = Lucifer_Game.time.create(false);
@@ -300,20 +300,20 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.Skill_DelayTimer.loop(1000, diablo_Skill_Timer, Lucifer_Game, diablo_Object);
 
 	//Skill Effect / this.Inferno, this.Fire
-	diablo_Object.Inferno = diaSkill_Inferno_Clone(diablo_Object.x, diablo_Object.y);	
-	
+	diablo_Object.Inferno = diaSkill_Inferno_Clone(diablo_Object.x, diablo_Object.y);
+
 	diablo_Object.Fire = Lucifer_Game.add.group();
 	diablo_Object.Fire.enableBody = true;
 	diablo_Object.Fire.physicsBodyType = Phaser.Physics.ARCADE;
 	diablo_Object.Fire.createMultiple(3000, 'Fire');
 	diablo_Object.Fire.setAll('chechkWorldBounds', true);
-	diablo_Object.Fire.setAll('outOfBoundsKill', true);	
+	diablo_Object.Fire.setAll('outOfBoundsKill', true);
 	diablo_Object.Fire.setAll('visible', false);
-	diablo_Object.Fire.setAll('blendMode', Phaser.blendModes.ADD);	
+	diablo_Object.Fire.setAll('blendMode', Phaser.blendModes.ADD);
 
 	//Exp Timer
 	diablo_Object.ExpTimer = Lucifer_Game.time.create(false);
-	diablo_Object.ExpTimer.loop(10, diablo_ExpTimer, Lucifer_Game, diablo_Object);	
+	diablo_Object.ExpTimer.loop(10, diablo_ExpTimer, Lucifer_Game, diablo_Object);
 }
 //----------------------------------------------------------------------------------------------
 //Over / Out
@@ -417,11 +417,11 @@ function diablo_GetDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
-	}	
+	}
 }
 
 function diablo_GetReturnDirection(Object)
@@ -434,11 +434,11 @@ function diablo_GetReturnDirection(Object)
 		{
 			Object.ReturnAngle = Lucifer_Game.physics.arcade.angleToXY(Object, Object.ReturnPointX, Object.ReturnPointY);
 			Object.ReturnAngle = Math.abs(Object.ReturnAngle);
-			
+
 			if(Object.y < Object.ReturnPointY)
 			{
 				Object.ReturnAngle = 2 * Math.PI - Object.ReturnAngle;
-			}	
+			}
 
 			if(Object.ReturnAngle >= 0 && Object.ReturnAngle <= 0.7)
 			{
@@ -477,8 +477,8 @@ function diablo_GetReturnDirection(Object)
 
 			if(Object.CompareCheck == false)
 			{
-				Object.PreDirection = Object.Direction;	
-				Object.CompareCheck = true;			
+				Object.PreDirection = Object.Direction;
+				Object.CompareCheck = true;
 			}
 		}
 	}
@@ -489,9 +489,9 @@ function diablo_Compare_Direction(PreDirection, CurDirection, Object)
 	if(PreDirection != CurDirection)
 	{
 		Object.CompareCheck = false;
-		Object.MoveCheck = false;	
+		Object.MoveCheck = false;
 
-		//Object.AttackCheck = false;	
+		//Object.AttackCheck = false;
 	}
 }
 //----------------------------------------------------------------------------------------------
@@ -501,7 +501,7 @@ function diablo_Compare_Direction(PreDirection, CurDirection, Object)
 function diablo_Animation_Change(Direction, Status, Object)
 {
 	//'Stand', 'Walk', 'Attack', 'Attack1', 'Dead', 'Skill', 'Skill1', 'Skill2', 'Skill3'
-	//'MON_Diablo_Stand', 'MON_Diablo_Walk', 'MON_Diablo_Attack', 
+	//'MON_Diablo_Stand', 'MON_Diablo_Walk', 'MON_Diablo_Attack',
 	//'MON_Diablo_Attack1', 'MON_Diablo_Skill', 'MON_Diablo_Skill1',
 	//'MON_Diablo_Skill2', 'MON_Diablo_Skill3', 'MON_Diablo_Dead'
 
@@ -512,7 +512,7 @@ function diablo_Animation_Change(Direction, Status, Object)
 			//Stand
 			Object.loadTexture('MON_Diablo_Stand', 0, true);
 			Object.animations.play('MON_Diablo_Stand_' + Direction, 10, true);
-		}	
+		}
 		else if(Object.Status[1] == Status)
 		{
 			//Walk
@@ -580,15 +580,15 @@ function diablo_Move(Object)
 				diablo_Animation_Change(Object.Direction, 'Walk', Object);
 			}
 		}
-		
+
 		if(Object.Distance < Object.AttackRange)
 		{
-			//Stand			
+			//Stand
 			if(Object.StandCheck == false)
 			{
 				diablo_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
-			}			
+			}
 
 			//Attack
 			diablo_Attack(Object);
@@ -605,39 +605,39 @@ function diablo_Move(Object)
 				Object.AttackCheck = false;
 				Object.StandCheck = false;
 				Object.ReturnCheck = true;
-			}			
-		}		
+			}
+		}
 
 		if(Object.ReturnCheck == true)
 		{
 			//Return Walk
 			if(Object.ReturnDistance > 10)
-			{	
+			{
 				if(Object.MoveCheck == false)
 				{
 					Object.MoveCheck = true;
 
 					Lucifer_Game.physics.arcade.moveToXY(Object, Object.ReturnPointX, Object.ReturnPointY, 60);
-					diablo_Animation_Change(Object.Direction, 'Walk', Object);					
+					diablo_Animation_Change(Object.Direction, 'Walk', Object);
 				}
 			}
 
 			//Return Stand
 			if(Object.ReturnDistance < 10)
 			{
-				Object.ReturnCheck = false;				
+				Object.ReturnCheck = false;
 
 				if(Object.StandCheck == false)
 				{
 					Object.StandCheck = true;
 
-					diablo_Animation_Change(Object.Direction, 'Stand', Object);					
+					diablo_Animation_Change(Object.Direction, 'Stand', Object);
 				}
 
 				Object.body.velocity.x = 0;
 				Object.body.velocity.y = 0;
 			}
-		}	
+		}
 
 		diablo_Compare_Direction(Object.PreDirection, Object.Direction, Object);
 	}
@@ -651,23 +651,23 @@ function diablo_Attack(Object)
 		if(Phaser.Rectangle.intersects(Object.AttackRect, Hit_Rect))
 		{
 			Object.Attack_DelayTimer.start();
-			
+
 			if(Object.AttackCheck == false)
-			{	
+			{
 				if(Object.Pattern_Change == false)
 				{
 					//Attack Pattern
 					if(Object.Pattern_Attack == false)
 					{
 						//Attack Pattern - 1
-						diablo_Animation_Change(Object.Direction, 'Attack', Object);									
-					}	
+						diablo_Animation_Change(Object.Direction, 'Attack', Object);
+					}
 
 					if(Object.Pattern_Attack == true)
 					{
 						//Attack Pattern - 2
-						diablo_Animation_Change(Object.Direction, 'Attack1', Object);			
-					}		
+						diablo_Animation_Change(Object.Direction, 'Attack1', Object);
+					}
 				}
 				else if(Object.Pattern_Change == true)
 				{
@@ -676,42 +676,42 @@ function diablo_Attack(Object)
 					{
 						//Inferno Animation Change
 						diablo_Animation_Change(Object.Direction, 'Skill', Object);
-						diaSkill_Inferno_Animation_Change(Object.Direction, Object);																
+						diaSkill_Inferno_Animation_Change(Object.Direction, Object);
 					}
 
 					if(Object.Pattern_Skill == true)
 					{
 						//Fire
 						diablo_Animation_Change(Object.Direction, 'Skill1', Object);
-						diaSkill_Fire_Attack(Object);													
+						diaSkill_Fire_Attack(Object);
 					}
 
 					if(Object.Skill_Idle_Check == true)
 					{
 						diablo_Animation_Change(Object.Direction, 'Skill3', Object);
-					}				
+					}
 				}
 
-				Object.AttackCheck = true;					
+				Object.AttackCheck = true;
 			}
 		}
 		else
 		{
 			Object.StandCheck = false;
-			Object.MoveCheck = false;			
+			Object.MoveCheck = false;
 		}
 
-		//HitCount		
+		//HitCount
 		diablo_HitCount(Object);
 		diaSkill_Inferno_Col(Object);
 		diaSkill_Fire_Col(Object);
-	}	
+	}
 }
 
 function diablo_Pattern_Attack(Object)
-{	
+{
 	if(Object.Pattern_Attack == false && Object.Pattern_Change == false)
-	{	
+	{
 		Object.Pattern_Skill = false;
 
 		var CurFrame = Object.animations.frame;
@@ -724,21 +724,21 @@ function diablo_Pattern_Attack(Object)
 		else
 		{
 			EndFrame = 15 * (Object.Direction + 1);
-		}	
+		}
 
 		Object.Pattern_Attacktimer.start();
 		if(CurFrame == EndFrame)
-		{	
+		{
 			if(Object.Pattern_AttackTime > 3)
 			{
 				Object.Pattern_Attack = true;
 				Object.Pattern_AttackTime = 0;
-				Object.Pattern_Attacktimer.stop(false);	
+				Object.Pattern_Attacktimer.stop(false);
 
 				//Animation Change
-				diablo_Animation_Change(Object.Direction, 'Attack1', Object);					
-			}							
-		}		
+				diablo_Animation_Change(Object.Direction, 'Attack1', Object);
+			}
+		}
 	}
 
 	if(Object.Pattern_Attack == true && Object.Pattern_Change == false)
@@ -753,7 +753,7 @@ function diablo_Pattern_Attack(Object)
 		else
 		{
 			EndFrame = 19 * (Object.Direction + 1);
-		}					
+		}
 
 		Object.Pattern_Attacktimer.start();
 		if(CurFrame == EndFrame)
@@ -764,19 +764,19 @@ function diablo_Pattern_Attack(Object)
 				Object.Pattern_Change = true;
 
 				Object.Pattern_AttackTime = 0;
-				Object.Pattern_Attacktimer.stop(false);	
+				Object.Pattern_Attacktimer.stop(false);
 
 				//Skill Animation Change
-				diablo_Animation_Change(Object.Direction, 'Skill', Object);		
+				diablo_Animation_Change(Object.Direction, 'Skill', Object);
 
 				//Inferno Animation Change
-				diaSkill_Inferno_Animation_Change(Object.Direction, Object);							
+				diaSkill_Inferno_Animation_Change(Object.Direction, Object);
 			}
-		}		
-	}	
+		}
+	}
 
-	//console.log(Object.Pattern_Attack, Object.Pattern_Skill);	
-	//console.log(Object.Pattern_Change);	
+	//console.log(Object.Pattern_Attack, Object.Pattern_Skill);
+	//console.log(Object.Pattern_Change);
 	//console.log(Object.Pattern_AttackTime, Object.SkillTime_Total);
 }
 
@@ -797,20 +797,20 @@ function diablo_Pattern_Skill(Object)
 		else
 		{
 			EndFrame = 16 * (Object.Direction + 1);
-		}					
+		}
 
 		Object.Skill_DelayTimer.start();
 		if(CurFrame == EndFrame)
-		{		
+		{
 			if(Object.SkillTime_Total > 2)
 			{
 				Object.Pattern_Skill = true;
 
 				Object.SkillTime_Total = 0;
-				Object.Skill_DelayTimer.stop(false);	
+				Object.Skill_DelayTimer.stop(false);
 
 				//Skill1
-				diablo_Animation_Change(Object.Direction, 'Skill1', Object);				
+				diablo_Animation_Change(Object.Direction, 'Skill1', Object);
 			}
 		}
 	}
@@ -831,7 +831,7 @@ function diablo_Pattern_Skill(Object)
 		else
 		{
 			EndFrame = 17 * (Object.Direction + 1);
-		}					
+		}
 
 		Object.Skill_DelayTimer.start();
 		if(CurFrame == EndFrame)
@@ -848,7 +848,7 @@ function diablo_Pattern_Skill(Object)
 
 				//Skill3 Animation Change
 				diablo_Animation_Change(Object.Direction, 'Skill3', Object);
-			}							
+			}
 		}
 	}
 
@@ -865,19 +865,19 @@ function diablo_Pattern_Skill(Object)
 		else
 		{
 			EndFrame = 15 * (Object.Direction + 1);
-		}					
+		}
 
 		if(CurFrame == EndFrame)
 		{
 			//Skill 패턴이 다시 1로 시작할 수 있도록 되돌리고 / 공격 패턴으로 체인지 시킴.
 			Object.Skill_Idle_Check = false;
-			
+
 			//Pattern Change
 			Object.Pattern_Change = false;
 
 			//Animation Change
 			diablo_Animation_Change(Object.Direction, 'Attack', Object);
-		}		
+		}
 	}
 }
 
@@ -905,7 +905,7 @@ function diablo_HitCount(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage;		
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage <= 0)
 				{
@@ -913,7 +913,7 @@ function diablo_HitCount(Object)
 				}
 
 				Object.DelayTime_Total = 0;
-			}		
+			}
 		}
 		else if(Object.animations.name == 'MON_Diablo_Attack1_' + Object.Direction)
 		{
@@ -935,7 +935,7 @@ function diablo_HitCount(Object)
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= monster_Attack_Damage;		
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage <= 0)
 				{
@@ -944,7 +944,7 @@ function diablo_HitCount(Object)
 
 				Object.DelayTime_Total = 0;
 			}
-		}			
+		}
 	}
 }
 
@@ -973,7 +973,7 @@ function diablo_Dead(Object)
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
-		}			
+		}
 	}
 }
 
@@ -996,7 +996,7 @@ function diablo_Regen(Object)
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.MouseCheck = false;
-		
+
 			Object.Hp = 6000;
 			Object.MaxHp = 6000;
 			Object.x = Object.ReturnPointX;
@@ -1068,11 +1068,11 @@ function diablo_Update()
 	//Player Mosnter Collision
 	if(diablo.Regen_Check == false)
 	{
-		player_Monster_Col(diablo);			
-	}		
+		player_Monster_Col(diablo);
+	}
 
 	diablo_Dead(diablo);
-	diablo_Regen(diablo);	
+	diablo_Regen(diablo);
 
 	//Level System
 	check_Monster_Dead(diablo);
@@ -1089,6 +1089,6 @@ function diablo_Render()
 	var diablo = diablo_Object;
 
 	Lucifer_Game.debug.geom(diablo.HitRect, 'rgba(200, 0, 0, 0.5)');
-	Lucifer_Game.debug.geom(diablo.Inferno.SkillRect, 'rgba(0, 0, 200, 0.5)');	
+	Lucifer_Game.debug.geom(diablo.Inferno.SkillRect, 'rgba(0, 0, 200, 0.5)');
 }
 //----------------------------------------------------------------------------------------------

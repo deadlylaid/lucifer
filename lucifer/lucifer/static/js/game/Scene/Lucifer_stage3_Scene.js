@@ -2,7 +2,7 @@ var stage3_DebugCheck = false;
 var stage3_Scene =
 {
 	/*
-		STAGE2 
+		STAGE2
 		--몬스터 출몰 지역--
 	*/
 
@@ -24,7 +24,7 @@ var stage3_Scene =
 		sight_Filter_Create();
 
 		//UI
-		ui_Create();		
+		ui_Create();
 
 		//UI
 		ui_Create();
@@ -65,7 +65,7 @@ var stage3_Scene =
 
 		//Portal
 		portal_Check2();
-		
+
 		if (Portal_Check2 == true)
 		{
 			sound_StopStage1BGM();
@@ -81,14 +81,14 @@ var stage3_Scene =
 			//Player Render
 			player_Render();
 			diablo_Render();
-		}		
+		}
 	},
-	
+
 
 	goto_Stage_back: function()
-	{	
+	{
 		stageThree_Check = false;
-		
+
 		BackStageMove = 0;
 		//Sound
 		sound_StopStage2BGM();
@@ -101,8 +101,8 @@ function debug_Down()
 {
 	if(stage3_DebugCheck == false)
 	{
-		stage3_DebugCheck = true;	
-	}			
+		stage3_DebugCheck = true;
+	}
 }
 
 function debug_Up()
@@ -110,5 +110,5 @@ function debug_Up()
 	if(stage3_DebugCheck == true)
 	{
 		stage3_DebugCheck = false;
-	}	
+	}
 }
