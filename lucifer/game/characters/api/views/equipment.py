@@ -23,8 +23,9 @@ class EquipmentAPIView(ListAPIView):
         equipments = Equipment.objects.filter(character=character, body_parts=type_is)
 
         if equipments:
-            equipments[0].item_name = item
-            equipments[0].save
+            weapon = equipments[0]
+            weapon.item_name = item
+            weapon.save
         else:
             Equipment.objects.create(
                 character=character,
