@@ -60,28 +60,28 @@ function skill_Create()
 	skill_Bavarian.anchor.setTo(0.5, 0.5);		
 	skill_Bavarian.visible = false;
 	skill_Bavarian.blendMode = Phaser.blendModes.ADD;
-	skill_One_CoolTime = 3000;
+	skill_One_CoolTime = 60000;
 
     //Skill - 2(불꽃 스킬)
     skill_Bavarian_Two = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill2');
     skill_Bavarian_Two.anchor.setTo(0.5, 0.5);
     skill_Bavarian_Two.visible = false;
     skill_Bavarian_Two.blendMode = Phaser.blendModes.ADD;
-    skill_Two_CoolTime = 3000;
+    skill_Two_CoolTime = 7000;
 
     //Skill - 3(휠인더)
     skill_Bavarian_Three = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill3');
     skill_Bavarian_Three.anchor.setTo(0.5, 0.5);
     skill_Bavarian_Three.visible = false;
     skill_Bavarian_Three.blendMode = Phaser.blendModes.ADD;
-    skill_Three_CoolTime = 3000;
+    skill_Three_CoolTime = 10000;
 
     //Skill - 4(전기 공격)
     skill_Bavarian_Four = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill4');
     skill_Bavarian_Four.anchor.setTo(0.5, 0.5);
     skill_Bavarian_Four.visible = false;
     skill_Bavarian_Four.blendMode = Phaser.blendModes.ADD;
-    skill_Four_CoolTime = 3000;
+    skill_Four_CoolTime = 15000;
 
     //Skill - 5(칼날 공격)
     skill_Bavarian_Five = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill5');
@@ -89,7 +89,7 @@ function skill_Create()
     skill_Bavarian_Five.anchor.setTo(0.5, 0.5);
     skill_Bavarian_Five.visible = false;
     skill_Bavarian_Five.blendMode = Phaser.blendModes.ADD;
-    skill_Five_CoolTime = 4000; 
+    skill_Five_CoolTime = 20000; 
 
    	skill_Bavarian_Four_Effect = Lucifer_Game.add.sprite(Player.x, Player.y, 'SK_Bavarian_Skill4_Effect');
    	skill_Bavarian_Four_Effect.anchor.setTo(0.5, 0.5);

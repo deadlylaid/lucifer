@@ -10,6 +10,7 @@ var Player_AttackCheck = false;
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
 var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4, player_KeySkill5;
+var Player_DelayTimer, Player_Time_Total = 0;
 //----------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------
@@ -22,22 +23,22 @@ function player_Create()
 		Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');	
 
 		if(BackStageMove == 0)
-			{	Player.destroy();
-				Player = Lucifer_Game.add.sprite(3128, 582, 'PY_Bavarian_Attack');	
-				BackStageMove = 1;
-			}
+		{	
+			Player.destroy();
+			Player = Lucifer_Game.add.sprite(3128, 582, 'PY_Bavarian_Attack');	
+			BackStageMove = 1;
+		}
 	}
 	else if(stageTwo_Check == true)
 	{
 		Player = Lucifer_Game.add.sprite(3426, 4289, 'PY_Bavarian_Attack');	
 
 		if(BackStageMove == 0)
-			{	
-				Player.destroy();
-				Player = Lucifer_Game.add.sprite(8400, 1553, 'PY_Bavarian_Attack');	
-				BackStageMove = 1;
-			}
-
+		{	
+			Player.destroy();
+			Player = Lucifer_Game.add.sprite(8400, 1553, 'PY_Bavarian_Attack');	
+			BackStageMove = 1;
+		}
 	}
 	else if(stageThree_Check == true)
 	{	
@@ -56,7 +57,7 @@ function player_Create()
 
 	//Player_Bavarian Animation
 	//----------------------------------------------------------------------------------------------------------
-	//Stand
+	//Stand 
 	var j = 0;
 	for(var i = 0; i < 8; ++i)
 	{
@@ -86,6 +87,7 @@ function player_Create()
 							  60, true);
 		aniIndex += 16;								
 	}	
+
 	//Dash
 	j = 0;
 	for(var i = 0; i < 8; ++i)
@@ -186,7 +188,17 @@ function player_Create()
 	//Camera	
 	Lucifer_Game.camera.follow(Player);		//Camera follow	
 	Lucifer_Game.camera.setSize(1280, 800);
+
+	//Timer
+	Player_DelayTimer = Lucifer_Game.time.create(false);
+	Player_DelayTimer.loop(50, Player_Attack_DelayTimer, Lucifer_Game);
 }	
+
+//Time
+function Player_Attack_DelayTimer()
+{
+	++Player_Time_Total;
+}
 
 function GetDirection(){
 	//Player Direction
@@ -259,11 +271,8 @@ function Animation_Change(Direction, Status)
 	else if(Status == Player_Status[2])
 	{
 		//Attack
-		if(Player_AttackCheck == true)
-		{
-			Player.loadTexture('PY_Bavarian_Attack', 0, true);
-			Player.animations.play('PY_Bavarian_Attack_' + Direction, 20, true);
-		}		
+		Player.loadTexture('PY_Bavarian_Attack', 0, true);
+		Player.animations.play('PY_Bavarian_Attack_' + Direction, 20, true);								
 	}
 	else if(Status == Player_Status[3])
 	{
@@ -289,6 +298,33 @@ function Animation_Change(Direction, Status)
 	}
 }
 
+function Player_Frame()
+{
+	//Player Animation
+	var CurFrame = Player.animations.frame;
+	var EndFrame;
+
+	if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
+	{
+		if(Direction == 0)
+		{
+			EndFrame = 15;
+		}
+		else
+		{
+			EndFrame = 15 * (Direction + 1);
+		}
+	}
+	
+	if(CurFrame > EndFrame)
+	{
+		if(Player.animations.name != 'PY_Bavarian_Stand_' + Direction)
+		{
+			Animation_Change(Direction, 'Stand');
+		}
+	}
+}
+
 function PlayerMove()
 {
 	//Player Move & Stop
@@ -310,18 +346,9 @@ function PlayerMove()
 					Animation_Change(Direction, 'Dash');	
 				}								
 
-				/*if(stageTwo_Check == true)
-				{
-					Lucifer_Game.physics.arcade.moveToPointer(Player, 250);
-					Lucifer_Game.camera.x = Player.x + 250;
-					Lucifer_Game.camera.y = Player.y + 250;
-				}
-				else
-				{*/
-					Lucifer_Game.physics.arcade.moveToPointer(Player, 250);
-					Lucifer_Game.camera.x = Player.x + 250;
-					Lucifer_Game.camera.y = Player.y + 250;
-				//}				
+				Lucifer_Game.physics.arcade.moveToPointer(Player, 250);
+				Lucifer_Game.camera.x = Player.x + 250;
+				Lucifer_Game.camera.y = Player.y + 250;
 			}			
 			else
 			{
@@ -330,18 +357,9 @@ function PlayerMove()
 					Animation_Change(Direction, 'Walk');
 				}					
 
-				/*if(stageTwo_Check == true)
-				{
-					Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
-					Lucifer_Game.camera.x = Player.x + 150;
-					Lucifer_Game.camera.y = Player.y + 150;	
-				}
-				else
-				{*/
-					Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
-					Lucifer_Game.camera.x = Player.x + 150;
-					Lucifer_Game.camera.y = Player.y + 150;	
-				//}				
+				Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
+				Lucifer_Game.camera.x = Player.x + 150;
+				Lucifer_Game.camera.y = Player.y + 150;	
 			}				
 		}			
 
@@ -366,16 +384,7 @@ function PlayerMove()
 	}	
 	//---------------------------------------------------------------------------------------
 }
-
-function PlayerAttack()
-{
-	//Player Attack Motion (임시로 Monster를 Golem 으로 한정 시킴 나중에 이 함수를 바꿔서 여러 마리랑 가능하게 해야됨.)
-	//---------------------------------------------------------------------------------------
-	//console.log(Player.animations.frameTotal);
-	//console.log(Phaser.Rectangle.intersects(Attack_Rect, golem_HitRect));
-	//---------------------------------------------------------------------------------------	
-}
-
+function PlayerAttack(){}
 function PlayerSkill()
 {	
 	if(skill_One_Check == false)
@@ -514,7 +523,8 @@ function player_Update()
 			{
 				PlayerMove();
 				PlayerAttack();	
-				player_Level_Up();			
+				player_Level_Up();	
+				//Player_Frame();		
 			}						
    	 	}
 
@@ -530,7 +540,8 @@ function player_Update()
 			{
 				PlayerMove();
 				PlayerAttack();	
-				player_Level_Up();			
+				player_Level_Up();
+				//Player_Frame();			
 			}		
    	 	}
 
@@ -543,9 +554,8 @@ function player_Update()
 	Hit_Rect.centerOn(Player.x, Player.y);
 
 	player_AttackRect_Setting();
-
+	
 	//Debug 용도
-	//intersects = Phaser.Rectangle.intersection(Attack_Rect, golem_HitRect);
 	//console.log(Player.x, Player.y);
 	//---------------------------------------------------------------------------------------
 

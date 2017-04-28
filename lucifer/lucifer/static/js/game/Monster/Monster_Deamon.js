@@ -45,6 +45,9 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Level System
 	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+
+	//Blood Effect
+	this.blood_Effect;
 }
 
 Deamon.prototype = Object.create(Phaser.Sprite.prototype);
@@ -202,6 +205,9 @@ function deamon_Clone(PointX, PointY)
 	//Exp Timer
 	deamon_Object.ExpTimer = Lucifer_Game.time.create(false);
 	deamon_Object.ExpTimer.loop(10, deamon_ExpTimer, Lucifer_Game, deamon_Object);
+
+	//Blood Effect
+	deamon_Object.blood_Effect = blood_Effect_Clone(deamon_Object.x, deamon_Object.y);
 
 	deamon_Group.add(deamon_Object);
 }
@@ -611,6 +617,7 @@ function deamon_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.MouseCheck = false;
 
 			Object.Hp = 100;
 			Object.MaxHp = 100;
@@ -686,6 +693,9 @@ function deamon_Update()
 
 		//Mouse
 		mouse_ColCheck(deamon);
+
+		//Blood Effect
+		blood_Effect_Update(deamon);
 	}
 }
 
