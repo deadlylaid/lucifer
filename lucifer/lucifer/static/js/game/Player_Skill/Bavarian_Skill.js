@@ -14,6 +14,7 @@ var skill_Five_timer, skill_Five_TimeTotal;
 //***************************************************************************************
 var skill_One_Check = false, skill_Two_Check = false, skill_Three_Check = false, skill_Four_Check = false;
 var skill_Four_EffectCheck = false, skill_Five_Check = false;
+var skill_One_Attribute = false, tempAttack_Point;
 //***************************************************************************************
 var skill_Three_Count = 0, skill_Four_Count = 0, skill_Five_Count = 0;
 //***************************************************************************************
@@ -325,7 +326,7 @@ function skill_Reset()
 
 function skill_CoolTime()
 {
-	//Skill One Cool Time
+	//Skill One Cool Time	
 	if(player_KeySkill.isDown == true)
 	{
 		skill_One_Timer.start();
@@ -339,13 +340,24 @@ function skill_CoolTime()
 	if(skill_One_TimeTotal < skill_One_CoolTime)
 	{
 		skill_Icon_One.alpha = 0.5;	
-		skill_One_Check = true;			//첫번째 스킬 coolTime 체크
+		skill_One_Check = true;			  //첫번째 스킬 coolTime 체크
+
+		if(skill_One_Attribute == false)
+		{
+			tempAttack_Point = attack_point;
+			attack_point = tempAttack_Point + 10; //Attack Point Plus
+
+			skill_One_Attribute = true;
+		}				
 	}
 	else if(skill_One_TimeTotal > skill_One_CoolTime)
 	{
 		skill_Icon_One.alpha = 1.0;		
-		skill_One_Check = false;		//첫번째 스킬 coolTime 체크
-	}
+		skill_One_Check = false;		  //첫번째 스킬 coolTime 체크
+		
+		attack_point = tempAttack_Point;  //Attack Point 복원 
+		skill_One_Attribute = false;
+	}	
 
 	//Skill Two Cool Time
 	if(player_KeySkill2.isDown == true)
