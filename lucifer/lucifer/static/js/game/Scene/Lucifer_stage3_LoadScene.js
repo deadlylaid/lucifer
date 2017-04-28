@@ -14,6 +14,9 @@ var stage3_LoadScene =
 
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg3.png', 1280, 800);
 
+		//Sight Effect
+		sight_Filter_Preload();
+
 		//Stage Preload
 		//----------------------------------------------------------------------------------------------------------
 		stageThree_Preload();

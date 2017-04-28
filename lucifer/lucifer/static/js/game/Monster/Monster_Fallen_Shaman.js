@@ -54,6 +54,9 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Level System
 	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+
+	//Blood Effect
+	this.blood_Effect;
 }
 
 Fallen_Shaman.prototype = Object.create(Phaser.Sprite.prototype);
@@ -209,6 +212,9 @@ function fallen_Shaman_Clone(PointX, PointY)
 	//Exp Timer
 	fallenShaman_Object.ExpTimer = Lucifer_Game.time.create(false);
 	fallenShaman_Object.ExpTimer.loop(10, fallenShaman_ExpTimer, Lucifer_Game, fallenShaman_Object);
+
+	//Blood Effect
+	fallenShaman_Object.blood_Effect = blood_Effect_Clone(fallenShaman_Object.x, fallenShaman_Object.y);
 
 	fallenShaman_Group.add(fallenShaman_Object);
 } 
@@ -632,6 +638,7 @@ function fallen_Shaman_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.MouseCheck = false;
 
 			Object.Hp = 100;
 			Object.MaxHp = 100;
@@ -707,6 +714,9 @@ function fallen_Shaman_Update()
 
 		//Mouse
 		mouse_ColCheck(Shaman);
+
+		//Blood Effect
+		blood_Effect_Update(Shaman);
 	}	
 }
 

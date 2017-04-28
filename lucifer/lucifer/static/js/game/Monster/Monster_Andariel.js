@@ -46,6 +46,9 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Level System
 	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+
+	//Blood Effect
+	this.blood_Effect;
 }
 
 Andariel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -186,6 +189,9 @@ function andariel_Clone(PointX, PointY)
 	//Exp Timer
 	andariel_Object.ExpTimer = Lucifer_Game.time.create(false);
 	andariel_Object.ExpTimer.loop(10, andariel_ExpTimer, Lucifer_Game, andariel_Object);
+
+	//Blood Effect
+	andariel_Object.blood_Effect = blood_Effect_Clone(andariel_Object.x, andariel_Object.y);
 
 	andariel_Group.add(andariel_Object);
 }
@@ -611,6 +617,7 @@ function andariel_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.MouseCheck = false;
 
 			Object.Hp = 100;
 			Object.MaxHp = 100;
@@ -655,6 +662,9 @@ function andariel_Update()
 
 		//Mouse
 		mouse_ColCheck(andariel);
+
+		//Blood Effect
+		blood_Effect_Update(andariel);
 	}
 }
 

@@ -44,7 +44,7 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 
 	//Level System
-	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;	
 }
 
 Wraith.prototype = Object.create(Phaser.Sprite.prototype);
@@ -596,6 +596,7 @@ function wraith_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.MouseCheck = false;
 
 			Object.Hp = 100;
 			Object.MaxHp = 100;

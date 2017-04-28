@@ -61,6 +61,9 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Level System
 	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+
+	//Blood Effect
+	this.blood_Effect;
 }
 
 Diablo.prototype = Object.create(Phaser.Sprite.prototype);
@@ -992,6 +995,7 @@ function diablo_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.MouseCheck = false;
 		
 			Object.Hp = 6000;
 			Object.MaxHp = 6000;
@@ -1075,6 +1079,9 @@ function diablo_Update()
 
 	//Mouse
 	mouse_ColCheck(diablo);
+
+	//Blood Effect
+	blood_Effect_Update(diablo);
 }
 
 function diablo_Render()

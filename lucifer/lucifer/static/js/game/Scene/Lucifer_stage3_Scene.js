@@ -17,11 +17,14 @@ var stage3_Scene =
 		//Player
 		player_Create();
 
-		//UI
-		ui_Create();
-
 		//Monster
 		diablo_Create();
+
+		//Sight Effect
+		sight_Filter_Create();
+
+		//UI
+		ui_Create();		
 
 		//UI
 		ui_Create();

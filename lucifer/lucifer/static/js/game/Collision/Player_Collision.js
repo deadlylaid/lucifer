@@ -1,3 +1,5 @@
+var Player_AttackEnd_Check = false;
+
 function player_Monster_Col(Object)
 {
 	DistanceToMonster = Phaser.Math.distance(Player.x, Player.y, Object.x, Object.y);
@@ -8,12 +10,10 @@ function player_Monster_Col(Object)
 		{
 			if(Phaser.Rectangle.intersects(Attack_Rect, Object.HitRect))
 			{	
-				//충돌된 상태에서 다른곳 클릭하게 되면 공격모션이 나오는것을 예외처리 해주어야 한다.
-				if(Lucifer_Game.input.mousePointer.isDown)
+				//Player Attack motion
+				if(Lucifer_Game.input.activePointer.leftButton.isDown && Player_AttackCheck == false)
 				{
-					Animation_Change(Direction, 'Attack');	
-
-					Player_AttackCheck = true;								
+					Animation_Change(Direction, 'Attack');																	
 				}	
 				else
 				{					
@@ -40,6 +40,12 @@ function player_Monster_Col(Object)
 				//----------------------------------------------------------------------------
 				if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
 				{
+					//Animation Control / 잘 안된다.
+					if(Lucifer_Game.input.activePointer.leftButton.isDown)
+					{
+						Player_AttackCheck = true;	
+					}
+
 					var CurFrame = Player.animations.frame;
 					var EndFrame = 0;
 
@@ -52,7 +58,7 @@ function player_Monster_Col(Object)
 						EndFrame = 15 * (Direction + 1);
 					}
 
-					if(CurFrame + 8 < EndFrame)
+					if(CurFrame == EndFrame)
 					{
 						Damage_Count(Object);	
 
@@ -62,7 +68,7 @@ function player_Monster_Col(Object)
 							Object.blood_Effect.visible = true;
 							Object.blood_Effect.animations.play('blood_Ani', 10, true);
 						}
-					}	
+					}					
 
 					//Player Move Control					
 					Player.body.velocity.x = 0;
@@ -74,6 +80,17 @@ function player_Monster_Col(Object)
 			//Skill Damage
 			skill_Attack(Object);				
 		}	
+
+		//Attack Delay Timer Control
+		/*
+		Player_DelayTimer.start();
+		
+		if(Player_Time_Total > 1)
+		{
+			Player_AttackCheck = false;	
+			Player_Time_Total = 0;	
+		}
+		*/				
 	}	
 }
 
@@ -88,9 +105,7 @@ function Damage_Count(Monster)
 	else if(player_Attack_Dagmage < 0)
 	{
 		Monster.Hp -= (attack_point * 0.01);
-	}	 
-
-	console.log(Monster.Hp);
+	}
 }
 
 function skill_Attack(Monster)
@@ -100,7 +115,13 @@ function skill_Attack(Monster)
 	{
 		if(Phaser.Rectangle.intersects(skill_Two_Rect, Monster.HitRect))
 		{
-		   	Monster.Hp -= 10;						
+			var CurFrame = skill_Bavarian_Two.animations.frame;
+			var EndFrame = 14;
+
+			if(CurFrame == EndFrame)
+			{
+				Monster.Hp -= 10;	
+			}					   							
 		}				
 	}
 
@@ -109,7 +130,13 @@ function skill_Attack(Monster)
 	{
 		if(Phaser.Rectangle.intersects(skill_Three_Rect, Monster.HitRect))
 		{
-			Monster.Hp -= 30;
+			var CurFrame = skill_Bavarian_Three.animations.frame;
+			var EndFrame = 7;
+
+			if(CurFrame + 5 == EndFrame)
+			{
+				Monster.Hp -= 20;
+			}
 		}
 	}
 
@@ -118,7 +145,13 @@ function skill_Attack(Monster)
 	{
 		if(Phaser.Rectangle.intersects(skill_FourEffect_Rect, Monster.HitRect))
 		{
-			Monster.Hp -= 1;
+			var CurFrame = skill_Bavarian_Four_Effect.animations.frame;
+			var EndFrame = 19;
+
+			if(CurFrame == EndFrame)
+			{
+				Monster.Hp -= 5;	
+			}			
 		}
 	}
 
@@ -127,7 +160,13 @@ function skill_Attack(Monster)
 	{
 		if(Phaser.Rectangle.intersects(skill_Five_Rect, Monster.HitRect))
 		{
-			Monster.Hp -= 100;
+			var CurFrame = skill_Bavarian_Five.animations.frame;
+			var EndFrame = 31;
+
+			if(CurFrame == EndFrame)
+			{
+				Monster.Hp -= 100;	
+			}		
 		}
 	}
 }

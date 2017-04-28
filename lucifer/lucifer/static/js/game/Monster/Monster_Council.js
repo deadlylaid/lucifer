@@ -54,6 +54,9 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Level System
 	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+
+	//Blood Effect
+	this.blood_Effect;
 }
 
 Council.prototype = Object.create(Phaser.Sprite.prototype);
@@ -253,6 +256,9 @@ function council_Clone(PointX, PointY)
 	//Exp Timer
 	council_Object.ExpTimer = Lucifer_Game.time.create(false);
 	council_Object.ExpTimer.loop(10, council_ExpTiemr, Lucifer_Game, council_Object);
+
+	//Blood Effect
+	council_Object.blood_Effect = blood_Effect_Clone(council_Object.x, council_Object.y);
 
 	council_Group.add(council_Object);
 }
@@ -779,6 +785,7 @@ function council_Regen(Object)
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.Pattern_Nomal_Check = false, Object.Pattern_Skill_Check = false;
+			Object.MouseCheck = false;
 
 			Object.Hp = 100;
 			Object.MaxHp = 100;
@@ -869,6 +876,9 @@ function council_Update()
 
 		//Mouse
 		mouse_ColCheck(council);
+
+		//Blood Effect
+		blood_Effect_Update(council);
 	}
 }
 

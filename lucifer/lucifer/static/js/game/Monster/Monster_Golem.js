@@ -44,6 +44,9 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Level System
 	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+
+	//Blood Effect
+	this.blood_Effect;
 }
 
 Golem.prototype = Object.create(Phaser.Sprite.prototype);
@@ -175,6 +178,9 @@ function golem_Clone(PointX, PointY)
     //Exp Timer
 	golem_Object.ExpTimer = Lucifer_Game.time.create(false);
 	golem_Object.ExpTimer.loop(10, golem_ExpTimer, Lucifer_Game, golem_Object);
+
+	//Blood Effect
+	golem_Object.blood_Effect = blood_Effect_Clone(golem_Object.x, golem_Object.y);
 
     golem_Group.add(golem_Object);
 }
@@ -652,6 +658,9 @@ function golem_Update()
 
 		//Mouse
 		mouse_ColCheck(golem);
+
+		//Blood Effect
+		blood_Effect_Update(golem);
 	}	
 }
 
