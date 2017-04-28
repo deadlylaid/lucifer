@@ -181,8 +181,7 @@ function itemStoreCreate(){
 
     //Armor--------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
-
-    basicArmor = new armor(Lucifer_Game, 55, 105, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job, itemStoreStyle);
+    basicArmor = new armor(Lucifer_Game, 55, 105, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job, 2, itemStoreStyle);
 
     Lucifer_Game.physics.p2.enable(basicArmor);
     basicArmor.body.addRectangle(0, 0);

@@ -54,7 +54,7 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
-    this.price = 1000;
+    this.price = price;
 
     console.log(index);
 
@@ -82,7 +82,7 @@ sword.prototype.constructor = sword;
 
 
 //armor 객체를 만들때 사용
-armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, itemStoreStyle){
+armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, index, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
     //item status
@@ -95,12 +95,12 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
-    this.price = 1000;
+    this.price = price;
 
     var itemData = [
-            [ itemList[2].name ],
+            [ itemList[index].name ],
             [ '' ],
-            [ '      ', itemList[2].price ],
+            [ '      ', itemList[index].price ],
         ]
     parsedItemData = parseList(itemData);
     itemText = parsedItemData.text;
