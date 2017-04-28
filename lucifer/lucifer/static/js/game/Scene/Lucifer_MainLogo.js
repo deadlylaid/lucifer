@@ -8,6 +8,7 @@ var logoScene =
 
 		//Sound 
 		sound_Preload();
+
 	},
 
 	create: function()
@@ -26,6 +27,7 @@ var logoScene =
 		this.add.tween(sprite).to({ alpha: 1}, 2000, Phaser.Easing.Linear.None, true, 0, 0, true);
 		
 		this.time.events.add(Phaser.Timer.SECOND * 4.5, start, this);
+
 	},
 
 };
