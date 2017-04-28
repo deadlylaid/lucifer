@@ -6,6 +6,10 @@ var stage1_Scene =
 		STAGE1
 		--마을 Stage--
 	*/
+	preload: function()
+	{
+		mouse_Preload();
+	},
 
 	create: function()
 	{
@@ -111,8 +115,9 @@ var stage1_Scene =
 			//Skill
 	        skill_Debug_Render();
 
-	        //Mouse
+	        //mouse
 	        mouse_Render();
+
 		}
 	},
 

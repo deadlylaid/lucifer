@@ -336,7 +336,6 @@ function PlayerMove()
 		{
 			//Stand Check 를 원상태로 초기화.
 			StandCheck = false;		
-			mouseIcon.loadTexture('Default_Icon', 0, false);
 			
 			//Walk / Dash Animation Change
 			if(Lucifer_Game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
@@ -356,11 +355,11 @@ function PlayerMove()
 				{
 					Animation_Change(Direction, 'Walk');
 				}					
-
 				Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
 				Lucifer_Game.camera.x = Player.x + 150;
 				Lucifer_Game.camera.y = Player.y + 150;	
 			}				
+
 		}			
 
 		//Distance

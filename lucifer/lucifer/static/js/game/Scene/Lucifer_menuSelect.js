@@ -9,6 +9,11 @@ var menuSelectScene =
 		this.load.spritesheet('button', '../../static/images/game/Menu/startbutton.png', 355, 54);
 		this.load.spritesheet('closebtn', '../../static/images/game/Menu/close.png', 355, 54);
 		this.load.image('background', '../../static/images/game/Menu/menu.png');		
+
+		//Mouse
+		//----------------------------------------------------------------------------------------------------------
+		mouse_Preload();
+		//----------------------------------------------------------------------------------------------------------
 	},
 
 	create: function()
@@ -23,7 +28,17 @@ var menuSelectScene =
     	closebtn.onInputUp.add(exit, this);
     	//closebtn.onInputOver.add(over, this)''
 
+    	button.input.useHandCursor = true;
+
+    	//Mouse
+		mouse_Create();
 	},
+
+	update: function()
+	{
+		//Mouse
+		mouse_Update();
+	}
 };
 
 function up() {
