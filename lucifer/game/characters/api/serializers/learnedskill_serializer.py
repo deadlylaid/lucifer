@@ -11,5 +11,5 @@ class LearnedSkillSerializer(serializers.ModelSerializer):
         model = LearnedSkill
         fields = (
                 'skill_name',
-                'skill_level',
+                'demage',
                 )

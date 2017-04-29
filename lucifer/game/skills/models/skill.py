@@ -15,18 +15,9 @@ class Skill(models.Model):
             default=0,
             )
 
-    heal = models.IntegerField(
-            default=0,
-            )
-
-    reange = models.IntegerField(
-            default=0,
-            )
-
-    need_point = models.IntegerField(
-            default=1,
-            )
-
     limit_level = models.IntegerField(
             default=1,
             )
+
+    def __str__(self):
+        return self.name
