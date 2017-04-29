@@ -93,11 +93,12 @@ def character_post_save(sender, instance, created, **kwargs):
             LearnedSkill.objects.create(
                     character=instance,
                     skill=skill,
-                    demage=skill.demage,
+                    damage=skill.damage,
                     )
 
         for quest in Quest.objects.all():
             CharacterQuest.objects.create(
                     character=instance,
                     quest=quest,
+                    goal=quest.goal,
                     )
