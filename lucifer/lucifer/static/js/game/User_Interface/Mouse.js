@@ -32,7 +32,6 @@ function mouse_Create()
 
 	MovePoint.animations.play('MovePoint', 10, true);
 	MovePoint.anchor.setTo(0.5 , 0.5);
-	MovePoint.fixedToCamera = false;
 
 
 }
