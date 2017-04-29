@@ -142,7 +142,7 @@ function itemStoreCreate(){
 
     //Sword--------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
-    basicSword = new sword(Lucifer_Game, 55, 105, itemList[1].name, itemList[1].attack_point, itemList[1].limited_job, 1, itemStoreStyle);
+    basicSword = new sword(Lucifer_Game, 55, 105, itemList[1].name, itemList[1].attack_point, itemList[1].price, 1, itemStoreStyle);
 
     Lucifer_Game.physics.p2.enable(basicSword);
     basicSword.body.addRectangle(0, 0);
@@ -154,7 +154,7 @@ function itemStoreCreate(){
     Lucifer_Game.add.existing(basicSword);
 
 
-    strongSword = new sword(Lucifer_Game, 55, 200, itemList[4].name, itemList[4].attack_point, itemList[4].limited_job, 4, itemStoreStyle);
+    strongSword = new sword(Lucifer_Game, 55, 200, itemList[4].name, itemList[4].attack_point, itemList[4].price, 4, itemStoreStyle);
 
     Lucifer_Game.physics.p2.enable(strongSword);
     strongSword.body.addRectangle(0, 0);
@@ -165,7 +165,7 @@ function itemStoreCreate(){
 
     Lucifer_Game.add.existing(strongSword);
 
-    superSword = new sword(Lucifer_Game, 55, 300, itemList[7].name, itemList[7].attack_point, itemList[7].limited_job, 7, itemStoreStyle);
+    superSword = new sword(Lucifer_Game, 55, 300, itemList[7].name, itemList[7].attack_point, itemList[7].price, 7, itemStoreStyle);
 
     Lucifer_Game.physics.p2.enable(superSword);
     superSword.body.addRectangle(0, 0);

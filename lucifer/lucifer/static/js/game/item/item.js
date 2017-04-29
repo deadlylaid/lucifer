@@ -41,7 +41,7 @@ potion.prototype.getVisible = function(bool){
 potion.prototype.constructor = potion;
 
 //sword 객체를 만들때 사용
-sword = function (game, positionX, positionY, spriteKey, attack_point, limited_job, index, itemStoreStyle){
+sword = function (game, positionX, positionY, spriteKey, attack_point, price, index, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
     //item status
@@ -49,7 +49,6 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, limited_j
     this.name = spriteKey;
     this.type_is = 'weapon';
     this.attack_point = attack_point;
-    this.limited_job = limited_job;
 
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
@@ -95,12 +94,12 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
-    this.price = price;
+    this.price = 10;
 
     var itemData = [
-            [ itemList[index].name ],
+            [ itemList[2].name ],
             [ '' ],
-            [ '      ', itemList[index].price ],
+            [ '      ', itemList[2].price ],
         ]
     parsedItemData = parseList(itemData);
     itemText = parsedItemData.text;
@@ -176,7 +175,7 @@ function bestRedPotionClone(positionX, positionY){
 
 function basicSwordClone(positionX, positionY){
     basicSwordObject = new sword(
-        Lucifer_Game, positionX, positionY, itemList[1].name, itemList[1].attack_point, itemList[1].limited_job, 1
+        Lucifer_Game, positionX, positionY, itemList[1].name, itemList[1].attack_point, itemList[1].price, 1
         );
     basicSwordObject.text.setText(basicSwordObject.name);
     basicSwordObject.text.fontSize = 15;
@@ -193,7 +192,7 @@ function basicSwordClone(positionX, positionY){
 
 function strongSwordClone(positionX, positionY){
     basicSwordObject = new sword(
-        Lucifer_Game, positionX, positionY, itemList[4].name, itemList[4].attack_point, itemList[4].limited_job, 4
+        Lucifer_Game, positionX, positionY, itemList[4].name, itemList[4].attack_point, itemList[4].price, 4
         );
     basicSwordObject.text.setText(basicSwordObject.name);
     basicSwordObject.text.fontSize = 15;
@@ -210,7 +209,7 @@ function strongSwordClone(positionX, positionY){
 
 function superSwordClone(positionX, positionY){
     basicSwordObject = new sword(
-        Lucifer_Game, positionX, positionY, itemList[7].name, itemList[7].attack_point, itemList[7].limited_job, 7
+        Lucifer_Game, positionX, positionY, itemList[7].name, itemList[7].attack_point, itemList[7].price, 7
         );
     basicSwordObject.text.setText(basicSwordObject.name);
     basicSwordObject.text.fontSize = 15;
