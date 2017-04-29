@@ -407,7 +407,7 @@ function QuestUpdate(){
     btnText2.x = Math.floor(Questbtn_lv2.x - 197 + Questbtn_lv2.width / 2);
     btnText2.y = Math.floor(Questbtn_lv2.y - 18 + Questbtn_lv2.height / 2);
 
-    btnText3.x = Math.floor(Questbtn_lv3.x - 200 + Questbtn_lv3.width / 2);
+    btnText3.x = Math.floor(Questbtn_lv3.x - 186 + Questbtn_lv3.width / 2);
     btnText3.y = Math.floor(Questbtn_lv3.y - 18 + Questbtn_lv3.height / 2);
 
     btnText4.x = Math.floor(Questbtn_lv4.x - 200 + Questbtn_lv4.width / 2);
