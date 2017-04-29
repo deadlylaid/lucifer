@@ -540,6 +540,7 @@ function InfoUi()
     {
         viewInfo();
     }
+    playerQuestAdvence(0);
 }
 
 function timeCheck(){
