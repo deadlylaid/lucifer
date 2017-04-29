@@ -51,6 +51,13 @@ function skill_Preload()
 
 function skill_Create()
 {
+    learnedSkillLength = learnedSkill.length;
+
+    for(i=0; i<learnedSkillLength; i++){
+        var forSkill = new characterSkill(learnedSkill[i].skill_name, learnedSkill[i].damage, learnedSkill[i].limit_level);
+        learnedSkill[i] = forSkill;
+    }
+
 	Lucifer_Game.renderer.setTexturePriority(['SK_Bavarian_Skill', 'SK_Bavarian_Skill2', 'SK_Bavarian_Skill3',
 										      'SK_Bavarian_Skill4', 'SK_Bavarian_Skill5', 'SK_Icon_Skill',
 										      'SK_Icon_Skill2', 'SK_Icon_Skill3', 'SK_Icon_Skill4',
@@ -512,3 +519,9 @@ function skill_Debug_Render()
 	//Lucifer_Game.debug.geom(skill_Three_Rect, 'rgba(100, 100, 100, 0.4)');
 	Lucifer_Game.debug.geom(skill_Five_Rect, 'rgba(100, 100, 100, 0.4)');
 };
+
+function characterSkill(name, damage, limit_level){
+    this.name = name;
+    this.damage = damage;
+    this.limit_level = limit_level;
+}
