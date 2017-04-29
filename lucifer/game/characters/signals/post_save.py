@@ -2,7 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from users.models import User
-from game.characters.models import Character, Status, Inventory, CharacterQuest
+from game.characters.models import Character, Status, Inventory, CharacterQuest, Equipment
 from game.items.models import Item
 from game.quests.models import Quest
 
@@ -71,9 +71,21 @@ def character_post_save(sender, instance, created, **kwargs):
                 image_name='healthPotion1',
                 )
 
+        sword, is_true = Item.objects.get_or_create(
+                name='기본검',
+                type_is='weapon',
+                image_name='longSword',
+                )
+
         Inventory.objects.create(
                 character=instance,
                 item=item,
+                )
+
+        Equipment.objects.create(
+                character=instance,
+                item_name='기본검',
+                body_parts='weapon',
                 )
 
         for quest in Quest.objects.all():

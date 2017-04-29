@@ -81,7 +81,7 @@ sword.prototype.constructor = sword;
 
 
 //armor 객체를 만들때 사용
-armor = function (game, positionX, positionY, spriteKey, defence_point, limited_job, index, itemStoreStyle){
+armor = function (game, positionX, positionY, spriteKey, defence_point, price, index, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
 
     //item status
@@ -89,17 +89,16 @@ armor = function (game, positionX, positionY, spriteKey, defence_point, limited_
     this.name = spriteKey;
     this.type_is = 'armor';
     this.defence_point = defence_point;
-    this.limited_job = limited_job;
 
     this.anchor.setTo(0.5, 0.5);
     this.fixedToCamera = true;
     this.visible = false;
-    this.price = 10;
+    this.price = price;
 
     var itemData = [
-            [ itemList[2].name ],
+            [ itemList[index].name ],
             [ '' ],
-            [ '      ', itemList[2].price ],
+            [ '      ', itemList[index].price ],
         ]
     parsedItemData = parseList(itemData);
     itemText = parsedItemData.text;
@@ -226,7 +225,7 @@ function superSwordClone(positionX, positionY){
 
 function basicArmorClone(positionX, positionY){
     basicArmorObject = new armor(
-        Lucifer_Game, positionX, positionY, itemList[2].name, itemList[2].defence_point, itemList[2].limited_job
+        Lucifer_Game, positionX, positionY, itemList[2].name, itemList[2].defence_point, itemList[2].price, 2
         );
     basicArmorObject.text.setText(basicArmorObject.name);
     basicArmorObject.text.fontSize = 15;
@@ -241,6 +240,22 @@ function basicArmorClone(positionX, positionY){
     return basicArmorObject;
 }
 
+function strongArmorClone(positionX, positionY){
+    basicArmorObject = new armor(
+        Lucifer_Game, positionX, positionY, itemList[5].name, itemList[5].defence_point, itemList[5].price, 5
+        );
+    basicArmorObject.text.setText(basicArmorObject.name);
+    basicArmorObject.text.fontSize = 15;
+    basicArmorObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(basicArmorObject);
+    Lucifer_Game.physics.enable(basicArmorObject, Phaser.Physics.ARCADE);
+
+    basicArmorObject.inputEnabled = true;
+    basicArmorObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return basicArmorObject;
+}
 function itemsCreate(){
 
 }
