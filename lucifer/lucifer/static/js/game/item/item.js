@@ -256,6 +256,24 @@ function strongArmorClone(positionX, positionY){
 
     return basicArmorObject;
 }
+
+function superArmorClone(positionX, positionY){
+    basicArmorObject = new armor(
+        Lucifer_Game, positionX, positionY, itemList[8].name, itemList[8].defence_point, itemList[8].price, 8
+        );
+    basicArmorObject.text.setText(basicArmorObject.name);
+    basicArmorObject.text.fontSize = 15;
+    basicArmorObject.text.fill = '#fff';
+
+    Lucifer_Game.add.existing(basicArmorObject);
+    Lucifer_Game.physics.enable(basicArmorObject, Phaser.Physics.ARCADE);
+
+    basicArmorObject.inputEnabled = true;
+    basicArmorObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    return basicArmorObject;
+}
+
 function itemsCreate(){
 
 }
