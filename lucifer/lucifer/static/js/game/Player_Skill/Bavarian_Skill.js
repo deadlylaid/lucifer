@@ -54,7 +54,7 @@ function skill_Create()
     learnedSkillLength = learnedSkill.length;
 
     for(i=0; i<learnedSkillLength; i++){
-        var forSkill = new characterSkill(learnedSkill[i].skill_name, learnedSkill[i].damage);
+        var forSkill = new characterSkill(learnedSkill[i].skill_name, learnedSkill[i].damage, learnedSkill[i].limit_level);
         learnedSkill[i] = forSkill;
     }
 
@@ -520,7 +520,8 @@ function skill_Debug_Render()
 	Lucifer_Game.debug.geom(skill_Five_Rect, 'rgba(100, 100, 100, 0.4)');
 };
 
-function characterSkill(name, damage){
+function characterSkill(name, damage, limit_level){
     this.name = name;
     this.damage = damage;
+    this.limit_level = limit_level;
 }
