@@ -2,7 +2,6 @@
 // Mouse Icon
 //-------------------------------------------------------------------------------------
 var mouse_Rect, mouseIcon, mouse_colcheck = false, mouse_IconCheck = false;
-
 var MovePoint, MovePointX, MovePointY;
 
 function mouse_Preload()
@@ -22,21 +21,16 @@ function mouse_Create()
 	mouse_Rect = new Phaser.Rectangle(Lucifer_Game.input.mousePointer.x, Lucifer_Game.input.mousePointer.y,
 									  40, 40);
 
-	MovePoint = Lucifer_Game.add.sprite(640, 400, 'MovePoint');
-
-	MovePoint.animations.add('MovePoint',
+	MovePoint = Lucifer_Game.add.sprite(Lucifer_Game.input.mousePointer.x, Lucifer_Game.input.mousePointer.y, 'MovePoint');
+	MovePoint.animations.add('MovePoint_ani',
 									   [
 									   	  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
 									   ], 60, true);
-
-
-	MovePoint.animations.play('MovePoint', 10, true);
-	MovePoint.anchor.setTo(0.5 , 0.5);
-	MovePoint.fixedToCamera = false;
-
-
+	MovePoint.loadTexture('MovePoint', 0, true);
+	MovePoint.animations.play('MovePoint_ani', 10, true);
+	MovePoint.anchor.setTo(0.5 , 0.5);	
+	MovePoint.visible = false;
 }
-
 
 function mouse_ColCheck(Object)
 {
@@ -108,19 +102,14 @@ function mouse_Update()
 	mouseIcon.x = mouseposX;
 	mouseIcon.y = mouseposY;
 	
-	//
-
 	if(Lucifer_Game.input.activePointer.isDown)
-
 	{	
-		
 		MovePoint.x = Lucifer_Game.input.mousePointer.x + Lucifer_Game.camera.x - 773;
 		MovePoint.y = Lucifer_Game.input.mousePointer.y + Lucifer_Game.camera.y - 551;
 
+		//console.log(CurFrame, EndFrame, MovePoint.visible);
+		console.log(MovePoint.x , MovePoint.y);
 	}
-
-
-
 }
 
 function mouse_Render()
