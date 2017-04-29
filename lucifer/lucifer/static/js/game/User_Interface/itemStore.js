@@ -15,7 +15,8 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet(itemList[4].name, '../../static/images/game/item/'+ itemList[4].image_name + '.png', 55, 55);
     Lucifer_Game.load.spritesheet(itemList[5].name, '../../static/images/game/item/'+ itemList[5].image_name + '.png', 55, 55);
     Lucifer_Game.load.spritesheet(itemList[6].name, '../../static/images/game/item/'+ itemList[6].image_name + '.png', 55, 55);
-    Lucifer_Game.load.spritesheet(itemList[7].name, '../../static/images/game/item/'+ itemList[7].image_name + '.png', 55, 55); Lucifer_Game.load.spritesheet(itemList[8].name, '../../static/images/game/item/'+ itemList[8].image_name + '.png', 55, 55);
+    Lucifer_Game.load.spritesheet(itemList[7].name, '../../static/images/game/item/'+ itemList[7].image_name + '.png', 55, 55);
+    Lucifer_Game.load.spritesheet(itemList[8].name, '../../static/images/game/item/'+ itemList[8].image_name + '.png', 55, 55);
     Lucifer_Game.load.spritesheet('uiStore', '../../static/images/game/UI/store/store.png', 455, 684);
     Lucifer_Game.load.spritesheet('potionTab', '../../static/images/game/UI/store/PotionTab.png', 45, 80);
     Lucifer_Game.load.spritesheet('swordTab', '../../static/images/game/UI/store/swordTab.png', 45, 80);
@@ -201,6 +202,17 @@ function itemStoreCreate(){
     strongArmor.events.onInputDown.add(clickItem, this);
 
     Lucifer_Game.add.existing(strongArmor);
+
+    superArmor = new armor(Lucifer_Game, 55, 300, itemList[8].name, itemList[8].defence_point, itemList[8].price, 8, itemStoreStyle);
+
+    Lucifer_Game.physics.p2.enable(superArmor);
+    superArmor.body.addRectangle(0, 0);
+    superArmor.body.static = true;
+
+    superArmor.inputEnabled = true;
+    superArmor.events.onInputDown.add(clickItem, this);
+
+    Lucifer_Game.add.existing(superArmor);
     //---------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
 
@@ -243,6 +255,7 @@ function showStore(){
         superSword.getVisible(false);
         basicArmor.getVisible(false);
         strongArmor.getVisible(false);
+        superArmor.getVisible(false);
         uiStore.visible = false;
     }else{
         potionTab.visible = true;
@@ -269,6 +282,7 @@ function potionStoreTab(){
     superSword.getVisible(false);
     basicArmor.getVisible(false);
     strongArmor.getVisible(false);
+    superArmor.getVisible(false);
 }
 
 function swordStoreTab(){
@@ -283,6 +297,7 @@ function swordStoreTab(){
     superSword.getVisible(true);
     basicArmor.getVisible(false);
     strongArmor.getVisible(false);
+    superArmor.getVisible(false);
 }
 
 function armorStoreTab(){
@@ -297,6 +312,7 @@ function armorStoreTab(){
     superSword.getVisible(false);
     basicArmor.getVisible(true);
     strongArmor.getVisible(true);
+    superArmor.getVisible(true);
 }
 
 
@@ -335,6 +351,10 @@ function clickItem(sprite){
             break;
         case '강화갑옷':
             selectedItem = strongArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+            selectedItem.numberInArray = i;
+            break;
+        case '증오':
+            selectedItem = superArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
             break;
     }
@@ -494,7 +514,12 @@ function dropItem(){
                     break;
                 case '강화갑옷':
                     inventory.push(strongArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break; } }
+                    break;
+                case '증오':
+                    inventory.push(superArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+            }
+        }
         for(i=inventoryLength;i<inventory.length; i++){
             inventory[i].getVisible(true);
             inventory[i].numberInArray = i;
@@ -558,6 +583,9 @@ function useItem(){
                     break;
                 case '강화갑옷':
                     inventory.push(strongArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '증오':
+                    inventory.push(superArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
                     break;
             }
         }
@@ -634,6 +662,12 @@ function useItem(){
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
                         break;
+                    case '증오':
+                        var inserted_item = superArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        break;
                 }
                 inventoryPost(inserted_item.name);
             }
@@ -676,6 +710,11 @@ function createEquipmentAndSetPosition(itemName){
             break;
         case '강화갑옷':
             item = strongArmorClone(1048, 205);
+            item.text.setText('');
+            item.getVisible(false);
+            break;
+        case '증오':
+            item = superArmorClone(1048, 205);
             item.text.setText('');
             item.getVisible(false);
             break;
@@ -766,6 +805,11 @@ function changeServerListToClientListEquipment(){
 
                 equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
                 break;
+            case '증오':
+                equipmentList[1] = createEquipmentAndSetPosition('증오');
+
+                equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+                break;
         }
     }
 
@@ -807,6 +851,10 @@ function changeServerListToClientList(){
                 break;
             case '강화갑옷':
                 inventory[i]=strongArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                inventory[i].numberInArray = i;
+                break;
+            case '증오':
+                inventory[i]=superArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
                 inventory[i].numberInArray = i;
                 break;
         }
