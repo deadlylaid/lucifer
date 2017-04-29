@@ -33,8 +33,6 @@ var menuSelectScene =
 
     	//Mouse
 		mouse_Create();
-
-		MovePoint.visible = false;
 	},
 
 	update: function()
