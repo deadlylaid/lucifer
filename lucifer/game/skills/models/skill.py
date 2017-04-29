@@ -11,7 +11,7 @@ class Skill(models.Model):
             max_length=30,
             )
 
-    demage = models.IntegerField(
+    damage = models.IntegerField(
             default=0,
             )
 
