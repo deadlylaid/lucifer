@@ -5,7 +5,7 @@ var StandCheck = false;								//Stand 상태 한번만 들어오게 하기 위�
 var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값을 구하기 위한 변수들
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 var DistanceToMonster;								//Monster에 대한 거리값 변수.
-var Attack_Rect, Hit_Rect, Whirlwind_Rect;
+var Attack_Rect, Hit_Rect, Whirlwind_Rect, Pointer_Rect;
 var Player_AttackCheck = false;
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
@@ -134,6 +134,7 @@ function player_Create()
 	//Rect
 	Attack_Rect = new Phaser.Rectangle(Player.x, Player.y, 40, 40);
 	Hit_Rect = new Phaser.Rectangle(Player.x, Player.y, 60, 60);
+	Pointer_Rect = new Phaser.Rectangle(Player.x, Player.y, 110, 110);
 
 	//ID(닉네임)
 	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, nickname); //Test 부분에 Player Id 가 들어가면 됨.
@@ -552,6 +553,10 @@ function player_Update()
 	Hit_Rect.y = Player.y;
 	Hit_Rect.centerOn(Player.x, Player.y);
 
+	Pointer_Rect.x = Player.x;
+	Pointer_Rect.y = Player.y;
+	Pointer_Rect.centerOn(Player.x, Player.y);
+
 	player_AttackRect_Setting();
 
 	//Debug 용도
@@ -579,5 +584,6 @@ function player_Render()
 {
 	Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
 	Lucifer_Game.debug.geom(Hit_Rect, 'rgba(0, 0, 200, 0.5');
+	Lucifer_Game.debug.geom(Pointer_Rect, 'rgba(200, 200, 200, 0.5');
 	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
 };

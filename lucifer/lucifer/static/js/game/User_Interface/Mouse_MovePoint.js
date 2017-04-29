@@ -22,8 +22,7 @@ function movepoint_Create()
 	MovePoint.animations.play('MovePoint', 10, true);
 	MovePoint.anchor.setTo(0.5 , 0.5);
 
-	movepoint_rect = new Phaser.Rectangle(MovePoint.x, MovePoint.y, 40, 40);
-	movepoint_rect.visible = true;
+	
 }
 
 
@@ -42,11 +41,27 @@ function movepoint_Update()
 				MovePoint.x = Lucifer_Game.input.mousePointer.x + Lucifer_Game.camera.x - 885 ;
 				MovePoint.y = Lucifer_Game.input.mousePointer.y + Lucifer_Game.camera.y - 650 ;
 			}
+
 	}
+
+	movepoint_rect = new Phaser.Rectangle(MovePoint.x, MovePoint.y, 50, 50);
+
+	movepoint_rect.centerOn(MovePoint.x, MovePoint.y);
+
+	if(Phaser.Rectangle.intersects(movepoint_rect, Pointer_Rect, Attack_Rect))
+			{
+				MovePoint.visible = false;
+			}
+		else if(Phaser.Rectangle.intersects(movepoint_rect, Pointer_Rect, Attack_Rect) == false)
+			{
+				MovePoint.visible = true;
+			}
+	
 
 }
 
 function movepoint_Render()
-{
-	Lucifer_Game.debug.geom(movepoint_rect, 'rgba(200, 0, 0, 0.5');
+{	
+	Lucifer_Game.debug.geom(movepoint_rect, '#000000');
+
 }
