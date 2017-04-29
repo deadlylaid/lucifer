@@ -17,7 +17,7 @@ class LearnedSkill(models.Model):
             on_delete=models.CASCADE,
             )
 
-    demage = models.IntegerField(
+    damage = models.IntegerField(
             default=0,
             )
 
