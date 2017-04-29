@@ -902,6 +902,7 @@ function checkQuestIsComplete(){
     }
 }
 
+//퀘스트 완료
 function playerQuestAdvence(index){
     characterQuest[index];
     if(characterQuest[index].isCompleted === false){
@@ -939,4 +940,17 @@ function characterQuestGoldUp(index){
     gold+=characterQuest[index].goldReword;
     goldUpdate();
     }
+}
+
+//몬스터 처치할때마다 해당퀘스트의 인덱스를 넣어 호출할 것
+function checkQuest(index){
+    if(characterQuest[index].isCompleted === false){
+        characterQuest[index].advanced += 1;
+        goal = characterQuest[index].goal;
+        if(goal === characterQuest[index].advanced){
+            playerQuestAdvence(index);
+        }
+    }else{
+    }
+
 }
