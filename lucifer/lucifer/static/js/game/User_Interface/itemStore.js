@@ -6,6 +6,8 @@ var uiStore,
     redPotionGroup,
     tempInventory = [];
 
+var ItemSelectCheck = 0;
+
 function itemsPreload(){
 
     Lucifer_Game.load.spritesheet(itemList[0].name, '../../static/images/game/item/'+ itemList[0].image_name + '.png', 55, 55);
@@ -49,6 +51,10 @@ function itemsPreload(){
                                   '../../static/images/game/UI/Store/ItemInfo/Armor_Two_Info.png', 230, 180);
     Lucifer_Game.load.spritesheet('Armor_Three_Info',
                                   '../../static/images/game/UI/Store/ItemInfo/Armor_Three_Info.png', 230, 180);
+
+    //Item Select Frame
+    Lucifer_Game.load.spritesheet('Item_Select_Frame',
+                                  '../../static/images/game/UI/Store/SelectFrame.png', 44, 83);
 
 
 };
@@ -327,6 +333,12 @@ function itemStoreCreate(){
     Armor_Three_Info.fixedToCamera = true;
     Armor_Three_Info.visible = false;
     //----------------------------------------------------------------------------------------
+
+    //Item Select Frame
+    Item_Select_Frame = Lucifer_Game.add.sprite(56, 112, 'Item_Select_Frame');
+    Item_Select_Frame.anchor.setTo(0.5, 0.5);
+    Item_Select_Frame.fixedToCamera = true;
+    Item_Select_Frame.visible = false;
     //---------------------------------------------------------------------------------------
 
     changeServerListToClientList();
@@ -396,6 +408,7 @@ function potionStoreTab(){
     basicArmor.getVisible(false);
     strongArmor.getVisible(false);
     superArmor.getVisible(false);
+    Item_Select_Frame.visible=false;
 }
 
 function swordStoreTab(){
@@ -411,6 +424,7 @@ function swordStoreTab(){
     basicArmor.getVisible(false);
     strongArmor.getVisible(false);
     superArmor.getVisible(false);
+    Item_Select_Frame.visible=false;
 }
 
 function armorStoreTab(){
@@ -426,6 +440,7 @@ function armorStoreTab(){
     basicArmor.getVisible(true);
     strongArmor.getVisible(true);
     superArmor.getVisible(true);
+    Item_Select_Frame.visible=false;
 }
 
 
@@ -433,42 +448,170 @@ function clickItem(sprite){
     //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨
     //console.log(sprite.name);
     var i = inventory.length;
+    
+
     switch(sprite.name){
         case '빨간물약':
             selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 112, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }
             break;
         case '좋은물약':
             selectedItem = goodRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 207, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }
             break;
         case '최고의물약':
             selectedItem = bestRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 302, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }            
             break;
         case '기본검':
             selectedItem = basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 112, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }
             break;
         case '강화된검':
             selectedItem = strongSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 207, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }
             break;
         case '마검':
             selectedItem = superSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 302, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }
             break;
         case '기본갑옷':
             selectedItem = basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 112, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }
             break;
         case '강화갑옷':
             selectedItem = strongArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 207, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }
             break;
         case '증오':
             selectedItem = superArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            //item select Frame
+            switch(ItemSelectCheck){
+                case 0 : 
+                Item_Select_Frame = Lucifer_Game.add.sprite(56, 302, 'Item_Select_Frame');
+                Item_Select_Frame.anchor.setTo(0.5, 0.5);
+                Item_Select_Frame.fixedToCamera = true;
+                Item_Select_Frame.visible = true;
+                ItemSelectCheck = 1;
+                break;
+                case 1 :
+                Item_Select_Frame.visible = false;
+                ItemSelectCheck = 0;
+                break;
+            }
             break;
     }
     //console.log(selectedItem);
