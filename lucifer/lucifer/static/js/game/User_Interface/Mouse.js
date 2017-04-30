@@ -19,15 +19,6 @@ function mouse_Create()
 	mouse_Rect = new Phaser.Rectangle(Lucifer_Game.input.mousePointer.x, Lucifer_Game.input.mousePointer.y,
 									  40, 40);
 
-	MovePoint = Lucifer_Game.add.sprite(Lucifer_Game.input.mousePointer.x, Lucifer_Game.input.mousePointer.y, 'MovePoint');
-	MovePoint.animations.add('MovePoint_ani',
-									   [
-									   	  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
-									   ], 60, true);
-	MovePoint.loadTexture('MovePoint', 0, true);
-	MovePoint.animations.play('MovePoint_ani', 10, true);
-	MovePoint.anchor.setTo(0.5 , 0.5);	
-	MovePoint.visible = false;
 }
 
 function mouse_ColCheck(Object)

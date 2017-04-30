@@ -462,12 +462,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }
             break;
@@ -482,12 +480,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }
             break;
@@ -502,12 +498,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }            
             break;
@@ -522,12 +516,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }
             break;
@@ -542,12 +534,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }
             break;
@@ -562,12 +552,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }
             break;
@@ -582,12 +570,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }
             break;
@@ -602,12 +588,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }
             break;
@@ -622,12 +606,10 @@ function clickItem(sprite){
                 Item_Select_Frame.fixedToCamera = true;
                 Item_Select_Frame.visible = true;
                 ItemSelectCheck = 1;
-                console.log('false');
                 break;
                 case 1 :
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
-                console.log('true');
                 break;
             }
             break;

@@ -29,7 +29,9 @@ var menuSelectScene =
     	closebtn.onInputUp.add(exit, this);
     	//closebtn.onInputOver.add(over, this)''
 
-    	button.input.useHandCursor = true;   	
+    	button.input.useHandCursor = true;   
+
+    	mouse_Create();	
 	},
 
 	update: function()
