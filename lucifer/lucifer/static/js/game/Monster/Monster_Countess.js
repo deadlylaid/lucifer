@@ -569,7 +569,10 @@ function countess_Dead(Object)
 			Object.DeadMotionCheck = true;
 
 			//Collision false
-			Object.body.static = true;
+			Object.body.static = true;	
+
+			//Quest
+			checkQuest(2);		
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -588,7 +591,7 @@ function countess_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
-			Object.ExpCheck = true;
+			Object.ExpCheck = true;			
 		}
 	}
 }

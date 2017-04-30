@@ -748,6 +748,9 @@ function council_Dead(Object)
 
 			//Collision false
 			Object.body.static = true;
+
+			//Quest
+			checkQuest(5);
 		}
 
 		var CurFrame = Object.animations.frame;

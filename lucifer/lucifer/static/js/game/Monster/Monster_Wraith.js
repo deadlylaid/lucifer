@@ -561,6 +561,9 @@ function wraith_Dead(Object)
 
 			//Collision false
 			Object.body.static = true;
+
+			//Quest
+			checkQuest(6);
 		}
 
 		var CurFrame = Object.animations.frame;
