@@ -10,7 +10,7 @@ function check_Monster_Dead(Object)
 		switch(Object.Name.text)
 		{
 		case "Golem":
-			get_Exp = 100;
+			get_Exp = 1000;
 			break;
 		case "Andariel":
 			get_Exp = 200;
@@ -90,5 +90,6 @@ function player_Level_Up()
 		//Level Up Stat
 		player_State_Up();
 		Player_levelUp_Check = true;
+        Player_ID.setText("Lv." + level + "   " + nickname);
 	}
 }
