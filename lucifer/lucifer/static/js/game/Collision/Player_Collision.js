@@ -111,62 +111,65 @@ function Damage_Count(Monster)
 function skill_Attack(Monster)
 {
 	//Bavarian Skill_Two Attack Collision
-	if(skill_Bavarian_Two.visible == true)
+	for(var i = 0; i < learnedSkill.length; ++i)
 	{
-		if(Phaser.Rectangle.intersects(skill_Two_Rect, Monster.HitRect))
+		if(skill_Bavarian_Two.visible == true)
 		{
-			var CurFrame = skill_Bavarian_Two.animations.frame;
-			var EndFrame = 14;
-
-			if(CurFrame == EndFrame)
+			if(Phaser.Rectangle.intersects(skill_Two_Rect, Monster.HitRect))
 			{
-				Monster.Hp -= 10;
+				var CurFrame = skill_Bavarian_Two.animations.frame;
+				var EndFrame = 14;
+
+				if(CurFrame == EndFrame)
+				{
+					Monster.Hp -= learnedSkill[1].damage;					
+				}
 			}
 		}
-	}
 
-	//Bavarian Skill_Three Attack Collision
-	if(skill_Bavarian_Three.visible == true)
-	{
-		if(Phaser.Rectangle.intersects(skill_Three_Rect, Monster.HitRect))
+		//Bavarian Skill_Three Attack Collision
+		if(skill_Bavarian_Three.visible == true)
 		{
-			var CurFrame = skill_Bavarian_Three.animations.frame;
-			var EndFrame = 7;
-
-			if(CurFrame + 5 == EndFrame)
+			if(Phaser.Rectangle.intersects(skill_Three_Rect, Monster.HitRect))
 			{
-				Monster.Hp -= 20;
+				var CurFrame = skill_Bavarian_Three.animations.frame;
+				var EndFrame = 7;
+
+				if(CurFrame + 5 == EndFrame)
+				{
+					Monster.Hp -= learnedSkill[2].damage;
+				}
 			}
 		}
-	}
 
-	//Bavarian Skill_Fore Attack Collision
-	if(skill_Bavarian_Four_Effect.visible == true)
-	{
-		if(Phaser.Rectangle.intersects(skill_FourEffect_Rect, Monster.HitRect))
+		//Bavarian Skill_Fore Attack Collision
+		if(skill_Bavarian_Four_Effect.visible == true)
 		{
-			var CurFrame = skill_Bavarian_Four_Effect.animations.frame;
-			var EndFrame = 19;
-
-			if(CurFrame == EndFrame)
+			if(Phaser.Rectangle.intersects(skill_FourEffect_Rect, Monster.HitRect))
 			{
-				Monster.Hp -= 5;
+				var CurFrame = skill_Bavarian_Four_Effect.animations.frame;
+				var EndFrame = 19;
+
+				if(CurFrame == EndFrame)
+				{
+					Monster.Hp -= learnedSkill[3].damage;
+				}
 			}
 		}
-	}
 
-	//Bavarian Skill_Five Attack Collision
-	if(skill_Bavarian_Five.visible == true)
-	{
-		if(Phaser.Rectangle.intersects(skill_Five_Rect, Monster.HitRect))
+		//Bavarian Skill_Five Attack Collision
+		if(skill_Bavarian_Five.visible == true)
 		{
-			var CurFrame = skill_Bavarian_Five.animations.frame;
-			var EndFrame = 31;
-
-			if(CurFrame == EndFrame)
+			if(Phaser.Rectangle.intersects(skill_Five_Rect, Monster.HitRect))
 			{
-				Monster.Hp -= 100;
+				var CurFrame = skill_Bavarian_Five.animations.frame;
+				var EndFrame = 31;
+
+				if(CurFrame == EndFrame)
+				{
+					Monster.Hp -= learnedSkill[4].damage;
+				}
 			}
 		}
-	}
+	}	
 }

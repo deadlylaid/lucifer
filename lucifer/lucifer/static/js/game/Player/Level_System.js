@@ -126,7 +126,7 @@ function player_LearnedSkill()
 		player_Skill_Four = true;
 		skill_Icon_Four.visible = true;
 	}
-	else if(level == 8)
+	else if(level == 9)
 	{
 		plyaer_Skill_Five = true;
 		skill_Icon_Five.visible = true;
