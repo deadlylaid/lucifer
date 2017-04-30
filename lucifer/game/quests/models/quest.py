@@ -18,5 +18,9 @@ class Quest(models.Model):
             null=True,
             )
 
+    goal = models.IntegerField(
+            default=0,
+            )
+
     def __str__(self):
         return self.title

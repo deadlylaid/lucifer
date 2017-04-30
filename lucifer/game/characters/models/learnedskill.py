@@ -17,8 +17,7 @@ class LearnedSkill(models.Model):
             on_delete=models.CASCADE,
             )
 
-    # 유저의 스킬 레벨
-    skill_level = models.IntegerField(
+    damage = models.IntegerField(
             default=0,
             )
 

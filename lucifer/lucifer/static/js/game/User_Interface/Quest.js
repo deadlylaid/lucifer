@@ -407,7 +407,7 @@ function QuestUpdate(){
     btnText2.x = Math.floor(Questbtn_lv2.x - 197 + Questbtn_lv2.width / 2);
     btnText2.y = Math.floor(Questbtn_lv2.y - 18 + Questbtn_lv2.height / 2);
 
-    btnText3.x = Math.floor(Questbtn_lv3.x - 200 + Questbtn_lv3.width / 2);
+    btnText3.x = Math.floor(Questbtn_lv3.x - 186 + Questbtn_lv3.width / 2);
     btnText3.y = Math.floor(Questbtn_lv3.y - 18 + Questbtn_lv3.height / 2);
 
     btnText4.x = Math.floor(Questbtn_lv4.x - 200 + Questbtn_lv4.width / 2);
@@ -540,6 +540,7 @@ function InfoUi()
     {
         viewInfo();
     }
+    playerQuestAdvence(0);
 }
 
 function timeCheck(){
@@ -901,6 +902,7 @@ function checkQuestIsComplete(){
     }
 }
 
+//퀘스트 완료
 function playerQuestAdvence(index){
     characterQuest[index];
     if(characterQuest[index].isCompleted === false){
@@ -938,4 +940,17 @@ function characterQuestGoldUp(index){
     gold+=characterQuest[index].goldReword;
     goldUpdate();
     }
+}
+
+//몬스터 처치할때마다 해당퀘스트의 인덱스를 넣어 호출할 것
+function checkQuest(index){
+    if(characterQuest[index].isCompleted === false){
+        characterQuest[index].advanced += 1;
+        goal = characterQuest[index].goal;
+        if(goal === characterQuest[index].advanced){
+            playerQuestAdvence(index);
+        }
+    }else{
+    }
+
 }

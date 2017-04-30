@@ -7,8 +7,11 @@ var stage1_Scene =
 		--마을 Stage--
 	*/
 	preload: function()
-	{
+	{	
+		
 		mouse_Preload();
+
+		movepoint_Preload();
 	},
 
 	create: function()
@@ -50,6 +53,9 @@ var stage1_Scene =
 		//Rain Particle
 		rain_Create();
 
+		//mouse movePoint
+		movepoint_Create();
+
 		//Mouse
 		mouse_Create();
 
@@ -61,7 +67,9 @@ var stage1_Scene =
 	},
 
 	update: function()
-	{
+	{	
+		
+
 		//Player Update
 		player_Update();
 
@@ -83,6 +91,9 @@ var stage1_Scene =
 
 		//Npc
 		npc_Update();
+
+		//mouse movepoint
+		movepoint_Update();
 
 		//Mouse
 		mouse_Update();
@@ -118,8 +129,13 @@ var stage1_Scene =
 			//Skill
 	        skill_Debug_Render();
 
+	        //mouse movepoint
+	        movepoint_Render();
+
 	        //mouse
 	        mouse_Render();
+
+
 
 		}
 	},

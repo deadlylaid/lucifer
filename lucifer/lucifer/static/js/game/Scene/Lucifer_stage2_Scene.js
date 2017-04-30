@@ -35,6 +35,9 @@ var stage2_Scene =
 		//Queset
 		QuestCreate();
 
+		//mouse movePoint
+		movepoint_Create();
+
 		//Mouse
 		mouse_Create();
 
@@ -70,6 +73,9 @@ var stage2_Scene =
 		//Stage2 Culling
 		//stage2_Culling();
 
+		//mouse movepoint
+		movepoint_Update();
+
 		//Mouse
 		mouse_Update();
 
@@ -101,6 +107,7 @@ var stage2_Scene =
 
 		//Monster Render(Golem)
 		//golem_Debug_Render();
+
 	},
 
 	goto_Stage3: function()

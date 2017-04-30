@@ -14,7 +14,9 @@ var nickname,
     intelligence,
     accuracy,
     evasion,
-    experience;
+    experience,
+    skill,
+    learnedSkill;
 
 var inventory = [];
 
@@ -30,7 +32,7 @@ get_gamestart_api_url = '/api/gamestart/data/';
  * 2017년 2월 26일 한민수
  * json을 이용하여 캐릭터 데이터를 가져온다
  * 가져오는 정보 닉네임, 레벨, 직업, 능력치
- * **************************/
+ * ****************************/
 $.ajax({
 
     method:'GET',
@@ -68,6 +70,8 @@ $.ajax({
     evasion = character.status.evasion;
 
     inventory = character.inventory_set;
+
+    learnedSkill = character.learnedskill_set;
 
     itemList = data[2].item;
 

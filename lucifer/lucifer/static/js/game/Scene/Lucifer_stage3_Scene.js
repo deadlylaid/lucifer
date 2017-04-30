@@ -38,6 +38,9 @@ var stage3_Scene =
 		//Quest
 		QuestCreate();
 
+		//mouse movePoint
+		movepoint_Create();
+
 		//Mouse
 		mouse_Create();
 
@@ -62,6 +65,9 @@ var stage3_Scene =
 
 		//Skill
 		skill_Update();
+
+		//mouse movepoint
+		movepoint_Update();
 
 		//Mouse
 		mouse_Update();

@@ -8,7 +8,6 @@ function mouse_Preload()
 {
 	Lucifer_Game.load.spritesheet('Default_Icon', '../../static/images/game/UI/Mouse/0.png', 32, 32);
 	Lucifer_Game.load.spritesheet('Attack_Icon', '../../static/images/game/UI/Mouse/1.png', 32, 32);
-	Lucifer_Game.load.spritesheet('MovePoint', '../../static/images/game/UI/Mouse/Move_point.png', 45, 38);
 }
 
 function mouse_Create()
