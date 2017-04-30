@@ -49,6 +49,9 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Blood Effect
 	this.blood_Effect;
+
+	//Shadow
+	this.shadow_Effect;
 }
 
 Andariel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -192,6 +195,9 @@ function andariel_Clone(PointX, PointY)
 
 	//Blood Effect
 	andariel_Object.blood_Effect = blood_Effect_Clone(andariel_Object.x, andariel_Object.y);
+
+	//Shadow
+	andariel_Object.shadow_Effect = shadow_Clone(andariel_Object.x, andariel_Object.y, 0, 50);
 
 	andariel_Group.add(andariel_Object);
 }
@@ -665,6 +671,9 @@ function andariel_Update()
 
 		//Blood Effect
 		blood_Effect_Update(andariel);
+
+		//Shadow
+		shadow_Monster_Move(andariel);
 	}
 }
 

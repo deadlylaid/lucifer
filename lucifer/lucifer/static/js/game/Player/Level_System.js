@@ -2,6 +2,12 @@
 //----------------------------------------------------------------------------------------------
 var get_Exp = 0;
 var Player_levelUp_Check = false;
+//----------------------------------------------------------------------------------------------
+//Skill Level System
+//----------------------------------------------------------------------------------------------
+var player_Skill_One = false, player_Skill_Two = false, player_Skill_Three = false;
+var player_Skill_Fore = false, plyaer_Skill_Five = false;
+//----------------------------------------------------------------------------------------------
 
 function check_Monster_Dead(Object)
 {
@@ -91,5 +97,30 @@ function player_Level_Up()
 		player_State_Up();
 		Player_levelUp_Check = true;
         Player_ID.setText("Lv." + level + "   " + nickname);
+	}
+}
+
+function player_LearnedSkill()
+{
+	//Level Up 할시에 Skill 열리게 하는 함수.
+	if(level == 1)
+	{
+		player_Skill_One = true;
+	}	
+	else if(level == 3)
+	{
+		player_Skill_Two = true;
+	}
+	else if(level == 5)
+	{
+		player_Skill_Three = true;
+	}
+	else if(level == 7)
+	{
+		player_Skill_Fore = true;
+	}
+	else if(level == 8)
+	{
+		plyaer_Skill_Five = true;
 	}
 }

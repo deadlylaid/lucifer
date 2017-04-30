@@ -29,17 +29,13 @@ var menuSelectScene =
     	closebtn.onInputUp.add(exit, this);
     	//closebtn.onInputOver.add(over, this)''
 
-    	button.input.useHandCursor = true;
-
-    	//Mouse
-		mouse_Create();
+    	button.input.useHandCursor = true;   	
 	},
 
 	update: function()
 	{
 		//Mouse
 		mouse_Update();
-
 	}
 };
 

@@ -314,6 +314,9 @@ function diablo_Clone(PointX, PointY)
 	//Exp Timer
 	diablo_Object.ExpTimer = Lucifer_Game.time.create(false);
 	diablo_Object.ExpTimer.loop(10, diablo_ExpTimer, Lucifer_Game, diablo_Object);
+
+	//Blood Effect
+	diablo_Object.blood_Effect = blood_Effect_Clone(diablo_Object.x, diablo_Object.y);	
 }
 //----------------------------------------------------------------------------------------------
 //Over / Out

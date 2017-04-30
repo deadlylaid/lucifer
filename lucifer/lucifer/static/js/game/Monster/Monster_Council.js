@@ -57,6 +57,9 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Blood Effect
 	this.blood_Effect;
+
+	//Shadow
+	this.shadow_Effect;
 }
 
 Council.prototype = Object.create(Phaser.Sprite.prototype);
@@ -259,6 +262,9 @@ function council_Clone(PointX, PointY)
 
 	//Blood Effect
 	council_Object.blood_Effect = blood_Effect_Clone(council_Object.x, council_Object.y);
+
+	//Shadow Effect
+	council_Object.shadow_Effect = shadow_Clone(council_Object.x, council_Object.y, 0, 40);
 
 	council_Group.add(council_Object);
 }
@@ -879,6 +885,9 @@ function council_Update()
 
 		//Blood Effect
 		blood_Effect_Update(council);
+
+		//Shadow
+		shadow_Monster_Move(council);
 	}
 }
 

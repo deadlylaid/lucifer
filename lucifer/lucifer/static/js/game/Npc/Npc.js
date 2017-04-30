@@ -143,6 +143,7 @@ function npc_Update()
 {
 	npc_GetDirection();
 	npc_Compare_Direction(npc_PreDirection, npc_Direction);
+	shadow_Npc();
 }
 
 function npc_Debug_Render()

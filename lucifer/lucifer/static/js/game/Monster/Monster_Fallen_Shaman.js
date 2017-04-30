@@ -57,6 +57,9 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Blood Effect
 	this.blood_Effect;
+
+	//Shadow Effect
+	this.shadow_Effect;
 }
 
 Fallen_Shaman.prototype = Object.create(Phaser.Sprite.prototype);
@@ -215,6 +218,10 @@ function fallen_Shaman_Clone(PointX, PointY)
 
 	//Blood Effect
 	fallenShaman_Object.blood_Effect = blood_Effect_Clone(fallenShaman_Object.x, fallenShaman_Object.y);
+
+	//Shadow
+	fallenShaman_Object.shadow_Effect = shadow_Clone(fallenShaman_Object.x, fallenShaman_Object.y,
+											         0, 36);
 
 	fallenShaman_Group.add(fallenShaman_Object);
 }
@@ -717,6 +724,9 @@ function fallen_Shaman_Update()
 
 		//Blood Effect
 		blood_Effect_Update(Shaman);
+
+		//Shadow
+		shadow_Monster_Move(Shaman);
 	}
 }
 
