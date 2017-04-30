@@ -26,6 +26,31 @@ function itemsPreload(){
     Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
     Lucifer_Game.load.spritesheet('useButton', '../../static/images/game/UI/Inventory/useButton.png', 196, 51);
 
+    //Potion Info
+    Lucifer_Game.load.spritesheet('Potion_One_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Potion_One_Info.png', 230, 180);
+    Lucifer_Game.load.spritesheet('Potion_Two_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Potion_Two_Info.png', 230, 180);
+    Lucifer_Game.load.spritesheet('Potion_Three_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Potion_Three_Info.png', 230, 180);
+
+    //Sword Info
+    Lucifer_Game.load.spritesheet('Sword_One_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Sword_One_Info.png', 230, 180);
+    Lucifer_Game.load.spritesheet('Sword_Two_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Sword_Two_Info.png', 230, 180);
+    Lucifer_Game.load.spritesheet('Sword_Three_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Sword_Three_Info.png', 230, 180);
+
+    //Armor Info
+    Lucifer_Game.load.spritesheet('Armor_One_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Armor_One_Info.png', 230, 180);
+    Lucifer_Game.load.spritesheet('Armor_Two_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Armor_Two_Info.png', 230, 180);
+    Lucifer_Game.load.spritesheet('Armor_Three_Info',
+                                  '../../static/images/game/UI/Store/ItemInfo/Armor_Three_Info.png', 230, 180);
+
+
 };
 
 function itemStoreCreate(){
@@ -120,6 +145,7 @@ function itemStoreCreate(){
     redPotion.inputEnabled = true;
     redPotion.events.onInputDown.add(clickItem, this);
 
+    
     Lucifer_Game.add.existing(redPotion);
 
     superPotion = new potion(Lucifer_Game, 55, 200, itemList[3].name, itemList[3].heal, itemList[3].price, 3, itemStoreStyle);
@@ -137,6 +163,36 @@ function itemStoreCreate(){
 
     Lucifer_Game.add.existing(hyperPotion);
     //---------------------------------------------------------------------------------------
+
+    //Position MouseOver Info
+    //redPotion
+    redPotion.events.onInputOver.add(onOveritem, this);
+    redPotion.events.onInputOut.add(onOutitem, this);
+
+    Potion_One_Info = Lucifer_Game.add.sprite(225, 210, 'Potion_One_Info');
+    Potion_One_Info.anchor.setTo(0.5, 0.5);
+    Potion_One_Info.fixedToCamera = true;
+    Potion_One_Info.visible = false;
+
+    //superPotion
+    superPotion.events.onInputOver.add(onOveritem2, this);
+    superPotion.events.onInputOut.add(onOutitem2, this);
+
+    Potion_Two_Info = Lucifer_Game.add.sprite(225, 310, 'Potion_Two_Info');
+    Potion_Two_Info.anchor.setTo(0.5, 0.5);
+    Potion_Two_Info.fixedToCamera = true;
+    Potion_Two_Info.visible = false;
+
+    //hyperPotion
+    hyperPotion.events.onInputOver.add(onOveritem3, this);
+    hyperPotion.events.onInputOut.add(onOutitem3, this);
+
+    Potion_Three_Info = Lucifer_Game.add.sprite(225, 410, 'Potion_Three_Info');
+    Potion_Three_Info.anchor.setTo(0.5, 0.5);
+    Potion_Three_Info.fixedToCamera = true;
+    Potion_Three_Info.visible = false;
+
+    //-------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
 
 
@@ -176,6 +232,34 @@ function itemStoreCreate(){
 
     Lucifer_Game.add.existing(superSword);
     //----------------------------------------------------------------------------------------
+
+    //Sword MouseOver Info
+    //basicSword
+    basicSword.events.onInputOver.add(onOverSword, this);
+    basicSword.events.onInputOut.add(onOutSword, this);
+
+    Sword_One_Info = Lucifer_Game.add.sprite(225, 210, 'Sword_One_Info');
+    Sword_One_Info.anchor.setTo(0.5, 0.5);
+    Sword_One_Info.fixedToCamera = true;
+    Sword_One_Info.visible = false;
+
+    //strongSword
+    strongSword.events.onInputOver.add(onOverSword2, this);
+    strongSword.events.onInputOut.add(onOutSword2, this);
+
+    Sword_Two_Info = Lucifer_Game.add.sprite(225, 310, 'Sword_Two_Info');
+    Sword_Two_Info.anchor.setTo(0.5, 0.5);
+    Sword_Two_Info.fixedToCamera = true;
+    Sword_Two_Info.visible = false;
+
+    //superSword
+    superSword.events.onInputOver.add(onOverSword3, this);
+    superSword.events.onInputOut.add(onOutSword3, this);
+
+    Sword_Three_Info = Lucifer_Game.add.sprite(225, 410, 'Sword_Three_Info');
+    Sword_Three_Info.anchor.setTo(0.5, 0.5);
+    Sword_Three_Info.fixedToCamera = true;
+    Sword_Three_Info.visible = false;
     //----------------------------------------------------------------------------------------
 
 
@@ -214,6 +298,35 @@ function itemStoreCreate(){
 
     Lucifer_Game.add.existing(superArmor);
     //---------------------------------------------------------------------------------------
+
+    //Armor MouseOver Info
+    //basicArmor
+    basicArmor.events.onInputOver.add(onOverArmor, this);
+    basicArmor.events.onInputOut.add(onOutArmor, this);
+
+    Armor_One_Info = Lucifer_Game.add.sprite(225, 210, 'Armor_One_Info');
+    Armor_One_Info.anchor.setTo(0.5, 0.5);
+    Armor_One_Info.fixedToCamera = true;
+    Armor_One_Info.visible = false;
+
+    //strongArmor
+    strongArmor.events.onInputOver.add(onOverArmor2, this);
+    strongArmor.events.onInputOut.add(onOutArmor2, this);
+
+    Armor_Two_Info = Lucifer_Game.add.sprite(225, 310, 'Armor_Two_Info');
+    Armor_Two_Info.anchor.setTo(0.5, 0.5);
+    Armor_Two_Info.fixedToCamera = true;
+    Armor_Two_Info.visible = false;
+
+    //superArmor
+    superArmor.events.onInputOver.add(onOverArmor3, this);
+    superArmor.events.onInputOut.add(onOutArmor3, this);
+
+    Armor_Three_Info = Lucifer_Game.add.sprite(225, 410, 'Armor_Three_Info');
+    Armor_Three_Info.anchor.setTo(0.5, 0.5);
+    Armor_Three_Info.fixedToCamera = true;
+    Armor_Three_Info.visible = false;
+    //----------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
 
     changeServerListToClientList();
@@ -875,3 +988,81 @@ function equipmentCalculater(point, type){
 function goldUpdate(){
     gold_text.setText(gold);
 }
+
+//Potion Over/Out function
+function onOveritem(){
+    Potion_One_Info.visible = true;
+}
+
+function onOveritem2(){
+    Potion_Two_Info.visible = true;
+}
+
+function onOveritem3(){
+    Potion_Three_Info.visible = true;
+}
+
+function onOutitem(){
+    Potion_One_Info.visible = false;
+}
+
+function onOutitem2(){
+    Potion_Two_Info.visible = false;
+}
+
+function onOutitem3(){
+    Potion_Three_Info.visible = false;
+}
+//---------------------------------------------------
+
+//Sword Over/Out function
+function onOverSword(){
+    Sword_One_Info.visible = true;
+}
+
+function onOverSword2(){
+    Sword_Two_Info.visible = true;
+}
+
+function onOverSword3(){
+    Sword_Three_Info.visible = true;
+}
+
+function onOutSword(){
+    Sword_One_Info.visible = false;
+}
+
+function onOutSword2(){
+    Sword_Two_Info.visible = false;
+}
+
+function onOutSword3(){
+    Sword_Three_Info.visible = false;
+}
+//---------------------------------------------------
+
+//Armor Over/Out function
+function onOverArmor(){
+    Armor_One_Info.visible = true;
+}
+
+function onOverArmor2(){
+    Armor_Two_Info.visible = true;
+}
+
+function onOverArmor3(){
+    Armor_Three_Info.visible = true;
+}
+
+function onOutArmor(){
+    Armor_One_Info.visible = false;
+}
+
+function onOutArmor2(){
+    Armor_Two_Info.visible = false;
+}
+
+function onOutArmor3(){
+    Armor_Three_Info.visible = false;
+}
+//---------------------------------------------------
