@@ -20,7 +20,7 @@ var skill_Three_Count = 0, skill_Four_Count = 0, skill_Five_Count = 0;
 //***************************************************************************************
 var skill_Icon_One, skill_Icon_Two, skill_Icon_Three, skill_Icon_Four, skill_Icon_Five;
 //---------------------------------------------------------------------------------------
-var SkillIcon_One_Info, SkillIcon_Two_Info, SkillIcon_Three_Info, SkillIcon_Forth_Info, SkillIcon_Fifth_Info;
+var SK_Icon_Skill_Info, SK_Icon_Skill_Info2, SK_Icon_Skill_Info3, SK_Icon_Skill_Info4, SK_Icon_Skill_Info5;
 
 function skill_Preload()
 {
@@ -591,7 +591,7 @@ function characterSkill(name, damage, limit_level){
 }
 
 function onUp()
-{
+{	
 		SK_Icon_Skill_Info.visible = true;
 }
 
