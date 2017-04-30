@@ -41,7 +41,7 @@ function check_Monster_Dead(Object)
 			break;
 		}
 
-		player_Level_Update(Object);
+		player_Level_Update(Object);		
 		Object.ExpCheck = false;
 	}
 }
@@ -82,6 +82,9 @@ function player_State_Up()
 
     	//무기상수 * ((4 * 힘) + (체력총합 * 0.1)) * (무기공격력 * 0.01)
     	attack_point = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (10 * 0.01);
+
+    	//Skill Damage Up
+    	player_skillDamage_Up();
 	}
 	else
 	{
@@ -130,5 +133,57 @@ function player_LearnedSkill()
 	{
 		plyaer_Skill_Five = true;
 		skill_Icon_Five.visible = true;
+	}
+}
+
+function player_skillDamage_Up()
+{	
+	switch(level)
+	{
+	case 1:
+		break;
+	case 2:
+		learnedSkill[0].damage = 12;
+		break;
+	case 3:
+		learnedSkill[0].damage = 14;
+		break;
+	case 4:
+		learnedSkill[0].damage = 16;
+		learnedSkill[1].damage = 12;
+		break;
+	case 5:
+		learnedSkill[0].damage = 18;
+		learnedSkill[1].damage = 15;
+		break;
+	case 6:
+		learnedSkill[0].damage = 20;
+		learnedSkill[1].damage = 20;
+		learnedSkill[2].damage = 25;
+		break;
+	case 7:
+		learnedSkill[0].damage = 22;
+		learnedSkill[1].damage = 23;
+		learnedSkill[2].damage = 35;
+		break;
+	case 8:
+		learnedSkill[0].damage = 24;
+		learnedSkill[1].damage = 29;
+		learnedSkill[2].damage = 45;
+		learnedSkill[3].damage = 10;
+		break;
+	case 9:
+		learnedSkill[0].damage = 26;
+		learnedSkill[1].damage = 35;
+		learnedSkill[2].damage = 55;
+		learnedSkill[3].damage = 15;
+		break;
+	case 10:
+		learnedSkill[0].damage = 30;
+		learnedSkill[1].damage = 40;
+		learnedSkill[2].damage = 65;
+		learnedSkill[3].damage = 20;
+		learnedSkill[4].damage = 200;
+		break;	
 	}
 }
