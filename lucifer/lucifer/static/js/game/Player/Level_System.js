@@ -6,7 +6,7 @@ var Player_levelUp_Check = false;
 //Skill Level System
 //----------------------------------------------------------------------------------------------
 var player_Skill_One = false, player_Skill_Two = false, player_Skill_Three = false;
-var player_Skill_Fore = false, plyaer_Skill_Five = false;
+var player_Skill_Four = false, plyaer_Skill_Five = false;
 //----------------------------------------------------------------------------------------------
 
 function check_Monster_Dead(Object)
@@ -65,7 +65,7 @@ function player_Level_Update(Object)
 function player_State_Up()
 {
 	//Level Up 될시에 Skill Level 을 자동으로 올릴 것인가 말것인가를 정해서 적용 시켜야 된다.
-	if(level <= 10)
+	if(level < 10)
 	{
 		experience = 0;
 		level += 1;
@@ -83,7 +83,10 @@ function player_State_Up()
     	//무기상수 * ((4 * 힘) + (체력총합 * 0.1)) * (무기공격력 * 0.01)
     	attack_point = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (10 * 0.01);
 	}
-	else{}
+	else
+	{
+		return;
+	}
     //스테이터스창도 같이 업데이트
     statusDataText.setText(updateStatus());
     gameSave();
@@ -106,21 +109,26 @@ function player_LearnedSkill()
 	if(level == 1)
 	{
 		player_Skill_One = true;
+		skill_Icon_One.visible = true;
 	}	
 	else if(level == 3)
 	{
 		player_Skill_Two = true;
+		skill_Icon_Two.visible = true;
 	}
 	else if(level == 5)
 	{
 		player_Skill_Three = true;
+		skill_Icon_Three.visible = true;
 	}
 	else if(level == 7)
 	{
-		player_Skill_Fore = true;
+		player_Skill_Four = true;
+		skill_Icon_Four.visible = true;
 	}
 	else if(level == 8)
 	{
 		plyaer_Skill_Five = true;
+		skill_Icon_Five.visible = true;
 	}
 }

@@ -131,7 +131,7 @@ function player_Effect_Dead()
 
 function player_LevelUp_Effect()
 {
-	if(Player_levelUp_Check == true)
+	if(Player_levelUp_Check == true && level < 10)
 	{
 		Player_LevelUp_Effect.visible = true;
 		Player_LevelUp_Effect.animations.play('PY_LevelUp_Effect_Ani', 10, true);
