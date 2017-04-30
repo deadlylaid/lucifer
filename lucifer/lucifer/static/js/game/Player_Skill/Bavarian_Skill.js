@@ -64,6 +64,7 @@ function skill_Preload()
 
 function skill_Create()
 {
+    learnedSkillPut();
     learnedSkillLength = learnedSkill.length;
 
     for(i=0; i<learnedSkillLength; i++){
@@ -588,14 +589,24 @@ function skill_Debug_Render()
 	Lucifer_Game.debug.geom(skill_Five_Rect, 'rgba(100, 100, 100, 0.4)');
 };
 
+//서버에서 받은 스킬 오브젝트를 클라이언트 데이터 타입에 맞게 변경
 function characterSkill(name, damage, limit_level){
     this.name = name;
     this.damage = damage;
     this.limit_level = limit_level;
 }
 
+function learnedSkillPut(){
+    $.ajax({
+        url:'/api/user/character/learnedskill/',
+        method:'PUT',
+        data:{
+        },
+    });
+}
+
 function onUp()
-{	
+{
 		SK_Icon_Skill_Info.visible = true;
 }
 
