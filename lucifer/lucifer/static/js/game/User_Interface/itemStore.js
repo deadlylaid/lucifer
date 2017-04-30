@@ -151,7 +151,7 @@ function itemStoreCreate(){
     redPotion.inputEnabled = true;
     redPotion.events.onInputDown.add(clickItem, this);
 
-    
+
     Lucifer_Game.add.existing(redPotion);
 
     superPotion = new potion(Lucifer_Game, 55, 200, itemList[3].name, itemList[3].heal, itemList[3].price, 3, itemStoreStyle);
