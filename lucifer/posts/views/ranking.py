@@ -8,7 +8,7 @@ class RankingView(View):
 
     def get(self, request):
 
-        characters = Character.objects.order_by('status__attack_point')[:10]
+        characters = Character.objects.order_by('-level')[:10]
 
         context = {
                 'characters': characters,
