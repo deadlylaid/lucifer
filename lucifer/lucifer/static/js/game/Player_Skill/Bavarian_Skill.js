@@ -418,9 +418,13 @@ function skill_CoolTime()
 		skill_One_Check = true;			  //첫번째 스킬 coolTime 체크
 
 		if(skill_One_Attribute == false)
-		{
+		{	
 			tempAttack_Point = attack_point;
-			attack_point = tempAttack_Point + 10; //Attack Point Plus
+
+			for(var i = 0; i < learnedSkill.length; ++i)
+			{
+				attack_point = tempAttack_Point + learnedSkill[0].damage; //Attack Point Plus	
+			}			
 
 			skill_One_Attribute = true;
 		}
