@@ -90,7 +90,6 @@ function mouse_Update()
 	//Icon
 	mouseIcon.x = mouseposX;
 	mouseIcon.y = mouseposY;
-	
 }
 
 function mouse_Render()

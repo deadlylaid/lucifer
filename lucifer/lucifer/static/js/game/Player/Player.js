@@ -386,70 +386,85 @@ function PlayerMove()
 }
 function PlayerAttack(){}
 function PlayerSkill()
-{
-	if(skill_One_Check == false)
+{	
+	if(player_Skill_One == true)
 	{
-		skill_Bavarian.visible = true;
-
-		if(skill_Bavarian.visible == true)
+		if(skill_One_Check == false)
 		{
-			skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
-			Animation_Change(Direction, 'Skill');
-		}
-	}
+			skill_Bavarian.visible = true;
+
+			if(skill_Bavarian.visible == true)
+			{
+				skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
+				Animation_Change(Direction, 'Skill');
+			}
+		}		
+	}	
 }
 
 function PlayerSkill2()
 {
-	if(skill_Two_Check == false)
+	if(player_Skill_Two == true)
 	{
-		skill_Bavarian_Two.visible = true;
-
-		if(skill_Bavarian_Two.visible == true)
+		if(skill_Two_Check == false)
 		{
-			skill_Bavarian_Two.animations.play('SK_Bavarian_Ani2', 20, true);
-			Animation_Change(Direction, 'Skill');
-		}
-	}
+			skill_Bavarian_Two.visible = true;
+
+			if(skill_Bavarian_Two.visible == true)
+			{
+				skill_Bavarian_Two.animations.play('SK_Bavarian_Ani2', 20, true);
+				Animation_Change(Direction, 'Skill');
+			}
+		}		
+	}	
 }
 
 function PlayerSkill3()
 {
-	if(skill_Three_Check == false)
+	if(player_Skill_Three == true)
 	{
-		skill_Bavarian_Three.visible = true;
-
-		if(skill_Bavarian_Three.visible == true)
+		if(skill_Three_Check == false)
 		{
-			skill_Bavarian_Three.animations.play('SK_Bavarian_Ani3', 20, true);
-			Animation_Change(Direction, 'Whirlwind');
-		}
-	}
+			skill_Bavarian_Three.visible = true;
+
+			if(skill_Bavarian_Three.visible == true)
+			{
+				skill_Bavarian_Three.animations.play('SK_Bavarian_Ani3', 20, true);
+				Animation_Change(Direction, 'Whirlwind');
+			}
+		}		
+	}	
 }
 
 function PlayerSkill4()
 {
-	if(skill_Four_Check == false)
+	if(player_Skill_Four == true)
 	{
-		skill_Bavarian_Four.visible = true;
-
-		if(skill_Bavarian_Four.visible == true)
+		if(skill_Four_Check == false)
 		{
-			skill_Bavarian_Four.animations.play('SK_Bavarian_Ani4', 20, true);
-			Animation_Change(Direction, 'Skill');
+			skill_Bavarian_Four.visible = true;
+
+			if(skill_Bavarian_Four.visible == true)
+			{
+				skill_Bavarian_Four.animations.play('SK_Bavarian_Ani4', 20, true);
+				Animation_Change(Direction, 'Skill');
+			}
 		}
 	}
 }
 
 function PlayerSkill5()
 {
-	if(skill_Five_Check == false)
+	if(plyaer_Skill_Five == true)
 	{
-		skill_Bavarian_Five.visible = true;
-
-		if(skill_Bavarian_Five.visible == true)
+		if(skill_Five_Check == false)
 		{
-			skill_Bavarian_Five.animations.play('SK_Bavarian_Ani5', 20, true);
+			skill_Bavarian_Five.visible = true;
+
+			if(skill_Bavarian_Five.visible == true)
+			{
+				skill_Bavarian_Five.animations.play('SK_Bavarian_Ani5', 20, true);
+			}
 		}
 	}
 }
@@ -525,10 +540,11 @@ function player_Update()
 				PlayerAttack();
 				player_Level_Up();
 				//Player_Frame();
-				shadow_Player_Move();
+				shadow_Player_Move();				
 			}
    	 	}
 
+   	 	player_LearnedSkill();
    	 	player_Effect_Update();
 	}
 	else if(stageTwo_Check == true || stageThree_Check == true)
@@ -547,6 +563,7 @@ function player_Update()
 			}
    	 	}
 
+   	 	player_LearnedSkill();
    	 	player_Effect_Update();
 	}
 

@@ -171,6 +171,7 @@ function skill_Create()
     skill_Icon_One.anchor.setTo(0.5, 0.5);
     skill_Icon_One.fixedToCamera = true;
     skill_Icon_One.inputEnabled = true;
+    skill_Icon_One.visible = false;
 
     //Skill - 1 Icon Info
     skill_Icon_One.events.onInputOver.add(onUp, this);
@@ -186,6 +187,7 @@ function skill_Create()
     skill_Icon_Two.anchor.setTo(0.5, 0.5);
     skill_Icon_Two.fixedToCamera = true;
     skill_Icon_Two.inputEnabled = true;
+    skill_Icon_Two.visible = false;
 
     //Skill - 2 Icon Info
     skill_Icon_Two.events.onInputOver.add(onUp2, this);
@@ -201,6 +203,7 @@ function skill_Create()
     skill_Icon_Three.anchor.setTo(0.5, 0.5);
     skill_Icon_Three.fixedToCamera = true;
     skill_Icon_Three.inputEnabled = true;
+    skill_Icon_Three.visible = false;
 
     //Skill - 3 Icon Info
     skill_Icon_Three.events.onInputOver.add(onUp3, this);
@@ -216,7 +219,7 @@ function skill_Create()
     skill_Icon_Four.anchor.setTo(0.5, 0.5);
     skill_Icon_Four.fixedToCamera = true;
     skill_Icon_Four.inputEnabled = true;
-
+    skill_Icon_Four.visible = false;
 
     //Skill - 4 Icon Info
     skill_Icon_Four.events.onInputOver.add(onUp4, this);
@@ -232,6 +235,7 @@ function skill_Create()
     skill_Icon_Five.anchor.setTo(0.5, 0.5);
     skill_Icon_Five.fixedToCamera = true;
     skill_Icon_Five.inputEnabled = true;
+    skill_Icon_Five.visible = false;
 
     //Skill - 5 Icon Info
     skill_Icon_Five.events.onInputOver.add(onUp5, this);
