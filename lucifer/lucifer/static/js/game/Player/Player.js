@@ -137,7 +137,7 @@ function player_Create()
 	Pointer_Rect = new Phaser.Rectangle(Player.x, Player.y, 110, 110);
 
 	//ID(닉네임)
-	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, nickname); //Test 부분에 Player Id 가 들어가면 됨.
+	Player_ID = Lucifer_Game.add.text(Player.x, Player.y - 100, "Lv." + level + "   " + nickname); //Test 부분에 Player Id 가 들어가면 됨.
 	Lucifer_Game.physics.enable(Player, Phaser.Physics.ARCADE);
 	Player_ID.anchor.set(0.5);
 	Player_ID.align = 'center';

@@ -90,5 +90,6 @@ function player_Level_Up()
 		//Level Up Stat
 		player_State_Up();
 		Player_levelUp_Check = true;
+        Player_ID.setText("Lv." + level + "   " + nickname);
 	}
 }
