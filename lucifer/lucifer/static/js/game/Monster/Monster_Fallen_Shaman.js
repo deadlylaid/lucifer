@@ -614,6 +614,9 @@ function fallen_Shaman_Dead(Object)
 
 			//Collision false
 			Object.body.static = true;
+
+			//Quest
+			checkQuest(7);
 		}
 
 		var currentFrame = Object.animations.frame;

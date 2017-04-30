@@ -968,6 +968,9 @@ function diablo_Dead(Object)
 
 			//Collision false
 			Object.body.static = true;
+
+			//Quest
+			checkQuest(9);
 		}
 
 		var CurFrame = Object.animations.frame;
