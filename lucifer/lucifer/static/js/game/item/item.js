@@ -133,6 +133,16 @@ function redPotionClone(positionX, positionY){
     redPotionObject.inputEnabled = true;
     redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
 
+    //Inventory item info ---------------------------------------------------------------
+
+    redPotionObject.events.onInputOver.add(InvenonOverPotion, this);
+    redPotionObject.events.onInputOut.add(InvenonOutPotion, this);
+
+    Inven_Potion_One_Info = Lucifer_Game.add.sprite(720, 400, 'Potion_One_Info');
+    Inven_Potion_One_Info.anchor.setTo(0.5, 0.5);
+    Inven_Potion_One_Info.fixedToCamera = true;
+    Inven_Potion_One_Info.visible = false;
+    //-----------------------------------------------------------------------------------
     return redPotionObject;
 }
 
@@ -150,6 +160,17 @@ function goodRedPotionClone(positionX, positionY){
 
     redPotionObject.inputEnabled = true;
     redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    //Inventory item info ---------------------------------------------------------------
+
+    redPotionObject.events.onInputOver.add(InvenonOverPotion2, this);
+    redPotionObject.events.onInputOut.add(InvenonOutPotion2, this);
+
+    Inven_Potion_Two_Info = Lucifer_Game.add.sprite(720, 400, 'Potion_Two_Info');
+    Inven_Potion_Two_Info.anchor.setTo(0.5, 0.5);
+    Inven_Potion_Two_Info.fixedToCamera = true;
+    Inven_Potion_Two_Info.visible = false;
+    //-----------------------------------------------------------------------------------
 
     return redPotionObject;
 }
@@ -169,6 +190,17 @@ function bestRedPotionClone(positionX, positionY){
     redPotionObject.inputEnabled = true;
     redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
 
+    //Inventory item info ---------------------------------------------------------------
+
+    redPotionObject.events.onInputOver.add(InvenonOverPotion3, this);
+    redPotionObject.events.onInputOut.add(InvenonOutPotion3, this);
+
+    Inven_Potion_Three_Info = Lucifer_Game.add.sprite(720, 400, 'Potion_Three_Info');
+    Inven_Potion_Three_Info.anchor.setTo(0.5, 0.5);
+    Inven_Potion_Three_Info.fixedToCamera = true;
+    Inven_Potion_Three_Info.visible = false;
+    //-----------------------------------------------------------------------------------
+
     return redPotionObject;
 }
 
@@ -185,6 +217,17 @@ function basicSwordClone(positionX, positionY){
 
     basicSwordObject.inputEnabled = true;
     basicSwordObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    //Inventory item info ---------------------------------------------------------------
+
+    basicSwordObject.events.onInputOver.add(InvenonOverSword, this);
+    basicSwordObject.events.onInputOut.add(InvenonOutSword, this);
+
+    Inven_Sword_One_Info = Lucifer_Game.add.sprite(720, 400, 'Sword_One_Info');
+    Inven_Sword_One_Info.anchor.setTo(0.5, 0.5);
+    Inven_Sword_One_Info.fixedToCamera = true;
+    Inven_Sword_One_Info.visible = false;
+    //-----------------------------------------------------------------------------------
 
     return basicSwordObject;
 }
@@ -203,6 +246,17 @@ function strongSwordClone(positionX, positionY){
     basicSwordObject.inputEnabled = true;
     basicSwordObject.events.onInputDown.add(clickedItemInInventory, this);
 
+    //Inventory item info ---------------------------------------------------------------
+
+    basicSwordObject.events.onInputOver.add(InvenonOverSword2, this);
+    basicSwordObject.events.onInputOut.add(InvenonOutSword2, this);
+
+    Inven_Sword_Two_Info = Lucifer_Game.add.sprite(720, 400, 'Sword_Two_Info');
+    Inven_Sword_Two_Info.anchor.setTo(0.5, 0.5);
+    Inven_Sword_Two_Info.fixedToCamera = true;
+    Inven_Sword_Two_Info.visible = false;
+    //-----------------------------------------------------------------------------------
+
     return basicSwordObject;
 }
 
@@ -219,6 +273,17 @@ function superSwordClone(positionX, positionY){
 
     basicSwordObject.inputEnabled = true;
     basicSwordObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    //Inventory item info ---------------------------------------------------------------
+
+    basicSwordObject.events.onInputOver.add(InvenonOverSword3, this);
+    basicSwordObject.events.onInputOut.add(InvenonOutSword3, this);
+
+    Inven_Sword_Three_Info = Lucifer_Game.add.sprite(720, 400, 'Sword_Three_Info');
+    Inven_Sword_Three_Info.anchor.setTo(0.5, 0.5);
+    Inven_Sword_Three_Info.fixedToCamera = true;
+    Inven_Sword_Three_Info.visible = false;
+    //-----------------------------------------------------------------------------------
 
     return basicSwordObject;
 }
@@ -237,6 +302,17 @@ function basicArmorClone(positionX, positionY){
     basicArmorObject.inputEnabled = true;
     basicArmorObject.events.onInputDown.add(clickedItemInInventory, this);
 
+    //Inventory item info ---------------------------------------------------------------
+
+    basicArmorObject.events.onInputOver.add(InvenonOverArmor, this);
+    basicArmorObject.events.onInputOut.add(InvenonOutArmor, this);
+
+    Inven_Armor_One_Info = Lucifer_Game.add.sprite(720, 400, 'Armor_One_Info');
+    Inven_Armor_One_Info.anchor.setTo(0.5, 0.5);
+    Inven_Armor_One_Info.fixedToCamera = true;
+    Inven_Armor_One_Info.visible = false;
+    //-----------------------------------------------------------------------------------
+
     return basicArmorObject;
 }
 
@@ -253,6 +329,17 @@ function strongArmorClone(positionX, positionY){
 
     basicArmorObject.inputEnabled = true;
     basicArmorObject.events.onInputDown.add(clickedItemInInventory, this);
+
+    //Inventory item info ---------------------------------------------------------------
+
+    basicArmorObject.events.onInputOver.add(InvenonOverArmor2, this);
+    basicArmorObject.events.onInputOut.add(InvenonOutArmor2, this);
+
+    Inven_Armor_Two_Info = Lucifer_Game.add.sprite(720, 400, 'Armor_Two_Info');
+    Inven_Armor_Two_Info.anchor.setTo(0.5, 0.5);
+    Inven_Armor_Two_Info.fixedToCamera = true;
+    Inven_Armor_Two_Info.visible = false;
+    //-----------------------------------------------------------------------------------
 
     return basicArmorObject;
 }
@@ -271,9 +358,93 @@ function superArmorClone(positionX, positionY){
     basicArmorObject.inputEnabled = true;
     basicArmorObject.events.onInputDown.add(clickedItemInInventory, this);
 
+    //Inventory item info ---------------------------------------------------------------
+
+    basicArmorObject.events.onInputOver.add(InvenonOverArmor3, this);
+    basicArmorObject.events.onInputOut.add(InvenonOutArmor3, this);
+
+    Inven_Armor_Three_Info = Lucifer_Game.add.sprite(720, 400, 'Armor_Three_Info');
+    Inven_Armor_Three_Info.anchor.setTo(0.5, 0.5);
+    Inven_Armor_Three_Info.fixedToCamera = true;
+    Inven_Armor_Three_Info.visible = false;
+    //-----------------------------------------------------------------------------------
+
     return basicArmorObject;
 }
 
 function itemsCreate(){
 
 }
+
+function InvenonOverPotion(){
+    Inven_Potion_One_Info.visible = true;
+}
+
+function InvenonOutPotion(){
+    Inven_Potion_One_Info.visible = false;
+}
+
+function InvenonOverPotion2(){
+    Inven_Potion_Two_Info.visible = true;
+}
+
+function InvenonOutPotion2(){
+    Inven_Potion_Two_Info.visible = false;
+}
+
+function InvenonOverPotion3(){
+    Inven_Potion_Three_Info.visible = true;
+}
+
+function InvenonOutPotion3(){
+    Inven_Potion_Three_Info.visible = false;
+}
+
+function InvenonOverSword(){
+    Inven_Sword_One_Info.visible = true;
+}
+
+function InvenonOutSword(){
+    Inven_Sword_One_Info.visible = false;
+}
+
+function InvenonOverSword2(){
+    Inven_Sword_Two_Info.visible = true;
+}
+
+function InvenonOutSword2(){
+    Inven_Sword_Two_Info.visible = false;
+}
+
+function InvenonOverSword3(){
+    Inven_Sword_Three_Info.visible = true;
+}
+
+function InvenonOutSword3(){
+    Inven_Sword_Three_Info.visible = false;
+}
+
+function InvenonOverArmor(){
+    Inven_Armor_One_Info.visible = true;
+}
+
+function InvenonOutArmor(){
+    Inven_Armor_One_Info.visible = false;
+}
+
+function InvenonOverArmor2(){
+    Inven_Armor_Two_Info.visible = true;
+}
+
+function InvenonOutArmor2(){
+    Inven_Armor_Two_Info.visible = false;
+}
+
+function InvenonOverArmor3(){
+    Inven_Armor_Three_Info.visible = true;
+}
+
+function InvenonOutArmor3(){
+    Inven_Armor_Three_Info.visible = false;
+}
+
