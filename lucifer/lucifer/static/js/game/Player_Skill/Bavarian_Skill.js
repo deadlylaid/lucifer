@@ -64,7 +64,6 @@ function skill_Preload()
 
 function skill_Create()
 {
-    learnedSkillPut();
     learnedSkillLength = learnedSkill.length;
 
     for(i=0; i<learnedSkillLength; i++){
