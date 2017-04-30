@@ -10,7 +10,7 @@ function check_Monster_Dead(Object)
 		switch(Object.Name.text)
 		{
 		case "Golem":
-			get_Exp = 1000;
+			get_Exp = 100;
 			break;
 		case "Andariel":
 			get_Exp = 200;
