@@ -359,6 +359,7 @@ function itemsStoreUpdate(){
             invenUi();
         }
         invenKeyValidCheck = 0;
+
     }
 
 }
@@ -382,6 +383,7 @@ function showStore(){
         strongArmor.getVisible(false);
         superArmor.getVisible(false);
         uiStore.visible = false;
+        Item_Select_Frame.visible = false;
     }else{
         potionTab.visible = true;
         swordTab.visible = true;
