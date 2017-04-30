@@ -48,6 +48,9 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Blood Effect
 	this.blood_Effect;
+
+	//Shadow
+	this.shadow_Effect;
 }
 
 Deamon.prototype = Object.create(Phaser.Sprite.prototype);
@@ -208,6 +211,9 @@ function deamon_Clone(PointX, PointY)
 
 	//Blood Effect
 	deamon_Object.blood_Effect = blood_Effect_Clone(deamon_Object.x, deamon_Object.y);
+
+	//Shadow
+	deamon_Object.shadow_Effect = shadow_Clone(deamon_Object.x, deamon_Object.y, 0, 55);
 
 	deamon_Group.add(deamon_Object);
 }
@@ -696,6 +702,9 @@ function deamon_Update()
 
 		//Blood Effect
 		blood_Effect_Update(deamon);
+
+		//Shadow
+		shadow_Monster_Move(deamon);
 	}
 }
 

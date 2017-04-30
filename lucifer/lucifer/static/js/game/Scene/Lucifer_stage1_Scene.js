@@ -19,6 +19,9 @@ var stage1_Scene =
 		//Stage
 		stageOne_Create();
 
+		//Shadow
+		shadow_Create();
+
 		//Player
 		player_Create();
 

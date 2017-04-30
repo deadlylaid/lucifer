@@ -47,6 +47,9 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Blood Effect
 	this.blood_Effect;
+
+	//Shadow Effect
+	this.shadow_Effect;
 }
 
 Golem.prototype = Object.create(Phaser.Sprite.prototype);
@@ -181,6 +184,10 @@ function golem_Clone(PointX, PointY)
 
 	//Blood Effect
 	golem_Object.blood_Effect = blood_Effect_Clone(golem_Object.x, golem_Object.y);
+
+	//Shadow_Effect
+	golem_Object.shadow_Effect = shadow_Clone(golem_Object.x, golem_Object.y, 0, 45);
+	golem_Object.shadow_Effect.scale.setTo(1.3, 1.3);
 
     golem_Group.add(golem_Object);
 }
@@ -661,6 +668,9 @@ function golem_Update()
 
 		//Blood Effect
 		blood_Effect_Update(golem);
+
+		//Shadow
+		shadow_Monster_Move(golem);
 	}
 }
 

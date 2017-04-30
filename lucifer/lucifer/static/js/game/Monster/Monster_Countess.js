@@ -48,6 +48,9 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Blood Effect
 	this.blood_Effect;
+
+	//Shadow
+	this.shadow_Effect;
 }
 
 Countess.prototype = Object.create(Phaser.Sprite.prototype);
@@ -202,6 +205,9 @@ function countess_Clone(PointX, PointY)
 
 	//Blood Effect
 	countess_Object.blood_Effect = blood_Effect_Clone(countess_Object.x, countess_Object.y);
+
+	//Shadow 
+	countess_Object.shadow_Effect = shadow_Clone(countess_Object.x, countess_Object.y, 0, 36);
 
 	countess_Group.add(countess_Object);
 }
@@ -684,6 +690,9 @@ function countess_Update()
 
 		//Blood Effect
 		blood_Effect_Update(countess);
+
+		//Shadow
+		shadow_Monster_Move(countess);
 	}
 }
 

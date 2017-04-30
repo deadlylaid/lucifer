@@ -12,7 +12,7 @@ var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
 var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4, player_KeySkill5;
 var Player_DelayTimer, Player_Time_Total = 0;
 //----------------------------------------------------------------------------------------------------------
-
+var Player_Shadow;
 //----------------------------------------------------------------------------------------------------------
 
 function player_Create()
@@ -191,7 +191,7 @@ function player_Create()
 
 	//Timer
 	Player_DelayTimer = Lucifer_Game.time.create(false);
-	Player_DelayTimer.loop(50, Player_Attack_DelayTimer, Lucifer_Game);
+	Player_DelayTimer.loop(50, Player_Attack_DelayTimer, Lucifer_Game);	
 }
 
 //Time
@@ -524,6 +524,7 @@ function player_Update()
 				PlayerAttack();
 				player_Level_Up();
 				//Player_Frame();
+				shadow_Player_Move();
 			}
    	 	}
 
@@ -541,6 +542,7 @@ function player_Update()
 				PlayerAttack();
 				player_Level_Up();
 				//Player_Frame();
+				shadow_Player_Move();
 			}
    	 	}
 

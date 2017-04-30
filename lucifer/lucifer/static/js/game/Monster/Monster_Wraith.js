@@ -45,6 +45,9 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Level System
 	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+
+	//Shadow Effect
+	this.shadow_Effect;
 }
 
 Wraith.prototype = Object.create(Phaser.Sprite.prototype);
@@ -193,6 +196,9 @@ function wraith_Clone(PointX, PointY)
 	//Exp Timer
 	wraith_Object.ExpTimer = Lucifer_Game.time.create(false);
 	wraith_Object.ExpTimer.loop(10, wraith_ExpTimer, Lucifer_Game, wraith_Object);
+
+	//Shadow
+	wraith_Object.shadow_Effect = shadow_Clone(wraith_Object.x, wraith_Object.y, 0, 45);
 
 	wraith_Group.add(wraith_Object);
 }
@@ -672,6 +678,9 @@ function wraith_Update()
 
 		//Mouse
 		mouse_ColCheck(wraith);
+
+		//Shadow Effect
+		shadow_Monster_Move(wraith);
 	}
 }
 
