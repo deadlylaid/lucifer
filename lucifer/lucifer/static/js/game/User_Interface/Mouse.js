@@ -2,7 +2,6 @@
 // Mouse Icon
 //-------------------------------------------------------------------------------------
 var mouse_Rect, mouseIcon, mouse_colcheck = false, mouse_IconCheck = false;
-var MovePoint, MovePointX, MovePointY;
 
 function mouse_Preload()
 {
@@ -101,14 +100,6 @@ function mouse_Update()
 	mouseIcon.x = mouseposX;
 	mouseIcon.y = mouseposY;
 	
-	if(Lucifer_Game.input.activePointer.isDown)
-	{	
-		MovePoint.x = Lucifer_Game.input.mousePointer.x + Lucifer_Game.camera.x - 773;
-		MovePoint.y = Lucifer_Game.input.mousePointer.y + Lucifer_Game.camera.y - 551;
-
-		//console.log(CurFrame, EndFrame, MovePoint.visible);
-		console.log(MovePoint.x , MovePoint.y);
-	}
 }
 
 function mouse_Render()
