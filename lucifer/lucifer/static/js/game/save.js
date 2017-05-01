@@ -14,6 +14,11 @@ function gameSave(){
             dexterity:dexterity,
             intelligence:intelligence,
             experience:experience,
+            firstSkillDamage:learnedSkill[0].damage,
+            secondSkillDamage:learnedSkill[1].damage,
+            thirdSkillDamage:learnedSkill[2].damage,
+            fourthSkillDamage:learnedSkill[3].damage,
+            fifthSkillDamage:learnedSkill[4].damage,
         },
     });
 }
