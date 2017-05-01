@@ -64,6 +64,7 @@ function skill_Preload()
 
 function skill_Create()
 {
+    learnedSkillPut();
     learnedSkillLength = learnedSkill.length;
 
     for(i=0; i<learnedSkillLength; i++){
@@ -418,13 +419,13 @@ function skill_CoolTime()
 		skill_One_Check = true;			  //첫번째 스킬 coolTime 체크
 
 		if(skill_One_Attribute == false)
-		{	
+		{
 			tempAttack_Point = attack_point;
 
 			for(var i = 0; i < learnedSkill.length; ++i)
 			{
-				attack_point = tempAttack_Point + learnedSkill[0].damage; //Attack Point Plus	
-			}			
+				attack_point = tempAttack_Point + learnedSkill[0].damage; //Attack Point Plus
+			}
 
 			skill_One_Attribute = true;
 		}
