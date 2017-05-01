@@ -37,7 +37,7 @@ var menuSelectScene =
 	update: function()
 	{
 		//Mouse
-		//mouse_Update();
+		mouse_Update();
 	}
 };
 

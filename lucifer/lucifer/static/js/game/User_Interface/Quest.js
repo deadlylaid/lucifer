@@ -357,6 +357,37 @@ function QuestUpdate(){
             QuestUi();
         }
         validCheck = 0;
+
+        //다른 UI창 닫기
+        //Inventory
+        if(uiInventory.visible == true)
+        {
+            invenUi();
+        }
+
+        //Stat
+        if(UI_Stat.visible == true)
+        {
+            statusUi();
+        }
+
+        //Skill
+        if(UI_Skill.visible == true)
+        {
+            skillUi();
+        }
+
+        //Info
+        if(UI_Info.visible == true)
+        {
+            InfoUi();
+        }
+
+        //Store
+        if(uiStore.visible == true)
+        {
+            showStore();
+        }
     }
 
     if(Key_Info.isDown)
@@ -367,6 +398,37 @@ function QuestUpdate(){
             InfoUi();
         }
         validCheck = 0;
+
+        //다른 UI창 닫기
+        //Quest
+        if(UI_Quest.visible == true)
+        {
+            QuestUi();
+        }
+
+        //Inventory
+        if(uiInventory.visible == true)
+        {
+            invenUi();
+        }
+
+        //Stat
+        if(UI_Stat.visible == true)
+        {
+            statusUi();
+        }
+
+        //Skill
+        if(UI_Skill.visible == true)
+        {
+            skillUi();
+        }
+
+        //Store
+        if(uiStore.visible == true)
+        {
+            showStore();
+        }
     }
 
     text1.x = Math.floor(QuestContent_lv1.x - 340 + QuestContent_lv1.width / 2);

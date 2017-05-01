@@ -360,6 +360,32 @@ function itemsStoreUpdate(){
         }
         invenKeyValidCheck = 0;
 
+        //다른 UI창 닫기
+        //Quest
+        if(UI_Quest.visible == true)
+        {
+            QuestUi();
+        }
+
+        //Stat
+        if(UI_Stat.visible == true)
+        {
+            statusUi();
+        }
+
+        //Skill
+        if(UI_Skill.visible == true)
+        {
+            skillUi();
+        }
+
+        //Info
+        if(UI_Info.visible == true)
+        {
+            InfoUi();
+        }
+
+
     }
 
 }
@@ -384,6 +410,8 @@ function showStore(){
         superArmor.getVisible(false);
         uiStore.visible = false;
         Item_Select_Frame.visible = false;
+        invenUi();
+
     }else{
         potionTab.visible = true;
         swordTab.visible = true;
@@ -394,6 +422,8 @@ function showStore(){
         hyperPotion.getVisible(true);
         uiStore.visible = true;
     }
+
+    invenUi();
 }
 
 //클릭 시 실행
