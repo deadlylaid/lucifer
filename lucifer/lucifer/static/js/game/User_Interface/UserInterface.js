@@ -8,6 +8,8 @@ var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat, UI_Skill;	
 //----------------------------------------------------------------------------------------------------------
 var key_Stat, Key_Skill, ui_Delay_Time;
 
+var UI_close;
+
 function ui_Preload()
 {
 	//UI
@@ -63,6 +65,8 @@ function ui_Create()
 	//UI Key Setting
 	key_Stat = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.S);
     Key_Skill = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.K);
+
+    UI_close = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 	//---------------------------------------------------------------------------------------
 
 	//Player Info
@@ -115,6 +119,37 @@ function ui_Update()
             statusUi();
         }
         validCheck = 0;
+
+        //다른 UI창 닫기
+        //Quest
+        if(UI_Quest.visible == true)
+        {
+            QuestUi();
+        }
+
+        //Inventory
+        if(uiInventory.visible == true)
+        {
+            invenUi();
+        }
+
+        //Skill
+        if(UI_Skill.visible == true)
+        {
+            skillUi();
+        }
+
+        //Info
+        if(UI_Info.visible == true)
+        {
+            InfoUi();
+        }
+
+        //Store
+        if(uiStore.visible == true)
+        {
+            showStore();
+        }
 	}
 
     if(Key_Skill.isDown)
@@ -125,6 +160,77 @@ function ui_Update()
             skillUi();
         }
         validCheck = 0;
+
+        //다른 UI창 닫기
+        //Quest
+        if(UI_Quest.visible == true)
+        {
+            QuestUi();
+        }
+
+        //Inventory
+        if(uiInventory.visible == true)
+        {
+            invenUi();
+        }
+
+        //Stat
+        if(UI_Stat.visible == true)
+        {
+            statusUi();
+        }
+
+        //Info
+        if(UI_Info.visible == true)
+        {
+            InfoUi();
+        }
+
+        //Store
+        if(uiStore.visible == true)
+        {
+            showStore();
+        }
+    }
+
+    if(UI_close.isDown)
+    {
+        //Quest
+        if(UI_Quest.visible == true)
+        {
+            QuestUi();
+        }
+
+        //Inventory
+        if(uiInventory.visible == true)
+        {
+            invenUi();
+        }
+
+        //Stat
+        if(UI_Stat.visible == true)
+        {
+            statusUi();
+        }
+
+        //Skill
+        if(UI_Skill.visible == true)
+        {
+            skillUi();
+        }
+
+        //Info
+        if(UI_Info.visible == true)
+        {
+            InfoUi();
+        }
+
+        //Store
+        if(uiStore.visible == true)
+        {
+            showStore();
+        }
+
     }
 }
 
