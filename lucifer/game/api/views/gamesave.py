@@ -28,7 +28,7 @@ class GameSaveAPIView(APIView):
         character.save()
 
         character.status.strong = strong
-        character.status.maxHealth = maxHealth
+        character.status.max_health = maxHealth
         character.status.health = health
         character.status.dexterity = dexterity
         character.status.intelligence = intelligence

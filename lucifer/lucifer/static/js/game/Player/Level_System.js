@@ -11,7 +11,7 @@ var player_Skill_Four = false, plyaer_Skill_Five = false;
 
 function check_Monster_Dead(Object)
 {
-	if(Object.ExpCheck == true)
+    if(Object.ExpCheck == true)
 	{
 		switch(Object.Name.text)
 		{
