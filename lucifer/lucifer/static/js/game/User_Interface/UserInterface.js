@@ -33,7 +33,7 @@ function ui_Create()
 
     UI_UnderBar = Lucifer_Game.add.sprite(640, 705, 'UI_UnderBar');
     UI_UnderBar.anchor.setTo(0.5, 0.5);
-    UI_UnderBar.fixedToCamera = true;   
+    UI_UnderBar.fixedToCamera = true;
 
 	UI_Stat = Lucifer_Game.add.sprite(250, 360, 'UI_Stat');
 	UI_Stat.anchor.setTo(0.5, 0.5);
@@ -184,7 +184,7 @@ function hpBarMaskRate(healthPercentage){
     }else{
         hpRate = 58;
     }
-    
+
     return hpRate;
 }
 
