@@ -114,24 +114,97 @@ function player_LearnedSkill()
 		player_Skill_One = true;
 		skill_Icon_One.visible = true;
 	}	
+	else if(level == 2)
+	{
+		player_Skill_One = true;
+		skill_Icon_One.visible = true;
+	}
 	else if(level == 3)
 	{
+		player_Skill_One = true;
 		player_Skill_Two = true;
+
+		skill_Icon_One.visible = true;
+		skill_Icon_Two.visible = true;
+	}
+	else if(level == 4)
+	{
+		player_Skill_One = true;
+		player_Skill_Two = true;
+
+		skill_Icon_One.visible = true;
 		skill_Icon_Two.visible = true;
 	}
 	else if(level == 5)
 	{
+		player_Skill_One = true;
+		player_Skill_Two = true;
 		player_Skill_Three = true;
+
+		skill_Icon_One.visible = true;
+		skill_Icon_Two.visible = true;
+		skill_Icon_Three.visible = true;
+	}
+	else if(level == 6)
+	{
+		player_Skill_One = true;
+		player_Skill_Two = true;
+		player_Skill_Three = true;
+
+		skill_Icon_One.visible = true;
+		skill_Icon_Two.visible = true;
 		skill_Icon_Three.visible = true;
 	}
 	else if(level == 7)
 	{
+		player_Skill_One = true;
+		player_Skill_Two = true;
+		player_Skill_Three = true;
 		player_Skill_Four = true;
+
+		skill_Icon_One.visible = true;
+		skill_Icon_Two.visible = true;
+		skill_Icon_Three.visible = true;
+		skill_Icon_Four.visible = true;
+	}
+	else if(level == 8)
+	{
+		player_Skill_One = true;
+		player_Skill_Two = true;
+		player_Skill_Three = true;
+		player_Skill_Four = true;
+
+		skill_Icon_One.visible = true;
+		skill_Icon_Two.visible = true;
+		skill_Icon_Three.visible = true;
 		skill_Icon_Four.visible = true;
 	}
 	else if(level == 9)
 	{
+		player_Skill_One = true;
+		player_Skill_Two = true;
+		player_Skill_Three = true;
+		player_Skill_Four = true;
 		plyaer_Skill_Five = true;
+
+		skill_Icon_One.visible = true;
+		skill_Icon_Two.visible = true;
+		skill_Icon_Three.visible = true;
+		skill_Icon_Four.visible = true;
+		skill_Icon_Five.visible = true;
+	}
+	else if(level == 10)
+	{
+		player_Skill_One = true;
+		player_Skill_Two = true;
+		player_Skill_Three = true;
+		player_Skill_Four = true;
+		plyaer_Skill_Five = true;
+
+		skill_Icon_One.visible = true;
+		skill_Icon_Two.visible = true;
+		skill_Icon_Three.visible = true;
+		skill_Icon_Four.visible = true;
 		skill_Icon_Five.visible = true;
 	}
 }

@@ -13,7 +13,10 @@ function player_Monster_Col(Object)
 				//Player Attack motion
 				if(Lucifer_Game.input.activePointer.leftButton.isDown && Player_AttackCheck == false)
 				{
-					Animation_Change(Direction, 'Attack');
+					if(skill_Bavarian_Three.visible == false)
+					{
+						Animation_Change(Direction, 'Attack');
+					}
 				}
 				else
 				{
