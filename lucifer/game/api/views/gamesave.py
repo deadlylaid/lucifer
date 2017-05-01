@@ -19,6 +19,11 @@ class GameSaveAPIView(APIView):
         maxHealth = self.request.data.get('maxHealth')
         dexterity = self.request.data.get('dexterity')
         intelligence = self.request.data.get('intelligence')
+        first_skill_damage = self.request.data.get('firstSkillDamage')
+        second_skill_damage = self.request.data.get('secondSkillDamage')
+        third_skill_damage = self.request.data.get('thirdkillDamage')
+        fourth_skill_damage = self.request.data.get('fourthSkillDamage')
+        fifth_skill_damage = self.request.data.get('fifthSkillDamage')
 
         character = Character.objects.get(nickname=nickname)
 
@@ -38,5 +43,17 @@ class GameSaveAPIView(APIView):
         character.status.experience = experience
 
         character.status.save()
+
+        skills = character.learnedskill_set.all()
+        skills[0].damage = first_skill_damage
+        skills[1].damage = second_skill_damage
+        skills[2].damage = third_skill_damage
+        skills[3].damage = fourth_skill_damage
+        skills[4].damage = fifth_skill_damage
+        skills[0].save()
+        skills[1].save()
+        skills[2].save()
+        skills[3].save()
+        skills[4].save()
 
         return Response(status=status.HTTP_200_OK)

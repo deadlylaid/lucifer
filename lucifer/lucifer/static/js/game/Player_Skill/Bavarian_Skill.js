@@ -64,7 +64,6 @@ function skill_Preload()
 
 function skill_Create()
 {
-    learnedSkillPut();
     learnedSkillLength = learnedSkill.length;
 
     for(i=0; i<learnedSkillLength; i++){
@@ -598,15 +597,6 @@ function characterSkill(name, damage, limit_level){
     this.name = name;
     this.damage = damage;
     this.limit_level = limit_level;
-}
-
-function learnedSkillPut(){
-    $.ajax({
-        url:'/api/user/character/learnedskill/',
-        method:'PUT',
-        data:{
-        },
-    });
 }
 
 function onUp()
