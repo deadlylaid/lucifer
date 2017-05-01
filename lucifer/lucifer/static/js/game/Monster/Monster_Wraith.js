@@ -623,16 +623,45 @@ function wraith_Regen(Object)
 
 //UI
 //----------------------------------------------------------------------------------------------
+function wraith_Health(health, maxHealth)
+{
+	var divided_Health = health / maxHealth;
+	var result_health = divided_Health;
+
+	if(health <= 0)
+	{
+		result_health = 0;
+	}
+
+	return result_health * 100;
+}
+
+function wraith_Health_Rate(health_Percentage)
+{
+	var hpRate;
+
+	if(health_Percentage > 0)
+	{
+		hpRate = (2.24 * health_Percentage); 	
+	}	 
+	else if(health_Percentage <= 0)
+	{
+		hpRate = 0;
+	}
+
+	return hpRate;
+}
+
 function wraith_Hpbar_Mask(Object)
 {
-	if(Object.DeadCheck == false)
-	{
-		Object.HpMask.clear();
-		Object.HpMask.beginFill(0xffffff);
-		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
-		Object.HpMask.endFill();
-		Object.HpBar.mask = Object.HpMask;
-	}
+	var healthPercentage = wraith_Health(Object.Hp, Object.MaxHp);
+	var hpRate = wraith_Health_Rate(healthPercentage);
+
+	Object.HpMask.clear();
+	Object.HpMask.beginFill(0xffffff);
+	Object.HpMask.drawRect(Object.HpBar.x - 112, Object.HpBar.y, hpRate, 200);
+	Object.HpMask.endFill();
+	Object.HpBar.mask = Object.HpMask;	
 }
 
 function wraith_RectPos(Object)
