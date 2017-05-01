@@ -6,7 +6,7 @@ var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값�
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 var DistanceToMonster;								//Monster에 대한 거리값 변수.
 var Attack_Rect, Hit_Rect, Whirlwind_Rect, Pointer_Rect;
-var Player_AttackCheck = false;
+var Player_AttackCheck = false, Player_StopCheck = false;
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
 var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4, player_KeySkill5;
@@ -534,7 +534,13 @@ function player_Update()
 		if(UI_Stat.visible === true || uiStore.visible === true || uiInventory.visible === true || UI_Quest.visible === true || UI_Skill.visible === true)
 		{
 			Player.body.velocity.x = 0;
-			Player.body.velocity.y = 0;			
+			Player.body.velocity.y = 0;		
+
+			if(Player_StopCheck == false)
+			{
+				Animation_Change(Direction, 'Stand');	
+				Player_StopCheck = true;
+			}
  		}else{
 			if(Player_Regen_Check == false)
 			{
@@ -544,6 +550,8 @@ function player_Update()
 				//Player_Frame();
 				shadow_Player_Move();				
 			}
+
+			Player_StopCheck = false;
    	 	}
 
    	 	player_LearnedSkill();
@@ -555,6 +563,12 @@ function player_Update()
 		{
 			Player.body.velocity.x = 0;
 			Player.body.velocity.y = 0;
+
+			if(Player_StopCheck == false)
+			{
+				Animation_Change(Direction, 'Stand');	
+				Player_StopCheck = true;
+			}
 		}else{
 			if(Player_Regen_Check == false)
 			{
@@ -564,6 +578,8 @@ function player_Update()
 				//Player_Frame();
 				shadow_Player_Move();
 			}
+
+			Player_StopCheck = false;
    	 	}
 
    	 	player_LearnedSkill();
