@@ -41,7 +41,7 @@ function check_Monster_Dead(Object)
 			break;
 		}
 
-		player_Level_Update(Object);		
+		player_Level_Update(Object);
 		Object.ExpCheck = false;
 	}
 }
@@ -113,7 +113,7 @@ function player_LearnedSkill()
 	{
 		player_Skill_One = true;
 		skill_Icon_One.visible = true;
-	}	
+	}
 	else if(level == 2)
 	{
 		player_Skill_One = true;
@@ -210,7 +210,7 @@ function player_LearnedSkill()
 }
 
 function player_skillDamage_Up()
-{	
+{
 	switch(level)
 	{
 	case 1:
@@ -257,6 +257,6 @@ function player_skillDamage_Up()
 		learnedSkill[2].damage = 65;
 		learnedSkill[3].damage = 20;
 		learnedSkill[4].damage = 200;
-		break;	
+		break;
 	}
 }
