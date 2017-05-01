@@ -356,6 +356,7 @@ function PlayerMove()
 				{
 					Animation_Change(Direction, 'Walk');
 				}
+				
 				Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
 				Lucifer_Game.camera.x = Player.x + 150;
 				Lucifer_Game.camera.y = Player.y + 150;
@@ -532,8 +533,9 @@ function player_Update()
 	{
 		if(UI_Stat.visible === true || uiStore.visible === true || uiInventory.visible === true || UI_Quest.visible === true || UI_Skill.visible === true)
 		{
-
-		}else{
+			Player.body.velocity.x = 0;
+			Player.body.velocity.y = 0;			
+ 		}else{
 			if(Player_Regen_Check == false)
 			{
 				PlayerMove();
@@ -551,7 +553,8 @@ function player_Update()
 	{
 		if(UI_Stat.visible === true /*|| uiInventory.visible === true*/)
 		{
-
+			Player.body.velocity.x = 0;
+			Player.body.velocity.y = 0;
 		}else{
 			if(Player_Regen_Check == false)
 			{
