@@ -11,9 +11,9 @@ var key_Stat, Key_Skill, ui_Delay_Time;
 function ui_Preload()
 {
 	//UI
-	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 800, 150);
-	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/UI_HpBar.png', 92, 92);
-	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 92, 92);
+	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 1040, 195);
+	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/UI_HpBar.png', 120, 120);
+	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 120, 120);
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status2.png', 496, 961);
     Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 525);
 }
@@ -23,17 +23,17 @@ function ui_Create()
     //Uesr Interface
 	//---------------------------------------------------------------------------------------
 	//UI_Group = Lucifer_Game.add.group();
-	UI_HpBar = Lucifer_Game.add.sprite(403, 745, 'UI_HpBar');
+	UI_HpBar = Lucifer_Game.add.sprite(330, 730, 'UI_HpBar');
 	UI_HpBar.anchor.setTo(0.5, 0.5);
 	UI_HpBar.fixedToCamera = true;
 
-	UI_MpBar = Lucifer_Game.add.sprite(895, 745, 'UI_MpBar');
+	UI_MpBar = Lucifer_Game.add.sprite(970, 730, 'UI_MpBar');
 	UI_MpBar.anchor.setTo(0.5, 0.5);
 	UI_MpBar.fixedToCamera = true;
 
-    UI_UnderBar = Lucifer_Game.add.sprite(640, 725, 'UI_UnderBar');
+    UI_UnderBar = Lucifer_Game.add.sprite(640, 705, 'UI_UnderBar');
     UI_UnderBar.anchor.setTo(0.5, 0.5);
-    UI_UnderBar.fixedToCamera = true;
+    UI_UnderBar.fixedToCamera = true;   
 
 	UI_Stat = Lucifer_Game.add.sprite(250, 360, 'UI_Stat');
 	UI_Stat.anchor.setTo(0.5, 0.5);
@@ -46,7 +46,7 @@ function ui_Create()
     UI_Skill.visible = false;
 
     //hpMask is show real-time HP
-    hpMask = Lucifer_Game.add.graphics(417, 735);
+    hpMask = Lucifer_Game.add.graphics(350, 730);
     hpMask.fixedToCamera = true;
     hpMask.beginFill(0xffffff);
 
@@ -56,7 +56,7 @@ function ui_Create()
     hpRate = hpBarMaskRate(healthPercentage);
     //-------------------------------------------------
 
-    hpMask.drawRect(-66, hpRate, 92, 92);
+    hpMask.drawRect(-73, hpRate, 120, 120);
 
     UI_HpBar.mask = hpMask;
 
@@ -95,7 +95,7 @@ function ui_Update()
     //-------------------------------------------------
     hpMask.clear();
     hpMask.beginFill(0xffffff);
-    hpMask.drawRect(-66, hpRate, 92, 92);
+    hpMask.drawRect(-73, hpRate, 120, 120);
     hpMask.endFill();
     //console.log("현재 HP 바의 비율은" + hpRate + "입니다.");
     UI_HpBar.mask = hpMask;
@@ -176,15 +176,15 @@ function playerHealth(health, maxHealth){
 function hpBarMaskRate(healthPercentage){
     //퍼센트에 따라서 산출되도록 수정
     if(healthPercentage > 50){
-        hpRate = 43 - (0.86 * healthPercentage);
-    }else if(healthPercentage < 50){
-        hpRate = 0.435 * (50 - healthPercentage);
+        hpRate = 60 - (1.14 * healthPercentage);;
+    }else if(healthPercentage < 50 && healthPercentage > 0){
+        hpRate = 0.97 * (60 - healthPercentage);
     }else if(healthPercentage === 50){
-        hpRate = 11;
+        hpRate = 0;
     }else{
-        hpRate = 43.5;
+        hpRate = 58;
     }
-
+    
     return hpRate;
 }
 
