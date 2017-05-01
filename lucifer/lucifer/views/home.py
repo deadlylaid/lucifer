@@ -34,7 +34,7 @@ class Home(View):
                 )
 
         ranking = Paginator(
-                Character.objects.order_by('status__attack_point'),
+                Character.objects.order_by('-level'),
                 10,
                 )
 
