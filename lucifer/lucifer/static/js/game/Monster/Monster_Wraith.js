@@ -599,6 +599,7 @@ function wraith_Regen(Object)
 			Object.revive();
 			Object.Name.visible = true;
 			Object.body.static = false;
+			Object.body.restitution = 0;
 
 			Object.Regen_Check = false;
 
@@ -607,8 +608,8 @@ function wraith_Regen(Object)
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.MouseCheck = false;
 
-			Object.Hp = 100;
-			Object.MaxHp = 100;
+			Object.Hp = 1000;
+			Object.MaxHp = 1000;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 

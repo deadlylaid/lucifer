@@ -668,6 +668,7 @@ function countess_Regen(Object)
 			Object.revive();
 			Object.Name.visible = true;
 			Object.body.static = false;		//Collision true
+			Object.body.restitution = 0;
 
 			Object.Regen_Check = false;
 

@@ -787,7 +787,8 @@ function council_Regen(Object)
 			Object.revive();
 			Object.Name.visible = true;
 			Object.body.static = false;		//Collision true
-
+			Object.body.restitution = 0;
+			
 			Object.Regen_Check = false;
 
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
@@ -796,8 +797,8 @@ function council_Regen(Object)
 			Object.Pattern_Nomal_Check = false, Object.Pattern_Skill_Check = false;
 			Object.MouseCheck = false;
 
-			Object.Hp = 100;
-			Object.MaxHp = 100;
+			Object.Hp = 300;
+			Object.MaxHp = 300;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 
