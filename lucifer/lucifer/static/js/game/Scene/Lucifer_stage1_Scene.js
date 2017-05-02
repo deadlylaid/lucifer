@@ -28,6 +28,9 @@ var stage1_Scene =
 		//Player
 		player_Create();
 
+		//Appearance Effect
+		Appearance_Effect_Create();
+
 		//Monster
 		golem_Create();
 		countess_Create();
@@ -53,6 +56,9 @@ var stage1_Scene =
 		//Rain Particle
 		rain_Create();
 
+		//Quest Effect
+		questComplete_Effect_Create();
+
 		//mouse movePoint
 		movepoint_Create();
 
@@ -68,10 +74,11 @@ var stage1_Scene =
 
 	update: function()
 	{	
-		
-
 		//Player Update
 		player_Update();
+
+		//Appearance Effect Update
+		Appearance_Effect_Update();
 
 		//Monster Update
 		golem_Update();
@@ -84,7 +91,10 @@ var stage1_Scene =
 		ui_Update();
 
 		//Quest Update
-		QuestUpdate();
+		QuestUpdate();		
+
+		//Quest Effect Update
+		questComplete_Effect_Update();
 
 		//Skill
 		skill_Update();
