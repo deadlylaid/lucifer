@@ -73,7 +73,7 @@ function golem_Preload()
 								   214, 133);
     Lucifer_Game.load.spritesheet('monsterHealthBar',
                                   '../../static/images/game/Monster/monsterHealthBar.png',
-                                   228, 48);
+                                   224, 44);
 }
 
 function golem_Create()
@@ -586,6 +586,7 @@ function golem_Regen(Object)
 			Object.revive();
 			Object.Name.visible = true;
 			Object.body.static = false;
+			Object.body.restitution = 0;
 
 			Object.Regen_Check = false;
 
@@ -607,18 +608,46 @@ function golem_Regen(Object)
 	}
 }
 //-------------------------------------------------------------------------------------------
+function golem_Health(health, maxHealth)
+{
+	var divided_Health = health / maxHealth;
+	var result_health = divided_Health;
+
+	if(health <= 0)
+	{
+		result_health = 0;
+	}
+
+	return result_health * 100;
+}
+
+function golem_Health_Rate(health_Percentage)
+{
+	var hpRate;
+
+	if(health_Percentage > 0)
+	{
+		hpRate = (2.24 * health_Percentage); 	
+	}	 
+	else if(health_Percentage <= 0)
+	{
+		hpRate = 0;
+	}
+
+	return hpRate;
+}
 
 //Hp Bar Mask
 function Hpbar_Mask(Object)
 {
-	if(Object.DeadCheck == false)
-	{
-		Object.HpMask.clear();
-		Object.HpMask.beginFill(0xffffff);
-		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
-		Object.HpMask.endFill();
-		Object.HpBar.mask = Object.HpMask;
-	}
+	var healthPercentage = golem_Health(Object.Hp, Object.MaxHp);
+	var hpRate = golem_Health_Rate(healthPercentage);
+
+	Object.HpMask.clear();
+	Object.HpMask.beginFill(0xffffff);
+	Object.HpMask.drawRect(Object.HpBar.x - 112, Object.HpBar.y, hpRate, 200);
+	Object.HpMask.endFill();
+	Object.HpBar.mask = Object.HpMask;	
 }
 
 //Rect Position

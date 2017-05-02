@@ -642,6 +642,7 @@ function fallen_Shaman_Regen(Object)
 			Object.revive();
 			Object.Name.visible = true;
 			Object.body.static = false;
+			Object.body.restitution = 0;
 
 			Object.Regen_Check = false;
 
@@ -650,8 +651,8 @@ function fallen_Shaman_Regen(Object)
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.MouseCheck = false;
 
-			Object.Hp = 100;
-			Object.MaxHp = 100;
+			Object.Hp = 450;
+			Object.MaxHp = 450;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 
@@ -663,18 +664,46 @@ function fallen_Shaman_Regen(Object)
 	}
 }
 //-------------------------------------------------------------------------------------------
+function fallen_Shaman_Health(health, maxHealth)
+{
+	var divided_Health = health / maxHealth;
+	var result_health = divided_Health;
+
+	if(health <= 0)
+	{
+		result_health = 0;
+	}
+
+	return result_health * 100;
+}
+
+function fallen_Shaman_Health_Rate(health_Percentage)
+{
+	var hpRate;
+
+	if(health_Percentage > 0)
+	{
+		hpRate = (2.24 * health_Percentage); 	
+	}	 
+	else if(health_Percentage <= 0)
+	{
+		hpRate = 0;
+	}
+
+	return hpRate;
+}
 
 //Hp Bar Mask
 function fallen_Shaman_Hpbar_Mask(Object)
 {
-	if(Object.DeadCheck == false)
-	{
-		Object.HpMask.clear();
-		Object.HpMask.beginFill(0xffffff);
-		Object.HpMask.drawRect(Object.HpBar.x - 100, Object.HpBar.y, Object.Hp, 200);
-		Object.HpMask.endFill();
-		Object.HpBar.mask = Object.HpMask;
-	}
+	var healthPercentage = fallen_Shaman_Health(Object.Hp, Object.MaxHp);
+	var hpRate = fallen_Shaman_Health_Rate(healthPercentage);
+
+	Object.HpMask.clear();
+	Object.HpMask.beginFill(0xffffff);
+	Object.HpMask.drawRect(Object.HpBar.x - 112, Object.HpBar.y, hpRate, 200);
+	Object.HpMask.endFill();
+	Object.HpBar.mask = Object.HpMask;
 }
 
 //Rect Position / FireBall Pos
