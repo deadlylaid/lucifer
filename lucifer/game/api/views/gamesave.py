@@ -25,7 +25,7 @@ class GameSaveAPIView(APIView):
         fourth_skill_damage = self.request.data.get('fourthSkillDamage')
         fifth_skill_damage = self.request.data.get('fifthSkillDamage')
 
-        user = self.request.data.user
+        user = self.request.user
         character = Character.objects.get(user=user)
 
         character.level = level
