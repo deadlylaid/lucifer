@@ -52,6 +52,10 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Shadow
 	this.shadow_Effect;
+
+	//Andariel Skill
+	this.Andariel_Skill, this.Andariel_Skill_Rect, this.Andariel_Skill_Check = false;
+	this.Andariel_Skill_AttackPoint = 1;
 }
 
 Andariel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -73,6 +77,9 @@ function andariel_Preload()
 	Lucifer_Game.load.spritesheet('MON_Andariel_Dead',
 								  '../../static/images/game/Monster/Andariel/death/death.png',
 								  256, 256);
+	Lucifer_Game.load.spritesheet('MON_Andariel_Skill',
+								  '../../static/images/game/Monster_Skill/Andariel_Skill.png',
+								  65, 65);
 }
 
 function andariel_Create()
@@ -199,6 +206,24 @@ function andariel_Clone(PointX, PointY)
 	//Shadow
 	andariel_Object.shadow_Effect = shadow_Clone(andariel_Object.x, andariel_Object.y, 0, 50);
 
+	//Andariel Skill
+	andariel_Object.Andariel_Skill = Lucifer_Game.add.sprite(andariel_Object.x, andariel_Object.y,
+														     'MON_Andariel_Skill');
+	andariel_Object.Andariel_Skill.anchor.setTo(0.5, 0.5);
+	andariel_Object.Andariel_Skill.visible = false;
+	andariel_Object.Andariel_Skill.blendMode = Phaser.blendModes.ADD;
+
+	//Skill Animation
+	andariel_Object.Andariel_Skill.animations.add('MON_Andariel_Skill_Ani',
+												  [
+												  	 0,  1,  2,  3,  4,  5,  6,  7,  8,  9,
+												  	 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+												  	 20, 21, 22, 23
+												  ], 60, true);
+
+	andariel_Object.Andariel_Skill_Rect = new Phaser.Rectangle(andariel_Object.Andariel_Skill.x, 
+														       andariel_Object.Andariel_Skill.y,
+														       65, 65);	
 	andariel_Group.add(andariel_Object);
 }
 //----------------------------------------------------------------------------------------------
@@ -437,6 +462,10 @@ function andariel_Move(Object)
 			Object.body.velocity.x = 0;
 			Object.body.velocity.y = 0;
 		}
+		else
+		{
+			Object.Andariel_Skill.visible = false;
+		}
 
 		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
 		{
@@ -501,11 +530,57 @@ function andariel_Attack(Object)
 		else
 		{
 			Object.StandCheck = false;
-			Object.MoveCheck = false;
+			Object.MoveCheck = false;			
 		}
 
 		andariel_HitCount(Object);
 	}
+}
+
+function andariel_Skill(Object)
+{
+	if(Object.animations.name == "MON_Andariel_Attack_" + Object.Direction)
+	{	
+		Object.Andariel_Skill.x = Player.x;
+		Object.Andariel_Skill.y = Player.y;
+		Object.Andariel_Skill_Rect.x = Object.Andariel_Skill.x;
+		Object.Andariel_Skill_Rect.y = Object.Andariel_Skill.y;
+		Object.Andariel_Skill_Rect.centerOn(Object.Andariel_Skill_Rect.x, Object.Andariel_Skill_Rect.y);
+
+		//Skill Animation Play
+		if(Object.Andariel_Skill_Check == false)
+		{
+			Object.Andariel_Skill.visible = true;
+			Object.Andariel_Skill.animations.play('MON_Andariel_Skill_Ani', 10, true);
+			Object.Andariel_Skill_Check = true;
+		}
+
+		if(Object.Andariel_Skill_Check == true)
+		{
+			var CurFrame = Object.Andariel_Skill.animations.frame;
+			var EndFrame = 23;
+
+			if(CurFrame == EndFrame)
+			{
+				//Object.Andariel_Skill.visible = false;
+				Object.Andariel_Skill_Check = false;
+			}
+		}
+
+		//Skill Damage
+		if(Phaser.Rectangle.intersects(Object.Andariel_Skill_Rect, Hit_Rect))
+		{
+			var CurFrame = Object.Andariel_Skill.animations.frame;
+			var EndFrame = 23;
+
+			if(CurFrame + 10 == EndFrame)
+			{
+				health -= Object.Andariel_Skill_AttackPoint;
+
+				console.log(health);
+			}
+		}
+	}	
 }
 
 function andariel_HitCount(Object)
@@ -571,6 +646,7 @@ function andariel_Dead(Object)
 		if(Object.DeadMotionCheck == true && CurFrame == 118)
 		{
 			Object.kill();
+			Object.Andariel_Skill.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
 		}
@@ -647,6 +723,7 @@ function andariel_Regen(Object)
 		if(Object.Regen_Time_Total > Object.RegenTime)
 		{
 			Object.revive();
+			Object.Andariel_Skill.revive();
 			Object.Name.visible = true;
 			Object.body.static = false;
 			Object.body.restitution = 0;
@@ -656,7 +733,7 @@ function andariel_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false;
+			Object.MouseCheck = false, Object.Andariel_Skill_Check;
 
 			Object.Hp = 4000;
 			Object.MaxHp = 4000;
@@ -686,6 +763,7 @@ function andariel_Update()
 		andariel_GetDirection(andariel);
 		andariel_GetReturnDirection(andariel);
 		andariel_Move(andariel);
+		andariel_Skill(andariel);
 
 		//Player Mosnter Collision
 		if(andariel.Regen_Check == false)
