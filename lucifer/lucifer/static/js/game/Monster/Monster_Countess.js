@@ -206,7 +206,7 @@ function countess_Clone(PointX, PointY)
 	//Blood Effect
 	countess_Object.blood_Effect = blood_Effect_Clone(countess_Object.x, countess_Object.y);
 
-	//Shadow 
+	//Shadow
 	countess_Object.shadow_Effect = shadow_Clone(countess_Object.x, countess_Object.y, 0, 36);
 
 	countess_Group.add(countess_Object);
@@ -569,10 +569,10 @@ function countess_Dead(Object)
 			Object.DeadMotionCheck = true;
 
 			//Collision false
-			Object.body.static = true;	
+			Object.body.static = true;
 
 			//Quest
-			checkQuest(2);		
+			checkQuest(2);
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -591,7 +591,7 @@ function countess_Dead(Object)
 		{
 			Object.kill();
 			Object.Name.visible = false;
-			Object.ExpCheck = true;			
+			Object.ExpCheck = true;
 		}
 	}
 }
@@ -618,8 +618,8 @@ function countess_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;
