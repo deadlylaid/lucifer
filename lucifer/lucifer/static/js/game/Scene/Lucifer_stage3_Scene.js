@@ -21,6 +21,7 @@ var stage3_Scene =
 		player_Create();
 
 		//Monster
+		skeleton_Create();
 		diablo_Create();
 
 		//Sight Effect
@@ -54,7 +55,8 @@ var stage3_Scene =
 		//Player Update
 		player_Update();
 
-		//Monster Update(Golem)
+		//Monster Update
+		skeleton_Update();
 		diablo_Update();
 
 		//Ui Update
@@ -90,6 +92,7 @@ var stage3_Scene =
 			//Player Render
 			player_Render();
 			diablo_Render();
+			skeleton_Render();
 		}
 	},
 

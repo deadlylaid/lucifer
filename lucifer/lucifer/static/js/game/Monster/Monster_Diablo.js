@@ -872,6 +872,13 @@ function diablo_Pattern_Skill(Object)
 
 		if(CurFrame == EndFrame)
 		{
+			//Skeleton Create
+			skeleton_Clone(2018, 801);
+			skeleton_Clone(2356, 700);
+			skeleton_Clone(2810, 987);
+			skeleton_Clone(2789, 1226);
+			skeleton_Clone(2384, 1254);
+
 			//Skill 패턴이 다시 1로 시작할 수 있도록 되돌리고 / 공격 패턴으로 체인지 시킴.
 			Object.Skill_Idle_Check = false;
 
