@@ -18,11 +18,12 @@ potion = function (game, positionX, positionY, spriteKey, heal, price, index, it
     this.visible = false;
     this.price = price;
 
+    this.drinkEnable = false;
+
     var itemData = [
         [ itemList[index].name ],
         [ '' ],
-        [ '      ', itemList[index].price ],
-    ];
+        [ '      ', itemList[index].price ], ];
     parsedItemData = parseList(itemData);
     itemText = parsedItemData.text;
 
@@ -43,7 +44,6 @@ potion.prototype.constructor = potion;
 //sword 객체를 만들때 사용
 sword = function (game, positionX, positionY, spriteKey, attack_point, price, index, itemStoreStyle){
     Phaser.Sprite.call(this, game, positionX, positionY, spriteKey);
-
     //item status
     //name = spritekey name
     this.name = spriteKey;
@@ -54,8 +54,6 @@ sword = function (game, positionX, positionY, spriteKey, attack_point, price, in
     this.fixedToCamera = true;
     this.visible = false;
     this.price = price;
-
-    console.log(index);
 
     var itemData = [
         [ itemList[index].name ],
@@ -127,6 +125,8 @@ function redPotionClone(positionX, positionY){
     redPotionObject.text.fontSize = 15;
     redPotionObject.text.fill = '#fff';
 
+    redPotionObject.drinkEnable = true;
+
     Lucifer_Game.add.existing(redPotionObject);
     Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
 
@@ -154,6 +154,8 @@ function goodRedPotionClone(positionX, positionY){
     redPotionObject.text.setText(redPotionObject.name);
     redPotionObject.text.fontSize = 15;
     redPotionObject.text.fill = '#fff';
+
+    redPotionObject.drinkEnable = true;
 
     Lucifer_Game.add.existing(redPotionObject);
     Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
@@ -183,6 +185,8 @@ function bestRedPotionClone(positionX, positionY){
     redPotionObject.text.setText(redPotionObject.name);
     redPotionObject.text.fontSize = 15;
     redPotionObject.text.fill = '#fff';
+
+    redPotionObject.drinkEnable = true;
 
     Lucifer_Game.add.existing(redPotionObject);
     Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
