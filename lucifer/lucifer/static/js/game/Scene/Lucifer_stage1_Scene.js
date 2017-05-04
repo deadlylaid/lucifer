@@ -7,8 +7,8 @@ var stage1_Scene =
 		--마을 Stage--
 	*/
 	preload: function()
-	{	
-		
+	{
+
 		mouse_Preload();
 
 		movepoint_Preload();
@@ -44,6 +44,9 @@ var stage1_Scene =
 		//Quest
 		QuestCreate();
 
+        //inventory
+        inventoryCreate();
+
         //items
         itemStoreCreate();
 
@@ -73,7 +76,7 @@ var stage1_Scene =
 	},
 
 	update: function()
-	{	
+	{
 		//Player Update
 		player_Update();
 
@@ -91,7 +94,7 @@ var stage1_Scene =
 		ui_Update();
 
 		//Quest Update
-		QuestUpdate();		
+		QuestUpdate();
 
 		//Quest Effect Update
 		questComplete_Effect_Update();
