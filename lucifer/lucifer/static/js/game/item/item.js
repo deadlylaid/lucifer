@@ -155,6 +155,8 @@ function goodRedPotionClone(positionX, positionY){
     redPotionObject.text.fontSize = 15;
     redPotionObject.text.fill = '#fff';
 
+    redPotionObject.drinkEnable = true;
+
     Lucifer_Game.add.existing(redPotionObject);
     Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
 
@@ -183,6 +185,8 @@ function bestRedPotionClone(positionX, positionY){
     redPotionObject.text.setText(redPotionObject.name);
     redPotionObject.text.fontSize = 15;
     redPotionObject.text.fill = '#fff';
+
+    redPotionObject.drinkEnable = true;
 
     Lucifer_Game.add.existing(redPotionObject);
     Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);

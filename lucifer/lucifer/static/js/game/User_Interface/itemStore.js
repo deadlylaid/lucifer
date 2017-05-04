@@ -506,6 +506,9 @@ function clickItem(sprite){
         case '좋은물약':
             selectedItem = goodRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            if(sprite.drinkEnable === false){
+                selectedItem.drinkEnable = false;
+            }
             //item select Frame
             switch(ItemSelectCheck){
                 case 0 :
@@ -524,6 +527,9 @@ function clickItem(sprite){
         case '최고의물약':
             selectedItem = bestRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            if(sprite.drinkEnable === false){
+                selectedItem.drinkEnable = false;
+            }
             //item select Frame
             switch(ItemSelectCheck){
                 case 0 :
@@ -894,7 +900,7 @@ function useItem(){
             }else{
                 health += selectedItem.heal;
             }
-            //inventoryDelete(selectedItem.name);
+            inventoryDelete(selectedItem.name);
 
         }else if(selectedItem.type_is==='weapon'){
             if(equipmentList[0]!==undefined){
