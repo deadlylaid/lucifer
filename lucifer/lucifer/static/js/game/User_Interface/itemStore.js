@@ -480,15 +480,17 @@ function clickItem(sprite){
     //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨
     //console.log(sprite.name);
     var i = inventory.length;
-    
 
     switch(sprite.name){
         case '빨간물약':
             selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
+            if(sprite.drinkEnable === false){
+                selectedItem.drinkEnable = false;
+            }
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 112, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -506,7 +508,7 @@ function clickItem(sprite){
             selectedItem.numberInArray = i;
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 207, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -524,7 +526,7 @@ function clickItem(sprite){
             selectedItem.numberInArray = i;
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 302, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -535,14 +537,14 @@ function clickItem(sprite){
                 Item_Select_Frame.visible = false;
                 ItemSelectCheck = 0;
                 break;
-            }            
+            }
             break;
         case '기본검':
             selectedItem = basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
             selectedItem.numberInArray = i;
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 112, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -560,7 +562,7 @@ function clickItem(sprite){
             selectedItem.numberInArray = i;
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 207, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -578,7 +580,7 @@ function clickItem(sprite){
             selectedItem.numberInArray = i;
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 302, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -596,7 +598,7 @@ function clickItem(sprite){
             selectedItem.numberInArray = i;
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 112, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -614,7 +616,7 @@ function clickItem(sprite){
             selectedItem.numberInArray = i;
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 207, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -632,7 +634,7 @@ function clickItem(sprite){
             selectedItem.numberInArray = i;
             //item select Frame
             switch(ItemSelectCheck){
-                case 0 : 
+                case 0 :
                 Item_Select_Frame = Lucifer_Game.add.sprite(56, 302, 'Item_Select_Frame');
                 Item_Select_Frame.anchor.setTo(0.5, 0.5);
                 Item_Select_Frame.fixedToCamera = true;
@@ -841,7 +843,9 @@ function useItem(){
         inventory.splice(selectedItem.numberInArray, 9);
 
         //ajax DELETE 요청으로 실시간 저장
-        inventoryDelete(selectedItem.name);
+        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
+            inventoryDelete(selectedItem.name);
+        }
 
         var inventoryLength = inventory.length;
 
@@ -884,14 +888,14 @@ function useItem(){
         }
         tempInventory = [];
 
-
-        if(selectedItem.type_is==='potion'){
+        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
             if(health + selectedItem.heal > maxHealth){
                 health = maxHealth;
             }else{
                 health += selectedItem.heal;
             }
-            inventoryDelete(selectedItem.name);
+            //inventoryDelete(selectedItem.name);
+
         }else if(selectedItem.type_is==='weapon'){
             if(equipmentList[0]!==undefined){
                 equipmentList[0].destroy();
