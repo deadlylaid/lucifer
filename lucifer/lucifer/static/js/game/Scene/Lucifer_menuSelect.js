@@ -13,7 +13,7 @@ var menuSelectScene =
 		//Mouse
 		//----------------------------------------------------------------------------------------------------------
 		mouse_Preload();
-		
+
 		//----------------------------------------------------------------------------------------------------------
 	},
 
@@ -29,9 +29,9 @@ var menuSelectScene =
     	closebtn.onInputUp.add(exit, this);
     	//closebtn.onInputOver.add(over, this)''
 
-    	button.input.useHandCursor = true;   
+    	button.input.useHandCursor = true;
 
-    	mouse_Create();	
+    	mouse_Create();
 	},
 
 	update: function()
@@ -42,8 +42,8 @@ var menuSelectScene =
 };
 
 function up() {
-   //Lucifer_Game.state.start('load');
-   Lucifer_Game.state.start('stage2_load');	//stage2 확인용.
+   Lucifer_Game.state.start('load');
+   //Lucifer_Game.state.start('stage2_load');	//stage2 확인용.
    //Lucifer_Game.state.start('stage3_load');	//보스 AI 확인용.
 };
 
