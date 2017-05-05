@@ -202,7 +202,7 @@ function useItem(){
             inventoryDelete(selectedItem.name);
         }
 
-        if(selectedItem.type_is==='sword' || selectedItem.type_is==='armor'){
+        if(selectedItem.type_is==='weapon' || selectedItem.type_is==='armor'){
             inventoryDelete(selectedItem.name);
         }
 
