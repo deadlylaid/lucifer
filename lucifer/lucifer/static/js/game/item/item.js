@@ -31,6 +31,7 @@ potion = function (game, positionX, positionY, spriteKey, heal, price, index, it
     this.fixedToCamera = true;
     this.visible = false;
     this.price = price;
+    this.count;
 
     this.drinkEnable = false;
 
@@ -143,6 +144,8 @@ function redPotionClone(positionX, positionY){
 
     Lucifer_Game.add.existing(redPotionObject);
     Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
+
+    redPotionObject.count = 10;
 
     redPotionObject.inputEnabled = true;
     redPotionObject.events.onInputDown.add(clickedItemInInventory, this);

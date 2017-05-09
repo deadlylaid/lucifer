@@ -339,10 +339,7 @@ function itemsStoreUpdate(){
         {
             InfoUi();
         }
-
-
     }
-
 }
 
 function itemStoreRender(){
