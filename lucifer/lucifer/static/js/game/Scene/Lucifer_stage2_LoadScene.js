@@ -48,7 +48,8 @@ var stage2_LoadScene =
 
 		//Monster
 		//----------------------------------------------------------------------------------------------------------
-		fallen_Shaman_Preload();
+		//fallen_Shaman_Preload();
+		sandRider_Preload();
 		andariel_Preload();
 		wraith_Preload();
 		deamon_Preload();

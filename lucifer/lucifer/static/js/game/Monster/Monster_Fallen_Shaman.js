@@ -1,6 +1,7 @@
 // Shaman 기본 변수
 //------------------------------------------------------------------------------
 var fallenShaman_Group, fallenShaman_Object;
+var Fire_Ball_Group;
 //------------------------------------------------------------------------------
 
 // Shman
@@ -44,7 +45,7 @@ Fallen_Shaman = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false;
+	this.MouseCheck = false, this.FireBall_Check = false;
 
 	//FireBall
 	this.FireBall, this.NextFire = 0, this.FireRate = 1500;
@@ -80,8 +81,9 @@ function fallen_Shaman_Preload()
 								   120, 120);
 	Lucifer_Game.load.spritesheet('MON_FallenShaman_Dead',
 								  '../../static/images/game/Monster/FallenShaman/Death/Death.png',
-								   83, 83);
-	Lucifer_Game.load.image('SK_FireBall', '../../static/images/game/Monster_Skill/Fire_Ball.png');
+								   83, 83);	
+
+	shamanSkill_Preload();
 }
 
 function fallen_Shaman_Create()
@@ -90,6 +92,7 @@ function fallen_Shaman_Create()
 											  'MON_FallenShaman_Attack', 'MON_FallenShaman_Dead']);
 
 	//Group
+	Fire_Ball_Group = Lucifer_Game.add.group();
 	fallenShaman_Group = Lucifer_Game.add.group();
 	fallen_Shaman_Clone(8753, 2557);
 	fallen_Shaman_Clone(8989, 2322);
@@ -199,6 +202,7 @@ function fallen_Shaman_Clone(PointX, PointY)
 	fallenShaman_Object.Attack_DelayTimer.loop(1000, fallen_Shaman_DelayTimer, Lucifer_Game, fallenShaman_Object);
 
 	//FireBall
+	/*
 	fallenShaman_Object.FireBall = Lucifer_Game.add.group();
 	fallenShaman_Object.FireBall.enableBody = true;
 	fallenShaman_Object.FireBall.physicsBodyType = Phaser.Physics.ARCADE;
@@ -208,6 +212,11 @@ function fallen_Shaman_Clone(PointX, PointY)
 	fallenShaman_Object.FireBall.setAll('outOfBoundsKill', true);
 	fallenShaman_Object.FireBall.setAll('checkWorldBounds', true);
 
+	//Rect
+	fallenShaman_Object.FireBall_Rect = new Phaser.Rectangle(fallenShaman_Object.FireBall.x,
+												             fallenShaman_Object.FireBall.y,
+												             50, 50);
+	*/
 	//Regen Timer
 	fallenShaman_Object.Regen_Timer = Lucifer_Game.time.create(false);
 	fallenShaman_Object.Regen_Timer.loop(1000, fallenShaman_RegenTimer, Lucifer_Game, fallenShaman_Object);
@@ -537,12 +546,13 @@ function fallen_Shaman_Attack(Object)
 			Object.MoveCheck = false;
 		}
 
-		fallen_Shaman_HitCount(Object)
+		//fallen_Shaman_HitCount(Object)
 	}
 }
 
 function fallen_Shaman_FireBall_Fire(Object)
 {
+	/*
 	if(Lucifer_Game.time.now > Object.NextFire && Object.FireBall.countDead() > 0)
 	{
 		Object.NextFire = Lucifer_Game.time.now + Object.FireRate;
@@ -550,17 +560,90 @@ function fallen_Shaman_FireBall_Fire(Object)
 		var fire_Ball = Object.FireBall.getFirstExists(false);
 		fire_Ball.reset(Object.x, Object.y);
 
-		Lucifer_Game.physics.arcade.moveToObject(fire_Ball, Player, 200);
+		//Fire_Ball = fire_Ball;
+
+		//FireBall Rect
+		Object.FireBall_Rect.x = fire_Ball.x;
+		Object.FireBall_Rect.y = fire_Ball.y;
+		Object.FireBall_Rect.centerOn(Object.FireBall_Rect.x, Object.FireBall_Rect.y);
+
+		console.log(fire_Ball.x, fire_Ball.y);
+
+		Lucifer_Game.physics.arcade.moveToObject(fire_Ball, Player, 200);		
 
 		//충돌 처리 안됨. 좀더 생각해 봐야됨.
-		Lucifer_Game.physics.arcade.overlap(fire_Ball, Player, fallen_Shaman_HitCount, null, this);
+		//Lucifer_Game.physics.arcade.overlap(fire_Ball, Player, fallen_Shaman_HitCount, null, this);
+	}
+	*/
+
+	if(Object.animations.name == 'MON_FallenShaman_Attack_' + Object.Direction)
+	{
+		var CurFrame = Object.animations.frame;
+		var EndFrame = 0;
+
+		if(Object.Direction ==0)
+		{
+			EndFrame = 16;
+		}
+		else
+		{
+			EndFrame = 16 * (Object.Direction + 1); 
+		}
+
+		if(CurFrame + 14 < EndFrame)
+		{
+			Object.FireBall = shamanSkill_Clone(Object.x, Object.y);
+			Fire_Ball_Group.add(Object.FireBall);
+
+			Object.FireBall_Check = true;
+		}
+
+		if(Object.FireBall_Check == true)
+		{
+			for(var i = 0; i < Fire_Ball_Group.length; ++i)
+			{
+				var fireBall = Fire_Ball_Group.getChildAt(i);
+
+				Lucifer_Game.physics.arcade.moveToObject(fireBall, Player, 200);	
+
+				fireBall.Rect.x = fireBall.x;
+				fireBall.Rect.y = fireBall.y;
+				fireBall.Rect.centerOn(fireBall.Rect.x, fireBall.Rect.y);
+
+				console.log(fireBall.Rect.x, fireBall.Rect.y);
+			}			
+		}
+
+		for(var i = 0; i < Fire_Ball_Group.length; ++i)
+		{
+			var fireBall = Fire_Ball_Group.getChildAt(i);
+			
+			if(Phaser.Rectangle.intersects(fireBall.Rect, Hit_Rect))
+			{
+				fireBall.visible = false;
+				fireBall.AttackCheck = false;
+				fireBall.destroy();
+
+				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
+
+				if(monster_Attack_Damage > 0)
+				{
+					health -= monster_Attack_Damage;
+				}
+				else if(monster_Attack_Damage <= 0)
+				{
+					health -= (Object.Attack_Point * 0.01);
+				}
+
+				console.log(health);
+			}
+		}
+		
 	}
 }
 
-function fallen_Shaman_HitCount(/*Bullet,*/ Object)
+function fallen_Shaman_HitCount(Object)
 {
-	//Object.FireBall.remove(Bullet);
-
 	if(Object.DelayTime_Total > 1)
 	{
 		if(Object.animations.name == 'MON_FallenShaman_Attack_' + Object.Direction)
@@ -592,7 +675,7 @@ function fallen_Shaman_HitCount(/*Bullet,*/ Object)
 
 				Object.DelayTime_Total = 0;
 				//Object.AttackCheck = false;
-			}
+			}			
 		}
 	}
 }
@@ -623,7 +706,7 @@ function fallen_Shaman_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && currentFrame == 14)
 		{
-			Object.kill();
+			Object.kill();			
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
 		}
@@ -639,7 +722,7 @@ function fallen_Shaman_Regen(Object)
 
 		if(Object.Regen_Time_Total > Object.Regen_Time)
 		{
-			Object.revive();
+			Object.revive();			
 			Object.Name.visible = true;
 			Object.body.static = false;
 			Object.body.restitution = 0;
@@ -649,7 +732,7 @@ function fallen_Shaman_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false;
+			Object.MouseCheck = false, Object.FireBall_Check = false;
 
 			Object.Hp = 450;
 			Object.MaxHp = 450;

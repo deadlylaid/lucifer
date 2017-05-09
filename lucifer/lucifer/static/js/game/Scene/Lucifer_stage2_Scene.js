@@ -20,7 +20,8 @@ var stage2_Scene =
 		player_Create();
 
 		//Monster
-		fallen_Shaman_Create();
+		//fallen_Shaman_Create();
+		sandRider_Create();
 		andariel_Create();
 		wraith_Create();
 		deamon_Create();
@@ -50,11 +51,11 @@ var stage2_Scene =
 		player_Update();
 
 		//Monster Update
-		fallen_Shaman_Update();
+		//fallen_Shaman_Update();
+		sandRider_Update();
 		andariel_Update();
 		wraith_Update();
 		deamon_Update();
-
 		council_Update();
 
 		//items Update
