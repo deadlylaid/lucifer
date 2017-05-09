@@ -49,9 +49,6 @@ function itemStorePreload(){
 
 function itemStoreCreate(){
 
-    //모든 창 닫기 버튼을 ESC로 설정
-    keyESC = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ESC);
-
     //Tab 이미지 추가
     //--------------------------------------------------------
 
