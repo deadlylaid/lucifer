@@ -725,27 +725,3 @@ function onOutArmor3(){
 }
 //---------------------------------------------------
 
-function Drink(){
-    if(Potion_1.visible = true)
-    {
-        if(health + selectedItem.heal > maxHealth){
-                health = maxHealth;
-            }else{
-                health += selectedItem.heal;
-            }
-    }else if(Potion_2.visible = true)
-    {
-        if(health + selectedItem.heal > maxHealth){
-                health = maxHealth;
-            }else{
-                health += selectedItem.heal;
-            }
-    }else if(Potion_3.visible = true)
-    {
-        if(health + selectedItem.heal > maxHealth){
-                health = maxHealth;
-            }else{
-                health += selectedItem.heal;
-            }
-    }
-}
