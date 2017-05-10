@@ -1,3 +1,5 @@
+var QuickSlotPotion, InventoryPotionExist;
+
 function inventoryPreload(){
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
 
@@ -15,9 +17,13 @@ function inventoryCreate(){
 
     //inventory key setting -----------------------------------------
     key_inven = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.I);
+    key_drink = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.D);
 
     invenKeyTimer = Lucifer_Game.time.create(false);
     invenKeyTimer.loop(400, invenTimeCheck, this);
+
+    drinkKeyTimer = Lucifer_Game.time.create(false);
+    drinkKeyTimer.loop(400, drinkTimeCheck, this);
 
     dropButton = Lucifer_Game.add.sprite(1027, 580, 'dropButton');
     dropButton.anchor.setTo(0.5, 0.5);
@@ -158,9 +164,9 @@ function invenUi(){
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(false);
         }
-        for(i=0; i<equipmentList.length; i++){
-            equipmentList[i].getVisible(false);
-        }
+        //for(i=0; i<equipmentList.length; i++){
+        //    equipmentList[i].getVisible(false);
+        //}
     }else{
         uiInventory.visible = true;
         dropButton.visible = true;
@@ -169,9 +175,9 @@ function invenUi(){
         for(i=0; i<inventory.length; i++){
             inventory[i].getVisible(true);
         }
-        for(i=0; i<equipmentList.length; i++){
-            equipmentList[i].getVisible(true);
-        }
+        //for(i=0; i<equipmentList.length; i++){
+        //    equipmentList[i].getVisible(true);
+        //}
     }
 }
 
@@ -185,6 +191,114 @@ function useItem(){
             //quickslotPost 함수가 작동하여 서버단에 quickslot모델에
             //포션 데이터를 저장한다.
             potionImportQuickSlot(selectedItem);
+
+        var startNumberSecondArray = selectedItem.numberInArray;
+
+        //버린 아이템의 뒷 순서인 아이템들을 모두 tempInventory에 저장
+        for(i=startNumberSecondArray + 1; i<inventory.length; i++){
+            tempInventory.push(inventory[i]);
+        }
+
+        //버린 아이템의 뒷 순서인 아이템 sprite들을 모두 inventory에서 삭제함
+        for(i=inventory.length - 1; i>=selectedItem.numberInArray; i--){
+            inventory[i].destroy();
+            inventory[i].text.destroy();
+        }
+
+        //inventory에서 버릴 아이템을 뽑아 버림
+        //선택된 아이템의 다음 인덱스 아이템들 까지 모두 뽑는다
+        //왜냐하면 선택된 인덱스의 칸을 채우기 위해 인덱스를 다시 설정해 줘야하기 때문
+        inventory.splice(selectedItem.numberInArray, 9);
+
+        //ajax DELETE 요청으로 실시간 저장
+        if(selectedItem.type_is==='weapon' || selectedItem.type_is==='armor'){
+            inventoryDelete(selectedItem.name);
+        }
+
+        var inventoryLength = inventory.length;
+
+        //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장
+        for(i=0; i<tempInventory.length; i++){
+            switch(tempInventory[i].name){
+                case '빨간물약':
+                    inventory.push(redPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '좋은물약':
+                    inventory.push(goodRedPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '최고의물약':
+                    inventory.push(bestRedPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '기본검':
+                    inventory.push(basicSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '강화된검':
+                    inventory.push(strongSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '마검':
+                    inventory.push(superSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '기본갑옷':
+                    inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '강화갑옷':
+                    inventory.push(strongArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+                case '증오':
+                    inventory.push(superArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
+                    break;
+            }
+        }
+
+        for(i=inventoryLength;i<inventory.length; i++){
+            inventory[i].getVisible(true);
+            inventory[i].numberInArray = i;
+
+            if(inventory[i].name ==='좋은물약'){
+                InventoryPotionExist = inventory[i]
+            }
+
+        }
+        tempInventory = [];
+
+        if(selectedItem.type_is==='potion'){
+            
+                //equipmentList[0].destroy();
+                //equipmentList[0].text.destroy();
+
+                var previousItem = equipmentList[0].name;
+                var inventoryLength = inventory.length;
+
+                switch(previousItem){
+                    case '빨간물약':
+                        var inserted_item = redPotionClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        console.log('drink');
+                        break;
+                    case '좋은물약':
+                        var inserted_item = goodRedPotionClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        break;
+                    case '최고의물약':
+                        var inserted_item = bestRedPotionClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        break;
+                
+                //inventoryPost(inserted_item.name);
+
+            }
+            equipmentList[0] = createEquipmentAndSetPosition(selectedItem.name);
+            equipmentList[0].getVisible(true);
+
+            equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+
+            equipmentPost(equipmentList[0].name, equipmentList[0].type_is);
 
             //potionImportQuickSlot(selectedItem);
             //inventoryDelete(selectedItem.name);
@@ -214,6 +328,7 @@ function useItem(){
                         inserted_item.numberInArray = inventory.length;
                         inventory.push(inserted_item);
                         inserted_item.getVisible(true);
+                        break;
                 }
                 inventoryPost(inserted_item.name);
 
@@ -342,6 +457,21 @@ function inventoryExport(){
 function createEquipmentAndSetPosition(itemName){
     var item;
     switch(itemName){
+        case '빨간물약':
+            item = redPotionClone(727, 762);
+            item.text.setText('');
+            item.getVisible(false);
+            break;
+        case '좋은물약':
+            item = goodRedPotionClone(727, 762);
+            item.text.setText('');
+            item.getVisible(false);
+            break;
+        case '최고의물약':
+            item = bestRedPotionClone(727, 762);
+            item.text.setText('');
+            item.getVisible(false);
+            break;
         case '기본검':
             item = basicSwordClone(952, 205);
             item.text.setText('');
@@ -434,6 +564,15 @@ function changeServerListToClientListEquipment(){
     var equipmentLength = equipmentList.length;
     for(i=0; i<equipmentLength; i++){
         switch(equipmentList[i].item_name){
+            case '빨간물약':
+                equipmentList[0] = createEquipmentAndSetPosition('빨간물약');
+                break;
+            case '좋은물약':
+                equipmentList[0] = createEquipmentAndSetPosition('좋은물약');
+                break;
+            case '최고의물약':
+                equipmentList[0] = createEquipmentAndSetPosition('최고의물약');
+                break;
             case '기본검':
                 equipmentList[0] = createEquipmentAndSetPosition('기본검');
 
@@ -538,6 +677,10 @@ function invenTimeCheck(){
     invenKeyValidCheck = 1;
 }
 
+function drinkTimeCheck(){
+    drinkKeyValidCheck = 1;
+}
+
 //포션 장착을 눌렀을 때
 //포션의 종류를 검사하고 퀵슬롯에 넣음
 function potionImportQuickSlot(selectedItem){
@@ -583,4 +726,47 @@ function quickslotPost(selectedItem){
             count:selectedItem.count,
         },
     });
+}
+
+function PotionDrinkUpdate(){
+
+    /*if(key_drink.isDown)
+    {   
+        console.log("drink");
+        Drink();
+    }*/
+}
+
+function PotionDrinkUpdate(){
+
+    if(key_drink.isDown)
+    {   
+        console.log("drink");
+        Drink();
+    }
+}
+
+function Drink(){
+    /*if(Potion_1.visible = true)
+    {
+        if(health + selectedItem.heal > maxHealth){
+                health = maxHealth;
+            }else{
+                health += selectedItem.heal;
+            }
+    }else if(Potion_2.visible = true)
+    {
+        if(health + selectedItem.heal > maxHealth){
+                health = maxHealth;
+            }else{
+                health += selectedItem.heal;
+            }
+    }else if(Potion_3.visible = true)
+    {
+        if(health + selectedItem.heal > maxHealth){
+                health = maxHealth;
+            }else{
+                health += selectedItem.heal;
+            }
+    }*/
 }

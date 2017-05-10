@@ -6,6 +6,8 @@ var uiStore,
     redPotionGroup,
     tempInventory = [];
 
+var drinkKeyTimer , drinkKeyValidCheck = 1;
+
 var ItemSelectCheck = 0;
 
 function itemStorePreload(){
@@ -43,6 +45,9 @@ function itemStorePreload(){
     //Item Select Frame
     Lucifer_Game.load.spritesheet('Item_Select_Frame',
                                   '../../static/images/game/UI/Store/SelectFrame.png', 44, 83);
+
+    
+
 
 
 };
@@ -340,6 +345,7 @@ function itemsStoreUpdate(){
             InfoUi();
         }
     }
+
 }
 
 function itemStoreRender(){
@@ -636,6 +642,7 @@ function buyItem() {
     }
     changeServerListToClientList();
     selectedItem = null;
+    Item_Select_Frame.visible = false;
     //퀘스트 검사
     playerQuestAdvence(1);
 }
@@ -717,3 +724,28 @@ function onOutArmor3(){
     Armor_Three_Info.visible = false;
 }
 //---------------------------------------------------
+
+function Drink(){
+    if(Potion_1.visible = true)
+    {
+        if(health + selectedItem.heal > maxHealth){
+                health = maxHealth;
+            }else{
+                health += selectedItem.heal;
+            }
+    }else if(Potion_2.visible = true)
+    {
+        if(health + selectedItem.heal > maxHealth){
+                health = maxHealth;
+            }else{
+                health += selectedItem.heal;
+            }
+    }else if(Potion_3.visible = true)
+    {
+        if(health + selectedItem.heal > maxHealth){
+                health = maxHealth;
+            }else{
+                health += selectedItem.heal;
+            }
+    }
+}
