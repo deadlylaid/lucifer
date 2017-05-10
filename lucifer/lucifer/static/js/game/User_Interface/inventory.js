@@ -248,7 +248,8 @@ function useItem(){
             }else{
                 health += selectedItem.heal;
             }
-            inventoryDelete(selectedItem.name);
+            potionCountCheck(selectedItem);
+            //inventoryDelete(selectedItem.name);
 
         }else if(selectedItem.type_is==='weapon'){
             if(equipmentList[0]!==undefined){
@@ -529,3 +530,12 @@ function goldUpdate(){
 function invenTimeCheck(){
     invenKeyValidCheck = 1;
 }
+
+//function potionCountCheck(selectedItem){
+//    if(selectedItem.count === 1){
+//        inventoryDelete(selectedItem.name);
+//    }else{
+//        console.log('ff');
+//        selectedItem.count -= 1;
+//    }
+//}
