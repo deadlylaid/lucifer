@@ -17,7 +17,7 @@ function npc_Create()
 	Lucifer_Game.renderer.setTexturePriority(['NPC_Store']);
 
 	//NPC Create
-	store_Npc = Lucifer_Game.add.sprite(1343, 1483, 'NPC_Store');
+	store_Npc = Lucifer_Game.add.sprite(1337, 1402, 'NPC_Store');
 	npc_Range = 200;
 
 	cain_Npc = Lucifer_Game.add.sprite(1941, 961, 'NPC_Cain');
