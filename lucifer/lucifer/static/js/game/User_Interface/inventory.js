@@ -197,11 +197,6 @@ function useItem(){
         //왜냐하면 선택된 인덱스의 칸을 채우기 위해 인덱스를 다시 설정해 줘야하기 때문
         inventory.splice(selectedItem.numberInArray, 9);
 
-        //ajax DELETE 요청으로 실시간 저장
-        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
-            inventoryDelete(selectedItem.name);
-        }
-
         if(selectedItem.type_is==='weapon' || selectedItem.type_is==='armor'){
             inventoryDelete(selectedItem.name);
         }

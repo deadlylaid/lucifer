@@ -622,6 +622,12 @@ function buyItem() {
                 inventoryPost(selectedItem.name);
                 gold -= selectedItem.price;
                 goldUpdate();
+                var inventoryLength = inventory.length;
+                for(i=0; i<inventoryLength; i++){
+                    if(inventory[i].type_is==='potion'){
+                        inventory[i].drinkEnable=true;
+                    }
+                }
             }else{
                 alert("소지한 골드가 부족합니다");
             }
