@@ -248,7 +248,7 @@ function useItem(){
             }else{
                 health += selectedItem.heal;
             }
-            potionCountCheck(selectedItem);
+            potionImportQuickSlot(selectedItem);
             //inventoryDelete(selectedItem.name);
 
         }else if(selectedItem.type_is==='weapon'){
@@ -531,11 +531,26 @@ function invenTimeCheck(){
     invenKeyValidCheck = 1;
 }
 
-//function potionCountCheck(selectedItem){
+//포션 장착을 눌렀을 때
+//포션의 종류를 검사하고 퀵슬롯에 넣음
+function potionImportQuickSlot(selectedItem){
+    switch(selectedItem.name){
+        case '빨간물약':
+            //blablabla;
+        case '좋은물약':
+            //blablabla;
+        case '최상의물약':
+            //blablabla;
+    }
+    console.log('퀵슬롯 함수 작동');
+}
+
+//D키를 눌렀을 때 실행되게 될 함수
+function potionDrink(){
 //    if(selectedItem.count === 1){
 //        inventoryDelete(selectedItem.name);
 //    }else{
 //        console.log('ff');
 //        selectedItem.count -= 1;
 //    }
-//}
+}
