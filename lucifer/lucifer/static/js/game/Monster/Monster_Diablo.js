@@ -64,6 +64,9 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Blood Effect
 	this.blood_Effect;
+
+	//Action Camera Timer
+	this.ActionCamera_Timer, this.CameraTime_Total = 0;
 }
 
 Diablo.prototype = Object.create(Phaser.Sprite.prototype);
@@ -248,7 +251,7 @@ function diablo_Clone(PointX, PointY)
 	}
 
 	diablo_Object.loadTexture('MON_Diablo_Stand', 0, true);
-	diablo_Object.animations.play('MON_Diablo_Stand_0', 10, true);
+	diablo_Object.animations.play('MON_Diablo_Stand_4', 10, true);
 	diablo_Object.anchor.setTo(0.5, 0.5);
 
 	Lucifer_Game.physics.enable(diablo_Object, Phaser.Physics.ARCADE);
@@ -317,6 +320,10 @@ function diablo_Clone(PointX, PointY)
 
 	//Blood Effect
 	diablo_Object.blood_Effect = blood_Effect_Clone(diablo_Object.x, diablo_Object.y);	
+
+	//Action Camera Timer
+	diablo_Object.ActionCamera_Timer = Lucifer_Game.time.create(false);
+	diablo_Object.ActionCamera_Timer.loop(1000, diablo_Camera_Timer, Lucifer_Game, diablo_Object);
 }
 //----------------------------------------------------------------------------------------------
 //Over / Out
@@ -355,6 +362,11 @@ function diablo_Skill_Timer(Object)
 function diablo_ExpTimer(Object)
 {
 	++Object.ExpTime_Total;
+}
+//Action Camera Timer
+function diablo_Camera_Timer(Object)
+{
+	++Object.CameraTime_Total;
 }
 
 //Name
@@ -1092,9 +1104,51 @@ function diablo_RectPos(Object)
 
 //Update & Render
 //----------------------------------------------------------------------------------------------
+function diablo_Action_Camaera(Object)
+{
+	if(stageThree_Check == true)
+	{
+		action_CameraCheck = true;
+
+		Object.ActionCamera_Timer.start();
+
+		if(Object.CameraTime_Total < 3)
+		{
+			Lucifer_Game.camera.follow(Object);
+			Lucifer_Game.camera.setSize(1280, 800);
+		}
+		else if(Object.CameraTime_Total > 3)
+		{
+			action_CameraCheck = false;			
+		}		
+
+		if(action_CameraCheck == false && action_CameraStepOne == false)
+		{
+			Lucifer_Game.camera.follow(Player, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);		
+			Lucifer_Game.camera.setSize(1280, 800);
+
+			if(Object.CameraTime_Total > 7)
+			{
+				Object.ActionCamera_Timer.stop(false);
+				Object.CameraTime_Total = 0;
+
+				action_CameraStepOne = true;					
+			}			
+		}
+
+		if(action_CameraStepOne == true)
+		{
+			Lucifer_Game.camera.follow(Player);		
+			Lucifer_Game.camera.setSize(1280, 800);
+		}
+	}
+}
+
 function diablo_Update()
 {
 	var diablo = diablo_Object;
+
+	diablo_Action_Camaera(diablo);
 
 	diablo_Hpbar_Mask(diablo);
 	diablo_RectPos(diablo);

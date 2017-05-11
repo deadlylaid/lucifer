@@ -100,6 +100,7 @@ var stage3_Scene =
 	goto_Stage_back: function()
 	{
 		stageThree_Check = false;
+		action_CameraStepOne = false;
 
 		BackStageMove = 0;
 		//Sound
