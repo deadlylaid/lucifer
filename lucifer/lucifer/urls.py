@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^api/user/character/equipment/$', EquipmentAPIView.as_view(), name='api_equipment'),
     url(r'^api/user/character/characterquest/$', CharacterQuestAPIView.as_view(), name='api_characterquest'),
     url(r'^api/user/character/learnedskill/$', LearnedSkillAPIView.as_view(), name='api_learnedskill'),
+    url(r'^api/user/character/quickslot/$', QuickSlotAPIView.as_view(), name='api_quickslot'),
 
     url(r'^api/item/list/$', ItemListAPIView.as_view(), name='api_item_list'),
 

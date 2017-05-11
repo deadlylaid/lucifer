@@ -4,3 +4,4 @@ from .inventory import InventoryAPIView
 from .equipment import EquipmentAPIView
 from .characterquest import CharacterQuestAPIView
 from .learnedskill import LearnedSkillAPIView
+from .quickslot import QuickSlotAPIView
