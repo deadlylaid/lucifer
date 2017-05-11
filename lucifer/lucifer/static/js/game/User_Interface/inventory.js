@@ -197,11 +197,6 @@ function useItem(){
         //왜냐하면 선택된 인덱스의 칸을 채우기 위해 인덱스를 다시 설정해 줘야하기 때문
         inventory.splice(selectedItem.numberInArray, 9);
 
-        //ajax DELETE 요청으로 실시간 저장
-        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
-            inventoryDelete(selectedItem.name);
-        }
-
         if(selectedItem.type_is==='weapon' || selectedItem.type_is==='armor'){
             inventoryDelete(selectedItem.name);
         }
@@ -253,7 +248,8 @@ function useItem(){
             }else{
                 health += selectedItem.heal;
             }
-            inventoryDelete(selectedItem.name);
+            potionImportQuickSlot(selectedItem);
+            //inventoryDelete(selectedItem.name);
 
         }else if(selectedItem.type_is==='weapon'){
             if(equipmentList[0]!==undefined){
@@ -533,4 +529,28 @@ function goldUpdate(){
 
 function invenTimeCheck(){
     invenKeyValidCheck = 1;
+}
+
+//포션 장착을 눌렀을 때
+//포션의 종류를 검사하고 퀵슬롯에 넣음
+function potionImportQuickSlot(selectedItem){
+    switch(selectedItem.name){
+        case '빨간물약':
+            //blablabla;
+        case '좋은물약':
+            //blablabla;
+        case '최상의물약':
+            //blablabla;
+    }
+    console.log('퀵슬롯 함수 작동');
+}
+
+//D키를 눌렀을 때 실행되게 될 함수
+function potionDrink(){
+//    if(selectedItem.count === 1){
+//        inventoryDelete(selectedItem.name);
+//    }else{
+//        console.log('ff');
+//        selectedItem.count -= 1;
+//    }
 }
