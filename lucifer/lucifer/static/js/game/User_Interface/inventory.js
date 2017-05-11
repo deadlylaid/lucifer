@@ -184,7 +184,7 @@ function useItem(){
             //포션을 클릭하고 장착버튼을 누르면
             //quickslotPost 함수가 작동하여 서버단에 quickslot모델에
             //포션 데이터를 저장한다.
-            quickslotPost(selectedItem);
+            potionImportQuickSlot(selectedItem);
 
             //potionImportQuickSlot(selectedItem);
             //inventoryDelete(selectedItem.name);
@@ -550,6 +550,11 @@ function potionImportQuickSlot(selectedItem){
             //blablabla;
     }
     console.log('퀵슬롯 함수 작동');
+
+    //client에서 등록을 마쳤다면,
+    //이제 서버로 전송하여 quickslot모델에
+    //변경사항을 저장하도록 한다
+    quickslotPost(selectedItem);
 }
 
 //D키를 눌렀을 때 실행되게 될 함수
