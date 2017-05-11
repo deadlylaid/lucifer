@@ -179,6 +179,103 @@ function useItem(){
     if(selectedItem === null){
         alert('장착할 아이템을 선택하세요');
     }else{
+
+        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
+            if(health + selectedItem.heal > maxHealth){
+                health = maxHealth;
+            }else{
+                health += selectedItem.heal;
+            }
+            potionImportQuickSlot(selectedItem);
+            //inventoryDelete(selectedItem.name);
+
+        }else if(selectedItem.type_is==='weapon'){
+            if(equipmentList[0]!==undefined){
+                equipmentList[0].destroy();
+                equipmentList[0].text.destroy();
+
+                var previousItem = equipmentList[0].name;
+                var inventoryLength = inventory.length;
+
+                switch(previousItem){
+                    case '기본검':
+                        var inserted_item = basicSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        break;
+                    case '강화된검':
+                        var inserted_item = strongSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        break;
+                    case '마검':
+                        var inserted_item = superSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                }
+                inventoryPost(inserted_item.name);
+
+            }
+            equipmentList[0] = createEquipmentAndSetPosition(selectedItem.name);
+            equipmentList[0].getVisible(true);
+
+            equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+
+            equipmentPost(equipmentList[0].name, equipmentList[0].type_is);
+
+            inventoryExport();
+
+        }else if(selectedItem.type_is==='armor'){
+            if(equipmentList[1]!==undefined){
+                equipmentList[1].destroy();
+                equipmentList[1].text.destroy();
+                var previousItem = equipmentList[1].name;
+
+                var inventoryLength = inventory.length;
+
+                switch(previousItem){
+                    case '기본갑옷':
+                        var inserted_item = basicArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        break;
+                    case '강화갑옷':
+                        var inserted_item = strongArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        break;
+                    case '증오':
+                        var inserted_item = superArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
+                        inserted_item.numberInArray = inventory.length;
+                        inventory.push(inserted_item);
+                        inserted_item.getVisible(true);
+                        break;
+                }
+                inventoryPost(inserted_item.name);
+            }
+            equipmentList[1] = createEquipmentAndSetPosition(selectedItem.name);
+            equipmentList[1].getVisible(true);
+
+            equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+
+            equipmentPost(equipmentList[1].name, equipmentList[1].type_is);
+
+            inventoryExport();
+        }
+
+        //selectedItem 값 초기화
+        selectedItem = null;
+
+    }
+}
+
+//인벤토리 아이템 장착시 인벤토리 인덱스를 재정의하는 함수
+function inventoryExport(){
         var startNumberSecondArray = selectedItem.numberInArray;
 
         //버린 아이템의 뒷 순서인 아이템들을 모두 tempInventory에 저장
@@ -241,95 +338,6 @@ function useItem(){
             inventory[i].numberInArray = i;
         }
         tempInventory = [];
-
-        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
-            if(health + selectedItem.heal > maxHealth){
-                health = maxHealth;
-            }else{
-                health += selectedItem.heal;
-            }
-            potionImportQuickSlot(selectedItem);
-            //inventoryDelete(selectedItem.name);
-
-        }else if(selectedItem.type_is==='weapon'){
-            if(equipmentList[0]!==undefined){
-                equipmentList[0].destroy();
-                equipmentList[0].text.destroy();
-
-                var previousItem = equipmentList[0].name;
-                var inventoryLength = inventory.length;
-
-                switch(previousItem){
-                    case '기본검':
-                        var inserted_item = basicSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
-                        inserted_item.numberInArray = inventory.length;
-                        inventory.push(inserted_item);
-                        inserted_item.getVisible(true);
-                        break;
-                    case '강화된검':
-                        var inserted_item = strongSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
-                        inserted_item.numberInArray = inventory.length;
-                        inventory.push(inserted_item);
-                        inserted_item.getVisible(true);
-                        break;
-                    case '마검':
-                        var inserted_item = superSwordClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
-                        inserted_item.numberInArray = inventory.length;
-                        inventory.push(inserted_item);
-                        inserted_item.getVisible(true);
-                }
-                inventoryPost(inserted_item.name);
-
-            }
-            equipmentList[0] = createEquipmentAndSetPosition(selectedItem.name);
-            equipmentList[0].getVisible(true);
-
-            equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
-
-            equipmentPost(equipmentList[0].name, equipmentList[0].type_is);
-
-        }else if(selectedItem.type_is==='armor'){
-            if(equipmentList[1]!==undefined){
-                equipmentList[1].destroy();
-                equipmentList[1].text.destroy();
-                var previousItem = equipmentList[1].name;
-
-                var inventoryLength = inventory.length;
-
-                switch(previousItem){
-                    case '기본갑옷':
-                        var inserted_item = basicArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
-                        inserted_item.numberInArray = inventory.length;
-                        inventory.push(inserted_item);
-                        inserted_item.getVisible(true);
-                        break;
-                    case '강화갑옷':
-                        var inserted_item = strongArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
-                        inserted_item.numberInArray = inventory.length;
-                        inventory.push(inserted_item);
-                        inserted_item.getVisible(true);
-                        break;
-                    case '증오':
-                        var inserted_item = superArmorClone(inventoryPosition(inventoryLength)[0], inventoryPosition(inventoryLength)[1]);
-                        inserted_item.numberInArray = inventory.length;
-                        inventory.push(inserted_item);
-                        inserted_item.getVisible(true);
-                        break;
-                }
-                inventoryPost(inserted_item.name);
-            }
-            equipmentList[1] = createEquipmentAndSetPosition(selectedItem.name);
-            equipmentList[1].getVisible(true);
-
-            equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
-
-            equipmentPost(equipmentList[1].name, equipmentList[1].type_is);
-        }
-
-        //selectedItem 값 초기화
-        selectedItem = null;
-
-    }
 }
 
 function createEquipmentAndSetPosition(itemName){
