@@ -13,6 +13,7 @@ var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_
 var Player_DelayTimer, Player_Time_Total = 0;
 //----------------------------------------------------------------------------------------------------------
 var Player_Shadow;
+var action_CameraCheck = false, action_CameraStepOne = false;
 //----------------------------------------------------------------------------------------------------------
 
 function player_Create()
@@ -186,9 +187,12 @@ function player_Create()
 	}
 	//----------------------------------------------------------------------------------------------------------
 
-	//Camera
-	Lucifer_Game.camera.follow(Player);		//Camera follow
-	Lucifer_Game.camera.setSize(1280, 800);
+	//Camera / Camera follow
+	if(action_CameraCheck == false)
+	{
+		Lucifer_Game.camera.follow(Player);		
+		Lucifer_Game.camera.setSize(1280, 800);
+	}	
 
 	//Timer
 	Player_DelayTimer = Lucifer_Game.time.create(false);
@@ -548,7 +552,11 @@ function player_Update()
 				PlayerAttack();
 				player_Level_Up();
 				//Player_Frame();
-				shadow_Player_Move();				
+				shadow_Player_Move();	
+
+				//Camera Setting
+				Lucifer_Game.camera.follow(Player);		
+				Lucifer_Game.camera.setSize(1280, 800);			
 			}
 
 			Player_StopCheck = false;
@@ -572,7 +580,19 @@ function player_Update()
 		}else{
 			if(Player_Regen_Check == false)
 			{
-				PlayerMove();
+				if(action_CameraStepOne == true && stageThree_Check == true)
+				{
+					PlayerMove();	
+				}				
+				else if(stageTwo_Check == true)
+				{
+					PlayerMove();
+
+					//Camera Setting
+					Lucifer_Game.camera.follow(Player);		
+					Lucifer_Game.camera.setSize(1280, 800);
+				}
+
 				PlayerAttack();
 				player_Level_Up();
 				//Player_Frame();
