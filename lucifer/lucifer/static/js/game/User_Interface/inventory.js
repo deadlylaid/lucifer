@@ -255,7 +255,9 @@ function useItem(){
             inventory[i].numberInArray = i;
 
             if(inventory[i].name ==='좋은물약'){
-                InventoryPotionExist = inventory[i]
+
+                InventoryPotionExist = inventory[i].name ;
+
             }
 
         }
