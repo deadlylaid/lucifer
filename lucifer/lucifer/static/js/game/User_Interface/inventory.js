@@ -181,14 +181,13 @@ function useItem(){
     }else{
 
         if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
-            if(health + selectedItem.heal > maxHealth){
-                health = maxHealth;
-            }else{
-                health += selectedItem.heal;
-            }
-            potionImportQuickSlot(selectedItem);
-            //inventoryDelete(selectedItem.name);
+            //포션을 클릭하고 장착버튼을 누르면
+            //quickslotPost 함수가 작동하여 서버단에 quickslot모델에
+            //포션 데이터를 저장한다.
+            quickslotPost(selectedItem);
 
+            //potionImportQuickSlot(selectedItem);
+            //inventoryDelete(selectedItem.name);
         }else if(selectedItem.type_is==='weapon'){
             if(equipmentList[0]!==undefined){
                 equipmentList[0].destroy();
@@ -561,4 +560,22 @@ function potionDrink(){
 //        console.log('ff');
 //        selectedItem.count -= 1;
 //    }
+//    ///////////////////////////////////////
+//    if(health + selectedItem.heal > maxHealth){
+//        health = maxHealth;
+//    }else{
+//        health += selectedItem.heal;
+//
+//    }
+}
+
+function quickslotPost(selectedItem){
+    $.ajax({
+        method:'POST',
+        url:'/api/user/character/quickslot/',
+        data:{
+            potionName:selectedItem.name,
+            count:selectedItem.count,
+        },
+    });
 }
