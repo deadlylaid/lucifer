@@ -16,7 +16,8 @@ var nickname,
     evasion,
     experience,
     skill,
-    learnedSkill;
+    learnedSkill,
+    quickSlot;
 
 var inventory = [];
 
@@ -70,6 +71,8 @@ $.ajax({
     evasion = character.status.evasion;
 
     inventory = character.inventory_set;
+
+    quickSlot = character.quickslot_set;
 
     learnedSkill = character.learnedskill_set;
 

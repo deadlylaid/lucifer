@@ -76,6 +76,10 @@ function ui_Create()
     Key_Skill = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.K);
 
     UI_close = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+
+    //quickSlot에 등록된 물약 먹는 버튼
+	keyDrink = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.D);
+    keyDrink.onDown.add(potionDrink, this);
 	//---------------------------------------------------------------------------------------
 
 	//Player Info
@@ -98,7 +102,7 @@ function ui_Create()
     keyValidTimer.loop(400, timeCheck, this);
 	//---------------------------------------------------------------------------------------
 
-    //UnderBar Drink image 
+    //UnderBar Drink image
     Potion_1 = Lucifer_Game.add.sprite(727, 762, 'Quickslot_Potion1');
     Potion_1.anchor.setTo(0.5, 0.5);
     Potion_1.scale.setTo(0.7, 0.7);
@@ -138,8 +142,6 @@ function ui_Update()
 		statusDataText.position.x = UI_Stat.x - 80;
     	statusDataText.position.y = UI_Stat.y + 30;
 	}
-
-    
 
 	if(key_Stat.isDown)
 	{
