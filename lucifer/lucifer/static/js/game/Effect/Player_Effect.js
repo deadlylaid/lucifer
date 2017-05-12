@@ -42,7 +42,7 @@ function player_Effect_Create()
 							   	  21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
 							   	  31, 32, 33, 34, 35
 							   ], 60, true);
-	Player_Dead.animations.play('PY_Bavarian_Dead_Ani', 10, true);
+	//Player_Dead.animations.play('PY_Bavarian_Dead_Ani', 10, true);
 
 	//Revival
 	Player_Revival.animations.add('PY_Bavarian_Revival',
@@ -50,7 +50,7 @@ function player_Effect_Create()
 								  	 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 								  	 11, 12, 13, 14, 15, 16, 17, 18, 19
 								  ], 60, true);
-	Player_Revival.animations.play('PY_Bavarian_Revival', 10, true);
+	//Player_Revival.animations.play('PY_Bavarian_Revival', 10, true);
 
 	Player_DeadKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SIX);
 	Player_DeadKey.onDown.add(Player_Kill, Lucifer_Game);
@@ -128,6 +128,88 @@ function player_Effect_Dead()
 	}
 }
 
+function player_Effect_Regen()
+{
+	if(Plyaer_DeadEffect_Check == true)
+	{
+		//Player Dead Timer Start
+		Player_DeadTimer.start();			
+	}
+	else if(Plyaer_DeadEffect_Check == false)
+	{
+		//Player Dead Timer Stop		
+		Player_DeadTime_Total = 0;
+	}
+
+	if(Player_Regen_Check == true && Plyaer_DeadEffect_Check == true)
+	{	
+		Player_Dead.visible = false;		
+		
+		MoveCheck = false;
+		StandCheck = false;
+		Player_AttackCheck = false;
+		Player_DeadCheck = false;
+		Player_DeadMotion_Check = false;
+
+		health = maxHealth;				
+
+		if(Player_DeadTime_Total > 5)
+		{		
+			//Player Revive
+			if(Player_CreateCheck == false)
+			{
+				player_Create();	
+				Player_ID.visible = true;	
+				Animation_Change(Direction, 'Stand');	
+
+				Player_CreateCheck = true;
+			}			
+
+			//Gray Filter
+			gray_Scale.visible = false;		
+
+			//Dead Alert
+			dead_Alert.visible = false;
+			dead_Alert.alpha = 0.1;
+		}	
+		else if(Player_DeadTime_Total < 5)
+		{
+			//Gray Filter
+			gray_Scale.visible = true;	
+
+			//Dead Alert
+			dead_Alert.visible = true;
+
+			if(dead_Alert.alpha >= 1.0)
+			{
+				dead_Alert.alpha = 1.0;
+				return;
+			}
+
+			dead_Alert.alpha += 0.05;		
+		}	
+
+		if(Player_CreateCheck == true)
+		{
+			Player_Revival.visible = true;
+			Player_Revival.animations.play('PY_Bavarian_Revival', 10, true);
+
+			var CurFrame = Player_Revival.animations.frame;
+			var EndFrame = 19;
+
+			if(CurFrame == EndFrame)
+			{
+				Player_Revival.visible = false;
+				Player_Revival.animations.stop('PY_Bavarian_Revival', true);						
+
+				Player_Regen_Check = false;	
+				Player_CreateCheck = false;		
+				Plyaer_DeadEffect_Check = false;	
+			}			
+		}		
+	}		
+}
+
 function player_LevelUp_Effect()
 {
 	if(Player_levelUp_Check == true && level < 10)
@@ -145,66 +227,6 @@ function player_LevelUp_Effect()
 			Player_LevelUp_Effect.animations.stop('PY_LevelUp_Effect_Ani', true);
 		}
 	}
-}
-
-function player_Effect_Regen()
-{
-	if(Player_Regen_Check == true && Plyaer_DeadEffect_Check == true)
-	{
-		Player_Dead.visible = false;		
-		
-		MoveCheck = false;
-		StandCheck = false;
-		Player_AttackCheck = false;
-		Player_DeadCheck = false;
-		Player_DeadMotion_Check = false;
-
-		health = maxHealth;		
-
-		if(Plyaer_DeadEffect_Check == true)
-		{
-			//Player Dead Timer Start
-			Player_DeadTimer.start();			
-		}
-
-		if(Player_DeadTime_Total > 3)
-		{		
-			//Player Revive
-			if(Player_CreateCheck == false)
-			{
-				player_Create();	
-				Player_ID.visible = true;	
-				Animation_Change(Direction, 'Stand');	
-
-				Player_CreateCheck = true;
-			}								
-		}		
-
-		if(Player_DeadTime_Total > 3.5)
-		{
-			Player_Revival.visible = true;
-			Player_Revival.animations.play('PY_Bavarian_Revival', 10, true);
-
-			var CurFrame = Player_Revival.animations.frame;
-			var EndFrame = 19;
-
-			if(CurFrame == EndFrame)
-			{
-				Player_Revival.visible = false;
-				Player_Revival.animations.stop('PY_Bavarian_Revival', true);
-
-				//Player Dead Timer Stop
-				Player_DeadTime_Total = 0;
-				Player_DeadTimer.pause();
-
-				Player_Regen_Check = false;	
-				Player_CreateCheck = false;		
-				Plyaer_DeadEffect_Check = false;	
-			}			
-		}	
-
-		console.log(Player_DeadTime_Total);	
-	}		
 }
 
 function player_Effect_Update()
