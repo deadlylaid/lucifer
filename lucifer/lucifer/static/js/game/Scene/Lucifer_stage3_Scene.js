@@ -89,7 +89,6 @@ var stage3_Scene =
 	{
 		if(stage3_DebugCheck == true)
 		{
-			//Player Render
 			player_Render();
 			diablo_Render();
 			skeleton_Render();
@@ -99,8 +98,8 @@ var stage3_Scene =
 
 	goto_Stage_back: function()
 	{
-		stageThree_Check = false;
-		action_CameraStepOne = false;
+		stageThree_Check = false;		//stage Three Check false
+		action_CameraStepOne = false;	//action Camera Check false
 
 		BackStageMove = 0;
 		//Sound

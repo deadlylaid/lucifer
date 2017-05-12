@@ -4,6 +4,9 @@ var Player_Dead, Player_Revival;
 var Player_DeadCheck = false, Player_DeadMotion_Check = false, Player_Regen_Check = false;
 var Player_DeadKey;
 var Player_LevelUp_Effect, level_Up_Key;
+var Player_DeadTimer, Player_DeadTime_Total = 0;
+var Player_CreateCheck = false;
+var Plyaer_DeadEffect_Check = false;
 //-------------------------------------------------------------------------------------
 
 function player_Effect_Preload()
@@ -32,14 +35,14 @@ function player_Effect_Create()
 
 	//Animation
 	//Dead
-	Player_Dead.animations.add('PY_Bavarian_Dead',
+	Player_Dead.animations.add('PY_Bavarian_Dead_Ani',
 							   [
 							   	  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 							   	  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 							   	  21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
 							   	  31, 32, 33, 34, 35
 							   ], 60, true);
-	Player_Dead.animations.play('PY_Bavarian_Dead', 10, true);
+	Player_Dead.animations.play('PY_Bavarian_Dead_Ani', 10, true);
 
 	//Revival
 	Player_Revival.animations.add('PY_Bavarian_Revival',
@@ -71,11 +74,21 @@ function player_Effect_Create()
  	level_Up_Key = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
  	level_Up_Key.onDown.add(player_Levelup_Key, Lucifer_Game);
  	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SEVEN);
+
+ 	//Player Dead Timer
+ 	Player_DeadTimer = Lucifer_Game.time.create(false);
+ 	Player_DeadTimer.loop(1000, player_DeadTimer, Lucifer_Game);
+}
+
+//Dead Timer
+function player_DeadTimer()
+{
+	++Player_DeadTime_Total;
 }
 
 function Player_Kill()
 {
-	health = -100;
+	health = -1000;
 }
 
 function player_Levelup_Key()
@@ -88,8 +101,11 @@ function player_Effect_Dead()
 	if(health < 0)
 	{
 		Player_DeadCheck = true;
-		Player.kill();
+		Player.visible = false;
 		Player_ID.visible = false;
+
+		Player_Regen_Check = true;	
+		Player.destroy();
 	}
 
 	if(Player_DeadCheck == true)
@@ -97,7 +113,7 @@ function player_Effect_Dead()
 		if(Player_DeadMotion_Check == false)
 		{
 			Player_Dead.visible = true;
-			Player_Dead.animations.play('PY_Bavarian_Dead', 10, true);
+			Player_Dead.animations.play('PY_Bavarian_Dead_Ani', 10, true);
 			Player_DeadMotion_Check = true;
 		}
 
@@ -105,26 +121,9 @@ function player_Effect_Dead()
 		var EndFrame = 35;
 
 		if(Player_DeadMotion_Check == true && CurFrame == EndFrame)
-		{
-			//이부분 이 잘 안됨.
-			if(stageOne_Check == true)
-			{
-				Player.x = 875;
-				Player.y = 1637;
-			}
-			else if(stageTwo_Check == true)
-			{
-				Player.x = 3426;
-				Player.y = 4289;
-			}
-			else if(stageThree_Check == true)
-			{
-				Player.x = 879;
-				Player.y = 2193;
-			}
-
-			Player_Dead.animations.stop('PY_Bavarian_Dead', true);
-			Player_Regen_Check = true;
+		{	
+			Player_Dead.animations.stop('PY_Bavarian_Dead_Ani', true);
+			Plyaer_DeadEffect_Check = true;														
 		}
 	}
 }
@@ -150,36 +149,62 @@ function player_LevelUp_Effect()
 
 function player_Effect_Regen()
 {
-	if(Player_Regen_Check == true)
+	if(Player_Regen_Check == true && Plyaer_DeadEffect_Check == true)
 	{
-		Player_Dead.visible = false;
-		Player_Revival.visible = true;
-		Player_Revival.animations.play('PY_Bavarian_Revival', 10, true);
-
-		//Player Revive
-		Player.revive();
-		Player_ID.visible = true;
-
+		Player_Dead.visible = false;		
+		
 		MoveCheck = false;
 		StandCheck = false;
 		Player_AttackCheck = false;
 		Player_DeadCheck = false;
 		Player_DeadMotion_Check = false;
 
-		health = maxHealth;
+		health = maxHealth;		
 
-		var CurFrame = Player_Revival.animations.frame;
-		var EndFrame = 19;
-
-		if(CurFrame == EndFrame)
+		if(Player_Regen_Check == true)
 		{
-			Player_Regen_Check = false;
-			Player_Revival.visible = false;
-
-			Player_Revival.animations.stop('PY_Bavarian_Revival', true);
-			Animation_Change(Direction, 'Stand');
+			//Player Dead Timer Start
+			Player_DeadTimer.start();			
 		}
-	}
+
+		if(Player_DeadTime_Total > 3)
+		{		
+			//Player Revive
+			if(Player_CreateCheck == false)
+			{
+				player_Create();	
+				Player_ID.visible = true;	
+				Animation_Change(Direction, 'Stand');	
+
+				Player_CreateCheck = true;
+			}								
+		}		
+
+		if(Player_DeadTime_Total > 3.5)
+		{
+			Player_Revival.visible = true;
+			Player_Revival.animations.play('PY_Bavarian_Revival', 10, true);
+
+			var CurFrame = Player_Revival.animations.frame;
+			var EndFrame = 19;
+
+			if(CurFrame == EndFrame)
+			{
+				Player_Revival.visible = false;
+				Player_Revival.animations.stop('PY_Bavarian_Revival', true);
+
+				//Player Dead Timer Stop / 오류 있음.
+				Player_DeadTimer.stop(true);
+				Player_DeadTime_Total = 0;		
+
+				Player_Regen_Check = false;	
+				Player_CreateCheck = false;		
+				Plyaer_DeadEffect_Check = false;	
+			}
+		}
+
+		console.log(Player_DeadTime_Total);
+	}	
 }
 
 function player_Effect_Update()
