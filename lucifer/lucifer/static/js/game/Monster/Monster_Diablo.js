@@ -815,6 +815,7 @@ function diablo_Pattern_Skill(Object)
 		}
 
 		Object.Skill_DelayTimer.start();
+
 		if(CurFrame == EndFrame)
 		{
 			if(Object.SkillTime_Total > 2)
@@ -1163,6 +1164,8 @@ function diablo_Update()
 	diablo_Pattern_Skill(diablo);
 
 	//Skill
+	//Inferno Animation Change
+	//diaSkill_Inferno_Animation_Change(diablo.Direction, diablo);
 	diaSkill_Direction_Inferno_Position(diablo.Direction, diablo);
 
 	//Player Mosnter Collision

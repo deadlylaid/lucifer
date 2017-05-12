@@ -175,7 +175,7 @@ function diaSkill_Fire_Col(Object)
 				}
 			}
 		}
-	}
+	}	
 }
 
 function diaSkill_Inferno_Col(Object)
@@ -210,7 +210,7 @@ function diaSkill_Inferno_Col(Object)
 				}
 			}
 		}
-	}
+	}	
 }
 
 function diaSkill_Update()
