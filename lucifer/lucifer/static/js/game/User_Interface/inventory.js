@@ -182,7 +182,7 @@ function useItem(){
 
         if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
             //포션을 클릭하고 장착버튼을 누르면
-            //quickslotPost 함수가 작동하여 서버단에 quickslot모델에
+            //quickSlotPost 함수가 작동하여 서버단에 quickslot모델에
             //포션 데이터를 저장한다.
             potionImportQuickSlot(selectedItem);
         }
@@ -261,6 +261,8 @@ function useItem(){
             potionImportQuickSlot(selectedItem);
 
             inventoryDelete(selectedItem.name);
+
+            inventoryExport();
 
             //potionImportQuickSlot(selectedItem);
             //inventoryDelete(selectedItem.name);
@@ -615,20 +617,25 @@ function invenTimeCheck(){
 //포션 장착을 눌렀을 때
 //포션의 종류를 검사하고 퀵슬롯에 넣음
 function potionImportQuickSlot(selectedItem){
+    var count = selectedItem.count;
     switch(selectedItem.name){
         case '빨간물약':
-            //blablabla;
+            quickSlot[0] = redPotionClone(727, 760);
+            break;
         case '좋은물약':
-            //blablabla;
+            quickSlot[0] = goodRedPotionClone(727, 760);
+            break;
         case '최상의물약':
-            //blablabla;
+            quickSlot[0] = bestRedPotionClone(727, 760);
+            break;
     }
-    console.log('퀵슬롯 함수 작동');
+    quickSlot[0].count = count;
+    quickslot[0].visible = true;
 
     //client에서 등록을 마쳤다면,
     //이제 서버로 전송하여 quickslot모델에
     //변경사항을 저장하도록 한다
-    quickslotPost(selectedItem);
+    quickSlotPost(quickSlot[0]);
 }
 
 //D키를 눌렀을 때 실행되게 될 함수
@@ -648,7 +655,7 @@ function potionDrink(){
 //    }
 }
 
-function quickslotPost(selectedItem){
+function quickSlotPost(selectedItem){
     $.ajax({
         method:'POST',
         url:'/api/user/character/quickslot/',
