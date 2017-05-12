@@ -611,6 +611,10 @@ function diablo_Move(Object)
 			Object.body.velocity.x = 0;
 			Object.body.velocity.y = 0;
 		}
+		else
+		{
+			Object.Inferno.visible = false;
+		}
 
 		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
 		{
@@ -815,6 +819,7 @@ function diablo_Pattern_Skill(Object)
 		}
 
 		Object.Skill_DelayTimer.start();
+
 		if(CurFrame == EndFrame)
 		{
 			if(Object.SkillTime_Total > 2)
@@ -1163,6 +1168,8 @@ function diablo_Update()
 	diablo_Pattern_Skill(diablo);
 
 	//Skill
+	//Inferno Animation Change
+	//diaSkill_Inferno_Animation_Change(diablo.Direction, diablo);
 	diaSkill_Direction_Inferno_Position(diablo.Direction, diablo);
 
 	//Player Mosnter Collision
