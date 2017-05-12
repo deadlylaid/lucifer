@@ -1112,35 +1112,38 @@ function diablo_Action_Camaera(Object)
 
 		Object.ActionCamera_Timer.start();
 
-		if(Object.CameraTime_Total < 3)
+		if(Object.CameraTime_Total < 1)
 		{
-			Lucifer_Game.camera.follow(Object);
+			Lucifer_Game.camera.follow(Player);
 			Lucifer_Game.camera.setSize(1280, 800);
 		}
-		else if(Object.CameraTime_Total > 3)
+		else if(Object.CameraTime_Total > 1)
 		{
 			action_CameraCheck = false;			
 		}		
 
 		if(action_CameraCheck == false && action_CameraStepOne == false)
 		{
-			Lucifer_Game.camera.follow(Player, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);		
+			Lucifer_Game.camera.follow(Object, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);		
 			Lucifer_Game.camera.setSize(1280, 800);
-
-			if(Object.CameraTime_Total > 7)
-			{
-				Object.ActionCamera_Timer.stop(false);
-				Object.CameraTime_Total = 0;
-
-				action_CameraStepOne = true;					
-			}			
 		}
 
-		if(action_CameraStepOne == true)
+		if(Object.CameraTime_Total > 5 && action_CameraStepOne == false)
+		{
+			Lucifer_Game.camera.follow(Player, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);
+			Lucifer_Game.camera.setSize(1280, 800);			
+
+			action_CameraStepOne = true;					
+		}	
+
+		if(action_CameraStepOne == true && Object.CameraTime_Total > 10)
 		{
 			Lucifer_Game.camera.follow(Player);		
 			Lucifer_Game.camera.setSize(1280, 800);
-		}
+
+			Object.ActionCamera_Timer.stop(false);
+			Object.CameraTime_Total = 0;
+		}		
 	}
 }
 
