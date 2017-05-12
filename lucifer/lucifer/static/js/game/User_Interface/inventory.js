@@ -630,7 +630,7 @@ function potionImportQuickSlot(selectedItem){
             break;
     }
     quickSlot[0].count = count;
-    quickslot[0].visible = true;
+    quickSlot[0].visible = true;
 
     //client에서 등록을 마쳤다면,
     //이제 서버로 전송하여 quickslot모델에
