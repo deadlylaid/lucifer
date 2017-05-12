@@ -161,7 +161,7 @@ function player_Effect_Regen()
 
 		health = maxHealth;		
 
-		if(Player_Regen_Check == true)
+		if(Plyaer_DeadEffect_Check == true)
 		{
 			//Player Dead Timer Start
 			Player_DeadTimer.start();			
@@ -193,24 +193,24 @@ function player_Effect_Regen()
 				Player_Revival.visible = false;
 				Player_Revival.animations.stop('PY_Bavarian_Revival', true);
 
-				//Player Dead Timer Stop / 오류 있음.
-				Player_DeadTimer.stop(true);
-				Player_DeadTime_Total = 0;		
+				//Player Dead Timer Stop
+				Player_DeadTime_Total = 0;
+				Player_DeadTimer.pause();
 
 				Player_Regen_Check = false;	
 				Player_CreateCheck = false;		
 				Plyaer_DeadEffect_Check = false;	
-			}
-		}
+			}			
+		}	
 
-		console.log(Player_DeadTime_Total);
-	}	
+		console.log(Player_DeadTime_Total);	
+	}		
 }
 
 function player_Effect_Update()
 {
 	Player_Dead.x = Player.x;
-	Player_Dead.y = Player.y;
+	Player_Dead.y = Player.y - 50;
 	Player_Revival.x = Player.x;
 	Player_Revival.y = Player.y;
 	Player_LevelUp_Effect.x = Player.x;
