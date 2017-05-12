@@ -642,6 +642,17 @@ function potionImportQuickSlot(selectedItem){
 function potionDrink(){
     if(quickSlot[0]!==undefined){
         console.log('potionDrink Test');
+        quickSlot[0].count -= 1;
+        if(health + quickSlot[0].heal > maxHealth){
+            health = maxHealth;
+        }else{
+            health += quickSlot[0].heal;
+        }
+        if(quickSlot[0].count === 0){
+            console.log('quickSlot delete!!');
+        }else{
+            console.log('횟수가 하나 줄은것으로 끝난다');
+        }
     }else{
         console.log('No quickSlot');
     }
