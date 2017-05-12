@@ -93,7 +93,7 @@ function diaSkill_Inferno_Animation_Change(Direction, Object)
 {
 	Object.Inferno.visible = true;
 	Object.Inferno.loadTexture('Inferno', 0, true);
-	Object.Inferno.animations.play('Inferno_' + Direction, 10, true);
+	Object.Inferno.animations.play('Inferno_' + Direction, 10, true);	
 }
 
 function diaSkill_Direction_Inferno_Position(Direction, Object)

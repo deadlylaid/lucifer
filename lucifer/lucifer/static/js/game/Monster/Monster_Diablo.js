@@ -611,6 +611,10 @@ function diablo_Move(Object)
 			Object.body.velocity.x = 0;
 			Object.body.velocity.y = 0;
 		}
+		else
+		{
+			Object.Inferno.visible = false;
+		}
 
 		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
 		{
