@@ -87,11 +87,11 @@ var stage1_Scene =
 		golem_Update();
 		countess_Update();
 
-        //items Update
-		itemsStoreUpdate();
-
 		//Ui Update
 		ui_Update();
+
+        //items Update
+		itemsStoreUpdate();
 
 		//Quest Update
 		QuestUpdate();
@@ -120,6 +120,8 @@ var stage1_Scene =
 			this.goto_Stage2();
 			Portal_Check = false;
 		}
+
+		PotionDrinkUpdate();
 	},
 
 	render: function()

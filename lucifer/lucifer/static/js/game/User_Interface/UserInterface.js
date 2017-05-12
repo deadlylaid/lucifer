@@ -18,6 +18,14 @@ function ui_Preload()
 	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 120, 120);
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status2.png', 496, 961);
     Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 525);
+
+    //Quickslot Potion
+    Lucifer_Game.load.spritesheet('Quickslot_Potion1',
+                                  '../../static/images/game/item/healthPotion1.png', 55, 55);
+    Lucifer_Game.load.spritesheet('Quickslot_Potion2',
+                                  '../../static/images/game/item/healthPotion2.png', 55, 55);
+    Lucifer_Game.load.spritesheet('Quickslot_Potion3',
+                                  '../../static/images/game/item/healthPotion3.png', 55, 55);
 }
 
 function ui_Create()
@@ -36,6 +44,7 @@ function ui_Create()
     UI_UnderBar = Lucifer_Game.add.sprite(640, 705, 'UI_UnderBar');
     UI_UnderBar.anchor.setTo(0.5, 0.5);
     UI_UnderBar.fixedToCamera = true;
+    UI_UnderBar.inputEnabled = true;
 
 	UI_Stat = Lucifer_Game.add.sprite(250, 360, 'UI_Stat');
 	UI_Stat.anchor.setTo(0.5, 0.5);
@@ -88,6 +97,25 @@ function ui_Create()
     keyValidTimer = Lucifer_Game.time.create(false);
     keyValidTimer.loop(400, timeCheck, this);
 	//---------------------------------------------------------------------------------------
+
+    //UnderBar Drink image 
+    Potion_1 = Lucifer_Game.add.sprite(727, 762, 'Quickslot_Potion1');
+    Potion_1.anchor.setTo(0.5, 0.5);
+    Potion_1.scale.setTo(0.7, 0.7);
+    Potion_1.fixedToCamera = true;
+    Potion_1.visible = false;
+
+    Potion_2 = Lucifer_Game.add.sprite(727, 762, 'Quickslot_Potion2');
+    Potion_2.anchor.setTo(0.5, 0.5);
+    Potion_2.scale.setTo(0.7, 0.7);
+    Potion_2.fixedToCamera = true;
+    Potion_2.visible = false;
+
+    Potion_3 = Lucifer_Game.add.sprite(727, 762, 'Quickslot_Potion3');
+    Potion_3.anchor.setTo(0.5, 0.5);
+    Potion_3.scale.setTo(0.7, 0.7);
+    Potion_3.fixedToCamera = true;
+    Potion_3.visible = false;
 }
 
 function ui_Update()
@@ -110,6 +138,8 @@ function ui_Update()
 		statusDataText.position.x = UI_Stat.x - 80;
     	statusDataText.position.y = UI_Stat.y + 30;
 	}
+
+    
 
 	if(key_Stat.isDown)
 	{
