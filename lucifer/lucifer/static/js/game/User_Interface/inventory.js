@@ -1,5 +1,5 @@
 var QuickSlotPotionInsert = 0;
-var QuickSlotPotion; 
+var QuickSlotPotion;
 
 function inventoryPreload(){
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
@@ -192,6 +192,7 @@ function useItem(){
             //quickslotPost 함수가 작동하여 서버단에 quickslot모델에
             //포션 데이터를 저장한다.
             potionImportQuickSlot(selectedItem);
+        }
 
         var startNumberSecondArray = selectedItem.numberInArray;
 
@@ -666,7 +667,7 @@ function potionImportQuickSlot(selectedItem){
             QuickSlotPotion.getVisible(true);
             //QuickSlotPotionInsert = 1;
         break;
-    }   
+    }
 
 
 
@@ -710,7 +711,7 @@ function quickslotPost(selectedItem){
 function PotionDrinkUpdate(){
 
     /*if(key_drink.isDown)
-    {   
+    {
         console.log("drink");
         Drink();
     }*/
@@ -719,7 +720,7 @@ function PotionDrinkUpdate(){
 function PotionDrinkUpdate(){
 
     if(key_drink.isDown)
-    {   
+    {
         console.log("drink");
         Drink();
     }
