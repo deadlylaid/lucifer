@@ -640,6 +640,12 @@ function potionImportQuickSlot(selectedItem){
 
 //D키를 눌렀을 때 실행되게 될 함수
 function potionDrink(){
+    if(quickSlot[0]!==undefined){
+        console.log('potionDrink Test');
+    }else{
+        console.log('No quickSlot');
+    }
+
 //    if(selectedItem.count === 1){
 //        inventoryDelete(selectedItem.name);
 //    }else{
