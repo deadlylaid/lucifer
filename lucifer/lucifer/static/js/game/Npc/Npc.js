@@ -2,14 +2,13 @@ var store_Npc, cain_Npc;
 var npc_Angle, npc_Direction, npc_PreDirection, npc_Distance, npc_Range;
 var npc_compareCheck = false;
 //---------------------------------------------------------------------------------------
-
 function npc_Preload()
 {
 	//NPC
 	Lucifer_Game.load.spritesheet('NPC_Store',
 								  '../../static/images/game/Npc/Npc1.png', 100, 100);
 	Lucifer_Game.load.spritesheet('NPC_Cain',
-								  '../../static/images/game/Npc/cain/cain.png', 256, 256);
+								  '../../static/images/game/Npc/cain/cain.png', 256, 256);	
 }
 
 function npc_Create()
