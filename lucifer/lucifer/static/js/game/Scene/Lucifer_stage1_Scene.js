@@ -121,7 +121,6 @@ var stage1_Scene =
 			Portal_Check = false;
 		}
 
-		PotionDrinkUpdate();
 	},
 
 	render: function()
