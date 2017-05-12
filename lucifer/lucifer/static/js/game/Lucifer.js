@@ -17,5 +17,6 @@ Lucifer_Game.state.add('stage2_load', stage2_LoadScene);
 Lucifer_Game.state.add('stage2', stage2_Scene);
 Lucifer_Game.state.add('stage3_load', stage3_LoadScene);
 Lucifer_Game.state.add('stage3', stage3_Scene);
+Lucifer_Game.state.add('Ending', Ending_Scene);
 
 Lucifer_Game.state.start('boot');

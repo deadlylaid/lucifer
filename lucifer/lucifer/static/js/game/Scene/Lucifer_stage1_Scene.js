@@ -1,4 +1,5 @@
 var debugCheck;
+var EndingKey;
 
 var stage1_Scene =
 {
@@ -76,6 +77,8 @@ var stage1_Scene =
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
 		enterKey.onDown.add(debug_Rendering_Down, this);
 		enterKey.onUp.add(debug_Rendering_Up, this);
+
+		EndingKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F2);
 	},
 
 	update: function()
@@ -123,6 +126,12 @@ var stage1_Scene =
 			this.goto_Stage2();
 			Portal_Check = false;
 		}
+
+		if(EndingKey.isDown)
+		{
+			EndingScene();
+		}
+
 
 	},
 
@@ -180,3 +189,9 @@ function debug_Rendering_Up()
 		debugCheck = false;
 	}
 }
+
+function EndingScene()
+	{
+
+		Lucifer_Game.state.start('Ending');
+	}
