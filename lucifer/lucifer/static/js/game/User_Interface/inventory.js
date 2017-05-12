@@ -696,7 +696,6 @@ function potionDrink(){
 //
 //    }
 }
-
 function quickslotPost(selectedItem){
     $.ajax({
         method:'POST',
