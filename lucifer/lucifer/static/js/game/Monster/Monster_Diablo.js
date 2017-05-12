@@ -45,7 +45,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false,       this.StandCheck = false;
 	this.AttackCheck = false,   this.CompareCheck = false,    this.DamageCheck = false;
 	this.DeadCheck = false,	    this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false;
+	this.MouseCheck = false,    this.TyrealCheck = false;
 
 	//AI Pattern Check
 	this.Pattern_Change = false, this.Pattern_Attack = false, this.Pattern_Skill = false;
@@ -67,6 +67,9 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Action Camera Timer
 	this.ActionCamera_Timer, this.CameraTime_Total = 0;
+
+	//Tyreal Camera Timer
+	this.TyrealCamera_Timer, this.TyrealTime_Total = 0;
 }
 
 Diablo.prototype = Object.create(Phaser.Sprite.prototype);
@@ -324,6 +327,10 @@ function diablo_Clone(PointX, PointY)
 	//Action Camera Timer
 	diablo_Object.ActionCamera_Timer = Lucifer_Game.time.create(false);
 	diablo_Object.ActionCamera_Timer.loop(1000, diablo_Camera_Timer, Lucifer_Game, diablo_Object);
+
+	//Tyreal Camera Timer
+	diablo_Object.TyrealCamera_Timer = Lucifer_Game.time.create(false);
+	diablo_Object.TyrealCamera_Timer.loop(1000, diablo_Tyreal_Timer, Lucifer_Game, diablo_Object);
 }
 //----------------------------------------------------------------------------------------------
 //Over / Out
@@ -367,6 +374,11 @@ function diablo_ExpTimer(Object)
 function diablo_Camera_Timer(Object)
 {
 	++Object.CameraTime_Total;
+}
+//Tyreal Timer
+function diablo_Tyreal_Timer(Object)
+{
+	++Object.TyrealTime_Total;
 }
 
 //Name
@@ -1000,10 +1012,35 @@ function diablo_Dead(Object)
 		var CurFrame = Object.animations.frame;
 		if(Object.DeadMotionCheck == true && CurFrame == 142)
 		{
+			//Skeleton 강제로 죽이기. 
+			for(var i = 0; i < skeleton_Group.length; ++i)
+			{
+				skeleton_Group.getChildAt(i).Hp -= 1000;
+			}
+
 			Object.kill();
+			Object.Inferno.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
+
+			//Tyreal Timer Start
+			Object.TyrealCamera_Timer.start();
 		}
+
+		if(Object.TyrealTime_Total < 3)
+		{
+			Lucifer_Game.camera.fade(0x000000, 5000);	
+		}
+		else if(Object.TyrealTime_Total > 3)
+		{
+			Lucifer_Game.camera.resetFX();
+
+			if(Object.TyrealCheck == false)
+			{
+				npc_Tyreal_Create(Object.x, Object.y);	
+				Object.TyrealCheck = true;
+			}
+		}		
 	}
 }
 
@@ -1179,7 +1216,7 @@ function diablo_Update()
 	}
 
 	diablo_Dead(diablo);
-	diablo_Regen(diablo);
+	//diablo_Regen(diablo);
 
 	//Level System
 	check_Monster_Dead(diablo);
