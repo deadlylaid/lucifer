@@ -68,6 +68,9 @@ var stage1_Scene =
 		//Mouse
 		mouse_Create();
 
+		//GrayScale Effect
+		grayScale_Create();
+
 		//Key Go to Stage2
 		debugCheck = false;
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
