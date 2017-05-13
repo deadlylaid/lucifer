@@ -5,6 +5,7 @@ var statusDataText,
     mpMask
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat, UI_Skill;	//UI 이미지 변수.
+var UI_ExperienceBar;
 //----------------------------------------------------------------------------------------------------------
 var key_Stat, Key_Skill, ui_Delay_Time;
 
@@ -18,7 +19,8 @@ function ui_Preload()
 	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 120, 120);
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status2.png', 496, 961);
     Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 525);
-
+    Lucifer_Game.load.spritesheet('UI_ExperienceBar', '../../static/images/game/UI/UnderBar/Experience_Bar.png', 520, 8);
+    
     //Quickslot Potion
     Lucifer_Game.load.spritesheet('Quickslot_Potion1',
                                   '../../static/images/game/item/healthPotion1.png', 55, 55);
@@ -55,6 +57,11 @@ function ui_Create()
     UI_Skill.anchor.setTo(0.5, 0.5);
     UI_Skill.fixedToCamera = true;
     UI_Skill.visible = false;
+
+    //Experience Bar
+    UI_ExperienceBar = Lucifer_Game.add.sprite(UI_UnderBar.x + 6, UI_UnderBar.y + 15, 'UI_ExperienceBar');
+    UI_ExperienceBar.anchor.setTo(0.5, 0.5);
+    UI_ExperienceBar.fixedToCamera = true;
 
     //hpMask is show real-time HP
     hpMask = Lucifer_Game.add.graphics(350, 730);

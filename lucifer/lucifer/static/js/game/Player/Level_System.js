@@ -1,4 +1,4 @@
-// Lving System
+//Lving System
 //----------------------------------------------------------------------------------------------
 var get_Exp = 0;
 var Player_levelUp_Check = false;
@@ -8,7 +8,6 @@ var Player_levelUp_Check = false;
 var player_Skill_One = false, player_Skill_Two = false, player_Skill_Three = false;
 var player_Skill_Four = false, plyaer_Skill_Five = false;
 //----------------------------------------------------------------------------------------------
-
 function check_Monster_Dead(Object)
 {
     if(Object.ExpCheck == true)
