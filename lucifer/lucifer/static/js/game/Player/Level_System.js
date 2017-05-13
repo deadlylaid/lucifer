@@ -12,35 +12,6 @@ function check_Monster_Dead(Object)
 {
     if(Object.ExpCheck == true)
 	{
-		/*
-		switch(Object.Name.text)
-		{
-		case "Golem":
-			get_Exp = 100;
-			break;
-		case "Andariel":
-			get_Exp = 200;
-			break;
-		case "Council":
-			get_Exp = 50;
-			break;
-		case "Countess":
-			get_Exp = 30;
-			break;
-		case "Deamon":
-			get_Exp = 80;
-			break;
-		case "Fallen Shman":
-			get_Exp = 70;
-			break;
-		case "Wraith":
-			get_Exp = 90;
-			break;
-		case "Diablo":
-			get_Exp = 500;
-			break;
-		}
-		*/
 		player_Level_Update(Object);
 
 		Object.ExpCheck = false;	

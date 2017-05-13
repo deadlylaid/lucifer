@@ -46,7 +46,7 @@ Skeleton = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 30, this.Regen_Check = false;
 
 	//Level System
-	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 40;
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 10;
 
 	//Shadow
 	this.shadow_Effect;

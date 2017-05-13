@@ -44,7 +44,7 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 
 	//Level System
-	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 80;
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 50;
 
 	//Blood Effect
 	this.blood_Effect;

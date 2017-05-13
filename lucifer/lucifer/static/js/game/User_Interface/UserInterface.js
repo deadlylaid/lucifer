@@ -5,6 +5,7 @@ var statusDataText,
     mpMask
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat, UI_Skill;	//UI 이미지 변수.
+var UI_UnderBar_ClickCheck = false;
 var UI_ExperienceBar, experienceBar_Mask;
 //----------------------------------------------------------------------------------------------------------
 var key_Stat, Key_Skill, ui_Delay_Time;
@@ -43,10 +44,23 @@ function ui_Create()
 	UI_MpBar.anchor.setTo(0.5, 0.5);
 	UI_MpBar.fixedToCamera = true;
 
+    //UI_UnderBar
+    //------------------------------------------------------------------------------------------------------------
     UI_UnderBar = Lucifer_Game.add.sprite(640, 705, 'UI_UnderBar');
     UI_UnderBar.anchor.setTo(0.5, 0.5);
     UI_UnderBar.fixedToCamera = true;
-    UI_UnderBar.inputEnabled = true;
+
+    /*
+    Lucifer_Game.physics.p2.enable(UI_UnderBar);
+    UI_UnderBar.body.static = true;
+    UI_UnderBar.body.clearShapes();
+    UI_UnderBar.body.addRectangle(1040, 195, 0, 0);
+    */
+
+    UI_UnderBar.inputEnabled = true;    
+    UI_UnderBar.events.onInputDown.add(underBar_Down, UI_UnderBar);
+    UI_UnderBar.events.onInputOut.add(underBar_Out, UI_UnderBar);
+    //------------------------------------------------------------------------------------------------------------
 
 	UI_Stat = Lucifer_Game.add.sprite(250, 360, 'UI_Stat');
 	UI_Stat.anchor.setTo(0.5, 0.5);
@@ -61,7 +75,7 @@ function ui_Create()
     //Experience Bar
     //------------------------------------------------------------------------------------------------------------
     UI_ExperienceBar = Lucifer_Game.add.sprite(UI_UnderBar.x + 9, UI_UnderBar.y + 25, 'UI_ExperienceBar');
-    UI_ExperienceBar.anchor.setTo(0.5, 0.5);
+    UI_ExperienceBar.anchor.setTo(0.5, 0.5);   
     UI_ExperienceBar.fixedToCamera = true;
     UI_ExperienceBar.visible = false;
 
@@ -138,6 +152,16 @@ function ui_Create()
     Potion_3.scale.setTo(0.7, 0.7);
     Potion_3.fixedToCamera = true;
     Potion_3.visible = false;
+}
+
+function underBar_Down()
+{
+    UI_UnderBar_ClickCheck = true;
+}
+
+function underBar_Out()
+{
+    UI_UnderBar_ClickCheck = false;
 }
 
 function ui_Update()

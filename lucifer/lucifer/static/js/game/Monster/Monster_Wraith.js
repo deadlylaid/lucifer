@@ -44,7 +44,7 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 
 	//Level System
-	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 90;
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 70;
 
 	//Shadow Effect
 	this.shadow_Effect;
