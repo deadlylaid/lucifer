@@ -45,11 +45,6 @@ function itemStorePreload(){
     //Item Select Frame
     Lucifer_Game.load.spritesheet('Item_Select_Frame',
                                   '../../static/images/game/UI/Store/SelectFrame.png', 44, 83);
-
-    
-
-
-
 };
 
 function itemStoreCreate(){
@@ -441,7 +436,7 @@ function clickItem(sprite){
 
     switch(sprite.name){
         case '빨간물약':
-            selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+            selectedItem = redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1], 10);
             selectedItem.numberInArray = i;
             if(sprite.drinkEnable === false){
                 selectedItem.drinkEnable = false;
@@ -724,4 +719,3 @@ function onOutArmor3(){
     Armor_Three_Info.visible = false;
 }
 //---------------------------------------------------
-
