@@ -4,97 +4,185 @@ function player_Monster_Col(Object)
 {
 	DistanceToMonster = Phaser.Math.distance(Player.x, Player.y, Object.x, Object.y);
 
-	if(DistanceToMonster < 70)
+	if(Object.Name.text == 'Diablo')
 	{
-		if(Object.DeadCheck == false)
+		console.log(DistanceToMonster);
+
+		if(DistanceToMonster < 95)
 		{
-			if(Phaser.Rectangle.intersects(Attack_Rect, Object.HitRect))
+			if(Object.DeadCheck == false)
 			{
-				//Player Attack motion
-				if(Lucifer_Game.input.activePointer.leftButton.isDown && Player_AttackCheck == false)
+				if(Phaser.Rectangle.intersects(Attack_Rect, Object.HitRect))
 				{
-					if(skill_Bavarian_Three.visible == false)
+					//Player Attack motion
+					if(Lucifer_Game.input.activePointer.leftButton.isDown && Player_AttackCheck == false)
 					{
-						Animation_Change(Direction, 'Attack');
-					}
-				}
-				else
-				{
-					Player_AttackCheck = false;
-				}
-
-				//Bavarian Skill Four Effect
-				//----------------------------------------------------------------------------
-				skill_Bavarian_Four_Effect.x = Object.x;
-				skill_Bavarian_Four_Effect.y = Object.y;
-
-				if(skill_Four_EffectCheck == true && Object.DeadCheck == true)
-				{
-					skill_Bavarian_Four_Effect.visible = false;
-					skill_Bavarian_Four_Effect.animations.stop('SK_Bavarian_Effect4', true);
-					skill_Bavarian_Four_Effect.frame = 0;
-					skill_Four_Count = 0;
-
-					skill_Four_EffectCheck = false;
-				}
-				//----------------------------------------------------------------------------
-
-				//Player Attack Damage(Attack Motion)
-				//----------------------------------------------------------------------------
-				if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
-				{
-					//Animation Control / 잘 안된다.
-					if(Lucifer_Game.input.activePointer.leftButton.isDown)
-					{
-						Player_AttackCheck = true;
-					}
-
-					var CurFrame = Player.animations.frame;
-					var EndFrame = 0;
-
-					if(Direction == 0)
-					{
-						EndFrame = 15;
+						if(skill_Bavarian_Three.visible == false)
+						{
+							Animation_Change(Direction, 'Attack');
+						}
 					}
 					else
 					{
-						EndFrame = 15 * (Direction + 1);
+						Player_AttackCheck = false;
 					}
 
-					if(CurFrame == EndFrame)
-					{
-						Damage_Count(Object);
+					//Bavarian Skill Four Effect
+					//----------------------------------------------------------------------------
+					skill_Bavarian_Four_Effect.x = Object.x;
+					skill_Bavarian_Four_Effect.y = Object.y;
 
-						//Monster Blood Effect
-						if(Object.blood_Effect)
+					if(skill_Four_EffectCheck == true && Object.DeadCheck == true)
+					{
+						skill_Bavarian_Four_Effect.visible = false;
+						skill_Bavarian_Four_Effect.animations.stop('SK_Bavarian_Effect4', true);
+						skill_Bavarian_Four_Effect.frame = 0;
+						skill_Four_Count = 0;
+
+						skill_Four_EffectCheck = false;
+					}
+					//----------------------------------------------------------------------------
+
+					//Player Attack Damage(Attack Motion)
+					//----------------------------------------------------------------------------
+					if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
+					{
+						//Animation Control / 잘 안된다.
+						if(Lucifer_Game.input.activePointer.leftButton.isDown)
 						{
-							Object.blood_Effect.visible = true;
-							Object.blood_Effect.animations.play('blood_Ani', 10, true);
+							Player_AttackCheck = true;
+						}
+
+						var CurFrame = Player.animations.frame;
+						var EndFrame = 0;
+
+						if(Direction == 0)
+						{
+							EndFrame = 15;
+						}
+						else
+						{
+							EndFrame = 15 * (Direction + 1);
+						}
+
+						if(CurFrame == EndFrame)
+						{
+							Damage_Count(Object);
+
+							//Monster Blood Effect
+							if(Object.blood_Effect)
+							{
+								Object.blood_Effect.visible = true;
+								Object.blood_Effect.animations.play('blood_Ani', 10, true);
+							}
+						}
+
+						//Player Move Control
+						Player.body.velocity.x = 0;
+						Player.body.velocity.y = 0;
+					}
+					//----------------------------------------------------------------------------
+				}
+
+				//Skill Damage
+				skill_Attack(Object);
+			}
+		}	
+	}
+	else 
+	{
+		if(DistanceToMonster < 70)
+		{
+			if(Object.DeadCheck == false)
+			{
+				if(Phaser.Rectangle.intersects(Attack_Rect, Object.HitRect))
+				{
+					//Player Attack motion
+					if(Lucifer_Game.input.activePointer.leftButton.isDown && Player_AttackCheck == false)
+					{
+						if(skill_Bavarian_Three.visible == false)
+						{
+							Animation_Change(Direction, 'Attack');
 						}
 					}
+					else
+					{
+						Player_AttackCheck = false;
+					}
 
-					//Player Move Control
-					Player.body.velocity.x = 0;
-					Player.body.velocity.y = 0;
+					//Bavarian Skill Four Effect
+					//----------------------------------------------------------------------------
+					skill_Bavarian_Four_Effect.x = Object.x;
+					skill_Bavarian_Four_Effect.y = Object.y;
+
+					if(skill_Four_EffectCheck == true && Object.DeadCheck == true)
+					{
+						skill_Bavarian_Four_Effect.visible = false;
+						skill_Bavarian_Four_Effect.animations.stop('SK_Bavarian_Effect4', true);
+						skill_Bavarian_Four_Effect.frame = 0;
+						skill_Four_Count = 0;
+
+						skill_Four_EffectCheck = false;
+					}
+					//----------------------------------------------------------------------------
+
+					//Player Attack Damage(Attack Motion)
+					//----------------------------------------------------------------------------
+					if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
+					{
+						//Animation Control / 잘 안된다.
+						if(Lucifer_Game.input.activePointer.leftButton.isDown)
+						{
+							Player_AttackCheck = true;
+						}
+
+						var CurFrame = Player.animations.frame;
+						var EndFrame = 0;
+
+						if(Direction == 0)
+						{
+							EndFrame = 15;
+						}
+						else
+						{
+							EndFrame = 15 * (Direction + 1);
+						}
+
+						if(CurFrame == EndFrame)
+						{
+							Damage_Count(Object);
+
+							//Monster Blood Effect
+							if(Object.blood_Effect)
+							{
+								Object.blood_Effect.visible = true;
+								Object.blood_Effect.animations.play('blood_Ani', 10, true);
+							}
+						}
+
+						//Player Move Control
+						Player.body.velocity.x = 0;
+						Player.body.velocity.y = 0;
+					}
+					//----------------------------------------------------------------------------
 				}
-				//----------------------------------------------------------------------------
+
+				//Skill Damage
+				skill_Attack(Object);
 			}
 
-			//Skill Damage
-			skill_Attack(Object);
-		}
+			//Attack Delay Timer Control
+			/*
+			Player_DelayTimer.start();
 
-		//Attack Delay Timer Control
-		/*
-		Player_DelayTimer.start();
-
-		if(Player_Time_Total > 1)
-		{
-			Player_AttackCheck = false;
-			Player_Time_Total = 0;
+			if(Player_Time_Total > 1)
+			{
+				Player_AttackCheck = false;
+				Player_Time_Total = 0;
+			}
+			*/
 		}
-		*/
-	}
+	}	
 }
 
 function Damage_Count(Monster)

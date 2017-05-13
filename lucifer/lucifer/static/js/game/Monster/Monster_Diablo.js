@@ -285,7 +285,7 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.events.onInputOut.add(diablo_out, diablo_Object);
 
 	//Rect
-	diablo_Object.HitRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 150, 200);
+	diablo_Object.HitRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 160, 220);
 	diablo_Object.AttackRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 220, 220);
 	diablo_Object.FireRect = new Phaser.Rectangle(diablo_Object.x, diablo_Object.y, 1000, 1000);
 
@@ -1178,7 +1178,7 @@ function diablo_Action_Camaera(Object)
 			action_CameraStepOne = true;					
 		}	
 
-		if(action_CameraStepOne == true && Object.CameraTime_Total > 10)
+		if(action_CameraStepOne == true && Object.CameraTime_Total > 8)
 		{
 			Lucifer_Game.camera.follow(Player);		
 			Lucifer_Game.camera.setSize(1280, 800);
@@ -1233,6 +1233,6 @@ function diablo_Render()
 	var diablo = diablo_Object;
 
 	Lucifer_Game.debug.geom(diablo.HitRect, 'rgba(200, 0, 0, 0.5)');
-	Lucifer_Game.debug.geom(diablo.Inferno.SkillRect, 'rgba(0, 0, 200, 0.5)');
+	//Lucifer_Game.debug.geom(diablo.Inferno.SkillRect, 'rgba(0, 0, 200, 0.5)');
 }
 //----------------------------------------------------------------------------------------------
