@@ -37,13 +37,13 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false;
+	this.MouseCheck = false, this.GetExpCheck = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
 
 	//Level System
-	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 100;
 
 	//Blood Effect
 	this.blood_Effect;
@@ -180,7 +180,7 @@ function golem_Clone(PointX, PointY)
 
     //Exp Timer
 	golem_Object.ExpTimer = Lucifer_Game.time.create(false);
-	golem_Object.ExpTimer.loop(10, golem_ExpTimer, Lucifer_Game, golem_Object);
+	golem_Object.ExpTimer.loop(10, golem_ExperienceTimer, Lucifer_Game, golem_Object);
 
 	//Blood Effect
 	golem_Object.blood_Effect = blood_Effect_Clone(golem_Object.x, golem_Object.y);
@@ -204,7 +204,7 @@ function golem_RegenTimer(Object)
 }
 
 //Exp
-function golem_ExpTimer(Object)
+function golem_ExperienceTimer(Object)
 {
 	++Object.ExpTime_Total;
 }
@@ -568,18 +568,18 @@ function golem_Dead(Object)
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
 			Object.kill();
-			Object.Name.visible = false;
-			Object.ExpCheck = true;
-		}
+			Object.Name.visible = false;	
+			Object.ExpCheck = true;	
+		}		
 	}
 }
 
 function golem_Regen(Object)
 {
-	if(Object.DeadCheck == true)
+	if(Object.DeadMotionCheck == true)
 	{
 		Object.Regen_Check = true;
-		Object.Regen_Timer.start();
+		Object.Regen_Timer.start();			
 
 		if(Object.Regen_Time_Total > Object.Regen_Time)
 		{
@@ -588,13 +588,6 @@ function golem_Regen(Object)
 			Object.body.static = false;
 			Object.body.restitution = 0;
 
-			Object.Regen_Check = false;
-
-			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
-			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
-			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false;
-
 			Object.Hp = 500;
 			Object.MaxHp = 500;
 			Object.x = Object.ReturnPointX;
@@ -602,9 +595,14 @@ function golem_Regen(Object)
 
 			golem_Animation_Change(Object.Direction, 'Stand', Object);
 
-			Object.Regen_Timer.stop();
-			Object.Regen_Time_Total = 0;
-		}
+			Object.AI_StartCheck = false, Object.MoveCheck = false,    Object.StandCheck = false;
+			Object.AttackCheck = false,   Object.CompareCheck = false, Object.DamageCheck = false;
+			Object.DeadCheck = false,	  Object.ReturnCheck = false;
+			Object.MouseCheck = false,    Object.Regen_Check = false,  Object.DeadMotionCheck = false;	
+		
+			Object.Regen_Timer.stop(false);
+			Object.Regen_Time_Total = 0;				
+		}		
 	}
 }
 //-------------------------------------------------------------------------------------------
@@ -702,7 +700,7 @@ function golem_Update()
 		blood_Effect_Update(golem);
 
 		//Shadow
-		shadow_Monster_Move(golem);
+		shadow_Monster_Move(golem);	
 	}
 }
 

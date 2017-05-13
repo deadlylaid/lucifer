@@ -551,12 +551,12 @@ function player_Update()
 				PlayerMove();
 				PlayerAttack();
 				player_Level_Up();
-				//Player_Frame();
 				shadow_Player_Move();	
+				//Player_Frame();
 
 				//Camera Setting
 				Lucifer_Game.camera.follow(Player);		
-				Lucifer_Game.camera.setSize(1280, 800);			
+				Lucifer_Game.camera.setSize(1280, 800);					
 			}
 
 			Player_StopCheck = false;
@@ -595,8 +595,8 @@ function player_Update()
 
 				PlayerAttack();
 				player_Level_Up();
-				//Player_Frame();
 				shadow_Player_Move();
+				//Player_Frame();				
 			}
 
 			Player_StopCheck = false;
@@ -643,5 +643,5 @@ function player_Render()
 	Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
 	Lucifer_Game.debug.geom(Hit_Rect, 'rgba(0, 0, 200, 0.5');
 	Lucifer_Game.debug.geom(Pointer_Rect, 'rgba(200, 200, 200, 0.5');
-	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
+	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');	
 };

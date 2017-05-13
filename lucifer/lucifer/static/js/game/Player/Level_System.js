@@ -12,10 +12,11 @@ function check_Monster_Dead(Object)
 {
     if(Object.ExpCheck == true)
 	{
+		/*
 		switch(Object.Name.text)
 		{
 		case "Golem":
-			get_Exp = 1000;
+			get_Exp = 100;
 			break;
 		case "Andariel":
 			get_Exp = 200;
@@ -39,26 +40,90 @@ function check_Monster_Dead(Object)
 			get_Exp = 500;
 			break;
 		}
-
+		*/
 		player_Level_Update(Object);
-		Object.ExpCheck = false;
+
+		Object.ExpCheck = false;	
+	}	
+	else if(Object.ExpCheck == false)
+	{
+		//Object.ExpTimer.stop();			
+		Object.ExpTime_Total = 0;
 	}
 }
 
 function player_Level_Update(Object)
 {
-	Object.ExpTimer.start();
-
-	if(Object.ExpTime_Total > 1)
+	if(Object.ExpCheck == true)
 	{
-		if(experience < 1000)
-		{
-			experience += get_Exp;
-		}
+		Object.ExpTimer.start();
+	}					
 
-		Object.ExpTime_Total = 0;
-		Object.ExpTimer.stop();
+	if(Object.GetExpCheck == false)
+	{
+		if(Object.ExpTime_Total < 1)
+		{		
+			if(experience < 1000)
+			{
+				experience += Object.Experience / 2;			
+			}			
+
+			Object.GetExpCheck = true;
+		}
 	}
+	else if(Object.GetExpCheck == true)
+	{
+		if(Object.ExpTime_Total < 2)
+		{
+			if(experience < 1000)
+			{
+				experience += Object.Experience;
+			}			
+		}
+	}	
+
+	player_Experience_Mask();			
+}
+
+function player_Experience(experience)
+{
+	var divided_Experience = experience / 1000;
+	var result_Experience = divided_Experience;
+
+	return result_Experience * 100;
+}
+
+function player_Experience_Rate(Experience_Percentage)
+{
+	var experience_Rate;
+
+	if(Experience_Percentage > 0)
+	{
+		experience_Rate = (5.2 * Experience_Percentage);
+	}
+	else if(Experience_Percentage <= 0)
+	{
+		experience_Rate = 0;
+	}
+
+	return experience_Rate;
+}
+
+function player_Experience_Mask()
+{
+	var experience_Percentage = player_Experience(experience);
+	var experience_Rate = player_Experience_Rate(experience_Percentage);
+
+	experienceBar_Mask.clear();
+	experienceBar_Mask.beginFill(0xffffff);
+	experienceBar_Mask.drawRect(-250, -4, experience_Rate, 8);
+	experienceBar_Mask.endFill();
+	
+	UI_ExperienceBar.visible = true;
+	UI_ExperienceBar.mask = experienceBar_Mask;		
+
+	//console.log(experience_Percentage, experience_Rate);
+	//console.log(experience);
 }
 
 function player_State_Up()
