@@ -131,7 +131,7 @@ armor.prototype.getVisible = function(bool){
 armor.prototype.constructor = armor;
 
 
-function redPotionClone(positionX, positionY, count){
+function redPotionClone(positionX, positionY){
     //potion 클래스 = game / x좌표 / y좌표 / spriteKey / heal / 직업 / 폰트 스타일 /
     redPotionObject = new potion(
         Lucifer_Game, positionX, positionY, itemList[0].name, itemList[0].heal, itemList[0].price, 0
@@ -145,7 +145,7 @@ function redPotionClone(positionX, positionY, count){
     Lucifer_Game.add.existing(redPotionObject);
     Lucifer_Game.physics.enable(redPotionObject, Phaser.Physics.ARCADE);
 
-    redPotionObject.count = count;
+    redPotionObject.count = 10;
 
     redPotionObject.inputEnabled = true;
     redPotionObject.events.onInputDown.add(clickedItemInInventory, this);
