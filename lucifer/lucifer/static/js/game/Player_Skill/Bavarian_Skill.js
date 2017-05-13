@@ -167,7 +167,7 @@ function skill_Create()
 
     //Skill Icon
     //Skill - 1 Icon
-    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x - 220, UI_UnderBar.y + 56, 'SK_Icon_Skill');
+    skill_Icon_One = Lucifer_Game.add.sprite(UI_UnderBar.x - 220, UI_UnderBar.y + 26, 'SK_Icon_Skill');
     skill_Icon_One.anchor.setTo(0.5, 0.5);
     skill_Icon_One.fixedToCamera = true;
     skill_Icon_One.inputEnabled = true;
@@ -183,7 +183,7 @@ function skill_Create()
     SK_Icon_Skill_Info.visible = false;
 
     //Skill - 2 Icon
-    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x - 169, UI_UnderBar.y + 56, 'SK_Icon_Skill2');
+    skill_Icon_Two = Lucifer_Game.add.sprite(UI_UnderBar.x - 169, UI_UnderBar.y + 26, 'SK_Icon_Skill2');
     skill_Icon_Two.anchor.setTo(0.5, 0.5);
     skill_Icon_Two.fixedToCamera = true;
     skill_Icon_Two.inputEnabled = true;
@@ -199,7 +199,7 @@ function skill_Create()
     SK_Icon_Skill_Info2.visible = false;
 
     //Skill - 3 Icon
-    skill_Icon_Three = Lucifer_Game.add.sprite(UI_UnderBar.x - 118, UI_UnderBar.y + 56, 'SK_Icon_Skill3');
+    skill_Icon_Three = Lucifer_Game.add.sprite(UI_UnderBar.x - 118, UI_UnderBar.y + 26, 'SK_Icon_Skill3');
     skill_Icon_Three.anchor.setTo(0.5, 0.5);
     skill_Icon_Three.fixedToCamera = true;
     skill_Icon_Three.inputEnabled = true;
@@ -215,7 +215,7 @@ function skill_Create()
     SK_Icon_Skill_Info3.visible = false;
 
     //Skill - 4 Icon
-    skill_Icon_Four = Lucifer_Game.add.sprite(UI_UnderBar.x - 67, UI_UnderBar.y + 56, 'SK_Icon_Skill4');
+    skill_Icon_Four = Lucifer_Game.add.sprite(UI_UnderBar.x - 67, UI_UnderBar.y + 26, 'SK_Icon_Skill4');
     skill_Icon_Four.anchor.setTo(0.5, 0.5);
     skill_Icon_Four.fixedToCamera = true;
     skill_Icon_Four.inputEnabled = true;
@@ -231,7 +231,7 @@ function skill_Create()
     SK_Icon_Skill_Info4.visible = false;
 
     //Skill - 5 Icon
-    skill_Icon_Five = Lucifer_Game.add.sprite(UI_UnderBar.x - 16, UI_UnderBar.y + 56, 'SK_Icon_Skill5');
+    skill_Icon_Five = Lucifer_Game.add.sprite(UI_UnderBar.x - 16, UI_UnderBar.y + 26, 'SK_Icon_Skill5');
     skill_Icon_Five.anchor.setTo(0.5, 0.5);
     skill_Icon_Five.fixedToCamera = true;
     skill_Icon_Five.inputEnabled = true;

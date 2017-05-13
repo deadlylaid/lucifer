@@ -39,13 +39,14 @@ Skeleton = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false, this.CreateCheck = false, this.StartCheck = false;
+	this.MouseCheck = false, this.CreateCheck = false, this.StartCheck = false; 
+	this.GetExpCheck = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 30, this.Regen_Check = false;
 
 	//Level System
-	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 10;
 
 	//Shadow
 	this.shadow_Effect;

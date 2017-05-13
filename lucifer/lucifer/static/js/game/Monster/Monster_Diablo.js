@@ -45,7 +45,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false,       this.StandCheck = false;
 	this.AttackCheck = false,   this.CompareCheck = false,    this.DamageCheck = false;
 	this.DeadCheck = false,	    this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false,    this.TyrealCheck = false;
+	this.MouseCheck = false,    this.TyrealCheck = false,     this.GetExpCheck = false;
 
 	//AI Pattern Check
 	this.Pattern_Change = false, this.Pattern_Attack = false, this.Pattern_Skill = false;
@@ -60,7 +60,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Inferno, this.Inferno_Bullet, this.Fire, this.Fire_Bullet;
 
 	//Level System
-	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 1;
+	this.ExpCheck = false, this.ExpTimer, this.ExpTime_Total = 0, this.Experience = 1000;
 
 	//Blood Effect
 	this.blood_Effect;

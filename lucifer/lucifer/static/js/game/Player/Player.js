@@ -535,7 +535,9 @@ function player_Update()
 	//Move
 	if(stageOne_Check == true)
 	{
-		if(UI_Stat.visible === true || uiStore.visible === true || uiInventory.visible === true || UI_Quest.visible === true || UI_Skill.visible === true)
+		if(UI_Stat.visible === true || uiStore.visible === true 
+		   || uiInventory.visible === true || UI_Quest.visible === true 
+		   || UI_Skill.visible === true || UI_UnderBar_ClickCheck === true)
 		{
 			Player.body.velocity.x = 0;
 			Player.body.velocity.y = 0;		
@@ -551,12 +553,12 @@ function player_Update()
 				PlayerMove();
 				PlayerAttack();
 				player_Level_Up();
-				//Player_Frame();
 				shadow_Player_Move();	
+				//Player_Frame();
 
 				//Camera Setting
 				Lucifer_Game.camera.follow(Player);		
-				Lucifer_Game.camera.setSize(1280, 800);			
+				Lucifer_Game.camera.setSize(1280, 800);					
 			}
 
 			Player_StopCheck = false;
@@ -595,8 +597,8 @@ function player_Update()
 
 				PlayerAttack();
 				player_Level_Up();
-				//Player_Frame();
 				shadow_Player_Move();
+				//Player_Frame();				
 			}
 
 			Player_StopCheck = false;
@@ -643,5 +645,5 @@ function player_Render()
 	Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
 	Lucifer_Game.debug.geom(Hit_Rect, 'rgba(0, 0, 200, 0.5');
 	Lucifer_Game.debug.geom(Pointer_Rect, 'rgba(200, 200, 200, 0.5');
-	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
+	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');	
 };
