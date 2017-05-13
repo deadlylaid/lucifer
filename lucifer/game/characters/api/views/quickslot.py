@@ -33,3 +33,11 @@ class QuickSlotAPIView(ListAPIView):
                     )
 
         return Response(status=status.HTTP_200_OK)
+
+    def delete(self, request):
+        character = self.request.user.character
+        quickslot = QuickSlot.objects.filter(character=character)
+
+        quickslot[0].delete()
+
+        return Response(status=status.HTTP_200_OK)

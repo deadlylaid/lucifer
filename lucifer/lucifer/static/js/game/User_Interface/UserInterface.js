@@ -152,6 +152,11 @@ function ui_Create()
     Potion_3.scale.setTo(0.7, 0.7);
     Potion_3.fixedToCamera = true;
     Potion_3.visible = false;
+
+    //퀵슬롯에 들어가 있는 포션을 여기서 호출한다.
+    //그 이유는 z-index가 오브젝트를 생성하는 순서에 따라 결정되기 때문에
+    //먼저 호출했다간 UI창 밑에 이미지가 덮혀버리는 현상이 일어난다.
+    changeServerListToClientListQuickSlot();
 }
 
 function underBar_Down()

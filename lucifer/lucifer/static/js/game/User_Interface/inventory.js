@@ -37,6 +37,7 @@ function inventoryCreate(){
     useButton.inputEnabled = true;
     useButton.events.onInputDown.add(useItem, this);
 
+
 }
 
 //server-side로 데이터 실시간 전송
@@ -179,14 +180,6 @@ function useItem(){
     if(selectedItem === null){
         alert('장착할 아이템을 선택하세요');
     }else{
-
-        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
-            //포션을 클릭하고 장착버튼을 누르면
-            //quickSlotPost 함수가 작동하여 서버단에 quickslot모델에
-            //포션 데이터를 저장한다.
-            potionImportQuickSlot(selectedItem);
-        }
-        
         var startNumberSecondArray = selectedItem.numberInArray;
 
         //버린 아이템의 뒷 순서인 아이템들을 모두 tempInventory에 저장
@@ -205,9 +198,8 @@ function useItem(){
         //왜냐하면 선택된 인덱스의 칸을 채우기 위해 인덱스를 다시 설정해 줘야하기 때문
         inventory.splice(selectedItem.numberInArray, 9);
 
-        if(selectedItem.type_is==='weapon' || selectedItem.type_is==='armor'){
-            inventoryDelete(selectedItem.name);
-        }
+        //ajax DELETE 요청으로 실시간 저장
+        inventoryDelete(selectedItem.name);
 
         var inventoryLength = inventory.length;
 
@@ -250,22 +242,29 @@ function useItem(){
         }
         tempInventory = [];
 
-        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
-            if(health + selectedItem.heal > maxHealth){
-                health = maxHealth;
-            }else{
-                health += selectedItem.heal;
+        if(selectedItem.type_is==='potion'){
+            var count = selectedItem.count;
+			if(quickSlot[0]!==undefined){
+                console.log('기존에 등록되어 있던 포션을 버렸습니다.');
+				quickSlot[0].destroy();
+                quickSlot[0].text.destroy();
             }
 
+            switch(selectedItem.name){
+                case '빨간물약':
+                    quickSlot[0] = redPotionClone(727, 760);
+                    break;
+                case '좋은물약':
+                    quickSlot[0] = goodRedPotionClone(727, 760);
+                    break;
+                case '최상의물약':
+                    quickSlot[0] = bestRedPotionClone(727, 760);
+                    break;
+            }
+            quickSlot[0].count = count;
+            quickSlot[0].visible = true;
+            quickSlotPost(selectedItem);
 
-            potionImportQuickSlot(selectedItem);
-
-            inventoryDelete(selectedItem.name);
-
-            inventoryExport();
-
-            //potionImportQuickSlot(selectedItem);
-            //inventoryDelete(selectedItem.name);
         }else if(selectedItem.type_is==='weapon'){
             if(equipmentList[0]!==undefined){
                 equipmentList[0].destroy();
@@ -303,8 +302,6 @@ function useItem(){
 
             equipmentPost(equipmentList[0].name, equipmentList[0].type_is);
 
-            inventoryExport();
-
         }else if(selectedItem.type_is==='armor'){
             if(equipmentList[1]!==undefined){
                 equipmentList[1].destroy();
@@ -341,80 +338,11 @@ function useItem(){
             equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
 
             equipmentPost(equipmentList[1].name, equipmentList[1].type_is);
-
-            inventoryExport();
         }
 
         //selectedItem 값 초기화
         selectedItem = null;
-
     }
-}
-
-//인벤토리 아이템 장착시 인벤토리 인덱스를 재정의하는 함수
-function inventoryExport(){
-        var startNumberSecondArray = selectedItem.numberInArray;
-
-        //버린 아이템의 뒷 순서인 아이템들을 모두 tempInventory에 저장
-        for(i=startNumberSecondArray + 1; i<inventory.length; i++){
-            tempInventory.push(inventory[i]);
-        }
-
-        //버린 아이템의 뒷 순서인 아이템 sprite들을 모두 inventory에서 삭제함
-        for(i=inventory.length - 1; i>=selectedItem.numberInArray; i--){
-            inventory[i].destroy();
-            inventory[i].text.destroy();
-        }
-
-        //inventory에서 버릴 아이템을 뽑아 버림
-        //선택된 아이템의 다음 인덱스 아이템들 까지 모두 뽑는다
-        //왜냐하면 선택된 인덱스의 칸을 채우기 위해 인덱스를 다시 설정해 줘야하기 때문
-        inventory.splice(selectedItem.numberInArray, 9);
-
-        if(selectedItem.type_is==='weapon' || selectedItem.type_is==='armor'){
-            inventoryDelete(selectedItem.name);
-        }
-
-        var inventoryLength = inventory.length;
-
-        //sprite가 삭제되었기 때문에 새로운 clone을 만들어서 inventory에 저장
-        for(i=0; i<tempInventory.length; i++){
-            switch(tempInventory[i].name){
-                case '빨간물약':
-                    inventory.push(redPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-                case '좋은물약':
-                    inventory.push(goodRedPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-                case '최고의물약':
-                    inventory.push(bestRedPotionClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-                case '기본검':
-                    inventory.push(basicSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-                case '강화된검':
-                    inventory.push(strongSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-                case '마검':
-                    inventory.push(superSwordClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-                case '기본갑옷':
-                    inventory.push(basicArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-                case '강화갑옷':
-                    inventory.push(strongArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-                case '증오':
-                    inventory.push(superArmorClone(inventoryPosition(inventoryLength+i)[0], inventoryPosition(inventoryLength+i)[1]));
-                    break;
-            }
-        }
-
-        for(i=inventoryLength;i<inventory.length; i++){
-            inventory[i].getVisible(true);
-            inventory[i].numberInArray = i;
-        }
-        tempInventory = [];
 }
 
 function createEquipmentAndSetPosition(itemName){
@@ -595,6 +523,23 @@ function changeServerListToClientList(){
     }
 }
 
+function changeServerListToClientListQuickSlot(){
+    if(quickSlot[0]!==undefined){
+        switch(quickSlot[0].potion_name){
+            case '빨간물약':
+                quickSlot[0]=redPotionClone(727, 760);
+                break;
+            case '좋은물약':
+                quickSlot[0] = goodRedPotionClone(727, 760);
+                break;
+            case '최상의물약':
+                quickSlot[0] = bestRedPotionClone(727, 760);
+                break;
+        }
+        quickSlot[0].visible=true;
+    }
+}
+
 //장비착용 계산 함수
 function equipmentCalculater(point, type){
     if(type==='armor'){
@@ -653,23 +598,30 @@ function potionDrink(){
         }else{
             console.log('횟수가 하나 줄은것으로 끝난다');
         }
+        if(quickSlot[0].count === 0){
+            quickSlot[0].destroy();
+            quickSlot[0].text.destroy();
+
+            quickSlotDelete(quickSlot[0]);
+
+            quickSlot[0]=undefined;
+
+        }
     }else{
         console.log('No quickSlot');
     }
 
-//    if(selectedItem.count === 1){
-//        inventoryDelete(selectedItem.name);
-//    }else{
-//        console.log('ff');
-//        selectedItem.count -= 1;
-//    }
-//    ///////////////////////////////////////
-//    if(health + selectedItem.heal > maxHealth){
-//        health = maxHealth;
-//    }else{
-//        health += selectedItem.heal;
-//
-//    }
+}
+
+function quickSlotDelete(selectedItem){
+    $.ajax({
+        method:'DELETE',
+        url:'/api/user/character/quickslot/',
+        data:{
+            potionName:selectedItem.name,
+            count:selectedItem.count,
+        },
+    });
 }
 
 function quickSlotPost(selectedItem){
@@ -681,24 +633,6 @@ function quickSlotPost(selectedItem){
             count:selectedItem.count,
         },
     });
-}
-
-function PotionDrinkUpdate(){
-
-    /*if(key_drink.isDown)
-    {   
-        console.log("drink");
-        Drink();
-    }*/
-}
-
-function PotionDrinkUpdate(){
-
-    if(key_drink.isDown)
-    {   
-        console.log("drink");
-        Drink();
-    }
 }
 
 function Drink()
