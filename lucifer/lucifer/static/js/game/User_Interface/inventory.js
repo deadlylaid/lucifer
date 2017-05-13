@@ -37,7 +37,6 @@ function inventoryCreate(){
     useButton.inputEnabled = true;
     useButton.events.onInputDown.add(useItem, this);
 
-
 }
 
 //server-side로 데이터 실시간 전송
@@ -525,6 +524,7 @@ function changeServerListToClientList(){
 
 function changeServerListToClientListQuickSlot(){
     if(quickSlot[0]!==undefined){
+        var count = quickSlot[0].count;
         switch(quickSlot[0].potion_name){
             case '빨간물약':
                 quickSlot[0]=redPotionClone(727, 760);
@@ -536,6 +536,7 @@ function changeServerListToClientListQuickSlot(){
                 quickSlot[0] = bestRedPotionClone(727, 760);
                 break;
         }
+        quickSlot[0].count = count;
         quickSlot[0].visible=true;
     }
 }
@@ -593,12 +594,9 @@ function potionDrink(){
         }else{
             health += quickSlot[0].heal;
         }
+        quickSlotPut(quickSlot[0]);
         if(quickSlot[0].count === 0){
             console.log('quickSlot delete!!');
-        }else{
-            console.log('횟수가 하나 줄은것으로 끝난다');
-        }
-        if(quickSlot[0].count === 0){
             quickSlot[0].destroy();
             quickSlot[0].text.destroy();
 
@@ -606,11 +604,25 @@ function potionDrink(){
 
             quickSlot[0]=undefined;
 
+        }else{
+            console.log('횟수가 하나 줄은것으로 끝난다');
         }
     }else{
         console.log('No quickSlot');
     }
 
+}
+
+function quickSlotPut(selectedItem){
+    console.log(selectedItem.count);
+    $.ajax({
+        method:'PUT',
+        url:'/api/user/character/quickslot/',
+        data:{
+            potionName:selectedItem.name,
+            count:selectedItem.count,
+        },
+    });
 }
 
 function quickSlotDelete(selectedItem){

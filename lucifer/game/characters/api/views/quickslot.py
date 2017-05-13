@@ -41,3 +41,16 @@ class QuickSlotAPIView(ListAPIView):
         quickslot[0].delete()
 
         return Response(status=status.HTTP_200_OK)
+
+    def put(self, request):
+        character = self.request.user.character
+        count = int(request.data.get('count'))
+
+        quickslot = QuickSlot.objects.filter(character=character)
+
+        # 조건문이 없으면 save가 안먹힘
+        if quickslot:
+            quickslot[0].count = count
+            quickslot[0].save()
+
+        return Response(status=status.HTTP_200_OK)
