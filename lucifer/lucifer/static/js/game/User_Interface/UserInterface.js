@@ -15,7 +15,7 @@ var UI_close;
 function ui_Preload()
 {
 	//UI
-	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 1040, 195);
+	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 1040, 134);
 	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/UI_HpBar.png', 120, 120);
 	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 120, 120);
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status2.png', 496, 961);
@@ -46,7 +46,7 @@ function ui_Create()
 
     //UI_UnderBar
     //------------------------------------------------------------------------------------------------------------
-    UI_UnderBar = Lucifer_Game.add.sprite(640, 705, 'UI_UnderBar');
+    UI_UnderBar = Lucifer_Game.add.sprite(640, 735, 'UI_UnderBar');
     UI_UnderBar.anchor.setTo(0.5, 0.5);
     UI_UnderBar.fixedToCamera = true;
 
@@ -54,8 +54,8 @@ function ui_Create()
     Lucifer_Game.physics.p2.enable(UI_UnderBar);
     UI_UnderBar.body.static = true;
     UI_UnderBar.body.clearShapes();
-    UI_UnderBar.body.addRectangle(1040, 195, 0, 0);
-    */
+    UI_UnderBar.body.addRectangle(1040, 134, 0, 0);  
+    */  
 
     UI_UnderBar.inputEnabled = true;    
     UI_UnderBar.events.onInputDown.add(underBar_Down, UI_UnderBar);
