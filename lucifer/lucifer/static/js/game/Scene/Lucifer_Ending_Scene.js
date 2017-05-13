@@ -1,9 +1,26 @@
+WebFontConfig = {
+
+    //  'active' means all requested fonts have finished loading
+    //  We set a 1 second delay before calling 'createText'.
+    //  For some reason if we don't the browser cannot render the text the first time it's created.
+    //active: function() { Lucifer_Game.time.events.add(Phaser.Timer.SECOND, create, this); },
+
+    //  The Google Fonts we want to load (specify as many as you like in the array)
+    google: {
+      families: ['Oswald'] //Londrina Solid
+    }
+
+};
+
 var Ending_Scene =
-{
+{	
+
 
 
 	preload: function()
-	{
+	{	
+		this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+
 		this.load.image('space', '../../static/images/game/Menu/logospace.png', 138, 15);
 		this.load.image('logo', '../../static/images/game/Menu/logo.png');
 
@@ -32,7 +49,7 @@ var Ending_Scene =
 		this.add.tileSprite(0, 0, 1280, 800, 'space');
 
 		//first image------------------------------------------------------------------------------
-		var sprite = Lucifer_Game.add.sprite(330, 400, 'Picture1');
+		var sprite = Lucifer_Game.add.sprite(365, 400, 'Picture1');
 
 		sprite.anchor.setTo(0.5, 0.5);
 		sprite.alpha = 0;
@@ -53,148 +70,146 @@ var Ending_Scene =
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 77, Picture_12, this);
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 84, Picture_13, this);
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 91, Picture_14, this);
-		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 98, Picture_15, this);
-		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 105, Picture_16, this);
-		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 115, EndingLogo, this);
-		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 121, EndGame, this);
+		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 98, Picture_16, this);
+		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 105, EndingLogo, this);
+		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 112, EndGame, this);
 
-
-		
-
-	var content = 
-	[
-	"팀장 \n",
-    "한민수\n",
-    "팀원 \n",
-    "최영준 김회언\n",
-    "\n",
-    "API 구현 / UI / DB / Server 구현\n",
-    "한민수\n",
-    "\n",
-    "Client / Monster / Player 구현\n",
-    "최영준\n",
-    "\n",
-    "HTML MarkUp / Stage / Data Phasing / 게임적 요소 구현\n",
-    "김회언\n",
-    "\n",
-    "게임 스토리\n",
-    "공동제작\n",
-    "\n",
-    "팀장 \n",
-    "한민수\n",
-    "팀원 \n",
-    "최영준 김회언\n",
-    "\n",
-    "API 구현 / UI / DB / Server 구현\n",
-    "한민수\n",
-    "\n",
-    "Client / Monster / Player 구현\n",
-    "최영준\n",
-    "\n",
-    "HTML MarkUp / Stage / Data Phasing / 게임적 요소 구현\n",
-    "김회언\n",
-    "\n",
-    "게임 스토리\n",
-    "공동제작\n",
-    "\n",
-    "팀장 \n",
-    "한민수\n",
-    "팀원 \n",
-    "최영준 김회언\n",
-    "\n",
-    "API 구현 / UI / DB / Server 구현\n",
-    "한민수\n",
-    "\n",
-    "Client / Monster / Player 구현\n",
-    "최영준\n",
-    "\n",
-    "HTML MarkUp / Stage / Data Phasing / 게임적 요소 구현\n",
-    "김회언\n",
-    "\n",
-    "게임 스토리\n",
-    "공동제작\n",
-    "\n",
-    "팀장 \n",
-    "한민수\n",
-    "팀원 \n",
-    "최영준 김회언\n",
-    "\n",
-    "API 구현 / UI / DB / Server 구현\n",
-    "한민수\n",
-    "\n",
-    "Client / Monster / Player 구현\n",
-    "최영준\n",
-    "\n",
-    "HTML MarkUp / Stage / Data Phasing / 게임적 요소 구현\n",
-    "김회언\n",
-    "\n",
-    "게임 스토리\n",
-    "공동제작\n",
-    "\n",
-    "팀장 \n",
-    "한민수\n",
-    "팀원 \n",
-    "최영준 김회언\n",
-    "\n",
-    "API 구현 / UI / DB / Server 구현\n",
-    "한민수\n",
-    "\n",
-    "Client / Monster / Player 구현\n",
-    "최영준\n",
-    "\n",
-    "HTML MarkUp / Stage / Data Phasing / 게임적 요소 구현\n",
-    "김회언\n",
-    "\n",
-    "게임 스토리\n",
-    "공동제작\n",
-    "\n",
-    "팀장 \n",
-    "한민수\n",
-    "팀원 \n",
-    "최영준 김회언\n",
-    "\n",
-    "API 구현 / UI / DB / Server 구현\n",
-    "한민수\n",
-    "\n",
-    "Client / Monster / Player 구현\n",
-    "최영준\n",
-    "\n",
-    "HTML MarkUp / Stage / Data Phasing / 게임적 요소 구현\n",
-    "김회언\n",
-    "\n",
-    "게임 스토리\n",
-    "공동제작\n",
-    "\n",
-    "팀장 \n",
-    "한민수\n",
-    "팀원 \n",
-    "최영준 김회언\n",
-    "\n",
-    "API 구현 / UI / DB / Server 구현\n",
-    "한민수\n",
-    "\n",
-    "Client / Monster / Player 구현\n",
-    "최영준\n",
-    "\n",
-    "HTML MarkUp / Stage / Data Phasing / 게임적 요소 구현\n",
-    "김회언\n",
-    "\n",
-    "게임 스토리\n",
-    "공동제작\n",
-    "\n",
-    "팀장 \n",
-    "한민수\n",
-    "팀원 \n",
-    "최영준 김회언\n",
+	var content = [
+	[ 	"Team", "Override" ],
+	[ 	"","" ],
+	[ 	"", "" ],
+	[	"Team Leader", "한민수" ],
+	[ 	"", "" ],
+	[ 	"Team Crew", "최영준"],
+	[	"", "김회언"],
+	[ 	" ", "" ],
+	[ 	"                  - Game Element -" ],
+	[ 	" ", "" ],
+	[ 	"Player", "최영준" ],
+	[ 	"", "" ],
+	[ 	"User Interface", "한민수" ],
+	[ 	"", "" ],
+	[ 	"Stage", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Monster AI", "최영준" ],
+	[ 	"", "" ],
+	[ 	"Item", "한민수" ],
+	[ 	"", "" ],
+	[ 	"Map Object", "김회언" ],
+	[ 	"", "" ],
+	[ 	"NPC", "한민수" ],
+	[ 	"", "" ],
+	[ 	"Skill", "최영준" ],
+	[ 	"", "" ],
+	[ 	"Effect", "최영준" ],
+	[ 	"", "" ],
+	[ 	"Animation", "최영준" ],
+	[ 	"", "" ],
+	[ 	"Character Resource", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Game Scene", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Game Direction", "최영준" ],
+	[ 	"", "" ],
+	[ 	"Render/Optimization", "최영준" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"                 - Server / Client -", "" ],
+	[ 	"", "" ],
+	[ 	"ServerSide Framework", "한민수" ],
+	[ 	"", "" ],
+	[ 	"ServerSide API", "한민수" ],
+	[ 	"", "" ],
+	[ 	"Client Framework", "최영준" ],
+	[ 	"", "" ],
+	[ 	"Client Data Parsing", "김회언" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"                          - Web -", "" ],
+	[ 	"", "" ],
+	[ 	"Web Markup", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Web Data Parsing", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Web DataBase", "한민수" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"                     - Additional -", "" ],
+	[ 	"", "" ],
+	[ 	"Game Concept", "한민수" ],
+	[ 	"", "최영준" ],
+	[ 	"", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Game Story", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Sound", "한민수" ],
+	[ 	"", "최영준" ],
+	[ 	"", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Mouse Effect", "한민수" ],
+	[ 	"", "김회언" ],
+	[ 	"", "" ],
+	[ 	"Screen Effect", "최영준" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"                        - Library -", "" ],
+	[ 	"", "" ],
+	[ 	"Phaser js", "https://phaser.io/" ],
+	[ 	"", "" ],
+	[ 	"Used Program", "Adobe Dreamweaber CS6" ],
+	[ 	"", "Adobe Photoshop CS6" ],
+	[ 	"", "Sublime Text3" ],
+	[ 	"", "GitHub" ],
+	[ 	"", "PhysicsEditor" ],
+	[ 	"", "Tiled" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"                      - Reference -", "" ],
+	[ 	"", "" ],
+	[ 	"Clinet-Side", "HTML5" ],
+	[ 	"", "Jinja2" ],
+	[ 	"", "Javascript" ],
+	[ 	"", "Jquery" ],
+	[ 	"", "Three.js" ],
+	[ 	"", "Collie" ],
+	[ 	"", "" ],
+	[ 	"API", "Django-rest-framework" ],
+	[ 	"", "" ],
+	[ 	"Server-side", "python" ],
+	[ 	"", "Django" ],
+	[ 	"", "Postgresql" ],
+	[ 	"", "redis" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"                  - Reference Site -", "" ],
+	[ 	"", "" ],
+	[ 	"대전신", "3k.topgame.kr" ],
+	[ 	"BrowserQuest", "browserquest.mozilla.org" ],
+	[ 	"크라운", "crown.nolzzang.com/home" ],
+	[ 	"Diablo3", "kr.battle.net/d3/ko" ],
+	[ 	"브금저장소", "bgmstore.net" ],
+	[ 	"Fmod", "www.fmod.com" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"                      - Affiliation -", "" ],
+	[ 	"", "" ],
+	[ 	"University", "Nam-Seoul Univ" ],
+	[ 	"Major", "Multi-Media" ],
+	[ 	"Professor", "공기식" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"", "" ],
+	[ 	"Thank for Player ..", "" ],
 
 	];
 
-		var endingtext = Lucifer_Game.add.text(640, 400, '', { font: "25px Roboto", fill: "#19de65" });
+		var endingtext = Lucifer_Game.add.text(745, 400, '', { font: "25px", fill: "#ffffff" , align: "left" , tabs: [ 270 ]});
 		endingtext.parseList(content);
+		endingtext.font = 'Oswald';
 
 		Lucifer_Game.physics.enable(endingtext, Phaser.Physics.ARCADE);
-    	endingtext.body.velocity.y = -40;
-    	
+    	endingtext.body.velocity.y = -50;
+
     }
 
 };
@@ -202,7 +217,7 @@ var Ending_Scene =
 
 function Picture_2(){
 
-		var sprite2 = Lucifer_Game.add.sprite(330, 400, 'Picture2');
+		var sprite2 = Lucifer_Game.add.sprite(365, 400, 'Picture2');
 
 		sprite2.anchor.setTo(0.5, 0.5);
 		sprite2.alpha = 0;
@@ -213,7 +228,7 @@ function Picture_2(){
 
 function Picture_3(){
 
-		var sprite3 = Lucifer_Game.add.sprite(330, 400, 'Picture3');
+		var sprite3 = Lucifer_Game.add.sprite(365, 400, 'Picture3');
 
 		sprite3.anchor.setTo(0.5, 0.5);
 		sprite3.alpha = 0;
@@ -224,7 +239,7 @@ function Picture_3(){
 
 function Picture_4(){
 
-		var sprite4 = Lucifer_Game.add.sprite(330, 400, 'Picture4');
+		var sprite4 = Lucifer_Game.add.sprite(365, 400, 'Picture4');
 
 		sprite4.anchor.setTo(0.5, 0.5);
 		sprite4.alpha = 0;
@@ -235,7 +250,7 @@ function Picture_4(){
 
 function Picture_5(){
 
-		var sprite5 = Lucifer_Game.add.sprite(330, 400, 'Picture5');
+		var sprite5 = Lucifer_Game.add.sprite(365, 400, 'Picture5');
 
 		sprite5.anchor.setTo(0.5, 0.5);
 		sprite5.alpha = 0;
@@ -246,7 +261,7 @@ function Picture_5(){
 
 function Picture_6(){
 
-		var sprite6 = Lucifer_Game.add.sprite(330, 400, 'Picture6');
+		var sprite6 = Lucifer_Game.add.sprite(365, 400, 'Picture6');
 
 		sprite6.anchor.setTo(0.5, 0.5);
 		sprite6.alpha = 0;
@@ -257,7 +272,7 @@ function Picture_6(){
 
 function Picture_7(){
 
-		var sprite7 = Lucifer_Game.add.sprite(330, 400, 'Picture7');
+		var sprite7 = Lucifer_Game.add.sprite(365, 400, 'Picture7');
 
 		sprite7.anchor.setTo(0.5, 0.5);
 		sprite7.alpha = 0;
@@ -268,7 +283,7 @@ function Picture_7(){
 
 function Picture_8(){
 
-		var sprite8 = Lucifer_Game.add.sprite(340, 400, 'Picture8');
+		var sprite8 = Lucifer_Game.add.sprite(365, 400, 'Picture8');
 
 		sprite8.anchor.setTo(0.5, 0.5);
 		sprite8.alpha = 0;
@@ -279,7 +294,7 @@ function Picture_8(){
 
 function Picture_9(){
 
-		var sprite9 = Lucifer_Game.add.sprite(330, 400, 'Picture9');
+		var sprite9 = Lucifer_Game.add.sprite(365, 400, 'Picture9');
 
 		sprite9.anchor.setTo(0.5, 0.5);
 		sprite9.alpha = 0;
@@ -290,7 +305,7 @@ function Picture_9(){
 
 function Picture_10(){
 
-		var sprite10 = Lucifer_Game.add.sprite(330, 400, 'Picture10');
+		var sprite10 = Lucifer_Game.add.sprite(365, 400, 'Picture10');
 
 		sprite10.anchor.setTo(0.5, 0.5);
 		sprite10.alpha = 0;
@@ -301,7 +316,7 @@ function Picture_10(){
 
 function Picture_11(){
 
-		var sprite11 = Lucifer_Game.add.sprite(330, 400, 'Picture11');
+		var sprite11 = Lucifer_Game.add.sprite(365, 400, 'Picture11');
 
 		sprite11.anchor.setTo(0.5, 0.5);
 		sprite11.alpha = 0;
@@ -312,7 +327,7 @@ function Picture_11(){
 
 function Picture_12(){
 
-		var sprite12 = Lucifer_Game.add.sprite(330, 400, 'Picture12');
+		var sprite12 = Lucifer_Game.add.sprite(365, 400, 'Picture12');
 
 		sprite12.anchor.setTo(0.5, 0.5);
 		sprite12.alpha = 0;
@@ -323,7 +338,7 @@ function Picture_12(){
 
 function Picture_13(){
 
-		var sprite13 = Lucifer_Game.add.sprite(330, 400, 'Picture13');
+		var sprite13 = Lucifer_Game.add.sprite(365, 400, 'Picture13');
 
 		sprite13.anchor.setTo(0.5, 0.5);
 		sprite13.alpha = 0;
@@ -334,7 +349,7 @@ function Picture_13(){
 
 function Picture_14(){
 
-		var sprite14 = Lucifer_Game.add.sprite(330, 400, 'Picture14');
+		var sprite14 = Lucifer_Game.add.sprite(365, 400, 'Picture14');
 
 		sprite14.anchor.setTo(0.5, 0.5);
 		sprite14.alpha = 0;
@@ -345,7 +360,7 @@ function Picture_14(){
 
 function Picture_15(){
 
-		var sprite15 = Lucifer_Game.add.sprite(330, 400, 'Picture15');
+		var sprite15 = Lucifer_Game.add.sprite(365, 400, 'Picture15');
 
 		sprite15.anchor.setTo(0.5, 0.5);
 		sprite15.alpha = 0;
@@ -356,7 +371,7 @@ function Picture_15(){
 
 function Picture_16(){
 
-		var sprite16 = Lucifer_Game.add.sprite(330, 400, 'Picture16');
+		var sprite16 = Lucifer_Game.add.sprite(365, 400, 'Picture16');
 
 		sprite16.anchor.setTo(0.5, 0.5);
 		sprite16.alpha = 0;

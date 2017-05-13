@@ -42,5 +42,14 @@ function npc_Tyreal_Create(PointX, PointY)
 	npc_Tyreal.body.debug = false;
 	npc_Tyreal.body.static = true;	
 
+	Lucifer_Game.physics.enable(npc_Tyreal, Phaser.Physics.ARCADE);
+    npc_Tyreal.inputEnabled = true;
+    npc_Tyreal.events.onInputDown.add(EndingTalk, this);
+
 	Lucifer_Game.add.existing(npc_Tyreal);
+}
+
+function EndingTalk(){
+	console.log("Talk");
+
 }
