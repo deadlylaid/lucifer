@@ -30,9 +30,6 @@ var stage3_Scene =
 		//UI
 		ui_Create();
 
-		//UI
-		ui_Create();
-
 		//Skill
 		skill_Create();
 

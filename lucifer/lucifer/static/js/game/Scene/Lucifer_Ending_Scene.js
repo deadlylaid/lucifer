@@ -171,7 +171,7 @@ var Ending_Scene =
 	[ 	"", "Javascript" ],
 	[ 	"", "Jquery" ],
 	[ 	"", "Three.js" ],
-	[ 	"", "Collie" ],
+	[ 	"", "Pixi js" ],
 	[ 	"", "" ],
 	[ 	"API", "Django-rest-framework" ],
 	[ 	"", "" ],
