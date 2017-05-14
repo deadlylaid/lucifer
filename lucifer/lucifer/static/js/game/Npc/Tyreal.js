@@ -1,13 +1,10 @@
 //Tyreal
 //---------------------------------------------------------------------------------------
 var npc_Tyreal;
-<<<<<<< HEAD
 var text_talk;
 var Talkbox;
 var Tyreal_Rect;
-=======
 var npc_Tyreal_ClickCheck = false;
->>>>>>> Bug 수정 : 타리엘 visible 처리, Diablo Name 위치변경, 타리엘 클릭시 플레이어 움직임 막음
 //---------------------------------------------------------------------------------------
 
 //Talkbox effct
