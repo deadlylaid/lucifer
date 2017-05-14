@@ -270,7 +270,7 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.HpMask.beginFill(0xffffff);
 
 	//Name
-	diablo_Object.Name = Lucifer_Game.add.text(diablo_Object.x, diablo_Object.y - 150, 'Diablo');
+	diablo_Object.Name = Lucifer_Game.add.text(diablo_Object.x, diablo_Object.y - 150, 'Lucifer');
 	diablo_Object.Name.anchor.set(0.5);
 	diablo_Object.Name.align = 'center';
 	diablo_Object.Name.font = 'Arial';
@@ -322,7 +322,7 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.ExpTimer.loop(10, diablo_ExpTimer, Lucifer_Game, diablo_Object);
 
 	//Blood Effect
-	diablo_Object.blood_Effect = blood_Effect_Clone(diablo_Object.x, diablo_Object.y);	
+	diablo_Object.blood_Effect = blood_Effect_Clone(diablo_Object.x, diablo_Object.y);
 
 	//Action Camera Timer
 	diablo_Object.ActionCamera_Timer = Lucifer_Game.time.create(false);
@@ -1012,7 +1012,7 @@ function diablo_Dead(Object)
 		var CurFrame = Object.animations.frame;
 		if(Object.DeadMotionCheck == true && CurFrame == 142)
 		{
-			//Skeleton 강제로 죽이기. 
+			//Skeleton 강제로 죽이기.
 			for(var i = 0; i < skeleton_Group.length; ++i)
 			{
 				skeleton_Group.getChildAt(i).Hp -= 1000;
@@ -1029,7 +1029,7 @@ function diablo_Dead(Object)
 
 		if(Object.TyrealTime_Total < 3)
 		{
-			Lucifer_Game.camera.fade(0x000000, 5000);	
+			Lucifer_Game.camera.fade(0x000000, 5000);
 		}
 		else if(Object.TyrealTime_Total > 3)
 		{
@@ -1037,10 +1037,10 @@ function diablo_Dead(Object)
 
 			if(Object.TyrealCheck == false)
 			{
-				npc_Tyreal_Create(Object.x, Object.y);	
+				npc_Tyreal_Create(Object.x, Object.y);
 				Object.TyrealCheck = true;
 			}
-		}		
+		}
 	}
 }
 
@@ -1100,8 +1100,8 @@ function diablo_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;
@@ -1119,7 +1119,7 @@ function diablo_Hpbar_Mask(Object)
 	Object.HpMask.beginFill(0xffffff);
 	Object.HpMask.drawRect(Object.HpBar.x - 112, Object.HpBar.y, hpRate, 200);
 	Object.HpMask.endFill();
-	Object.HpBar.mask = Object.HpMask;	
+	Object.HpBar.mask = Object.HpMask;
 }
 
 function diablo_RectPos(Object)
@@ -1161,31 +1161,31 @@ function diablo_Action_Camaera(Object)
 		}
 		else if(Object.CameraTime_Total > 1)
 		{
-			action_CameraCheck = false;			
-		}		
+			action_CameraCheck = false;
+		}
 
 		if(action_CameraCheck == false && action_CameraStepOne == false)
 		{
-			Lucifer_Game.camera.follow(Object, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);		
+			Lucifer_Game.camera.follow(Object, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);
 			Lucifer_Game.camera.setSize(1280, 800);
 		}
 
 		if(Object.CameraTime_Total > 5 && action_CameraStepOne == false)
 		{
 			Lucifer_Game.camera.follow(Player, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);
-			Lucifer_Game.camera.setSize(1280, 800);			
+			Lucifer_Game.camera.setSize(1280, 800);
 
-			action_CameraStepOne = true;					
-		}	
+			action_CameraStepOne = true;
+		}
 
 		if(action_CameraStepOne == true && Object.CameraTime_Total > 8)
 		{
-			Lucifer_Game.camera.follow(Player);		
+			Lucifer_Game.camera.follow(Player);
 			Lucifer_Game.camera.setSize(1280, 800);
 
 			Object.ActionCamera_Timer.stop(false);
 			Object.CameraTime_Total = 0;
-		}		
+		}
 	}
 }
 
