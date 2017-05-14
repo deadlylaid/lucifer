@@ -72,6 +72,9 @@ var stage1_Scene =
 		//GrayScale Effect
 		grayScale_Create();
 
+		//Message
+		status_Message_Craete();
+
 		//Key Go to Stage2
 		debugCheck = false;
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
@@ -116,6 +119,9 @@ var stage1_Scene =
 
 		//Mouse
 		mouse_Update();
+
+		//Message
+		status_Message_Update();
 
 		//Portal
 		portal_Check();

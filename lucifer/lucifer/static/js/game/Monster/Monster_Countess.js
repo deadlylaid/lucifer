@@ -682,7 +682,7 @@ function countess_Regen(Object)
 			Object.DeadCheck = false,	  Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.MouseCheck = false,    Object.Regen_Check = false;
 
-			Object.Regen_Timer.stop();
+			Object.Regen_Timer.stop(false);
 			Object.Regen_Time_Total = 0;
 		}
 	}
