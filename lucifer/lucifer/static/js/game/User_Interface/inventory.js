@@ -427,14 +427,6 @@ function inventoryPosition(count){
     return [ positionX, positionY ];
 }
 
-function changeArray(){
-    invenArrayLength = inventory.length;
-    for(i=0; i<invenArrayLength; i++){
-        inventory[i].x = inventoryPosition(i)[0];
-        inventory[i].y = inventoryPosition(i)[1];
-    };
-}
-
 function changeServerListToClientListEquipment(){
     var equipmentLength = equipmentList.length;
     for(i=0; i<equipmentLength; i++){
