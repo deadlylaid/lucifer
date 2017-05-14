@@ -4,6 +4,7 @@ var npc_Tyreal;
 var text_talk;
 var Talkbox;
 var Tyreal_Rect;
+var npc_Tyreal_ClickCheck = false;
 //---------------------------------------------------------------------------------------
 
 //Talkbox effct
@@ -62,9 +63,11 @@ function npc_Tyreal_Create(PointX, PointY)
 	npc_Tyreal.animations.play('NPC_Tyreal_Ani', 10, true);
 
 	//setting
-	//npc_Tyreal.scale.setTo(2.0, 2.0);
+	npc_Tyreal.scale.setTo(0.7, 0.7);
 	npc_Tyreal.anchor.setTo(0.5, 0.5);
 	npc_Tyreal.blendMode = Phaser.blendModes.ADD;
+	npc_Tyreal.visible = false;
+	//npc_Tyreal.fixedToCamera = true;
 
 	Lucifer_Game.physics.p2.enable(npc_Tyreal);
 	npc_Tyreal.body.fixedRotation = true;
@@ -77,6 +80,7 @@ function npc_Tyreal_Create(PointX, PointY)
     npc_Tyreal.inputEnabled = true;
 
     npc_Tyreal.events.onInputDown.add(EndingTalk, this);
+
 
 	Lucifer_Game.add.existing(npc_Tyreal);
 
@@ -116,6 +120,11 @@ function npc_Tyreal_Create(PointX, PointY)
 
 function EndingTalk(){
 	console.log("Talk");
+
+	if(npc_Tyreal_ClickCheck == false)
+	{
+		npc_Tyreal_ClickCheck = true;
+	}
 
 	Talkbox.visible = true;
 	text_talk.visible = true;
@@ -163,4 +172,13 @@ function exit2() {
 
 function credits(){
 	Lucifer_Game.state.start('Ending');
+
+	if(npc_Tyreal_ClickCheck == false)
+	{
+		npc_Tyreal_ClickCheck = true;	
+	}
+	else if(npc_Tyreal_ClickCheck == true)
+	{
+		npc_Tyreal_ClickCheck = false;
+	}	
 }
