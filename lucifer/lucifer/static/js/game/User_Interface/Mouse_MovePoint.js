@@ -22,7 +22,7 @@ function movepoint_Create()
 	MovePoint.animations.play('MovePoint', 10, true);
 	MovePoint.anchor.setTo(0.5 , 0.5);
 
-	
+
 }
 
 
@@ -31,8 +31,8 @@ function movepoint_Update()
 
 	if(Lucifer_Game.input.activePointer.isDown)
 
-	{	
-		
+	{
+
 		MovePoint.x = Lucifer_Game.input.mousePointer.x + Lucifer_Game.camera.x - 773;
 		MovePoint.y = Lucifer_Game.input.mousePointer.y + Lucifer_Game.camera.y - 551;
 
@@ -56,12 +56,12 @@ function movepoint_Update()
 			{
 				MovePoint.visible = true;
 			}
-	
+
 
 }
 
 function movepoint_Render()
-{	
+{
 	Lucifer_Game.debug.geom(movepoint_rect, '#000000');
 
 }

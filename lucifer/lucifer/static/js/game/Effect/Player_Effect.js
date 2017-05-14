@@ -104,7 +104,7 @@ function player_Effect_Dead()
 		Player.visible = false;
 		Player_ID.visible = false;
 
-		Player_Regen_Check = true;	
+		Player_Regen_Check = true;
 		Player.destroy();
 	}
 
@@ -121,9 +121,9 @@ function player_Effect_Dead()
 		var EndFrame = 35;
 
 		if(Player_DeadMotion_Check == true && CurFrame == EndFrame)
-		{	
+		{
 			Player_Dead.animations.stop('PY_Bavarian_Dead_Ani', true);
-			Plyaer_DeadEffect_Check = true;														
+			Plyaer_DeadEffect_Check = true;
 		}
 	}
 }
@@ -133,49 +133,49 @@ function player_Effect_Regen()
 	if(Plyaer_DeadEffect_Check == true)
 	{
 		//Player Dead Timer Start
-		Player_DeadTimer.start();			
+		Player_DeadTimer.start();
 	}
 	else if(Plyaer_DeadEffect_Check == false)
 	{
-		//Player Dead Timer Stop		
+		//Player Dead Timer Stop
 		Player_DeadTime_Total = 0;
 	}
 
 	if(Player_Regen_Check == true && Plyaer_DeadEffect_Check == true)
-	{	
-		Player_Dead.visible = false;		
-		
+	{
+		Player_Dead.visible = false;
+
 		MoveCheck = false;
 		StandCheck = false;
 		Player_AttackCheck = false;
 		Player_DeadCheck = false;
 		Player_DeadMotion_Check = false;
 
-		health = maxHealth;				
+		health = maxHealth;
 
 		if(Player_DeadTime_Total > 5)
-		{		
+		{
 			//Player Revive
 			if(Player_CreateCheck == false)
 			{
-				player_Create();	
-				Player_ID.visible = true;	
-				Animation_Change(Direction, 'Stand');	
+				player_Create();
+				Player_ID.visible = true;
+				Animation_Change(Direction, 'Stand');
 
 				Player_CreateCheck = true;
-			}			
+			}
 
 			//Gray Filter
-			gray_Scale.visible = false;		
+			gray_Scale.visible = false;
 
 			//Dead Alert
 			dead_Alert.visible = false;
 			dead_Alert.alpha = 0.1;
-		}	
+		}
 		else if(Player_DeadTime_Total < 5)
 		{
 			//Gray Filter
-			gray_Scale.visible = true;	
+			gray_Scale.visible = true;
 
 			//Dead Alert
 			dead_Alert.visible = true;
@@ -186,8 +186,8 @@ function player_Effect_Regen()
 				return;
 			}
 
-			dead_Alert.alpha += 0.05;		
-		}	
+			dead_Alert.alpha += 0.05;
+		}
 
 		if(Player_CreateCheck == true)
 		{
@@ -200,14 +200,14 @@ function player_Effect_Regen()
 			if(CurFrame == EndFrame)
 			{
 				Player_Revival.visible = false;
-				Player_Revival.animations.stop('PY_Bavarian_Revival', true);						
+				Player_Revival.animations.stop('PY_Bavarian_Revival', true);
 
-				Player_Regen_Check = false;	
-				Player_CreateCheck = false;		
-				Plyaer_DeadEffect_Check = false;	
-			}			
-		}		
-	}		
+				Player_Regen_Check = false;
+				Player_CreateCheck = false;
+				Plyaer_DeadEffect_Check = false;
+			}
+		}
+	}
 }
 
 function player_LevelUp_Effect()

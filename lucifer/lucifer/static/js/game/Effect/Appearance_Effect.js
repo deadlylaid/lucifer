@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------------
-// Player Appearance Effect 
+// Player Appearance Effect
 //-------------------------------------------------------------------------------------
 var player_Appearance_Effect, player_Appearance_Check = false;
 //-------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ function Appearance_Effect_Create()
 
 	//Appearance Animation
 	player_Appearance_Effect.animations.add('Appearance_Ani',
-											[	
+											[
 											   0,  1,  2,  3,  4,  5,  6,  7,  8,  9,
 											   10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 											], 60 ,true);
@@ -39,7 +39,7 @@ function Appearance_Effect_Update()
 			player_Appearance_Check = true;
 			//Player.visible = false;
 		}
-		
+
 		if(player_Appearance_Check == true)
 		{
 			var CurFrame = player_Appearance_Effect.animations.frame;
@@ -49,8 +49,8 @@ function Appearance_Effect_Update()
 			{
 				player_Appearance_Effect.visible = false;
 				player_Appearance_Effect.animations.stop('Appearance_Ani', true);
-				Player.visible = true;				
+				Player.visible = true;
 			}
-		}		
-	}	
-} 
+		}
+	}
+}

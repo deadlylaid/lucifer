@@ -30,7 +30,7 @@ function shadow_Create()
 	{
 		storeNpc_Shadow = shadow_Clone(1343, 1483, 0, 36);
 		cainNpc_Shadow = shadow_Clone(1941, 961, 0, 36);
-	}	
+	}
 }
 
 function shadow_Clone(x, y, offsetX, offsetY)
@@ -59,7 +59,7 @@ function shadow_Player_Move()
 	else
 	{
 		player_Shadow.visible = false;
-	}	
+	}
 }
 
 function shadow_Npc()
@@ -77,10 +77,10 @@ function shadow_Monster_Move(Object)
 	{
 		Object.shadow_Effect.visible = true;
 		Object.shadow_Effect.x = Object.x + Object.shadow_Effect.offSet.x;
-		Object.shadow_Effect.y = Object.y + Object.shadow_Effect.offSet.y;	
+		Object.shadow_Effect.y = Object.y + Object.shadow_Effect.offSet.y;
 	}
 	else if(Object.DeadCheck == true)
 	{
 		Object.shadow_Effect.visible = false;
-	}		
+	}
 }

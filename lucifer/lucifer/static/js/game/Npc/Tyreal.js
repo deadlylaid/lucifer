@@ -25,7 +25,7 @@ function npc_Tyreal_Create(PointX, PointY)
 
 	//Animation
 	npc_Tyreal.animations.add('NPC_Tyreal_Ani',
-							  [	
+							  [
 							     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 							  ], 60, true);
 	npc_Tyreal.animations.play('NPC_Tyreal_Ani', 10, true);
@@ -40,7 +40,7 @@ function npc_Tyreal_Create(PointX, PointY)
 	npc_Tyreal.body.clearShapes();
 	npc_Tyreal.body.addRectangle(120, 120, 0, 0);
 	npc_Tyreal.body.debug = false;
-	npc_Tyreal.body.static = true;	
+	npc_Tyreal.body.static = true;
 
 	Lucifer_Game.physics.enable(npc_Tyreal, Phaser.Physics.ARCADE);
     npc_Tyreal.inputEnabled = true;

@@ -21,7 +21,7 @@ function player_Create()
 	//Player create
 	if(stageOne_Check == true)
 	{
-		Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');		
+		Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');
 
 		if(BackStageMove == 0)
 		{
@@ -190,13 +190,13 @@ function player_Create()
 	//Camera / Camera follow
 	if(action_CameraCheck == false)
 	{
-		Lucifer_Game.camera.follow(Player);		
+		Lucifer_Game.camera.follow(Player);
 		Lucifer_Game.camera.setSize(1280, 800);
-	}	
+	}
 
 	//Timer
 	Player_DelayTimer = Lucifer_Game.time.create(false);
-	Player_DelayTimer.loop(50, Player_Attack_DelayTimer, Lucifer_Game);	
+	Player_DelayTimer.loop(50, Player_Attack_DelayTimer, Lucifer_Game);
 }
 
 //Time
@@ -360,7 +360,7 @@ function PlayerMove()
 				{
 					Animation_Change(Direction, 'Walk');
 				}
-				
+
 				Lucifer_Game.physics.arcade.moveToPointer(Player, 150);
 				Lucifer_Game.camera.x = Player.x + 150;
 				Lucifer_Game.camera.y = Player.y + 150;
@@ -391,7 +391,7 @@ function PlayerMove()
 }
 function PlayerAttack(){}
 function PlayerSkill()
-{	
+{
 	if(player_Skill_One == true)
 	{
 		if(skill_One_Check == false)
@@ -403,8 +403,8 @@ function PlayerSkill()
 				skill_Bavarian.animations.play('SK_Bavarian_Ani', 20, true);
 				Animation_Change(Direction, 'Skill');
 			}
-		}		
-	}	
+		}
+	}
 }
 
 function PlayerSkill2()
@@ -420,8 +420,8 @@ function PlayerSkill2()
 				skill_Bavarian_Two.animations.play('SK_Bavarian_Ani2', 20, true);
 				Animation_Change(Direction, 'Skill');
 			}
-		}		
-	}	
+		}
+	}
 }
 
 function PlayerSkill3()
@@ -437,8 +437,8 @@ function PlayerSkill3()
 				skill_Bavarian_Three.animations.play('SK_Bavarian_Ani3', 20, true);
 				Animation_Change(Direction, 'Whirlwind');
 			}
-		}		
-	}	
+		}
+	}
 }
 
 function PlayerSkill4()
@@ -535,16 +535,16 @@ function player_Update()
 	//Move
 	if(stageOne_Check == true)
 	{
-		if(UI_Stat.visible === true || uiStore.visible === true 
-		   || uiInventory.visible === true || UI_Quest.visible === true 
+		if(UI_Stat.visible === true || uiStore.visible === true
+		   || uiInventory.visible === true || UI_Quest.visible === true
 		   || UI_Skill.visible === true || UI_UnderBar_ClickCheck === true)
 		{
 			Player.body.velocity.x = 0;
-			Player.body.velocity.y = 0;		
+			Player.body.velocity.y = 0;
 
 			if(Player_StopCheck == false)
 			{
-				Animation_Change(Direction, 'Stand');	
+				Animation_Change(Direction, 'Stand');
 				Player_StopCheck = true;
 			}
  		}else{
@@ -553,12 +553,12 @@ function player_Update()
 				PlayerMove();
 				PlayerAttack();
 				player_Level_Up();
-				shadow_Player_Move();	
+				shadow_Player_Move();
 				//Player_Frame();
 
 				//Camera Setting
-				Lucifer_Game.camera.follow(Player);		
-				Lucifer_Game.camera.setSize(1280, 800);					
+				Lucifer_Game.camera.follow(Player);
+				Lucifer_Game.camera.setSize(1280, 800);
 			}
 
 			Player_StopCheck = false;
@@ -576,7 +576,7 @@ function player_Update()
 
 			if(Player_StopCheck == false)
 			{
-				Animation_Change(Direction, 'Stand');	
+				Animation_Change(Direction, 'Stand');
 				Player_StopCheck = true;
 			}
 		}else{
@@ -584,21 +584,21 @@ function player_Update()
 			{
 				if(action_CameraStepOne == true && stageThree_Check == true)
 				{
-					PlayerMove();	
-				}				
+					PlayerMove();
+				}
 				else if(stageTwo_Check == true)
 				{
 					PlayerMove();
 
 					//Camera Setting
-					Lucifer_Game.camera.follow(Player);		
+					Lucifer_Game.camera.follow(Player);
 					Lucifer_Game.camera.setSize(1280, 800);
 				}
 
 				PlayerAttack();
 				player_Level_Up();
 				shadow_Player_Move();
-				//Player_Frame();				
+				//Player_Frame();
 			}
 
 			Player_StopCheck = false;
@@ -645,5 +645,5 @@ function player_Render()
 	Lucifer_Game.debug.geom(Attack_Rect, 'rgba(200, 0, 0, 0.5');
 	Lucifer_Game.debug.geom(Hit_Rect, 'rgba(0, 0, 200, 0.5');
 	Lucifer_Game.debug.geom(Pointer_Rect, 'rgba(200, 200, 200, 0.5');
-	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');	
+	Lucifer_Game.debug.geom(intersects, 'rgba(255, 0, 0, 1)');
 };

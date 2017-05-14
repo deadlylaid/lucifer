@@ -21,7 +21,7 @@ function ui_Preload()
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status2.png', 496, 961);
     Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 525);
     Lucifer_Game.load.spritesheet('UI_ExperienceBar', '../../static/images/game/UI/UnderBar/Experience_Bar.png', 520, 8);
-    
+
     //Quickslot Potion
     Lucifer_Game.load.spritesheet('Quickslot_Potion1',
                                   '../../static/images/game/item/healthPotion1.png', 55, 55);
@@ -54,10 +54,10 @@ function ui_Create()
     Lucifer_Game.physics.p2.enable(UI_UnderBar);
     UI_UnderBar.body.static = true;
     UI_UnderBar.body.clearShapes();
-    UI_UnderBar.body.addRectangle(1040, 134, 0, 0);  
-    */  
+    UI_UnderBar.body.addRectangle(1040, 134, 0, 0);
+    */
 
-    UI_UnderBar.inputEnabled = true;    
+    UI_UnderBar.inputEnabled = true;
     UI_UnderBar.events.onInputDown.add(underBar_Down, UI_UnderBar);
     UI_UnderBar.events.onInputOut.add(underBar_Out, UI_UnderBar);
     //------------------------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ function ui_Create()
     //Experience Bar
     //------------------------------------------------------------------------------------------------------------
     UI_ExperienceBar = Lucifer_Game.add.sprite(UI_UnderBar.x + 9, UI_UnderBar.y + 25, 'UI_ExperienceBar');
-    UI_ExperienceBar.anchor.setTo(0.5, 0.5);   
+    UI_ExperienceBar.anchor.setTo(0.5, 0.5);
     UI_ExperienceBar.fixedToCamera = true;
     UI_ExperienceBar.visible = false;
 

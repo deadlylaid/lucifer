@@ -221,9 +221,9 @@ function andariel_Clone(PointX, PointY)
 												  	 20, 21, 22, 23
 												  ], 60, true);
 
-	andariel_Object.Andariel_Skill_Rect = new Phaser.Rectangle(andariel_Object.Andariel_Skill.x, 
+	andariel_Object.Andariel_Skill_Rect = new Phaser.Rectangle(andariel_Object.Andariel_Skill.x,
 														       andariel_Object.Andariel_Skill.y,
-														       65, 65);	
+														       65, 65);
 	andariel_Group.add(andariel_Object);
 }
 //----------------------------------------------------------------------------------------------
@@ -530,7 +530,7 @@ function andariel_Attack(Object)
 		else
 		{
 			Object.StandCheck = false;
-			Object.MoveCheck = false;			
+			Object.MoveCheck = false;
 		}
 
 		andariel_HitCount(Object);
@@ -540,7 +540,7 @@ function andariel_Attack(Object)
 function andariel_Skill(Object)
 {
 	if(Object.animations.name == "MON_Andariel_Attack_" + Object.Direction)
-	{	
+	{
 		Object.Andariel_Skill.x = Player.x;
 		Object.Andariel_Skill.y = Player.y;
 		Object.Andariel_Skill_Rect.x = Object.Andariel_Skill.x;
@@ -580,7 +580,7 @@ function andariel_Skill(Object)
 				console.log(health);
 			}
 		}
-	}	
+	}
 }
 
 function andariel_HitCount(Object)
@@ -675,8 +675,8 @@ function andariel_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;

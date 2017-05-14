@@ -643,8 +643,8 @@ function wraith_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;
@@ -662,7 +662,7 @@ function wraith_Hpbar_Mask(Object)
 	Object.HpMask.beginFill(0xffffff);
 	Object.HpMask.drawRect(Object.HpBar.x - 112, Object.HpBar.y, hpRate, 200);
 	Object.HpMask.endFill();
-	Object.HpBar.mask = Object.HpMask;	
+	Object.HpBar.mask = Object.HpMask;
 }
 
 function wraith_RectPos(Object)

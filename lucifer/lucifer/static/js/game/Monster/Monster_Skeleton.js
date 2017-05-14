@@ -9,7 +9,7 @@ Skeleton = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Hp = Hp;
 	this.MaxHp = MaxHp;
 	this.CognizeRange = CognizeRange;
-	this.AttackRange = AttackRange; 
+	this.AttackRange = AttackRange;
 
 	//Stat
 	this.Attack_Point = 100, this.Defence_Point = 50;
@@ -39,7 +39,7 @@ Skeleton = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false, this.CreateCheck = false, this.StartCheck = false; 
+	this.MouseCheck = false, this.CreateCheck = false, this.StartCheck = false;
 	this.GetExpCheck = false;
 
 	//Regen Time
@@ -80,7 +80,7 @@ function skeleton_Create()
 {
 	skeleton_Group = Lucifer_Game.add.group();
 
-	Lucifer_Game.renderer.setTexturePriority(['MON_Skeleton_Stand', 'MON_Skeleton_Walk', 'MON_Skeleton_Attack', 
+	Lucifer_Game.renderer.setTexturePriority(['MON_Skeleton_Stand', 'MON_Skeleton_Walk', 'MON_Skeleton_Attack',
 										      'MON_Skeleton_Dead', 'MON_Skeleton_Create']);
 }
 
@@ -119,7 +119,7 @@ function skeleton_Clone(PointX, PointY)
 	skeleton_Object.animations.add('MON_Skeleton_Create', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 60, true);
 	skeleton_Object.animations.add('MON_Skeleton_Dead',
 								   [
-								      0,  1,  2,  3,  4,  5,  6,  7,  8, 9, 
+								      0,  1,  2,  3,  4,  5,  6,  7,  8, 9,
 								      10, 11, 12, 13, 14, 15, 16, 17, 18
 								   ], 60, true);
 
@@ -194,7 +194,7 @@ function skeleton_Clone(PointX, PointY)
 //----------------------------------------------------------------------------------------------
 //Over / Out
 function skeleton_over(Object)
-{	
+{
 	Object.Name.visible = true;
 	Object.HpBar.visible = true;
 }
@@ -448,7 +448,7 @@ function skeleton_Move(Object)
 
 			Object.body.velocity.x = 0;
 			Object.body.velocity.y = 0;
-		}	
+		}
 
 		if(Object.Distance > Object.CognizeRange && Object.AI_StartCheck == true)
 		{
@@ -513,7 +513,7 @@ function skeleton_Attack(Object)
 		else
 		{
 			Object.StandCheck = false;
-			Object.MoveCheck = false;			
+			Object.MoveCheck = false;
 		}
 
 		skeleton_HitCount(Object);
@@ -573,7 +573,7 @@ function skeleton_Dead(Object)
 			Object.DeadMotionCheck = true;
 
 			//Collision false
-			Object.body.static = true;			
+			Object.body.static = true;
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -581,7 +581,7 @@ function skeleton_Dead(Object)
 		{
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
-			Object.destroy();			
+			Object.destroy();
 		}
 	}
 }
@@ -607,8 +607,8 @@ function skeleton_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;
@@ -659,7 +659,7 @@ function skeleton_Update()
 		skeleton_FollwName(skeleton);
 		skeleton_GetDirection(skeleton);
 		skeleton_GetReturnDirection(skeleton);
-		skeleton_Move(skeleton);		
+		skeleton_Move(skeleton);
 
 		//Player Mosnter Collision
 		if(skeleton.DeadCheck == false)
@@ -667,7 +667,7 @@ function skeleton_Update()
 			player_Monster_Col(skeleton);
 		}
 
-		skeleton_Dead(skeleton);	
+		skeleton_Dead(skeleton);
 
 		//Level System
 		check_Monster_Dead(skeleton);

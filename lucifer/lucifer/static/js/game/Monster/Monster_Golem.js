@@ -568,9 +568,9 @@ function golem_Dead(Object)
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
 			Object.kill();
-			Object.Name.visible = false;	
-			Object.ExpCheck = true;	
-		}		
+			Object.Name.visible = false;
+			Object.ExpCheck = true;
+		}
 	}
 }
 
@@ -579,7 +579,7 @@ function golem_Regen(Object)
 	if(Object.DeadMotionCheck == true)
 	{
 		Object.Regen_Check = true;
-		Object.Regen_Timer.start();			
+		Object.Regen_Timer.start();
 
 		if(Object.Regen_Time_Total > Object.Regen_Time)
 		{
@@ -598,11 +598,11 @@ function golem_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false,    Object.StandCheck = false;
 			Object.AttackCheck = false,   Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	  Object.ReturnCheck = false;
-			Object.MouseCheck = false,    Object.Regen_Check = false,  Object.DeadMotionCheck = false;	
-		
+			Object.MouseCheck = false,    Object.Regen_Check = false,  Object.DeadMotionCheck = false;
+
 			Object.Regen_Timer.stop(false);
-			Object.Regen_Time_Total = 0;				
-		}		
+			Object.Regen_Time_Total = 0;
+		}
 	}
 }
 //-------------------------------------------------------------------------------------------
@@ -625,8 +625,8 @@ function golem_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;
@@ -645,7 +645,7 @@ function Hpbar_Mask(Object)
 	Object.HpMask.beginFill(0xffffff);
 	Object.HpMask.drawRect(Object.HpBar.x - 112, Object.HpBar.y, hpRate, 200);
 	Object.HpMask.endFill();
-	Object.HpBar.mask = Object.HpMask;	
+	Object.HpBar.mask = Object.HpMask;
 }
 
 //Rect Position
@@ -700,7 +700,7 @@ function golem_Update()
 		blood_Effect_Update(golem);
 
 		//Shadow
-		shadow_Monster_Move(golem);	
+		shadow_Monster_Move(golem);
 	}
 }
 

@@ -664,8 +664,8 @@ function deamon_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;

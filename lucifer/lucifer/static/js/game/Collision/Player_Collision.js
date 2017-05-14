@@ -87,9 +87,9 @@ function player_Monster_Col(Object)
 				//Skill Damage
 				skill_Attack(Object);
 			}
-		}	
+		}
 	}
-	else 
+	else
 	{
 		if(DistanceToMonster < 70)
 		{
@@ -182,7 +182,7 @@ function player_Monster_Col(Object)
 			}
 			*/
 		}
-	}	
+	}
 }
 
 function Damage_Count(Monster)
@@ -213,7 +213,7 @@ function skill_Attack(Monster)
 
 				if(CurFrame == EndFrame)
 				{
-					Monster.Hp -= learnedSkill[1].damage;					
+					Monster.Hp -= learnedSkill[1].damage;
 				}
 			}
 		}
@@ -262,5 +262,5 @@ function skill_Attack(Monster)
 				}
 			}
 		}
-	}	
+	}
 }

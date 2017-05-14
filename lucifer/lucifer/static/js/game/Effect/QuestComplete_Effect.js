@@ -8,7 +8,7 @@ var questComplete_Text;
 function questComplete_Effect_Preload()
 {
 	Lucifer_Game.load.spritesheet('Quest_Complete_Effect',
-								  '../../static/images/game/Effect/Quest_Complete/Quest_Complete.png', 
+								  '../../static/images/game/Effect/Quest_Complete/Quest_Complete.png',
 								  72, 86);
 	//Lucifer_Game.load.spritesheet('Quest_Complete_Effect_Text',
 								  //'../../static/images/game/Effect/Quest_Complete/Quest_Complete_Text.png',
@@ -42,11 +42,11 @@ function qeusetComplete_Effect_Triger()
 		if(characterQuest[i].isCompleted == true)
 		{
 			if(questComplete_Effect_Check == false)
-			{			
+			{
 				questComplete_Effect_Check = true;
-			}				
+			}
 		}
-	}	
+	}
 }
 
 function questComplete_Effect_Update()
@@ -63,7 +63,7 @@ function questComplete_Effect_Update()
 		{
 			questComplete_Effect.visible = false;
 			questComplete_Effect.animations.stop('Quest_Complete_Ani', true);
-			questComplete_Effect_Check = false;	
-		}			
+			questComplete_Effect_Check = false;
+		}
 	}
 }

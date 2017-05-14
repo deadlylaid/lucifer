@@ -788,7 +788,7 @@ function council_Regen(Object)
 			Object.Name.visible = true;
 			Object.body.static = false;		//Collision true
 			Object.body.restitution = 0;
-			
+
 			Object.Regen_Check = false;
 
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
@@ -832,8 +832,8 @@ function council_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;
@@ -851,7 +851,7 @@ function council_Hpbar_Mask(Object)
 	Object.HpMask.beginFill(0xffffff);
 	Object.HpMask.drawRect(Object.HpBar.x - 112, Object.HpBar.y, hpRate, 200);
 	Object.HpMask.endFill();
-	Object.HpBar.mask = Object.HpMask;	
+	Object.HpBar.mask = Object.HpMask;
 }
 
 function council_SkillPos(Object)
