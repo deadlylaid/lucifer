@@ -13,12 +13,12 @@ WebFontConfig = {
 };
 
 var Ending_Scene =
-{	
+{
 
 
 
 	preload: function()
-	{	
+	{
 		this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
 		this.load.image('space', '../../static/images/game/Menu/logospace.png', 138, 15);
@@ -45,7 +45,7 @@ var Ending_Scene =
 
 	create: function()
 	{
-		//BackGround 
+		//BackGround
 		this.add.tileSprite(0, 0, 1280, 800, 'space');
 
 		//first image------------------------------------------------------------------------------
