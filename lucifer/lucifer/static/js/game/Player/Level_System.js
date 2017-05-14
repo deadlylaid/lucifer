@@ -14,11 +14,11 @@ function check_Monster_Dead(Object)
 	{
 		player_Level_Update(Object);
 
-		Object.ExpCheck = false;	
-	}	
+		Object.ExpCheck = false;
+	}
 	else if(Object.ExpCheck == false)
 	{
-		//Object.ExpTimer.stop();			
+		//Object.ExpTimer.stop();
 		Object.ExpTime_Total = 0;
 	}
 }
@@ -28,16 +28,16 @@ function player_Level_Update(Object)
 	if(Object.ExpCheck == true)
 	{
 		Object.ExpTimer.start();
-	}					
+	}
 
 	if(Object.GetExpCheck == false)
 	{
 		if(Object.ExpTime_Total < 1)
-		{		
+		{
 			if(experience < 1000)
 			{
-				experience += Object.Experience / 2;			
-			}			
+				experience += Object.Experience / 2;
+			}
 
 			Object.GetExpCheck = true;
 		}
@@ -49,11 +49,11 @@ function player_Level_Update(Object)
 			if(experience < 1000)
 			{
 				experience += Object.Experience;
-			}			
+			}
 		}
-	}	
+	}
 
-	player_Experience_Mask();			
+	player_Experience_Mask();
 }
 
 function player_Experience(experience)
@@ -89,9 +89,9 @@ function player_Experience_Mask()
 	experienceBar_Mask.beginFill(0xffffff);
 	experienceBar_Mask.drawRect(-250, -4, experience_Rate, 8);
 	experienceBar_Mask.endFill();
-	
+
 	UI_ExperienceBar.visible = true;
-	UI_ExperienceBar.mask = experienceBar_Mask;		
+	UI_ExperienceBar.mask = experienceBar_Mask;
 
 	//console.log(experience_Percentage, experience_Rate);
 	//console.log(experience);

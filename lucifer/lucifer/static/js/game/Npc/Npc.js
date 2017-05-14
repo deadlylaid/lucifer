@@ -8,7 +8,7 @@ function npc_Preload()
 	Lucifer_Game.load.spritesheet('NPC_Store',
 								  '../../static/images/game/Npc/Npc1.png', 100, 100);
 	Lucifer_Game.load.spritesheet('NPC_Cain',
-								  '../../static/images/game/Npc/cain/cain.png', 256, 256);	
+								  '../../static/images/game/Npc/cain/cain.png', 256, 256);
 }
 
 function npc_Create()
