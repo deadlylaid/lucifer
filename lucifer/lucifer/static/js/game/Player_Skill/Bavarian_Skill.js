@@ -177,7 +177,7 @@ function skill_Create()
     skill_Icon_One.events.onInputOver.add(onUp, this);
     skill_Icon_One.events.onInputOut.add(onOut, this);
 
-    SK_Icon_Skill_Info = Lucifer_Game.add.sprite(UI_UnderBar.x - 170, UI_UnderBar.y -90, 'SK_Icon_Skill_Info');
+    SK_Icon_Skill_Info = Lucifer_Game.add.sprite(skill_Icon_One.x, UI_UnderBar.y -115, 'SK_Icon_Skill_Info');
     SK_Icon_Skill_Info.anchor.setTo(0.5, 0.5);
     SK_Icon_Skill_Info.fixedToCamera = true;
     SK_Icon_Skill_Info.visible = false;
@@ -193,7 +193,7 @@ function skill_Create()
     skill_Icon_Two.events.onInputOver.add(onUp2, this);
     skill_Icon_Two.events.onInputOut.add(onOut2, this);
 
-    SK_Icon_Skill_Info2 = Lucifer_Game.add.sprite(UI_UnderBar.x - 130, UI_UnderBar.y -90, 'SK_Icon_Skill_Info2');
+    SK_Icon_Skill_Info2 = Lucifer_Game.add.sprite(skill_Icon_Two.x, UI_UnderBar.y -115, 'SK_Icon_Skill_Info2');
     SK_Icon_Skill_Info2.anchor.setTo(0.5, 0.5);
     SK_Icon_Skill_Info2.fixedToCamera = true;
     SK_Icon_Skill_Info2.visible = false;
@@ -209,7 +209,7 @@ function skill_Create()
     skill_Icon_Three.events.onInputOver.add(onUp3, this);
     skill_Icon_Three.events.onInputOut.add(onOut3, this);
 
-    SK_Icon_Skill_Info3 = Lucifer_Game.add.sprite(UI_UnderBar.x - 90, UI_UnderBar.y -90, 'SK_Icon_Skill_Info3');
+    SK_Icon_Skill_Info3 = Lucifer_Game.add.sprite(skill_Icon_Three.x, UI_UnderBar.y -115, 'SK_Icon_Skill_Info3');
     SK_Icon_Skill_Info3.anchor.setTo(0.5, 0.5);
     SK_Icon_Skill_Info3.fixedToCamera = true;
     SK_Icon_Skill_Info3.visible = false;
@@ -225,7 +225,7 @@ function skill_Create()
     skill_Icon_Four.events.onInputOver.add(onUp4, this);
     skill_Icon_Four.events.onInputOut.add(onOut4, this);
 
-    SK_Icon_Skill_Info4 = Lucifer_Game.add.sprite(UI_UnderBar.x - 50, UI_UnderBar.y -90, 'SK_Icon_Skill_Info4');
+    SK_Icon_Skill_Info4 = Lucifer_Game.add.sprite(skill_Icon_Four.x, UI_UnderBar.y -115, 'SK_Icon_Skill_Info4');
     SK_Icon_Skill_Info4.anchor.setTo(0.5, 0.5);
     SK_Icon_Skill_Info4.fixedToCamera = true;
     SK_Icon_Skill_Info4.visible = false;
@@ -241,7 +241,7 @@ function skill_Create()
     skill_Icon_Five.events.onInputOver.add(onUp5, this);
     skill_Icon_Five.events.onInputOut.add(onOut5, this);
 
-    SK_Icon_Skill_Info5 = Lucifer_Game.add.sprite(UI_UnderBar.x - 10, UI_UnderBar.y -90, 'SK_Icon_Skill_Info5');
+    SK_Icon_Skill_Info5 = Lucifer_Game.add.sprite(skill_Icon_Five.x, UI_UnderBar.y -115, 'SK_Icon_Skill_Info5');
     SK_Icon_Skill_Info5.anchor.setTo(0.5, 0.5);
     SK_Icon_Skill_Info5.fixedToCamera = true;
     SK_Icon_Skill_Info5.visible = false;
