@@ -81,7 +81,7 @@ function fallen_Shaman_Preload()
 								   120, 120);
 	Lucifer_Game.load.spritesheet('MON_FallenShaman_Dead',
 								  '../../static/images/game/Monster/FallenShaman/Death/Death.png',
-								   83, 83);	
+								   83, 83);
 
 	shamanSkill_Preload();
 }
@@ -569,7 +569,7 @@ function fallen_Shaman_FireBall_Fire(Object)
 
 		console.log(fire_Ball.x, fire_Ball.y);
 
-		Lucifer_Game.physics.arcade.moveToObject(fire_Ball, Player, 200);		
+		Lucifer_Game.physics.arcade.moveToObject(fire_Ball, Player, 200);
 
 		//충돌 처리 안됨. 좀더 생각해 봐야됨.
 		//Lucifer_Game.physics.arcade.overlap(fire_Ball, Player, fallen_Shaman_HitCount, null, this);
@@ -587,7 +587,7 @@ function fallen_Shaman_FireBall_Fire(Object)
 		}
 		else
 		{
-			EndFrame = 16 * (Object.Direction + 1); 
+			EndFrame = 16 * (Object.Direction + 1);
 		}
 
 		if(CurFrame + 14 < EndFrame)
@@ -604,20 +604,20 @@ function fallen_Shaman_FireBall_Fire(Object)
 			{
 				var fireBall = Fire_Ball_Group.getChildAt(i);
 
-				Lucifer_Game.physics.arcade.moveToObject(fireBall, Player, 200);	
+				Lucifer_Game.physics.arcade.moveToObject(fireBall, Player, 200);
 
 				fireBall.Rect.x = fireBall.x;
 				fireBall.Rect.y = fireBall.y;
 				fireBall.Rect.centerOn(fireBall.Rect.x, fireBall.Rect.y);
 
 				console.log(fireBall.Rect.x, fireBall.Rect.y);
-			}			
+			}
 		}
 
 		for(var i = 0; i < Fire_Ball_Group.length; ++i)
 		{
 			var fireBall = Fire_Ball_Group.getChildAt(i);
-			
+
 			if(Phaser.Rectangle.intersects(fireBall.Rect, Hit_Rect))
 			{
 				fireBall.visible = false;
@@ -638,7 +638,7 @@ function fallen_Shaman_FireBall_Fire(Object)
 				console.log(health);
 			}
 		}
-		
+
 	}
 }
 
@@ -675,7 +675,7 @@ function fallen_Shaman_HitCount(Object)
 
 				Object.DelayTime_Total = 0;
 				//Object.AttackCheck = false;
-			}			
+			}
 		}
 	}
 }
@@ -706,7 +706,7 @@ function fallen_Shaman_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && currentFrame == 14)
 		{
-			Object.kill();			
+			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
 		}
@@ -722,7 +722,7 @@ function fallen_Shaman_Regen(Object)
 
 		if(Object.Regen_Time_Total > Object.Regen_Time)
 		{
-			Object.revive();			
+			Object.revive();
 			Object.Name.visible = true;
 			Object.body.static = false;
 			Object.body.restitution = 0;
@@ -766,8 +766,8 @@ function fallen_Shaman_Health_Rate(health_Percentage)
 
 	if(health_Percentage > 0)
 	{
-		hpRate = (2.24 * health_Percentage); 	
-	}	 
+		hpRate = (2.24 * health_Percentage);
+	}
 	else if(health_Percentage <= 0)
 	{
 		hpRate = 0;

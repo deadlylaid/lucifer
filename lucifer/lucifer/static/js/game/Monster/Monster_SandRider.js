@@ -1,6 +1,6 @@
 //Sand Raider
 //------------------------------------------------------------------------------
-var sandraider_Group, sandraider_Object; 
+var sandraider_Group, sandraider_Object;
 //------------------------------------------------------------------------------
 
 SandRider = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
@@ -9,7 +9,7 @@ SandRider = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.Hp = Hp;
 	this.MaxHp = MaxHp;
 	this.CognizeRange = CognizeRange;
-	this.AttackRange = AttackRange; 
+	this.AttackRange = AttackRange;
 
 	//Stat
 	this.Attack_Point = 200, this.Defence_Point = 150;
@@ -83,7 +83,7 @@ function sandRider_Create()
 {
 	sandraider_Group = Lucifer_Game.add.group();
 
-	Lucifer_Game.renderer.setTexturePriority(['MON_SandRider_Stand', 'MON_SandRider_Walk', 'MON_SandRider_Attack', 
+	Lucifer_Game.renderer.setTexturePriority(['MON_SandRider_Stand', 'MON_SandRider_Walk', 'MON_SandRider_Attack',
 										      'MON_SandRider_Attack1', 'MON_SandRider_Dead']);
 	sandRider_Clone(8753, 2557);
 	sandRider_Clone(8989, 2322);
@@ -404,8 +404,8 @@ function sandRider_Compare_Direction(PreDirection, CurDirection, Object)
 //----------------------------------------------------------------------------------------------
 function sandRider_Animation_Change(Direction, Status, Object)
 {
-	/*	
-	'MON_SandRider_Stand', 'MON_SandRider_Walk', 'MON_SandRider_Attack', 
+	/*
+	'MON_SandRider_Stand', 'MON_SandRider_Walk', 'MON_SandRider_Attack',
 	'MON_SandRider_Attack1', 'MON_SandRider_Dead'
 	*/
 
@@ -433,7 +433,7 @@ function sandRider_Animation_Change(Direction, Status, Object)
 		{
 			//Attack1
 			Object.loadTexture('MON_SandRider_Attack1', 0, true);
-			Object.animations.play('MON_SandRider_Attack1_' + Direction, 10, true);	
+			Object.animations.play('MON_SandRider_Attack1_' + Direction, 10, true);
 		}
 	}
 }
