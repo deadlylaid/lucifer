@@ -620,6 +620,7 @@ function buyItem() {
             if(gold>selectedItem.price){
                 alert("구매한 물건 : " + selectedItem.name);
                 inventory.push(selectedItem);
+                selectedItem.getVisible(true);
                 inventoryPost(selectedItem.name);
                 gold -= selectedItem.price;
                 goldUpdate();
