@@ -1,6 +1,7 @@
 //Diablo
 //------------------------------------------------------------------------------
 var diablo_Object;
+
 //------------------------------------------------------------------------------
 
 Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
@@ -270,13 +271,13 @@ function diablo_Clone(PointX, PointY)
 	diablo_Object.HpMask.beginFill(0xffffff);
 
 	//Name
-	diablo_Object.Name = Lucifer_Game.add.text(diablo_Object.x, diablo_Object.y - 150, 'Lucifer');
+	diablo_Object.Name = Lucifer_Game.add.text(diablo_Object.x, diablo_Object.y - 250, 'Lucifer');
 	diablo_Object.Name.anchor.set(0.5);
 	diablo_Object.Name.align = 'center';
 	diablo_Object.Name.font = 'Arial';
-	diablo_Object.Name.fontSize = 13;
+	diablo_Object.Name.fontSize = 17;
 	diablo_Object.Name.fontWeight = 'normal';
-	diablo_Object.Name.fill = '#19de65';
+	diablo_Object.Name.fill = '#ff5400';
 	diablo_Object.Name.visible = false;
 
 	//input Mouse Over / Up

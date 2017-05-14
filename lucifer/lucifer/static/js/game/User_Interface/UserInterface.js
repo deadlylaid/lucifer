@@ -310,6 +310,15 @@ function ui_Update()
             showStore();
         }
 
+        //Tyreal Talk box
+        /*if(Talkbox.visible == true)
+        {
+            Talkbox.visible = false;
+            text_talk.visible = false;
+            Exit_button.visible = false;
+            Credits_button.visible = false;
+        }*/
+
     }
 }
 
