@@ -6,8 +6,6 @@ function player_Monster_Col(Object)
 
 	if(Object.Name.text == 'Diablo')
 	{
-		console.log(DistanceToMonster);
-
 		if(DistanceToMonster < 95)
 		{
 			if(Object.DeadCheck == false)

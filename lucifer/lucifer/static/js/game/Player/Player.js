@@ -569,7 +569,9 @@ function player_Update()
 	}
 	else if(stageTwo_Check == true || stageThree_Check == true)
 	{
-		if(UI_Stat.visible === true /*|| uiInventory.visible === true*/)
+		if(UI_Stat.visible === true || /*uiInventory.visible === true
+		   ||*/ UI_Quest.visible === true || UI_Skill.visible === true
+		   || npc_Tyreal_ClickCheck === true || UI_UnderBar_ClickCheck === true)
 		{
 			Player.body.velocity.x = 0;
 			Player.body.velocity.y = 0;

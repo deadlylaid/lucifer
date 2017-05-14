@@ -387,7 +387,7 @@ function diablo_FollwName(Object)
 {
 	Object.Name.x = Object.position.x;
 
-	var NamePointY = Object.position.y + 70;
+	var NamePointY = Object.position.y + 120;
 	Object.Name.y = NamePointY;
 }
 //----------------------------------------------------------------------------------------------
@@ -992,7 +992,7 @@ function diablo_Dead(Object)
 {
 	if(Object.Hp < 0)
 	{
-		Object.DeadCheck = true;
+		Object.DeadCheck = true;			
 	}
 
 	if(Object.DeadCheck == true)
@@ -1037,9 +1037,12 @@ function diablo_Dead(Object)
 			Lucifer_Game.camera.resetFX();
 
 			if(Object.TyrealCheck == false)
-			{
-				npc_Tyreal_Create(Object.x, Object.y);
+			{	
+				//Tyreal 등장
+				npc_Tyreal.visible = true;				
 				Object.TyrealCheck = true;
+
+				Object.TyrealCamera_Timer.stop();
 			}
 		}
 	}
@@ -1174,7 +1177,7 @@ function diablo_Action_Camaera(Object)
 		if(Object.CameraTime_Total > 5 && action_CameraStepOne == false)
 		{
 			Lucifer_Game.camera.follow(Player, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);
-			Lucifer_Game.camera.setSize(1280, 800);
+			Lucifer_Game.camera.setSize(1280, /*800*/735);			
 
 			action_CameraStepOne = true;
 		}

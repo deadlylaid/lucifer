@@ -1,9 +1,13 @@
 //Tyreal
 //---------------------------------------------------------------------------------------
 var npc_Tyreal;
+<<<<<<< HEAD
 var text_talk;
 var Talkbox;
 var Tyreal_Rect;
+=======
+var npc_Tyreal_ClickCheck = false;
+>>>>>>> Bug 수정 : 타리엘 visible 처리, Diablo Name 위치변경, 타리엘 클릭시 플레이어 움직임 막음
 //---------------------------------------------------------------------------------------
 
 //Talkbox effct
@@ -65,6 +69,8 @@ function npc_Tyreal_Create(PointX, PointY)
 	//npc_Tyreal.scale.setTo(2.0, 2.0);
 	npc_Tyreal.anchor.setTo(0.5, 0.5);
 	npc_Tyreal.blendMode = Phaser.blendModes.ADD;
+	npc_Tyreal.visible = false;
+	//npc_Tyreal.fixedToCamera = true;
 
 	Lucifer_Game.physics.p2.enable(npc_Tyreal);
 	npc_Tyreal.body.fixedRotation = true;
@@ -77,6 +83,7 @@ function npc_Tyreal_Create(PointX, PointY)
     npc_Tyreal.inputEnabled = true;
 
     npc_Tyreal.events.onInputDown.add(EndingTalk, this);
+
 
 	Lucifer_Game.add.existing(npc_Tyreal);
 
@@ -163,4 +170,13 @@ function exit2() {
 
 function credits(){
 	Lucifer_Game.state.start('Ending');
+
+	if(npc_Tyreal_ClickCheck == false)
+	{
+		npc_Tyreal_ClickCheck = true;	
+	}
+	else if(npc_Tyreal_ClickCheck == true)
+	{
+		npc_Tyreal_ClickCheck = false;
+	}	
 }
