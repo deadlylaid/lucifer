@@ -588,7 +588,7 @@ function potionDrink(){
         }
         quickSlotPut(quickSlot[0]);
         if(quickSlot[0].count === 0){
-            console.log('quickSlot delete!!');
+            //console.log('quickSlot delete!!');
             quickSlot[0].destroy();
             quickSlot[0].text.destroy();
 
@@ -597,10 +597,10 @@ function potionDrink(){
             quickSlot[0]=undefined;
 
         }else{
-            console.log('횟수가 하나 줄은것으로 끝난다');
+            //console.log('횟수가 하나 줄은것으로 끝난다');
         }
     }else{
-        console.log('No quickSlot');
+        //console.log('No quickSlot');
     }
 
 }
