@@ -29,8 +29,6 @@ var Exit_button;
 var Credits_button;
 
 
-
-
 Tyreal = function(game, x, y)
 {
 	Phaser.Sprite.call(this, game, x, y, 'NPC_Tyreal');
@@ -45,7 +43,7 @@ Tyreal.prototype.constructor = Tyreal;
 function npc_Tyreal_Preload()
 {
 	Lucifer_Game.load.spritesheet('NPC_Tyreal',
-								  '../../static/images/game/Npc/tyreal/tyreal.png', 256, 256);
+								  '../../static/images/game/Npc/tyreal/tyreal.png', 600, 230);
 	Lucifer_Game.load.spritesheet('Tyreal_TalkBox', '../../static/images/game/Ending/Tyreal_TalkBox.png', 990, 400);
 
 	Lucifer_Game.load.spritesheet('Exit_button', '../../static/images/game/Ending/Ending_exitbtn.png', 110, 35);
@@ -59,13 +57,13 @@ function npc_Tyreal_Create(PointX, PointY)
 	Tyreal_Rect = new Phaser.Rectangle(npc_Tyreal.x, npc_Tyreal.y, 100, 100);
 	//Animation
 	npc_Tyreal.animations.add('NPC_Tyreal_Ani',
-							  [
+							  [	
 							     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 							  ], 60, true);
 	npc_Tyreal.animations.play('NPC_Tyreal_Ani', 10, true);
 
 	//setting
-	npc_Tyreal.scale.setTo(2.0, 2.0);
+	//npc_Tyreal.scale.setTo(2.0, 2.0);
 	npc_Tyreal.anchor.setTo(0.5, 0.5);
 	npc_Tyreal.blendMode = Phaser.blendModes.ADD;
 
@@ -74,7 +72,7 @@ function npc_Tyreal_Create(PointX, PointY)
 	npc_Tyreal.body.clearShapes();
 	npc_Tyreal.body.addRectangle(120, 120, 0, 0);
 	npc_Tyreal.body.debug = false;
-	npc_Tyreal.body.static = true;
+	npc_Tyreal.body.static = true;	
 
 	Lucifer_Game.physics.enable(npc_Tyreal, Phaser.Physics.ARCADE);
     npc_Tyreal.inputEnabled = true;
@@ -165,11 +163,9 @@ function nextWord() {
 }
 
 function exit2() {
-
 	window.close();
 }
 
 function credits(){
-
 	Lucifer_Game.state.start('Ending');
 }
