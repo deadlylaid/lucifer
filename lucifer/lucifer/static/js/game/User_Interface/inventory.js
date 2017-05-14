@@ -256,7 +256,7 @@ function useItem(){
                 case '좋은물약':
                     quickSlot[0] = goodRedPotionClone(727, 760);
                     break;
-                case '최상의물약':
+                case '최고의물약':
                     quickSlot[0] = bestRedPotionClone(727, 760);
                     break;
             }
@@ -532,7 +532,7 @@ function changeServerListToClientListQuickSlot(){
             case '좋은물약':
                 quickSlot[0] = goodRedPotionClone(727, 760);
                 break;
-            case '최상의물약':
+            case '최고의물약':
                 quickSlot[0] = bestRedPotionClone(727, 760);
                 break;
         }
@@ -571,7 +571,7 @@ function potionImportQuickSlot(selectedItem){
         case '좋은물약':
             quickSlot[0] = goodRedPotionClone(727, 760);
             break;
-        case '최상의물약':
+        case '최고의물약':
             quickSlot[0] = bestRedPotionClone(727, 760);
             break;
     }
