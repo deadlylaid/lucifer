@@ -172,6 +172,8 @@ function goodRedPotionClone(positionX, positionY){
     redPotionObject.text.fontSize = 15;
     redPotionObject.text.fill = '#fff';
 
+    redPotionObject.count = 10;
+
     redPotionObject.drinkEnable = true;
 
     Lucifer_Game.add.existing(redPotionObject);
@@ -202,6 +204,8 @@ function bestRedPotionClone(positionX, positionY){
     redPotionObject.text.setText(redPotionObject.name);
     redPotionObject.text.fontSize = 15;
     redPotionObject.text.fill = '#fff';
+
+    redPotionObject.count = 10;
 
     redPotionObject.drinkEnable = true;
 
