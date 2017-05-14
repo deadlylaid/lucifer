@@ -28,7 +28,6 @@ var content2 = [
 var Exit_button;
 var Credits_button;
 
-
 Tyreal = function(game, x, y)
 {
 	Phaser.Sprite.call(this, game, x, y, 'NPC_Tyreal');
@@ -92,10 +91,6 @@ function npc_Tyreal_Create(PointX, PointY)
     text_talk.anchor.set(0.5);
     text_talk.fixedToCamera = true;
     text_talk.font = 'Myungjo';
-    //text_talk.stroke = '#000000';
-    //text_talk.strokeThickness = 2;
-    //text_talk.setShadow(3, 3, '#000000', 0, true, true);
-    //text_talk.padding.set(10, 16);
     text_talk.fontWeight = 'bold';
     text_talk.lineSpacing = 0;
     text_talk.visible = false;
