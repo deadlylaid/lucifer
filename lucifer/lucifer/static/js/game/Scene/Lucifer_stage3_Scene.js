@@ -25,7 +25,7 @@ var stage3_Scene =
 		diablo_Create();
 
 		//Tyreal Create
-		npc_Tyreal_Create(2753, 1029);
+		npc_Tyreal_Create(2939, 843);
 
 		//Sight Effect
 		sight_Filter_Create();

@@ -63,7 +63,7 @@ function npc_Tyreal_Create(PointX, PointY)
 	npc_Tyreal.animations.play('NPC_Tyreal_Ani', 10, true);
 
 	//setting
-	//npc_Tyreal.scale.setTo(2.0, 2.0);
+	npc_Tyreal.scale.setTo(0.7, 0.7);
 	npc_Tyreal.anchor.setTo(0.5, 0.5);
 	npc_Tyreal.blendMode = Phaser.blendModes.ADD;
 	npc_Tyreal.visible = false;
@@ -120,6 +120,11 @@ function npc_Tyreal_Create(PointX, PointY)
 
 function EndingTalk(){
 	console.log("Talk");
+
+	if(npc_Tyreal_ClickCheck == false)
+	{
+		npc_Tyreal_ClickCheck = true;
+	}
 
 	Talkbox.visible = true;
 	text_talk.visible = true;

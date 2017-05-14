@@ -4,7 +4,7 @@ function player_Monster_Col(Object)
 {
 	DistanceToMonster = Phaser.Math.distance(Player.x, Player.y, Object.x, Object.y);
 
-	if(Object.Name.text == 'Diablo')
+	if(Object.Name.text == 'Lucifer')
 	{
 		if(DistanceToMonster < 95)
 		{
