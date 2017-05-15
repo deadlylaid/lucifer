@@ -60,6 +60,9 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Shadow
 	this.shadow_Effect;
+
+	//Message
+	this.status_Message_Check = false, this.message_Time_Check = false;
 }
 
 Council.prototype = Object.create(Phaser.Sprite.prototype);
@@ -750,7 +753,7 @@ function council_Dead(Object)
 			Object.body.static = true;
 
 			//Quest
-			checkQuest(5);
+			checkQuest(5);			
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -767,6 +770,13 @@ function council_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
+			//Message
+			if(Object.status_Message_Check == false)
+			{
+				status_Message_Clone(Object.Experience);	
+				Object.status_Message_Check = true;
+			}		
+			
 			Object.kill();
 			Object.Name.visible = false;
 			Object.Skill_Light.visible = false;
@@ -795,7 +805,7 @@ function council_Regen(Object)
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.Pattern_Nomal_Check = false, Object.Pattern_Skill_Check = false;
-			Object.MouseCheck = false;
+			Object.MouseCheck = false, Object.status_Message_Check = false;
 
 			Object.Hp = 300;
 			Object.MaxHp = 300;
@@ -921,6 +931,9 @@ function council_Update()
 
 		//Shadow
 		shadow_Monster_Move(council);
+
+		//Message
+		status_Message_Update(council);
 	}
 }
 

@@ -37,7 +37,7 @@ function status_Message_Clone(text)
 	status_Message = new Status_Message(Lucifer_Game, 120, 680, render_Text);
 	status_Message.fixedToCamera = true;
 
-	Lucifer_Game.physics.enable(status_Message, Phaser.Physics.ARCADE);
+	Lucifer_Game.physics.arcade.enable(status_Message);
 
 	//Timer
 	status_Message.CheckTimer = Lucifer_Game.time.create(false);
@@ -53,7 +53,7 @@ function status_Message_CheckTimer(Object)
 	++Object.CheckTime_Total;
 }
 
-function status_Message_Update()
+function status_Message_Update(Object)
 {
 	for(var i = 0; i < status_Message_Group.length; ++i)
 	{
@@ -65,31 +65,35 @@ function status_Message_Update()
 			//마지막 인덱스보다 작은 것들 새로 추가되는 것들보다 이전 것들은 위로 올린다.
 			if(/*status_Message_Group.getChildIndex(message)*/ i < max_Index)
 			{
-				var change_Message = status_Message_Group.getChildAt(i);
+				//var change_Message = status_Message_Group.getChildAt(i);
 
-				if(change_Message.TextUpCheck == false)
+				if(Object.status_Message_Check == true)
 				{
-					change_Message.body.velocity.y -= 20;
+					//status_Message_Group.getChildAt(i).body.velocity.y -= 20;
+					status_Message_Group.getChildAt(i).y = (Lucifer_Game.camera.y + status_Message_Group.getChildAt(i).y) - 20;
 
-					change_Message.TextUpCheck = true;
+					//console.log(status_Message_Group.getChildAt(i).x, status_Message_Group.getChildAt(i).y);
+
+					Object.status_Message_Check = false;
+					Object.message_Time_Check = true;
 				}	
 
-				if(change_Message.TextUpCheck == true)
+				if(Object.message_Time_Check == true)
 				{
-					change_Message.CheckTimer.start();	
+					message.CheckTimer.start();	
 				}
 				else
 				{
-					change_Message.CheckTime_Total = 0;
+					message.CheckTime_Total = 0;
 				}
 				
-				if(change_Message.CheckTime_Total > 1)
+				if(message.CheckTime_Total > 1)
 				{
-					change_Message.TextUpCheck = false;
+					Object.message_Time_Check = false;
 				}
 			}			
-		}
+		}		
 
-		//console.log(status_Message_Group.getChildIndex(message));
+		//console.log(Lucifer_Game.camera.y, status_Message_Group.getChildAt(0).y);
 	}
 }

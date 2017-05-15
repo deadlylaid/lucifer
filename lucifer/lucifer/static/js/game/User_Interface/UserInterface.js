@@ -74,7 +74,7 @@ function ui_Create()
 
     //Experience Bar
     //------------------------------------------------------------------------------------------------------------
-    UI_ExperienceBar = Lucifer_Game.add.sprite(UI_UnderBar.x + 9, UI_UnderBar.y/* + 25*/, 'UI_ExperienceBar');
+    UI_ExperienceBar = Lucifer_Game.add.sprite(UI_UnderBar.x + 9, UI_UnderBar.y - 5, 'UI_ExperienceBar');
     UI_ExperienceBar.anchor.setTo(0.5, 0.5);
     UI_ExperienceBar.fixedToCamera = true;
     UI_ExperienceBar.visible = false;
