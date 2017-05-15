@@ -58,7 +58,7 @@ function status_Message_Clone(text)
 			status_Message3 = Lucifer_Game.add.text(120, 620, render_Text, { font: "13px", fill: "#ffffff" });
 			status_Message3.fixedToCamera = true;
 		break;
-		case 4 :
+		case 4 :    
 			status_Message4 = Lucifer_Game.add.text(120, 640, render_Text, { font: "13px", fill: "#ffffff" });
 			status_Message4.fixedToCamera = true;
 		break;
