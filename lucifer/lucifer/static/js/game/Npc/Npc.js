@@ -34,7 +34,7 @@ function npc_Preload()
 	Lucifer_Game.load.spritesheet('NPC_Store',
 								  '../../static/images/game/Npc/Npc1.png', 100, 100);
 	Lucifer_Game.load.spritesheet('NPC_Cain',
-								  '../../static/images/game/Npc/cain/cain.png', 256, 256);
+								  '../../static/images/game/Npc/cain/cain.png', 70, 70);
 
 	Lucifer_Game.load.spritesheet('Cain_TalkBox', '../../static/images/game/Npc/cain/cain_Talkbox.png', 990, 400);
 }
@@ -189,12 +189,18 @@ function npc_Debug_Render()
 function Cain_Talk(){
 	console.log("Talk");
 
-	/*if(npc_Cain_ClickCheck == false)
+	if(npc_Cain_ClickCheck == false)
 	{
 		npc_Cain_ClickCheck = true;
-	}*/
+		Cain_TalkBox.visible = true;
 
-	Cain_TalkBox.visible = true;
+	}else if(npc_Cain_ClickCheck == true)
+	{
+		npc_Cain_ClickCheck = false;
+		Cain_TalkBox.visible = false;
+	}
+	
+
 	//text_talk.visible = true;
 
 	//Exit_button.visible = true;
