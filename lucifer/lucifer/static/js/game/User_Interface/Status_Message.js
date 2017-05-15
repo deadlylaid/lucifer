@@ -1,15 +1,8 @@
 //Status Message
 //-------------------------------------------------------------------------------------
-var status_Message, status_Message_Group;
-var max_Index;
-var message;
 var ExpCount = 1;
-
-var status_Message;
-var status_Message2;
-var status_Message3;
-var status_Message4;
-var status_Message5;
+var status_Message, status_Message2, status_Message3, status_Message4, status_Message5;
+var status_CheckTimer, status_CheckTime_Total = 0;
 //-------------------------------------------------------------------------------------
 
 Status_Message = function(game, x, y, text)
@@ -22,13 +15,7 @@ Status_Message = function(game, x, y, text)
 					 });
 
 	this.anchor.set(0.5);
-	this.fontWeight = 'normal';
-
-	//Text Check
-	this.TextUpCheck = false;
-
-	//Timer
-	this.CheckTimer, this.CheckTime_Total = 0;
+	this.fontWeight = 'normal';	
 }
 
 Status_Message.prototype = Object.create(Phaser.Text.prototype);
@@ -36,102 +23,98 @@ Status_Message.prototype.constructor = Status_Message;
 
 function status_Message_Craete()
 {
-	status_Message_Group = Lucifer_Game.add.group();	
+	//Timer
+	status_CheckTimer = Lucifer_Game.time.create(false);
+	status_CheckTimer.loop(1000, status_Message_CheckTimer, Lucifer_Game);
 }
 
 function status_Message_Clone(text)
 {	
-	
-
 	var render_Text = "경험치를 " + text + "획득하였습니다.";
 
-	switch(ExpCount){
+	if(ExpCount <= 5)
+	{
+		switch(ExpCount){
 		case 1 :
-			status_Message = Lucifer_Game.add.text(120, 580, render_Text, { font: "13px", fill: "#ffffff" });
+			status_Message = Lucifer_Game.add.text(120, 580, render_Text, { font: "13px", fill: "#19de65" });
 			status_Message.fixedToCamera = true;
 		break;
 		case 2 :
-			status_Message2 = Lucifer_Game.add.text(120, 600, render_Text, { font: "13px", fill: "#ffffff" });
+			status_Message2 = Lucifer_Game.add.text(120, 600, render_Text, { font: "13px", fill: "#19de65" });
 			status_Message2.fixedToCamera = true;
 		break;
 		case 3 :
-			status_Message3 = Lucifer_Game.add.text(120, 620, render_Text, { font: "13px", fill: "#ffffff" });
+			status_Message3 = Lucifer_Game.add.text(120, 620, render_Text, { font: "13px", fill: "#19de65" });
 			status_Message3.fixedToCamera = true;
 		break;
 		case 4 :    
-			status_Message4 = Lucifer_Game.add.text(120, 640, render_Text, { font: "13px", fill: "#ffffff" });
+			status_Message4 = Lucifer_Game.add.text(120, 640, render_Text, { font: "13px", fill: "#19de65" });
 			status_Message4.fixedToCamera = true;
 		break;
 		case 5 :
-			status_Message5 = Lucifer_Game.add.text(120, 660, render_Text, { font: "13px", fill: "#ffffff" });
+			status_Message5 = Lucifer_Game.add.text(120, 660, render_Text, { font: "13px", fill: "#19de65" });
 			status_Message5.fixedToCamera = true;
 		break;
+		}
 	}
+	else if(ExpCount > 5)
+	{
+		status_Message.text = status_Message2.text;
+		status_Message2.text = status_Message3.text;
+		status_Message3.text = status_Message4.text;
+		status_Message4.text = status_Message5.text;	
 
-	Lucifer_Game.physics.arcade.enable(status_Message);
+		status_Message5.destroy();
 
-	//Timer
-	status_Message.CheckTimer = Lucifer_Game.time.create(false);
-	status_Message.CheckTimer.loop(1000, status_Message_CheckTimer, Lucifer_Game, status_Message);
-
-	Lucifer_Game.add.existing(status_Message);
-
-	status_Message_Group.add(status_Message);
+		status_Message5 = Lucifer_Game.add.text(120, 660, render_Text, { font: "13px", fill: "#ffffff" });
+		status_Message5.fixedToCamera = true;	
+	}	
 
 	ExpCount += 1;
 }
 
-function status_Message_CheckTimer(Object)
+function status_Message_CheckTimer()
 {
-	++Object.CheckTime_Total;
+	++status_CheckTime_Total;
 }
 
-
-function status_Message_Update(Object)
+function status_Message_Update()
 {
-
-	for(var i = 0; i < status_Message_Group.length; ++i)
+	if(ExpCount >= 2)
 	{
-		message = status_Message_Group.getChildAt(i);
-		max_Index = status_Message_Group.length -1;
-		
-		if(max_Index > 0)
-		{	
-			//마지막 인덱스보다 작은 것들 새로 추가되는 것들보다 이전 것들은 위로 올린다.
+		status_CheckTimer.start();
+	}
+	else if(ExpCount < 2)
+	{
+		status_CheckTime_Total = 0;
+	}	
 
-			if(/*status_Message_Group.getChildIndex(message)*/ i < max_Index)
-			{
-				//var change_Message = status_Message_Group.getChildAt(i);
-
-				if(Object.status_Message_Check == true)
-				{
-					//status_Message_Group.getChildAt(i).body.velocity.y -= 20;
-					//var change_position = status_Message_Group.getChildAt(i).y - Lucifer_Game.camera.y;
-					//change_position = change_position - 20;
-
-					status_Message_Group.getChildAt(i).y = (status_Message_Group.getChildAt(i).y) - 20;
-
-					Object.status_Message_Check = false;
-					Object.message_Time_Check = true;
-				}	
-
-				if(Object.message_Time_Check == true)
-				{
-					message.CheckTimer.start();	
-				}
-				else
-				{
-					message.CheckTime_Total = 0;
-				}
-				
-				if(message.CheckTime_Total > 1)
-				{
-					Object.message_Time_Check = false;
-				}
-			}			
+	if(status_CheckTime_Total > 20)
+	{
+		if(status_Message != undefined)
+		{
+			status_Message.destroy();	
+		}		
+		if(status_Message2 != undefined)
+		{
+			status_Message2.destroy();
+		}
+		if(status_Message3 != undefined)
+		{
+			status_Message3.destroy();
+		}
+		if(status_Message4 != undefined)
+		{
+			status_Message4.destroy();
+		}
+		if(status_Message5 != undefined)
+		{
+			status_Message5.destroy();
 		}		
 
-		//console.log(Lucifer_Game.camera.y, status_Message_Group.getChildAt(0).y);
+		status_CheckTime_Total = 0;
+		ExpCount = 1;
 	}
-	
+
+	//console.log(status_CheckTime_Total);	
 }

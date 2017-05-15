@@ -725,9 +725,6 @@ function wraith_Update()
 
 		//Shadow Effect
 		shadow_Monster_Move(wraith);
-	
-		//Message
-		status_Message_Update(wraith);
 	}
 }
 

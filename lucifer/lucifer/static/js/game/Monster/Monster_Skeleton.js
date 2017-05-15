@@ -686,10 +686,7 @@ function skeleton_Update()
 		mouse_ColCheck(skeleton);
 
 		//Shadow
-		shadow_Monster_Move(skeleton);
-
-		//Message
-		status_Message_Update(skeleton);
+		shadow_Monster_Move(skeleton);	
 	}
 }
 

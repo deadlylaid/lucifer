@@ -77,6 +77,9 @@ var stage3_Scene =
 		//Mouse
 		mouse_Update();
 
+		//Message
+		status_Message_Update();
+
 		//Portal
 		portal_Check2();
 

@@ -747,10 +747,7 @@ function deamon_Update()
 		blood_Effect_Update(deamon);
 
 		//Shadow
-		shadow_Monster_Move(deamon);
-
-		//Message
-		status_Message_Update(deamon);
+		shadow_Monster_Move(deamon);		
 	}
 }
 

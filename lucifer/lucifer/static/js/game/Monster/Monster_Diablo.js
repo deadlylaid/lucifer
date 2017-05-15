@@ -1239,10 +1239,7 @@ function diablo_Update()
 	mouse_ColCheck(diablo);
 
 	//Blood Effect
-	blood_Effect_Update(diablo);
-
-	//Message
-	status_Message_Update(diablo);
+	blood_Effect_Update(diablo);	
 }
 
 function diablo_Render()
