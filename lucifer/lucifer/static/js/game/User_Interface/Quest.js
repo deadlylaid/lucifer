@@ -47,6 +47,7 @@ function QuestPreload(){
     Lucifer_Game.load.spritesheet('UI_Info', '../../static/images/game/UI/KeyInfo/KeyInfo.png', 785, 539);
 };
 
+//이거 바꿔주는거 두번하면 다 undefined로 바뀜
 quest = function(title, exReword, goldReword, advanced, goal, isCompleted){
     this.questTitle = title;
     this.exReword = exReword;
@@ -56,20 +57,26 @@ quest = function(title, exReword, goldReword, advanced, goal, isCompleted){
     this.isCompleted = isCompleted;
 }
 
+function changeServerToClientQuest(){
+    if(characterQuest[0].isCompleted===undefined){
+        var characterQuestLength = characterQuest.length;
+        for(i=0; i<characterQuestLength; i++){
+
+            title = characterQuest[i].title;
+            exReword = characterQuest[i].ex_reward;
+            goldReword = characterQuest[i].gold_reward;
+            advanced = characterQuest[i].advanced;
+            goal = characterQuest[i].goal;
+            isCompleted = characterQuest[i].is_completed;
+
+            characterQuest[i] = new quest(title, exReword, goldReword, advanced, goal, isCompleted);
+        }
+    }
+}
+
 function QuestCreate(){
 
-    var characterQuestLength = characterQuest.length;
-    for(i=0; i<characterQuestLength; i++){
-
-        title = characterQuest[i].title;
-        exReword = characterQuest[i].ex_reward;
-        goldReword = characterQuest[i].gold_reward;
-        advanced = characterQuest[i].advanced;
-        goal = characterQuest[i].goal;
-        isCompleted = characterQuest[i].is_completed;
-
-        characterQuest[i] = new quest(title, exReword, goldReword, advanced, goal, isCompleted);
-    }
+    changeServerToClientQuest();
 
     //Tab 이미지 추가
     //--------------------------------------------------------
