@@ -67,20 +67,17 @@ var stage2_Scene =
 		deamon_Update();
 		council_Update();
 
-		//items Update
-        //itemsUpdate();
-
 		//Ui Update
 		ui_Update();
+
+		//items Update
+        itemsStoreUpdate();
 
 		//Quest Update
 		QuestUpdate();
 
 		//Skill
 		skill_Update();
-
-		//Stage2 Culling
-		//stage2_Culling();
 
 		//mouse movepoint
 		movepoint_Update();
