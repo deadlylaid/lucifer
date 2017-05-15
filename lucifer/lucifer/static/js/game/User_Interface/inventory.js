@@ -15,6 +15,7 @@ function inventoryCreate(){
 
     //inventory key setting -----------------------------------------
     key_inven = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.I);
+    Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.I);
 
     invenKeyTimer = Lucifer_Game.time.create(false);
     invenKeyTimer.loop(400, invenTimeCheck, this);
