@@ -537,7 +537,7 @@ function player_Update()
 	{
 		if(UI_Stat.visible === true || uiStore.visible === true
 		   || uiInventory.visible === true || UI_Quest.visible === true
-		   || UI_Skill.visible === true || UI_UnderBar_ClickCheck === true)
+		   || UI_Skill.visible === true || UI_UnderBar_ClickCheck === true /*|| npc_Cain_ClickCheck === true*/)
 		{
 			Player.body.velocity.x = 0;
 			Player.body.velocity.y = 0;
