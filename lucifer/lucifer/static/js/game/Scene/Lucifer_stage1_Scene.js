@@ -119,10 +119,7 @@ var stage1_Scene =
 
 		//Mouse
 		mouse_Update();
-
-		//Message
-		status_Message_Update();
-
+				
 		//Portal
 		portal_Check();
 

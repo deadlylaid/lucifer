@@ -56,6 +56,9 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	//Andariel Skill
 	this.Andariel_Skill, this.Andariel_Skill_Rect, this.Andariel_Skill_Check = false;
 	this.Andariel_Skill_AttackPoint = 1;
+
+	//Message
+	this.status_Message_Check = false, this.message_Time_Check = false;
 }
 
 Andariel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -639,12 +642,19 @@ function andariel_Dead(Object)
 			Object.body.static = true;
 
 			//Quest
-			checkQuest(8);
+			checkQuest(8);			
 		}
 
 		var CurFrame = Object.animations.frame;
 		if(Object.DeadMotionCheck == true && CurFrame == 118)
 		{
+			//Message
+			if(Object.status_Message_Check == false)
+			{
+				status_Message_Clone(Object.Experience);	
+				Object.status_Message_Check = true;
+			}			
+			
 			Object.kill();
 			Object.Andariel_Skill.kill();
 			Object.Name.visible = false;
@@ -730,10 +740,10 @@ function andariel_Regen(Object)
 
 			Object.Regen_Check = false;
 
-			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
-			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
-			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false, Object.Andariel_Skill_Check;
+			Object.AI_StartCheck = false, Object.MoveCheck = false,            Object.StandCheck = false;
+			Object.AttackCheck = false,   Object.CompareCheck = false, 		   Object.DamageCheck = false;
+			Object.DeadCheck = false,	  Object.DeadMotionCheck = false,	   Object.ReturnCheck = false;
+			Object.MouseCheck = false,    Object.Andariel_Skill_Check = false, Object.status_Message_Check = false;
 
 			Object.Hp = 4000;
 			Object.MaxHp = 4000;
@@ -785,6 +795,9 @@ function andariel_Update()
 
 		//Shadow
 		shadow_Monster_Move(andariel);
+
+		//Message
+		status_Message_Update(andariel);
 	}
 }
 

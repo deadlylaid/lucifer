@@ -71,6 +71,9 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Tyreal Camera Timer
 	this.TyrealCamera_Timer, this.TyrealTime_Total = 0;
+
+	//Message
+	this.status_Message_Check = false, this.message_Time_Check = false;
 }
 
 Diablo.prototype = Object.create(Phaser.Sprite.prototype);
@@ -1019,6 +1022,13 @@ function diablo_Dead(Object)
 				skeleton_Group.getChildAt(i).Hp -= 1000;
 			}
 
+			//Message
+			if(Object.status_Message_Check == false)
+			{
+				status_Message_Clone(Object.Experience);	
+				Object.status_Message_Check = true;
+			}			
+
 			Object.kill();
 			Object.Inferno.kill();
 			Object.Name.visible = false;
@@ -1067,7 +1077,7 @@ function diablo_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false;
+			Object.MouseCheck = false, Object.status_Message_Check = false;
 
 			Object.Hp = 6000;
 			Object.MaxHp = 6000;
@@ -1230,6 +1240,9 @@ function diablo_Update()
 
 	//Blood Effect
 	blood_Effect_Update(diablo);
+
+	//Message
+	status_Message_Update(diablo);
 }
 
 function diablo_Render()

@@ -36,9 +36,7 @@ function player_Level_Update(Object)
 		{
 			if(experience < 1000)
 			{
-				experience += Object.Experience / 2;
-
-				status_Message_Clone(Object.Experience / 2);
+				experience += Object.Experience / 2;				
 			}
 
 			Object.GetExpCheck = true;
@@ -50,9 +48,7 @@ function player_Level_Update(Object)
 		{
 			if(experience < 1000)
 			{
-				experience += Object.Experience;
-
-				status_Message_Clone(Object.Experience);
+				experience += Object.Experience;			
 			}
 		}
 	}

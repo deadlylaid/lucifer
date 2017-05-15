@@ -50,6 +50,9 @@ Skeleton = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Shadow
 	this.shadow_Effect;
+
+	//Message
+	this.status_Message_Check = false, this.message_Time_Check = false;
 }
 
 Skeleton.prototype = Object.create(Phaser.Sprite.prototype);
@@ -579,6 +582,13 @@ function skeleton_Dead(Object)
 		var CurFrame = Object.animations.frame;
 		if(Object.DeadMotionCheck == true && CurFrame == 18)
 		{
+			//Message
+			if(Object.status_Message_Check == false)
+			{
+				status_Message_Clone(Object.Experience);
+				Object.status_Message_Check = true;		
+			}		
+			
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
 			Object.destroy();
@@ -677,6 +687,9 @@ function skeleton_Update()
 
 		//Shadow
 		shadow_Monster_Move(skeleton);
+
+		//Message
+		status_Message_Update(skeleton);
 	}
 }
 

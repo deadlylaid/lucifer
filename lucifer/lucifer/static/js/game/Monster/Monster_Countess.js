@@ -51,6 +51,9 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Shadow
 	this.shadow_Effect;
+
+	//Message
+	this.status_Message_Check = false, this.message_Time_Check = false;
 }
 
 Countess.prototype = Object.create(Phaser.Sprite.prototype);
@@ -589,6 +592,13 @@ function countess_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
+			//Message
+			if(Object.status_Message_Check == false)
+			{
+				status_Message_Clone(Object.Experience);	
+				Object.status_Message_Check = true;
+			}			
+			
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
@@ -670,19 +680,21 @@ function countess_Regen(Object)
 			Object.body.static = false;		//Collision true
 			Object.body.restitution = 0;
 
+			Object.Regen_Check = false;
+
+			Object.AI_StartCheck = false, Object.MoveCheck = false,       Object.StandCheck = false;
+			Object.AttackCheck = false,   Object.CompareCheck = false,    Object.DamageCheck = false;
+			Object.DeadCheck = false,	  Object.DeadMotionCheck = false, Object.ReturnCheck = false;
+			Object.MouseCheck = false,    Object.status_Message_Check = false;
+
 			Object.Hp = 100;
 			Object.MaxHp = 100;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 
-			countess_Animation_Change(Object.Direction, 'Stand', Object);
+			countess_Animation_Change(Object.Direction, 'Stand', Object);			
 
-			Object.AI_StartCheck = false, Object.MoveCheck = false,       Object.StandCheck = false;
-			Object.AttackCheck = false,   Object.CompareCheck = false,    Object.DamageCheck = false;
-			Object.DeadCheck = false,	  Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false,    Object.Regen_Check = false;
-
-			Object.Regen_Timer.stop(false);
+			Object.Regen_Timer.stop();
 			Object.Regen_Time_Total = 0;
 		}
 	}
@@ -724,6 +736,9 @@ function countess_Update()
 
 		//Shadow
 		shadow_Monster_Move(countess);
+
+		//Message
+		status_Message_Update(countess);
 	}
 }
 

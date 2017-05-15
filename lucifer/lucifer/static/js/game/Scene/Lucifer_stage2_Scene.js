@@ -42,6 +42,9 @@ var stage2_Scene =
 		//Mouse
 		mouse_Create();
 
+		//Message
+		status_Message_Craete();
+
 		go();
 	},
 

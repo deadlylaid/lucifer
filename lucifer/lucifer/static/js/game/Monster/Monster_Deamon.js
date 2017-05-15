@@ -51,6 +51,9 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Shadow
 	this.shadow_Effect;
+
+	//Message
+	this.status_Message_Check = false, this.message_Time_Check = false;
 }
 
 Deamon.prototype = Object.create(Phaser.Sprite.prototype);
@@ -601,6 +604,13 @@ function deamon_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
+			//Message
+			if(Object.status_Message_Check == false)
+			{
+				status_Message_Clone(Object.Experience);	
+				Object.status_Message_Check = true;
+			}			
+			
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
@@ -627,7 +637,7 @@ function deamon_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false;
+			Object.MouseCheck = false, Object.status_Message_Check = false;
 
 			Object.Hp = 1500;
 			Object.MaxHp = 1500;
@@ -738,6 +748,9 @@ function deamon_Update()
 
 		//Shadow
 		shadow_Monster_Move(deamon);
+
+		//Message
+		status_Message_Update(deamon);
 	}
 }
 

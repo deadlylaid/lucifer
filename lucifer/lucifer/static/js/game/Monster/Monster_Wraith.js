@@ -48,6 +48,9 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Shadow Effect
 	this.shadow_Effect;
+
+	//Message
+	this.status_Message_Check = false, this.message_Time_Check = false;
 }
 
 Wraith.prototype = Object.create(Phaser.Sprite.prototype);
@@ -580,6 +583,14 @@ function wraith_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
+			//Message
+			if(Object.status_Message_Check == false)
+			{
+				status_Message_Clone(Object.Experience);
+				Object.status_Message_Check = true;	
+			}
+			
+			
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
@@ -603,10 +614,10 @@ function wraith_Regen(Object)
 
 			Object.Regen_Check = false;
 
-			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
-			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
-			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false;
+			Object.AI_StartCheck = false, Object.MoveCheck = false,            Object.StandCheck = false;
+			Object.AttackCheck = false,   Object.CompareCheck = false,         Object.DamageCheck = false;
+			Object.DeadCheck = false,	  Object.DeadMotionCheck = false,      Object.ReturnCheck = false;
+			Object.MouseCheck = false,    Object.status_Message_Check = false;
 
 			Object.Hp = 1000;
 			Object.MaxHp = 1000;
@@ -714,6 +725,9 @@ function wraith_Update()
 
 		//Shadow Effect
 		shadow_Monster_Move(wraith);
+	
+		//Message
+		status_Message_Update(wraith);
 	}
 }
 

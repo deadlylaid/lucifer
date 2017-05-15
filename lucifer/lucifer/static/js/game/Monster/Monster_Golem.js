@@ -50,6 +50,9 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 
 	//Shadow Effect
 	this.shadow_Effect;
+
+	//Message
+	this.status_Message_Check = false, this.message_Time_Check = false;
 }
 
 Golem.prototype = Object.create(Phaser.Sprite.prototype);
@@ -567,6 +570,13 @@ function golem_Dead(Object)
 
 		if(Object.DeadMotionCheck == true && CurFrame == EndFrame)
 		{
+			//Message
+			if(Object.status_Message_Check == false)
+			{
+				status_Message_Clone(Object.Experience);	
+				Object.status_Message_Check = true;
+			}			
+			
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
@@ -597,7 +607,7 @@ function golem_Regen(Object)
 
 			Object.AI_StartCheck = false, Object.MoveCheck = false,    Object.StandCheck = false;
 			Object.AttackCheck = false,   Object.CompareCheck = false, Object.DamageCheck = false;
-			Object.DeadCheck = false,	  Object.ReturnCheck = false;
+			Object.DeadCheck = false,	  Object.ReturnCheck = false,  Object.status_Message_Check = false;
 			Object.MouseCheck = false,    Object.Regen_Check = false,  Object.DeadMotionCheck = false;
 
 			Object.Regen_Timer.stop(false);
@@ -701,6 +711,9 @@ function golem_Update()
 
 		//Shadow
 		shadow_Monster_Move(golem);
+
+		//Message
+		status_Message_Update(golem);
 	}
 }
 
