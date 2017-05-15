@@ -2,6 +2,32 @@ var store_Npc, cain_Npc;
 var npc_Angle, npc_Direction, npc_PreDirection, npc_Distance, npc_Range;
 var npc_compareCheck = false;
 //---------------------------------------------------------------------------------------
+//cain Talkbox
+
+var npc_Cain_ClickCheck = false;
+
+var Cain_text_talk;
+var Cain_TalkBox;
+
+//Talkbox effct
+var line2 = [];
+var wordIndex2 = 0;
+var lineIndex2 = 0;
+
+var wordDelay2 = 120;
+var lineDelay2 = 400;
+
+var content3 = [
+    "영웅이여, 나는 타이리얼이라고 하네..",
+    "이 땅에 루시퍼가 부활한 지 10년이 지났지만 더 강력하게 부활한 루시퍼를",
+    "평화로운 세상에 안주했던 우리들 천사와 인간들의 힘으로 도저히 당해낼 수 없었네..",
+    "평화에 적응된 인간들과 천사들은 이번 일을 계기로 다시 재정비를 할 것이야.",
+    "자네 덕분에 인간세상에 다시 평화가 찾아왔어. 정말 고맙네.."
+];
+
+//Talk box btn
+var Exit_button2;
+
 function npc_Preload()
 {
 	//NPC
@@ -9,6 +35,8 @@ function npc_Preload()
 								  '../../static/images/game/Npc/Npc1.png', 100, 100);
 	Lucifer_Game.load.spritesheet('NPC_Cain',
 								  '../../static/images/game/Npc/cain/cain.png', 256, 256);
+
+	Lucifer_Game.load.spritesheet('Cain_TalkBox', '../../static/images/game/Npc/cain/cain_Talkbox.png', 990, 400);
 }
 
 function npc_Create()
@@ -63,9 +91,17 @@ function npc_Create()
     store_Npc.inputEnabled = true;
     store_Npc.events.onInputDown.add(showStore, this);
 
+
+    Cain_TalkBox = Lucifer_Game.add.sprite(600, 510, 'Cain_TalkBox');
+	Cain_TalkBox.fixedToCamera = true;
+	Cain_TalkBox.anchor.setTo(0.5, 0.5);
+	Cain_TalkBox.visible = false;
+
     Lucifer_Game.physics.enable(cain_Npc, Phaser.Physics.ARCADE);
 	cain_Npc.inputEnabled = true;
-	//cain_Npc.events.onInputDown.add();  퀘스트 관련 된 UI 보이면 됨.
+	cain_Npc.events.onInputDown.add(Cain_Talk, this);
+
+
 }
 
 function npc_GetDirection()
@@ -149,3 +185,51 @@ function npc_Debug_Render()
 {
 
 }
+
+function Cain_Talk(){
+	console.log("Talk");
+
+	/*if(npc_Cain_ClickCheck == false)
+	{
+		npc_Cain_ClickCheck = true;
+	}*/
+
+	Cain_TalkBox.visible = true;
+	//text_talk.visible = true;
+
+	//Exit_button.visible = true;
+	//Credits_button.visible = true;
+
+    //nextLine();
+}
+
+
+/*function nextLine2() {
+
+    if (lineIndex2 === content3.length)
+    {
+        return;
+    }
+
+    line2 = content3[lineIndex].split(' ');
+
+    wordIndex2 = 0;
+
+    Lucifer_Game.time.events.repeat(wordDelay2, line2.length, nextWord2, this);
+
+    lineIndex2++;
+
+}
+
+function nextWord() {
+
+    Cain_text_talk.text = Cain_text_talk.text.concat(line2[wordIndex2] + " ");
+
+    wordIndex2++;
+
+    if (wordIndex2 === line2.length)
+    {
+        Cain_text_talk.text = Cain_text_talk.text.concat("\n");
+        Lucifer_Game.time.events.add(lineDelay2, nextLine2, this);
+    }
+}*/
