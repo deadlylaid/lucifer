@@ -106,9 +106,10 @@ function status_Message_Update(Object)
 				if(Object.status_Message_Check == true)
 				{
 					//status_Message_Group.getChildAt(i).body.velocity.y -= 20;
-					status_Message_Group.getChildAt(i).y = (Lucifer_Game.camera.y + status_Message_Group.getChildAt(i).y) - 20;
+					//var change_position = status_Message_Group.getChildAt(i).y - Lucifer_Game.camera.y;
+					//change_position = change_position - 20;
 
-					//console.log(status_Message_Group.getChildAt(i).x, status_Message_Group.getChildAt(i).y);
+					status_Message_Group.getChildAt(i).y = (status_Message_Group.getChildAt(i).y) - 20;
 
 					Object.status_Message_Check = false;
 					Object.message_Time_Check = true;
