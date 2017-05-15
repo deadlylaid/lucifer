@@ -15,15 +15,11 @@ var stage2_LoadScene =
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg2.png', 1280, 800);
 
 		//Stage Preload
-		//----------------------------------------------------------------------------------------------------------
 		stageTwo_Preload();
-		//----------------------------------------------------------------------------------------------------------
 
 		//Shadow
 		shadow_Preload();
 
-		//Player(Bavarian)
-		//----------------------------------------------------------------------------------------------------------
 		player_Effect_Preload();
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Stand',
 								  	  '../../static/images/game/Player/Bavarian/stand/Stand.png', 200, 200);
@@ -39,30 +35,29 @@ var stage2_LoadScene =
 									  '../../static/images/game/Player/Bavarian/skill/skill.png', 200, 200);
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Whirlwind',
 									  '../../static/images/game/Player/Bavarian/whirlwind/whirlwind.png', 200, 200);
-		//----------------------------------------------------------------------------------------------------------
 
 		//Mouse
-		//----------------------------------------------------------------------------------------------------------
 		mouse_Preload();
-		//----------------------------------------------------------------------------------------------------------
+
+		//Item
+		itemsPreload();
+        itemStorePreload();
+
+		//UI
+		ui_Preload();
+
+        //inventory
+        inventoryPreload();
+
+		//Effect
+		blood_Effect_Preload();
 
 		//Monster
-		//----------------------------------------------------------------------------------------------------------
-		//fallen_Shaman_Preload();
 		sandRider_Preload();
 		andariel_Preload();
 		wraith_Preload();
 		deamon_Preload();
 		council_Preload();
-		//----------------------------------------------------------------------------------------------------------
-
-		//Item
-		itemsPreload();
-
-		//UI
-		//----------------------------------------------------------------------------------------------------------
-		ui_Preload();
-		//----------------------------------------------------------------------------------------------------------
 
 		//Quest
 		QuestPreload();

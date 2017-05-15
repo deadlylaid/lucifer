@@ -27,14 +27,20 @@ var stage2_Scene =
 		deamon_Create();
 		council_Create();
 
+		//Queset
+		QuestCreate();
+
+        //inventory
+        inventoryCreate();
+
+        //itemStore
+        itemStoreCreate();
+
 		//UI
 		ui_Create();
 
 		//Skill
 		skill_Create();
-
-		//Queset
-		QuestCreate();
 
 		//mouse movePoint
 		movepoint_Create();
@@ -63,7 +69,6 @@ var stage2_Scene =
 
 		//items Update
         //itemsUpdate();
-
 
 		//Ui Update
 		ui_Update();
