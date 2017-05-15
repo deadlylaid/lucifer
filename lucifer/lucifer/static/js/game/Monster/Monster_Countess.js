@@ -735,10 +735,7 @@ function countess_Update()
 		blood_Effect_Update(countess);
 
 		//Shadow
-		shadow_Monster_Move(countess);
-
-		//Message
-		status_Message_Update(countess);
+		shadow_Monster_Move(countess);	
 	}
 }
 

@@ -120,6 +120,9 @@ var stage1_Scene =
 		//Mouse
 		mouse_Update();
 
+		//Message
+		status_Message_Update();
+				
 		//Portal
 		portal_Check();
 
@@ -134,8 +137,6 @@ var stage1_Scene =
 		{
 			EndingScene();
 		}
-
-
 	},
 
 	render: function()
@@ -163,9 +164,6 @@ var stage1_Scene =
 
 	        //mouse
 	        mouse_Render();
-
-
-
 		}
 	},
 

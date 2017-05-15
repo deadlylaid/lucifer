@@ -930,10 +930,7 @@ function council_Update()
 		blood_Effect_Update(council);
 
 		//Shadow
-		shadow_Monster_Move(council);
-
-		//Message
-		status_Message_Update(council);
+		shadow_Monster_Move(council);		
 	}
 }
 

@@ -764,10 +764,7 @@ function sandRider_Update()
 		blood_Effect_Update(sandRider);
 
 		//Shadow
-		shadow_Monster_Move(sandRider);
-
-		//Message
-		status_Message_Update(sandRider);
+		shadow_Monster_Move(sandRider);	
 	}
 }
 

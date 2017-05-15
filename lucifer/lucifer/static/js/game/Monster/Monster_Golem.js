@@ -711,9 +711,6 @@ function golem_Update()
 
 		//Shadow
 		shadow_Monster_Move(golem);
-
-		//Message
-		status_Message_Update(golem);
 	}
 }
 

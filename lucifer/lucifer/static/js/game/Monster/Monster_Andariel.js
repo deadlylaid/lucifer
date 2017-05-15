@@ -794,10 +794,7 @@ function andariel_Update()
 		blood_Effect_Update(andariel);
 
 		//Shadow
-		shadow_Monster_Move(andariel);
-
-		//Message
-		status_Message_Update(andariel);
+		shadow_Monster_Move(andariel);		
 	}
 }
 
