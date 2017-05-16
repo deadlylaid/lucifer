@@ -20,7 +20,7 @@ var stage3_Scene =
 		//Player
 		player_Create();
 
-		//Item Effect 
+		//Item Effect
 		item_Effect_Create();
 
 		//Monster
@@ -100,6 +100,8 @@ var stage3_Scene =
 
 		if (Portal_Check2 == true)
 		{
+            characterStage='2';
+            gameSave();
 			sound_StopStage1BGM();
 			this.goto_Stage_back();
 			Portal_Check2 = false;

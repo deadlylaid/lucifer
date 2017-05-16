@@ -17,7 +17,11 @@ var nickname,
     experience,
     skill,
     learnedSkill,
-    quickSlot;
+    quickSlot,
+    characterStage,
+    characterPositionX,
+    characterPositionY;
+
 
 var inventory = [];
 
@@ -69,6 +73,10 @@ $.ajax({
 
     accuracy = character.status.accuracy;
     evasion = character.status.evasion;
+
+    characterStage = character.position.stage;
+    characterPositionX = character.position.position_x;
+    characterPositionY = character.position.position_y;
 
     inventory = character.inventory_set;
 

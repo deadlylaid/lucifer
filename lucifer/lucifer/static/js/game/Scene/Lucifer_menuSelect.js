@@ -42,9 +42,13 @@ var menuSelectScene =
 };
 
 function up() {
-   Lucifer_Game.state.start('load');
-   //Lucifer_Game.state.start('stage2_load');	//stage2 확인용.
-   //Lucifer_Game.state.start('stage3_load');	//보스 AI 확인용.
+    if(characterStage==='1'){
+        Lucifer_Game.state.start('load');
+    }else if(characterStage==='2'){
+        Lucifer_Game.state.start('stage2_load');	//stage2 확인용.
+    }else if(characterStage==='3'){
+        Lucifer_Game.state.start('stage3_load');	//보스 AI 확인용.
+    }
 };
 
 function exit() {
