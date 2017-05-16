@@ -80,13 +80,13 @@ function wraith_Create()
 											  'MON_Wraith_Attack', 'MON_Wraith_Dead']);
 
 	wraith_Group = Lucifer_Game.add.group();
-	wraith_Clone(2834, 3345);
-	wraith_Clone(3260, 3105);
-	wraith_Clone(5999, 2580);
-	wraith_Clone(7038, 2869);
-	wraith_Clone(6759, 1691);
-	wraith_Clone(7067, 1867);
+	wraith_Clone(2834, 3345); wraith_Clone(3260, 3105); wraith_Clone(5999, 2580);
+	wraith_Clone(7038, 2869); wraith_Clone(6759, 1691); wraith_Clone(7067, 1867);
 	wraith_Clone(7020, 808);
+
+	wraith_Clone(4721, 3170); wraith_Clone(5166, 3063); wraith_Clone(5271, 3337); wraith_Clone(3502, 1970);
+	wraith_Clone(2987, 2203); wraith_Clone(3579, 2265); wraith_Clone(6884, 4310); wraith_Clone(7174, 4460);
+	wraith_Clone(6602, 3639);
 }
 
 function wraith_Clone(PointX, PointY)

@@ -82,13 +82,15 @@ function countess_Create()
 	Lucifer_Game.renderer.setTexturePriority(['MON_Countess_Stand', 'MON_Countess_Run',
 											  'MON_Countess_Attack', 'MON_Countess_Dead']);
 	countess_Group = Lucifer_Game.add.group();
-	countess_Clone(4142, 2428);
-	countess_Clone(3964, 2315);
-	countess_Clone(4448, 2343);
-	countess_Clone(5265, 1238);
-	countess_Clone(5375, 1387);
-	countess_Clone(5059, 1296);
-	countess_Clone(4984, 1145);
+	countess_Clone(3119, 1392);
+	countess_Clone(3374, 1558);
+	countess_Clone(3178, 1896);
+	countess_Clone(2694, 1836);
+	countess_Clone(3139, 1963);
+	countess_Clone(3952, 1483);
+	countess_Clone(4485, 1097);
+	countess_Clone(4693, 1254);
+	countess_Clone(4498, 1369);
 }
 
 function countess_Clone(PointX, PointY)

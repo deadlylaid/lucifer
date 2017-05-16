@@ -88,9 +88,10 @@ function sandRider_Create()
 
 	Lucifer_Game.renderer.setTexturePriority(['MON_SandRider_Stand', 'MON_SandRider_Walk', 'MON_SandRider_Attack',
 										      'MON_SandRider_Attack1', 'MON_SandRider_Dead']);
-	sandRider_Clone(8753, 2557);
-	sandRider_Clone(8989, 2322);
-	sandRider_Clone(9428, 2503);
+	sandRider_Clone(8753, 2557); sandRider_Clone(8989, 2322); sandRider_Clone(9428, 2503);
+
+	sandRider_Clone(8561, 2113); sandRider_Clone(8867, 1866); sandRider_Clone(9106, 2885); sandRider_Clone(9517, 2806);
+	sandRider_Clone(9815, 2310); sandRider_Clone(4434, 4113); sandRider_Clone(4833, 4271); sandRider_Clone(4407, 4569);
 }
 
 function sandRider_Clone(PointX, PointY)

@@ -86,12 +86,11 @@ function deamon_Create()
 											  'MON_Deamon_Attack', 'MON_Deamon_Dead', 'MON_Deamon_Skill']);
 
 	deamon_Group = Lucifer_Game.add.group();
-	deamon_Clone(4231, 1619);
-	deamon_Clone(4717, 1771);
-	deamon_Clone(5402, 2179);
-	deamon_Clone(10549, 2570);
-	deamon_Clone(7847, 1710);
-	deamon_Clone(8030, 1810);
+	deamon_Clone(4231, 1619); deamon_Clone(4717, 1771); deamon_Clone(5402, 2179);
+	deamon_Clone(10549, 2570); deamon_Clone(7847, 1710); deamon_Clone(8030, 1810);
+
+	deamon_Clone(6176, 2102); deamon_Clone(6455, 2266); deamon_Clone(6757, 2479); 
+	deamon_Clone(7114, 2150);
 }
 //------------------------------------------------------------------------------
 function deamon_Clone(PointX, PointY)
