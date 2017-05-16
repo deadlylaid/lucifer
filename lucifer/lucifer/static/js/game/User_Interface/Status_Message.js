@@ -126,7 +126,7 @@ function status_Message_CheckTimer()
 
 function status_Message_Update()
 {
-	if(ExpCount >= 2)
+	if(ExpCount >= 1)
 	{
 		status_CheckTimer.start();
 	}

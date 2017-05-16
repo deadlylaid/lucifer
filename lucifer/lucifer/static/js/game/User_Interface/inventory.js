@@ -678,7 +678,7 @@ function potionImportQuickSlot(selectedItem){
 //D키를 눌렀을 때 실행되게 될 함수
 function potionDrink(){
     if(quickSlot[0]!==undefined){
-        console.log('potionDrink Test');
+        //console.log('potionDrink Test');
         quickSlot[0].count -= 1;
         if(health + quickSlot[0].heal > maxHealth){
             health = maxHealth;
@@ -696,7 +696,8 @@ function potionDrink(){
             quickSlot[0]=undefined;
 
         }else{
-            //console.log('횟수가 하나 줄은것으로 끝난다');
+            //횟수가 하나 줄은것으로 끝난다 & Item Effect
+            item_Effect_Check = true;
         }
     }else{
         //console.log('No quickSlot');

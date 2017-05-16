@@ -1048,9 +1048,24 @@ function diablo_Dead(Object)
 
 			if(Object.TyrealCheck == false)
 			{	
-				//Tyreal 등장
-				npc_Tyreal.visible = true;				
-				Object.TyrealCheck = true;
+				if(npc_Tyreal_AppearanceEffect_Check == false)
+				{
+					npc_Tyreal_AppearanceEffect.visible = true;
+					npc_Tyreal_AppearanceEffect.animations.play('Tyreal_Effect_Ani', 10, true);
+
+					var CurFrame = npc_Tyreal_AppearanceEffect.animations.frame;
+					var EndFrame = 11;
+
+					if(CurFrame == EndFrame)
+					{
+						//Tyreal 등장
+						npc_Tyreal.visible = true;				
+						Object.TyrealCheck = true;
+						npc_Tyreal_AppearanceEffect.animations.stop('Tyreal_Effect_Ani', true);
+
+						npc_Tyreal_AppearanceEffect_Check = true;
+					}
+				}				
 
 				Object.TyrealCamera_Timer.stop();
 			}

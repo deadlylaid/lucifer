@@ -36,6 +36,9 @@ var stage2_LoadScene =
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Whirlwind',
 									  '../../static/images/game/Player/Bavarian/whirlwind/whirlwind.png', 200, 200);
 
+		//Item Effect
+		item_Effect_Preload();
+
 		//Mouse
 		mouse_Preload();
 

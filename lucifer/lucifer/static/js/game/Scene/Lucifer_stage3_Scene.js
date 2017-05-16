@@ -20,6 +20,9 @@ var stage3_Scene =
 		//Player
 		player_Create();
 
+		//Item Effect 
+		item_Effect_Create();
+
 		//Monster
 		skeleton_Create();
 		diablo_Create();
@@ -29,6 +32,12 @@ var stage3_Scene =
 
 		//Sight Effect
 		sight_Filter_Create();
+
+		 //inventory
+        inventoryCreate();
+
+        //itemStore
+        itemStoreCreate();
 
 		//UI
 		ui_Create();
@@ -58,12 +67,18 @@ var stage3_Scene =
 		//Player Update
 		player_Update();
 
+		//Item Effect Update
+		item_Effect_Update();
+
 		//Monster Update
 		skeleton_Update();
 		diablo_Update();
 
 		//Ui Update
 		ui_Update();
+
+		//items Update
+        itemsStoreUpdate();
 
 		//Quest Update
 		QuestUpdate();
