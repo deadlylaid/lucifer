@@ -2,7 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from users.models import User
-from game.characters.models import Character, Status, Inventory, CharacterQuest, Equipment, LearnedSkill
+from game.characters.models import Character, Status, Inventory, CharacterQuest, Equipment, LearnedSkill, Position
 from game.items.models import Item
 from game.quests.models import Quest
 from game.skills.models import Skill
@@ -62,6 +62,10 @@ def character_post_save(sender, instance, created, **kwargs):
                     accuracy=42,
                     evasion=16,
                     )
+
+        Position.objects.create(
+                character_set=instance,
+                )
 
         instance.user.has_character = True
         instance.user.save()

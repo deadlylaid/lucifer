@@ -18,9 +18,6 @@ from game.quests.api.serializer import QuestSerializer
 from game.skills.models import Skill
 from game.skills.api.serializers import SkillSerializer
 
-from game.stages.models import Stage
-from game.stages.api.serializers import StageSerializer
-
 
 class GameStartAPIView(MultipleModelAPIView):
     """
@@ -38,7 +35,6 @@ class GameStartAPIView(MultipleModelAPIView):
                 (NPC.objects.all(), NPCSerializer),
                 (Quest.objects.all(), QuestSerializer),
                 (Skill.objects.all(), SkillSerializer),
-                (Stage.objects.all(), StageSerializer),
                 )
 
         return queryList
