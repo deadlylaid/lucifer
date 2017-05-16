@@ -5,10 +5,10 @@ var uiStore,
     invenKeyValidCheck = 1,
     redPotionGroup,
     tempInventory = [];
-
 var drinkKeyTimer , drinkKeyValidCheck = 1;
-
 var ItemSelectCheck = 0;
+var alert_Gold, alert_Inventory, alert_SelectItem;
+var alert_Timer, alert_Time_Total = 0;
 
 function itemStorePreload(){
 
@@ -45,6 +45,11 @@ function itemStorePreload(){
     //Item Select Frame
     Lucifer_Game.load.spritesheet('Item_Select_Frame',
                                   '../../static/images/game/UI/Store/SelectFrame.png', 44, 83);
+
+    //Alert
+    Lucifer_Game.load.image('Gold_Alert', '../../static/images/game/UI/Alert/Gold_Alert.png');
+    Lucifer_Game.load.image('Inventory_Alert', '../../static/images/game/UI/Alert/Inventory_Alert.png');
+    Lucifer_Game.load.image('Select_Alert', '../../static/images/game/UI/Alert/Select_Alert.png');
 };
 
 function itemStoreCreate(){
@@ -299,6 +304,32 @@ function itemStoreCreate(){
     gold_text = Lucifer_Game.add.text(1030, 605, gold, itemStoreStyle);
     gold_text.fixedToCamera = true;
     gold_text.visible = false;
+
+    //Alert
+    //---------------------------------------------------------------------------------------
+    alert_Gold = Lucifer_Game.add.image(640, 400, 'Gold_Alert');
+    alert_Gold.anchor.setTo(0.5, 0.5);
+    alert_Gold.visible = false;
+    alert_Gold.fixedToCamera = true;
+
+    alert_Inventory = Lucifer_Game.add.image(640, 400, 'Inventory_Alert');
+    alert_Inventory.anchor.setTo(0.5, 0.5);
+    alert_Inventory.visible = false;
+    alert_Inventory.fixedToCamera = true;
+
+    alert_SelectItem = Lucifer_Game.add.image(640, 400, 'Select_Alert');
+    alert_SelectItem.anchor.setTo(0.5, 0.5);
+    alert_SelectItem.visible = false;
+    alert_SelectItem.fixedToCamera = true;
+
+    alert_Timer = Lucifer_Game.time.create(false);
+    alert_Timer.loop(1000, alert_Count_Time, Lucifer_Game);
+    //---------------------------------------------------------------------------------------
+}
+
+function alert_Count_Time()
+{
+    ++alert_Time_Total;
 }
 
 function itemsStoreUpdate(){
@@ -338,6 +369,26 @@ function itemsStoreUpdate(){
         }
     }
 
+    //Alert
+    if(alert_Gold.visible == true 
+       || alert_Inventory.visible == true 
+       || alert_SelectItem.visible == true)
+    {
+        alert_Timer.start();
+    }
+    else if(alert_Gold.visible == false 
+       && alert_Inventory.visible == false 
+       && alert_SelectItem.visible == false)
+    {
+        alert_Time_Total = 0;
+    }
+
+    if(alert_Time_Total > 1)
+    {
+        alert_Gold.visible = false;
+        alert_Inventory.visible = false;
+        alert_SelectItem.visible = false;
+    }
 }
 
 function itemStoreRender(){
@@ -609,13 +660,16 @@ function clickItem(sprite){
 
 function buyItem() {
     if(selectedItem === null){
-        alert("먼저 구매할 물건을 클릭하세요");
+        //alert("먼저 구매할 물건을 클릭하세요");
+        alert_SelectItem.visible = true;
     }else{
         if(inventory.length>=10){
-            alert("인벤토리가 가득 찼습니다.");
+            //alert("인벤토리가 가득 찼습니다.");
+            alert_Inventory.visible = true;
         }else{
             if(gold>selectedItem.price){
-                alert("구매한 물건 : " + selectedItem.name);
+                //alert("구매한 물건 : " + selectedItem.name);
+                status_Message_Item(selectedItem.name);
                 inventory.push(selectedItem);
                 selectedItem.getVisible(true);
                 inventoryPost(selectedItem.name);
@@ -628,7 +682,8 @@ function buyItem() {
                     }
                 }
             }else{
-                alert("소지한 골드가 부족합니다");
+                //alert("소지한 골드가 부족합니다");
+                alert_Gold.visible = true;
             }
 
         }
