@@ -128,12 +128,14 @@ var stage1_Scene =
 
 		//Message
 		status_Message_Update();
-				
+
 		//Portal
 		portal_Check();
 
 		if(Portal_Check == true)
 		{
+            characterStage='2';
+            gameSave();
 			sound_StopStage1BGM();
 			this.goto_Stage2();
 			Portal_Check = false;

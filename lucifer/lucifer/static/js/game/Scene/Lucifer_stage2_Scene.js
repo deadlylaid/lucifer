@@ -99,6 +99,8 @@ var stage2_Scene =
 
 		if(Portal_Check == true)
 		{
+            characterStage='3';
+            gameSave();
 			sound_StopStage1BGM();
 			this.goto_Stage3();
 			Portal_Check = false;
@@ -108,6 +110,8 @@ var stage2_Scene =
 
 		if (Portal_Check2 == true)
 		{
+            characterStage='1';
+            gameSave();
 			sound_StopStage1BGM();
 			this.goto_Stage_back();
 			Portal_Check2 = false;

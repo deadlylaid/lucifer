@@ -21,7 +21,7 @@ function player_Create()
 	//Player create
 	if(stageOne_Check == true)
 	{
-		Player = Lucifer_Game.add.sprite(875, 1637, 'PY_Bavarian_Attack');
+		Player = Lucifer_Game.add.sprite(characterPositionX, characterPositionY, 'PY_Bavarian_Attack');
 
 		if(BackStageMove == 0)
 		{

@@ -24,6 +24,9 @@ class GameSaveAPIView(APIView):
         third_skill_damage = self.request.data.get('thirdkillDamage')
         fourth_skill_damage = self.request.data.get('fourthSkillDamage')
         fifth_skill_damage = self.request.data.get('fifthSkillDamage')
+        character_stage = self.request.data.get('characterStage')
+        character_position_x = self.request.data.get('characterPositionX')
+        character_position_y = self.request.data.get('characterPositionY')
 
         user = self.request.user
         character = Character.objects.get(user=user)
@@ -44,6 +47,12 @@ class GameSaveAPIView(APIView):
         character.status.experience = experience
 
         character.status.save()
+
+        character.position.stage = character_stage
+        character.position.position_x = character_position_x
+        character.position.position_y = character_position_y
+
+        character.position.save()
 
         skills = character.learnedskill_set.all()
         skills[0].damage = first_skill_damage
