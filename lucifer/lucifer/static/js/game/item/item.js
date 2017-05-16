@@ -34,6 +34,7 @@ potion = function (game, positionX, positionY, spriteKey, heal, price, index, it
     this.count;
 
     this.drinkEnable = false;
+    this.isQuickSlot = false;
 
     var itemData = [
         [ itemList[index].name ],
