@@ -5,6 +5,8 @@ var text_talk;
 var Talkbox;
 var Tyreal_Rect;
 var npc_Tyreal_ClickCheck = false;
+var npc_Tyreal_AppearanceEffect_Check = false;
+var npc_Tyreal_AppearanceEffect;
 //---------------------------------------------------------------------------------------
 
 //Talkbox effct
@@ -48,6 +50,7 @@ function npc_Tyreal_Preload()
 
 	Lucifer_Game.load.spritesheet('Exit_button', '../../static/images/game/Ending/Ending_exitbtn.png', 110, 35);
 	Lucifer_Game.load.spritesheet('Credits_button', '../../static/images/game/Ending/Ending_creditsbtn.png', 110, 35);
+	Lucifer_Game.load.spritesheet('Tyreal_Effect', '../../static/images/game/Effect/LevelUp_Effect/Level_Effect.png', 128, 113);
 }
 
 function npc_Tyreal_Create(PointX, PointY)
@@ -114,13 +117,20 @@ function npc_Tyreal_Create(PointX, PointY)
 
     Exit_button.input.useHandCursor = true;
     Credits_button.input.useHandCursor = true;
-	
 
+    //Appearance_Effect
+    npc_Tyreal_AppearanceEffect = Lucifer_Game.add.sprite(npc_Tyreal.x, npc_Tyreal.y, 'Tyreal_Effect');
+    npc_Tyreal_AppearanceEffect.anchor.setTo(0.5, 0.5);
+    npc_Tyreal_AppearanceEffect.visible = false;
+    npc_Tyreal_AppearanceEffect.blendMode = Phaser.blendModes.ADD;
+
+    //Effect Animation
+    npc_Tyreal_AppearanceEffect.animations.add('Tyreal_Effect_Ani',
+    											[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 60, true);
+    npc_Tyreal_AppearanceEffect.animations.play('Tyreal_Effect_Ani', 10, true);
 }
 
 function EndingTalk(){
-	console.log("Talk");
-
 	if(npc_Tyreal_ClickCheck == false)
 	{
 		npc_Tyreal_ClickCheck = true;

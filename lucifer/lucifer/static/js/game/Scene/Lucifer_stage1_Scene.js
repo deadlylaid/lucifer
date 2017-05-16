@@ -32,6 +32,9 @@ var stage1_Scene =
 		//Appearance Effect
 		Appearance_Effect_Create();
 
+		//Item Effect
+		item_Effect_Create();
+
 		//Monster
 		golem_Create();
 		countess_Create();
@@ -91,6 +94,9 @@ var stage1_Scene =
 
 		//Appearance Effect Update
 		Appearance_Effect_Update();
+
+		//Item Effect Update
+		item_Effect_Update();
 
 		//Monster Update
 		golem_Update();

@@ -44,6 +44,9 @@ var loadScene =
 		//Appearance_Effect
 		Appearance_Effect_Preload();
 
+		//Item Effect
+		item_Effect_Preload();
+
 		//Mouse
 		mouse_Preload();
 

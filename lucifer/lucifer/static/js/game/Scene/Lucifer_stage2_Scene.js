@@ -19,6 +19,9 @@ var stage2_Scene =
 		//Player
 		player_Create();
 
+		//Item Effect
+		item_Effect_Create();
+
 		//Monster
 		//fallen_Shaman_Create();
 		sandRider_Create();
@@ -58,6 +61,9 @@ var stage2_Scene =
 	{
 		//Player Update
 		player_Update();
+
+		//Item Effect Update
+		item_Effect_Update();
 
 		//Monster Update
 		//fallen_Shaman_Update();
