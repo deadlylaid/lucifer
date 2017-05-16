@@ -600,8 +600,8 @@ function changeServerListToClientList(){
 }
 
 function changeServerListToClientListQuickSlot(){
-    var count = quickSlot[0].count;
     if(quickSlot[0]!==undefined){
+    var count = quickSlot[0].count;
         if(quickSlot[0].potion_name!==undefined){
             switch(quickSlot[0].potion_name){
                 case '빨간물약':

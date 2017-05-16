@@ -1,7 +1,15 @@
 from django.db import models
+from .character import Character
 
 
-class Stage(models.Model):
+class Position(models.Model):
+
+    character_set = models.OneToOneField(
+            Character,
+            # 상위 object 삭제시 같이 삭제됨
+            on_delete=models.CASCADE,
+            primary_key=True,
+            )
 
     stage = models.CharField(
             default=1,
