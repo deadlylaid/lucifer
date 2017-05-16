@@ -99,13 +99,13 @@ function council_Create()
 
 	council_Group = Lucifer_Game.add.group();
 
-	council_Clone(2143, 2528);
-	council_Clone(2381, 2316);
-	council_Clone(2127, 2808);
-	council_Clone(1658, 2517);
-	council_Clone(5821, 906);
-	council_Clone(6221, 873);
+	council_Clone(2143, 2528); council_Clone(2381, 2316); council_Clone(2127, 2808);
+	council_Clone(1658, 2517); council_Clone(5821, 906);  council_Clone(6221, 873);
 	council_Clone(6141, 1149);
+
+	council_Clone(3457, 3444); council_Clone(3783, 3625); council_Clone(4129, 3790);
+	council_Clone(4594, 3636); council_Clone(5042, 4737); council_Clone(5326, 4473);
+	council_Clone(5581, 4641); council_Clone(5383, 4869);
 }
 
 function council_Clone(PointX, PointY)
