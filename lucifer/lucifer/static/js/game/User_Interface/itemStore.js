@@ -296,9 +296,6 @@ function itemStoreCreate(){
     Item_Select_Frame.visible = false;
     //---------------------------------------------------------------------------------------
 
-    changeServerListToClientList();
-    changeServerListToClientListEquipment();
-
     gold_text = Lucifer_Game.add.text(1030, 605, gold, itemStoreStyle);
     gold_text.fixedToCamera = true;
     gold_text.visible = false;

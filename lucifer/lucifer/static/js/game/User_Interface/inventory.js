@@ -1,3 +1,4 @@
+var testList = [];
 function inventoryPreload(){
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
 
@@ -37,6 +38,9 @@ function inventoryCreate(){
 
     useButton.inputEnabled = true;
     useButton.events.onInputDown.add(useItem, this);
+
+    changeServerListToClientList();
+    changeServerListToClientListEquipment();
 
 }
 
@@ -429,39 +433,78 @@ function inventoryPosition(count){
 }
 
 function changeServerListToClientListEquipment(){
-    var equipmentLength = equipmentList.length;
-    for(i=0; i<equipmentLength; i++){
-        switch(equipmentList[i].item_name){
-            case '기본검':
-                equipmentList[0] = createEquipmentAndSetPosition('기본검');
+    if(equipmentList[0].item_name!==undefined){
+        var equipmentLength = equipmentList.length;
+        for(i=0; i<equipmentLength; i++){
+            switch(equipmentList[i].item_name){
+                case '기본검':
+                    equipmentList[0] = createEquipmentAndSetPosition('기본검');
 
-                equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
-                break;
-            case '강화된검':
-                equipmentList[0] = createEquipmentAndSetPosition('강화된검');
+                    equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+                    break;
+                case '강화된검':
+                    equipmentList[0] = createEquipmentAndSetPosition('강화된검');
 
-                equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
-                break;
-            case '마검':
-                equipmentList[0] = createEquipmentAndSetPosition('마검');
+                    equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+                    break;
+                case '마검':
+                    equipmentList[0] = createEquipmentAndSetPosition('마검');
 
-                equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
-                break;
-            case '기본갑옷':
-                equipmentList[1] = createEquipmentAndSetPosition('기본갑옷');
+                    equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+                    break;
+                case '기본갑옷':
+                    equipmentList[1] = createEquipmentAndSetPosition('기본갑옷');
 
-                equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
-                break;
-            case '강화갑옷':
-                equipmentList[1] = createEquipmentAndSetPosition('강화갑옷');
+                    equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+                    break;
+                case '강화갑옷':
+                    equipmentList[1] = createEquipmentAndSetPosition('강화갑옷');
 
-                equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
-                break;
-            case '증오':
-                equipmentList[1] = createEquipmentAndSetPosition('증오');
+                    equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+                    break;
+                case '증오':
+                    equipmentList[1] = createEquipmentAndSetPosition('증오');
 
-                equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
-                break;
+                    equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+                    break;
+            }
+        }
+    }
+    if(equipmentList[0].name!==undefined){
+        var equipmentLength = equipmentList.length;
+        for(i=0; i<equipmentLength; i++){
+            switch(equipmentList[i].name){
+                case '기본검':
+                    equipmentList[0] = createEquipmentAndSetPosition('기본검');
+
+                    equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+                    break;
+                case '강화된검':
+                    equipmentList[0] = createEquipmentAndSetPosition('강화된검');
+
+                    equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+                    break;
+                case '마검':
+                    equipmentList[0] = createEquipmentAndSetPosition('마검');
+
+                    equipmentCalculater(equipmentList[0].attack_point, equipmentList[0].type_is);
+                    break;
+                case '기본갑옷':
+                    equipmentList[1] = createEquipmentAndSetPosition('기본갑옷');
+
+                    equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+                    break;
+                case '강화갑옷':
+                    equipmentList[1] = createEquipmentAndSetPosition('강화갑옷');
+
+                    equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+                    break;
+                case '증오':
+                    equipmentList[1] = createEquipmentAndSetPosition('증오');
+
+                    equipmentCalculater(equipmentList[1].defence_point, equipmentList[1].type_is);
+                    break;
+            }
         }
     }
 }
@@ -472,63 +515,118 @@ function clickedItemInInventory(sprite){
 
 //server-side에서 호출된 인벤토리 속 아이템 객체들을 js 오브잭트로 치환해준다.
 function changeServerListToClientList(){
-    invenArrayLength = inventory.length;
-    for(i=0; i<invenArrayLength; i++){
-        switch(inventory[i].item_name){
-            case '빨간물약':/*335, 470*/
-                inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
-            case '좋은물약':
-                inventory[i]=goodRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
-            case '최고의물약':
-                inventory[i]=bestRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
-            case '기본검':
-                inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
-            case '강화된검':
-                inventory[i]=strongSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
-            case '마검':
-                inventory[i]=superSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
-            case '기본갑옷':
-                inventory[i]=basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
-            case '강화갑옷':
-                inventory[i]=strongArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
-            case '증오':
-                inventory[i]=superArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
-                inventory[i].numberInArray = i;
-                break;
+        var invenArrayLength = inventory.length;
+        for(i=0; i<invenArrayLength; i++){
+            if(inventory[i].item_name!==undefined){
+                switch(inventory[i].item_name){
+                    case '빨간물약':/*335, 470*/
+                        inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '좋은물약':
+                        inventory[i]=goodRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '최고의물약':
+                        inventory[i]=bestRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '기본검':
+                        inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '강화된검':
+                        inventory[i]=strongSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '마검':
+                        inventory[i]=superSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '기본갑옷':
+                        inventory[i]=basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '강화갑옷':
+                        inventory[i]=strongArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '증오':
+                        inventory[i]=superArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                }
+            }else{
+                switch(inventory[i].name){
+                    case '빨간물약':/*335, 470*/
+                        inventory[i]=redPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '좋은물약':
+                        inventory[i]=goodRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '최고의물약':
+                        inventory[i]=bestRedPotionClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '기본검':
+                        inventory[i]=basicSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '강화된검':
+                        inventory[i]=strongSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '마검':
+                        inventory[i]=superSwordClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '기본갑옷':
+                        inventory[i]=basicArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '강화갑옷':
+                        inventory[i]=strongArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                    case '증오':
+                        inventory[i]=superArmorClone(inventoryPosition(i)[0], inventoryPosition(i)[1]);
+                        inventory[i].numberInArray = i;
+                        break;
+                }
+            }
         }
-    }
 }
 
 function changeServerListToClientListQuickSlot(){
+    var count = quickSlot[0].count;
     if(quickSlot[0]!==undefined){
-        var count = quickSlot[0].count;
-        switch(quickSlot[0].potion_name){
-            case '빨간물약':
-                quickSlot[0]=redPotionClone(727, 760);
-                break;
-            case '좋은물약':
-                quickSlot[0] = goodRedPotionClone(727, 760);
-                break;
-            case '최고의물약':
-                quickSlot[0] = bestRedPotionClone(727, 760);
-                break;
+        if(quickSlot[0].potion_name!==undefined){
+            switch(quickSlot[0].potion_name){
+                case '빨간물약':
+                    quickSlot[0]=redPotionClone(727, 760);
+                    break;
+                case '좋은물약':
+                    quickSlot[0] = goodRedPotionClone(727, 760);
+                    break;
+                case '최고의물약':
+                    quickSlot[0] = bestRedPotionClone(727, 760);
+                    break;
+            }
+        }else{
+            switch(quickSlot[0].name){
+                case '빨간물약':
+                    quickSlot[0]=redPotionClone(727, 760);
+                    break;
+                case '좋은물약':
+                    quickSlot[0] = goodRedPotionClone(727, 760);
+                    break;
+                case '최고의물약':
+                    quickSlot[0] = bestRedPotionClone(727, 760);
+                    break;
         }
+    }
         quickSlot[0].count = count;
         quickSlot[0].visible=true;
     }
