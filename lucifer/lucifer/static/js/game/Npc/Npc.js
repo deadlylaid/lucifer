@@ -9,6 +9,8 @@ var npc_Cain_ClickCheck = false;
 var Cain_text_talk;
 var Cain_TalkBox;
 
+var Cain_Credits_button;
+
 //Talkbox effct
 var line2 = [];
 var wordIndex2 = 0;
@@ -18,11 +20,11 @@ var wordDelay2 = 120;
 var lineDelay2 = 400;
 
 var content3 = [
-    "영웅이여, 나는 타이리얼이라고 하네..",
-    "이 땅에 루시퍼가 부활한 지 10년이 지났지만 더 강력하게 부활한 루시퍼를",
-    "평화로운 세상에 안주했던 우리들 천사와 인간들의 힘으로 도저히 당해낼 수 없었네..",
-    "평화에 적응된 인간들과 천사들은 이번 일을 계기로 다시 재정비를 할 것이야.",
-    "자네 덕분에 인간세상에 다시 평화가 찾아왔어. 정말 고맙네.."
+    "영웅이여, 나는 이 마을의 촌장 할랜드라고 하네.",
+    "자네를 이 땅에 소환한 사람이기도 하지.",
+    "인간세계를 지배한 루시퍼의 부하들 때문에 수많은 사람들이",
+    "가족을 잃었네.. 악마들과 그들의 보스인 루시퍼를 처치해",
+    "다시 인간세계에 빛을 밝혀주게나.. 모든 지원을 아끼지 않겠네."
 ];
 
 //Talk box btn
@@ -37,6 +39,8 @@ function npc_Preload()
 								  '../../static/images/game/Npc/cain/cain.png', 70, 70);
 
 	Lucifer_Game.load.spritesheet('Cain_TalkBox', '../../static/images/game/Npc/cain/cain_Talkbox.png', 990, 400);
+
+	Lucifer_Game.load.spritesheet('Cain_TalkBox_btn', '../../static/images/game/Npc/cain/cain_Talkbox_btn.png', 110, 35);
 }
 
 function npc_Create()
@@ -92,7 +96,7 @@ function npc_Create()
     store_Npc.events.onInputDown.add(showStore, this);
 
 
-    Cain_TalkBox = Lucifer_Game.add.sprite(600, 510, 'Cain_TalkBox');
+    Cain_TalkBox = Lucifer_Game.add.sprite(600, 475, 'Cain_TalkBox');
 	Cain_TalkBox.fixedToCamera = true;
 	Cain_TalkBox.anchor.setTo(0.5, 0.5);
 	Cain_TalkBox.visible = false;
@@ -101,6 +105,21 @@ function npc_Create()
 	cain_Npc.inputEnabled = true;
 	cain_Npc.events.onInputDown.add(Cain_Talk, this);
 
+	//Talkbox Text 
+	Cain_text_talk = Lucifer_Game.add.text(480, 596, '', {font: '15px', fill: '#ffffff'});
+    Cain_text_talk.anchor.set(0.5);
+    Cain_text_talk.fixedToCamera = true;
+    Cain_text_talk.font = 'Myungjo';
+    Cain_text_talk.fontWeight = 'bold';
+    Cain_text_talk.lineSpacing = 0;
+    Cain_text_talk.visible = false;
+
+    //Talkbox btn
+	Cain_Credits_button = Lucifer_Game.add.button(938, 615, 'Cain_TalkBox_btn', TalkboxExit, this, 1, 0);
+	Cain_Credits_button.fixedToCamera = true;
+    Cain_Credits_button.onInputUp.add(TalkboxExit, this); 
+    Cain_Credits_button.visible = false;
+    Cain_Credits_button.input.useHandCursor = true;
 
 }
 
@@ -193,31 +212,28 @@ function Cain_Talk(){
 	{
 		npc_Cain_ClickCheck = true;
 		Cain_TalkBox.visible = true;
+		Cain_text_talk.visible = true;
+		Cain_Credits_button.visible = true;
+		nextLine2();
 
 	}else if(npc_Cain_ClickCheck == true)
 	{
 		npc_Cain_ClickCheck = false;
 		Cain_TalkBox.visible = false;
+		Cain_text_talk.visible = false;
+		Cain_Credits_button.visible = false;
 	}
-	
-
-	//text_talk.visible = true;
-
-	//Exit_button.visible = true;
-	//Credits_button.visible = true;
-
-    //nextLine();
 }
 
 
-/*function nextLine2() {
+function nextLine2() {
 
     if (lineIndex2 === content3.length)
     {
         return;
     }
 
-    line2 = content3[lineIndex].split(' ');
+    line2 = content3[lineIndex2].split(' ');
 
     wordIndex2 = 0;
 
@@ -227,7 +243,7 @@ function Cain_Talk(){
 
 }
 
-function nextWord() {
+function nextWord2() {
 
     Cain_text_talk.text = Cain_text_talk.text.concat(line2[wordIndex2] + " ");
 
@@ -238,4 +254,13 @@ function nextWord() {
         Cain_text_talk.text = Cain_text_talk.text.concat("\n");
         Lucifer_Game.time.events.add(lineDelay2, nextLine2, this);
     }
-}*/
+}
+
+function TalkboxExit(){
+
+		npc_Cain_ClickCheck = false;
+		Cain_TalkBox.visible = false;
+		Cain_text_talk.visible = false;
+		Cain_Credits_button.visible = false;
+
+}
