@@ -88,13 +88,13 @@ function npc_Tyreal_Create(PointX, PointY)
 	Lucifer_Game.add.existing(npc_Tyreal);
 
 	//Talkbox background image 
-	Talkbox = Lucifer_Game.add.sprite(600, 510, 'Tyreal_TalkBox');
+	Talkbox = Lucifer_Game.add.sprite(600, 475, 'Tyreal_TalkBox');
 	Talkbox.fixedToCamera = true;
 	Talkbox.anchor.setTo(0.5, 0.5);
 	Talkbox.visible = false;
 
 	//Talkbox Text 
-	text_talk = Lucifer_Game.add.text(540, 631, '', {font: '15px', fill: '#ffffff'});
+	text_talk = Lucifer_Game.add.text(540, 596, '', {font: '15px', fill: '#ffffff'});
     text_talk.anchor.set(0.5);
     text_talk.fixedToCamera = true;
     text_talk.font = 'Myungjo';
@@ -103,8 +103,8 @@ function npc_Tyreal_Create(PointX, PointY)
     text_talk.visible = false;
 
     //Talkbox btn
-    Exit_button = Lucifer_Game.add.button(820, 650, 'Exit_button', exit2, this, 1, 0);
-	Credits_button = Lucifer_Game.add.button(938, 650, 'Credits_button', credits, this, 1, 0);
+    Exit_button = Lucifer_Game.add.button(820, 615, 'Exit_button', exit2, this, 1, 0);
+	Credits_button = Lucifer_Game.add.button(938, 615, 'Credits_button', credits, this, 1, 0);
 
 	Exit_button.fixedToCamera = true;
 	Credits_button.fixedToCamera = true;
