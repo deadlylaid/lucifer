@@ -12,6 +12,8 @@ var key_Stat, Key_Skill, ui_Delay_Time;
 
 var UI_close;
 
+var Save_btn;
+
 function ui_Preload()
 {
 	//UI
@@ -21,6 +23,7 @@ function ui_Preload()
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status2.png', 496, 961);
     Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 525);
     Lucifer_Game.load.spritesheet('UI_ExperienceBar', '../../static/images/game/UI/UnderBar/Experience_Bar.png', 520, 8);
+    Lucifer_Game.load.spritesheet('Save_btn', '../../static/images/game/UI/UnderBar/Save_btn.png', 92, 43);
 
     //Quickslot Potion
     Lucifer_Game.load.spritesheet('Quickslot_Potion1',
@@ -50,6 +53,8 @@ function ui_Create()
     UI_UnderBar.anchor.setTo(0.5, 0.5);
     UI_UnderBar.fixedToCamera = true;
 
+    //Save btn
+
     /*
     Lucifer_Game.physics.p2.enable(UI_UnderBar);
     UI_UnderBar.body.static = true;
@@ -78,6 +83,14 @@ function ui_Create()
     UI_ExperienceBar.anchor.setTo(0.5, 0.5);
     UI_ExperienceBar.fixedToCamera = true;
     UI_ExperienceBar.visible = false;
+
+    //Save btn
+    Save_btn = Lucifer_Game.add.button(UI_UnderBar.x + 156, UI_UnderBar.y + 4, 'Save_btn', Savebtn, this, 1, 0);
+    Save_btn.fixedToCamera = true;
+    Save_btn.onInputUp.add(Savebtn, this); 
+    Save_btn.visible = true;
+    Save_btn.input.useHandCursor = true;
+
 
     experienceBar_Mask = Lucifer_Game.add.graphics(UI_ExperienceBar.x, UI_ExperienceBar.y);
     experienceBar_Mask.fixedToCamera = true;
@@ -414,3 +427,6 @@ function updateStatus(){
     return parsedStatusData.text;
 }
 
+function Savebtn(){
+    //Save 기능을 하는 함수
+}
