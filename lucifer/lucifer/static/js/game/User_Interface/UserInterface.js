@@ -2,7 +2,9 @@ var statusDataText,
     keyValidTimer,
     validCheck = 1,
     hpMask,
-    mpMask
+    mpMask;
+
+//var buttonClickCheck=false;
 //----------------------------------------------------------------------------------------------------------
 var UI_Group, UI_UnderBar, UI_HpBar, UI_MpBar, UI_QuickSlot, UI_Stat, UI_Skill;	//UI 이미지 변수.
 var UI_UnderBar_ClickCheck = false;
@@ -15,15 +17,14 @@ var UI_close;
 var Save_btn;
 
 function ui_Preload()
-{
-	//UI
+{ //UI
 	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 1040, 134);
 	Lucifer_Game.load.spritesheet('UI_HpBar', '../../static/images/game/UI/UnderBar/UI_HpBar.png', 120, 120);
 	Lucifer_Game.load.spritesheet('UI_MpBar', '../../static/images/game/UI/UnderBar/UI_MpBar.png', 120, 120);
 	Lucifer_Game.load.spritesheet('UI_Stat', '../../static/images/game/UI/Stat/status2.png', 496, 961);
     Lucifer_Game.load.spritesheet('UI_Skill', '../../static/images/game/UI/SkillBack/Ui_Skill.png', 791, 525);
     Lucifer_Game.load.spritesheet('UI_ExperienceBar', '../../static/images/game/UI/UnderBar/Experience_Bar.png', 520, 8);
-    Lucifer_Game.load.spritesheet('Save_btn', '../../static/images/game/UI/UnderBar/Save_btn.png', 92, 43);
+    Lucifer_Game.load.spritesheet('saveBtn', '../../static/images/game/UI/UnderBar/Save_btn.png', 92, 43);
 
     //Quickslot Potion
     Lucifer_Game.load.spritesheet('Quickslot_Potion1',
@@ -85,11 +86,13 @@ function ui_Create()
     UI_ExperienceBar.visible = false;
 
     //Save btn
-    Save_btn = Lucifer_Game.add.button(UI_UnderBar.x + 156, UI_UnderBar.y + 4, 'Save_btn', Savebtn, this, 1, 0);
+    Save_btn = Lucifer_Game.add.button(UI_UnderBar.x + 156, UI_UnderBar.y + 4, 'saveBtn', saveBtn, this, 1, 0);
     Save_btn.fixedToCamera = true;
-    Save_btn.onInputUp.add(Savebtn, this); 
+    Save_btn.onInputUp.add(saveBtn, this);
     Save_btn.visible = true;
     Save_btn.input.useHandCursor = true;
+    Save_btn.events.onInputDown.add(underBar_Down, this);
+    Save_btn.events.onInputOut.add(underBar_Out, this);
 
 
     experienceBar_Mask = Lucifer_Game.add.graphics(UI_ExperienceBar.x, UI_ExperienceBar.y);
@@ -427,6 +430,7 @@ function updateStatus(){
     return parsedStatusData.text;
 }
 
-function Savebtn(){
+function saveBtn(){
     //Save 기능을 하는 함수
+    gameSave();
 }
