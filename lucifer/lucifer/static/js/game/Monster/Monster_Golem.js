@@ -157,9 +157,9 @@ function golem_Clone(PointX, PointY)
 	golem_Object.Name.anchor.set(0.5);
 	golem_Object.Name.align = "center";
 	golem_Object.Name.font = 'Arial';
-	golem_Object.Name.fontSize = 13;
-	golem_Object.Name.fontWeight = 'normal';
-	golem_Object.Name.fill = '#19de65';
+	golem_Object.Name.fontSize = 14;
+	golem_Object.Name.fontWeight = 'bold';
+	golem_Object.Name.fill = '#ff4200';
     golem_Object.Name.visible = false;
 
 	//enable all input lick 'click', 'over', etc...
@@ -219,7 +219,7 @@ function golem_FollwName(Object)
 	{
 		Object.Name.x = Object.position.x;
 
-		var golem_NamePointY = Object.position.y + 70;
+		var golem_NamePointY = Object.position.y + 75;
 		Object.Name.y = golem_NamePointY;
 	}
 }

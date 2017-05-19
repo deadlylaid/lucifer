@@ -182,9 +182,9 @@ function countess_Clone(PointX, PointY)
 	countess_Object.Name.anchor.set(0.5);
 	countess_Object.Name.align = 'center';
 	countess_Object.Name.font = 'Arial';
-	countess_Object.Name.fontSize = 13;
-	countess_Object.Name.fontWeight = 'normal';
-	countess_Object.Name.fill = '#19de65';
+	countess_Object.Name.fontSize = 14;
+	countess_Object.Name.fontWeight = 'bold';
+	countess_Object.Name.fill = '#77da47';
 	countess_Object.Name.visible = false;
 
 	//Input mouse Over / Up

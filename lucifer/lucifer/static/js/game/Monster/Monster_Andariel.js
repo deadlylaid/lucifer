@@ -177,9 +177,9 @@ function andariel_Clone(PointX, PointY)
 	andariel_Object.Name.anchor.set(0.5);
 	andariel_Object.Name.align = 'center';
 	andariel_Object.Name.font = 'Arial';
-	andariel_Object.Name.fontSize = 13;
-	andariel_Object.Name.fontWeight = 'normal';
-	andariel_Object.Name.fill = '#19de65';
+	andariel_Object.Name.fontSize = 14;
+	andariel_Object.Name.fontWeight = 'bold';
+	andariel_Object.Name.fill = '#ff4200';
 	andariel_Object.Name.visible = false;
 
 	//input Mouse Over / Up
@@ -265,7 +265,7 @@ function andariel_FollwName(Object)
 {
 	Object.Name.x = Object.position.x;
 
-	var NamePointY = Object.position.y + 70;
+	var NamePointY = Object.position.y + 90;
 	Object.Name.y = NamePointY;
 }
 //----------------------------------------------------------------------------------------------

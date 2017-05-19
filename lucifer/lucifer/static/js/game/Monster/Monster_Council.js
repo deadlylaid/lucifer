@@ -207,9 +207,9 @@ function council_Clone(PointX, PointY)
 	council_Object.Name.anchor.set(0.5);
 	council_Object.Name.align = 'center';
 	council_Object.Name.font = 'Arial';
-	council_Object.Name.fontSize = 13;
-	council_Object.Name.fontWeight = 'normal';
-	council_Object.Name.fill = '#19de65';
+	council_Object.Name.fontSize = 14;
+	council_Object.Name.fontWeight = 'bold';
+	council_Object.Name.fill = '#77da47';
 	council_Object.Name.visible = false;
 
 	//Input mouse Over / Up
@@ -315,9 +315,9 @@ function council_PatternTimer(Object)
 //Name
 function council_FollwName(Object)
 {
-	Object.Name.x = Object.position.x;
+	Object.Name.x = Object.position.x - 5;
 
-	var NamePointY = Object.position.y + 70;
+	var NamePointY = Object.position.y + 65;
 	Object.Name.y = NamePointY;
 }
 //----------------------------------------------------------------------------------------------
