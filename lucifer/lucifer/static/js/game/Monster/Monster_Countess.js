@@ -252,7 +252,7 @@ function countess_FollwName(Object)
 {
 	Object.Name.x = Object.position.x;
 
-	var NamePointY = Object.position.y + 70;
+	var NamePointY = Object.position.y + 60;
 	Object.Name.y = NamePointY;
 }
 //----------------------------------------------------------------------------------------------

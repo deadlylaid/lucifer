@@ -238,7 +238,7 @@ function stageThree_Create()
 
     //-------------------------------------------------------------------------------------------
 
-    Stage3_AlertText = Lucifer_Game.add.text(90, 780, "BOSS Stage", {font: '20px Roboto', fill: '#d13034'});
+    Stage3_AlertText = Lucifer_Game.add.text(90, 25, "BOSS Stage", {font: '20px Roboto', fill: '#d13034'});
     Stage3_AlertText.anchor.set(0.5);
     Stage3_AlertText.fixedToCamera = true;
     Stage3_AlertText.fontWeight = 'bold';
