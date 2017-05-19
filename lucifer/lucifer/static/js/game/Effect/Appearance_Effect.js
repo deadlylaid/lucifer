@@ -14,7 +14,7 @@ function Appearance_Effect_Preload()
 function Appearance_Effect_Create()
 {
 	//Player Appearance Effect
-	player_Appearance_Effect = Lucifer_Game.add.sprite(characterPositionX, characterPositionY, 'Appearance_Effect');
+	player_Appearance_Effect = Lucifer_Game.add.sprite(875, 1637, 'Appearance_Effect');
 	player_Appearance_Effect.anchor.setTo(0.5, 0.5);
 	player_Appearance_Effect.visible = false;
 	player_Appearance_Effect.blendMode = Phaser.blendModes.ADD;
