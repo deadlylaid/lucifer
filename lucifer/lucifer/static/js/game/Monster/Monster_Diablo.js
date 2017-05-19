@@ -13,8 +13,10 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AttackRange = AttackRange;
 
 	//Stat (스킬 Attack Point도 추가해야 된다.)
-	/*this.Attack_Point = 300, this.Defence_Point = 350;
+	/*
+	this.Attack_Point = 300, this.Defence_Point = 350;
 	this.Skill_Attack_Point = 400, this.Skill_Attack_Point1 = 500;*/
+
 	this.Attack_Point = 1, this.Defence_Point = 1;
 	this.Skill_Attack_Point = 10, this.Skill_Attack_Point1 = 10;
 
@@ -133,7 +135,7 @@ function diablo_Create()
 
 function diablo_Clone(PointX, PointY)
 {
-	diablo_Object = new Diablo(Lucifer_Game, PointX, PointY, 6000, 6000, 1000, 120);
+	diablo_Object = new Diablo(Lucifer_Game, PointX, PointY, 10000, 10000, 1000, 120);
 
 	Lucifer_Game.physics.p2.enable(diablo_Object);
 	diablo_Object.body.fixedRotation = true;
