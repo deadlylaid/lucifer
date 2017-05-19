@@ -6,6 +6,13 @@ var stage3_Scene =
 		--몬스터 출몰 지역--
 	*/
 
+	preload: function()
+	{
+		mouse_Preload();
+
+		movepoint_Preload();
+	},
+
 	create: function()
 	{
 		//Sound

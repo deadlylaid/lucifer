@@ -1059,7 +1059,8 @@ function diablo_Dead(Object)
 					if(CurFrame == EndFrame)
 					{
 						//Tyreal 등장
-						npc_Tyreal.visible = true;				
+						npc_Tyreal.visible = true;	
+						npc_Tyreal.Name.visible = true;			
 						Object.TyrealCheck = true;
 						npc_Tyreal_AppearanceEffect.animations.stop('Tyreal_Effect_Ani', true);
 

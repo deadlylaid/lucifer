@@ -37,6 +37,7 @@ Tyreal = function(game, x, y)
 
 	//Pos
 	this.PointX = x, this.PointY = y;
+
 }
 
 Tyreal.prototype = Object.create(Phaser.Sprite.prototype);
@@ -86,6 +87,18 @@ function npc_Tyreal_Create(PointX, PointY)
 
 
 	Lucifer_Game.add.existing(npc_Tyreal);
+
+	//npc_Tyreal Name
+	//Store Npc Name
+    npc_Tyreal.Name = Lucifer_Game.add.text(npc_Tyreal.x - 3, npc_Tyreal.y + 90,
+												 '대천사 타이리얼');
+	npc_Tyreal.Name.anchor.set(0.5);
+	npc_Tyreal.Name.align = 'center';
+	npc_Tyreal.Name.font = 'Arial';
+	npc_Tyreal.Name.fontSize = 16;
+	npc_Tyreal.Name.fontWeight = 'bold';
+	npc_Tyreal.Name.fill = '#fffc00';
+	npc_Tyreal.Name.visible = false;
 
 	//Talkbox background image 
 	Talkbox = Lucifer_Game.add.sprite(600, 475, 'Tyreal_TalkBox');
@@ -139,8 +152,7 @@ function EndingTalk(){
 	Talkbox.visible = true;
 	text_talk.visible = true;
 
-	Exit_button.visible = true;
-	Credits_button.visible = true;
+	
 
     nextLine();
 }
@@ -149,7 +161,9 @@ function EndingTalk(){
 function nextLine() {
 
     if (lineIndex === content2.length)
-    {
+    {	
+    	Exit_button.visible = true;
+		Credits_button.visible = true;
         return;
     }
 
