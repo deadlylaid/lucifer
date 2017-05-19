@@ -370,14 +370,14 @@ function itemsStoreUpdate(){
     }
 
     //Alert
-    if(alert_Gold.visible == true 
-       || alert_Inventory.visible == true 
+    if(alert_Gold.visible == true
+       || alert_Inventory.visible == true
        || alert_SelectItem.visible == true)
     {
         alert_Timer.start();
     }
-    else if(alert_Gold.visible == false 
-       && alert_Inventory.visible == false 
+    else if(alert_Gold.visible == false
+       && alert_Inventory.visible == false
        && alert_SelectItem.visible == false)
     {
         alert_Time_Total = 0;
@@ -688,7 +688,6 @@ function buyItem() {
 
         }
     }
-    changeServerListToClientList();
     selectedItem = null;
     Item_Select_Frame.visible = false;
     //퀘스트 검사
