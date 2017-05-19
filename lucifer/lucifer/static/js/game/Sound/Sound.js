@@ -17,30 +17,30 @@ function sound_Create()
 
 function sound_PlayMenuBGM()
 {
-	//sound_MenuBgm.play();
+	sound_MenuBgm.play();
 }
 
 function sound_StopMenuBGM()
 {
-	//sound_MenuBgm.stop();
+	sound_MenuBgm.stop();
 }
 
 function sound_PlayStage1BGM()
 {
-	//sound_Stage1Bgm.play();
+	sound_Stage1Bgm.play();
 }
 
 function sound_StopStage1BGM()
 {
-	//sound_Stage1Bgm.stop();
+	sound_Stage1Bgm.stop();
 }
 
 function sound_PlayStage2BGM()
 {
-	//sound_Stage2Bgm.play();
+	sound_Stage2Bgm.play();
 }
 
 function sound_StopStage2BGM()
 {
-	//sound_Stage2Bgm.stop();
+	sound_Stage2Bgm.stop();
 }

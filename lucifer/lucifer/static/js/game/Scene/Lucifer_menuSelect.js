@@ -13,12 +13,14 @@ var menuSelectScene =
 		//Mouse
 		//----------------------------------------------------------------------------------------------------------
 		mouse_Preload();
-
 		//----------------------------------------------------------------------------------------------------------
 	},
 
 	create: function()
 	{
+		//Sound
+		sound_PlayMenuBGM();
+
 		background = this.add.tileSprite(0, 0, 1280, 800, 'background');
 
 		button = this.add.button(this.world.centerX - 180, 590, 'button', up, this, 1, 0);
@@ -49,6 +51,9 @@ function up() {
     }else if(characterStage==='3'){
         Lucifer_Game.state.start('stage3_load');	//보스 AI 확인용.
     }
+
+   //Sound
+   sound_StopMenuBGM();
 };
 
 function exit() {
