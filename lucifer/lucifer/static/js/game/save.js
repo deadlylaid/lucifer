@@ -20,8 +20,6 @@ function gameSave(){
             fourthSkillDamage:learnedSkill[3].damage,
             fifthSkillDamage:learnedSkill[4].damage,
             characterStage:characterStage,
-            characterPositionX:Player.x,
-            characterPositionY:Player.y,
         },
     });
 }

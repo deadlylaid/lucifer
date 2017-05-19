@@ -61,7 +61,7 @@ function npc_Tyreal_Create(PointX, PointY)
 	Tyreal_Rect = new Phaser.Rectangle(npc_Tyreal.x, npc_Tyreal.y, 100, 100);
 	//Animation
 	npc_Tyreal.animations.add('NPC_Tyreal_Ani',
-							  [	
+							  [
 							     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 							  ], 60, true);
 	npc_Tyreal.animations.play('NPC_Tyreal_Ani', 10, true);
@@ -78,7 +78,7 @@ function npc_Tyreal_Create(PointX, PointY)
 	npc_Tyreal.body.clearShapes();
 	npc_Tyreal.body.addRectangle(120, 120, 0, 0);
 	npc_Tyreal.body.debug = false;
-	npc_Tyreal.body.static = true;	
+	npc_Tyreal.body.static = true;
 
 	Lucifer_Game.physics.enable(npc_Tyreal, Phaser.Physics.ARCADE);
     npc_Tyreal.inputEnabled = true;
@@ -100,13 +100,13 @@ function npc_Tyreal_Create(PointX, PointY)
 	npc_Tyreal.Name.fill = '#fffc00';
 	npc_Tyreal.Name.visible = false;
 
-	//Talkbox background image 
+	//Talkbox background image
 	Talkbox = Lucifer_Game.add.sprite(600, 475, 'Tyreal_TalkBox');
 	Talkbox.fixedToCamera = true;
 	Talkbox.anchor.setTo(0.5, 0.5);
 	Talkbox.visible = false;
 
-	//Talkbox Text 
+	//Talkbox Text
 	text_talk = Lucifer_Game.add.text(540, 596, '', {font: '15px', fill: '#ffffff'});
     text_talk.anchor.set(0.5);
     text_talk.fixedToCamera = true;
@@ -124,7 +124,7 @@ function npc_Tyreal_Create(PointX, PointY)
 
     Exit_button.onInputUp.add(exit2, this);
     Credits_button.onInputUp.add(credits, this);
-    
+
     Exit_button.visible = false;
     Credits_button.visible = false;
 
@@ -133,9 +133,7 @@ function npc_Tyreal_Create(PointX, PointY)
 
     //Appearance_Effect
     npc_Tyreal_AppearanceEffect = Lucifer_Game.add.sprite(npc_Tyreal.x, npc_Tyreal.y, 'Tyreal_Effect');
-    npc_Tyreal_AppearanceEffect.anchor.setTo(0.5, 0.5);
-    npc_Tyreal_AppearanceEffect.visible = false;
-    npc_Tyreal_AppearanceEffect.blendMode = Phaser.blendModes.ADD;
+    npc_Tyreal_AppearanceEffect.anchor.setTo(0.5, 0.5); npc_Tyreal_AppearanceEffect.visible = false; npc_Tyreal_AppearanceEffect.blendMode = Phaser.blendModes.ADD;
 
     //Effect Animation
     npc_Tyreal_AppearanceEffect.animations.add('Tyreal_Effect_Ani',
@@ -152,7 +150,10 @@ function EndingTalk(){
 	Talkbox.visible = true;
 	text_talk.visible = true;
 
-	
+
+
+    characterStage=1,
+    gameSave();
 
     nextLine();
 }
@@ -161,7 +162,7 @@ function EndingTalk(){
 function nextLine() {
 
     if (lineIndex === content2.length)
-    {	
+    {
     	Exit_button.visible = true;
 		Credits_button.visible = true;
         return;
@@ -199,10 +200,10 @@ function credits(){
 
 	if(npc_Tyreal_ClickCheck == false)
 	{
-		npc_Tyreal_ClickCheck = true;	
+		npc_Tyreal_ClickCheck = true;
 	}
 	else if(npc_Tyreal_ClickCheck == true)
 	{
 		npc_Tyreal_ClickCheck = false;
-	}	
+	}
 }
