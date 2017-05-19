@@ -83,6 +83,18 @@ function npc_Create()
 	store_Npc.body.debug = false;
 	store_Npc.body.static = true;
 
+	//Store Npc Name
+    store_Npc.Name = Lucifer_Game.add.text(store_Npc.x - 3, store_Npc.y - 50,
+												 '상점 Tia');
+	store_Npc.Name.anchor.set(0.5);
+	store_Npc.Name.align = 'center';
+	store_Npc.Name.font = 'Arial';
+	store_Npc.Name.fontSize = 16;
+	store_Npc.Name.fontWeight = 'bold';
+	store_Npc.Name.fill = '#fffc00';
+	store_Npc.Name.visible = true;
+
+
 	//Cain
 	Lucifer_Game.physics.p2.enable(cain_Npc);
 	cain_Npc.body.fixedRotation = true;
@@ -95,7 +107,18 @@ function npc_Create()
     store_Npc.inputEnabled = true;
     store_Npc.events.onInputDown.add(showStore, this);
 
+    //Cain Name
+    cain_Npc.Name = Lucifer_Game.add.text(cain_Npc.x - 3, cain_Npc.y - 50,
+												 '촌장 Halend');
+	cain_Npc.Name.anchor.set(0.5);
+	cain_Npc.Name.align = 'center';
+	cain_Npc.Name.font = 'Arial';
+	cain_Npc.Name.fontSize = 16;
+	cain_Npc.Name.fontWeight = 'bold';
+	cain_Npc.Name.fill = '#fffc00';
+	cain_Npc.Name.visible = true;
 
+    //Cain Talkbox
     Cain_TalkBox = Lucifer_Game.add.sprite(600, 475, 'Cain_TalkBox');
 	Cain_TalkBox.fixedToCamera = true;
 	Cain_TalkBox.anchor.setTo(0.5, 0.5);
@@ -213,7 +236,7 @@ function Cain_Talk(){
 		npc_Cain_ClickCheck = true;
 		Cain_TalkBox.visible = true;
 		Cain_text_talk.visible = true;
-		Cain_Credits_button.visible = true;
+		
 		nextLine2();
 
 	}else if(npc_Cain_ClickCheck == true)
@@ -229,7 +252,8 @@ function Cain_Talk(){
 function nextLine2() {
 
     if (lineIndex2 === content3.length)
-    {
+    {	
+    	Cain_Credits_button.visible = true;
         return;
     }
 

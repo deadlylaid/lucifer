@@ -9,7 +9,6 @@ var stage1_Scene =
 	*/
 	preload: function()
 	{
-
 		mouse_Preload();
 
 		movepoint_Preload();
