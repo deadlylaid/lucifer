@@ -645,7 +645,6 @@ function portal_Check()
 	{
 		Portal_Check = true;
 	}
-
 };
 
 function portal_Check2()

@@ -45,6 +45,9 @@ var Ending_Scene =
 
 	create: function()
 	{
+		//Sound
+		sound_PlayEndingBGM();
+
 		//BackGround
 		this.add.tileSprite(0, 0, 1280, 800, 'space');
 
@@ -392,7 +395,8 @@ function EndingLogo(){
 }
 
 function EndGame(){
-
+		//Sound
+		sound_StopEndingBGM();
 		window.close();
 
 }

@@ -73,10 +73,7 @@ function golem_Preload()
 								   220, 210);
 	Lucifer_Game.load.spritesheet('MON_Golem_Dead',
 								  '../../static/images/game/Monster/Golem/dead/dead.png',
-								   214, 133);
-    Lucifer_Game.load.spritesheet('monsterHealthBar',
-                                  '../../static/images/game/Monster/monsterHealthBar.png',
-                                   224, 44);
+								   214, 133);    
 }
 
 function golem_Create()

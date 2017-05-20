@@ -16,7 +16,7 @@ var stage3_Scene =
 	create: function()
 	{
 		//Sound
-		//sound_PlayStage2BGM();
+		sound_PlayStage3BGM();
 
 		//Stage
 		stageThree_Create();
@@ -109,7 +109,7 @@ var stage3_Scene =
 		{
             characterStage='2';
             gameSave();
-			sound_StopStage1BGM();
+			sound_StopStage3BGM();
 			this.goto_Stage_back();
 			Portal_Check2 = false;
 		}
@@ -133,7 +133,7 @@ var stage3_Scene =
 
 		BackStageMove = 0;
 		//Sound
-		sound_StopStage2BGM();
+		sound_StopStage3BGM();
 
 		Lucifer_Game.state.start('stage2_load');
 	},

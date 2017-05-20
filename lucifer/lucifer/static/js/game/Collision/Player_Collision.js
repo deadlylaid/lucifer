@@ -17,12 +17,12 @@ function player_Monster_Col(Object)
 					{
 						if(skill_Bavarian_Three.visible == false)
 						{
-							Animation_Change(Direction, 'Attack');
-						}
+							Animation_Change(Direction, 'Attack');																		
+						}										
 					}
 					else
 					{
-						Player_AttackCheck = false;
+						Player_AttackCheck = false;													
 					}
 
 					//Bavarian Skill Four Effect

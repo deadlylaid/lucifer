@@ -997,7 +997,9 @@ function diablo_Dead(Object)
 {
 	if(Object.Hp < 0)
 	{
-		Object.DeadCheck = true;			
+		Object.DeadCheck = true;	
+
+		sound_StopStage3BGM();		
 	}
 
 	if(Object.DeadCheck == true)
