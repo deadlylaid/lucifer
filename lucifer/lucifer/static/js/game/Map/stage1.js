@@ -474,7 +474,7 @@ function stageOne_Create()
 	}
     //-------------------------------------------------------------------------------------------
 
-    Stage1_AlertText = Lucifer_Game.add.text(80, 780, "Stage1 : 마을", {font: '20px Roboto', fill: '#a7533b'});
+    Stage1_AlertText = Lucifer_Game.add.text(80, 25, "Stage1 : 마을", {font: '20px Roboto', fill: '#a7533b'});
     Stage1_AlertText.anchor.set(0.5);
     Stage1_AlertText.fixedToCamera = true;
     Stage1_AlertText.fontWeight = 'bold';

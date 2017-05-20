@@ -170,13 +170,13 @@ function wraith_Clone(PointX, PointY)
 	wraith_Object.HpMask.beginFill(0xffffff);
 
 	//Name
-	wraith_Object.Name = Lucifer_Game.add.text(wraith_Object.x, wraith_Object.y - 100, 'Wraith');
+	wraith_Object.Name = Lucifer_Game.add.text(wraith_Object.x , wraith_Object.y - 100, 'Wraith');
 	wraith_Object.Name.anchor.set(0.5);
 	wraith_Object.Name.align = 'center';
 	wraith_Object.Name.font = 'Arial';
-	wraith_Object.Name.fontSize = 13;
-	wraith_Object.Name.fontWeight = 'normal';
-	wraith_Object.Name.fill = '#19de65';
+	wraith_Object.Name.fontSize = 14;
+	wraith_Object.Name.fontWeight = 'bold';
+	wraith_Object.Name.fill = '#0017f7';
 	wraith_Object.Name.visible = false;
 
 	//Input mouse Over / Up
@@ -237,7 +237,7 @@ function wraith_ExpTimer(Object)
 //Name
 function wraith_FollwName(Object)
 {
-	Object.Name.x = Object.position.x;
+	Object.Name.x = Object.position.x - 3;
 
 	var NamePointY = Object.position.y + 70;
 	Object.Name.y = NamePointY;

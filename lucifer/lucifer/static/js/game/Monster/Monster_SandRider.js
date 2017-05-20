@@ -199,9 +199,9 @@ function sandRider_Clone(PointX, PointY)
 	sandraider_Object.Name.anchor.set(0.5);
 	sandraider_Object.Name.align = 'center';
 	sandraider_Object.Name.font = 'Arial';
-	sandraider_Object.Name.fontSize = 13;
-	sandraider_Object.Name.fontWeight = 'normal';
-	sandraider_Object.Name.fill = '#19de65';
+	sandraider_Object.Name.fontSize = 14;
+	sandraider_Object.Name.fontWeight = 'bold';
+	sandraider_Object.Name.fill = '#0017f7';
 	sandraider_Object.Name.visible = false;
 
 	//Input mouse Over / Up

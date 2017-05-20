@@ -185,9 +185,9 @@ function deamon_Clone(PointX, PointY)
 	deamon_Object.Name.anchor.set(0.5);
 	deamon_Object.Name.align = 'center';
 	deamon_Object.Name.font = 'Arial';
-	deamon_Object.Name.fontSize = 13;
-	deamon_Object.Name.fontWeight = 'normal';
-	deamon_Object.Name.fill = '#19de65';
+	deamon_Object.Name.fontSize = 14;
+	deamon_Object.Name.fontWeight = 'bold';
+	deamon_Object.Name.fill = '#ff8a00';
 	deamon_Object.Name.visible = false;
 
 	//Input mouse Over / Up
@@ -253,7 +253,7 @@ function deamon_FollwName(Object)
 {
 	Object.Name.x = Object.position.x;
 
-	var NamePointY = Object.position.y + 70;
+	var NamePointY = Object.position.y + 80;
 	Object.Name.y = NamePointY;
 }
 //----------------------------------------------------------------------------------------------

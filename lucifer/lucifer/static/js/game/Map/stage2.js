@@ -589,7 +589,7 @@ function stageTwo_Create()
 
     //-------------------------------------------------------------------------------------------
 
-    Stage2_AlertText = Lucifer_Game.add.text(115, 780, "Stage2 : 점령된 사원", {font: '20px Roboto', fill: '#8f442f'});
+    Stage2_AlertText = Lucifer_Game.add.text(115, 25, "Stage2 : 점령된 사원", {font: '20px Roboto', fill: '#8f442f'});
     Stage2_AlertText.anchor.set(0.5);
     Stage2_AlertText.fixedToCamera = true;
     Stage2_AlertText.fontWeight = 'bold';
