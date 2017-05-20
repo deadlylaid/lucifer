@@ -11,6 +11,9 @@ var loadScene =
 		Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);
 
+		//Souond
+		player_Sound_Preload();
+
 		//Rain Particle & Sight Filter & GrayScale Effect
 		rain_Preload();
 		sight_Filter_Preload();
@@ -40,6 +43,11 @@ var loadScene =
 									  '../../static/images/game/Player/Bavarian/skill/skill.png', 200, 200);
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Whirlwind',
 									  '../../static/images/game/Player/Bavarian/whirlwind/whirlwind.png', 200, 200);
+
+		//Monster UI
+		Lucifer_Game.load.spritesheet('monsterHealthBar',
+                                 	  '../../static/images/game/Monster/monsterHealthBar.png',
+                                  	  224, 44);
 
 		//Appearance_Effect
 		Appearance_Effect_Preload();
@@ -95,8 +103,6 @@ var loadScene =
 
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		enterKey.onDown.addOnce(loadScene.start, this);
-
-
 	},
 
 	start: function()

@@ -634,6 +634,18 @@ function player_Update()
 	else if(stageTwo_Check == true)
 	{
 		Stage2_ObjectGroup.sort('y', Phaser.Group.SORT_ASCENDING);
+
+		//Boss Alert
+		if(bossStage_Alert.visible == true)
+		{
+			bossStage_Alert_Timer.start();
+
+			if(bossStage_Alert_TimeTotal > 2)
+			{
+				bossStage_Alert.visible = false;
+				bossStage_Alert_TimeTotal = 0;	
+			}				
+		}
 	}
 	else if(stageThree_Check == true)
 	{

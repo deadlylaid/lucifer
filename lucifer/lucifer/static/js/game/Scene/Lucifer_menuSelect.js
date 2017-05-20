@@ -19,7 +19,7 @@ var menuSelectScene =
 	create: function()
 	{
 		//Sound
-		sound_PlayMenuBGM();
+		//sound_PlayMenuBGM();
 
 		background = this.add.tileSprite(0, 0, 1280, 800, 'background');
 

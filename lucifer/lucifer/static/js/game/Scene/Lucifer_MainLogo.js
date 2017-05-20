@@ -7,14 +7,13 @@ var logoScene =
 		this.load.image('logo', '../../static/images/game/Menu/logo.png');
 
 		//Sound
-		sound_Preload();
-
+		sound_Preload();		
 	},
 
 	create: function()
 	{
 		//Sound
-		sound_Create();
+		sound_Create();		
 		sound_PlayMenuBGM();
 
 		this.add.tileSprite(0, 0, 1280, 800, 'space');

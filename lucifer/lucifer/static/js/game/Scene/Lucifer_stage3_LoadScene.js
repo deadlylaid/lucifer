@@ -44,6 +44,11 @@ var stage3_LoadScene =
 									  '../../static/images/game/Player/Bavarian/whirlwind/whirlwind.png', 200, 200);
 		//----------------------------------------------------------------------------------------------------------
 
+		//Monster UI
+		Lucifer_Game.load.spritesheet('monsterHealthBar',
+                                 	  '../../static/images/game/Monster/monsterHealthBar.png',
+                                  	  224, 44);
+
 		//Item Effect
 		item_Effect_Preload();
 

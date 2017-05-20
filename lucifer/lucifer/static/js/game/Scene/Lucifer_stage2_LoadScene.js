@@ -36,6 +36,11 @@ var stage2_LoadScene =
 		Lucifer_Game.load.spritesheet('PY_Bavarian_Whirlwind',
 									  '../../static/images/game/Player/Bavarian/whirlwind/whirlwind.png', 200, 200);
 
+		//Monster UI
+		Lucifer_Game.load.spritesheet('monsterHealthBar',
+                                 	  '../../static/images/game/Monster/monsterHealthBar.png',
+                                  	  224, 44);
+
 		//Item Effect
 		item_Effect_Preload();
 
@@ -67,6 +72,10 @@ var stage2_LoadScene =
 
 		//Skill
 		skill_Preload();
+
+		//Alert Message
+		Lucifer_Game.load.spritesheet('Stage_Alert',
+									  '../../static/images/game/UI/Alert/Stage_Alert.png', 491, 209);
 	},
 
 	create: function()

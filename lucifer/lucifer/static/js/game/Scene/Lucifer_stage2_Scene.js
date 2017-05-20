@@ -1,3 +1,5 @@
+var bossStage_Alert, bossStage_Alert_Timer, bossStage_Alert_TimeTotal = 0;
+
 var stage2_Scene =
 {
 	/*
@@ -61,7 +63,21 @@ var stage2_Scene =
 		//Message
 		status_Message_Craete();
 
+		//Alert Meesage
+		bossStage_Alert = this.add.sprite(640, 400, 'Stage_Alert');
+		bossStage_Alert.anchor.setTo(0.5, 0.5);
+		bossStage_Alert.visible = false;
+		bossStage_Alert.fixedToCamera = true;
+
+		bossStage_Alert_Timer = this.time.create(false);
+		bossStage_Alert_Timer.loop(1000, this.bossStage_AlertTimer, this);
+
 		go();
+	},
+
+	bossStage_AlertTimer: function()
+	{
+		++bossStage_Alert_TimeTotal;
 	},
 
 	update: function()
@@ -108,7 +124,7 @@ var stage2_Scene =
 		{
             characterStage='3';
             gameSave();
-			sound_StopStage1BGM();
+			sound_StopStage2BGM();
 			this.goto_Stage3();
 			Portal_Check = false;
 		}
@@ -119,7 +135,7 @@ var stage2_Scene =
 		{
             characterStage='1';
             gameSave();
-			sound_StopStage1BGM();
+			sound_StopStage2BGM();
 			this.goto_Stage_back();
 			Portal_Check2 = false;
 		}
@@ -138,12 +154,19 @@ var stage2_Scene =
 
 	goto_Stage3: function()
 	{
-		stageTwo_Check = false;
+		if(level >= 10)
+		{
+			stageTwo_Check = false;
 
-		//Sound
-		sound_StopStage2BGM();
+			//Sound
+			sound_StopStage2BGM();
 
-		Lucifer_Game.state.start('stage3_load');
+			Lucifer_Game.state.start('stage3_load');
+		}
+		else if(level < 10)
+		{
+			bossStage_Alert.visible = true;		
+		}		
 	},
 
 	goto_Stage_back: function()
