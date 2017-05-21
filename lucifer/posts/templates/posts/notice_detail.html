@@ -24,19 +24,19 @@
 {% endblock %}
 
 {% block content %}
-<div id="most_sub_cont_area">    
+<div id="most_sub_cont_area">
 	<!-- 리스트 -->
     			<div class="most_board_view_tit"> {{ notice.title }} </div>
                 <div class="most_board_view_name">
 					<p>작성자 아이디<span>2016.10.21</span></p>
 				</div>
                 <div class="most_board_view_con">
-						{{ notice.contents }}
+						{{ notice.contents|linebreaksbr }}
 
 					<img src="/media/{{ notice.sumnail_image }}" alt="">
 				</div>
     <!-- 리스트 END -->
-    
+
 	<!-- 인덱스 -->
 		<div class="most_index">
             <em class="bott_btn2">
