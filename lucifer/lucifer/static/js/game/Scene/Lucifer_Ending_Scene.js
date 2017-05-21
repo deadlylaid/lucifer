@@ -74,8 +74,8 @@ var Ending_Scene =
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 84, Picture_13, this);
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 91, Picture_14, this);
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 98, Picture_16, this);
-		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 105, EndingLogo, this);
-		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 112, EndGame, this);
+		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 106, EndingLogo, this);
+		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 117, EndGame, this);
 
 	var content = [
 	[ 	"Team", "Override" ],
