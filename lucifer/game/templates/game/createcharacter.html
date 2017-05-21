@@ -28,7 +28,7 @@
             소서리스
             </div>
         </div>
-        
+
         <div class="character-div">
             <li class="game-li">
                 <button class="job" id="barbarian" onclick="barbarianButton()">
@@ -60,7 +60,7 @@
         {% csrf_token %}
         <h3>영웅의 이름을 정하십시오</h3>
 
-        <input name="nickname" type="text" required>
+        <input name="nickname" maxlength="10" type="text" required>
         <input name="submit" type="submit" value="생성">
         <input type="hidden" name="characterjob" readonly>
 
@@ -101,6 +101,6 @@
         jobImage.style.opacity = 1;
     }
   </script>
-  
+
 </body>
 </html>
