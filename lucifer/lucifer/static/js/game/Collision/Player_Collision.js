@@ -17,12 +17,15 @@ function player_Monster_Col(Object)
 					{
 						if(skill_Bavarian_Three.visible == false)
 						{
-							Animation_Change(Direction, 'Attack');																		
+							Animation_Change(Direction, 'Attack');	
+
+							//Sound Play
+							player_Sound_Weapon_Play();																									
 						}										
 					}
 					else
 					{
-						Player_AttackCheck = false;													
+						Player_AttackCheck = false;																	
 					}
 
 					//Bavarian Skill Four Effect
@@ -78,6 +81,10 @@ function player_Monster_Col(Object)
 						//Player Move Control
 						Player.body.velocity.x = 0;
 						Player.body.velocity.y = 0;
+
+						//Lucifer Move Control
+						Object.body.velocity.x = 0;
+						Object.body.velocity.y = 0;
 					}
 					//----------------------------------------------------------------------------
 				}
@@ -100,7 +107,10 @@ function player_Monster_Col(Object)
 					{
 						if(skill_Bavarian_Three.visible == false)
 						{
-							Animation_Change(Direction, 'Attack');
+							Animation_Change(Direction, 'Attack');		
+
+							//Sound Play
+							player_Sound_Weapon_Play();					
 						}
 					}
 					else
@@ -128,7 +138,7 @@ function player_Monster_Col(Object)
 					//----------------------------------------------------------------------------
 					if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
 					{
-						//Animation Control / 잘 안된다.
+						//Animation Control 
 						if(Lucifer_Game.input.activePointer.leftButton.isDown)
 						{
 							Player_AttackCheck = true;
@@ -155,15 +165,19 @@ function player_Monster_Col(Object)
 							{
 								Object.blood_Effect.visible = true;
 								Object.blood_Effect.animations.play('blood_Ani', 10, true);
-							}
+							}							
 						}
 
 						//Player Move Control
 						Player.body.velocity.x = 0;
 						Player.body.velocity.y = 0;
+
+						//Monster Move Control(몬스터 튕기는 형상 방지용)
+						Object.body.velocity.x = 0;
+						Object.body.velocity.y = 0;
 					}
 					//----------------------------------------------------------------------------
-				}
+				}						
 
 				//Skill Damage
 				skill_Attack(Object);
@@ -179,7 +193,13 @@ function player_Monster_Col(Object)
 				Player_Time_Total = 0;
 			}
 			*/
-		}
+		}		
+	}
+
+	if(Player.animations.name != 'PY_Bavarian_Attack_' + Direction)
+	{
+		//Sound Stop
+		player_Sound_Weapon_Stop();			
 	}
 }
 

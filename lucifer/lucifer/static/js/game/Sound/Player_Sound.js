@@ -12,12 +12,13 @@ function player_Sound_Preload()
 
 function player_Sound_Create()
 {
-	sound_Player_Weapon 	   = Lucifer_Game.add.audio('Player_Weapon', 1.0, true);
+	sound_Player_Weapon 	   = Lucifer_Game.add.audio('Player_Weapon', 0.5, true);
 	sound_Player_Attack_Impact = Lucifer_Game.add.audio('Player_AttImpact', 1.0, true);
 	sound_Player_Dead 		   = Lucifer_Game.add.audio('Player_Dead', 1.0, true);
 
 	//Sound
-	//player_Sound_Weapon_Play();	
+	player_Sound_Weapon_Play();
+	player_Sound_Weapon_Stop();			
 }
 
 function player_Sound_Weapon_Play()

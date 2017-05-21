@@ -201,6 +201,8 @@ function debug_Rendering_Up()
 
 function EndingScene()
 	{
-
+		sound_StopStage1BGM();
+		sound_StopStage2BGM();
+		sound_StopStage3BGM();
 		Lucifer_Game.state.start('Ending');
 	}
