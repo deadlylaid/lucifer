@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>회원가입</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <link rel="stylesheet" href="{% static "css/Base.css" %}">
         <link rel="stylesheet" href="{% static "css/joinus.css" %}"/>
     </head>
@@ -78,7 +78,7 @@
     <div class="warp" style="height:490px">
         <div class="logo">
             <a class="a_logo" href="{% url "joinus" %}">
-                <span class="i_logo">회원가입</span>    
+                <span class="i_logo">회원가입</span>
             </a>
         </div>
         <div class='joinuswrap'>
@@ -86,14 +86,14 @@
               {% csrf_token %}
               <div class="minsoo-input-group">
                   <label class="minsoo-label" for="username"> 유저네임</label>
-                  <input class="minsoo-form-input" type="text" name="username" placeholder="유저네임" required>
+                  <input class="minsoo-form-input" type="text" maxlength="10" name="username" placeholder="유저네임" required>
               </div>
-              
+
               <div class="minsoo-input-group">
                   <label class="minsoo-label" for="password">비밀번호 입력</label>
                   <input class="minsoo-form-input" type="password" name="password" placeholder="비밀번호"required>
               </div>
-              
+
 
               <div class="minsoo-input-group">
                   <label class="minsoo-label" for="password-check">비밀번호 확인</label>
@@ -106,7 +106,7 @@
               </div>
               <input type="submit" name="" value="확인" class="submit-button">
             </form>
-        </div>    
+        </div>
     </div>
 
     <div class="social-group">
@@ -119,7 +119,7 @@
        <div class="footer">
             <article class="wrap">
                 <a href="{% url "home" %}" target="_blank"><img src="{% static "images/Main_logo4.png" %}"  class="webzen"/></a>
-            <div class="link" > 
+            <div class="link" >
                 <a href="#" onclick="window.open('{% url 'policy' %}','window','width=880; height=650; scrollbars=yes');">Lucifer 운영정책</a>
                 <span>|</span>
                 <a href="{% url "faq" %}">고객센터</a>
@@ -130,7 +130,7 @@
             </div>
             <address>
                 상호명: Lucifer &nbsp;&nbsp;&nbsp;대표: 한민수 최영준 김회언 &nbsp;&nbsp;&nbsp;주소: 충청남도 천안시 성환읍 남서울대학교<br>
-                FAX: 041-521-1348 웹마스터메일: <a href="mailto:slhgesa@naver.com">Lucifer-help@nsu.com</a> 고객지원센터: 1566-4545 
+                FAX: 041-521-1348 웹마스터메일: <a href="mailto:slhgesa@naver.com">Lucifer-help@nsu.com</a> 고객지원센터: 1566-4545
                 <span>NsuMulti Inc. Global Digital Entertainment Leader ©NsuMulti Inc. All Rights Reserverd.</span>
                 <img src="{% static "images/Grade.jpg" %}" class="grade-pop" alt="">
                 <br><img src="http://image.webzen.kr/Mu/ignition/v01/images/img_dev.png" alt="">
