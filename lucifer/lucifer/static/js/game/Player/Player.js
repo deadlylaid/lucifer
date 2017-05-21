@@ -396,6 +396,9 @@ function PlayerSkill()
 	{
 		if(skill_One_Check == false)
 		{
+			//Sound
+			sound_Player_SkillOne.play();
+
 			skill_Bavarian.visible = true;
 
 			if(skill_Bavarian.visible == true)
@@ -413,6 +416,9 @@ function PlayerSkill2()
 	{
 		if(skill_Two_Check == false)
 		{
+			//Sound
+			sound_Player_SkillTwo.play();
+
 			skill_Bavarian_Two.visible = true;
 
 			if(skill_Bavarian_Two.visible == true)
@@ -430,6 +436,9 @@ function PlayerSkill3()
 	{
 		if(skill_Three_Check == false)
 		{
+			//Sound
+			sound_Player_SkillThree.play();
+
 			skill_Bavarian_Three.visible = true;
 
 			if(skill_Bavarian_Three.visible == true)
@@ -446,7 +455,10 @@ function PlayerSkill4()
 	if(player_Skill_Four == true)
 	{
 		if(skill_Four_Check == false)
-		{
+		{	
+			//Sound
+			sound_Player_SkillFore.play();
+
 			skill_Bavarian_Four.visible = true;
 
 			if(skill_Bavarian_Four.visible == true)
@@ -464,6 +476,9 @@ function PlayerSkill5()
 	{
 		if(skill_Five_Check == false)
 		{
+			//Sound
+			sound_Player_SkillFive.play();
+
 			skill_Bavarian_Five.visible = true;
 
 			if(skill_Bavarian_Five.visible == true)

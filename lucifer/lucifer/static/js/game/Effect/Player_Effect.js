@@ -112,6 +112,9 @@ function player_Effect_Dead()
 	{
 		if(Player_DeadMotion_Check == false)
 		{
+			//Sound
+			sound_Player_Dead.play();
+
 			Player_Dead.visible = true;
 			Player_Dead.animations.play('PY_Bavarian_Dead_Ani', 10, true);
 			Player_DeadMotion_Check = true;
@@ -119,6 +122,12 @@ function player_Effect_Dead()
 
 		var CurFrame = Player_Dead.animations.frame;
 		var EndFrame = 35;
+
+		if(Player_DeadMotion_Check == true && CurFrame == 12)
+		{
+			//Sound
+			sound_Player_Dead.stop();
+		}
 
 		if(Player_DeadMotion_Check == true && CurFrame == EndFrame)
 		{
@@ -158,6 +167,10 @@ function player_Effect_Regen()
 			//Player Revive
 			if(Player_CreateCheck == false)
 			{
+				//Sound
+				sound_Stage1Bgm.play();
+				sound_Player_DeadBgm.stop();
+
 				player_Create();
 				Player_ID.visible = true;
 				Animation_Change(Direction, 'Stand');
@@ -174,6 +187,13 @@ function player_Effect_Regen()
 		}
 		else if(Player_DeadTime_Total < 5)
 		{
+			//Sound
+			if(Player_DeadTime_Total == 0)
+			{
+				sound_Stage1Bgm.stop();
+				sound_Player_DeadBgm.play();	
+			}			
+
 			//Gray Filter
 			gray_Scale.visible = true;
 
@@ -197,8 +217,17 @@ function player_Effect_Regen()
 			var CurFrame = Player_Revival.animations.frame;
 			var EndFrame = 19;
 
+			if(CurFrame == 2)
+			{
+				//Sound
+				sound_Player_Revive.play();
+			}
+
 			if(CurFrame == EndFrame)
 			{
+				//Sound
+				sound_Player_Revive.stop();
+
 				Player_Revival.visible = false;
 				Player_Revival.animations.stop('PY_Bavarian_Revival', true);
 

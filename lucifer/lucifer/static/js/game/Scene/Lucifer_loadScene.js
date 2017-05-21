@@ -13,6 +13,7 @@ var loadScene =
 
 		//Souond
 		player_Sound_Preload();
+		ui_Sound_Preload();
 
 		//Rain Particle & Sight Filter & GrayScale Effect
 		rain_Preload();

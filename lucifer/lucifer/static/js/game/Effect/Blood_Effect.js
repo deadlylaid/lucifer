@@ -48,6 +48,12 @@ function blood_Effect_Update(Object)
 		var CurFrame = Object.blood_Effect.animations.frame;
 		var EndFrame = 8;
 
+		if(CurFrame > 4)
+		{
+			//Sound
+			sound_Player_Attack_Impact.stop();
+		}
+
 		if(CurFrame == EndFrame)
 		{
 			Object.blood_Effect.visible = false;
