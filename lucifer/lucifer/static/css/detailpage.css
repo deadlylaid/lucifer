@@ -21,7 +21,7 @@
 .Container .Content_in .most_board_view_name { width:720px; height:30px; background:url(../images/board_line2.png) no-repeat left bottom; text-align:left; margin:0 auto;}
 .Container .Content_in .most_board_view_name p { display:block; width:720px; height:35px; color:#9298a1; line-height:35px; font-size:11px; text-indent:10px;}
 .Container .Content_in .most_board_view_name p span { float:right; letter-spacing:0; margin-right:5px;}
-.Container .Content_in .most_board_view_con { width:720px; margin:10px auto; color:#9298a1; font-size: 15px; text-align:left; line-height:18px; padding:0 0 20px 0; background:url(../images/board_line2.png) no-repeat left bottom; padding:15px;}
+.Container .Content_in .most_board_view_con { width:720px; margin:10px auto; color:#9298a1; font-size: 20px; text-align:left; line-height:18px; padding:0 0 20px 0; background:url(../images/board_line2.png) no-repeat left bottom; padding:15px;}
 .Container .Content_in .most_board_view_con p { width:720px; margin:0 auto; color:#afb5bf; text-align:left; text-indent:10px;}
 .Container .Content_in .most_board_view_con img { display:table-cell; margin:0; max-width:720px; max-height:600px;}
 
