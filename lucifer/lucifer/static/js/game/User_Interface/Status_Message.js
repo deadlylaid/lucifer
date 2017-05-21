@@ -76,7 +76,7 @@ function status_Message_Item(text)
 
 function status_Message_Clone(text)
 {		
-	render_Text = "경험치를 " + text + "획득하였습니다.";		
+	render_Text = "경험치를 " + text + " 획득하였습니다.";		
 
 	if(ExpCount <= 5)
 	{
