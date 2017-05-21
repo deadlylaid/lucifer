@@ -87,7 +87,7 @@ function ui_Create()
     UI_ExperienceBar.visible = false;
 
     //Save btn
-    Save_btn = Lucifer_Game.add.button(UI_UnderBar.x + 156, UI_UnderBar.y + 4, 'saveBtn', saveBtn, this, 1, 0);
+    Save_btn = Lucifer_Game.add.button(UI_UnderBar.x + 156, UI_UnderBar.y + 4, 'saveBtn', saveBtn, this, 1, 0, 2);
     Save_btn.fixedToCamera = true;
     Save_btn.onInputUp.add(saveBtn, this);
     Save_btn.visible = true;
