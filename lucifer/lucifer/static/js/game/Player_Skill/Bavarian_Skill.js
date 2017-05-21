@@ -331,6 +331,9 @@ function skill_Reset()
 	//Skill One
 	if(skill_Bavarian.frame == 19 && skill_Bavarian.visible == true)
 	{
+		//Sound
+		sound_Player_SkillOne.stop();
+
 		skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
 		skill_Bavarian.visible = false;
 		skill_Bavarian.frame = 0;
@@ -341,6 +344,9 @@ function skill_Reset()
 	//Skill Two
 	if(skill_Bavarian_Two.frame == 14 && skill_Bavarian_Two.visible == true)
 	{
+		//Sound
+		sound_Player_SkillTwo.stop();
+
 		skill_Bavarian_Two.animations.stop('SK_Bavarian_Ani2', true);
 		skill_Bavarian_Two.visible = false;
 		skill_Bavarian_Two.frame = 0;
@@ -351,6 +357,9 @@ function skill_Reset()
 	//Skill Three Count : 흴인더 스킬의 지속 정도 값.
 	if(skill_Three_Count > 14 && skill_Bavarian_Three.visible == true)
 	{
+		//Sound
+		sound_Player_SkillThree.stop();
+
 		skill_Bavarian_Three.animations.stop('SK_Bavarian_Ani3', true);
 		skill_Bavarian_Three.visible = false;
 		skill_Bavarian_Three.frame = 0;
@@ -362,6 +371,9 @@ function skill_Reset()
 	//Skill Four
 	if(skill_Bavarian_Four.frame == 9 && skill_Bavarian_Four.visible == true)
 	{
+		//Four
+		sound_Player_SkillFore.stop();
+
 		skill_Bavarian_Four.animations.stop('SK_Bavarian_Ani4', true);
 		skill_Bavarian_Four.visible = false;
 		skill_Bavarian_Four.frame = 0;
@@ -386,6 +398,9 @@ function skill_Reset()
 	//Skill Five
 	if(skill_Five_Count > 14 && skill_Bavarian_Five.visible == true)
 	{
+		//Sound
+		sound_Player_SkillFive.stop();
+
 		skill_Bavarian_Five.animations.stop('SK_Bavarian_Ani5', true);
 		skill_Bavarian_Five.visible = false;
 		skill_Bavarian_Five.frame = 0;
@@ -601,26 +616,41 @@ function characterSkill(name, damage, limit_level){
 
 function onUp()
 {
+		//Sound
+		sound_WindowOpen.play();
+
 		SK_Icon_Skill_Info.visible = true;
 }
 
 function onUp2()
 {
+		//Sound
+		sound_WindowOpen.play();
+
 		SK_Icon_Skill_Info2.visible = true;
 }
 
 function onUp3()
 {
+		//Sound
+		sound_WindowOpen.play();
+
 		SK_Icon_Skill_Info3.visible = true;
 }
 
 function onUp4()
 {
+		//Sound
+		sound_WindowOpen.play();
+
 		SK_Icon_Skill_Info4.visible = true;
 }
 
 function onUp5()
 {
+		//Sound
+		sound_WindowOpen.play();
+
 		SK_Icon_Skill_Info5.visible = true;
 }
 

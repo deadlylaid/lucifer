@@ -20,7 +20,7 @@ function player_Monster_Col(Object)
 							Animation_Change(Direction, 'Attack');	
 
 							//Sound Play
-							player_Sound_Weapon_Play();																									
+							sound_Player_Weapon.play();																						
 						}										
 					}
 					else
@@ -110,7 +110,7 @@ function player_Monster_Col(Object)
 							Animation_Change(Direction, 'Attack');		
 
 							//Sound Play
-							player_Sound_Weapon_Play();					
+							sound_Player_Weapon.play();		
 						}
 					}
 					else
@@ -165,8 +165,11 @@ function player_Monster_Col(Object)
 							{
 								Object.blood_Effect.visible = true;
 								Object.blood_Effect.animations.play('blood_Ani', 10, true);
+
+								//Sound
+								sound_Player_Attack_Impact.play();
 							}							
-						}
+						}					
 
 						//Player Move Control
 						Player.body.velocity.x = 0;
@@ -199,7 +202,7 @@ function player_Monster_Col(Object)
 	if(Player.animations.name != 'PY_Bavarian_Attack_' + Direction)
 	{
 		//Sound Stop
-		player_Sound_Weapon_Stop();			
+		sound_Player_Weapon.stop();			
 	}
 }
 

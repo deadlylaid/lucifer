@@ -696,15 +696,24 @@ function buyItem() {
 
 //Potion Over/Out function
 function onOveritem(){
-    Potion_One_Info.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    Potion_One_Info.visible = true;  
 }
 
 function onOveritem2(){
-    Potion_Two_Info.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    Potion_Two_Info.visible = true;    
 }
 
 function onOveritem3(){
-    Potion_Three_Info.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    Potion_Three_Info.visible = true;   
 }
 
 function onOutitem(){
@@ -715,21 +724,30 @@ function onOutitem2(){
     Potion_Two_Info.visible = false;
 }
 
-function onOutitem3(){
+function onOutitem3(){   
     Potion_Three_Info.visible = false;
 }
 //---------------------------------------------------
 
 //Sword Over/Out function
 function onOverSword(){
-    Sword_One_Info.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    Sword_One_Info.visible = true;    
 }
 
 function onOverSword2(){
-    Sword_Two_Info.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    Sword_Two_Info.visible = true;   
 }
 
 function onOverSword3(){
+    //Sound
+    sound_WindowOpen.play();
+
     Sword_Three_Info.visible = true;
 }
 
@@ -748,15 +766,24 @@ function onOutSword3(){
 
 //Armor Over/Out function
 function onOverArmor(){
-    Armor_One_Info.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    Armor_One_Info.visible = true;   
 }
 
 function onOverArmor2(){
-    Armor_Two_Info.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    Armor_Two_Info.visible = true;   
 }
 
 function onOverArmor3(){
-    Armor_Three_Info.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    Armor_Three_Info.visible = true;  
 }
 
 function onOutArmor(){

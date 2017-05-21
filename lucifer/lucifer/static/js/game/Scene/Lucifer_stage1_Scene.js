@@ -19,6 +19,7 @@ var stage1_Scene =
 		//Sound
 		sound_PlayStage1BGM();
 		player_Sound_Create();
+		ui_Sound_Create();
 
 		//Stage
 		stageOne_Create();

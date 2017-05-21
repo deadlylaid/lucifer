@@ -267,7 +267,7 @@ function ui_Update()
         //Inventory
         if(uiInventory.visible == true)
         {
-            invenUi();
+            invenUiinvenUi();
         }
 
         //Stat
