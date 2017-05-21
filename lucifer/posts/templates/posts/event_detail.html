@@ -12,7 +12,7 @@
     </div>
       <ul class="most_left_menu">
         <li><a href="{% url "notice_list" %}">&gt; 공지사항</a></li>
-                <li>&gt; 이벤트</li>   
+                <li>&gt; 이벤트</li>
       </ul>
     </div>
 
@@ -27,14 +27,14 @@
 {% endblock %}
 
 {% block content %}
-<div id="most_sub_cont_area">    
+<div id="most_sub_cont_area">
   <!-- 리스트 -->
   <div class="most_board_view_tit"> {{ event.title }} </div>
     <div class="most_board_view_name">
       <p>작성자 아이디<span>2016.10.21</span></p>
     </div>
     <div class="most_board_view_con">
-    {{ event.contents }}
+    {{ event.contents|linebreaksbr }}
 안녕하세요. 항상 발전하는 웹게임 LUCIFER 입니다. <br>
 <br>
 LUCIFER를 향해 보내주시는 관심과 성원에 감사드리며,<br>
