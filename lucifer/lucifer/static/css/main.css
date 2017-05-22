@@ -125,6 +125,7 @@
 .Left_box .Login_wrap .characterdata {
     display: block;
     text-align: right;
+    color: #ffffff;
 }
 
 .Left_box .Login_wrap #nocharacter {
