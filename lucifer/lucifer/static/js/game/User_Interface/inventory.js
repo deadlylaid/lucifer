@@ -88,6 +88,9 @@ function dropItem(){
     if(selectedItem === null){
         alert('버릴 아이템을 선택해주세요');
     }else{
+        //Sound
+        sound_ButtonClick.play();
+
         var startNumberSecondArray = selectedItem.numberInArray;
 
         //버린 아이템의 뒷 순서인 아이템들을 모두 tempInventory에 저장
@@ -156,6 +159,9 @@ function dropItem(){
 
 function invenUi(){
     if(uiInventory.visible === true){
+        //Sound
+        sound_WindowClose.play();
+
         uiInventory.visible = false;
         dropButton.visible = false;
         useButton.visible = false;
@@ -167,6 +173,9 @@ function invenUi(){
             equipmentList[i].getVisible(false);
         }
     }else{
+        //Sound
+        sound_WindowOpen.play();
+
         uiInventory.visible = true;
         dropButton.visible = true;
         useButton.visible = true;
@@ -184,6 +193,10 @@ function useItem(){
     if(selectedItem === null){
         alert('장착할 아이템을 선택하세요');
     }else{
+        //Sound
+        sound_ButtonClick.play();
+        sound_ItemEquipment.play();
+
         var startNumberSecondArray = selectedItem.numberInArray;
 
         //버린 아이템의 뒷 순서인 아이템들을 모두 tempInventory에 저장
@@ -678,6 +691,9 @@ function potionImportQuickSlot(selectedItem){
 //D키를 눌렀을 때 실행되게 될 함수
 function potionDrink(){
     if(quickSlot[0]!==undefined){
+        //Sound
+        sound_PotionDrink.play();
+
         //console.log('potionDrink Test');
         quickSlot[0].count -= 1;
         if(health + quickSlot[0].heal > maxHealth){

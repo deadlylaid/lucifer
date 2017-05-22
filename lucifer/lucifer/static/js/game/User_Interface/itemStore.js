@@ -429,6 +429,9 @@ function showStore(){
 
 //클릭 시 실행
 function potionStoreTab(){
+    //Sound
+    sound_ButtonClick.play();
+
     potionTab.alpha = 1;
     swordTab.alpha = 0.7;
     armorTab.alpha = 0.7;
@@ -445,6 +448,9 @@ function potionStoreTab(){
 }
 
 function swordStoreTab(){
+    //Sound
+    sound_ButtonClick.play();
+
     potionTab.alpha = 0.7;
     swordTab.alpha = 1;
     armorTab.alpha = 0.7;
@@ -461,6 +467,9 @@ function swordStoreTab(){
 }
 
 function armorStoreTab(){
+    //Sound
+    sound_ButtonClick.play();
+
     potionTab.alpha = 0.7;
     swordTab.alpha = 0.7;
     armorTab.alpha = 1;
@@ -480,6 +489,9 @@ function armorStoreTab(){
 function clickItem(sprite){
     //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨
     //console.log(sprite.name);
+    //Sound
+    sound_ButtonClick.play();
+
     var i = inventory.length;
 
     switch(sprite.name){
@@ -668,6 +680,9 @@ function buyItem() {
             alert_Inventory.visible = true;
         }else{
             if(gold>selectedItem.price){
+                //Sound
+                sound_BuyItem.play();
+
                 //alert("구매한 물건 : " + selectedItem.name);
                 status_Message_Item(selectedItem.name);
                 inventory.push(selectedItem);

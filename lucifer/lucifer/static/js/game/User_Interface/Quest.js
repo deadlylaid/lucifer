@@ -504,6 +504,9 @@ function QuestUpdate(){
 
 function viewQuest()
 {
+    //Sound
+    sound_WindowOpen.play();
+
     UI_Quest.visible = true;
 
     //Questbtn
@@ -543,6 +546,9 @@ function QuestUi()
 {
     if(UI_Quest.visible == true)
     {
+        //Sound
+        sound_WindowClose.play();
+
         UI_Quest.visible = false;
 
         //Questbtn
@@ -617,6 +623,8 @@ function timeCheck(){
 }
 
 function actionOnClick1() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = true;
     text1.visible = true;
@@ -651,6 +659,8 @@ function actionOnClick1() {
 }
 
 function actionOnClick2() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;
@@ -685,6 +695,8 @@ function actionOnClick2() {
 }
 
 function actionOnClick3() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;
@@ -719,6 +731,8 @@ function actionOnClick3() {
 }
 
 function actionOnClick4() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;
@@ -753,6 +767,8 @@ function actionOnClick4() {
 }
 
 function actionOnClick5() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;
@@ -787,6 +803,8 @@ function actionOnClick5() {
 }
 
 function actionOnClick6() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;
@@ -821,6 +839,8 @@ function actionOnClick6() {
 }
 
 function actionOnClick7() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;
@@ -855,6 +875,8 @@ function actionOnClick7() {
 }
 
 function actionOnClick8() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;
@@ -889,6 +911,8 @@ function actionOnClick8() {
 }
 
 function actionOnClick9() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;
@@ -923,6 +947,8 @@ function actionOnClick9() {
 }
 
 function actionOnClick10() {
+    //Sound
+    sound_ButtonClick.play();
 
     QuestContent_lv1.visible = false;
     text1.visible = false;

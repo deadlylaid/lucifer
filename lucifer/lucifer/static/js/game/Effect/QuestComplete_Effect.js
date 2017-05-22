@@ -59,6 +59,11 @@ function questComplete_Effect_Update()
 		var CurFrame = questComplete_Effect.animations.frame;
 		var EndFrame = 51;
 
+		if(CurFrame == 1)
+		{
+			sound_QuestComplete.play();
+		}
+
 		if(CurFrame == EndFrame)
 		{
 			questComplete_Effect.visible = false;
