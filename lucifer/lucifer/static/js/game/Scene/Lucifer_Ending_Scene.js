@@ -74,7 +74,7 @@ var Ending_Scene =
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 84, Picture_13, this);
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 91, Picture_14, this);
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 98, Picture_16, this);
-		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 106, EndingLogo, this);
+		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 107, EndingLogo, this);
 		Lucifer_Game.time.events.add(Phaser.Timer.SECOND * 117, EndGame, this);
 
 	var content = [
@@ -202,7 +202,7 @@ var Ending_Scene =
 	[ 	"", "" ],
 	[ 	"", "" ],
 	[ 	"", "" ],
-	[ 	"Thank for Player ..", "" ],
+	[ 	"Thanks to Player ..", "" ],
 
 	];
 
@@ -390,7 +390,7 @@ function EndingLogo(){
 		sprite17.anchor.setTo(0.5, 0.5);
 		sprite17.alpha = 0;
 
-		this.add.tween(sprite17).to({ alpha: 1}, 2500, Phaser.Easing.Linear.None, true, 0, 0, true);
+		this.add.tween(sprite17).to({ alpha: 1}, 3000, Phaser.Easing.Linear.None, true, 0, 0, true);
 
 }
 
