@@ -1,7 +1,7 @@
 // User Interface Sound
 //-------------------------------------------------------------------------------------
 var sound_WindowOpen, sound_WindowClose, sound_ButtonClick, sound_ItemEquipment;
-var sound_BuyItem, sound_QuestComplete, sound_PotionDrink;
+var sound_BuyItem, sound_QuestComplete, sound_PotionDrink, sound_AlertWindow;
 //-------------------------------------------------------------------------------------
 
 function ui_Sound_Preload()
@@ -13,6 +13,7 @@ function ui_Sound_Preload()
 	Lucifer_Game.load.audio('Buy_Item', '../../static/sound/UI/buy_Item.wav');
 	Lucifer_Game.load.audio('Quest_Complete', '../../static/sound/UI/quest_Complete.wav');
 	Lucifer_Game.load.audio('Potion_Drink', '../../static/sound/UI/potion_Drink.wav');
+	Lucifer_Game.load.audio('Alert_Window', '../../static/sound/UI/alert_Window.wav');
 }
 
 function ui_Sound_Create()
@@ -24,6 +25,7 @@ function ui_Sound_Create()
 	sound_BuyItem = Lucifer_Game.add.audio('Buy_Item', 0.5, false);
 	sound_QuestComplete = Lucifer_Game.add.audio('Quest_Complete', 0.4, false);
 	sound_PotionDrink = Lucifer_Game.add.audio('Potion_Drink', 0.3, false);
+	sound_AlertWindow = Lucifer_Game.add.audio('Alert_Window', 0.4, false);
 
 	sound_WindowOpen.play();
 	sound_WindowOpen.stop();
@@ -39,4 +41,6 @@ function ui_Sound_Create()
 	sound_QuestComplete.stop();
 	sound_PotionDrink.play();
 	sound_PotionDrink.stop();
+	sound_AlertWindow.play();
+	sound_AlertWindow.stop();
 }

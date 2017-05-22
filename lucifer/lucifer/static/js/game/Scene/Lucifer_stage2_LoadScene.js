@@ -14,6 +14,12 @@ var stage2_LoadScene =
 
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg2.png', 1280, 800);
 
+		//Sound
+		player_Sound_Preload();
+		ui_Sound_Preload();
+		npc_Sound_Preload();
+
+
 		//Stage Preload
 		stageTwo_Preload();
 

@@ -1048,7 +1048,7 @@ function diablo_Dead(Object)
 		}
 		else if(Object.TyrealTime_Total > 3)
 		{
-			Lucifer_Game.camera.resetFX();
+			Lucifer_Game.camera.resetFX();		
 
 			if(Object.TyrealCheck == false)
 			{	
@@ -1058,10 +1058,14 @@ function diablo_Dead(Object)
 					npc_Tyreal_AppearanceEffect.animations.play('Tyreal_Effect_Ani', 10, true);
 
 					var CurFrame = npc_Tyreal_AppearanceEffect.animations.frame;
-					var EndFrame = 11;
+					var EndFrame = 11;					
 
 					if(CurFrame == EndFrame)
 					{
+						//Sound						
+						sound_Tyreal_Appearance.play();
+						sound_Tyreal_Bgm.play();
+
 						//Tyreal 등장
 						npc_Tyreal.visible = true;	
 						npc_Tyreal.Name.visible = true;			

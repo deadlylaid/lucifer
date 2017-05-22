@@ -17,6 +17,9 @@ var stage3_Scene =
 	{
 		//Sound
 		sound_PlayStage3BGM();
+		player_Sound_Create();
+		ui_Sound_Create();
+		npc_Sound_Create();
 
 		//Stage
 		stageThree_Create();

@@ -11,11 +11,8 @@ var UI_UnderBar_ClickCheck = false;
 var UI_ExperienceBar, experienceBar_Mask;
 //----------------------------------------------------------------------------------------------------------
 var key_Stat, Key_Skill, ui_Delay_Time;
-
 var UI_close;
-
-var Save_btn;
-
+var Save_btn, alert_Save;
 
 function ui_Preload()
 { //UI
@@ -34,6 +31,10 @@ function ui_Preload()
                                   '../../static/images/game/item/healthPotion2.png', 55, 55);
     Lucifer_Game.load.spritesheet('Quickslot_Potion3',
                                   '../../static/images/game/item/healthPotion3.png', 55, 55);
+
+    //Alert
+    Lucifer_Game.load.image('Save_Alert', 
+                            '../../static/images/game/UI/Alert/Save_Alert.png');
 }
 
 function ui_Create()
@@ -174,11 +175,23 @@ function ui_Create()
     //그 이유는 z-index가 오브젝트를 생성하는 순서에 따라 결정되기 때문에
     //먼저 호출했다간 UI창 밑에 이미지가 덮혀버리는 현상이 일어난다.
     changeServerListToClientListQuickSlot();
+
+    //Alert
+    alert_Save = Lucifer_Game.add.image(640, 400, 'Save_Alert');
+    alert_Save.anchor.setTo(0.5, 0.5);
+    alert_Save.visible = false;
+    alert_Save.fixedToCamera = true;
 }
 
 function underBar_Down()
 {
     UI_UnderBar_ClickCheck = true;
+
+    //alert_Save
+    alert_Save.visible = true;
+    
+    //Sound
+    sound_AlertWindow.play();
 }
 
 function underBar_Out()

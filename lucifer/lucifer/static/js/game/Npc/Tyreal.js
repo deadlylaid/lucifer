@@ -147,12 +147,13 @@ function EndingTalk(){
 		npc_Tyreal_ClickCheck = true;
 	}
 
+	//Sound
+	sound_Tyreal_Talk.play();
+
 	Talkbox.visible = true;
 	text_talk.visible = true;
 
-
-
-    characterStage=1,
+    characterStage = 1;
     gameSave();
 
     nextLine();
@@ -192,10 +193,18 @@ function nextWord() {
 }
 
 function exit2() {
+	//Sound
+	sound_ButtonClick.play();
+	sound_Tyreal_Bgm.stop();
+
 	window.close();
 }
 
 function credits(){
+	//Sound
+	sound_ButtonClick.play();
+	sound_Tyreal_Bgm.stop();
+
 	Lucifer_Game.state.start('Ending');
 
 	if(npc_Tyreal_ClickCheck == false)
