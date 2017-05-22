@@ -18,6 +18,7 @@ var stage2_LoadScene =
 		player_Sound_Preload();
 		ui_Sound_Preload();
 		npc_Sound_Preload();
+		monster_Sound_Preload();
 
 
 		//Stage Preload

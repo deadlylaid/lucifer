@@ -1,9 +1,11 @@
-//-------------------------------------------------------------------------------------
 // rain Particle
+//-------------------------------------------------------------------------------------
+var sound_Rain;
 //-------------------------------------------------------------------------------------
 function rain_Preload()
 {
 	Lucifer_Game.load.image('rain', '../../static/images/game/Effect/Rain_Particle/rain_many.png');
+	Lucifer_Game.load.audio('rain_Sound', '../../static/sound/Effect/rain_Effect.wav');
 }
 
 function rain_Create()
@@ -29,4 +31,8 @@ function rain_Create()
 
 	//Particle Start
 	rain_Particle.start(false, 1600, 15, 0);
+
+	//Sound
+	sound_Rain = Lucifer_Game.add.audio('rain_Sound', 0.2, true);
+	sound_Rain.play();
 }

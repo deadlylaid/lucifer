@@ -21,6 +21,7 @@ var stage2_Scene =
 		player_Sound_Create();
 		ui_Sound_Create();
 		npc_Sound_Create();
+		monster_Sound_Create();
 
 		//Stage
 		stageTwo_Create();

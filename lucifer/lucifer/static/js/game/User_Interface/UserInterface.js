@@ -185,13 +185,7 @@ function ui_Create()
 
 function underBar_Down()
 {
-    UI_UnderBar_ClickCheck = true;
-
-    //alert_Save
-    alert_Save.visible = true;
-    
-    //Sound
-    sound_AlertWindow.play();
+    UI_UnderBar_ClickCheck = true;    
 }
 
 function underBar_Out()
@@ -460,6 +454,12 @@ function updateStatus(){
 }
 
 function saveBtn(){
+    //alert_Save
+    alert_Save.visible = true;
+    
+    //Sound
+    sound_AlertWindow.play();
+    
     //Save 기능을 하는 함수
     gameSave();
 }

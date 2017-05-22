@@ -18,6 +18,7 @@ var loadScene =
 		player_Sound_Preload();
 		ui_Sound_Preload();
 		npc_Sound_Preload();
+		monster_Sound_Preload();
 
 		//Rain Particle & Sight Filter & GrayScale Effect
 		rain_Preload();
