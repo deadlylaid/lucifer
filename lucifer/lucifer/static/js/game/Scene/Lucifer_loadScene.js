@@ -6,7 +6,10 @@ var loadScene =
 		Effect 관련 소스 : EF_이펙트 명 || NPC 관련 소스 : NPC_이름         	|| Sound 관련 소스 : Sound_이름
 	*/
 	preload: function()
-	{
+	{	
+		var loadingLabel = Lucifer_Game.add.text(80, 150, 'Loading...',
+											{font: '30px Courier', fill: '#ffffff'});
+
 		//Add a loading label on the screen
 		Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);

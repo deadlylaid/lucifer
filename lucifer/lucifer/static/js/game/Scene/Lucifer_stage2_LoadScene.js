@@ -10,7 +10,7 @@ var stage2_LoadScene =
 	{
 		//Add a loading label on the screen
 		var loadingLabel = Lucifer_Game.add.text(80, 150, 'loading...',
-											{font: '15px Courier', fill: '#ffffff'});
+											{font: '25px Courier', fill: '#ffffff'});
 
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg2.png', 1280, 800);
 
