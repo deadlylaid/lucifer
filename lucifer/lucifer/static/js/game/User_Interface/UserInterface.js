@@ -291,6 +291,9 @@ function ui_Update()
 
     if(UI_close.isDown)
     {
+        //Sound
+        sound_WindowClose.play();
+
         //Quest
         if(UI_Quest.visible == true)
         {
@@ -341,14 +344,20 @@ function ui_Update()
 
 function viewStatus()
 {
-	UI_Stat.visible = true;
+    //Sound
+    sound_WindowOpen.play();
+
+    UI_Stat.visible = true;
     statusDataText.visible = true;
 }
 
 function statusUi(){
 		if(UI_Stat.visible == true)
 		{
-			UI_Stat.visible = false;
+            //Sound
+            sound_WindowClose.play();
+
+            UI_Stat.visible = false;
             statusDataText.visible = false;
 		}
 		else
@@ -359,6 +368,9 @@ function statusUi(){
 
 function viewSkill()
 {
+    //Sound
+    sound_WindowOpen.play();
+
     UI_Skill.visible = true;
 }
 
@@ -366,6 +378,9 @@ function skillUi()
 {
     if(UI_Skill.visible == true)
     {
+        //Sound
+        sound_WindowClose.play();
+
         UI_Skill.visible = false;
     }
     else
