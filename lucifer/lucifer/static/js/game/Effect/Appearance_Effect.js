@@ -45,6 +45,12 @@ function Appearance_Effect_Update()
 			var CurFrame = player_Appearance_Effect.animations.frame;
 			var EndFrame = 19;
 
+			if(CurFrame == 2)
+			{
+				//Sound
+				sound_Player_Revive.play();
+			}
+
 			if(CurFrame == EndFrame)
 			{
 				player_Appearance_Effect.visible = false;

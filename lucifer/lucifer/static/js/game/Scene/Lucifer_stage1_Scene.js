@@ -20,6 +20,8 @@ var stage1_Scene =
 		sound_PlayStage1BGM();
 		player_Sound_Create();
 		ui_Sound_Create();
+		npc_Sound_Create();
+		monster_Sound_Create();
 
 		//Stage
 		stageOne_Create();

@@ -7,6 +7,7 @@ var Player_LevelUp_Effect, level_Up_Key;
 var Player_DeadTimer, Player_DeadTime_Total = 0;
 var Player_CreateCheck = false;
 var Plyaer_DeadEffect_Check = false;
+var sound_LevelUp_Effect;
 //-------------------------------------------------------------------------------------
 
 function player_Effect_Preload()
@@ -17,6 +18,8 @@ function player_Effect_Preload()
 								  	  '../../static/images/game/Player/Bavarian/revival/revival.png', 128, 211);
 	Lucifer_Game.load.spritesheet('PY_LevelUp_Effect',
  								  '../../static/images/game/Effect/LevelUp_Effect/Level_Effect.png', 128, 113);
+	Lucifer_Game.load.audio('LevelEffect_Sound',
+							'../../static/sound/Effect/levelUp_Effect.wav');
 }
 
 function player_Effect_Create()
@@ -78,6 +81,11 @@ function player_Effect_Create()
  	//Player Dead Timer
  	Player_DeadTimer = Lucifer_Game.time.create(false);
  	Player_DeadTimer.loop(1000, player_DeadTimer, Lucifer_Game);
+
+ 	//Sound
+ 	sound_LevelUp_Effect = Lucifer_Game.add.audio('LevelEffect_Sound', 0.4, false);
+ 	sound_LevelUp_Effect.play();
+ 	sound_LevelUp_Effect.stop();
 }
 
 //Dead Timer
@@ -247,14 +255,21 @@ function player_LevelUp_Effect()
 		Player_LevelUp_Effect.animations.play('PY_LevelUp_Effect_Ani', 10, true);
 
 		var CurFrame = Player_LevelUp_Effect.animations.frame;
-		var EndFrame = 12;
+		var EndFrame = 12;		
 
 		if(CurFrame == EndFrame)
 		{
+			//Sound
+			sound_LevelUp_Effect.play();
+
 			Player_levelUp_Check = false;
 			Player_LevelUp_Effect.visible = false;
 			Player_LevelUp_Effect.animations.stop('PY_LevelUp_Effect_Ani', true);
 		}
+	}
+	else
+	{
+		Player_LevelUp_Effect.visible = false;
 	}
 }
 

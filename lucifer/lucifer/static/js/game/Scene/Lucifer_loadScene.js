@@ -14,9 +14,11 @@ var loadScene =
 		Lucifer_Game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 		Lucifer_Game.load.spritesheet('Menu_Image', '../../static/images/game/Menu/load_bg.png', 1280, 800);
 
-		//Souond
+		//Sound
 		player_Sound_Preload();
 		ui_Sound_Preload();
+		npc_Sound_Preload();
+		monster_Sound_Preload();
 
 		//Rain Particle & Sight Filter & GrayScale Effect
 		rain_Preload();

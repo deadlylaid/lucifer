@@ -507,8 +507,9 @@ function countess_Attack(Object)
 
 			if(Object.AttackCheck == false)
 			{
-				countess_Animation_Change(Object.Direction, 'Attack', Object);
-				Object.AttackCheck = true;
+				countess_Animation_Change(Object.Direction, 'Attack', Object);				
+
+				Object.AttackCheck = true;					
 			}
 		}
 		else
@@ -537,10 +538,13 @@ function countess_HitCount(Object)
 			else
 			{
 				EndFrame = 15 * (Object.Direction + 1);
-			}
+			}					
 
 			if(CurFrame + 5 < EndFrame)
 			{
+				//Sound
+				sound_Countess_Attack.play();	
+
 				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
 
 				if(monster_Attack_Damage > 0)
@@ -578,6 +582,9 @@ function countess_Dead(Object)
 
 			//Quest
 			checkQuest(2);
+
+			//Sound
+			sound_Countess_Dead.play();
 		}
 
 		var CurFrame = Object.animations.frame;

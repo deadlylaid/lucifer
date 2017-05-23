@@ -18,6 +18,10 @@ var stage2_Scene =
 	{
 		//Sound
 		sound_PlayStage2BGM();
+		player_Sound_Create();
+		ui_Sound_Create();
+		npc_Sound_Create();
+		monster_Sound_Create();
 
 		//Stage
 		stageTwo_Create();
@@ -166,6 +170,8 @@ var stage2_Scene =
 		else if(level < 10)
 		{
 			bossStage_Alert.visible = true;		
+			//Sound
+            sound_AlertWindow.play();
 		}		
 	},
 

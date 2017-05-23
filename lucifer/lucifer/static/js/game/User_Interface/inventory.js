@@ -1,9 +1,15 @@
 var testList = [];
+var alert_Equip, alert_Drop;
+
 function inventoryPreload(){
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
 
     Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
     Lucifer_Game.load.spritesheet('useButton', '../../static/images/game/UI/Inventory/useButton.png', 196, 51);
+
+    //Alert
+    Lucifer_Game.load.image('EquipItem_Alert', '../../static/images/game/UI/Alert/EquipItem_Alert.png');
+    Lucifer_Game.load.image('DropItem_Alert', '../../static/images/game/UI/Alert/DropItem_Alert.png');
 }
 
 function inventoryCreate(){
@@ -42,6 +48,18 @@ function inventoryCreate(){
     changeServerListToClientList();
     changeServerListToClientListEquipment();
 
+    //Alert
+    //---------------------------------------------------------------------------------------
+    alert_Drop = Lucifer_Game.add.image(640, 400, 'DropItem_Alert');
+    alert_Drop.anchor.setTo(0.5, 0.5);
+    alert_Drop.visible = false;
+    alert_Drop.fixedToCamera = true;
+
+    alert_Equip = Lucifer_Game.add.image(640, 400, 'EquipItem_Alert');
+    alert_Equip.anchor.setTo(0.5, 0.5);
+    alert_Equip.visible = false;
+    alert_Equip.fixedToCamera = true;
+    //---------------------------------------------------------------------------------------
 }
 
 //server-side로 데이터 실시간 전송
@@ -86,7 +104,10 @@ function equipmentPost(selectedItem, type_is){
 function dropItem(){
 
     if(selectedItem === null){
-        alert('버릴 아이템을 선택해주세요');
+        //('버릴 아이템을 선택해주세요');
+        alert_Drop.visible = true;
+        //Sound
+        sound_AlertWindow.play();
     }else{
         //Sound
         sound_ButtonClick.play();
@@ -191,7 +212,10 @@ function invenUi(){
 
 function useItem(){
     if(selectedItem === null){
-        alert('장착할 아이템을 선택하세요');
+        //('장착할 아이템을 선택하세요');
+        alert_Equip.visible = true;
+        //Sound
+        sound_AlertWindow.play();
     }else{
         //Sound
         sound_ButtonClick.play();

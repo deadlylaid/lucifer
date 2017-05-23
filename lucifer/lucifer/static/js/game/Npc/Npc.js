@@ -229,10 +229,11 @@ function npc_Debug_Render()
 }
 
 function Cain_Talk(){
-	console.log("Talk");
-
 	if(npc_Cain_ClickCheck == false)
 	{
+		//Sound
+		sound_CainNpc_Talk.play();
+
 		npc_Cain_ClickCheck = true;
 		Cain_TalkBox.visible = true;
 		Cain_text_talk.visible = true;
@@ -281,6 +282,8 @@ function nextWord2() {
 }
 
 function TalkboxExit(){
+		//Sound
+		sound_ButtonClick.play();
 
 		npc_Cain_ClickCheck = false;
 		Cain_TalkBox.visible = false;

@@ -372,13 +372,19 @@ function itemsStoreUpdate(){
     //Alert
     if(alert_Gold.visible == true
        || alert_Inventory.visible == true
-       || alert_SelectItem.visible == true)
+       || alert_SelectItem.visible == true
+       || alert_Drop.visible == true
+       || alert_Equip.visible == true
+       || alert_Save.visible == true)
     {
         alert_Timer.start();
     }
     else if(alert_Gold.visible == false
        && alert_Inventory.visible == false
-       && alert_SelectItem.visible == false)
+       && alert_SelectItem.visible == false
+       && alert_Drop.visible == false
+       && alert_Equip.visible == false
+       && alert_Save.visible == false)
     {
         alert_Time_Total = 0;
     }
@@ -388,6 +394,9 @@ function itemsStoreUpdate(){
         alert_Gold.visible = false;
         alert_Inventory.visible = false;
         alert_SelectItem.visible = false;
+        alert_Drop.visible = false;
+        alert_Equip.visible = false;
+        alert_Save.visible = false;
     }
 }
 
@@ -414,6 +423,9 @@ function showStore(){
         invenUi();
 
     }else{
+        //Sound Npc
+        sound_StoreNpc_Hellow.play();
+        
         potionTab.visible = true;
         swordTab.visible = true;
         armorTab.visible = true;
@@ -672,18 +684,22 @@ function clickItem(sprite){
 
 function buyItem() {
     if(selectedItem === null){
-        //alert("먼저 구매할 물건을 클릭하세요");
+        //("먼저 구매할 물건을 클릭하세요");
         alert_SelectItem.visible = true;
+        //Sound
+        sound_AlertWindow.play();
     }else{
         if(inventory.length>=10){
-            //alert("인벤토리가 가득 찼습니다.");
+            //("인벤토리가 가득 찼습니다.");
             alert_Inventory.visible = true;
+            //Sound
+            sound_AlertWindow.play();
         }else{
             if(gold>selectedItem.price){
                 //Sound
                 sound_BuyItem.play();
 
-                //alert("구매한 물건 : " + selectedItem.name);
+                //("구매한 물건 : " + selectedItem.name);
                 status_Message_Item(selectedItem.name);
                 inventory.push(selectedItem);
                 selectedItem.getVisible(true);
@@ -697,8 +713,10 @@ function buyItem() {
                     }
                 }
             }else{
-                //alert("소지한 골드가 부족합니다");
+                //("소지한 골드가 부족합니다");
                 alert_Gold.visible = true;
+                //Sound
+                sound_AlertWindow.play();
             }
 
         }

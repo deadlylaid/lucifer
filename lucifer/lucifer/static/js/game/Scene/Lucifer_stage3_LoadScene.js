@@ -17,6 +17,12 @@ var stage3_LoadScene =
 		//Sight Effect
 		sight_Filter_Preload();
 
+		//Sound
+		player_Sound_Preload();
+		ui_Sound_Preload();
+		npc_Sound_Preload();
+		monster_Sound_Preload();
+
 		//Stage Preload
 		//----------------------------------------------------------------------------------------------------------
 		stageThree_Preload();

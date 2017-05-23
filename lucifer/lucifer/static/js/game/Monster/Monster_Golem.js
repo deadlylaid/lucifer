@@ -523,6 +523,9 @@ function golem_HitCount(Object)
 
 			if(CurFrame + 4 < EndFrame)
 			{
+				//Sound
+				sound_Golem_Attack.play();
+
 				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
 
 				if(monster_Attack_Damage > 0)
@@ -560,6 +563,9 @@ function golem_Dead(Object)
 
 			//Quest
 			checkQuest(3);
+
+			//Sound
+			sound_Golem_Dead.play();
 		}
 
 		var CurFrame = Object.animations.frame;
