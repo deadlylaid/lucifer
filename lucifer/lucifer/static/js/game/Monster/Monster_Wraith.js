@@ -587,10 +587,10 @@ function wraith_Dead(Object)
 			if(Object.status_Message_Check == false)
 			{
 				status_Message_Clone(Object.Experience);
-				Object.status_Message_Check = true;	
+				Object.status_Message_Check = true;
 			}
-			
-			
+
+
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;

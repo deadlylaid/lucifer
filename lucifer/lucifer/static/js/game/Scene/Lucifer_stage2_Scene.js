@@ -169,10 +169,10 @@ var stage2_Scene =
 		}
 		else if(level < 10)
 		{
-			bossStage_Alert.visible = true;		
+			bossStage_Alert.visible = true;
 			//Sound
             sound_AlertWindow.play();
-		}		
+		}
 	},
 
 	goto_Stage_back: function()

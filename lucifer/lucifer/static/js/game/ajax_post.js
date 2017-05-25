@@ -1,8 +1,6 @@
 $button1 = $(".higherfunction");
-console.log($button1);
 
 $button1.click(function(){
-    console.log(nickname);
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {

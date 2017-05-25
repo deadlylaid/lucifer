@@ -199,8 +199,8 @@ function player_Effect_Regen()
 			if(Player_DeadTime_Total == 0)
 			{
 				sound_Stage1Bgm.stop();
-				sound_Player_DeadBgm.play();	
-			}			
+				sound_Player_DeadBgm.play();
+			}
 
 			//Gray Filter
 			gray_Scale.visible = true;

@@ -604,10 +604,10 @@ function countess_Dead(Object)
 			//Message
 			if(Object.status_Message_Check == false)
 			{
-				status_Message_Clone(Object.Experience);	
+				status_Message_Clone(Object.Experience);
 				Object.status_Message_Check = true;
-			}			
-			
+			}
+
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
@@ -701,7 +701,7 @@ function countess_Regen(Object)
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 
-			countess_Animation_Change(Object.Direction, 'Stand', Object);			
+			countess_Animation_Change(Object.Direction, 'Stand', Object);
 
 			Object.Regen_Timer.stop();
 			Object.Regen_Time_Total = 0;
@@ -744,7 +744,7 @@ function countess_Update()
 		blood_Effect_Update(countess);
 
 		//Shadow
-		shadow_Monster_Move(countess);	
+		shadow_Monster_Move(countess);
 	}
 }
 

@@ -89,7 +89,7 @@ function deamon_Create()
 	deamon_Clone(4231, 1619); deamon_Clone(4717, 1771); deamon_Clone(5402, 2179);
 	deamon_Clone(10549, 2570); deamon_Clone(7847, 1710); deamon_Clone(8030, 1810);
 
-	deamon_Clone(6176, 2102); deamon_Clone(6455, 2266); deamon_Clone(6757, 2479); 
+	deamon_Clone(6176, 2102); deamon_Clone(6455, 2266); deamon_Clone(6757, 2479);
 	deamon_Clone(7114, 2150);
 }
 //------------------------------------------------------------------------------
@@ -606,10 +606,10 @@ function deamon_Dead(Object)
 			//Message
 			if(Object.status_Message_Check == false)
 			{
-				status_Message_Clone(Object.Experience);	
+				status_Message_Clone(Object.Experience);
 				Object.status_Message_Check = true;
-			}			
-			
+			}
+
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
@@ -746,7 +746,7 @@ function deamon_Update()
 		blood_Effect_Update(deamon);
 
 		//Shadow
-		shadow_Monster_Move(deamon);		
+		shadow_Monster_Move(deamon);
 	}
 }
 

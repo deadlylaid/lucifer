@@ -1,4 +1,4 @@
-//Item Effect 
+//Item Effect
 //------------------------------------------------------------------------------
 var item_Effect, item_Effect_Check = false;
 //------------------------------------------------------------------------------
@@ -21,10 +21,10 @@ function item_Effect_Create()
 	//Item Effect Animation
 	item_Effect.animations.add('Item_Effect_Ani',
 							   [
-							   	  0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  
+							   	  0,  1,  2,  3,  4,  5,  6,  7,  8,  9,
 							   	  10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-							   	  20, 21, 22, 23, 24 
-							   ], 60, true);	
+							   	  20, 21, 22, 23, 24
+							   ], 60, true);
 	item_Effect.animations.play('Item_Effect_Ani', 10, true);
 }
 
@@ -52,5 +52,5 @@ function item_Effect_Update()
 			item_Effect.visible = false;
 			item_Effect.animations.stop('Item_Effect_Ani', true);
 		}
-	}	
+	}
 }

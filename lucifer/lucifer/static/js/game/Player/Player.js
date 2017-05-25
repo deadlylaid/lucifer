@@ -455,7 +455,7 @@ function PlayerSkill4()
 	if(player_Skill_Four == true)
 	{
 		if(skill_Four_Check == false)
-		{	
+		{
 			//Sound
 			sound_Player_SkillFore.play();
 
@@ -658,8 +658,8 @@ function player_Update()
 			if(bossStage_Alert_TimeTotal > 2)
 			{
 				bossStage_Alert.visible = false;
-				bossStage_Alert_TimeTotal = 0;	
-			}				
+				bossStage_Alert_TimeTotal = 0;
+			}
 		}
 	}
 	else if(stageThree_Check == true)

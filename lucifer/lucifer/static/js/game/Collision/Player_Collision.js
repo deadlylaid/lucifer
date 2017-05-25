@@ -17,15 +17,15 @@ function player_Monster_Col(Object)
 					{
 						if(skill_Bavarian_Three.visible == false)
 						{
-							Animation_Change(Direction, 'Attack');	
+							Animation_Change(Direction, 'Attack');
 
 							//Sound Play
-							sound_Player_Weapon.play();																						
-						}										
+							sound_Player_Weapon.play();
+						}
 					}
 					else
 					{
-						Player_AttackCheck = false;																	
+						Player_AttackCheck = false;
 					}
 
 					//Bavarian Skill Four Effect
@@ -107,10 +107,10 @@ function player_Monster_Col(Object)
 					{
 						if(skill_Bavarian_Three.visible == false)
 						{
-							Animation_Change(Direction, 'Attack');		
+							Animation_Change(Direction, 'Attack');
 
 							//Sound Play
-							sound_Player_Weapon.play();		
+							sound_Player_Weapon.play();
 						}
 					}
 					else
@@ -138,7 +138,7 @@ function player_Monster_Col(Object)
 					//----------------------------------------------------------------------------
 					if(Player.animations.name == 'PY_Bavarian_Attack_' + Direction)
 					{
-						//Animation Control 
+						//Animation Control
 						if(Lucifer_Game.input.activePointer.leftButton.isDown)
 						{
 							Player_AttackCheck = true;
@@ -168,8 +168,8 @@ function player_Monster_Col(Object)
 
 								//Sound
 								sound_Player_Attack_Impact.play();
-							}							
-						}					
+							}
+						}
 
 						//Player Move Control
 						Player.body.velocity.x = 0;
@@ -180,7 +180,7 @@ function player_Monster_Col(Object)
 						Object.body.velocity.y = 0;
 					}
 					//----------------------------------------------------------------------------
-				}						
+				}
 
 				//Skill Damage
 				skill_Attack(Object);
@@ -196,13 +196,13 @@ function player_Monster_Col(Object)
 				Player_Time_Total = 0;
 			}
 			*/
-		}		
+		}
 	}
 
 	if(Player.animations.name != 'PY_Bavarian_Attack_' + Direction)
 	{
 		//Sound Stop
-		sound_Player_Weapon.stop();			
+		sound_Player_Weapon.stop();
 	}
 }
 

@@ -586,9 +586,9 @@ function skeleton_Dead(Object)
 			if(Object.status_Message_Check == false)
 			{
 				status_Message_Clone(Object.Experience);
-				Object.status_Message_Check = true;		
-			}		
-			
+				Object.status_Message_Check = true;
+			}
+
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
 			Object.destroy();
@@ -686,7 +686,7 @@ function skeleton_Update()
 		mouse_ColCheck(skeleton);
 
 		//Shadow
-		shadow_Monster_Move(skeleton);	
+		shadow_Monster_Move(skeleton);
 	}
 }
 

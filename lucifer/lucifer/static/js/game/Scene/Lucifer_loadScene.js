@@ -6,7 +6,7 @@ var loadScene =
 		Effect 관련 소스 : EF_이펙트 명 || NPC 관련 소스 : NPC_이름         	|| Sound 관련 소스 : Sound_이름
 	*/
 	preload: function()
-	{	
+	{
 		var loadingLabel = Lucifer_Game.add.text(80, 150, 'Loading...',
 											{font: '30px Courier', fill: '#ffffff'});
 
@@ -68,7 +68,7 @@ var loadScene =
         itemsPreload();
         itemStorePreload();
 
-		//UI 
+		//UI
 		ui_Preload();
 
         //inventory

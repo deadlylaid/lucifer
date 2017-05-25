@@ -46,10 +46,6 @@ $.ajax({
 
 }).done(function(data){
     //console.log(data)
-    //console.log(data[0])
-    //console.log(data[0].character[0])
-    //console.log(data[0].character[0].status.health)
-    //console.log(data[1].monster[0])
     character = data[0].character[0];
     nickname = character.nickname;
     level = character.level;

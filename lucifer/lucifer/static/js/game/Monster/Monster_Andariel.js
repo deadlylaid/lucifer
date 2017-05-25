@@ -580,7 +580,7 @@ function andariel_Skill(Object)
 			{
 				health -= Object.Andariel_Skill_AttackPoint;
 
-				console.log(health);
+				//console.log(health);
 			}
 		}
 	}
@@ -642,7 +642,7 @@ function andariel_Dead(Object)
 			Object.body.static = true;
 
 			//Quest
-			checkQuest(8);			
+			checkQuest(8);
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -651,10 +651,10 @@ function andariel_Dead(Object)
 			//Message
 			if(Object.status_Message_Check == false)
 			{
-				status_Message_Clone(Object.Experience);	
+				status_Message_Clone(Object.Experience);
 				Object.status_Message_Check = true;
-			}			
-			
+			}
+
 			Object.kill();
 			Object.Andariel_Skill.kill();
 			Object.Name.visible = false;
@@ -794,7 +794,7 @@ function andariel_Update()
 		blood_Effect_Update(andariel);
 
 		//Shadow
-		shadow_Monster_Move(andariel);		
+		shadow_Monster_Move(andariel);
 	}
 }
 
