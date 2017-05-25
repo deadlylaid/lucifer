@@ -2,7 +2,7 @@
 //-------------------------------------------------------------------------------------
 var sound_Player_Weapon, sound_Player_Attack_Impact, sound_Player_Dead, sound_Player_Revive;
 var sound_Player_SkillOne, sound_Player_SkillTwo, sound_Player_SkillThree;
-var sound_Player_SkillFore, sound_Player_SkillFive, sound_Player_DeadBgm; 
+var sound_Player_SkillFore, sound_Player_SkillFive, sound_Player_DeadBgm;
 //-------------------------------------------------------------------------------------
 
 function player_Sound_Preload()

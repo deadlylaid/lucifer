@@ -286,7 +286,7 @@ function useItem(){
         if(selectedItem.type_is==='potion'){
             var count = selectedItem.count;
 			if(quickSlot[0]!==undefined){
-                console.log('기존에 등록되어 있던 포션을 버렸습니다.');
+                //console.log('기존에 등록되어 있던 포션을 버렸습니다.');
 				quickSlot[0].destroy();
                 quickSlot[0].text.destroy();
             }
@@ -746,7 +746,7 @@ function potionDrink(){
 }
 
 function quickSlotPut(selectedItem){
-    console.log(selectedItem.count);
+    //console.log(selectedItem.count);
     $.ajax({
         method:'PUT',
         url:'/api/user/character/quickslot/',

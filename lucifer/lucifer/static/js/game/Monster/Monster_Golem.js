@@ -73,7 +73,7 @@ function golem_Preload()
 								   220, 210);
 	Lucifer_Game.load.spritesheet('MON_Golem_Dead',
 								  '../../static/images/game/Monster/Golem/dead/dead.png',
-								   214, 133);    
+								   214, 133);
 }
 
 function golem_Create()
@@ -576,10 +576,10 @@ function golem_Dead(Object)
 			//Message
 			if(Object.status_Message_Check == false)
 			{
-				status_Message_Clone(Object.Experience);	
+				status_Message_Clone(Object.Experience);
 				Object.status_Message_Check = true;
-			}			
-			
+			}
+
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;

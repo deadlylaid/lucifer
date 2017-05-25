@@ -610,7 +610,7 @@ function fallen_Shaman_FireBall_Fire(Object)
 				fireBall.Rect.y = fireBall.y;
 				fireBall.Rect.centerOn(fireBall.Rect.x, fireBall.Rect.y);
 
-				console.log(fireBall.Rect.x, fireBall.Rect.y);
+				//console.log(fireBall.Rect.x, fireBall.Rect.y);
 			}
 		}
 
@@ -635,7 +635,7 @@ function fallen_Shaman_FireBall_Fire(Object)
 					health -= (Object.Attack_Point * 0.01);
 				}
 
-				console.log(health);
+				//console.log(health);
 			}
 		}
 

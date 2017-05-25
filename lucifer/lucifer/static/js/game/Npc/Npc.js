@@ -128,7 +128,7 @@ function npc_Create()
 	cain_Npc.inputEnabled = true;
 	cain_Npc.events.onInputDown.add(Cain_Talk, this);
 
-	//Talkbox Text 
+	//Talkbox Text
 	Cain_text_talk = Lucifer_Game.add.text(480, 596, '', {font: '15px', fill: '#ffffff'});
     Cain_text_talk.anchor.set(0.5);
     Cain_text_talk.fixedToCamera = true;
@@ -140,7 +140,7 @@ function npc_Create()
     //Talkbox btn
 	Cain_Credits_button = Lucifer_Game.add.button(938, 615, 'Cain_TalkBox_btn', TalkboxExit, this, 1, 0);
 	Cain_Credits_button.fixedToCamera = true;
-    Cain_Credits_button.onInputUp.add(TalkboxExit, this); 
+    Cain_Credits_button.onInputUp.add(TalkboxExit, this);
     Cain_Credits_button.visible = false;
     Cain_Credits_button.input.useHandCursor = true;
 
@@ -237,7 +237,7 @@ function Cain_Talk(){
 		npc_Cain_ClickCheck = true;
 		Cain_TalkBox.visible = true;
 		Cain_text_talk.visible = true;
-		
+
 		nextLine2();
 
 	}else if(npc_Cain_ClickCheck == true)
@@ -253,7 +253,7 @@ function Cain_Talk(){
 function nextLine2() {
 
     if (lineIndex2 === content3.length)
-    {	
+    {
     	Cain_Credits_button.visible = true;
         return;
     }

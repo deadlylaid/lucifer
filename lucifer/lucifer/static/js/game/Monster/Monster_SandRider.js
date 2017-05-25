@@ -625,10 +625,10 @@ function sandRider_Dead(Object)
 			//Message
 			if(Object.status_Message_Check == false)
 			{
-				status_Message_Clone(Object.Experience);	
+				status_Message_Clone(Object.Experience);
 				Object.status_Message_Check = true;
-			}			
-			
+			}
+
 			Object.kill();
 			Object.Name.visible = false;
 			Object.ExpCheck = true;
@@ -765,7 +765,7 @@ function sandRider_Update()
 		blood_Effect_Update(sandRider);
 
 		//Shadow
-		shadow_Monster_Move(sandRider);	
+		shadow_Monster_Move(sandRider);
 	}
 }
 

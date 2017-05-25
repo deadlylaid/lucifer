@@ -753,7 +753,7 @@ function council_Dead(Object)
 			Object.body.static = true;
 
 			//Quest
-			checkQuest(5);			
+			checkQuest(5);
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -773,10 +773,10 @@ function council_Dead(Object)
 			//Message
 			if(Object.status_Message_Check == false)
 			{
-				status_Message_Clone(Object.Experience);	
+				status_Message_Clone(Object.Experience);
 				Object.status_Message_Check = true;
-			}		
-			
+			}
+
 			Object.kill();
 			Object.Name.visible = false;
 			Object.Skill_Light.visible = false;
@@ -930,7 +930,7 @@ function council_Update()
 		blood_Effect_Update(council);
 
 		//Shadow
-		shadow_Monster_Move(council);		
+		shadow_Monster_Move(council);
 	}
 }
 

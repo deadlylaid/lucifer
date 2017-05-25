@@ -997,9 +997,9 @@ function diablo_Dead(Object)
 {
 	if(Object.Hp < 0)
 	{
-		Object.DeadCheck = true;	
+		Object.DeadCheck = true;
 
-		sound_StopStage3BGM();		
+		sound_StopStage3BGM();
 	}
 
 	if(Object.DeadCheck == true)
@@ -1029,9 +1029,9 @@ function diablo_Dead(Object)
 			//Message
 			if(Object.status_Message_Check == false)
 			{
-				status_Message_Clone(Object.Experience);	
+				status_Message_Clone(Object.Experience);
 				Object.status_Message_Check = true;
-			}			
+			}
 
 			Object.kill();
 			Object.Inferno.kill();
@@ -1051,7 +1051,7 @@ function diablo_Dead(Object)
 			Lucifer_Game.camera.resetFX();		
 
 			if(Object.TyrealCheck == false)
-			{	
+			{
 				if(npc_Tyreal_AppearanceEffect_Check == false)
 				{
 					npc_Tyreal_AppearanceEffect.visible = true;
@@ -1067,14 +1067,14 @@ function diablo_Dead(Object)
 						sound_Tyreal_Bgm.play();
 
 						//Tyreal 등장
-						npc_Tyreal.visible = true;	
-						npc_Tyreal.Name.visible = true;			
+						npc_Tyreal.visible = true;
+						npc_Tyreal.Name.visible = true;
 						Object.TyrealCheck = true;
 						npc_Tyreal_AppearanceEffect.animations.stop('Tyreal_Effect_Ani', true);
 
 						npc_Tyreal_AppearanceEffect_Check = true;
 					}
-				}				
+				}
 
 				Object.TyrealCamera_Timer.stop();
 			}
@@ -1211,7 +1211,7 @@ function diablo_Action_Camaera(Object)
 		if(Object.CameraTime_Total > 5 && action_CameraStepOne == false)
 		{
 			Lucifer_Game.camera.follow(Player, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);
-			Lucifer_Game.camera.setSize(1280, /*800*/735);			
+			Lucifer_Game.camera.setSize(1280, /*800*/735);
 
 			action_CameraStepOne = true;
 		}
@@ -1263,7 +1263,7 @@ function diablo_Update()
 	mouse_ColCheck(diablo);
 
 	//Blood Effect
-	blood_Effect_Update(diablo);	
+	blood_Effect_Update(diablo);
 }
 
 function diablo_Render()

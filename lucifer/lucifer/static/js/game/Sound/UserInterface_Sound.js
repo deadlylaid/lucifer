@@ -30,7 +30,7 @@ function ui_Sound_Create()
 	sound_WindowOpen.play();
 	sound_WindowOpen.stop();
 	sound_WindowClose.play();
-	sound_WindowClose.stop();	
+	sound_WindowClose.stop();
 	sound_ButtonClick.play();
 	sound_ButtonClick.stop();
 	sound_ItemEquipment.play();
