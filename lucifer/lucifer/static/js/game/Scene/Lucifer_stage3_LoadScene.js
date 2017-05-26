@@ -16,6 +16,7 @@ var stage3_LoadScene =
 
 		//Sight Effect
 		sight_Filter_Preload();
+		grayScale_Preload();
 
 		//Sound
 		player_Sound_Preload();
@@ -86,6 +87,9 @@ var stage3_LoadScene =
 		//Quest
 		//----------------------------------------------------------------------------------------------------------
 		QuestPreload();
+
+		//Quest Effect
+		questComplete_Effect_Preload();
 		//----------------------------------------------------------------------------------------------------------
 
 		//Skill

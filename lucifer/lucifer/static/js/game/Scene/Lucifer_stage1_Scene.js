@@ -137,6 +137,9 @@ var stage1_Scene =
 
 		if(Portal_Check == true)
 		{
+			//Sound
+			sound_Rain.stop();
+
             characterStage='2';
             gameSave();
 			sound_StopStage1BGM();

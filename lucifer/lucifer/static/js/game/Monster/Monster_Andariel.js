@@ -39,7 +39,7 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false, this.GetExpCheck = false;
+	this.MouseCheck = false, this.GetExpCheck = false, this.SoundCheck = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 30, this.Regen_Check = false;
@@ -447,6 +447,14 @@ function andariel_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				andariel_Animation_Change(Object.Direction, 'Walk', Object);
+			
+				if(Object.animations.name == "MON_Andariel_Walk_" + Object.Direction
+				   && Object.SoundCheck == false)
+				{
+					//Sound
+					sound_Andairel_Neutral.play();
+					Object.SoundCheck = true;
+				}
 			}
 		}
 
@@ -457,6 +465,7 @@ function andariel_Move(Object)
 			{
 				andariel_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
+				Object.SoundCheck = false;
 			}
 
 			//Attack
@@ -560,6 +569,9 @@ function andariel_Skill(Object)
 
 		if(Object.Andariel_Skill_Check == true)
 		{
+			//Sound
+			sound_Andairel_Skill.play();
+
 			var CurFrame = Object.Andariel_Skill.animations.frame;
 			var EndFrame = 23;
 
@@ -606,6 +618,9 @@ function andariel_HitCount(Object)
 
 			if(CurFrame + 5 < EndFrame)
 			{
+				//Sound
+				sound_Andairel_Attack.play();
+
 				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
 
 				if(monster_Attack_Damage > 0)
@@ -642,7 +657,10 @@ function andariel_Dead(Object)
 			Object.body.static = true;
 
 			//Quest
-			checkQuest(8);
+			checkQuest(8);		
+
+			//Sound
+			sound_Andairel_Dead.play();	
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -744,6 +762,7 @@ function andariel_Regen(Object)
 			Object.AttackCheck = false,   Object.CompareCheck = false, 		   Object.DamageCheck = false;
 			Object.DeadCheck = false,	  Object.DeadMotionCheck = false,	   Object.ReturnCheck = false;
 			Object.MouseCheck = false,    Object.Andariel_Skill_Check = false, Object.status_Message_Check = false;
+			Object.SoundCheck = false;
 
 			Object.Hp = 4000;
 			Object.MaxHp = 4000;

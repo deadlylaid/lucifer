@@ -49,6 +49,7 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AttackCheck = false,   this.CompareCheck = false,    this.DamageCheck = false;
 	this.DeadCheck = false,	    this.DeadMotionCheck = false, this.ReturnCheck = false;
 	this.MouseCheck = false,    this.TyrealCheck = false,     this.GetExpCheck = false;
+	this.SoundCheck = false;
 
 	//AI Pattern Check
 	this.Pattern_Change = false, this.Pattern_Attack = false, this.Pattern_Skill = false;
@@ -764,8 +765,12 @@ function diablo_Pattern_Attack(Object)
 		}
 
 		Object.Pattern_Attacktimer.start();
+
 		if(CurFrame == EndFrame)
 		{
+			//Sound
+			sound_Lucifer_AttackOne.play();
+
 			if(Object.Pattern_AttackTime > 3)
 			{
 				Object.Pattern_Attack = true;
@@ -795,6 +800,9 @@ function diablo_Pattern_Attack(Object)
 		Object.Pattern_Attacktimer.start();
 		if(CurFrame == EndFrame)
 		{
+			//Sound
+			sound_Lucifer_AttackTwo.play();
+
 			if(Object.Pattern_AttackTime > 3)
 			{
 				//Pattern Skill Change
@@ -840,6 +848,9 @@ function diablo_Pattern_Skill(Object)
 
 		if(CurFrame == EndFrame)
 		{
+			//Sound
+			sound_Lucifer_SkillOne.play();
+
 			if(Object.SkillTime_Total > 2)
 			{
 				Object.Pattern_Skill = true;
@@ -874,6 +885,9 @@ function diablo_Pattern_Skill(Object)
 		Object.Skill_DelayTimer.start();
 		if(CurFrame == EndFrame)
 		{
+			//Sound
+			sound_Lucifer_SkillTwo.play();
+
 			if(Object.SkillTime_Total > 2)
 			{
 				Object.Pattern_Skill = false;
@@ -907,6 +921,9 @@ function diablo_Pattern_Skill(Object)
 
 		if(CurFrame == EndFrame)
 		{
+			//Sound
+			sound_Lucifer_SkillThree.play();
+
 			//Skeleton Create
 			skeleton_Clone(2018, 801);
 			skeleton_Clone(2356, 700);
@@ -1015,6 +1032,9 @@ function diablo_Dead(Object)
 
 			//Quest
 			checkQuest(9);
+
+			//Sound
+			sound_Lucifer_Dead.play();
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -1101,7 +1121,7 @@ function diablo_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false, Object.status_Message_Check = false;
+			Object.MouseCheck = false, Object.status_Message_Check = false, Object.SoundCheck = false;
 
 			Object.Hp = 6000;
 			Object.MaxHp = 6000;
@@ -1203,7 +1223,14 @@ function diablo_Action_Camaera(Object)
 		}
 
 		if(action_CameraCheck == false && action_CameraStepOne == false)
-		{
+		{	
+			if(Object.CameraTime_Total > 3 && Object.SoundCheck == false)
+			{
+				//Sound
+				sound_Lucifer_Laugh.play();	
+				Object.SoundCheck = true;
+			}			
+
 			Lucifer_Game.camera.follow(Object, Phaser.Camera.FOLLOW_LOCKON, 0.03, 0.03);
 			Lucifer_Game.camera.setSize(1280, 800);
 		}

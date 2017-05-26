@@ -43,6 +43,9 @@ var stage2_Scene =
 		deamon_Create();
 		council_Create();
 
+		//Sight Effect
+		sight_Filter_Create();
+
 		//Queset
 		QuestCreate();
 
@@ -58,11 +61,17 @@ var stage2_Scene =
 		//Skill
 		skill_Create();
 
+		//Quest Effect
+		questComplete_Effect_Create();
+
 		//mouse movePoint
 		movepoint_Create();
 
 		//Mouse
 		mouse_Create();
+
+		//GrayScale Effect
+		grayScale_Create();
 
 		//Message
 		status_Message_Craete();
@@ -108,6 +117,9 @@ var stage2_Scene =
 
 		//Quest Update
 		QuestUpdate();
+
+		//Quest Effect Update
+		questComplete_Effect_Update();
 
 		//Skill
 		skill_Update();

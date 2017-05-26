@@ -39,7 +39,7 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false, this.GetExpCheck = false;
+	this.MouseCheck = false, this.GetExpCheck = false, this.SoundCheck = false;
 
 	//Light
 	this.Skill_Light, this.Skill_Rect;
@@ -105,7 +105,7 @@ function council_Create()
 
 	council_Clone(3457, 3444); council_Clone(3783, 3625); council_Clone(4129, 3790);
 	council_Clone(4594, 3636); council_Clone(5042, 4737); council_Clone(5326, 4473);
-	council_Clone(5581, 4641); council_Clone(5383, 4869);
+	council_Clone(5781, 4694); council_Clone(5754, 5055);
 }
 
 function council_Clone(PointX, PointY)
@@ -505,6 +505,14 @@ function council_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				council_Animation_Change(Object.Direction, 'Run', Object);
+
+				if(Object.animations.name == "MON_Council_Run_" + Object.Direction
+				   && Object.SoundCheck == false)
+				{
+					//Sound
+					sound_Council_Neutral.play();
+					Object.SoundCheck = true;
+				}
 			}
 		}
 
@@ -515,6 +523,7 @@ function council_Move(Object)
 			{
 				council_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
+				Object.SoundCheck = false;
 			}
 
 			//Attack
@@ -576,6 +585,7 @@ function council_Attack_AI(Object)
 	//일정하게 올린값이 렌덤값 Pattern_Change_Value 값보다 커지면 다시 렌덤밗을 뽑고
 	//그 뽑은 값에 따라 Time Total은 초기화 시키고 Patten_Check 값을 True / false 로 바꿔주면서
 	//Pattern 을 바꾼다.
+
 	Object.Pattern_Timer.start();
 
 	if(Object.Pattern_Time_Total > Object.Pattern_Change_Value)
@@ -619,6 +629,9 @@ function council_SkillAttack(Object)
 					council_SkillHitCount(Object);
 				}
 
+				//Sound
+				sound_Council_Skill.play();
+
 				Object.Pattern_Skill_Check = false;
 				Object.AttackCheck = true;
 			}
@@ -647,6 +660,9 @@ function council_Attack(Object)
 
 				Object.Pattern_Skill_Check = true;
 				Object.AttackCheck = true;
+
+				//Sound
+				sound_Council_Attack.play();
 			}
 		}
 		else
@@ -753,7 +769,10 @@ function council_Dead(Object)
 			Object.body.static = true;
 
 			//Quest
-			checkQuest(5);
+			checkQuest(5);		
+
+			//Sound	
+			sound_Council_Dead.play();
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -805,7 +824,7 @@ function council_Regen(Object)
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.Pattern_Nomal_Check = false, Object.Pattern_Skill_Check = false;
-			Object.MouseCheck = false, Object.status_Message_Check = false;
+			Object.MouseCheck = false, Object.status_Message_Check = false, Object.SoundCheck = false;
 
 			Object.Hp = 300;
 			Object.MaxHp = 300;

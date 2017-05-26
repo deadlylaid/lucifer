@@ -40,7 +40,7 @@ Skeleton = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 	this.MouseCheck = false, this.CreateCheck = false, this.StartCheck = false;
-	this.GetExpCheck = false;
+	this.GetExpCheck = false, this.SoundCheck = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 30, this.Regen_Check = false;
@@ -411,6 +411,9 @@ function skeleton_Start(Object)
 
 			if(CurFrame == EndFrame)
 			{
+				//Sound
+				sound_Skeleton_Create.play();
+
 				Object.StartCheck = true;
 			}
 		}
@@ -434,6 +437,14 @@ function skeleton_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				skeleton_Animation_Change(Object.Direction, 'Walk', Object);
+
+				if(Object.animations.name == "MON_Skeleton_Walk_" + Object.Direction
+				   && Object.SoundCheck == false)
+				{
+					//Sound
+					sound_Skeleton_Neutral.play();	
+					Object.SoundCheck = true;
+				}				
 			}
 		}
 
@@ -444,6 +455,7 @@ function skeleton_Move(Object)
 			{
 				skeleton_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
+				Object.SoundCheck = false;
 			}
 
 			//Attack
@@ -543,6 +555,9 @@ function skeleton_HitCount(Object)
 
 			if(CurFrame + 5 < EndFrame)
 			{
+				//Sound
+				sound_Skeleton_Attack.play();
+
 				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
 
 				if(monster_Attack_Damage > 0)
@@ -577,6 +592,9 @@ function skeleton_Dead(Object)
 
 			//Collision false
 			Object.body.static = true;
+
+			//Sound
+			sound_Skeleton_Dead.play();
 		}
 
 		var CurFrame = Object.animations.frame;

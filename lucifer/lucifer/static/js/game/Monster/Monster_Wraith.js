@@ -38,7 +38,7 @@ Wraith = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false, this.GetExpCheck = false;
+	this.MouseCheck = false, this.GetExpCheck = false, this.SoundCheck = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
@@ -421,6 +421,14 @@ function wraith_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				wraith_Animation_Change(Object.Direction, 'Run', Object);
+
+				if(Object.animations.name == "MON_Wraith_Run_" + Object.Direction
+				   && Object.SoundCheck == false)
+				{
+					//Sound
+					sound_Wraith_Neutral.play();	
+					Object.SoundCheck = true;
+				}				
 			}
 		}
 
@@ -431,6 +439,7 @@ function wraith_Move(Object)
 			{
 				wraith_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
+				Object.SoundCheck = false;
 			}
 
 			//Attack
@@ -530,6 +539,9 @@ function wraith_HitCount(Object)
 
 			if(CurFrame + 3 < EndFrame)
 			{
+				//Sound
+				sound_Wraith_Attack.play();
+
 				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
 
 				if(monster_Attack_Damage > 0)
@@ -567,6 +579,9 @@ function wraith_Dead(Object)
 
 			//Quest
 			checkQuest(6);
+		
+			//Sound
+			sound_Wraith_Dead.play();
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -617,7 +632,7 @@ function wraith_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false,            Object.StandCheck = false;
 			Object.AttackCheck = false,   Object.CompareCheck = false,         Object.DamageCheck = false;
 			Object.DeadCheck = false,	  Object.DeadMotionCheck = false,      Object.ReturnCheck = false;
-			Object.MouseCheck = false,    Object.status_Message_Check = false;
+			Object.MouseCheck = false,    Object.status_Message_Check = false, Object.SoundCheck = false;
 
 			Object.Hp = 1000;
 			Object.MaxHp = 1000;

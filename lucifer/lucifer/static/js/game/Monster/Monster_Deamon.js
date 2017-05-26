@@ -38,7 +38,7 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AI_StartCheck = false, this.MoveCheck = false, this.StandCheck = false;
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
-	this.MouseCheck = false, this.GetExpCheck = false;
+	this.MouseCheck = false, this.GetExpCheck = false, this.SoundCheck = false;
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.Regen_Time = 10, this.Regen_Check = false;
@@ -441,6 +441,14 @@ function deamon_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				deamon_Animation_Change(Object.Direction, 'Run', Object);
+
+				if(Object.animations.name == "MON_Deamon_Run_" + Object.Direction
+				   && Object.SoundCheck == false)
+				{
+					//Sound
+					sound_Deamon_Neutral.play();
+					Object.SoundCheck = true;
+				}
 			}
 		}
 
@@ -450,7 +458,9 @@ function deamon_Move(Object)
 			if(Object.StandCheck == false)
 			{
 				deamon_Animation_Change(Object.Direction, 'Stand', Object);
+
 				Object.StandCheck = true;
+				Object.SoundCheck = false;
 			}
 
 			//Attack
@@ -550,6 +560,9 @@ function deamon_HitCount(Object)
 
 			if(CurFrame + 5 < EndFrame)
 			{
+				//Sound
+				sound_Deamon_Attack.play();
+
 				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
 
 				if(monster_Attack_Damage > 0)
@@ -587,6 +600,9 @@ function deamon_Dead(Object)
 
 			//Quest
 			checkQuest(4);
+
+			//Sound
+			sound_Deamon_Dead.play();
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -636,7 +652,7 @@ function deamon_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false, Object.status_Message_Check = false;
+			Object.MouseCheck = false, Object.status_Message_Check = false, Object.SoundCheck = false;
 
 			Object.Hp = 1500;
 			Object.MaxHp = 1500;
