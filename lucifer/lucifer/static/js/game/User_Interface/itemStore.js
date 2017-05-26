@@ -723,6 +723,10 @@ function buyItem() {
     }
     selectedItem = null;
     Item_Select_Frame.visible = false;
+
+    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    quickSlot[0].isQuickSlot = false;
+    //---------------------------------------------------------------------------------------
     //퀘스트 검사
     playerQuestAdvence(1);
 }

@@ -160,6 +160,13 @@ function redPotionClone(positionX, positionY){
     Inven_Potion_One_Info.anchor.setTo(0.5, 0.5);
     Inven_Potion_One_Info.fixedToCamera = true;
     Inven_Potion_One_Info.visible = false;
+
+    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Inven_Potion_One_Info_test = Lucifer_Game.add.sprite(720, 630, 'Potion_One_Info');
+    Inven_Potion_One_Info_test.anchor.setTo(0.5, 0.5);
+    Inven_Potion_One_Info_test.fixedToCamera = true;
+    Inven_Potion_One_Info_test.visible = false;
+
     //-----------------------------------------------------------------------------------
     return redPotionObject;
 }
@@ -192,6 +199,12 @@ function goodRedPotionClone(positionX, positionY){
     Inven_Potion_Two_Info.anchor.setTo(0.5, 0.5);
     Inven_Potion_Two_Info.fixedToCamera = true;
     Inven_Potion_Two_Info.visible = false;
+
+    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Inven_Potion_Two_Info_test = Lucifer_Game.add.sprite(720, 630, 'Potion_Two_Info');
+    Inven_Potion_Two_Info_test.anchor.setTo(0.5, 0.5);
+    Inven_Potion_Two_Info_test.fixedToCamera = true;
+    Inven_Potion_Two_Info_test.visible = false;
     //-----------------------------------------------------------------------------------
 
     return redPotionObject;
@@ -225,6 +238,12 @@ function bestRedPotionClone(positionX, positionY){
     Inven_Potion_Three_Info.anchor.setTo(0.5, 0.5);
     Inven_Potion_Three_Info.fixedToCamera = true;
     Inven_Potion_Three_Info.visible = false;
+
+    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Inven_Potion_Three_Info_test = Lucifer_Game.add.sprite(720, 630, 'Potion_Three_Info');
+    Inven_Potion_Three_Info_test.anchor.setTo(0.5, 0.5);
+    Inven_Potion_Three_Info_test.fixedToCamera = true;
+    Inven_Potion_Three_Info_test.visible = false;
     //-----------------------------------------------------------------------------------
 
     return redPotionObject;
@@ -402,28 +421,49 @@ function itemsCreate(){
 
 }
 
-function InvenonOverPotion(){
-    Inven_Potion_One_Info.visible = true;
+function InvenonOverPotion(isQuickSlot){
+    if(quickSlot[0].isQuickSlot == false){
+        Inven_Potion_One_Info.visible = true;
+    }else if(quickSlot[0].isQuickSlot == true){
+        Inven_Potion_One_Info_test.visible = true;
+    }
+
+    /*if(quickSlot[0].isQuickSlot == false)
+        {console.log(quickSlot[0].isQuickSlot);}
+    else
+        console.log(quickSlot[0]);
+    */
 }
 
 function InvenonOutPotion(){
     Inven_Potion_One_Info.visible = false;
+    Inven_Potion_One_Info_test.visible = false;
 }
 
 function InvenonOverPotion2(){
-    Inven_Potion_Two_Info.visible = true;
+    if(quickSlot[0].isQuickSlot == false){
+        Inven_Potion_Two_Info.visible = true;
+    }else if(quickSlot[0].isQuickSlot == true){
+        Inven_Potion_Two_Info_test.visible = true;
+    }
 }
 
 function InvenonOutPotion2(){
     Inven_Potion_Two_Info.visible = false;
+    Inven_Potion_Two_Info_test.visible = false;
 }
 
 function InvenonOverPotion3(){
-    Inven_Potion_Three_Info.visible = true;
+    if(quickSlot[0].isQuickSlot == false){
+        Inven_Potion_Three_Info.visible = true;
+    }else if(quickSlot[0].isQuickSlot == true){
+        Inven_Potion_Three_Info_test.visible = true;
+    }
 }
 
 function InvenonOutPotion3(){
     Inven_Potion_Three_Info.visible = false;
+    Inven_Potion_Three_Info_test.visible = false;
 }
 
 function InvenonOverSword(){

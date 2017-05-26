@@ -1,6 +1,5 @@
 var testList = [];
 var alert_Equip, alert_Drop;
-var Inven_Potion_One_Info_test;
 
 function inventoryPreload(){
     Lucifer_Game.load.spritesheet('inven', '../../static/images/game/UI/Inventory/inventory.png', 354, 716);
@@ -61,8 +60,6 @@ function inventoryCreate(){
     alert_Equip.visible = false;
     alert_Equip.fixedToCamera = true;
     //---------------------------------------------------------------------------------------
-
-
 }
 
 //server-side로 데이터 실시간 전송
@@ -297,12 +294,18 @@ function useItem(){
             switch(selectedItem.name){
                 case '빨간물약':
                     quickSlot[0] = redPotionClone(727, 760);
+                    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    quickSlot[0].isQuickSlot = true;
                     break;
                 case '좋은물약':
                     quickSlot[0] = goodRedPotionClone(727, 760);
+                    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    quickSlot[0].isQuickSlot = true;
                     break;
                 case '최고의물약':
                     quickSlot[0] = bestRedPotionClone(727, 760);
+                    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    quickSlot[0].isQuickSlot = true;
                     break;
             }
             quickSlot[0].count = count;
