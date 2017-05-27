@@ -672,6 +672,7 @@ function changeServerListToClientListQuickSlot(){
     }
         quickSlot[0].count = count;
         quickSlot[0].visible=true;
+        quickSlot[0].isQuickSlot = true;
     }
 }
 
