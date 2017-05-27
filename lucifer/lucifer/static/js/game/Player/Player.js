@@ -6,7 +6,7 @@ var Cursor, MousePosX, MousePosY, DistanceToMouse;	//Mouse에 대한 거리 값�
 var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위한 변수들
 var DistanceToMonster;								//Monster에 대한 거리값 변수.
 var Attack_Rect, Hit_Rect, Whirlwind_Rect, Pointer_Rect;
-var Player_AttackCheck = false, Player_StopCheck = false;
+var Player_AttackCheck = false, Player_StopCheck = false, Player_AniCheck = false;
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
 var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4, player_KeySkill5;
@@ -256,6 +256,7 @@ function GetDirection(){
 		}
 
 		MoveCheck = true;
+		Player_AniCheck = false;
 	}
 }
 

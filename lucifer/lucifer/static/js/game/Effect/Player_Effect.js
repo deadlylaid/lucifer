@@ -112,6 +112,21 @@ function player_Effect_Dead()
 		Player.visible = false;
 		Player_ID.visible = false;
 
+		//Skill
+		skill_Bavarian.visible = false;
+		skill_Bavarian_Two.visible = false;
+		skill_Bavarian_Three.visible = false;
+		skill_Bavarian_Four.visible = false;
+		skill_Bavarian_Four_Effect.visible = false;
+		skill_Bavarian_Five.visible = false;
+
+		//Sound Stop
+		sound_Player_SkillOne.stop();
+		sound_Player_SkillTwo.stop();
+		sound_Player_SkillThree.stop();
+		sound_Player_SkillFore.stop();
+		sound_Player_SkillFive.stop();
+
 		Player_Regen_Check = true;
 		Player.destroy();
 	}
@@ -133,7 +148,6 @@ function player_Effect_Dead()
 
 		if(Player_DeadMotion_Check == true && CurFrame == 12)
 		{
-			//Sound
 			sound_Player_Dead.stop();
 		}
 
@@ -164,6 +178,7 @@ function player_Effect_Regen()
 
 		MoveCheck = false;
 		StandCheck = false;
+		Player_AniCheck = false;
 		Player_AttackCheck = false;
 		Player_DeadCheck = false;
 		Player_DeadMotion_Check = false;
@@ -176,7 +191,19 @@ function player_Effect_Regen()
 			if(Player_CreateCheck == false)
 			{
 				//Sound
-				sound_Stage1Bgm.play();
+				if(stageOne_Check == true)
+				{
+					sound_Stage1Bgm.play();	
+				}
+				else if(stageTwo_Check == true)
+				{
+					sound_Stage2Bgm.play();
+				}
+				else if(stageThree_Check == true)
+				{
+					sound_Stage3Bgm.play();	
+				}
+				
 				sound_Player_DeadBgm.stop();
 
 				player_Create();
@@ -198,10 +225,23 @@ function player_Effect_Regen()
 			//Sound
 			if(Player_DeadTime_Total == 0)
 			{
-				sound_Stage1Bgm.stop();
-				sound_Player_DeadBgm.play();
-			}
-
+				//Sound
+				if(stageOne_Check == true)
+				{
+					sound_Stage1Bgm.stop();
+				}
+				else if(stageTwo_Check == true)
+				{
+					sound_Stage2Bgm.stop();
+				}
+				else if(stageThree_Check == true)
+				{
+					sound_Stage3Bgm.stop();
+				}
+				
+				sound_Player_DeadBgm.play();	
+			}		
+			
 			//Gray Filter
 			gray_Scale.visible = true;
 

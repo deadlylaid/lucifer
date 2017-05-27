@@ -40,7 +40,7 @@ SandRider = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AttackCheck = false, this.CompareCheck = false, this.DamageCheck = false;
 	this.DeadCheck = false,	this.DeadMotionCheck = false, this.ReturnCheck = false;
 	this.MouseCheck = false, this.CreateCheck = false, this.StartCheck = false;
-	this.GetExpCheck = false;
+	this.GetExpCheck = false, this.SoundCheck = false; 
 
 	//Regen Time
 	this.Regen_Timer, this.Regen_Time_Total = 0, this.RegenTime = 30, this.Regen_Check = false;
@@ -408,11 +408,6 @@ function sandRider_Compare_Direction(PreDirection, CurDirection, Object)
 //----------------------------------------------------------------------------------------------
 function sandRider_Animation_Change(Direction, Status, Object)
 {
-	/*
-	'MON_SandRider_Stand', 'MON_SandRider_Walk', 'MON_SandRider_Attack',
-	'MON_SandRider_Attack1', 'MON_SandRider_Dead'
-	*/
-
 	if(Object.DeadCheck == false)
 	{
 		if(Object.Status[0] == Status)
@@ -462,6 +457,14 @@ function sandRider_Move(Object)
 
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				sandRider_Animation_Change(Object.Direction, 'Walk', Object);
+
+				if(Object.animations.name == "MON_SandRider_Walk_" + Object.Direction
+				   && Object.SoundCheck == false)
+				{
+					//Sound
+					sound_SandRider_Neutral.play();
+					Object.SoundCheck = true;
+				}
 			}
 		}
 
@@ -472,6 +475,7 @@ function sandRider_Move(Object)
 			{
 				sandRider_Animation_Change(Object.Direction, 'Stand', Object);
 				Object.StandCheck = true;
+				Object.SoundCheck = false;
 			}
 
 			//Attack
@@ -569,6 +573,9 @@ function sandRider_HitCount(Object)
 
 			if(CurFrame + 5 < EndFrame)
 			{
+				//Sound
+				sound_SandRider_Attack.play();
+
 				var monster_Attack_Damage = (Object.Attack_Point - defence_point);
 
 				if(monster_Attack_Damage > 0)
@@ -606,6 +613,9 @@ function sandRider_Dead(Object)
 
 			//Quest
 			checkQuest(7);
+
+			//Sound
+			sound_SandRider_Dead.play();
 		}
 
 		var CurFrame = Object.animations.frame;
@@ -715,7 +725,7 @@ function sandRider_Regen(Object)
 			Object.AI_StartCheck = false, Object.MoveCheck = false, Object.StandCheck = false;
 			Object.AttackCheck = false, Object.CompareCheck = false, Object.DamageCheck = false;
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
-			Object.MouseCheck = false, Object.status_Message_Check = false;
+			Object.MouseCheck = false, Object.status_Message_Check = false, Object.SoundCheck = false;
 
 			Object.Hp = 500;
 			Object.MaxHp = 500;

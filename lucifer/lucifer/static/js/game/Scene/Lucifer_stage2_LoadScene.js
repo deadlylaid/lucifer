@@ -20,6 +20,8 @@ var stage2_LoadScene =
 		npc_Sound_Preload();
 		monster_Sound_Preload();
 
+		//Effect
+		grayScale_Preload();
 
 		//Stage Preload
 		stageTwo_Preload();
@@ -77,6 +79,9 @@ var stage2_LoadScene =
 		//Quest
 		QuestPreload();
 
+		//Quest Effect
+		questComplete_Effect_Preload();
+
 		//Skill
 		skill_Preload();
 
@@ -99,8 +104,6 @@ var stage2_LoadScene =
 
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		enterKey.onDown.addOnce(stage2_LoadScene.start, this);
-
-
 	},
 
 	start: function()

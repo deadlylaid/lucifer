@@ -86,7 +86,7 @@ function countess_Create()
 	countess_Clone(3374, 1558);
 	countess_Clone(3178, 1896);
 	countess_Clone(2694, 1836);
-	countess_Clone(3139, 1963);
+	countess_Clone(2969, 2093);
 	countess_Clone(3952, 1483);
 	countess_Clone(4485, 1097);
 	countess_Clone(4693, 1254);

@@ -91,7 +91,7 @@ function player_Monster_Col(Object)
 
 				//Skill Damage
 				skill_Attack(Object);
-			}
+			}			
 		}
 	}
 	else
@@ -184,7 +184,7 @@ function player_Monster_Col(Object)
 
 				//Skill Damage
 				skill_Attack(Object);
-			}
+			}			
 
 			//Attack Delay Timer Control
 			/*
@@ -197,6 +197,12 @@ function player_Monster_Col(Object)
 			}
 			*/
 		}
+	}
+
+	if(Object.Hp <= 0 && Player_AniCheck == false)
+	{
+		Animation_Change(Direction, 'Stand');
+		Player_AniCheck = true;		
 	}
 
 	if(Player.animations.name != 'PY_Bavarian_Attack_' + Direction)

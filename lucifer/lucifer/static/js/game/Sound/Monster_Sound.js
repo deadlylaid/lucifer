@@ -9,6 +9,7 @@ var sound_Lucifer_SkillOne, sound_Lucifer_SkillTwo, sound_Lucifer_SkillThree;
 var sound_SandRider_Attack, sound_SandRider_Dead, sound_SandRider_Neutral;
 var sound_Skeleton_Attack, sound_Skeleton_Create, sound_Skeleton_Dead, sound_Skeleton_Neutral;
 var sound_Wraith_Attack, sound_Wraith_Dead, sound_Wraith_Neutral;
+var sound_Council_Attack, sound_Council_Dead, sound_Council_Skill, sound_Council_Neutral;
 //-------------------------------------------------------------------------------------
 
 function monster_Sound_Preload()
@@ -65,15 +66,22 @@ function monster_Sound_Preload()
 	Lucifer_Game.load.audio('Wraith_Dead', '../../static/sound/Monster/Wraith/death.wav');
 	Lucifer_Game.load.audio('Wraith_Neural', '../../static/sound/Monster/Wraith/neutral.wav');
 	//-------------------------------------------------------------------------------------
+	//Council
+	//-------------------------------------------------------------------------------------
+	Lucifer_Game.load.audio('Council_Attack', '../../static/sound/Monster/Council/attack.wav');
+	Lucifer_Game.load.audio('Council_Dead', '../../static/sound/Monster/Council/death.wav');
+	Lucifer_Game.load.audio('Council_Neutral', '../../static/sound/Monster/Council/neutral.wav');
+	Lucifer_Game.load.audio('Council_Skill', '../../static/sound/Monster/Council/skill.wav');
+	//-------------------------------------------------------------------------------------
 }
 
 function monster_Sound_Create()
 {
 	//Andariel
-    sound_Andairel_Attack = Lucifer_Game.add.audio('Andairel_Attack', 0.3, true);
+    sound_Andairel_Attack = Lucifer_Game.add.audio('Andairel_Attack', 0.3, false);
     sound_Andairel_Dead = Lucifer_Game.add.audio('Andairel_Dead', 0.3, false);
     sound_Andairel_Neutral = Lucifer_Game.add.audio('Andairel_Neutral', 0.3, false);
-    sound_Andairel_Skill = Lucifer_Game.add.audio('Andairel_Skill', 0.3, true);
+    sound_Andairel_Skill = Lucifer_Game.add.audio('Andairel_Skill', 0.3, false);
 
     sound_Andairel_Attack.play();
     sound_Andairel_Attack.stop();
@@ -103,7 +111,7 @@ function monster_Sound_Create()
 	sound_Golem_Dead.stop();
 
     //Deamon
-    sound_Deamon_Attack = Lucifer_Game.add.audio('Deamon_Attack', 0.3, true);
+    sound_Deamon_Attack = Lucifer_Game.add.audio('Deamon_Attack', 0.3, false);
     sound_Deamon_Dead = Lucifer_Game.add.audio('Deamon_Dead', 0.3, false);
     sound_Deamon_Neutral = Lucifer_Game.add.audio('Deamon_Neutral', 0.3, false);
 
@@ -115,10 +123,10 @@ function monster_Sound_Create()
     sound_Deamon_Neutral.stop();
 
     //Lucifer
-    sound_Lucifer_AttackOne = Lucifer_Game.add.audio('Lucifer_Attack_One', 0.3, true);
-    sound_Lucifer_AttackTwo = Lucifer_Game.add.audio('Lucifer_Attack_Two', 0.3, true);
+    sound_Lucifer_AttackOne = Lucifer_Game.add.audio('Lucifer_Attack_One', 0.3, false);
+    sound_Lucifer_AttackTwo = Lucifer_Game.add.audio('Lucifer_Attack_Two', 0.3, false);
     sound_Lucifer_Dead = Lucifer_Game.add.audio('Lucifer_Dead', 0.3, false);
-    sound_Lucifer_Laugh = Lucifer_Game.add.audio('Lucifer_Laugh', 0.3, false);
+    sound_Lucifer_Laugh = Lucifer_Game.add.audio('Lucifer_Laugh', 0.5, false);
     sound_Lucifer_SkillOne = Lucifer_Game.add.audio('Lucifer_Skill_One', 0.3, false);
     sound_Lucifer_SkillTwo = Lucifer_Game.add.audio('Lucifer_Skill_Two', 0.3, false);
     sound_Lucifer_SkillThree = Lucifer_Game.add.audio('Lucifer_Skill_Three', 0.3, false);
@@ -139,7 +147,7 @@ function monster_Sound_Create()
     sound_Lucifer_SkillThree.stop();
 
     //Sand Rider
- 	sound_SandRider_Attack = Lucifer_Game.add.audio('SandRider_Attack', 0.3, true);
+ 	sound_SandRider_Attack = Lucifer_Game.add.audio('SandRider_Attack', 0.3, false);
  	sound_SandRider_Dead = Lucifer_Game.add.audio('SandRider_Dead', 0.3, false);
  	sound_SandRider_Neutral = Lucifer_Game.add.audio('SandRider_Neutral', 0.3, false);   
 
@@ -151,7 +159,7 @@ function monster_Sound_Create()
  	sound_SandRider_Neutral.stop();
 
  	//Skeleton
- 	sound_Skeleton_Attack = Lucifer_Game.add.audio('Skeleton_Attack', 0.3, true); 
+ 	sound_Skeleton_Attack = Lucifer_Game.add.audio('Skeleton_Attack', 0.3, false); 
  	sound_Skeleton_Create = Lucifer_Game.add.audio('Skeleton_Create', 0.3, false); 
  	sound_Skeleton_Dead = Lucifer_Game.add.audio('Skeleton_Dead', 0.3, false); 
  	sound_Skeleton_Neutral = Lucifer_Game.add.audio('Skeleton_Neutral', 0.3, false);
@@ -166,7 +174,7 @@ function monster_Sound_Create()
  	sound_Skeleton_Neutral.stop();
 
  	//Wraith
- 	sound_Wraith_Attack = Lucifer_Game.add.audio('Wraith_Attack', 0.3, true);
+ 	sound_Wraith_Attack = Lucifer_Game.add.audio('Wraith_Attack', 0.3, false);
  	sound_Wraith_Dead = Lucifer_Game.add.audio('Wraith_Dead', 0.3, false);
  	sound_Wraith_Neutral = Lucifer_Game.add.audio('Wraith_Neural', 0.3, false);
 
@@ -176,4 +184,19 @@ function monster_Sound_Create()
  	sound_Wraith_Dead.stop();
  	sound_Wraith_Neutral.play();
  	sound_Wraith_Neutral.stop();
+
+ 	//Council
+ 	sound_Council_Attack = Lucifer_Game.add.audio('Council_Attack', 0.3, false);
+ 	sound_Council_Dead = Lucifer_Game.add.audio('Council_Dead', 0.3, false);
+ 	sound_Council_Skill = Lucifer_Game.add.audio('Council_Skill', 0.3, false);
+ 	sound_Council_Neutral = Lucifer_Game.add.audio('Council_Neutral', 0.3, false);
+
+ 	sound_Council_Attack.play();
+ 	sound_Council_Attack.stop();
+ 	sound_Council_Dead.play();
+ 	sound_Council_Dead.stop();
+ 	sound_Council_Skill.play();
+ 	sound_Council_Skill.stop();
+ 	sound_Council_Neutral.play();
+ 	sound_Council_Neutral.stop();
 }
