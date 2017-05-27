@@ -15,7 +15,7 @@ class GameSaveAPIView(APIView):
         attack_point = self.request.data.get('attack_point')
         defence_point = self.request.data.get('defence_point')
         nickname = self.request.data.get('nickname')
-        health = self.request.data.get('health')
+        health = self.request.data.get('maxHealth')
         maxHealth = self.request.data.get('maxHealth')
         dexterity = self.request.data.get('dexterity')
         intelligence = self.request.data.get('intelligence')
