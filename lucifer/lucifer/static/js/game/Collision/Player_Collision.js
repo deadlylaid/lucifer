@@ -66,6 +66,8 @@ function player_Monster_Col(Object)
 							EndFrame = 15 * (Direction + 1);
 						}
 
+						//Damage Delay Timer
+						Player_Damage_Timer.start();
 						if(CurFrame == EndFrame)
 						{
 							Damage_Count(Object);
@@ -156,10 +158,12 @@ function player_Monster_Col(Object)
 							EndFrame = 15 * (Direction + 1);
 						}
 
+						//Damage Delay Timer
+						Player_Damage_Timer.start();
 						if(CurFrame == EndFrame)
-						{
-							Damage_Count(Object);
-
+						{							
+							Damage_Count(Object);	
+							
 							//Monster Blood Effect
 							if(Object.blood_Effect)
 							{
@@ -210,20 +214,31 @@ function player_Monster_Col(Object)
 		//Sound Stop
 		sound_Player_Weapon.stop();
 	}
+
+	if(Player_DamageTime_Total > 1)
+	{		
+		Player_Damage_Check = false;
+		Player_DamageTime_Total = 0;
+	}
 }
 
 function Damage_Count(Monster)
 {
-	var player_Attack_Dagmage = attack_point - Monster.Defence_Point;
+	if(Player_Damage_Check == false)
+	{
+		var player_Attack_Dagmage = attack_point - Monster.Defence_Point;
 
-	if(player_Attack_Dagmage > 0)
-	{
-		Monster.Hp -= player_Attack_Dagmage;
-	}
-	else if(player_Attack_Dagmage < 0)
-	{
-		Monster.Hp -= (attack_point * 0.01);
-	}
+		if(player_Attack_Dagmage > 0)
+		{
+			Monster.Hp -= player_Attack_Dagmage;		
+		}
+		else if(player_Attack_Dagmage < 0)
+		{
+			Monster.Hp -= (attack_point * 0.01);
+		}
+
+		Player_Damage_Check = true;
+	}	
 }
 
 function skill_Attack(Monster)
@@ -240,7 +255,7 @@ function skill_Attack(Monster)
 
 				if(CurFrame == EndFrame)
 				{
-					Monster.Hp -= learnedSkill[1].damage;
+					Monster.Hp -= learnedSkill[1].damage;					
 				}
 			}
 		}

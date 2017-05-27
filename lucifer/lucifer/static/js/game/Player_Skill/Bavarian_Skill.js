@@ -396,7 +396,7 @@ function skill_Reset()
 	}
 
 	//Skill Five
-	if(skill_Five_Count > 14 && skill_Bavarian_Five.visible == true)
+	if(skill_Five_Count > 9 && skill_Bavarian_Five.visible == true)
 	{
 		//Sound
 		sound_Player_SkillFive.stop();

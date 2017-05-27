@@ -10,7 +10,7 @@ Golem = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
 	//Stat
-	this.Attack_Point = 50, this.Defence_Point = 30;
+	this.Attack_Point = 50, this.Defence_Point = 10;
 
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Dead');
@@ -88,7 +88,7 @@ function golem_Create()
 
 function golem_Clone(PointX, PointY)
 {
-	golem_Object = new Golem(Lucifer_Game, PointX, PointY, 500, 500, 300, 80);
+	golem_Object = new Golem(Lucifer_Game, PointX, PointY, 300, 300, 300, 80);
 
 	Lucifer_Game.physics.p2.enable(golem_Object);
 	golem_Object.body.fixedRotation = true;

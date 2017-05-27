@@ -55,9 +55,11 @@ function player_Effect_Create()
 								  ], 60, true);
 	//Player_Revival.animations.play('PY_Bavarian_Revival', 10, true);
 
+	/* 플레이어 죽는 키
 	Player_DeadKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SIX);
 	Player_DeadKey.onDown.add(Player_Kill, Lucifer_Game);
 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SIX);
+	*/
 
 	//Level Up Effect
  	Player_LevelUp_Effect = Lucifer_Game.add.sprite(Player.x, Player.y, 'PY_LevelUp_Effect');
@@ -74,9 +76,9 @@ function player_Effect_Create()
  	Player_LevelUp_Effect.animations.play('PY_LevelUp_Effect_Ani', 10, true);
 
  	//Level Up Key(임시로)
- 	level_Up_Key = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
+ 	level_Up_Key = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_9);
  	level_Up_Key.onDown.add(player_Levelup_Key, Lucifer_Game);
- 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SEVEN);
+ 	Lucifer_Game.input.keyboard.removeKeyCapture(Phaser.Keyboard.NUMPAD_9);
 
  	//Player Dead Timer
  	Player_DeadTimer = Lucifer_Game.time.create(false);
@@ -101,7 +103,9 @@ function Player_Kill()
 
 function player_Levelup_Key()
 {
+	if(Keytestcheck == true){
 	experience += 1000;
+	}
 }
 
 function player_Effect_Dead()

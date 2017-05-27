@@ -12,7 +12,7 @@ Andariel = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AttackRange = AttackRange;
 
 	//Stat
-	this.Attack_Point = 200, this.Defence_Point = 100;
+	this.Attack_Point = 240, this.Defence_Point = 70;
 
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Dead');
@@ -95,7 +95,7 @@ function andariel_Create()
 
 function andariel_Clone(PointX, PointY)
 {
-	andariel_Object = new Andariel(Lucifer_Game, PointX, PointY, 4000, 4000, 230, 100);
+	andariel_Object = new Andariel(Lucifer_Game, PointX, PointY, 2500, 2500, 230, 100);
 
 	Lucifer_Game.physics.p2.enable(andariel_Object);
 	andariel_Object.body.fixedRotation = true;

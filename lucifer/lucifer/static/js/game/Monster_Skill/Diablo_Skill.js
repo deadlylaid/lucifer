@@ -161,17 +161,17 @@ function diaSkill_Fire_Col(Object)
 				EndFrame = 17 * (Object.Direction + 1);
 			}
 
-			if(CurFrame < EndFrame)
+			if(CurFrame == EndFrame)
 			{
 				var monster_Attack_Damage = (Object.Skill_Attack_Point1 - defence_point);
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= Object.Skill_Attack_Point1;
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage < 0)
 				{
-					health -= 0;
+					health -= monster_Attack_Damage * 0.01;
 				}
 			}
 		}
@@ -196,17 +196,17 @@ function diaSkill_Inferno_Col(Object)
 				EndFrame = 16 * (Object.Direction + 1);
 			}
 
-			if(CurFrame < EndFrame)
+			if(CurFrame == EndFrame)
 			{
 				var monster_Attack_Damage = (Object.Skill_Attack_Point - defence_point);
 
 				if(monster_Attack_Damage > 0)
 				{
-					health -= Object.Skill_Attack_Point;
+					health -= monster_Attack_Damage;
 				}
 				else if(monster_Attack_Damage < 0)
 				{
-					health -= 0;
+					health -= monster_Attack_Damage * 0.01;
 				}
 			}
 		}

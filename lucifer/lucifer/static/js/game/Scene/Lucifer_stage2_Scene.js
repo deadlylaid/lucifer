@@ -44,7 +44,7 @@ var stage2_Scene =
 		council_Create();
 
 		//Sight Effect
-		sight_Filter_Create();
+		//sight_Filter_Create();
 
 		//Queset
 		QuestCreate();
@@ -86,6 +86,12 @@ var stage2_Scene =
 		bossStage_Alert_Timer.loop(1000, this.bossStage_AlertTimer, this);
 
 		go();
+
+		Stage3_Fastkey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_3);
+		Stage3_Fastkey.onDown.add(Stage2_Stage3FK, this);
+
+		Stage1_Fastkey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_1);
+		Stage1_Fastkey.onDown.add(Stage2_Stage1FK, this);
 	},
 
 	bossStage_AlertTimer: function()
@@ -141,7 +147,7 @@ var stage2_Scene =
             characterStage='3';
             gameSave();
 			sound_StopStage2BGM();
-			this.goto_Stage3();
+			goto_Stage3();
 			Portal_Check = false;
 		}
 
@@ -156,6 +162,8 @@ var stage2_Scene =
 			Portal_Check2 = false;
 		}
 
+
+
 	},
 
 	render: function()
@@ -168,30 +176,11 @@ var stage2_Scene =
 
 	},
 
-	goto_Stage3: function()
-	{
-		if(level >= 10)
-		{
-			stageTwo_Check = false;
-
-			//Sound
-			sound_StopStage2BGM();
-
-			Lucifer_Game.state.start('stage3_load');
-		}
-		else if(level < 10)
-		{
-			bossStage_Alert.visible = true;
-			//Sound
-            sound_AlertWindow.play();
-		}
-	},
-
 	goto_Stage_back: function()
 	{
 
 		stageTwo_Check = false;
-
+		characterStage='1';
 		BackStageMove = 0;
 		//Sound
 		sound_StopStage2BGM();
@@ -200,8 +189,45 @@ var stage2_Scene =
 	},
 };
 
+function goto_Stage3()
+{
+	if(level >= 10)
+	{
+		stageTwo_Check = false;
+
+		//Sound
+		sound_StopStage2BGM();
+		Lucifer_Game.state.start('stage3_load');
+	}
+	else if(level < 10)
+	{
+		bossStage_Alert.visible = true;
+		//Sound
+        sound_AlertWindow.play();
+	}
+}
+
+function Stage2_Stage3FK(){
+	if(Keytestcheck == true)
+	{	
+		characterStage='3';
+        gameSave();
+		sound_StopStage2BGM();
+		goto_Stage3();
+	}
+}
+
+function Stage2_Stage1FK(){
+	if(Keytestcheck == true)
+	{	
+		gameSave();
+		this.goto_Stage_back();
+	}
+
+}
+
 function go()
 {
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-		enterKey.onDown.addOnce(stage2_Scene.goto_Stage3, this);
+		enterKey.onDown.addOnce(goto_Stage3, this);
 };

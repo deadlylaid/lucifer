@@ -11,7 +11,7 @@ Council = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
 	//Stat
-	this.Attack_Point = 60, this.Defence_Point = 35;
+	this.Attack_Point = 150, this.Defence_Point = 35;
 
 	//Status
 	this.Status = new Array('Stand', 'Run', 'Attack', 'Dead', 'Skill');
@@ -110,7 +110,7 @@ function council_Create()
 
 function council_Clone(PointX, PointY)
 {
-	council_Object = new Council(Lucifer_Game, PointX, PointY, 300, 300, 300, 100);
+	council_Object = new Council(Lucifer_Game, PointX, PointY, 350, 350, 300, 110);
 
 	Lucifer_Game.physics.p2.enable(council_Object);
 	council_Object.body.fixedRotation = true;
@@ -219,7 +219,7 @@ function council_Clone(PointX, PointY)
 
 	//Rect
 	council_Object.HitRect = new Phaser.Rectangle(council_Object.x, council_Object.y, 80, 80);
-	council_Object.AttackRect = new Phaser.Rectangle(council_Object.x, council_Object.y, 90, 90);
+	council_Object.AttackRect = new Phaser.Rectangle(council_Object.x, council_Object.y, 120, 120);
 
 	//Delay Timer
 	council_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);
@@ -528,6 +528,7 @@ function council_Move(Object)
 
 			//Attack
 			council_Attack_AI(Object);
+			//council_SkillAttack(Object);
 
 			Object.body.velocity.x = 0;
 			Object.body.velocity.y = 0;
@@ -624,16 +625,11 @@ function council_SkillAttack(Object)
 				Object.Skill_Light.loadTexture('Council_Light', 0, true);
 				Object.Skill_Light.animations.play('Council_Light_' + Direction, 10, true);
 
-				if(Phaser.Rectangle.intersects(Object.Skill_Rect, Hit_Rect))
-				{
-					council_SkillHitCount(Object);
-				}
+				Object.Pattern_Skill_Check = false;
+				Object.AttackCheck = true;
 
 				//Sound
 				sound_Council_Skill.play();
-
-				Object.Pattern_Skill_Check = false;
-				Object.AttackCheck = true;
 			}
 			else
 			{
@@ -642,6 +638,8 @@ function council_SkillAttack(Object)
 				Object.MoveCheck = false;
 			}
 		}
+
+		council_SkillHitCount(Object);
 	}
 }
 

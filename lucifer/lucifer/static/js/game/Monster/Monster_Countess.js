@@ -11,7 +11,7 @@ Countess = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
 	//Stat
-	this.Attack_Point = 7, this.Defence_Point = 3;
+	this.Attack_Point = 17, this.Defence_Point = 3;
 
 	//Status
 	this.Status = new Array('Stand', 'Run', 'Attack', 'Dead');
@@ -95,7 +95,7 @@ function countess_Create()
 
 function countess_Clone(PointX, PointY)
 {
-	countess_Object = new Countess(Lucifer_Game, PointX, PointY, 100, 100, 300, 60);
+	countess_Object = new Countess(Lucifer_Game, PointX, PointY, 20, 20, 300, 80);
 
 	Lucifer_Game.physics.p2.enable(countess_Object);
 	countess_Object.body.fixedRotation = true;
@@ -194,7 +194,7 @@ function countess_Clone(PointX, PointY)
 
 	//Rect
 	countess_Object.HitRect = new Phaser.Rectangle(countess_Object.x, countess_Object.y, 70, 70);
-	countess_Object.AttackRect = new Phaser.Rectangle(countess_Object.x, countess_Object.y, 80, 80);
+	countess_Object.AttackRect = new Phaser.Rectangle(countess_Object.x, countess_Object.y, 100, 100);
 
 	//Delay Timer
 	countess_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);

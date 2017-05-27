@@ -14,6 +14,10 @@ var key_Stat, Key_Skill, ui_Delay_Time;
 var UI_close;
 var Save_btn, alert_Save;
 
+//전시회용 단축키설정
+var CtrlKey, testetse2;
+var Keytestcheck = false;
+
 function ui_Preload()
 { //UI
 	Lucifer_Game.load.spritesheet('UI_UnderBar', '../../static/images/game/UI/UnderBar/UnderBar.png', 1040, 134);
@@ -132,6 +136,11 @@ function ui_Create()
     keyDrink.onDown.add(potionDrink, this);
 	//---------------------------------------------------------------------------------------
 
+    //전시회용 단축키 설정
+    CtrlKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.CONTROL);
+    CtrlKey.onDown.add(KeyTest, this);
+    CtrlKey.onUp.add(KeyTestup,this);
+
 	//Player Info
 	//---------------------------------------------------------------------------------------
 	var UI_StatText_Style = {
@@ -181,6 +190,20 @@ function ui_Create()
     alert_Save.anchor.setTo(0.5, 0.5);
     alert_Save.visible = false;
     alert_Save.fixedToCamera = true;
+}
+
+function KeyTest(){
+    
+    if(Keytestcheck == false){
+        //testetse2.onDown.add(KeyTest2, this);
+        Keytestcheck = true;
+    }   
+}
+
+function KeyTestup(){
+    if(Keytestcheck == true){
+        Keytestcheck = false;
+    }
 }
 
 function underBar_Down()

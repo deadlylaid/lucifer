@@ -1,4 +1,6 @@
 var stage3_DebugCheck = false;
+var EndingKey;
+
 var stage3_Scene =
 {
 	/*
@@ -77,6 +79,15 @@ var stage3_Scene =
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
 		enterKey.onDown.add(debug_Down, this);
 		enterKey.onUp.add(debug_Up, this);
+
+		Stage1_Fastkey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_1);
+		Stage1_Fastkey.onDown.add(Stage3_Stage1FK, this);
+
+		Stage2_Fastkey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_2);
+		Stage2_Fastkey.onDown.add(Stage3_Stage2FK, this);
+
+		EndingKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_4);
+		EndingKey.onDown.add(EndingScene, this);
 	},
 
 	update: function()
@@ -143,7 +154,7 @@ var stage3_Scene =
 	{
 		stageThree_Check = false;		//stage Three Check false
 		action_CameraStepOne = false;	//action Camera Check false
-
+		characterStage='2';
 		BackStageMove = 0;
 		//Sound
 		sound_StopStage3BGM();
@@ -151,6 +162,31 @@ var stage3_Scene =
 		Lucifer_Game.state.start('stage2_load');
 	},
 };
+
+function Stage3_Stage1FK(){
+	if(Keytestcheck == true)
+	{	
+		BackStageMove = 0;
+		characterStage='1';
+		gameSave();
+		stageThree_Check = false;
+		//Sound
+		sound_StopStage3BGM();
+
+		Lucifer_Game.state.start('load');
+	}
+
+}
+
+function Stage3_Stage2FK()
+{
+	if(Keytestcheck == true){
+
+		characterStage='2';
+        gameSave();
+		this.goto_Stage_back();
+	}
+}
 
 function debug_Down()
 {
@@ -167,3 +203,12 @@ function debug_Up()
 		stage3_DebugCheck = false;
 	}
 }
+
+
+function EndingScene()
+	{	
+		characterStage='1';
+		gameSave();
+		sound_StopStage3BGM();
+		Lucifer_Game.state.start('Ending');
+	}
