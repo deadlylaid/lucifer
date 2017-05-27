@@ -7,10 +7,12 @@ var AngleToPointer, Direction;						//Mouse에 대한 Angle 값을 구하기 위
 var DistanceToMonster;								//Monster에 대한 거리값 변수.
 var Attack_Rect, Hit_Rect, Whirlwind_Rect, Pointer_Rect;
 var Player_AttackCheck = false, Player_StopCheck = false, Player_AniCheck = false;
+var Player_Damage_Check = false;
 var intersects;										//Rect Collision
 var stageOne_Check = false, stageTwo_Check = false, stageThree_Check = false;
 var player_KeyJump, player_KeySkill, player_KeySkill2, player_KeySkill3, player_KeySkill4, player_KeySkill5;
 var Player_DelayTimer, Player_Time_Total = 0;
+var Player_Damage_Timer, Player_DamageTime_Total = 0;
 //----------------------------------------------------------------------------------------------------------
 var Player_Shadow;
 var action_CameraCheck = false, action_CameraStepOne = false;
@@ -197,12 +199,19 @@ function player_Create()
 	//Timer
 	Player_DelayTimer = Lucifer_Game.time.create(false);
 	Player_DelayTimer.loop(50, Player_Attack_DelayTimer, Lucifer_Game);
+	Player_Damage_Timer = Lucifer_Game.time.create(false);
+	Player_Damage_Timer.loop(450, Player_Damage_DelayTimer, Lucifer_Game);
 }
 
 //Time
 function Player_Attack_DelayTimer()
 {
 	++Player_Time_Total;
+}
+
+function Player_Damage_DelayTimer()
+{
+	++Player_DamageTime_Total;
 }
 
 function GetDirection(){
@@ -575,6 +584,9 @@ function player_Update()
 				//Camera Setting
 				Lucifer_Game.camera.follow(Player);
 				Lucifer_Game.camera.setSize(1280, 800);
+
+				//Experience Mask
+				player_Experience_Mask();
 			}
 
 			Player_StopCheck = false;
@@ -617,6 +629,9 @@ function player_Update()
 				player_Level_Up();
 				shadow_Player_Move();
 				//Player_Frame();
+
+				//Experience Mask
+				player_Experience_Mask();
 			}
 
 			Player_StopCheck = false;

@@ -104,7 +104,7 @@ function player_State_Up()
 	{
 		experience = 0;
 		level += 1;
-		strong += 30;
+		strong += 20;
 		dexterity += 10;
 		intelligence += 10;
     	defence_point += 7;
@@ -115,8 +115,8 @@ function player_State_Up()
     	maxHealth += 70;
     	health = maxHealth;
 
-    	//무기상수 * ((4 * 힘) + (체력총합 * 0.1)) * (무기공격력 * 0.01)
-    	attack_point = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (10 * 0.01);
+    	//무기상수 * ((3 * 힘) + (체력총합 * 0.1)) * (무기공격력 * 0.01)
+    	attack_point = 1.29 * ( (3 * strong) + (maxHealth * 0.1) ) * (10 * 0.01);
 
     	//Skill Damage Up
     	player_skillDamage_Up();
@@ -251,47 +251,47 @@ function player_skillDamage_Up()
 	case 1:
 		break;
 	case 2:
-		learnedSkill[0].damage = 12;
+		learnedSkill[0].damage = 6;
 		break;
 	case 3:
-		learnedSkill[0].damage = 14;
+		learnedSkill[0].damage = 9;
 		break;
 	case 4:
-		learnedSkill[0].damage = 16;
+		learnedSkill[0].damage = 12;
 		learnedSkill[1].damage = 12;
 		break;
 	case 5:
-		learnedSkill[0].damage = 18;
-		learnedSkill[1].damage = 15;
+		learnedSkill[0].damage = 15;
+		learnedSkill[1].damage = 14;
 		break;
 	case 6:
-		learnedSkill[0].damage = 20;
-		learnedSkill[1].damage = 20;
-		learnedSkill[2].damage = 25;
+		learnedSkill[0].damage = 18;
+		learnedSkill[1].damage = 16;
+		learnedSkill[2].damage = 6;
 		break;
 	case 7:
-		learnedSkill[0].damage = 22;
-		learnedSkill[1].damage = 23;
-		learnedSkill[2].damage = 35;
+		learnedSkill[0].damage = 21;
+		learnedSkill[1].damage = 18;
+		learnedSkill[2].damage = 9;
 		break;
 	case 8:
 		learnedSkill[0].damage = 24;
-		learnedSkill[1].damage = 29;
-		learnedSkill[2].damage = 45;
-		learnedSkill[3].damage = 10;
+		learnedSkill[1].damage = 20;
+		learnedSkill[2].damage = 12;
+		learnedSkill[3].damage = 6;
 		break;
 	case 9:
-		learnedSkill[0].damage = 26;
-		learnedSkill[1].damage = 35;
-		learnedSkill[2].damage = 55;
-		learnedSkill[3].damage = 15;
+		learnedSkill[0].damage = 27;
+		learnedSkill[1].damage = 22;
+		learnedSkill[2].damage = 15;
+		learnedSkill[3].damage = 10;
 		break;
 	case 10:
 		learnedSkill[0].damage = 30;
-		learnedSkill[1].damage = 40;
-		learnedSkill[2].damage = 65;
-		learnedSkill[3].damage = 20;
-		learnedSkill[4].damage = 200;
+		learnedSkill[1].damage = 24;
+		learnedSkill[2].damage = 18;
+		learnedSkill[3].damage = 14;
+		learnedSkill[4].damage = 30;
 		break;
 	}
 }

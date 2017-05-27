@@ -11,7 +11,7 @@ Deamon = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.CognizeRange = CognizeRange, this.AttackRange = AttackRange;
 
 	//Stat
-	this.Attack_Point = 100, this.Defence_Point = 50;
+	this.Attack_Point = 120, this.Defence_Point = 20;
 
 	//Status
 	this.Status = new Array('Stand', 'Run', 'Attack', 'Dead', 'Skill');
@@ -95,7 +95,7 @@ function deamon_Create()
 //------------------------------------------------------------------------------
 function deamon_Clone(PointX, PointY)
 {
-	deamon_Object = new Deamon(Lucifer_Game, PointX, PointY, 1500, 1500, 200, 90);
+	deamon_Object = new Deamon(Lucifer_Game, PointX, PointY, 300, 300, 200, 90);
 
 	Lucifer_Game.physics.p2.enable(deamon_Object);
 	deamon_Object.body.fixedRotation = true;

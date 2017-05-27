@@ -12,7 +12,7 @@ SandRider = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.AttackRange = AttackRange;
 
 	//Stat
-	this.Attack_Point = 200, this.Defence_Point = 150;
+	this.Attack_Point = 200, this.Defence_Point = 55;
 
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Attack1', 'Dead');
@@ -211,7 +211,7 @@ function sandRider_Clone(PointX, PointY)
 
 	//Rect
 	sandraider_Object.HitRect = new Phaser.Rectangle(sandraider_Object.x, sandraider_Object.y, 70, 70);
-	sandraider_Object.AttackRect = new Phaser.Rectangle(sandraider_Object.x, sandraider_Object.y, 80, 80);
+	sandraider_Object.AttackRect = new Phaser.Rectangle(sandraider_Object.x, sandraider_Object.y, 120, 120);
 
 	//Delay Timer
 	sandraider_Object.Attack_DelayTimer = Lucifer_Game.time.create(false);

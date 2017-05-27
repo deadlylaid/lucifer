@@ -12,13 +12,9 @@ Diablo = function(game, x, y, Hp, MaxHp, CognizeRange, AttackRange)
 	this.CognizeRange = CognizeRange;
 	this.AttackRange = AttackRange;
 
-	//Stat (스킬 Attack Point도 추가해야 된다.)
-	/*
-	this.Attack_Point = 300, this.Defence_Point = 350;
-	this.Skill_Attack_Point = 400, this.Skill_Attack_Point1 = 500;*/
-
-	this.Attack_Point = 1, this.Defence_Point = 1;
-	this.Skill_Attack_Point = 10, this.Skill_Attack_Point1 = 10;
+	//Stat (스킬 Attack Point도 추가해야 된다.)	
+	this.Attack_Point = 330, this.Defence_Point = 350;
+	this.Skill_Attack_Point = 300, this.Skill_Attack_Point1 = 350;
 
 	//Status
 	this.Status = new Array('Stand', 'Walk', 'Attack', 'Attack1', 'Dead',
@@ -136,7 +132,7 @@ function diablo_Create()
 
 function diablo_Clone(PointX, PointY)
 {
-	diablo_Object = new Diablo(Lucifer_Game, PointX, PointY, 10000, 10000, 1000, 120);
+	diablo_Object = new Diablo(Lucifer_Game, PointX, PointY, 5000, 5000, 1000, 120);
 
 	Lucifer_Game.physics.p2.enable(diablo_Object);
 	diablo_Object.body.fixedRotation = true;
@@ -720,8 +716,7 @@ function diablo_Attack(Object)
 					if(Object.Pattern_Skill == true)
 					{
 						//Fire
-						diablo_Animation_Change(Object.Direction, 'Skill1', Object);
-						diaSkill_Fire_Attack(Object);
+						diablo_Animation_Change(Object.Direction, 'Skill1', Object);						
 					}
 
 					if(Object.Skill_Idle_Check == true)
@@ -880,11 +875,14 @@ function diablo_Pattern_Skill(Object)
 		else
 		{
 			EndFrame = 17 * (Object.Direction + 1);
-		}
+		}		
 
 		Object.Skill_DelayTimer.start();
 		if(CurFrame == EndFrame)
 		{
+			//Fire Create
+			diaSkill_Fire_Attack(Object);		
+
 			//Sound
 			sound_Lucifer_SkillTwo.play();
 
