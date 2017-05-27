@@ -71,7 +71,8 @@ function itemStoreCreate(){
     swordTab = Lucifer_Game.add.sprite(446, 200, 'swordTab');
     swordTab.anchor.setTo(0.5, 0.5);
     swordTab.scale.setTo(1.2, 1.2);
-    swordTab.fixedToCamera = true; swordTab.visible = false; swordTab.alpha = 0.7;
+    swordTab.fixedToCamera = true; swordTab.visible = false;
+    swordTab.alpha = 0.7;
 
     swordTab.inputEnabled = true;
     swordTab.events.onInputDown.add(swordStoreTab ,this);
@@ -425,7 +426,7 @@ function showStore(){
     }else{
         //Sound Npc
         sound_StoreNpc_Hellow.play();
-        
+
         potionTab.visible = true;
         swordTab.visible = true;
         armorTab.visible = true;
@@ -695,7 +696,7 @@ function buyItem() {
             //Sound
             sound_AlertWindow.play();
         }else{
-            if(gold>selectedItem.price){
+            if(gold>=selectedItem.price){
                 //Sound
                 sound_BuyItem.play();
 
@@ -736,21 +737,21 @@ function onOveritem(){
     //Sound
     sound_WindowOpen.play();
 
-    Potion_One_Info.visible = true;  
+    Potion_One_Info.visible = true;
 }
 
 function onOveritem2(){
     //Sound
     sound_WindowOpen.play();
 
-    Potion_Two_Info.visible = true;    
+    Potion_Two_Info.visible = true;
 }
 
 function onOveritem3(){
     //Sound
     sound_WindowOpen.play();
 
-    Potion_Three_Info.visible = true;   
+    Potion_Three_Info.visible = true;
 }
 
 function onOutitem(){
@@ -761,7 +762,7 @@ function onOutitem2(){
     Potion_Two_Info.visible = false;
 }
 
-function onOutitem3(){   
+function onOutitem3(){
     Potion_Three_Info.visible = false;
 }
 //---------------------------------------------------
@@ -771,14 +772,14 @@ function onOverSword(){
     //Sound
     sound_WindowOpen.play();
 
-    Sword_One_Info.visible = true;    
+    Sword_One_Info.visible = true;
 }
 
 function onOverSword2(){
     //Sound
     sound_WindowOpen.play();
 
-    Sword_Two_Info.visible = true;   
+    Sword_Two_Info.visible = true;
 }
 
 function onOverSword3(){
@@ -806,21 +807,21 @@ function onOverArmor(){
     //Sound
     sound_WindowOpen.play();
 
-    Armor_One_Info.visible = true;   
+    Armor_One_Info.visible = true;
 }
 
 function onOverArmor2(){
     //Sound
     sound_WindowOpen.play();
 
-    Armor_Two_Info.visible = true;   
+    Armor_Two_Info.visible = true;
 }
 
 function onOverArmor3(){
     //Sound
     sound_WindowOpen.play();
 
-    Armor_Three_Info.visible = true;  
+    Armor_Three_Info.visible = true;
 }
 
 function onOutArmor(){
