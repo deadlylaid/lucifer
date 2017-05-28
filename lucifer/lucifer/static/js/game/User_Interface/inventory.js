@@ -6,7 +6,6 @@ function inventoryPreload(){
 
     Lucifer_Game.load.spritesheet('dropButton', '../../static/images/game/UI/Inventory/dropButton.png', 196, 51);
     Lucifer_Game.load.spritesheet('useButton', '../../static/images/game/UI/Inventory/useButton.png', 196, 51);
-
     //Alert
     Lucifer_Game.load.image('EquipItem_Alert', '../../static/images/game/UI/Alert/EquipItem_Alert.png');
     Lucifer_Game.load.image('DropItem_Alert', '../../static/images/game/UI/Alert/DropItem_Alert.png');
