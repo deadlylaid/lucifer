@@ -52,18 +52,18 @@ $.ajax({
     job = character.job;
     gold = character.gold;
 
-    health = character.status.health;
+    health = parseInt(character.status.health);
     mana = character.status.mana;
 
     experience = character.status.experience;
 
-    maxHealth = character.status.max_health;
+    maxHealth = parseInt(character.status.max_health);
     maxMana = character.status.max_mana;
 
     attack_point = character.status.attack_point;
     defence_point = character.status.defence_point;
 
-    strong = character.status.strong;
+    strong = parseInt(character.status.strong);
     dexterity = character.status.dexterity;
     intelligence = character.status.intelligence;
 
