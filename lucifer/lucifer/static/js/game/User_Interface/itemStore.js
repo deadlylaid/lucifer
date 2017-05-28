@@ -425,7 +425,7 @@ function showStore(){
     }else{
         //Sound Npc
         sound_StoreNpc_Hellow.play();
-        
+
         potionTab.visible = true;
         swordTab.visible = true;
         armorTab.visible = true;
@@ -724,9 +724,6 @@ function buyItem() {
     selectedItem = null;
     Item_Select_Frame.visible = false;
 
-    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    quickSlot[0].isQuickSlot = false;
-    //---------------------------------------------------------------------------------------
     //퀘스트 검사
     playerQuestAdvence(1);
 }
@@ -736,21 +733,21 @@ function onOveritem(){
     //Sound
     sound_WindowOpen.play();
 
-    Potion_One_Info.visible = true;  
+    Potion_One_Info.visible = true;
 }
 
 function onOveritem2(){
     //Sound
     sound_WindowOpen.play();
 
-    Potion_Two_Info.visible = true;    
+    Potion_Two_Info.visible = true;
 }
 
 function onOveritem3(){
     //Sound
     sound_WindowOpen.play();
 
-    Potion_Three_Info.visible = true;   
+    Potion_Three_Info.visible = true;
 }
 
 function onOutitem(){
@@ -761,7 +758,7 @@ function onOutitem2(){
     Potion_Two_Info.visible = false;
 }
 
-function onOutitem3(){   
+function onOutitem3(){
     Potion_Three_Info.visible = false;
 }
 //---------------------------------------------------
@@ -771,14 +768,14 @@ function onOverSword(){
     //Sound
     sound_WindowOpen.play();
 
-    Sword_One_Info.visible = true;    
+    Sword_One_Info.visible = true;
 }
 
 function onOverSword2(){
     //Sound
     sound_WindowOpen.play();
 
-    Sword_Two_Info.visible = true;   
+    Sword_Two_Info.visible = true;
 }
 
 function onOverSword3(){
@@ -806,21 +803,21 @@ function onOverArmor(){
     //Sound
     sound_WindowOpen.play();
 
-    Armor_One_Info.visible = true;   
+    Armor_One_Info.visible = true;
 }
 
 function onOverArmor2(){
     //Sound
     sound_WindowOpen.play();
 
-    Armor_Two_Info.visible = true;   
+    Armor_Two_Info.visible = true;
 }
 
 function onOverArmor3(){
     //Sound
     sound_WindowOpen.play();
 
-    Armor_Three_Info.visible = true;  
+    Armor_Three_Info.visible = true;
 }
 
 function onOutArmor(){
