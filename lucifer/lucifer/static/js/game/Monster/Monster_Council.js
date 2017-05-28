@@ -602,11 +602,7 @@ function council_Attack_AI(Object)
 	else if(Object.Pattern_Skill_Check == true)
 	{
 		council_SkillAttack(Object);
-	}
-
-	//console.log(Object.Pattern_Change_Value);
-	//console.log(Object.Pattern_Time_Total);
-	//console.log(Object.Pattern_Skill_Check);
+	}	
 }
 
 function council_SkillAttack(Object)

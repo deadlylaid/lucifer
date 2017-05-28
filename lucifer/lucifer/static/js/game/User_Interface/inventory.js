@@ -286,7 +286,7 @@ function useItem(){
         if(selectedItem.type_is==='potion'){
             var count = selectedItem.count;
 			if(quickSlot[0]!==undefined){
-                //console.log('기존에 등록되어 있던 포션을 버렸습니다.');
+                //기존에 등록되어 있던 포션을 버렸습니다
 				quickSlot[0].destroy();
                 quickSlot[0].text.destroy();
             }
@@ -680,12 +680,10 @@ function changeServerListToClientListQuickSlot(){
 function equipmentCalculater(point, type){
     if(type==='armor'){
     	var rawDefencePoint = 2 * ( (2 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
-        defence_point = Number(rawDefencePoint.toFixed(2));
-        //console.log(rawDefencePoint, point);
+        defence_point = Number(rawDefencePoint.toFixed(2));        
     }else{
     	var rawAttackPoint = 1.29 * ( (3 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
-        attack_point = Number(rawAttackPoint.toFixed(2));
-        //console.log(rawAttackPoint, point);
+        attack_point = Number(rawAttackPoint.toFixed(2));        
     }
 }
 
@@ -727,7 +725,6 @@ function potionDrink(){
         //Sound
         sound_PotionDrink.play();
 
-        //console.log('potionDrink Test');
         quickSlot[0].count -= 1;
         if(health + quickSlot[0].heal > maxHealth){
             health = maxHealth;
@@ -735,8 +732,7 @@ function potionDrink(){
             health += quickSlot[0].heal;
         }
         quickSlotPut(quickSlot[0]);
-        if(quickSlot[0].count === 0){
-            //console.log('quickSlot delete!!');
+        if(quickSlot[0].count === 0){           
             quickSlot[0].destroy();
             quickSlot[0].text.destroy();
 
@@ -748,14 +744,13 @@ function potionDrink(){
             //횟수가 하나 줄은것으로 끝난다 & Item Effect
             item_Effect_Check = true;
         }
-    }else{
-        //console.log('No quickSlot');
+    }else{      
     }
 
 }
 
 function quickSlotPut(selectedItem){
-    //console.log(selectedItem.count);
+    //selectedItem.count
     $.ajax({
         method:'PUT',
         url:'/api/user/character/quickslot/',

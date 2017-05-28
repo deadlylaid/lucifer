@@ -408,10 +408,6 @@ function skill_Reset()
 
 		Animation_Change(Direction, 'Stand');
 	}
-
-	//console.log(skill_Bavarian_Four_Effect.visible);
-	//console.log(skill_Bavarian_Four_Effect.x, skill_Bavarian_Four_Effect.y);
-	//console.log(skill_Four_EffectCheck);
 }
 
 function skill_Reset_Stage()

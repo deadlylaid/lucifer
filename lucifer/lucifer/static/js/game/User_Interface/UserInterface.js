@@ -226,8 +226,7 @@ function ui_Update()
     hpMask.clear();
     hpMask.beginFill(0xffffff);
     hpMask.drawRect(-73, hpRate, 120, 120);
-    hpMask.endFill();
-    //console.log("현재 HP 바의 비율은" + hpRate + "입니다.");
+    hpMask.endFill();    
     UI_HpBar.mask = hpMask;
 
 	//UI_Stat

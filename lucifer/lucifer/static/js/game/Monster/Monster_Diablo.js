@@ -814,10 +814,6 @@ function diablo_Pattern_Attack(Object)
 			}
 		}
 	}
-
-	//console.log(Object.Pattern_Attack, Object.Pattern_Skill);
-	//console.log(Object.Pattern_Change);
-	//console.log(Object.Pattern_AttackTime, Object.SkillTime_Total);
 }
 
 function diablo_Pattern_Skill(Object)

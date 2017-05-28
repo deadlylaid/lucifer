@@ -500,8 +500,7 @@ function armorStoreTab(){
 
 
 function clickItem(sprite){
-    //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨
-    //console.log(sprite.name);
+    //아이템을 클릭하면 selectedItem에 해당 객체가 저장됨   
     //Sound
     sound_ButtonClick.play();
 
@@ -679,8 +678,7 @@ function clickItem(sprite){
                 break;
             }
             break;
-    }
-    //console.log(selectedItem);
+    }  
 }
 
 function buyItem() {

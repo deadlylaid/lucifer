@@ -91,10 +91,7 @@ function player_Experience_Mask()
 	experienceBar_Mask.endFill();
 
 	UI_ExperienceBar.visible = true;
-	UI_ExperienceBar.mask = experienceBar_Mask;
-
-	//console.log(experience_Percentage, experience_Rate);
-	//console.log(experience);
+	UI_ExperienceBar.mask = experienceBar_Mask;	
 }
 
 function player_State_Up()

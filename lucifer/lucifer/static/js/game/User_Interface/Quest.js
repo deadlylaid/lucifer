@@ -1001,8 +1001,7 @@ function checkQuestIsComplete(){
 function playerQuestAdvence(index){
     characterQuest[index];
     if(characterQuest[index].isCompleted === false){
-        characterQuest[index].isCompleted = true;
-        //console.log('완료');
+        characterQuest[index].isCompleted = true;    
 
         //Quest Effect Triger
         qeusetComplete_Effect_Triger();

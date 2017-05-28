@@ -650,10 +650,7 @@ function player_Update()
 	Pointer_Rect.y = Player.y;
 	Pointer_Rect.centerOn(Player.x, Player.y);
 
-	player_AttackRect_Setting();
-
-	//Debug 용도
-	//console.log(Player.x, Player.y);
+	player_AttackRect_Setting();	
 	//---------------------------------------------------------------------------------------
 
 	//Sort
