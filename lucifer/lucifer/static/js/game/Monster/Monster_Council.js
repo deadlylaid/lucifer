@@ -824,8 +824,8 @@ function council_Regen(Object)
 			Object.Pattern_Nomal_Check = false, Object.Pattern_Skill_Check = false;
 			Object.MouseCheck = false, Object.status_Message_Check = false, Object.SoundCheck = false;
 
-			Object.Hp = 300;
-			Object.MaxHp = 300;
+			Object.Hp = 350;
+			Object.MaxHp = 350;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 

@@ -601,8 +601,8 @@ function golem_Regen(Object)
 			Object.body.static = false;
 			Object.body.restitution = 0;
 
-			Object.Hp = 500;
-			Object.MaxHp = 500;
+			Object.Hp = 300;
+			Object.MaxHp = 300;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 

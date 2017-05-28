@@ -58,6 +58,9 @@ var loadScene =
 		//Appearance_Effect
 		Appearance_Effect_Preload();
 
+		//Auto Heal Effect
+		auto_Heal_Preload();
+
 		//Item Effect
 		item_Effect_Preload();
 

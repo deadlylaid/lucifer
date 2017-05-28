@@ -634,8 +634,8 @@ function wraith_Regen(Object)
 			Object.DeadCheck = false,	  Object.DeadMotionCheck = false,      Object.ReturnCheck = false;
 			Object.MouseCheck = false,    Object.status_Message_Check = false, Object.SoundCheck = false;
 
-			Object.Hp = 1000;
-			Object.MaxHp = 1000;
+			Object.Hp = 500;
+			Object.MaxHp = 500;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 

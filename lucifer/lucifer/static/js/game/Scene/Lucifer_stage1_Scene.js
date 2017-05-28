@@ -37,6 +37,9 @@ var stage1_Scene =
 		//Appearance Effect
 		Appearance_Effect_Create();
 
+		//Auto Heal Effect
+		auto_Heal_Create();
+
 		//Item Effect
 		item_Effect_Create();
 
@@ -83,6 +86,9 @@ var stage1_Scene =
 		//Message
 		status_Message_Craete();
 
+		//Skill Reset
+		skill_Reset_Stage();
+
 		//Key Go to Stage2
 		debugCheck = false;
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
@@ -103,6 +109,9 @@ var stage1_Scene =
 	{
 		//Player Update
 		player_Update();
+
+		//Auto Heal Effect Update
+		auto_Heal_Update();
 
 		//Appearance Effect Update
 		Appearance_Effect_Update();

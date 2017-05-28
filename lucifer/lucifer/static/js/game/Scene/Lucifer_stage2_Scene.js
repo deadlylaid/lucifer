@@ -32,6 +32,9 @@ var stage2_Scene =
 		//Player
 		player_Create();
 
+		//Auto Heal Effect
+		auto_Heal_Create();
+
 		//Item Effect
 		item_Effect_Create();
 
@@ -76,6 +79,9 @@ var stage2_Scene =
 		//Message
 		status_Message_Craete();
 
+		//Skill Reset
+		skill_Reset_Stage();
+
 		//Alert Meesage
 		bossStage_Alert = this.add.sprite(640, 400, 'Stage_Alert');
 		bossStage_Alert.anchor.setTo(0.5, 0.5);
@@ -103,6 +109,9 @@ var stage2_Scene =
 	{
 		//Player Update
 		player_Update();
+
+		//Auto Heal Effect Update
+		auto_Heal_Update();
 
 		//Item Effect Update
 		item_Effect_Update();

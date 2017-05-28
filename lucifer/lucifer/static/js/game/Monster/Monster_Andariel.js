@@ -764,8 +764,8 @@ function andariel_Regen(Object)
 			Object.MouseCheck = false,    Object.Andariel_Skill_Check = false, Object.status_Message_Check = false;
 			Object.SoundCheck = false;
 
-			Object.Hp = 4000;
-			Object.MaxHp = 4000;
+			Object.Hp = 2500;
+			Object.MaxHp = 2500;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 
