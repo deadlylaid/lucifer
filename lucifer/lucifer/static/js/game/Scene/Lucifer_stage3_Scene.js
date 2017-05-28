@@ -33,6 +33,9 @@ var stage3_Scene =
 		//Player
 		player_Create();
 
+		//Auto Heal Effect
+		auto_Heal_Create();
+
 		//Item Effect
 		item_Effect_Create();
 
@@ -95,6 +98,9 @@ var stage3_Scene =
 		//Player Update
 		player_Update();
 
+		//Auto Heal Effect Update
+		auto_Heal_Update();
+
 		//Item Effect Update
 		item_Effect_Update();
 
@@ -125,6 +131,9 @@ var stage3_Scene =
 
 		//Message
 		status_Message_Update();
+
+		//Skill Reset
+		skill_Reset_Stage();
 
 		//Portal
 		portal_Check2();

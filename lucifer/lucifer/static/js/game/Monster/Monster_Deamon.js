@@ -654,8 +654,8 @@ function deamon_Regen(Object)
 			Object.DeadCheck = false,	Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.MouseCheck = false, Object.status_Message_Check = false, Object.SoundCheck = false;
 
-			Object.Hp = 1500;
-			Object.MaxHp = 1500;
+			Object.Hp = 300;
+			Object.MaxHp = 300;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 

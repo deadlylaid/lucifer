@@ -696,8 +696,8 @@ function countess_Regen(Object)
 			Object.DeadCheck = false,	  Object.DeadMotionCheck = false, Object.ReturnCheck = false;
 			Object.MouseCheck = false,    Object.status_Message_Check = false;
 
-			Object.Hp = 100;
-			Object.MaxHp = 100;
+			Object.Hp = 20;
+			Object.MaxHp = 20;
 			Object.x = Object.ReturnPointX;
 			Object.y = Object.ReturnPointY;
 

@@ -56,6 +56,9 @@ var stage3_LoadScene =
                                  	  '../../static/images/game/Monster/monsterHealthBar.png',
                                   	  224, 44);
 
+		//Auto Heal Effect
+		auto_Heal_Preload();
+
 		//Item Effect
 		item_Effect_Preload();
 

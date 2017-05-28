@@ -414,6 +414,160 @@ function skill_Reset()
 	//console.log(skill_Four_EffectCheck);
 }
 
+function skill_Reset_Stage()
+{
+	if(stageOne_Check == true)
+	{
+		if(skill_One_Check == true)
+		{
+			skill_Icon_One.alpha = 1.0;
+			skill_One_Check = false;	
+
+			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
+			skill_Bavarian.visible = false;
+			skill_Bavarian.frame = 0;
+		}
+		else if(skill_Two_Check == true)
+		{
+			skill_Icon_Two.alpha = 1.0;
+			skill_Two_Check = false;
+
+			skill_Bavarian_Two.animations.stop('SK_Bavarian_Ani2', true);
+			skill_Bavarian_Two.visible = false;
+			skill_Bavarian_Two.frame = 0;
+		}
+		else if(skill_Three_Check == true)
+		{
+			skill_Icon_Three.alpha = 1.0;
+			skill_Three_Check = false;
+
+			skill_Bavarian_Three.animations.stop('SK_Bavarian_Ani3', true);
+			skill_Bavarian_Three.visible = false;
+			skill_Bavarian_Three.frame = 0;
+			skill_Three_Count = 0;
+		}
+		else if(skill_Four_Check == true)
+		{
+			skill_Icon_Four.alpha = 1.0;
+			skill_Four_Check = false;
+
+			skill_Bavarian_Four.animations.stop('SK_Bavarian_Ani4', true);
+			skill_Bavarian_Four.visible = false;
+			skill_Bavarian_Four.frame = 0;
+		}
+		else if(skill_Five_Check == true)
+		{
+			skill_Icon_Five.alpha = 1.0;
+			skill_Five_Check = false;
+
+			skill_Bavarian_Five.animations.stop('SK_Bavarian_Ani5', true);
+			skill_Bavarian_Five.visible = false;
+			skill_Bavarian_Five.frame = 0;
+			skill_Five_Count = 0;
+		}	
+	}
+	else if(stageTwo_Check == true)
+	{
+		if(skill_One_Check == true)
+		{
+			skill_Icon_One.alpha = 1.0;
+			skill_One_Check = false;	
+
+			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
+			skill_Bavarian.visible = false;
+			skill_Bavarian.frame = 0;
+		}
+		else if(skill_Two_Check == true)
+		{
+			skill_Icon_Two.alpha = 1.0;
+			skill_Two_Check = false;
+
+			skill_Bavarian_Two.animations.stop('SK_Bavarian_Ani2', true);
+			skill_Bavarian_Two.visible = false;
+			skill_Bavarian_Two.frame = 0;
+		}
+		else if(skill_Three_Check == true)
+		{
+			skill_Icon_Three.alpha = 1.0;
+			skill_Three_Check = false;
+
+			skill_Bavarian_Three.animations.stop('SK_Bavarian_Ani3', true);
+			skill_Bavarian_Three.visible = false;
+			skill_Bavarian_Three.frame = 0;
+			skill_Three_Count = 0;
+		}
+		else if(skill_Four_Check == true)
+		{
+			skill_Icon_Four.alpha = 1.0;
+			skill_Four_Check = false;
+
+			skill_Bavarian_Four.animations.stop('SK_Bavarian_Ani4', true);
+			skill_Bavarian_Four.visible = false;
+			skill_Bavarian_Four.frame = 0;
+		}
+		else if(skill_Five_Check == true)
+		{
+			skill_Icon_Five.alpha = 1.0;
+			skill_Five_Check = false;
+
+			skill_Bavarian_Five.animations.stop('SK_Bavarian_Ani5', true);
+			skill_Bavarian_Five.visible = false;
+			skill_Bavarian_Five.frame = 0;
+			skill_Five_Count = 0;
+		}
+	}
+	else if(stageThree_Check == true)
+	{
+		if(skill_One_Check == true)
+		{
+			skill_Icon_One.alpha = 1.0;
+			skill_One_Check = false;	
+
+			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
+			skill_Bavarian.visible = false;
+			skill_Bavarian.frame = 0;
+		}
+		else if(skill_Two_Check == true)
+		{
+			skill_Icon_Two.alpha = 1.0;
+			skill_Two_Check = false;
+
+			skill_Bavarian_Two.animations.stop('SK_Bavarian_Ani2', true);
+			skill_Bavarian_Two.visible = false;
+			skill_Bavarian_Two.frame = 0;
+		}
+		else if(skill_Three_Check == true)
+		{
+			skill_Icon_Three.alpha = 1.0;
+			skill_Three_Check = false;
+
+			skill_Bavarian_Three.animations.stop('SK_Bavarian_Ani3', true);
+			skill_Bavarian_Three.visible = false;
+			skill_Bavarian_Three.frame = 0;
+			skill_Three_Count = 0;
+		}
+		else if(skill_Four_Check == true)
+		{
+			skill_Icon_Four.alpha = 1.0;
+			skill_Four_Check = false;
+
+			skill_Bavarian_Four.animations.stop('SK_Bavarian_Ani4', true);
+			skill_Bavarian_Four.visible = false;
+			skill_Bavarian_Four.frame = 0;
+		}
+		else if(skill_Five_Check == true)
+		{
+			skill_Icon_Five.alpha = 1.0;
+			skill_Five_Check = false;
+
+			skill_Bavarian_Five.animations.stop('SK_Bavarian_Ani5', true);
+			skill_Bavarian_Five.visible = false;
+			skill_Bavarian_Five.frame = 0;
+			skill_Five_Count = 0;
+		}
+	}
+}
+
 function skill_CoolTime()
 {
 	//Skill One Cool Time
@@ -594,7 +748,7 @@ function skill_Update()
 	skill4_Effect();
 
 	//Reset
-	skill_Reset();
+	skill_Reset();	
 
 	//Cool Time
 	skill_CoolTime();
