@@ -204,7 +204,7 @@ function goto_Stage3()
 	{
 		stageTwo_Check = false;
 
-		//Sound
+		//Soundaaa
 		sound_StopStage2BGM();
 		Lucifer_Game.state.start('stage3_load');
 	}
