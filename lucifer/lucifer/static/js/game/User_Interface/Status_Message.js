@@ -161,6 +161,4 @@ function status_Message_Update()
 		status_CheckTime_Total = 0;
 		ExpCount = 1;
 	}
-
-	//console.log(status_CheckTime_Total);	
 }

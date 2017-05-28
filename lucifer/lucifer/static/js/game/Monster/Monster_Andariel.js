@@ -590,9 +590,7 @@ function andariel_Skill(Object)
 
 			if(CurFrame + 10 == EndFrame)
 			{
-				health -= Object.Andariel_Skill_AttackPoint;
-
-				//console.log(health);
+				health -= Object.Andariel_Skill_AttackPoint;			
 			}
 		}
 	}

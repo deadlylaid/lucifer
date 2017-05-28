@@ -552,30 +552,6 @@ function fallen_Shaman_Attack(Object)
 
 function fallen_Shaman_FireBall_Fire(Object)
 {
-	/*
-	if(Lucifer_Game.time.now > Object.NextFire && Object.FireBall.countDead() > 0)
-	{
-		Object.NextFire = Lucifer_Game.time.now + Object.FireRate;
-
-		var fire_Ball = Object.FireBall.getFirstExists(false);
-		fire_Ball.reset(Object.x, Object.y);
-
-		//Fire_Ball = fire_Ball;
-
-		//FireBall Rect
-		Object.FireBall_Rect.x = fire_Ball.x;
-		Object.FireBall_Rect.y = fire_Ball.y;
-		Object.FireBall_Rect.centerOn(Object.FireBall_Rect.x, Object.FireBall_Rect.y);
-
-		console.log(fire_Ball.x, fire_Ball.y);
-
-		Lucifer_Game.physics.arcade.moveToObject(fire_Ball, Player, 200);
-
-		//충돌 처리 안됨. 좀더 생각해 봐야됨.
-		//Lucifer_Game.physics.arcade.overlap(fire_Ball, Player, fallen_Shaman_HitCount, null, this);
-	}
-	*/
-
 	if(Object.animations.name == 'MON_FallenShaman_Attack_' + Object.Direction)
 	{
 		var CurFrame = Object.animations.frame;
@@ -633,9 +609,7 @@ function fallen_Shaman_FireBall_Fire(Object)
 				else if(monster_Attack_Damage <= 0)
 				{
 					health -= (Object.Attack_Point * 0.01);
-				}
-
-				//console.log(health);
+				}				
 			}
 		}
 

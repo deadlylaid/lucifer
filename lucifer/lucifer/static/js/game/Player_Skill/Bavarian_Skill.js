@@ -408,10 +408,6 @@ function skill_Reset()
 
 		Animation_Change(Direction, 'Stand');
 	}
-
-	//console.log(skill_Bavarian_Four_Effect.visible);
-	//console.log(skill_Bavarian_Four_Effect.x, skill_Bavarian_Four_Effect.y);
-	//console.log(skill_Four_EffectCheck);
 }
 
 function skill_Reset_Stage()
@@ -426,6 +422,8 @@ function skill_Reset_Stage()
 			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
 			skill_Bavarian.visible = false;
 			skill_Bavarian.frame = 0;
+
+			skill_One_Attribute = false;
 		}
 		else if(skill_Two_Check == true)
 		{
@@ -476,6 +474,8 @@ function skill_Reset_Stage()
 			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
 			skill_Bavarian.visible = false;
 			skill_Bavarian.frame = 0;
+
+			skill_One_Attribute = false;
 		}
 		else if(skill_Two_Check == true)
 		{
@@ -526,6 +526,8 @@ function skill_Reset_Stage()
 			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
 			skill_Bavarian.visible = false;
 			skill_Bavarian.frame = 0;
+
+			skill_One_Attribute = false;
 		}
 		else if(skill_Two_Check == true)
 		{

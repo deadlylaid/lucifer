@@ -45,7 +45,6 @@ $.ajax({
     async: false,
 
 }).done(function(data){
-    //console.log(data)
     character = data[0].character[0];
     nickname = character.nickname;
     level = character.level;
