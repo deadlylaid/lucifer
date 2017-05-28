@@ -422,6 +422,8 @@ function skill_Reset_Stage()
 			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
 			skill_Bavarian.visible = false;
 			skill_Bavarian.frame = 0;
+
+			skill_One_Attribute = false;
 		}
 		else if(skill_Two_Check == true)
 		{
@@ -472,6 +474,8 @@ function skill_Reset_Stage()
 			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
 			skill_Bavarian.visible = false;
 			skill_Bavarian.frame = 0;
+
+			skill_One_Attribute = false;
 		}
 		else if(skill_Two_Check == true)
 		{
@@ -522,6 +526,8 @@ function skill_Reset_Stage()
 			skill_Bavarian.animations.stop('SK_Bavarian_Ani', true);
 			skill_Bavarian.visible = false;
 			skill_Bavarian.frame = 0;
+
+			skill_One_Attribute = false;
 		}
 		else if(skill_Two_Check == true)
 		{

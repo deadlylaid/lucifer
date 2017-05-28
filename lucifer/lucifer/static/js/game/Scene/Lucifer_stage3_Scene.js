@@ -79,6 +79,9 @@ var stage3_Scene =
 		//Message
 		status_Message_Craete();
 
+		//Skill Reset
+		skill_Reset_Stage();
+
 		var enterKey = Lucifer_Game.input.keyboard.addKey(Phaser.Keyboard.F3);
 		enterKey.onDown.add(debug_Down, this);
 		enterKey.onUp.add(debug_Up, this);
@@ -131,10 +134,7 @@ var stage3_Scene =
 
 		//Message
 		status_Message_Update();
-
-		//Skill Reset
-		skill_Reset_Stage();
-
+		
 		//Portal
 		portal_Check2();
 
