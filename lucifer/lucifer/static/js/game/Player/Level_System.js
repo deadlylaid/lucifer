@@ -119,7 +119,9 @@ function player_State_Up()
     	attack_point = 1.29 * ( (3 * strong) + (maxHealth * 0.1) ) * (equipmentList[0].attack_point * 0.01);
 
     	//var rawDefencePoint = 2 * ( (2 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
-        defence_point = 2 * ( (2 * strong) + (maxHealth * 0.1) ) * (equipmentList[1].defence_point * 0.01);
+        if(equipmentList[1] !== undefined){
+            defence_point = 2 * ( (2 * strong) + (maxHealth * 0.1) ) * (equipmentList[1].defence_point * 0.01);
+        }
 
     	//Skill Damage Up
     	player_skillDamage_Up();
