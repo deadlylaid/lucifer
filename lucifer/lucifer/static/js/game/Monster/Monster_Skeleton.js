@@ -89,7 +89,7 @@ function skeleton_Create()
 
 function skeleton_Clone(PointX, PointY)
 {
-	skeleton_Object = new Skeleton(Lucifer_Game, PointX, PointY, 600, 600, 1000, 100);
+	skeleton_Object = new Skeleton(Lucifer_Game, PointX, PointY, 400, 400, 1000, 100);
 
 	Lucifer_Game.physics.p2.enable(skeleton_Object);
 	skeleton_Object.body.fixedRotation = true;
@@ -438,13 +438,15 @@ function skeleton_Move(Object)
 				Lucifer_Game.physics.arcade.moveToObject(Object, Player, 60);
 				skeleton_Animation_Change(Object.Direction, 'Walk', Object);
 
+				/*
 				if(Object.animations.name == "MON_Skeleton_Walk_" + Object.Direction
 				   && Object.SoundCheck == false)
 				{
 					//Sound
 					sound_Skeleton_Neutral.play();	
 					Object.SoundCheck = true;
-				}				
+				}			
+				*/	
 			}
 		}
 

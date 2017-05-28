@@ -17,7 +17,7 @@ function questComplete_Effect_Preload()
 
 function questComplete_Effect_Create()
 {
-	questComplete_Effect = Lucifer_Game.add.sprite(680, 400, 'Quest_Complete_Effect');
+	questComplete_Effect = Lucifer_Game.add.sprite(640, 250, 'Quest_Complete_Effect');
 	questComplete_Effect.anchor.setTo(0.5, 0.5);
 	questComplete_Effect.visible = false;
 	questComplete_Effect.fixedToCamera = true;

@@ -672,17 +672,20 @@ function changeServerListToClientListQuickSlot(){
     }
         quickSlot[0].count = count;
         quickSlot[0].visible=true;
+        quickSlot[0].isQuickSlot = true;
     }
 }
 
 //장비착용 계산 함수
 function equipmentCalculater(point, type){
     if(type==='armor'){
-    	var rawDefencePoint = 2 * ( (4 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
+    	var rawDefencePoint = 2 * ( (2 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
         defence_point = Number(rawDefencePoint.toFixed(2));
+        //console.log(rawDefencePoint, point);
     }else{
-    	var rawAttackPoint = 1.29 * ( (4 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
+    	var rawAttackPoint = 1.29 * ( (3 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
         attack_point = Number(rawAttackPoint.toFixed(2));
+        //console.log(rawAttackPoint, point);
     }
 }
 

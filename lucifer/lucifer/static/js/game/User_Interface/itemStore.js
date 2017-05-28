@@ -71,7 +71,8 @@ function itemStoreCreate(){
     swordTab = Lucifer_Game.add.sprite(446, 200, 'swordTab');
     swordTab.anchor.setTo(0.5, 0.5);
     swordTab.scale.setTo(1.2, 1.2);
-    swordTab.fixedToCamera = true; swordTab.visible = false; swordTab.alpha = 0.7;
+    swordTab.fixedToCamera = true; swordTab.visible = false;
+    swordTab.alpha = 0.7;
 
     swordTab.inputEnabled = true;
     swordTab.events.onInputDown.add(swordStoreTab ,this);
@@ -695,7 +696,7 @@ function buyItem() {
             //Sound
             sound_AlertWindow.play();
         }else{
-            if(gold>selectedItem.price){
+            if(gold>=selectedItem.price){
                 //Sound
                 sound_BuyItem.play();
 

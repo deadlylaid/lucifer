@@ -421,18 +421,12 @@ function itemsCreate(){
 
 }
 
-function InvenonOverPotion(isQuickSlot){
-    if(quickSlot[0].isQuickSlot == false){
+function InvenonOverPotion(potion){
+    if(potion.isQuickSlot == false){
         Inven_Potion_One_Info.visible = true;
-    }else if(quickSlot[0].isQuickSlot == true){
+    }else if(potion.isQuickSlot == true){
         Inven_Potion_One_Info_test.visible = true;
     }
-
-    /*if(quickSlot[0].isQuickSlot == false)
-        {console.log(quickSlot[0].isQuickSlot);}
-    else
-        console.log(quickSlot[0]);
-    */
 }
 
 function InvenonOutPotion(){
