@@ -283,7 +283,7 @@ function useItem(){
         }
         tempInventory = [];
 
-        if(selectedItem.type_is==='potion'){
+        if(selectedItem.type_is==='potion' && selectedItem.drinkEnable===true){
             var count = selectedItem.count;
 			if(quickSlot[0]!==undefined){
                 //기존에 등록되어 있던 포션을 버렸습니다
@@ -294,17 +294,14 @@ function useItem(){
             switch(selectedItem.name){
                 case '빨간물약':
                     quickSlot[0] = redPotionClone(727, 760);
-                    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     quickSlot[0].isQuickSlot = true;
                     break;
                 case '좋은물약':
                     quickSlot[0] = goodRedPotionClone(727, 760);
-                    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     quickSlot[0].isQuickSlot = true;
                     break;
                 case '최고의물약':
                     quickSlot[0] = bestRedPotionClone(727, 760);
-                    //Mansoo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     quickSlot[0].isQuickSlot = true;
                     break;
             }
@@ -680,10 +677,10 @@ function changeServerListToClientListQuickSlot(){
 function equipmentCalculater(point, type){
     if(type==='armor'){
     	var rawDefencePoint = 2 * ( (2 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
-        defence_point = Number(rawDefencePoint.toFixed(2));        
+        defence_point = Number(rawDefencePoint.toFixed(2));
     }else{
     	var rawAttackPoint = 1.29 * ( (3 * strong) + (maxHealth * 0.1) ) * (point * 0.01);
-        attack_point = Number(rawAttackPoint.toFixed(2));        
+        attack_point = Number(rawAttackPoint.toFixed(2));
     }
 }
 
@@ -732,7 +729,7 @@ function potionDrink(){
             health += quickSlot[0].heal;
         }
         quickSlotPut(quickSlot[0]);
-        if(quickSlot[0].count === 0){           
+        if(quickSlot[0].count === 0){
             quickSlot[0].destroy();
             quickSlot[0].text.destroy();
 
@@ -744,7 +741,7 @@ function potionDrink(){
             //횟수가 하나 줄은것으로 끝난다 & Item Effect
             item_Effect_Check = true;
         }
-    }else{      
+    }else{
     }
 
 }
